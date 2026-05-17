@@ -6,6 +6,7 @@ backend:
   branch: main
   base_url: https://odd-moon-077a.pandangsaya2023.workers.dev
   auth_endpoint: auth
+  auth_token_endpoint: token
 media_folder: "public/images"
 public_folder: "/images"
 collections:
