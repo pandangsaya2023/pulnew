@@ -1,5 +1,5 @@
 backend:
-  name: https://github.com
+  name: github.com
   repo: pandangsaya2023/pulnew
   branch: main
 media_folder: "public/images"
