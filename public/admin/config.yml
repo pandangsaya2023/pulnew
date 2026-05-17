@@ -2,7 +2,7 @@ backend:
   name: github
   repo: pandangsaya2023/pulnew
   branch: main
-  auth_type: pkce
+  base_url: https://sveltia.org
 media_folder: "public/images"
 public_folder: "/images"
 collections:
