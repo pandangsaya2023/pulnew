@@ -1,4 +1,5 @@
 site_url: https//pulnew.pages.dev
+base_url: /admin
 backend:
   name: git-gateway
   repo: pandangsaya2023/pulnew
