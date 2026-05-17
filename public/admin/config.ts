@@ -2,7 +2,7 @@ import { defineConfig } from "tinacms";
 
 export default defineConfig({
   clientId: "9dc141ca-bc40-4de9-a81e-852fc0cbdebb",
-  token: "masukin-token-di-sini",
+  token: "960b9862a7e4fa2fae6ba9c7655b7143a37d21d5",
   branch: "main",
   schema: {
     collections: [
