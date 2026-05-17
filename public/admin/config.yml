@@ -1,12 +1,5 @@
-site_url: https//pulnew.pages.dev
-base_url: /admin
 backend:
   name: git-gateway
-  repo: pandangsaya2023/pulnew
-  branch: main
-  base_url: https://odd-moon-077a.pandangsaya2023.workers.dev
-  auth_endpoint: auth
-  auth_token_endpoint: token
 media_folder: "public/images"
 public_folder: "/images"
 collections:
