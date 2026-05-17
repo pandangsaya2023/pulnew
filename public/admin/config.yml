@@ -2,7 +2,7 @@ backend:
   name: github
   repo: pandangsaya2023/pulnew
   branch: main
-  auth_type: oauth
+  auth_type: pkce
   app_id: Ov23liERy7oEI6sKCO8a
 media_folder: "public/images"
 public_folder: "/images"
