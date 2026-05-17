@@ -1,3 +1,5 @@
+site_url: https//pulnew.pages.dev
+base_url: /admin
 backend:
   name: github
   repo: pandangsaya2023/pulnew
