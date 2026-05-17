@@ -3,6 +3,7 @@ backend:
   repo: pandangsaya2023/pulnew
   branch: main
   base_url: https://odd-moon-077a.pandangsaya2023.workers.dev
+  auth_endpoint: auth
 media_folder: "public/images"
 public_folder: "/images"
 collections:
