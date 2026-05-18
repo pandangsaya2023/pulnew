@@ -2,6 +2,7 @@ backend:
   name: github
   repo: pandangsaya2023/pulnew
   branch: main
+  auth_endpoint: https://api.github.com/authorizations
 media_folder: "public/images"
 public_folder: "/images"
 collections:
