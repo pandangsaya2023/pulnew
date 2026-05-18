@@ -2,13 +2,18 @@ backend:
   name: github
   repo: pandangsaya2023/pulnew
   branch: main
+
 media_folder: "public/images"
 public_folder: "/images"
+
 collections:
-    - name: "post"
-    label: "Post"
+    - name: "posts"
+    label: "Posts"
     folder: "content/posts"
     create: true
+    slug: "{{slug}}"
     fields:
-      - {label: "Title", name: "title", widget: "string"}
-      - {label: "Body", name: "body", widget: "markdown"}
+            - {label: "Title", name: "title", widget: "string"}
+            - {label: "Date", name: "date", widget: "datetime"}
+            - {label: "Image", name: "image", widget: "image", required: false}
+            - {label: "Body", name: "body", widget: "markdown"}
