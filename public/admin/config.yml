@@ -2,6 +2,7 @@ backend:
   name: github
   repo: pandangsaya2023/pulnew
   branch: main
+  base_url: https//github-oauth.decapcms.org
 
 media_folder: public/images
 public_folder: /images
