@@ -3,10 +3,12 @@ backend:
   repo: pandangsaya2023/pulnew
   branch: main
   base_url: https://pulnew.pages.dev
-  auth_endpoint: api/auth
+  auth_endpoint: /api/auth
 
-media_folder: public/images
-public_folder: /images
+site_url: https://pulnew.pages.dev
+
+media_folder: public/media
+public_folder: /media
 
 collections:
   - name: "posts"
