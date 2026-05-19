@@ -1,6 +1,7 @@
 ---
 title: "gambar kucing"
 date: 2026-05-19
+draft: false
 ---
 
 ini gambar kucing yang diupload admin
