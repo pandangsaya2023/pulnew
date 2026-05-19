@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Admin Pulnew</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<style>
+  body{font-family:system-ui, sans-serif;max-width:900px;margin:40px auto;padding:0 20px;background:#0f172a;color:#e2e8f0}
+  input,textarea,button{width:100%;padding:12px;margin:8px 0;border-radius:8px;border:1px solid #334155;background:#1e293b;color:#e2e8f0;font-size:16px}
+  textarea{min-height:250px;font-family:monospace}
+  button{background:#3b82f6;border:none;cursor:pointer;font-weight:600}
+  button:hover{background:#2563eb}
+ .btn-secondary{background:#475569}
+ .btn-secondary:hover{background:#334155}
+ .box{background:#1e293b;padding:20px;border-radius:12px;margin-top:20px}
+  small{color:#94a3b8}
+ .preview{margin-top:20px;padding:20px;background:#0f172a;border:1px solid #334155;border-radius:8px}
+ .preview img,.preview video,.preview audio{max-width:100%;margin-top:10px}
+ .preview h1,.preview h2,.preview h3{margin-top:20px}
+ .grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  @media(max-width:768px){.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<h2>Admin Pulnew</h2>
+
+<div class="box">
+  <label>GitHub Token</label>
+  <input type="password" id="github token" placeholder="ghp_xxxxxxxx">
+  <small>Token cuma disimpan di browser kamu, nggak dikirim kemana-mana</small>
+</div>
+
+<div class="box">
+  <label>Upload Media</label>
+  <input type="file" id="media" accept="image/*,video/*,audio/*">
+  <button onclick="uploadMedia()">Upload Media</button>
+  <div class="preview" id="mediaLink" style="display:none"></div>
+</div>
+
+<div class="grid">
+  <div class="box">
+    <label>Judul Post</label>
+    <input type="text" id="title" placeholder="Contoh: Cara Memasak Mie">
+
+    <label>Isi Post - pakai Markdown</label>
+    <textarea id="body" placeholder="# Judul\n![alt](/media/namafile.jpg)\nTulis di sini..."></textarea>
+
+    <button class="btn-secondary" onclick="preview()">Preview</button>
+    <button onclick="publish()">Publish</button>
+    <p id="status"></p>
+  </div>
+
+  <div class="box">
+    <label>Preview</label>
+    <div id="previewBox" class="preview">Ketik sesuatu lalu klik Preview</div>
+  </div>
+</div>
+
+<script>
+const repo = "pandangsaya2023/pulnew";
+const branch = "main";
+const mediaFolder = "public/media";
+const postFolder = "content/posts";
+
+// Render preview
+function preview(){
+  const body = document.getElementById('body').value;
+  document.getElementById('previewBox').innerHTML = marked.parse(body);
+}
+
+async function uploadMedia(){
+  const token = document.getElementById('token').value.trim();
+  const file = document.getElementById('media').files[0];
+  const mediaLink = document.getElementById('mediaLink');
+
+  if(!token){alert("Masukkan token dulu");return;}
+  if(!file){alert("Pilih file dulu");return;}
+
+  const filename = Date.now() + "-" + file.name.replace(/\s+/g,'-');
+  const path = `${mediaFolder}/${filename}`;
+  mediaLink.style.display = "block";
+  mediaLink.innerText = "Uploading...";
+
+  const reader = new FileReader();
+  reader.onload = async () => {
+    const base64 = reader.result.split(',')[1];
+    try{
+      const res = await fetch(`https://api.github.com/repos/${repo}/contents/${path}`, {
+        method: "PUT",
+        headers: {
+          "Authorization": "token " + token,
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          message: `Upload media: ${filename}`,
+          content: base64,
+          branch: branch
+        })
+      });
+      const data = await res.json();
+      if(res.ok){
+        const link = `/media/${filename}`;
+        mediaLink.innerHTML = `Berhasil! <br> Link: <code>${link}</code> <br> Markdown: <code>![alt](${link})</code>`;
+      } else {
+        mediaLink.innerText = "Error: " + data.message;
+      }
+    } catch(e){
+      mediaLink.innerText = "Error: " + e.message;
+    }
+  };
+  reader.readAsDataURL(file);
+}
+
+async function publish(){
+  const token = document.getElementById('token').value.trim();
+  const title = document.getElementById('title').value.trim();
+  const body = document.getElementById('body').value.trim();
+  const status = document.getElementById('status');
+
+  if(!token ||!title ||!body){
+    status.innerText = "Token, judul, isi wajib diisi";
+    return;
+  }
+
+  const slug = title.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
+  const filename = `${postFolder}/${slug}.md`;
+  const date = new Date().toISOString().split('T')[0];
+
+  const content = `---
+title: "${title}"
+date: ${date}
+---
+
+${body}`;
+
+  status.innerText = "Publishing...";
+
+  try{
+    const res = await fetch(`https://api.github.com/repos/${repo}/contents/${filename}`, {
+      method: "PUT",
+      headers: {
+        "Authorization": "token " + token,
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        message: `Add post: ${title}`,
+        content: btoa(unescape(encodeURIComponent(content))),
+        branch: branch
+      })
+    });
+
+    const data = await res.json();
+    if(res.ok){
+      status.innerText = "Berhasil! Cek di /posts/" + slug;
+      document.getElementById('title').value = "";
+      document.getElementById('body').value = "";
+      document.getElementById('previewBox').innerHTML = "Ketik sesuatu lalu klik Preview";
+    } else {
+      status.innerText = "Error: " + data.message;
+    }
+  } catch(e){
+    status.innerText = "Error: " + e.message;
+  }
+}
+</script>
+</body>
+</html>
