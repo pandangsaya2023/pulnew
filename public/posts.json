@@ -1,10 +1,40 @@
-[
-  {
-    "slug": "gambar-kucing",
-    "title": "gambar kucing",
-    "date": "19 Mei 2026",
-    "category": "Hiburan",
-    "image": "media/1779189516090-47d535bf-f031-429f-8237-1ed955709f6f.jpg",
-    "content": "<p>Ini adalah artikel tentang gambar kucing. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tambahkan isi berita kamu disini.</p><p>Kamu bisa pakai tag HTML seperti <strong>bold</strong> dan <em>italic</em>.</p>"
+<script>
+async function loadPost(){
+  try {
+    const res = await fetch('/posts.json');
+    console.log('Status fetch posts.json:', res.status);
+    
+    if(!res.ok) throw new Error('Fetch gagal: ' + res.status);
+    
+    const posts = await res.json();
+    console.log('Data posts:', posts);
+    
+    const slug = window.location.pathname.split('/').pop();
+    console.log('Slug dari URL:', slug);
+    
+    const post = posts.find(p => p.slug === slug);
+    console.log('Post ketemu:', post);
+    
+    if(!post){
+      document.getElementById('content').innerHTML = '<div>Post tidak ditemukan</div>';
+      return;
+    }
+
+    document.title = post.title + ' - PULBerita.com';
+    document.getElementById('content').innerHTML = `
+      <div class="article">
+        <img src="/${post.image}" alt="${post.title}">
+        <h1>${post.title}</h1>
+        <div class="meta">${post.date} • ${post.category}</div>
+        <div class="content">${post.content || 'Isi berita belum diisi'}</div>
+      </div>
+    `;
+    
+  } catch(e) {
+    console.error('Error:', e);
+    document.getElementById('content').innerHTML = '<div>Error load data: ' + e.message + '</div>';
   }
-]
+}
+
+loadPost();
+</script>
