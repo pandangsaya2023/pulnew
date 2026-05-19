@@ -39,7 +39,7 @@ a{text-decoration:none;color:inherit}
 <div class="container" id="content"></div>
 <script>
 async function loadPosts(){
-  const posts = await fetch('/posts.json').then(r=>r.json()).catch(()=>[]);
+  const posts = await fetch('/.posts.json').then(r=>r.json()).catch(()=>[]);
   if(posts.length === 0){
     document.getElementById('content').innerHTML = '<div style="padding:40px;text-align:center">Belum ada berita. Tambah lewat /admin</div>';
     return;
