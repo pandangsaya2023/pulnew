@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PULBerita.com</title>
+<style>
+  body { margin:0; font-family:Arial, sans-serif; background:#f5f5f5; }
+  .header { background:#fff; padding:10px 20px; border-bottom:2px solid #eee; }
+  .logo { font-size:24px; font-weight:bold; color:#0033cc; }
+  .logo span { color:#cc0000; }
+  nav { background:#0033cc; padding:10px 20px; }
+  nav a { color:#fff; margin-right:20px; text-decoration:none; font-weight:bold; cursor:pointer; }
+  nav a.active { text-decoration:underline; }
+  .container { max-width:900px; margin:20px auto; padding:0 20px; }
+  .featured { background:#fff; border-radius:8px; overflow:hidden; box-shadow:0 2px 5px rgba(0,0,0,0.1); }
+  .featured img { width:100%; height:400px; object-fit:cover; }
+  .featured-content { padding:20px; }
+  .featured h1 { margin:0 0 10px; font-size:28px; }
+  .meta { color:#666; font-size:14px; }
+  .empty { text-align:center; padding:60px 20px; color:#666; }
+  a.post-link { color:inherit; text-decoration:none; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="logo">PUL<span>Berita</span>.com</div>
+</div>
+
+<nav>
+  <a onclick="filterCategory('Home')" id="nav-Home" class="active">Home</a>
+  <a onclick="filterCategory('Politik')" id="nav-Politik">Politik</a>
+  <a onclick="filterCategory('Ekonomi')" id="nav-Ekonomi">Ekonomi</a>
+  <a onclick="filterCategory('Hiburan')" id="nav-Hiburan">Hiburan</a>
+</nav>
+
+<div class="container" id="content">
+  <div class="empty">Loading...</div>
+</div>
+
+<script>
+let posts = [];
+let activeCategory = 'Home';
+
+async function loadPosts(){
+  posts = await fetch('posts.json').then(r=>r.json()).catch(()=>[]);
+  renderPosts();
+}
+
+function filterCategory(cat){
+  activeCategory = cat;
+  document.query
