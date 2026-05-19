@@ -1,1 +1,3 @@
-   /admin/* https://api.github.com/oauth/authorize?client_id=Ov23liERy7oEI6sKCO8a
+admin/* https://api.github.com/oauth/authorize?client_id=Ov23liERy7oEI6sKCO8a
+/admin/* /admin/index.html 200
+/api/*  https://api.github.com/:splat 200
