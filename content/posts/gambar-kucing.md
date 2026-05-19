@@ -2,6 +2,7 @@
 title: "gambar kucing"
 date: 2026-05-19
 draft: false
+categories: ["Hiburan"]
 ---
 
 ini gambar kucing yang diupload admin
