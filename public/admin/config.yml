@@ -1,5 +1,5 @@
 backend:
-  name: github
+  name: git-gateway
   repo: pandangsaya2023/pulnew
   branch: main
   base_url: https://pulnew.pages.dev
