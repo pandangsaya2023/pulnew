@@ -46,7 +46,7 @@ a{text-decoration:none;color:inherit}
         const contentDiv = document.getElementById('content');
         try {
             // Menambahkan timestamp agar browser tidak mengambil data cache lama
-            const response = await fetch('./posts.json?t=' + new Date().getTime());
+            const response = await fetch('/posts.json?t=' + new Date().getTime());
             
             if (!response.ok) throw new Error("Gagal mengambil data berita");
             
