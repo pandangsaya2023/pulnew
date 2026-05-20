@@ -1,11 +1,11 @@
 backend:
-  name: git-gateway
+  name: github
   repo: pandangsaya2023/pulnew
   branch: main
-  base_url: https://pulnew.pages.dev
-  auth_endpoint: /api/auth
+  #base_url: https://pulnew.pages.dev
+  #auth_endpoint: /api/auth
 
-site_url: https://pulnew.pages.dev
+#site_url: https://pulnew.pages.dev
 
 media_folder: public/media
 public_folder: /media
