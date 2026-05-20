@@ -1,3 +1,5 @@
 export async function onRequest(context) {
-  return new Response('Functions OK', { status: 200 });
+  return new Response(JSON.stringify({ok: true}), {
+    headers: {'content-type': 'application/json'}
+  });
 }
