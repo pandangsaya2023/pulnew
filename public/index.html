@@ -30,46 +30,68 @@ a{text-decoration:none;color:inherit}
 </style>
 </head>
 <body>
-<div class="top-header">
-  <div class="breaking-badge">INFO NEW</div>
-  <div class="breaking-text" id="breaking">• Loading...</div>
-</div>
-<div class="logo-bar"><div class="logo">PUL<span>NEW</span>.com</div></div>
-<div class="nav-menu"><a href="/">Home</a><a href="#">Politik</a><a href="#">Ekonomi</a><a href="#">Hiburan</a></div>
-<div class="container" id="content"></div>
-<script>
-async function loadPosts(){
-  const posts = await fetch('posts.json').then(r=>r.json()).catch(()=>[]);
-  if(posts.length === 0){
-    document.getElementById('content').innerHTML = '<div style="padding:40px;text-align:center">Belum ada berita. Tambah lewat /admin</div>';
-    return;
-  }
-  const featured = posts[0];
-  document.getElementById('content').innerHTML = `
-    <div class="featured">
-      <a href="/berita/${featured.slug}">
-        <img src="${featured.image}" alt="">
-        <div class="overlay">
-          <h1>${featured.title}</h1>
-          <div class="meta">${featured.date} • ${featured.category}</div>
-        </div>
-      </a>
+    <div class="top-header">
+        <div class="breaking-badge">INFO NEW</div>
+        <div class="breaking-text" id="breaking">• Memuat info terbaru...</div>
     </div>
-    <div class="grid">
-      ${posts.slice(1,5).map(p=>`
-        <div class="card">
-          <a href="/berita/${p.slug}">
-            <img src="${p.image}" alt="">
-            <h3>${p.title}</h3>
-            <div class="meta">${p.date}</div>
-          </a>
-        </div>
-      `).join('')}
+    <div class="logo-bar"><div class="logo">PUL<span>NEW</span>.com</div></div>
+    <div class="nav-menu"><a href="/">Home</a><a href="#">Politik</a><a href="#">Ekonomi</a><a href="#">Hiburan</a></div>
+    
+    <div class="container" id="content">
+        <div style="padding:40px;text-align:center;">Sedang memuat berita...</div>
     </div>
-  `;
-  if(posts[0]) document.getElementById('breaking').textContent = `• ${posts[0].title}`;
-}
-loadPosts();
-</script>
+
+    <script>
+    async function loadPosts() {
+        const contentDiv = document.getElementById('content');
+        try {
+            // Menambahkan timestamp agar browser tidak mengambil data cache lama
+            const response = await fetch('/posts.json?t=' + new Date().getTime());
+            
+            if (!response.ok) throw new Error("Gagal mengambil data berita");
+            
+            const posts = await response.json();
+            
+            if (!posts || posts.length === 0) {
+                contentDiv.innerHTML = '<div style="padding:40px;text-align:center">Belum ada berita. Tambah lewat /admin</div>';
+                return;
+            }
+
+            const featured = posts[0];
+            
+            // Render HTML
+            contentDiv.innerHTML = `
+                <div class="featured">
+                    <a href="/berita/${featured.slug}">
+                        <img src="${featured.image}" alt="${featured.title}">
+                        <div class="overlay">
+                            <h1>${featured.title}</h1>
+                            <div class="meta">${featured.date} • ${featured.category || 'Berita'}</div>
+                        </div>
+                    </a>
+                </div>
+                <div class="grid">
+                    ${posts.slice(1, 5).map(p => `
+                        <div class="card">
+                            <a href="/berita/${p.slug}">
+                                <img src="${p.image}" alt="${p.title}">
+                                <h3>${p.title}</h3>
+                                <div class="meta">${p.date}</div>
+                            </a>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+            
+            document.getElementById('breaking').textContent = `• ${featured.title}`;
+            
+        } catch (err) {
+            console.error(err);
+            contentDiv.innerHTML = '<div style="padding:40px;text-align:center;color:red;">Gagal memuat berita. Pastikan file posts.json sudah ada di server.</div>';
+        }
+    }
+
+    loadPosts();
+    </script>
 </body>
 </html>
