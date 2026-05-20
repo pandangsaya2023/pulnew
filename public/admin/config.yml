@@ -2,7 +2,7 @@ backend:
   name: github
   repo: pandangsaya2023/pulnew
   branch: main
-  base_url: https://github.com/pulnew.pages.dev
+  base_url: https://pulnew.pages.dev
   auth_endpoint: /api/auth
 
 site_url: https://pulnew.pages.dev
