@@ -1,0 +1,29 @@
+name: Generate Posts JSON
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Generate JSON
+        run: |
+          echo "[" > posts.json
+          first=true
+          for f in content/posts/*.md; do
+            [ -e "$f" ] || continue
+            if [ "$first" = true ]; then first=false; else echo "," >> posts.json; fi
+            # Script sederhana untuk mengambil data dari Markdown
+            title=$(grep "^title:" "$f" | cut -d'"' -f2)
+            date=$(grep "^date:" "$f" | cut -d' ' -f2)
+            image=$(grep "^image:" "$f" | cut -d' ' -f2)
+            slug=$(basename "$f" .md)
+            echo "{\"title\":\"$title\", \"date\":\"$date\", \"image\":\"$image\", \"slug\":\"$slug\"}" >> posts.json
+          done
+          echo "]" >> posts.json
+      - name: Commit and Push
+        run: |
+          git config --global user.name 'GitHub Action'
+          git config --global user.email 'action@github.com'
+          git add posts.json
+          git commit -m "Update posts.json" || exit 0
+          git push
