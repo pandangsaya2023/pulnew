@@ -2,9 +2,8 @@ name: Robot Ambil Berita Otomatis
 
 on:
   schedule:
-    # Berjalan otomatis setiap 6 jam (00.00, 06.00, 12.00, 18.00 UTC)
     - cron: '0 */6 * * *'
-  workflow_dispatch: # Tombol rahasia agar kita bisa klik "jalan sekarang" secara manual
+  workflow_dispatch: 
 
 jobs:
   scrape:
@@ -26,4 +25,4 @@ jobs:
         git config --global user.name "Robot Berita Otomatis"
         git config --global user.email "bot@pulnew.com"
         git add public/posts.json
-        git diff --quiet && git diff --staged --quiet || (git commit -m "Update berita otomatis dari media daerah [Skip CI]" && git push)
+        git diff --quiet && git diff --staged --quiet || (git commit -m "Update berita otomatis dari media daerah" && git push)
