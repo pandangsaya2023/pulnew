@@ -56,7 +56,7 @@ a{text-decoration:none;color:inherit}
     async function loadPosts() {
         const contentDiv = document.getElementById('content');
         try {
-            const response = await fetch('./posts.json?t=' + new Date().getTime());
+            const response = await fetch('/posts.json?t=' + new Date().getTime());
             
             if (!response.ok) throw new Error("Gagal mengambil data berita");
             
