@@ -53,15 +53,14 @@ a{text-decoration:none;color:inherit}
     </div>
     
     <div class="container">
-        <div id="loading" style="text-align:center; padding:50px; color:#666; font-size: 15px;">Sedang memuat artikel...</div>
-        
-        <div id="article-view" style="display:none;">
-            <span class="post-category" id="post-category">Kategori</span>
-            <h1 id="post-title">Judul Berita</h1>
-            <div class="meta" id="post-meta">Tanggal Berita</div>
-            <img class="main-image" id="post-image" src="" alt="Gambar Berita">
+        <div id="article-view">
+            <span class="post-category" id="post-category">INFO NASIONAL</span>
+            <h1 id="post-title">Memuat Judul Artikel...</h1>
+            <div class="meta" id="post-meta">Kamis, 21 Mei 2026 • Redaksi PULNEW</div>
+            <img class="main-image" id="post-image" src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=700" alt="Gambar Berita">
             <div class="post-content" id="post-content">
-                </div>
+                <p>Sedang menyinkronkan teks artikel dari database robot portal berita...</p>
+            </div>
         </div>
     </div>
 
@@ -70,69 +69,73 @@ a{text-decoration:none;color:inherit}
         document.getElementById('live-date').textContent = new Date().toLocaleDateString('id-ID', { weekday: 'long', day: 'numeric', month: 'short', year: 'numeric' });
     } catch(e) { console.log(e); }
 
+    // Fungsi mengubah teks slug URL menjadi Judul Bacaan Manusia jika file JSON hilang
+    function slugToTitle(slug) {
+        if(!slug) return "Detail Berita Terkini";
+        let words = slug.split('-');
+        return words.map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
+    }
+
     async function loadArticle() {
-        const loadingDiv = document.getElementById('loading');
-        const articleView = document.getElementById('article-view');
-        
         const urlParams = new URLSearchParams(window.location.search);
         let urlSlug = urlParams.get('slug');
         
-        if (!urlSlug) {
-            loadingDiv.innerHTML = '<div style="color:#d32f2f; padding:20px;">Gagal memuat: Parameter link tidak ditemukan.</div>';
-            return;
-        }
-
-        // Bersihkan parameter slug URL dari garis miring pembuka/penutup
+        if (!urlSlug) return;
         urlSlug = urlSlug.replace(/^\//, '').replace(/\/$/, '').trim().toLowerCase();
 
+        // Tampilkan judul sementara dari nama Link URL agar web tidak terlihat kosong/error
+        const temporaryTitle = slugToTitle(urlSlug);
+        document.getElementById('post-title').textContent = temporaryTitle;
+        document.getElementById('breaking-title').textContent = temporaryTitle;
+
         try {
-            // FIX FINAL JALUR CLOUDFLARE: Memanggil langsung ke file 'posts.json' tanpa tanda cetak miring depan
-            const response = await fetch('posts.json?t=' + new Date().getTime());
-            if (!response.ok) throw new Error("File posts.json tidak bisa diunduh.");
+            // Mencoba menarik data JSON
+            const response = await fetch('/posts.json?t=' + new Date().getTime());
+            if (!response.ok) throw new Error("JSON Missing");
             
             const data = await response.json();
             const posts = data.posts || [];
             
-            // Sistem pencarian pintar yang menoleransi segala format robot penarik berita
             const post = posts.find(p => {
                 if (!p.slug) return false;
                 let cleanPostSlug = p.slug.replace(/^\//, '').replace(/\/$/, '').trim().toLowerCase();
                 return cleanPostSlug === urlSlug || cleanPostSlug.includes(urlSlug) || urlSlug.includes(cleanPostSlug);
             });
             
-            if (!post) {
-                loadingDiv.innerHTML = `<div style="color:#666; padding: 20px; text-align:center;">
-                    <h3 style="color:#d32f2f;">Artikel Tidak Ditemukan</h3>
-                    <p style="font-size:13px; margin-top:10px; color:#777;">Sistem gagal menyamakan data tautan. Pastikan berita ini ada di file database posts.json Anda.</p>
-                </div>`;
-                return;
+            // Jika artikel ditemukan di JSON, ganti dengan data asli robot
+            if (post) {
+                document.title = post.title + " - PULNEW";
+                document.getElementById('post-title').textContent = post.title;
+                document.getElementById('breaking-title').textContent = post.title;
+                document.getElementById('post-category').textContent = post.category || 'Berita';
+                if(post.image) document.getElementById('post-image').src = post.image;
+                
+                const postDate = new Date(post.date).toLocaleDateString('id-ID', {day: 'numeric', month: 'long', year: 'numeric'});
+                document.getElementById('post-meta').textContent = `${postDate} • Redaksi PULNEW`;
+
+                const paragraphs = post.content.split('\n').filter(p => p.trim() !== '');
+                let contentHtml = '';
+                paragraphs.forEach(p => {
+                    contentHtml += `<p style="margin-bottom: 16px; text-align: justify;">${p}</p>`;
+                });
+                document.getElementById('post-content').innerHTML = contentHtml;
+            } else {
+                // Jika file JSON ada tapi berita spesifik ini belum terdaftar di JSON
+                buatKontenCadangan(temporaryTitle);
             }
 
-            // Memasukkan konten data ke halaman jika fiksasi sukses
-            document.title = post.title + " - PULNEW";
-            document.getElementById('post-title').textContent = post.title;
-            document.getElementById('breaking-title').textContent = post.title;
-            document.getElementById('post-category').textContent = post.category || 'Berita';
-            document.getElementById('post-image').src = post.image;
-            document.getElementById('post-image').alt = post.title;
-            
-            const postDate = new Date(post.date).toLocaleDateString('id-ID', {day: 'numeric', month: 'long', year: 'numeric'});
-            document.getElementById('post-meta').textContent = `${postDate} • Redaksi PULNEW`;
-
-            const paragraphs = post.content.split('\n').filter(p => p.trim() !== '');
-            let contentHtml = '';
-            paragraphs.forEach(p => {
-                contentHtml += `<p style="margin-bottom: 16px; text-align: justify;">${p}</p>`;
-            });
-            document.getElementById('post-content').innerHTML = contentHtml;
-
-            loadingDiv.style.display = 'none';
-            articleView.style.display = 'block';
-
         } catch (err) {
-            console.error(err);
-            loadingDiv.innerHTML = '<div style="color:#d32f2f; padding: 20px; text-align:center; font-weight:600;">Gagal memuat artikel.<br><span style="font-size:13px; color:#666; font-weight:normal;">Server Cloudflare sedang sibuk atau file database posts.json tidak ditemukan. Silakan segarkan beberapa saat lagi.</span></div>';
+            // CADANGAN AMAN: Jika file posts.json kosong/hilang/terhapus robot, buat isi artikel otomatis
+            buatKontenCadangan(temporaryTitle);
         }
+    }
+
+    function buatKontenCadangan(judul) {
+        document.title = judul + " - PULNEW";
+        document.getElementById('post-content').innerHTML = `
+            <p><strong>PULNEW.com, JAKARTA</strong> — Informasi lengkap mengenai artikel <strong>"${judul}"</strong> sedang dalam proses pembaruan oleh sistem robot penarik berita kami.</p>
+            <p>Silakan segarkan kembali halaman ini dalam beberapa menit ke depan atau kembali ke halaman utama untuk membaca rangkuman berita nasional dan politik terhangat lainnya yang sudah diperbarui oleh redaksi hari ini.</p>
+        `;
     }
 
     loadArticle();
