@@ -58,11 +58,11 @@ a{text-decoration:none;color:inherit}
         try {
             // Ganti dengan URL domain Cloudflare Pages kamu yang asli
             const response = await fetch('https://pulnew.pages.dev/posts.json?t=' + new Date().getTime());
-
             
             if (!response.ok) throw new Error("Gagal mengambil data berita");
             
-            const posts = await response.json();
+            const data = await response.json();
+            const posts = data.posts || [];
             
             if (!posts || posts.length === 0) {
                 contentDiv.innerHTML = '<div style="padding:40px;text-align:center">Belum ada berita. Tambah lewat /admin</div>';
