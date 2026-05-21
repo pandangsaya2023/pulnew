@@ -32,7 +32,7 @@
         /* CONTAINER UTAMA */
         .container { max-width: 1200px; width: 100%; margin: 0 auto; padding: 25px 20px; flex: 1; }
         
-        /* SISTEM RESPONSIVE GRID & PERBAIKAN SUDUT GAMBAR (TIDAK PETAK) */
+        /* SISTEM RESPONSIVE GRID & PERBAIKAN SUDUT GAMBAR */
         .news-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; }
         .news-card { background: white; display: flex; flex-direction: column; text-decoration: none; color: inherit; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 5px rgba(0,0,0,0.05); transition: transform 0.2s; }
         .news-card:hover { transform: translateY(-3px); box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
@@ -59,16 +59,16 @@
             .news-card h3 { font-size: 15px; }
         }
 
-        /* FOOTER DENGAN UKURAN HURUF KATEGORI SAMA KECILNYA DENGAN COPYRIGHT (12px) */
+        /* PERBAIKAN FOOTER AGAR HURUF KECIL PAS DAN TIDAK MELEBAR KELUAR LAYAR */
         footer { background: #101726; color: #b0b8c4; padding: 30px 20px 20px 20px; font-size: 13px; border-top: 4px solid #1a237e; margin-top: 40px; position: relative; }
         .footer-content { max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; text-align: center; }
         .footer-logo { font-size: 22px; font-weight: 800; color: white; }
         .footer-logo span { color: #d32f2f; }
         
-        .footer-categories { display: flex; justify-content: center; align-items: center; gap: 10px; flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; margin: 5px 0; width: 100%; }
-        .footer-categories::-webkit-scrollbar { display: none; }
-        .footer-categories a { color: #38bdf8; text-decoration: none; font-weight: 400; font-size: 12px; transition: color 0.2s; white-space: nowrap; }
+        .footer-categories { display: flex; justify-content: center; align-items: center; gap: 8px; flex-wrap: wrap; margin: 5px auto; max-width: 100%; padding: 0 10px; }
+        .footer-categories a { color: #38bdf8; text-decoration: none; font-weight: 400; font-size: 11px; transition: color 0.2s; white-space: nowrap; }
         .footer-categories a:hover { color: white; }
+        .footer-categories span { color: #334155; font-size: 11px; }
         .footer-bottom { border-top: 1px solid #1e293b; padding-top: 15px; font-size: 12px; color: #64748b; }
 
         /* TOMBOL PANAH ATAS MELAYANG */
@@ -128,15 +128,15 @@
             
             <div class="footer-categories">
                 <a href="#" onclick="filterKategori('Home')">Home</a>
-                <span style="color: #334155; font-size: 1px;">|</span>
+                <span>|</span>
                 <a href="#" onclick="filterKategori('Politik')">Politik</a>
-                <span style="color: #334155; font-size: 1px;">|</span>
+                <span>|</span>
                 <a href="#" onclick="filterKategori('Ekonomi')">Ekonomi</a>
-                <span style="color: #334155; font-size: 1px;">|</span>
+                <span>|</span>
                 <a href="#" onclick="filterKategori('Teknologi')">Teknologi</a>
-                <span style="color: #334155; font-size: 1px;">|</span>
+                <span>|</span>
                 <a href="#" onclick="filterKategori('Olahraga')">Olahraga</a>
-                <span style="color: #334155; font-size: 1px;">|</span>
+                <span>|</span>
                 <a href="#" onclick="filterKategori('Hiburan')">Hiburan</a>
             </div>
 
