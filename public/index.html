@@ -61,8 +61,8 @@ a{text-decoration:none;color:inherit}
             
             if (!response.ok) throw new Error("Gagal mengambil data berita");
             
-            const data = await response.json();
-            const posts = data.posts || [];
+                const data = await response.json();
+                const posts = data.posts || [];
             
             if (!posts || posts.length === 0) {
                 contentDiv.innerHTML = '<div style="padding:40px;text-align:center">Belum ada berita. Tambah lewat /admin</div>';
