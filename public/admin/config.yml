@@ -13,10 +13,14 @@ public_folder: /media
 collections:
   - name: "posts"
     label: "Berita"
-    folder: "content/posts"
-    create: true
-    slug: "{{slug}}"
+    type: "file"
+    file: "public/post.son"
+    #folder: "content/posts"
+    #create: true
+    #slug: "{{slug}}"
     fields:
+      label: "Daftar Berita"
+      widget: "list"
       - {label: "Title", name: "title", widget: "string"}
       - {label: "Date", name: "date", widget: "datetime"}
       - {label: "Image", name: "image", widget: "image", required: false}
