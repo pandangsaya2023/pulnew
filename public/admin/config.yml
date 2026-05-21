@@ -9,7 +9,6 @@ public_folder: /media
 collections:
   - name: "posts"
     label: "Berita"
-    # Menggunakan opsi 'files' untuk menargetkan satu file JSON spesifik
     files:
       - file: "public/posts.json"
         name: "daftar_berita"
@@ -21,6 +20,11 @@ collections:
             fields:
               - {label: "Title", name: "title", widget: "string"}
               - {label: "Slug", name: "slug", widget: "string"}
+              # PERBAIKAN: Menambahkan pilihan kategori agar tersimpan di posts.json
+              - label: "Category"
+                name: "category"
+                widget: "select"
+                options: ["Politik", "Ekonomi", "Hiburan"]
               - {label: "Date", name: "date", widget: "datetime", format: "YYYY-MM-DDTHH:mm:ssZ"}
               - {label: "Image", name: "image", widget: "image"}
               - {label: "Body", name: "body", widget: "markdown"}
