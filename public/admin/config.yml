@@ -9,15 +9,18 @@ public_folder: /media
 collections:
   - name: "posts"
     label: "Berita"
-    type: "file"
-    file: "public/posts.json"
-    fields:
-      - label: "Daftar Berita"
-        name: "posts"
-        widget: "list"
+    # Menggunakan opsi 'files' untuk menargetkan satu file JSON spesifik
+    files:
+      - file: "public/posts.json"
+        name: "daftar_berita"
+        label: "Daftar Berita"
         fields:
-          - {label: "Title", name: "title", widget: "string"}
-          - {label: "Slug", name: "slug", widget: "string"}
-          - {label: "Date", name: "date", widget: "datetime", format: "YYYY-MM-DDTHH:mm:ssZ"}
-          - {label: "Image", name: "image", widget: "image"}
-          - {label: "Body", name: "body", widget: "markdown"}
+          - label: "Daftar Berita"
+            name: "posts"
+            widget: "list"
+            fields:
+              - {label: "Title", name: "title", widget: "string"}
+              - {label: "Slug", name: "slug", widget: "string"}
+              - {label: "Date", name: "date", widget: "datetime", format: "YYYY-MM-DDTHH:mm:ssZ"}
+              - {label: "Image", name: "image", widget: "image"}
+              - {label: "Body", name: "body", widget: "markdown"}
