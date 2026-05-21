@@ -56,7 +56,9 @@ a{text-decoration:none;color:inherit}
     async function loadPosts() {
         const contentDiv = document.getElementById('content');
         try {
-            const response = await fetch('/posts.json?t=' + new Date().getTime());
+            // Ganti dengan URL domain Cloudflare Pages kamu yang asli
+            const response = await fetch('https://pulnew.pages.dev/posts.json?t=' + new Date().getTime());
+
             
             if (!response.ok) throw new Error("Gagal mengambil data berita");
             
