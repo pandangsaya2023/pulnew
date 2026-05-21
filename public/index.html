@@ -11,8 +11,8 @@ body{background:#f5f5f5;color:#333}
 .breaking-badge{background:#fff;color:#d32f2f;padding:3px 8px;border-radius:12px;font-weight:700;font-size:11px;flex-shrink:0;z-index: 2;}
 .breaking-text{white-space:nowrap;animation:marquee 20s linear infinite;display: inline-block;}
 @keyframes marquee{0%{transform:translateX(100%)}100%{transform:translateX(-100%)}}
-.logo-bar{background:white;padding:12px 15px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 2px 4px rgba(0,0,0,0.1)}
-.logo{font-size:24px;font-weight:800;color:#1a237e;text-decoration:none}
+.logo-bar{background:white;padding:8px 15px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 2px 4px rgba(0,0,0,0.1)}
+.logo{font-size:24px;font-weight:800;color:#1a237e}
 .logo span{color:#d32f2f}
 .nav-menu{background:#1a237e;padding:10px 15px;display:flex;gap:15px;overflow-x:auto;scrollbar-width:none}
 .nav-menu::-webkit-scrollbar{display:none}
@@ -25,7 +25,7 @@ body{background:#f5f5f5;color:#333}
 a{text-decoration:none;color:inherit}
 .meta{font-size:12px;color:#bbbbbb;margin-top:5px}
 
-/* STYLING GRID & LAYOUT BARU (2 KECIL - 1 BESAR SELANG-SELING) */
+/* STYLING GRID & LAYOUT (2 KECIL - 1 BESAR SELANG-SELING) */
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:15px;padding:15px}
 .card img{width:100%;height:120px;object-fit:cover;border-radius:4px}
 .card h3{font-size:14px;font-weight:600;line-height:1.4;margin-top:8px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
@@ -44,13 +44,19 @@ a{text-decoration:none;color:inherit}
         <div class="breaking-text" id="breaking">• Memuat info terbaru...</div>
     </div>
 
-    <div class="logo-bar" style="display: flex; justify-content: space-between; align-items: center; padding: 15px 15px;">
-        <div class="logo" id="logo-container">
-            <a href="/">
-                <img src="https://pulnew.pages.dev/logopulnew.jpg" alt="PULNEW.com" style="height: 65px; display: block; object-fit: contain;" onerror="document.getElementById('logo-container').innerHTML='<a href=\'/\' style=\'text-decoration:none; color:#1a237e; font-weight:800;\'>PUL<span style=\'color:#d32f2f;\'>NEW</span>.com</a>';">
+    <div class="logo-bar">
+        <div style="display: flex; align-items: center; gap: 10px;">
+            <a href="/" style="display: flex; align-items: center; gap: 10px; text-decoration: none;">
+                <div style="width: 45px; height: 45px; border-radius: 50%; overflow: hidden; display: flex; align-items: center; justify-content: center; background: #f0f0f0; border: 1px solid #eee; flex-shrink: 0;">
+                    <img src="https://pulnew.pages.dev/logopulnew.jpg" alt="Logo" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div style="font-size: 22px; font-weight: 800; color: #1a237e; letter-spacing: -0.5px; line-height: 1;">
+                    PUL<span style="color: #d32f2f;">NEW</span><span style="font-size: 12px; font-weight: 600; color: #666; display: block; margin-top: 2px;">.com</span>
+                </div>
             </a>
         </div>
-        <div style="font-size: 11.5px; color: #666; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;" id="live-date"></div>
+
+        <div style="font-size: 11px; color: #555; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; text-align: right; line-height: 1.3;" id="live-date"></div>
     </div>
     
     <div class="nav-menu">
@@ -67,12 +73,12 @@ a{text-decoration:none;color:inherit}
     </div>
 
     <script>
-    // 1. TAMPILKAN TANGGAL OTOMATIS
+    // 1. TAMPILKAN TANGGAL HARI INI OTOMATIS
     try {
         document.getElementById('live-date').textContent = new Date().toLocaleDateString('id-ID', { weekday: 'long', day: 'numeric', month: 'short', year: 'numeric' });
     } catch(e) { console.log(e); }
 
-    // 2. FUNGSI UTAMA MEMUAT BERITA DARI JSON
+    // 2. FUNGSI UTAMA MEMUAT BERITA DARI FILE JSON
     async function loadPosts() {
         const contentDiv = document.getElementById('content');
         const urlParams = new URLSearchParams(window.location.search);
@@ -103,7 +109,7 @@ a{text-decoration:none;color:inherit}
             listSisaBerita.forEach((p, index) => {
                 const postDate = new Date(p.date).toLocaleDateString('id-ID', {day: 'numeric', month: 'short', year: 'numeric'});
                 
-                // Rumus pola layout selang-seling 2-1-2-1
+                // Pola layout selang-seling 2-1-2-1
                 if (index % 3 === 2) {
                     htmlGridContent += `
                         <div class="card card-full">
@@ -152,8 +158,9 @@ a{text-decoration:none;color:inherit}
         }
     }
     
-    // Jalankan fungsinya
+    // Jalankan eksekusi penarikan data
     loadPosts();
     </script>
 </body>
 </html>
+
