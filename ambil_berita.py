@@ -5,12 +5,12 @@ from datetime import datetime
 import re
 import os
 
-# 1. Mengganti dengan sumber RSS Feed yang aktif & stabil
+# Menggunakan kombinasi RSS Feed Republika & Kumparan yang terbukti aktif dan stabil
 sumber_rss = {
-    "Sumatera": "https://www.antaranews.com/rss/sumatera-utara",
-    "Jawa": "https://www.antaranews.com/rss/megapolitan",
-    "Kalimantan": "https://www.antaranews.com/rss/kalimantan-timur",
-    "Sulawesi": "https://www.antaranews.com/rss/sulawesi-selatan"
+    "Sumatera": "https://www.republika.co.id/rss/nusantara/sumatera",
+    "Jawa": "https://www.republika.co.id/rss/nusantara/jawa-barat-diy-jateng-jatim",
+    "Kalimantan": "https://kumparan.com/sitemap/rss/regional/kalimantan",
+    "Sulawesi": "https://kumparan.com/sitemap/rss/regional/sulawesi"
 }
 
 path_json = "public/posts.json"
@@ -41,7 +41,12 @@ index_kat = 0
 for wilayah, url in sumber_rss.items():
     print(f"Mengambil berita {wilayah} dari {url}...")
     try:
-        req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'})
+        # Menggunakan User-Agent browser asli agar tidak dicurigai sebagai bot jahat oleh server media
+        headers = {
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+            'Accept': 'application/rss+xml, application/xml, text/xml;q=0.9, */*;q=0.8'
+        }
+        req = urllib.request.Request(url, headers=headers)
         response = urllib.request.urlopen(req, timeout=15)
         xml_data = response.read()
         root = ET.fromstring(xml_data)
@@ -51,13 +56,27 @@ for wilayah, url in sumber_rss.items():
             if hitung >= 2: 
                 break
                 
-            title = item.find('title').text
-            link = item.find('link').text
+            title_node = item.find('title')
+            link_node = item.find('link')
             
+            if title_node is None or link_node is None:
+                continue
+                
+            title = title_node.text
+            link = link_node.text
+            
+            # Gambar cadangan bernuansa berita
             image_url = "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=600"
+            
+            # Mencoba mencari gambar asli dari sistem RSS
             enclosure = item.find('enclosure')
             if enclosure is not None and 'url' in enclosure.attrib:
                 image_url = enclosure.attrib['url']
+            else:
+                # Cari alternatif tag media:content jika ada
+                media_content = item.find('{http://search.yahoo.com/mrss/}content')
+                if media_content is not None and 'url' in media_content.attrib:
+                    image_url = media_content.attrib['url']
             
             slug = buat_slug(title)
             
