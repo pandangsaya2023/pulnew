@@ -2,10 +2,6 @@ backend:
   name: github
   repo: pandangsaya2023/pulnew
   branch: main
-  #base_url: https://pulnew.pages.dev
-  #auth_endpoint: /api/auth
-
-#site_url: https://pulnew.pages.dev
 
 media_folder: public/media
 public_folder: /media
@@ -14,14 +10,14 @@ collections:
   - name: "posts"
     label: "Berita"
     type: "file"
-    file: "public/post.son"
-    #folder: "content/posts"
-    #create: true
-    #slug: "{{slug}}"
+    file: "public/posts.json"
     fields:
-      label: "Daftar Berita"
-      widget: "list"
-      - {label: "Title", name: "title", widget: "string"}
-      - {label: "Date", name: "date", widget: "datetime"}
-      - {label: "Image", name: "image", widget: "image", required: false}
-      - {label: "Body", name: "body", widget: "markdown"}
+      - label: "Daftar Berita"
+        name: "posts"
+        widget: "list"
+        fields:
+          - {label: "Title", name: "title", widget: "string"}
+          - {label: "Slug", name: "slug", widget: "string"}
+          - {label: "Date", name: "date", widget: "datetime", format: "YYYY-MM-DDTHH:mm:ssZ"}
+          - {label: "Image", name: "image", widget: "image"}
+          - {label: "Body", name: "body", widget: "markdown"}
