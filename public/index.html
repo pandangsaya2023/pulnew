@@ -8,7 +8,7 @@
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif; }
         body { background: #f4f6f9; color: #333; display: flex; flex-direction: column; min-height: 100vh; }
         
-        /* 1. RUNNING TEXT STYLE (SUDAH DIPERLAMBAT JADI 55 DETIK) */
+        /* 1. RUNNING TEXT STYLE (JALAN SANTAI COCOK UNTUK MANUSIA) */
         .top-header { background: #d32f2f; color: white; padding: 8px 12px; display: flex; align-items: center; gap: 10px; font-size: 13px; overflow: hidden; position: relative; }
         .breaking-badge { background: #fff; color: #d32f2f; padding: 3px 8px; border-radius: 12px; font-weight: 700; font-size: 11px; flex-shrink: 0; z-index: 2; box-shadow: 2px 0 5px rgba(0,0,0,0.2); }
         .ticker-wrapper { overflow: hidden; width: 100%; display: flex; }
@@ -17,7 +17,7 @@
         .ticker-item:hover { text-decoration: underline; }
         @keyframes ticker { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(-100%, 0, 0); } }
 
-        /* LOGO BAR & HEADER UNTUK LAYAR LEBAR */
+        /* HEADER & LOGO BAR */
         .header-container { width: 100%; background: white; box-shadow: 0 2px 4px rgba(0,0,0,0.08); }
         .logo-bar { max-width: 1200px; margin: 0 auto; padding: 12px 20px; display: flex; justify-content: space-between; align-items: center; }
         
@@ -27,40 +27,50 @@
         .nav-menu a { color: white; text-decoration: none; font-size: 14px; font-weight: 500; white-space: nowrap; padding: 2px 0; }
         .nav-menu a.active { border-bottom: 2px solid #fff; font-weight: 700; }
         
-        /* CONTAINER UTAMA (RESPONSIF KIRI-KANAN) */
+        /* CONTAINER UTAMA */
         .container { max-width: 1200px; width: 100%; margin: 0 auto; padding: 25px 20px; flex: 1; }
         
-        /* DYNAMIC GRID SYSTEM (Silih Berganti Selang-Seling) */
-        .news-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+        /* ========================================================
+           SISTEM RESPONSIVE GRID (SELANG-SELING OTOMATIS)
+           ======================================================== */
         
-        /* Base Card Style */
+        /* TAMPILAN DEFAULT: DI HP (POLA 1 -> 2 -> 1 -> 2) */
+        .news-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; }
+        
+        /* Base Card Style (Judul di bawah gambar) */
         .news-card { background: white; display: flex; flex-direction: column; text-decoration: none; color: inherit; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 5px rgba(0,0,0,0.05); transition: transform 0.2s; }
         .news-card:hover { transform: translateY(-3px); box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
-        .news-card img { width: 100%; object-fit: cover; background: #eee; }
-        .news-card .card-info { padding: 15px; display: flex; flex-direction: column; flex-grow: 1; }
+        .news-card img { width: 100%; height: 140px; object-fit: cover; background: #eee; }
+        .news-card .card-info { padding: 12px; display: flex; flex-direction: column; flex-grow: 1; }
         .news-card .category { color: #d32f2f; font-size: 11px; font-weight: 700; text-transform: uppercase; margin-bottom: 6px; display: block; }
-        .news-card h3 { font-size: 15px; font-weight: 700; line-height: 1.4; color: #111; margin-bottom: 8px; }
-        .news-card .date { font-size: 12px; color: #777; margin-top: auto; }
+        .news-card h3 { font-size: 14px; font-weight: 700; line-height: 1.4; color: #111; margin-bottom: 8px; }
+        .news-card .date { font-size: 11px; color: #777; margin-top: auto; }
 
-        /* FORMAT 1 KOLOM BESAR */
-        .full-width-card { grid-column: span 2; }
-        .full-width-card img { height: 380px; }
-        .full-width-card h3 { font-size: 22px; line-height: 1.3; }
+        /* Aturan Selang-Seling di HP: Berita ke-1, ke-4, ke-7, dst akan melebar jadi 1 Kolom Penuh */
+        .news-grid .news-card:nth-child(3n+1) { grid-column: span 2; }
+        .news-grid .news-card:nth-child(3n+1) img { height: 260px; }
+        .news-grid .news-card:nth-child(3n+1) h3 { font-size: 18px; }
 
-        /* FORMAT 2 KOLOM KECIL */
-        .half-width-card img { height: 180px; }
-        
-        #loading { text-align: center; padding: 40px 0; color: #666; font-size: 15px; grid-column: span 2; }
+        /* TAMPILAN DI LAPTOP / KOMPUTER / HP MODE DESKTOP (POLA 1 -> 3 -> 1 -> 3) */
+        @media (min-width: 768px) {
+            .news-grid { grid-template-columns: repeat(3, 1fr); gap: 20px; }
+            
+            /* Reset dulu aturan selang-seling milik HP agar tidak tabrakan */
+            .news-grid .news-card:nth-child(3n+1) { grid-column: auto; }
+            .news-grid .news-card:nth-child(3n+1) img { height: 180px; }
+            .news-grid .news-card:nth-child(3n+1) h3 { font-size: 15px; }
 
-        /* LAYOUT KHUSUS UNTUK DESTOP / LAPTOP / KOMPUTER */
-        @media (min-width: 992px) {
-            .news-grid { grid-template-columns: repeat(3, 1fr); gap: 25px; }
-            .full-width-card { grid-column: span 3; }
-            .full-width-card img { height: 450px; }
-            .half-width-card img { height: 200px; }
+            /* Pasang Aturan Selang-Seling Baru untuk Laptop: Berita ke-1, ke-5, ke-9, dst jadi 1 Kolom Penuh */
+            .news-grid .news-card:nth-child(4n+1) { grid-column: span 3; }
+            .news-grid .news-card:nth-child(4n+1) img { height: 440px; }
+            .news-grid .news-card:nth-child(4n+1) h3 { font-size: 24px; }
+            
+            /* Aturan ukuran gambar sisa berita lainnya di Laptop (yang 3 kolom) */
+            .news-card img { height: 180px; }
+            .news-card h3 { font-size: 15px; }
         }
 
-        /* FOOTER SEJUK (Biru Teduh Profesional) */
+        /* FOOTER SEJUK DI MATA */
         footer { background: #101726; color: #b0b8c4; padding: 30px 20px 20px 20px; font-size: 14px; border-top: 4px solid #1a237e; margin-top: 40px; }
         .footer-content { max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 20px; text-align: center; }
         .footer-logo { font-size: 22px; font-weight: 800; color: white; letter-spacing: -0.5px; }
@@ -111,7 +121,7 @@
     
     <div class="container">
         <div class="news-grid" id="news-container">
-            <div id="loading">Menghubungkan ke server database...</div>
+            <div id="loading" style="grid-column: span 3; text-align: center; padding: 30px; color:#666;">Menghubungkan ke server database...</div>
         </div>
     </div>
 
@@ -127,7 +137,7 @@
                 <a href="/?kategori=Olahraga">Olahraga</a>
             </div>
             <div class="footer-bottom">
-                &copy; 2026 PULNEW.com. All Rights Reserved. Redaksi Portal Berita Terintegrasi.
+                &copy; 2026 PULNEW.com. All Rights Reserved. Portal Terintegrasi.
             </div>
         </div>
     </footer>
@@ -149,13 +159,14 @@
             tampilkanBerita(semuaBerita);
         } catch (err) {
             console.error(err);
-            document.getElementById('loading').textContent = "Gagal memuat berita terbaru.";
+            const loadEl = document.getElementById('loading');
+            if(loadEl) loadEl.textContent = "Gagal memuat berita terbaru.";
         }
     }
 
     function updateRunningText(posts) {
         const container = document.getElementById('running-text-container');
-        if (posts.length === 0) return;
+        if (!container || posts.length === 0) return;
         
         let htmlContent = '';
         posts.forEach(post => {
@@ -166,33 +177,19 @@
 
     function tampilkanBerita(posts) {
         const container = document.getElementById('news-container');
+        if(!container) return;
         container.innerHTML = '';
         
         if (posts.length === 0) {
-            container.innerHTML = '<div style="grid-column: span 10; text-align:center; padding:50px; color:#999;">Tidak ada berita di kategori ini.</div>';
+            container.innerHTML = '<div style="grid-column: span 3; text-align:center; padding:50px; color:#999;">Tidak ada berita di kategori ini.</div>';
             return;
         }
 
-        let polaIndex = 0; 
-
         posts.forEach((post) => {
-            let layoutClass = '';
-            
-            if (polaIndex === 0) {
-                layoutClass = 'full-width-card';
-                polaIndex = 1; 
-            } else if (polaIndex === 1) {
-                layoutClass = 'half-width-card';
-                polaIndex = 2; 
-            } else if (polaIndex === 2) {
-                layoutClass = 'half-width-card';
-                polaIndex = 0; 
-            }
-
             const postDate = new Date(post.date).toLocaleDateString('id-ID', {day: 'numeric', month: 'short', year: 'numeric'});
 
             const cardHtml = `
-                <a href="/berita.html?slug=${post.slug}" class="news-card ${layoutClass}">
+                <a href="/berita.html?slug=${post.slug}" class="news-card">
                     <img src="${post.image || 'https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=700'}" alt="${post.title}">
                     <div class="card-info">
                         <span class="category">${post.category || 'Nasional'}</span>
@@ -222,4 +219,3 @@
     </script>
 </body>
 </html>
-
