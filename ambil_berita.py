@@ -5,12 +5,12 @@ from datetime import datetime
 import re
 import os
 
-# Menggunakan kombinasi RSS Feed Republika & Kumparan yang terbukti aktif dan stabil
+# Menggunakan link Republika sepenuhnya yang terbukti lolos sensor server & aktif
 sumber_rss = {
     "Sumatera": "https://www.republika.co.id/rss/nusantara/sumatera",
     "Jawa": "https://www.republika.co.id/rss/nusantara/jawa-barat-diy-jateng-jatim",
-    "Kalimantan": "https://kumparan.com/sitemap/rss/regional/kalimantan",
-    "Sulawesi": "https://kumparan.com/sitemap/rss/regional/sulawesi"
+    "Kalimantan": "https://www.republika.co.id/rss/nusantara/kalimantan",
+    "Sulawesi": "https://www.republika.co.id/rss/nusantara/sulawesi"
 }
 
 path_json = "public/posts.json"
@@ -41,10 +41,8 @@ index_kat = 0
 for wilayah, url in sumber_rss.items():
     print(f"Mengambil berita {wilayah} dari {url}...")
     try:
-        # Menggunakan User-Agent browser asli agar tidak dicurigai sebagai bot jahat oleh server media
         headers = {
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
-            'Accept': 'application/rss+xml, application/xml, text/xml;q=0.9, */*;q=0.8'
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
         }
         req = urllib.request.Request(url, headers=headers)
         response = urllib.request.urlopen(req, timeout=15)
@@ -65,18 +63,13 @@ for wilayah, url in sumber_rss.items():
             title = title_node.text
             link = link_node.text
             
-            # Gambar cadangan bernuansa berita
+            # Gambar default berita elegan
             image_url = "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=600"
             
-            # Mencoba mencari gambar asli dari sistem RSS
+            # Ambil media gambar jika disediakan oleh Republika
             enclosure = item.find('enclosure')
             if enclosure is not None and 'url' in enclosure.attrib:
                 image_url = enclosure.attrib['url']
-            else:
-                # Cari alternatif tag media:content jika ada
-                media_content = item.find('{http://search.yahoo.com/mrss/}content')
-                if media_content is not None and 'url' in media_content.attrib:
-                    image_url = media_content.attrib['url']
             
             slug = buat_slug(title)
             
@@ -100,14 +93,15 @@ for wilayah, url in sumber_rss.items():
             hitung += 1
             
     except Exception as e:
-        print(f"Gagal mengambil data di wilayah {wilayah}: {e}")
+        print(f"Abaikan error kecil di {wilayah}, lanjut terus! Detail: {e}")
 
+# KUNCI UTAMA: Biarpun ada wilayah yang gagal, berita dari wilayah yang sukses HARUS tetap disimpan!
 if berita_baru_total:
     daftar_berita = berita_baru_total + daftar_berita
     daftar_berita = daftar_berita[:50]
     
     with open(path_json, 'w', encoding='utf-8') as f:
         json.dump({"posts": daftar_berita}, f, indent=2, ensure_ascii=False)
-    print(f"Sukses mengumpulkan {len(berita_baru_total)} berita baru!")
+    print(f"Sukses mengumpulkan {len(berita_baru_total)} berita baru ke JSON!")
 else:
     print("Tidak ada data berita baru yang berhasil dimuat.")
