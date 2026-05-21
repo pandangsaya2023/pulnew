@@ -32,11 +32,11 @@
         /* CONTAINER UTAMA */
         .container { max-width: 1200px; width: 100%; margin: 0 auto; padding: 25px 20px; flex: 1; }
         
-        /* SISTEM RESPONSIVE GRID & BACKGROUND FOTO TRANSPARAN */
+        /* SISTEM RESPONSIVE GRID & PERBAIKAN SUDUT GAMBAR (TIDAK PETAK) */
         .news-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; }
         .news-card { background: white; display: flex; flex-direction: column; text-decoration: none; color: inherit; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 5px rgba(0,0,0,0.05); transition: transform 0.2s; }
         .news-card:hover { transform: translateY(-3px); box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
-        .news-card img { width: 100%; height: 140px; object-fit: cover; background: transparent !important; }
+        .news-card img { width: 100%; height: 140px; object-fit: cover; background: transparent !important; border-top-left-radius: 8px !important; border-top-right-radius: 8px !important; }
         .news-card .card-info { padding: 12px; display: flex; flex-direction: column; flex-grow: 1; }
         .news-card .category { color: #d32f2f; font-size: 11px; font-weight: 700; text-transform: uppercase; margin-bottom: 6px; display: block; }
         .news-card h3 { font-size: 14px; font-weight: 700; line-height: 1.4; color: #111; }
@@ -59,15 +59,15 @@
             .news-card h3 { font-size: 15px; }
         }
 
-        /* FOOTER & KATEGORI 1 BARIS DAN UKURAN SEPADAN */
+        /* FOOTER DENGAN UKURAN HURUF KATEGORI SAMA KECILNYA DENGAN COPYRIGHT (12px) */
         footer { background: #101726; color: #b0b8c4; padding: 30px 20px 20px 20px; font-size: 13px; border-top: 4px solid #1a237e; margin-top: 40px; position: relative; }
         .footer-content { max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; text-align: center; }
         .footer-logo { font-size: 22px; font-weight: 800; color: white; }
         .footer-logo span { color: #d32f2f; }
         
-        .footer-categories { display: flex; justify-content: center; align-items: center; gap: 12px; flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; margin: 5px 0; width: 100%; }
+        .footer-categories { display: flex; justify-content: center; align-items: center; gap: 10px; flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; margin: 5px 0; width: 100%; }
         .footer-categories::-webkit-scrollbar { display: none; }
-        .footer-categories a { color: #38bdf8; text-decoration: none; font-weight: 500; font-size: 13px; transition: color 0.2s; white-space: nowrap; }
+        .footer-categories a { color: #38bdf8; text-decoration: none; font-weight: 400; font-size: 12px; transition: color 0.2s; white-space: nowrap; }
         .footer-categories a:hover { color: white; }
         .footer-bottom { border-top: 1px solid #1e293b; padding-top: 15px; font-size: 12px; color: #64748b; }
 
@@ -226,7 +226,14 @@
     }
 
     ambilBerita();
+
+    const paramsHariIni = new URLSearchParams(window.location.search);
+    const katDiterima = paramsHariIni.get('kategori');
+    if(katDiterima) {
+        setTimeout(() => {
+            filterKategori(katDiterima);
+        }, 400);
+    }
     </script>
 </body>
 </html>
-
