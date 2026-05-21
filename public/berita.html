@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Detail Berita - PULNEW</title>
+<title>Portal Berita - PULNEW</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif}
 body{background:#f5f5f5;color:#333}
@@ -26,24 +26,20 @@ a{text-decoration:none;color:inherit}
 <body>
     <div class="top-header">
         <div class="breaking-badge">INFO NEW</div>
-        <div style="font-weight:500;" id="breaking-title">Memuat berita...</div>
+        <div style="font-weight:500; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;" id="breaking-title">Memuat berita...</div>
     </div>
 
     <div class="logo-bar" style="display: flex; justify-content: space-between; align-items: center; padding: 8px 15px; background: white;">
-        
         <div style="display: flex; align-items: center; gap: 10px;">
             <a href="/" style="display: flex; align-items: center; gap: 10px; text-decoration: none;">
-                
                 <div style="height: 55px; width: 55px; display: flex; align-items: center; justify-content: center; background: white; border-radius: 4px; overflow: hidden; flex-shrink: 0;">
                     <img src="https://pulnew.pages.dev/logopulnew2.png" alt="Logo PULNEW" style="height: 100%; width: 100%; object-fit: contain; filter: brightness(1.18) contrast(1.35); mix-blend-mode: darken;">
                 </div>
-                
                 <div style="font-size: 25px; font-weight: 800; color: #1a237e; letter-spacing: -0.5px; line-height: 0.95;">
                     PUL<span style="color: #d32f2f;">NEW</span><span style="font-size: 13px; font-weight: 600; color: #666; display: block; margin-top: 2px;">.com</span>
                 </div>
             </a>
         </div>
-
         <div style="font-size: 11px; color: #555; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; text-align: right; line-height: 1.3;" id="live-date"></div>
     </div>
     
@@ -57,7 +53,7 @@ a{text-decoration:none;color:inherit}
     </div>
     
     <div class="container">
-        <div id="loading" style="text-align:center; padding:50px; color:#666;">Sedang memuat artikel...</div>
+        <div id="loading" style="text-align:center; padding:50px; color:#666; font-size: 15px;">Sedang memuat artikel...</div>
         
         <div id="article-view" style="display:none;">
             <span class="post-category" id="post-category">Kategori</span>
@@ -70,37 +66,46 @@ a{text-decoration:none;color:inherit}
     </div>
 
     <script>
-    // TANGGAL OTOMATIS
+    // 1. FORMAT TANGGAL LIVE DI HEADER
     try {
         document.getElementById('live-date').textContent = new Date().toLocaleDateString('id-ID', { weekday: 'long', day: 'numeric', month: 'short', year: 'numeric' });
     } catch(e) { console.log(e); }
 
-    // AMBIL DATA DETAIL BERITA BERSALURAN SLUG
+    // 2. AMBIL DATA DAN PROSES DETAIL ARTIKEL BERDASARKAN PARAMETER URL
     async function loadArticle() {
+        const loadingDiv = document.getElementById('loading');
+        const articleView = document.getElementById('article-view');
+        
+        // Membaca parameter '?slug=...' dari browser secara aman
         const urlParams = new URLSearchParams(window.location.search);
-        const slug = urlParams.get('slug');
+        let slug = urlParams.get('slug');
         
         if (!slug) {
-            document.getElementById('loading').textContent = 'Berita tidak ditemukan (Slug kosong).';
+            loadingDiv.innerHTML = '<div style="color:#d32f2f; font-weight:600;">Gagal memuat: Link berita tidak valid atau slug kosong.</div>';
             return;
         }
 
+        // Antisipasi jika slug menyertakan tanda miring bawaan path alternatif
+        slug = slug.replace(/^\//, '').trim();
+
         try {
+            // Ambil data JSON mutlak dari server Cloudflare Anda
             const response = await fetch('https://pulnew.pages.dev/posts.json?t=' + new Date().getTime());
-            if (!response.ok) throw new Error("Gagal mengambil data JSON");
+            if (!response.ok) throw new Error("Koneksi ke database JSON gagal.");
             
             const data = await response.json();
             const posts = data.posts || [];
             
-            // Cari berita yang slug-nya cocok
-            const post = posts.find(p => p.slug === slug);
+            // Proses pencarian berita berdasarkan kecocokan Slug
+            const post = posts.find(p => p.slug.trim() === slug);
             
             if (!post) {
-                document.getElementById('loading').textContent = 'Maaf, berita tidak ditemukan atau telah dihapus.';
+                loadingDiv.innerHTML = '<div style="color:#666;">Maaf, berita tidak ditemukan atau telah dihapus oleh redaksi.</div>';
                 return;
             }
 
-            // Pasang data ke HTML komponen
+            // Menyisipkan data yang berhasil ditemukan ke elemen halaman
+            document.title = post.title + " - PULNEW";
             document.getElementById('post-title').textContent = post.title;
             document.getElementById('breaking-title').textContent = post.title;
             document.getElementById('post-category').textContent = post.category || 'Berita';
@@ -108,27 +113,29 @@ a{text-decoration:none;color:inherit}
             document.getElementById('post-image').alt = post.title;
             
             const postDate = new Date(post.date).toLocaleDateString('id-ID', {day: 'numeric', month: 'long', year: 'numeric'});
-            document.getElementById('post-meta').textContent = `${postDate} • Penulis: Redaksi`;
+            document.getElementById('post-meta').textContent = `${postDate} • Redaksi PULNEW`;
 
-            // Pecah isi konten berdasarkan enter (\n) menjadi paragraf HTML <p>
+            // Mengonversi baris teks baru (\n) di JSON menjadi elemen paragraf HTML (<p>) agar rapi
             const paragraphs = post.content.split('\n').filter(p => p.trim() !== '');
             let contentHtml = '';
             paragraphs.forEach(p => {
-                contentHtml += `<p>${p}</p>`;
+                contentHtml += `<p style="margin-bottom: 16px; text-align: justify;">${p}</p>`;
             });
             document.getElementById('post-content').innerHTML = contentHtml;
 
-            // Tampilkan artikel, sembunyikan loading
-            document.getElementById('loading').style.display = 'none';
-            document.getElementById('article-view').style.display = 'block';
+            // Alihkan tampilan dari status Loading ke Tampilan Berita
+            loadingDiv.style.display = 'none';
+            articleView.style.display = 'block';
 
         } catch (err) {
             console.error(err);
-            document.getElementById('loading').textContent = 'Gagal memuat artikel karena masalah jaringan.';
+            loadingDiv.innerHTML = '<div style="color:#d32f2f;">Gagal memuat artikel karena masalah sinkronisasi jaringan. Silakan segarkan halaman.</div>';
         }
     }
 
+    // Jalankan eksekusi script pencarian
     loadArticle();
     </script>
 </body>
 </html>
+
