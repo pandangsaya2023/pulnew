@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PULNEW - Portal Berita Terkini</title>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif; scroll-behavior: smooth; }
         body { background: #f4f6f9; color: #333; display: flex; flex-direction: column; min-height: 100vh; overflow-x: hidden; }
         
         /* RUNNING TEXT STYLE */
@@ -17,9 +17,11 @@
         .ticker-item:hover { text-decoration: underline; }
         @keyframes ticker { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(-100%, 0, 0); } }
 
-        /* HEADER & LOGO BAR (PENGUNCIAN WARNA PUTIH MUTLAK) */
+        /* HEADER & LOGO BAR (PENGUNCIAN WARNA PUTIH MUTLAK TANPA FILTER) */
         .header-container { width: 100%; background: #ffffff !important; box-shadow: 0 2px 4px rgba(0,0,0,0.08); }
         .logo-bar { max-width: 1200px; margin: 0 auto; padding: 12px 20px; display: flex; justify-content: space-between; align-items: center; background: #ffffff !important; }
+        .logo-img-wrapper { height: 55px; width: 55px; display: flex; align-items: center; justify-content: center; background: #ffffff !important; border-radius: 4px; overflow: hidden; flex-shrink: 0; }
+        .logo-img-wrapper img { height: 100%; width: 100%; object-fit: contain; background: #ffffff !important; filter: none !important; mix-blend-mode: normal !important; }
         
         .nav-menu-wrapper { background: #1a237e; width: 100%; }
         .nav-menu { max-width: 1200px; margin: 0 auto; padding: 12px 20px; display: flex; gap: 20px; overflow-x: auto; scrollbar-width: none; }
@@ -57,11 +59,21 @@
             .news-card h3 { font-size: 15px; }
         }
 
-        footer { background: #101726; color: #b0b8c4; padding: 30px 20px 20px 20px; font-size: 14px; border-top: 4px solid #1a237e; margin-top: 40px; }
-        .footer-content { max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 20px; text-align: center; }
+        /* FOOTER & KATEGORI BAWAH */
+        footer { background: #101726; color: #b0b8c4; padding: 30px 20px 20px 20px; font-size: 14px; border-top: 4px solid #1a237e; margin-top: 40px; position: relative; }
+        .footer-content { max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 15px; text-align: center; }
         .footer-logo { font-size: 22px; font-weight: 800; color: white; }
         .footer-logo span { color: #d32f2f; }
+        
+        .footer-categories { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin: 10px 0; }
+        .footer-categories a { color: #38bdf8; text-decoration: none; font-weight: 600; font-size: 13px; text-transform: uppercase; transition: color 0.2s; padding: 3px 8px; }
+        .footer-categories a:hover { color: white; }
         .footer-bottom { border-top: 1px solid #1e293b; padding-top: 15px; font-size: 12px; color: #64748b; }
+
+        /* TOMBOL PANAH ATAS MELAYANG */
+        .back-to-top { position: fixed; bottom: 25px; right: 25px; background: #d32f2f; color: white; width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; font-size: 20px; font-weight: bold; box-shadow: 0 4px 8px rgba(0,0,0,0.3); z-index: 99; transition: opacity 0.3s, transform 0.2s; opacity: 0; visibility: hidden; }
+        .back-to-top.show { opacity: 1; visibility: visible; }
+        .back-to-top:hover { transform: translateY(-3px); background: #1a237e; }
     </style>
 </head>
 <body>
@@ -79,8 +91,8 @@
         <div class="logo-bar">
             <div style="display: flex; align-items: center; gap: 10px; background: #ffffff;">
                 <a href="/" style="display: flex; align-items: center; gap: 10px; text-decoration: none; background: #ffffff;">
-                    <div style="height: 55px; width: 55px; display: flex; align-items: center; justify-content: center; background: #ffffff; border-radius: 4px; overflow: hidden; flex-shrink: 0;">
-                        <img src="https://pulnew.pages.dev/logopulnew1.jpg" alt="Logo" style="height: 100%; width: 100%; object-fit: contain; background: #ffffff;">
+                    <div class="logo-img-wrapper">
+                        <img src="https://pulnew.pages.dev/logopulnew2.png" alt="Logo">
                     </div>
                     <div style="font-size: 25px; font-weight: 800; color: #1a237e; letter-spacing: -0.5px; line-height: 0.95; background: #ffffff;">
                         PUL<span style="color: #d32f2f;">NEW</span><span style="font-size: 13px; font-weight: 600; color: #666; display: block; margin-top: 2px;">.com</span>
@@ -93,16 +105,16 @@
     
     <div class="nav-menu-wrapper">
         <div class="nav-menu" id="category-menu">
-            <a href="#" class="active" onclick="filterKategori('Semua')">Home</a>
-            <a href="#" onclick="filterKategori('Politik')">Politik</a>
-            <a href="#" onclick="filterKategori('Ekonomi')">Ekonomi</a>
-            <a href="#" onclick="filterKategori('Teknologi')">Teknologi</a>
-            <a href="#" onclick="filterKategori('Olahraga')">Olahraga</a>
-            <a href="#" onclick="filterKategori('Hiburan')">Hiburan</a>
+            <a href="#" class="active" id="nav-Semua" onclick="filterKategori('Semua')">Home</a>
+            <a href="#" id="nav-Politik" onclick="filterKategori('Politik')">Politik</a>
+            <a href="#" id="nav-Ekonomi" onclick="filterKategori('Ekonomi')">Ekonomi</a>
+            <a href="#" id="nav-Teknologi" onclick="filterKategori('Teknologi')">Teknologi</a>
+            <a href="#" id="nav-Olahraga" onclick="filterKategori('Olahraga')">Olahraga</a>
+            <a href="#" id="nav-Hiburan" onclick="filterKategori('Hiburan')">Hiburan</a>
         </div>
     </div>
     
-    <div class="container">
+    <div class="container" id="main-content-anchor">
         <div class="news-grid" id="news-container">
             <div id="loading" style="grid-column: span 3; text-align: center; padding: 30px; color:#666;">Menghubungkan ke server database...</div>
         </div>
@@ -112,14 +124,36 @@
         <div class="footer-content">
             <div class="footer-logo">PUL<span>NEW</span>.com</div>
             <p style="max-width: 500px; margin: 0 auto; font-size: 13px;">Menyajikan informasi langsung ke perangkat anda</p>
+            
+            <div class="footer-categories">
+                <a href="#" onclick="filterKategori('Semua')">Semua</a>
+                <a href="#" onclick="filterKategori('Politik')">Politik</a>
+                <a href="#" onclick="filterKategori('Ekonomi')">Ekonomi</a>
+                <a href="#" onclick="filterKategori('Teknologi')">Teknologi</a>
+                <a href="#" onclick="filterKategori('Olahraga')">Olahraga</a>
+                <a href="#" onclick="filterKategori('Hiburan')">Hiburan</a>
+            </div>
+
             <div class="footer-bottom">&copy; 2026 PULNEW.com. All Rights Reserved.</div>
         </div>
     </footer>
+
+    <a href="#" class="back-to-top" id="btnScrollTop">&#8593;</a>
 
     <script>
     document.getElementById('live-date').textContent = new Date().toLocaleDateString('id-ID', { weekday: 'long', day: 'numeric', month: 'short', year: 'numeric' });
 
     let semuaBerita = [];
+
+    // Deteksi scroll untuk memunculkan tombol panah atas
+    window.addEventListener('scroll', () => {
+        const btn = document.getElementById('btnScrollTop');
+        if (window.scrollY > 300) {
+            btn.classList.add('show');
+        } else {
+            btn.classList.remove('show');
+        }
+    });
 
     async function ambilBerita() {
         try {
@@ -168,9 +202,14 @@
     }
 
     function filterKategori(namaKategori) {
+        event.preventDefault();
+        
+        // Atur status aktif pada navigasi bar atas
         const links = document.querySelectorAll('#category-menu a');
         links.forEach(l => l.classList.remove('active'));
-        event.target.classList.add('active');
+        
+        const targetNav = document.getElementById('nav-' + namaKategori);
+        if(targetNav) targetNav.classList.add('active');
 
         if (namaKategori === 'Semua') {
             tampilkanBerita(semuaBerita);
@@ -178,6 +217,9 @@
             const hasilFilter = semuaBerita.filter(p => p.category && p.category.toLowerCase() === namaKategori.toLowerCase());
             tampilkanBerita(hasilFilter);
         }
+
+        // Otomatis meluncur ke area konten berita agar user langsung melihat hasilnya
+        document.getElementById('main-content-anchor').scrollIntoView({ behavior: 'smooth' });
     }
 
     ambilBerita();
