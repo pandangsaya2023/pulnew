@@ -71,44 +71,43 @@ a{text-decoration:none;color:inherit}
         document.getElementById('live-date').textContent = new Date().toLocaleDateString('id-ID', { weekday: 'long', day: 'numeric', month: 'short', year: 'numeric' });
     } catch(e) { console.log(e); }
 
-    // 2. AMBIL DATA DETAIL BERITA
+    // 2. AMBIL DATA ARTIKEL
     async function loadArticle() {
         const loadingDiv = document.getElementById('loading');
         const articleView = document.getElementById('article-view');
         
-        // Membaca parameter '?slug=...' dari URL browser
         const urlParams = new URLSearchParams(window.location.search);
         let slug = urlParams.get('slug');
         
         if (!slug) {
-            loadingDiv.innerHTML = '<div style="color:#d32f2f; font-weight:600;">Gagal memuat: Link berita tidak valid.</div>';
+            loadingDiv.innerHTML = '<div style="color:#d32f2f; font-weight:600; padding:20px;">Gagal memuat: Link berita tidak sah.</div>';
             return;
         }
 
-        // Bersihkan karakter miring di awal jika ada
+        // Hilangkan garis miring berlebih jika tidak sengaja terbawa dari beranda
         slug = slug.replace(/^\//, '').trim();
 
         try {
-            // PERBAIKAN UTAMA: Menggunakan './posts.json' agar lolos blokir CORS keamanan browser
-            const response = await fetch('./posts.json?v=' + new Date().getTime());
-            if (!response.ok) throw new Error("Gagal membaca file database lokal.");
+            // FIX JALUR UTAMA: Menggunakan '/posts.json' (Root Relatif) yang didukung penuh Cloudflare Pages
+            const response = await fetch('/posts.json?t=' + new Date().getTime());
+            if (!response.ok) throw new Error("Gagal mengambil data posts.json");
             
             const data = await response.json();
             const posts = data.posts || [];
             
-            // Pencarian berita berdasarkan kecocokan nama slug teks URL
+            // Pencarian data slug yang cocok
             const post = posts.find(p => p.slug.trim() === slug);
             
             if (!post) {
-                loadingDiv.innerHTML = '<div style="color:#666; padding: 20px;">Maaf, artikel tidak ditemukan. Pastikan nama "slug" di posts.json sudah sama persis dengan link yang diklik.</div>';
+                loadingDiv.innerHTML = '<div style="color:#666; padding: 20px;">Maaf, artikel tidak ditemukan.</div>';
                 return;
             }
 
-            // Memasukkan data artikel yang cocok ke halaman
+            // Memasang data artikel ke halaman web
             document.title = post.title + " - PULNEW";
             document.getElementById('post-title').textContent = post.title;
             
-            // SINKRONISASI: Mengubah running teks atas agar sama dengan judul berita yang sedang dibuka
+            // Menyamakan running teks atas dengan judul artikel yang dibuka
             document.getElementById('breaking-title').textContent = post.title;
             
             document.getElementById('post-category').textContent = post.category || 'Berita';
@@ -118,7 +117,7 @@ a{text-decoration:none;color:inherit}
             const postDate = new Date(post.date).toLocaleDateString('id-ID', {day: 'numeric', month: 'long', year: 'numeric'});
             document.getElementById('post-meta').textContent = `${postDate} • Redaksi PULNEW`;
 
-            // Pecah isi konten teks menjadi paragraf HTML rapi
+            // Konversi teks enter ke paragraf HTML
             const paragraphs = post.content.split('\n').filter(p => p.trim() !== '');
             let contentHtml = '';
             paragraphs.forEach(p => {
@@ -126,19 +125,18 @@ a{text-decoration:none;color:inherit}
             });
             document.getElementById('post-content').innerHTML = contentHtml;
 
-            // Tampilkan artikel & sembunyikan tulisan loading
+            // Buka halaman utama artikel
             loadingDiv.style.display = 'none';
             articleView.style.display = 'block';
 
         } catch (err) {
             console.error(err);
-            loadingDiv.innerHTML = '<div style="color:#d32f2f; padding: 20px;">Sistem gagal memuat artikel. Silakan bersihkan histori browser Anda atau coba segarkan kembali halaman.</div>';
+            loadingDiv.innerHTML = '<div style="color:#d32f2f; padding: 20px;">Gagal memuat artikel dari server. Silakan muat ulang halaman.</div>';
         }
     }
 
-    // Jalankan skrip pencarian
+    // Jalankan pencarian
     loadArticle();
     </script>
 </body>
 </html>
-
