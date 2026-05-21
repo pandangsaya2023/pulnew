@@ -66,50 +66,54 @@ a{text-decoration:none;color:inherit}
     </div>
 
     <script>
-    // 1. TANGGAL LIVE DI HEADER
     try {
         document.getElementById('live-date').textContent = new Date().toLocaleDateString('id-ID', { weekday: 'long', day: 'numeric', month: 'short', year: 'numeric' });
     } catch(e) { console.log(e); }
 
-    // 2. AMBIL DATA ARTIKEL
     async function loadArticle() {
         const loadingDiv = document.getElementById('loading');
         const articleView = document.getElementById('article-view');
         
         const urlParams = new URLSearchParams(window.location.search);
-        let slug = urlParams.get('slug');
+        let urlSlug = urlParams.get('slug');
         
-        if (!slug) {
-            loadingDiv.innerHTML = '<div style="color:#d32f2f; font-weight:600; padding:20px;">Gagal memuat: Link berita tidak sah.</div>';
+        if (!urlSlug) {
+            loadingDiv.innerHTML = '<div style="color:#d32f2f; padding:20px;">Gagal memuat: Link tidak valid.</div>';
             return;
         }
 
-        // Hilangkan garis miring berlebih jika tidak sengaja terbawa dari beranda
-        slug = slug.replace(/^\//, '').trim();
+        // Pembersihan Masalah Robot 1: Bersihkan spasi dan garis miring dari URL browser
+        urlSlug = urlSlug.replace(/^\//, '').replace(/\/$/, '').trim().toLowerCase();
 
         try {
-            // FIX JALUR UTAMA: Menggunakan '/posts.json' (Root Relatif) yang didukung penuh Cloudflare Pages
             const response = await fetch('/posts.json?t=' + new Date().getTime());
-            if (!response.ok) throw new Error("Gagal mengambil data posts.json");
+            if (!response.ok) throw new Error("Gagal mengambil file JSON");
             
             const data = await response.json();
             const posts = data.posts || [];
             
-            // Pencarian data slug yang cocok
-            const post = posts.find(p => p.slug.trim() === slug);
+            // Pembersihan Masalah Robot 2: Pencarian pintar (mentoleransi segala kekacauan format robot)
+            const post = posts.find(p => {
+                if (!p.slug) return false;
+                // Bersihkan properti slug di posts.json yang ditulis robot dari spasi atau garis miring bawaan
+                let cleanPostSlug = p.slug.replace(/^\//, '').replace(/\/$/, '').trim().toLowerCase();
+                
+                // Cari yang sama persis ATAU yang mengandung kata kunci slug tersebut
+                return cleanPostSlug === urlSlug || cleanPostSlug.includes(urlSlug) || urlSlug.includes(cleanPostSlug);
+            });
             
             if (!post) {
-                loadingDiv.innerHTML = '<div style="color:#666; padding: 20px;">Maaf, artikel tidak ditemukan.</div>';
+                loadingDiv.innerHTML = `<div style="color:#666; padding: 20px;">
+                    <h3>Detail Berita Tidak Ditemukan</h3>
+                    <p style="font-size:12px; margin-top:10px; color:#999;">Robot menulis slug: "${posts[0]?.slug || 'Kosong'}"<br>Sedangkan web mencari: "${urlSlug}"</p>
+                </div>`;
                 return;
             }
 
-            // Memasang data artikel ke halaman web
+            // Memasang data artikel ke komponen halaman jika lolos pemeriksaan pintar
             document.title = post.title + " - PULNEW";
             document.getElementById('post-title').textContent = post.title;
-            
-            // Menyamakan running teks atas dengan judul artikel yang dibuka
             document.getElementById('breaking-title').textContent = post.title;
-            
             document.getElementById('post-category').textContent = post.category || 'Berita';
             document.getElementById('post-image').src = post.image;
             document.getElementById('post-image').alt = post.title;
@@ -117,7 +121,6 @@ a{text-decoration:none;color:inherit}
             const postDate = new Date(post.date).toLocaleDateString('id-ID', {day: 'numeric', month: 'long', year: 'numeric'});
             document.getElementById('post-meta').textContent = `${postDate} • Redaksi PULNEW`;
 
-            // Konversi teks enter ke paragraf HTML
             const paragraphs = post.content.split('\n').filter(p => p.trim() !== '');
             let contentHtml = '';
             paragraphs.forEach(p => {
@@ -125,17 +128,15 @@ a{text-decoration:none;color:inherit}
             });
             document.getElementById('post-content').innerHTML = contentHtml;
 
-            // Buka halaman utama artikel
             loadingDiv.style.display = 'none';
             articleView.style.display = 'block';
 
         } catch (err) {
             console.error(err);
-            loadingDiv.innerHTML = '<div style="color:#d32f2f; padding: 20px;">Gagal memuat artikel dari server. Silakan muat ulang halaman.</div>';
+            loadingDiv.innerHTML = '<div style="color:#d32f2f; padding: 20px;">Gagal memuat artikel dari server. Hubungan robot terputus.</div>';
         }
     }
 
-    // Jalankan pencarian
     loadArticle();
     </script>
 </body>
