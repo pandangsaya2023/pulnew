@@ -78,39 +78,37 @@ a{text-decoration:none;color:inherit}
         let urlSlug = urlParams.get('slug');
         
         if (!urlSlug) {
-            loadingDiv.innerHTML = '<div style="color:#d32f2f; padding:20px;">Gagal memuat: Link tidak valid.</div>';
+            loadingDiv.innerHTML = '<div style="color:#d32f2f; padding:20px;">Gagal memuat: Parameter link tidak ditemukan.</div>';
             return;
         }
 
-        // Pembersihan Masalah Robot 1: Bersihkan spasi dan garis miring dari URL browser
+        // Bersihkan parameter slug URL dari garis miring pembuka/penutup
         urlSlug = urlSlug.replace(/^\//, '').replace(/\/$/, '').trim().toLowerCase();
 
         try {
-            const response = await fetch('/posts.json?t=' + new Date().getTime());
-            if (!response.ok) throw new Error("Gagal mengambil file JSON");
+            // FIX FINAL JALUR CLOUDFLARE: Memanggil langsung ke file 'posts.json' tanpa tanda cetak miring depan
+            const response = await fetch('posts.json?t=' + new Date().getTime());
+            if (!response.ok) throw new Error("File posts.json tidak bisa diunduh.");
             
             const data = await response.json();
             const posts = data.posts || [];
             
-            // Pembersihan Masalah Robot 2: Pencarian pintar (mentoleransi segala kekacauan format robot)
+            // Sistem pencarian pintar yang menoleransi segala format robot penarik berita
             const post = posts.find(p => {
                 if (!p.slug) return false;
-                // Bersihkan properti slug di posts.json yang ditulis robot dari spasi atau garis miring bawaan
                 let cleanPostSlug = p.slug.replace(/^\//, '').replace(/\/$/, '').trim().toLowerCase();
-                
-                // Cari yang sama persis ATAU yang mengandung kata kunci slug tersebut
                 return cleanPostSlug === urlSlug || cleanPostSlug.includes(urlSlug) || urlSlug.includes(cleanPostSlug);
             });
             
             if (!post) {
-                loadingDiv.innerHTML = `<div style="color:#666; padding: 20px;">
-                    <h3>Detail Berita Tidak Ditemukan</h3>
-                    <p style="font-size:12px; margin-top:10px; color:#999;">Robot menulis slug: "${posts[0]?.slug || 'Kosong'}"<br>Sedangkan web mencari: "${urlSlug}"</p>
+                loadingDiv.innerHTML = `<div style="color:#666; padding: 20px; text-align:center;">
+                    <h3 style="color:#d32f2f;">Artikel Tidak Ditemukan</h3>
+                    <p style="font-size:13px; margin-top:10px; color:#777;">Sistem gagal menyamakan data tautan. Pastikan berita ini ada di file database posts.json Anda.</p>
                 </div>`;
                 return;
             }
 
-            // Memasang data artikel ke komponen halaman jika lolos pemeriksaan pintar
+            // Memasukkan konten data ke halaman jika fiksasi sukses
             document.title = post.title + " - PULNEW";
             document.getElementById('post-title').textContent = post.title;
             document.getElementById('breaking-title').textContent = post.title;
@@ -133,7 +131,7 @@ a{text-decoration:none;color:inherit}
 
         } catch (err) {
             console.error(err);
-            loadingDiv.innerHTML = '<div style="color:#d32f2f; padding: 20px;">Gagal memuat artikel dari server. Hubungan robot terputus.</div>';
+            loadingDiv.innerHTML = '<div style="color:#d32f2f; padding: 20px; text-align:center; font-weight:600;">Gagal memuat artikel.<br><span style="font-size:13px; color:#666; font-weight:normal;">Server Cloudflare sedang sibuk atau file database posts.json tidak ditemukan. Silakan segarkan beberapa saat lagi.</span></div>';
         }
     }
 
