@@ -8,6 +8,10 @@ on:
 jobs:
   scrape:
     runs-on: ubuntu-latest
+    # JALUR UTAMA: Memberikan izin penuh kepada robot untuk menulis file ke repositori
+    permissions:
+      contents: write
+    
     steps:
     - name: Memeriksa Repositori Kode
       uses: actions/checkout@v4
@@ -23,14 +27,11 @@ jobs:
       run: python ambil_berita.py
 
     - name: Menyimpan Perubahan Kembali ke GitHub
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
         git config --global user.name "Robot Berita Otomatis"
         git config --global user.email "bot@pulnew.com"
         git add public/posts.json
         
-        # Paksa commit jika ada perubahan, jika tidak ada lewati aman
         if ! git diff --cached --quiet; then
           git commit -m "Update berita otomatis dari media daerah"
           git push origin main
