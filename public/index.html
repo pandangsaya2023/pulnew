@@ -8,18 +8,18 @@
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif; }
         body { background: #f4f6f9; color: #333; display: flex; flex-direction: column; min-height: 100vh; overflow-x: hidden; }
         
-        /* 1. RUNNING TEXT STYLE */
+        /* RUNNING TEXT STYLE */
         .top-header { background: #d32f2f; color: white; padding: 8px 12px; display: flex; align-items: center; gap: 10px; font-size: 13px; overflow: hidden; position: relative; }
         .breaking-badge { background: #fff; color: #d32f2f; padding: 3px 8px; border-radius: 12px; font-weight: 700; font-size: 11px; flex-shrink: 0; z-index: 2; box-shadow: 2px 0 5px rgba(0,0,0,0.2); }
         .ticker-wrapper { overflow: hidden; width: 100%; display: flex; }
-        .ticker-content { display: inline-block; white-space: nowrap; padding-left: 100%; animation: ticker 105s linear infinite; }
+        .ticker-content { display: inline-block; white-space: nowrap; padding-left: 100%; animation: ticker 120s linear infinite; }
         .ticker-item { display: inline-block; padding-right: 40px; font-weight: 500; color: white; text-decoration: none; }
         .ticker-item:hover { text-decoration: underline; }
         @keyframes ticker { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(-100%, 0, 0); } }
 
-        /* HEADER & LOGO BAR */
-        .header-container { width: 100%; background: white; box-shadow: 0 2px 4px rgba(0,0,0,0.08); }
-        .logo-bar { max-width: 1200px; margin: 0 auto; padding: 12px 20px; display: flex; justify-content: space-between; align-items: center; }
+        /* HEADER & LOGO BAR (PENGUNCIAN WARNA PUTIH MUTLAK) */
+        .header-container { width: 100%; background: #ffffff !important; box-shadow: 0 2px 4px rgba(0,0,0,0.08); }
+        .logo-bar { max-width: 1200px; margin: 0 auto; padding: 12px 20px; display: flex; justify-content: space-between; align-items: center; background: #ffffff !important; }
         
         .nav-menu-wrapper { background: #1a237e; width: 100%; }
         .nav-menu { max-width: 1200px; margin: 0 auto; padding: 12px 20px; display: flex; gap: 20px; overflow-x: auto; scrollbar-width: none; }
@@ -30,7 +30,7 @@
         /* CONTAINER UTAMA */
         .container { max-width: 1200px; width: 100%; margin: 0 auto; padding: 25px 20px; flex: 1; }
         
-        /* SISTEM RESPONSIVE GRID SELANG SELING */
+        /* SISTEM RESPONSIVE GRID */
         .news-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; }
         .news-card { background: white; display: flex; flex-direction: column; text-decoration: none; color: inherit; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 5px rgba(0,0,0,0.05); transition: transform 0.2s; }
         .news-card:hover { transform: translateY(-3px); box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
@@ -39,12 +39,10 @@
         .news-card .category { color: #d32f2f; font-size: 11px; font-weight: 700; text-transform: uppercase; margin-bottom: 6px; display: block; }
         .news-card h3 { font-size: 14px; font-weight: 700; line-height: 1.4; color: #111; }
 
-        /* Aturan Selang-Seling HP (1 -> 2 -> 1 -> 2) */
         .news-grid .news-card:nth-child(3n+1) { grid-column: span 2; }
         .news-grid .news-card:nth-child(3n+1) img { height: 260px; }
         .news-grid .news-card:nth-child(3n+1) h3 { font-size: 18px; }
 
-        /* LAPTOP / MODE DESKTOP HP (1 -> 3 -> 1 -> 3) */
         @media (min-width: 768px) {
             .news-grid { grid-template-columns: repeat(3, 1fr); gap: 20px; }
             .news-grid .news-card:nth-child(3n+1) { grid-column: auto; }
@@ -79,17 +77,17 @@
 
     <div class="header-container">
         <div class="logo-bar">
-            <div style="display: flex; align-items: center; gap: 10px;">
-                <a href="/" style="display: flex; align-items: center; gap: 10px; text-decoration: none;">
-                    <div style="height: 55px; width: 55px; display: flex; align-items: center; justify-content: center; background: white; border-radius: 4px; overflow: hidden; flex-shrink: 0;">
-                        <img src="https://pulnew.pages.dev/logopulnew1.jpg" alt="Logo" style="height: 100%; width: 100%; object-fit: contain; filter: brightness(1.18) contrast(1.35); mix-blend-mode: darken;">
+            <div style="display: flex; align-items: center; gap: 10px; background: #ffffff;">
+                <a href="/" style="display: flex; align-items: center; gap: 10px; text-decoration: none; background: #ffffff;">
+                    <div style="height: 55px; width: 55px; display: flex; align-items: center; justify-content: center; background: #ffffff; border-radius: 4px; overflow: hidden; flex-shrink: 0;">
+                        <img src="https://pulnew.pages.dev/logopulnew1.jpg" alt="Logo" style="height: 100%; width: 100%; object-fit: contain; background: #ffffff;">
                     </div>
-                    <div style="font-size: 25px; font-weight: 800; color: #1a237e; letter-spacing: -0.5px; line-height: 0.95;">
+                    <div style="font-size: 25px; font-weight: 800; color: #1a237e; letter-spacing: -0.5px; line-height: 0.95; background: #ffffff;">
                         PUL<span style="color: #d32f2f;">NEW</span><span style="font-size: 13px; font-weight: 600; color: #666; display: block; margin-top: 2px;">.com</span>
                     </div>
                 </a>
             </div>
-            <div style="font-size: 12px; color: #555; font-weight: 700; text-transform: uppercase;" id="live-date"></div>
+            <div style="font-size: 12px; color: #555; font-weight: 700; text-transform: uppercase; background: #ffffff;" id="live-date"></div>
         </div>
     </div>
     
@@ -113,7 +111,7 @@
     <footer>
         <div class="footer-content">
             <div class="footer-logo">PUL<span>NEW</span>.com</div>
-            <p style="max-width: 500px; margin: 0 auto; font-size: 13px;">Menyajikan informasi terkini dan terpercaya langsung ke perangkat anda.</p>
+            <p style="max-width: 500px; margin: 0 auto; font-size: 13px;">Menyajikan informasi langsung ke perangkat anda</p>
             <div class="footer-bottom">&copy; 2026 PULNEW.com. All Rights Reserved.</div>
         </div>
     </footer>
@@ -156,7 +154,6 @@
         }
 
         posts.forEach((post) => {
-            // TANGGAL DI BAWAH JUDUL HALAMAN DEPAN SUDAH DIHAPUS TOTAL DI SINI
             const cardHtml = `
                 <a href="/berita.html?slug=${post.slug}" class="news-card">
                     <img src="${post.image || 'https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=700'}" alt="${post.title}">
