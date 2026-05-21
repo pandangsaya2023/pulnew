@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PULNEW - Portal Berita Terkini</title>
+    <title>PULNEW - Portal Info Terintegrasi</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif; }
         body { background: #f4f6f9; color: #333; display: flex; flex-direction: column; min-height: 100vh; }
@@ -87,7 +87,7 @@
         <div class="breaking-badge">INFO NEW</div>
         <div class="ticker-wrapper">
             <div class="ticker-content" id="running-text-container">
-                <span class="ticker-item">Memuat berita terbaru hari ini...</span>
+                <span class="ticker-item">Memuat info terbaru ...</span>
             </div>
         </div>
     </div>
@@ -137,7 +137,7 @@
                 <a href="/?kategori=Olahraga">Olahraga</a>
             </div>
             <div class="footer-bottom">
-                &copy; 2026 PULNEW.com. All Rights Reserved. Portal Terintegrasi.
+                &copy; 2026 PULNEW.com. All Rights Reserved.
             </div>
         </div>
     </footer>
@@ -160,7 +160,7 @@
         } catch (err) {
             console.error(err);
             const loadEl = document.getElementById('loading');
-            if(loadEl) loadEl.textContent = "Gagal memuat berita terbaru.";
+            if(loadEl) loadEl.textContent = "Gagal memuat info terbaru.";
         }
     }
 
