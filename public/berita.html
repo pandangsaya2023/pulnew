@@ -12,14 +12,14 @@
         .top-header { background: #d32f2f; color: white; padding: 8px 12px; display: flex; align-items: center; gap: 10px; font-size: 13px; overflow: hidden; position: relative; }
         .breaking-badge { background: #fff; color: #d32f2f; padding: 3px 8px; border-radius: 12px; font-weight: 700; font-size: 11px; flex-shrink: 0; z-index: 2; box-shadow: 2px 0 5px rgba(0,0,0,0.2); }
         .ticker-wrapper { overflow: hidden; width: 100%; display: flex; }
-        .ticker-content { display: inline-block; white-space: nowrap; padding-left: 100%; animation: ticker 115s linear infinite; }
+        .ticker-content { display: inline-block; white-space: nowrap; padding-left: 100%; animation: ticker 105s linear infinite; }
         .ticker-item { display: inline-block; padding-right: 40px; font-weight: 500; color: white; text-decoration: none; }
         .ticker-item:hover { text-decoration: underline; }
         @keyframes ticker { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(-100%, 0, 0); } }
 
         /* HEADER & LOGO BAR */
         .header-container { width: 100%; background: white; box-shadow: 0 2px 4px rgba(0,0,0,0.08); }
-        .logo-bar { max-width: 1200px; margin: 0 auto; padding: 12px 20px; display: flex; justify-content: space-between; align-items: center; }
+        .logo-bar { max-width: 1200px; margin: 0 auto; padding: 12px 20px; display: flex; justify-content: space-between; align-items: center; background: white; }
         
         .nav-menu-wrapper { background: #1a237e; width: 100%; }
         .nav-menu { max-width: 1200px; margin: 0 auto; padding: 12px 20px; display: flex; gap: 20px; overflow-x: auto; scrollbar-width: none; }
@@ -45,12 +45,12 @@
         .article-body p { margin-bottom: 18px; text-align: justify; }
 
         /* ========================================================
-           SISTEM RESPONSIVE GRID REKOMENDASI BERITA (DIKUNCI 2 KOLOM DI HP, 3 KOLOM DI LAPTOP)
+           SISTEM RESPONSIVE GRID REKOMENDASI BERITA
            ======================================================== */
         .recommendation-title { font-size: 18px; font-weight: 700; color: #111; margin: 35px 0 15px 0; border-left: 4px solid #d32f2f; padding-left: 10px; }
         .news-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; }
         
-        /* Base Card Rekomendasi (TANGGAL JUGA SUDAH DIHAPUS DARI KARTU) */
+        /* Base Card Rekomendasi (TANPA TANGGAL) */
         .news-card { background: white; display: flex; flex-direction: column; text-decoration: none; color: inherit; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 5px rgba(0,0,0,0.05); transition: transform 0.2s; }
         .news-card:hover { transform: translateY(-3px); box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
         .news-card img { width: 100%; height: 130px; object-fit: cover; background: #eee; }
@@ -60,18 +60,13 @@
 
         #error-msg { text-align: center; padding: 50px 20px; color: #d32f2f; font-size: 16px; font-weight: 500; line-height: 1.5; }
 
-        /* -------------------------------------------------------------
-           PENGATURAN KHUSUS LAPTOP / KOMPUTER / HP MODE DESKTOP
-           (Membuat Layout Halaman Menjadi Lebar Penuh & Kokoh)
-           ------------------------------------------------------------- */
+        /* PENGATURAN KHUSUS LAPTOP / KOMPUTER / HP MODE DESKTOP (FULL WIDTH) */
         @media (min-width: 768px) {
-            /* Membuat wadah teks artikel memanfaatkan porsi lebar layar penuh (Full-Width) */
             .article-wrapper { padding: 40px; }
             .article-title { font-size: 36px; margin-bottom: 15px; }
-            .main-image-container img { height: 550px; } /* Tinggi gambar di laptop dibuat megah dan proporsional */
+            .main-image-container img { height: 550px; } 
             .article-body { font-size: 18px; }
             
-            /* Grid rekomendasi di bawah isi berita otomatis sejajar 3 kolom */
             .news-grid { grid-template-columns: repeat(3, 1fr); gap: 20px; }
             .news-card img { height: 180px; }
             .news-card h3 { font-size: 15px; }
@@ -101,12 +96,12 @@
 
     <div class="header-container">
         <div class="logo-bar">
-            <div style="display: flex; align-items: center; gap: 10px;">
-                <a href="/" style="display: flex; align-items: center; gap: 10px; text-decoration: none;">
+            <div style="display: flex; align-items: center; gap: 10px; background: white;">
+                <a href="/" style="display: flex; align-items: center; gap: 10px; text-decoration: none; background: white;">
                     <div style="height: 55px; width: 55px; display: flex; align-items: center; justify-content: center; background: white; border-radius: 4px; overflow: hidden; flex-shrink: 0;">
-                        <img src="https://pulnew.pages.dev/logopulnew1.jpg" alt="Logo PULNEW" style="height: 100%; width: 100%; object-fit: contain; filter: brightness(1.18) contrast(1.35); mix-blend-mode: darken;">
+                        <img src="https://pulnew.pages.dev/logopulnew1.jpg" alt="Logo PULNEW" style="height: 100%; width: 100%; object-fit: contain; filter: brightness(1.18) contrast(1.35); mix-blend-mode: darken; background: white;">
                     </div>
-                    <div style="font-size: 25px; font-weight: 800; color: #1a237e; letter-spacing: -0.5px; line-height: 0.95;">
+                    <div style="font-size: 25px; font-weight: 800; color: #1a237e; letter-spacing: -0.5px; line-height: 0.95; background: white;">
                         PUL<span style="color: #d32f2f;">NEW</span><span style="font-size: 13px; font-weight: 600; color: #666; display: block; margin-top: 2px;">.com</span>
                     </div>
                 </a>
@@ -143,7 +138,6 @@
     </footer>
 
     <script>
-    // Ambil parameter slug berita dari alamat URL
     const urlParams = new URLSearchParams(window.location.search);
     const slugTujuan = urlParams.get('slug');
 
@@ -160,7 +154,6 @@
             const data = await response.json();
             const daftarPosts = data.posts || [];
             
-            // Cari berita yang pas dengan slug tujuan
             const artikelDipilih = daftarPosts.find(p => p.slug === slugTujuan);
             
             if (artikelDipilih) {
@@ -180,15 +173,14 @@
     function tampilkanIsiArtikel(post) {
         const area = document.getElementById('content-area');
         
-        // Mengubah format baris teks baru (\n) menjadi paragraf HTML (<p>)
         let formatText = '';
         if (post.body) {
-            formatText = post.body.split('\n\n').map(p p => `<p>${p.replace(/\n/g, '<br>')}</p>`).join('');
+            // DI SINI TYPO SUDAH DIPERBAIKI (MENGGUNAKAN MAP SECARA BENAR)
+            formatText = post.body.split('\n\n').map(p => `<p>${p.replace(/\n/g, '<br>')}</p>`).join('');
         } else {
             formatText = '<p>Konten isi berita belum diunggah atau kosong.</p>';
         }
 
-        // TANGGAL DISINI SUDAH DIHAPUS TOTAL DARI METADATA BAWAH JUDUL
         area.innerHTML = `
             <div class="article-wrapper">
                 <span class="article-category">${post.category || 'Nasional'}</span>
@@ -208,10 +200,7 @@
         const container = document.getElementById('recommendation-container');
         container.innerHTML = '';
         
-        // Saring agar berita yang sedang dibaca saat ini tidak masuk daftar rekomendasi lagi
         const sisaBerita = posts.filter(p => p.slug !== slugSekarang);
-        
-        // Ambil maksimal 6 berita secara acak atau berurutan untuk rekomendasi bawah
         const batasTampil = sisaBerita.slice(0, 6);
 
         if (batasTampil.length === 0) {
@@ -220,7 +209,6 @@
         }
 
         batasTampil.forEach(post => {
-            // TANGGAL DI BAWAH JUDUL KARTU REKOMENDASI JUGA SUDAH DIHAPUS
             const cardHtml = `
                 <a href="/berita.html?slug=${post.slug}" class="news-card">
                     <img src="${post.image || 'https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=500'}" alt="${post.title}">
@@ -250,7 +238,7 @@
         document.getElementById('recommendation-container').innerHTML = '';
     }
 
-    muatHalamanBerita();
+    muatHalamanBerita()
     </script>
 </body>
 </html>
