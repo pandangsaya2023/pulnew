@@ -5,12 +5,12 @@ from datetime import datetime
 import re
 import os
 
-# Daftar RSS Feed Media Daerah
+# 1. Mengganti dengan sumber RSS Feed yang aktif & stabil
 sumber_rss = {
-    "Sumatera": "https://www.antaranews.com/rss/sumatra-utara.xml",
-    "Jawa": "https://www.antaranews.com/rss/jakarta.xml",
-    "Kalimantan": "https://www.antaranews.com/rss/kalimantan-barat.xml",
-    "Sulawesi": "https://www.antaranews.com/rss/sulawesi-selatan.xml"
+    "Sumatera": "https://www.antaranews.com/rss/sumatera-utara",
+    "Jawa": "https://www.antaranews.com/rss/megapolitan",
+    "Kalimantan": "https://www.antaranews.com/rss/kalimantan-timur",
+    "Sulawesi": "https://www.antaranews.com/rss/sulawesi-selatan"
 }
 
 path_json = "public/posts.json"
@@ -35,14 +35,13 @@ else:
 slug_tercatat = {b["slug"] for b in daftar_berita if "slug" in b}
 berita_baru_total = []
 
-# Distribusi kategori otomatis supaya menu atas tidak kosong
 kategori_list = ["Politik", "Ekonomi", "Hiburan"]
 index_kat = 0
 
 for wilayah, url in sumber_rss.items():
-    print(f"Mengambil berita {wilayah}...")
+    print(f"Mengambil berita {wilayah} dari {url}...")
     try:
-        req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0'})
+        req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'})
         response = urllib.request.urlopen(req, timeout=15)
         xml_data = response.read()
         root = ET.fromstring(xml_data)
@@ -55,7 +54,7 @@ for wilayah, url in sumber_rss.items():
             title = item.find('title').text
             link = item.find('link').text
             
-            image_url = "https://picsum.photos/700/400"
+            image_url = "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=600"
             enclosure = item.find('enclosure')
             if enclosure is not None and 'url' in enclosure.attrib:
                 image_url = enclosure.attrib['url']
@@ -65,7 +64,6 @@ for wilayah, url in sumber_rss.items():
             if slug in slug_tercatat:
                 continue
             
-            # Tentukan kategori otomatis secara bergantian (Politik / Ekonomi / Hiburan)
             kategori_pilihan = kategori_list[index_kat % len(kategori_list)]
             index_kat += 1
                 
@@ -75,7 +73,7 @@ for wilayah, url in sumber_rss.items():
                 "category": kategori_pilihan,
                 "date": datetime.now().strftime("%Y-%m-%dT%H:%M:%S+07:00"),
                 "image": image_url,
-                "body": f"Berita seputar {wilayah}. Baca selengkapnya di sumber asli: {link}"
+                "body": f"Berita seputar wilayah {wilayah}. Informasi selengkapnya mengenai topik ini dapat Anda baca langsung melalui tautan resmi sumber asli penyedia media berita berikut: {link}"
             }
             
             berita_baru_total.append(struktur_berita)
@@ -83,7 +81,7 @@ for wilayah, url in sumber_rss.items():
             hitung += 1
             
     except Exception as e:
-        print(f"Gagal di wilayah {wilayah}: {e}")
+        print(f"Gagal mengambil data di wilayah {wilayah}: {e}")
 
 if berita_baru_total:
     daftar_berita = berita_baru_total + daftar_berita
@@ -91,6 +89,6 @@ if berita_baru_total:
     
     with open(path_json, 'w', encoding='utf-8') as f:
         json.dump({"posts": daftar_berita}, f, indent=2, ensure_ascii=False)
-    print(f"Sukses menambahkan {len(berita_baru_total)} berita baru!")
+    print(f"Sukses mengumpulkan {len(berita_baru_total)} berita baru!")
 else:
-    print("Tidak ada berita baru.")
+    print("Tidak ada data berita baru yang berhasil dimuat.")
