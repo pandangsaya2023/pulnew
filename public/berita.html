@@ -7,27 +7,26 @@
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif; }
         
-        /* MENGUNCI LAYAR AGAR TIDAK BISA DIGESER KANAN KIRI */
         html, body { background: #f4f6f9; color: #333; display: flex; flex-direction: column; min-height: 100vh; overflow-x: hidden; width: 100%; }
         
-        /* 1. RUNNING TEXT STYLE */
+        /* RUNNING TEXT STYLE */
         .top-header { background: #d32f2f; color: white; padding: 8px 12px; display: flex; align-items: center; gap: 10px; font-size: 13px; overflow: hidden; position: relative; width: 100%; }
         .breaking-badge { background: #fff; color: #d32f2f; padding: 3px 8px; border-radius: 12px; font-weight: 700; font-size: 11px; flex-shrink: 0; z-index: 2; box-shadow: 2px 0 5px rgba(0,0,0,0.2); }
         .ticker-wrapper { overflow: hidden; width: 100%; display: flex; }
-        .ticker-content { display: inline-block; white-space: nowrap; padding-left: 100%; animation: ticker 105s linear infinite; }
+        .ticker-content { display: inline-block; white-space: nowrap; padding-left: 100%; animation: ticker 120s linear infinite; }
         .ticker-item { display: inline-block; padding-right: 40px; font-weight: 500; color: white; text-decoration: none; }
         .ticker-item:hover { text-decoration: underline; }
         @keyframes ticker { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(-100%, 0, 0); } }
 
-        /* HEADER & LOGO BAR */
-        .header-container { width: 100%; background: white; box-shadow: 0 2px 4px rgba(0,0,0,0.08); overflow: hidden; }
-        .logo-bar { max-width: 1200px; margin: 0 auto; padding: 12px 20px; display: flex; justify-content: space-between; align-items: center; background: white; }
+        /* HEADER & LOGO BAR (PENGUNCIAN WARNA PUTIH MUTLAK) */
+        .header-container { width: 100%; background: #ffffff !important; box-shadow: 0 2px 4px rgba(0,0,0,0.08); overflow: hidden; }
+        .logo-bar { max-width: 1200px; margin: 0 auto; padding: 12px 20px; display: flex; justify-content: space-between; align-items: center; background: #ffffff !important; }
         
         .nav-menu-wrapper { background: #1a237e; width: 100%; overflow: hidden; }
         .nav-menu { max-width: 1200px; margin: 0 auto; padding: 12px 20px; display: flex; gap: 20px; }
         .nav-menu a { color: white; text-decoration: none; font-size: 14px; font-weight: 500; white-space: nowrap; }
         
-        /* CONTAINER UTAMA & DETAIL ARTIKEL (PAS SESUAI HALAMAN DEPAN) */
+        /* CONTAINER UTAMA & DETAIL ARTIKEL */
         .container { max-width: 1200px; width: 100%; margin: 0 auto; padding: 20px 15px; flex: 1; overflow: hidden; }
         
         .article-wrapper { background: white; padding: 15px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); margin-bottom: 25px; width: 100%; overflow: hidden; }
@@ -38,7 +37,6 @@
         .main-image-container { width: 100%; overflow: hidden; border-radius: 6px; margin-bottom: 20px; background: #eee; }
         .main-image-container img { width: 100%; height: auto; display: block; object-fit: cover; }
         
-        /* ISI BERITA AMAN DARI TEKS JEBOL */
         .article-body { font-size: 16px; line-height: 1.7; color: #222; word-break: break-word; overflow-wrap: break-word; }
         .article-body p { margin-bottom: 16px; text-align: justify; word-break: break-word; overflow-wrap: break-word; }
         .article-body a { word-break: break-all; color: #1a237e; }
@@ -55,7 +53,7 @@
 
         #error-msg { text-align: center; padding: 50px 20px; color: #d32f2f; font-size: 16px; font-weight: 500; }
 
-        /* MODE LAPTOP / DESKTOP (FULL WIDTH COCOK) */
+        /* MODE LAPTOP / DESKTOP */
         @media (min-width: 768px) {
             .container { padding: 25px 20px; }
             .article-wrapper { padding: 40px; }
@@ -71,8 +69,6 @@
         .footer-content { max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 20px; text-align: center; }
         .footer-logo { font-size: 22px; font-weight: 800; color: white; }
         .footer-logo span { color: #d32f2f; }
-        .footer-links { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
-        .footer-links a { color: #94a3b8; text-decoration: none; }
         .footer-bottom { border-top: 1px solid #1e293b; padding-top: 15px; font-size: 12px; color: #64748b; }
     </style>
 </head>
@@ -89,16 +85,17 @@
 
     <div class="header-container">
         <div class="logo-bar">
-            <div style="display: flex; align-items: center; gap: 10px; background: white;">
-                <a href="/" style="display: flex; align-items: center; gap: 10px; text-decoration: none; background: white;">
-                    <div style="height: 55px; width: 55px; display: flex; align-items: center; justify-content: center; background: white; border-radius: 4px; overflow: hidden;">
-                        <img src="https://pulnew.pages.dev/logopulnew1.jpg" alt="Logo" style="height: 100%; width: 100%; object-fit: contain; filter: brightness(1.18) contrast(1.35); mix-blend-mode: darken; background: white;">
+            <div style="display: flex; align-items: center; gap: 10px; background: #ffffff;">
+                <a href="/" style="display: flex; align-items: center; gap: 10px; text-decoration: none; background: #ffffff;">
+                    <div style="height: 55px; width: 55px; display: flex; align-items: center; justify-content: center; background: #ffffff; border-radius: 4px; overflow: hidden;">
+                        <img src="https://pulnew.pages.dev/logopulnew1.jpg" alt="Logo" style="height: 100%; width: 100%; object-fit: contain; background: #ffffff;">
                     </div>
-                    <div style="font-size: 25px; font-weight: 800; color: #1a237e; letter-spacing: -0.5px; line-height: 0.95; background: white;">
+                    <div style="font-size: 25px; font-weight: 800; color: #1a237e; letter-spacing: -0.5px; line-height: 0.95; background: #ffffff;">
                         PUL<span style="color: #d32f2f;">NEW</span><span style="font-size: 13px; font-weight: 600; color: #666; display: block; margin-top: 2px;">.com</span>
                     </div>
                 </a>
             </div>
+            <div style="font-size: 12px; color: #555; font-weight: 700; text-transform: uppercase; background: #ffffff;" id="live-date"></div>
         </div>
     </div>
     
@@ -119,13 +116,15 @@
     <footer>
         <div class="footer-content">
             <div class="footer-logo">PUL<span>NEW</span>.com</div>
-            <p style="font-size: 13px;">Menyajikan informasi terkini dan terpercaya langsung ke perangkat anda.</p>
-            <div class="footer-links"><a href="/" style="color: #94a3b8;">Home</a></div>
+            <p style="font-size: 13px;">Menyajikan informasi langsung ke perangkat anda</p>
             <div class="footer-bottom">&copy; 2026 PULNEW.com. All Rights Reserved.</div>
         </div>
     </footer>
 
     <script>
+    // Script Menampilkan Tanggal Hari Ini di Header Detail Berita
+    document.getElementById('live-date').textContent = new Date().toLocaleDateString('id-ID', { weekday: 'long', day: 'numeric', month: 'short', year: 'numeric' });
+
     const urlParams = new URLSearchParams(window.location.search);
     const slugTujuan = urlParams.get('slug');
 
@@ -157,7 +156,6 @@
         const area = document.getElementById('content-area');
         let formatText = '';
         if (post.body) {
-            // Mengubah teks biasa ke paragraf HTML dan otomatis mendeteksi link url panjang agar diubah jadi link hidup
             formatText = post.body.split('\n\n').map(p => {
                 let text = p.replace(/\n/g, '<br>');
                 const urlRegex = /(https?:\/\/[^\s]+)/g;
@@ -172,7 +170,7 @@
             <div class="article-wrapper">
                 <span class="article-category">${post.category || 'Nasional'}</span>
                 <h1 class="article-title">${post.title}</h1>
-                <div class="article-meta">Oleh: <strong>✍️ PULNEW</strong></div>
+                <div class="article-meta">✍️ <strong>PULNEW</strong></div>
                 <div class="main-image-container">
                     <img src="${post.image || 'https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=1200'}" alt="${post.title}">
                 </div>
@@ -219,3 +217,4 @@
     </script>
 </body>
 </html>
+
