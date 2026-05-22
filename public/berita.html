@@ -28,7 +28,7 @@
         .nav-menu { max-width: 1200px; margin: 0 auto; padding: 12px 20px; display: flex; gap: 20px; }
         .nav-menu a { color: white; text-decoration: none; font-size: 14px; font-weight: 500; white-space: nowrap; }
         
-        /* CONTAINER UTAMA & DETAIL ARTIKEL (LENGKUNGAN SUDUT FOTO DETAIL) */
+        /* CONTAINER UTAMA & DETAIL ARTIKEL */
         .container { max-width: 1200px; width: 100%; margin: 0 auto; padding: 20px 15px; flex: 1; overflow: hidden; }
         
         .article-wrapper { background: white; padding: 15px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); margin-bottom: 25px; width: 100%; overflow: hidden; }
@@ -43,11 +43,12 @@
         .article-body p { margin-bottom: 16px; text-align: justify; word-break: break-word; overflow-wrap: break-word; }
         .article-body a { word-break: break-all; color: #1a237e; }
 
-        /* REKOMENDASI BERITA DENGAN LENGKUNGAN GAMBAR */
+        /* REKOMENDASI BERITA WITH HOVER EFFECT */
         .recommendation-title { font-size: 18px; font-weight: 700; color: #111; margin: 30px 0 15px 0; border-left: 4px solid #d32f2f; padding-left: 10px; }
         .news-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; width: 100%; }
         
-        .news-card { background: white; display: flex; flex-direction: column; text-decoration: none; color: inherit; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .news-card { background: white; display: flex; flex-direction: column; text-decoration: none; color: inherit; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 5px rgba(0,0,0,0.05); transition: transform 0.2s; }
+        .news-card:hover { transform: translateY(-3px); box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
         .news-card img { width: 100%; height: 110px; object-fit: cover; background: transparent !important; border-top-left-radius: 8px !important; border-top-right-radius: 8px !important; }
         .news-card .card-info { padding: 10px; display: flex; flex-direction: column; flex-grow: 1; }
         .news-card .category { color: #d32f2f; font-size: 11px; font-weight: 700; text-transform: uppercase; margin-bottom: 4px; display: block; }
@@ -66,16 +67,16 @@
             .news-card h3 { font-size: 15px; }
         }
 
-        /* FOOTER KATEGORI SEJAJAR KECIL (12px) */
+        /* PERBAIKAN FOOTER AGAR HURUF KECIL PAS DAN OTOMATIS TURUN BARIS JIKA TIDAK MUAT */
         footer { background: #101726; color: #b0b8c4; padding: 30px 20px 20px 20px; font-size: 13px; border-top: 4px solid #1a237e; margin-top: 40px; width: 100%; overflow: hidden; position: relative; }
         .footer-content { max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; text-align: center; }
         .footer-logo { font-size: 22px; font-weight: 800; color: white; }
         .footer-logo span { color: #d32f2f; }
         
-        .footer-categories { display: flex; justify-content: center; align-items: center; gap: 10px; flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; margin: 5px 0; width: 100%; }
-        .footer-categories::-webkit-scrollbar { display: none; }
-        .footer-categories a { color: #38bdf8; text-decoration: none; font-weight: 400; font-size: 12px; transition: color 0.2s; white-space: nowrap; }
+        .footer-categories { display: flex; justify-content: center; align-items: center; gap: 8px; flex-wrap: wrap; margin: 5px auto; max-width: 100%; padding: 0 10px; }
+        .footer-categories a { color: #38bdf8; text-decoration: none; font-weight: 400; font-size: 11px; transition: color 0.2s; white-space: nowrap; }
         .footer-categories a:hover { color: white; }
+        .footer-categories span { color: #334155; font-size: 11px; }
         .footer-bottom { border-top: 1px solid #1e293b; padding-top: 15px; font-size: 12px; color: #64748b; }
 
         /* TOMBOL PANAH ATAS MELAYANG */
@@ -131,12 +132,17 @@
             <p style="font-size: 13px; color: #b0b8c4;">Menyajikan informasi langsung ke perangkat anda</p>
             
             <div class="footer-categories">
-                <a href="#" onclick="filterKategori('Politik')">Politik</a>
-                <a href="#" onclick="filterKategori('Ekonomi')">Ekonomi</a>
-                <a href="#" onclick="filterKategori('Teknologi')">Teknologi</a>
-                <a href="#" onclick="filterKategori('Olahraga')">Olahraga</a>
-                <a href="#" onclick="filterKategori('Hiburan')">Hiburan</a>
-                <a href="#" onclick="filterKategori('Home')">Home</a>
+                <a href="/" onclick="pindahKategori('Home')">Home</a>
+                <span>|</span>
+                <a href="/index.html?kategori=Politik" onclick="pindahKategori('Politik')">Politik</a>
+                <span>|</span>
+                <a href="/index.html?kategori=Ekonomi" onclick="pindahKategori('Ekonomi')">Ekonomi</a>
+                <span>|</span>
+                <a href="/index.html?kategori=Teknologi" onclick="pindahKategori('Teknologi')">Teknologi</a>
+                <span>|</span>
+                <a href="/index.html?kategori=Olahraga" onclick="pindahKategori('Olahraga')">Olahraga</a>
+                <span>|</span>
+                <a href="/index.html?kategori=Hiburan" onclick="pindahKategori('Hiburan')">Hiburan</a>
             </div>
 
             <div class="footer-bottom">&copy; 2026 PULNEW.com. All Rights Reserved.</div>
@@ -198,9 +204,14 @@
             formatText = '<p>Konten isi berita kosong.</p>';
         }
 
+        // Logika Pengecekan Kategori: Jika kosong atau bernilai "robot", hilangkan elemen HTML kategori
+        const tampilkanKategori = (post.category && post.category.trim() !== "" && post.category.toLowerCase() !== "robot") 
+            ? `<span class="article-category">${post.category}</span>` 
+            : '';
+
         area.innerHTML = `
             <div class="article-wrapper">
-                <span class="article-category">${post.category || 'Nasional'}</span>
+                ${tampilkanKategori}
                 <h1 class="article-title">${post.title}</h1>
                 <div class="article-meta">✍️ <strong>PULNEW</strong></div>
                 <div class="main-image-container">
@@ -218,11 +229,16 @@
         const batasTampil = sisaBerita.slice(0, 6);
 
         batasTampil.forEach(post => {
+            // Logika Pengecekan Kategori pada bagian Rekomendasi/Berita Terkait
+            const tampilkanKategori = (post.category && post.category.trim() !== "" && post.category.toLowerCase() !== "robot") 
+                ? `<span class="category">${post.category}</span>` 
+                : '';
+
             const cardHtml = `
                 <a href="/berita.html?slug=${post.slug}" class="news-card">
                     <img src="${post.image || 'https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=500'}" alt="${post.title}">
                     <div class="card-info">
-                        <span class="category">${post.category || 'Nasional'}</span>
+                        ${tampilkanKategori}
                         <h3>${post.title}</h3>
                     </div>
                 </a>
