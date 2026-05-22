@@ -6,7 +6,6 @@
     <title>Detail Berita - PULNEW</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif; scroll-behavior: smooth; }
-        
         html, body { background: #f4f6f9; color: #333; display: flex; flex-direction: column; min-height: 100vh; overflow-x: hidden; width: 100%; }
         
         /* RUNNING TEXT STYLE */
@@ -22,7 +21,7 @@
         .header-container { width: 100%; background: #ffffff !important; box-shadow: 0 2px 4px rgba(0,0,0,0.08); overflow: hidden; }
         .logo-bar { max-width: 1200px; margin: 0 auto; padding: 12px 20px; display: flex; justify-content: space-between; align-items: center; background: #ffffff !important; }
         .logo-img-wrapper { height: 55px; width: 55px; display: flex; align-items: center; justify-content: center; background: #ffffff !important; border-radius: 4px; overflow: hidden; flex-shrink: 0; }
-        .logo-img-wrapper img { height: 100%; width: 100%; object-fit: contain; background: #ffffff !important; filter: none !important; mix-blend-mode: normal !important; }
+        .logo-img-wrapper img { height: 100%; width: 100%; object-fit: contain; background: #ffffff !important; }
         
         .nav-menu-wrapper { background: #1a237e; width: 100%; overflow: hidden; }
         .nav-menu { max-width: 1200px; margin: 0 auto; padding: 12px 20px; display: flex; gap: 20px; }
@@ -49,10 +48,10 @@
         
         .news-card { background: white; display: flex; flex-direction: column; text-decoration: none; color: inherit; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 5px rgba(0,0,0,0.05); transition: transform 0.2s; }
         .news-card:hover { transform: translateY(-3px); box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
-        .news-card img { width: 100%; height: 110px; object-fit: cover; background: transparent !important; border-top-left-radius: 8px !important; border-top-right-radius: 8px !important; }
+        .news-card img { width: 100%; height: 110px; object-fit: cover; background: transparent !important; }
         .news-card .card-info { padding: 10px; display: flex; flex-direction: column; flex-grow: 1; }
         .news-card .category { color: #d32f2f; font-size: 11px; font-weight: 700; text-transform: uppercase; margin-bottom: 4px; display: block; }
-        .news-card h3 { font-size: 13px; font-weight: 700; line-height: 1.4; color: #111; }
+        .news-card h3 { font-size: 13px; font-weight: 700; line-height: 1.4; color: #111; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
 
         #error-msg { text-align: center; padding: 50px 20px; color: #d32f2f; font-size: 16px; font-weight: 500; }
 
@@ -67,7 +66,7 @@
             .news-card h3 { font-size: 15px; }
         }
 
-        /* PERBAIKAN FOOTER AGAR HURUF KECIL PAS DAN OTOMATIS TURUN BARIS JIKA TIDAK MUAT */
+        /* PERBAIKAN FOOTER HURUF KECIL RAPI & OTOMATIS TURUN BARIS */
         footer { background: #101726; color: #b0b8c4; padding: 30px 20px 20px 20px; font-size: 13px; border-top: 4px solid #1a237e; margin-top: 40px; width: 100%; overflow: hidden; position: relative; }
         .footer-content { max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; text-align: center; }
         .footer-logo { font-size: 22px; font-weight: 800; color: white; }
@@ -82,7 +81,6 @@
         /* TOMBOL PANAH ATAS MELAYANG */
         .back-to-top { position: fixed; bottom: 25px; right: 25px; background: #d32f2f; color: white; width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; font-size: 20px; font-weight: bold; box-shadow: 0 4px 8px rgba(0,0,0,0.3); z-index: 99; transition: opacity 0.3s, transform 0.2s; opacity: 0; visibility: hidden; }
         .back-to-top.show { opacity: 1; visibility: visible; }
-        .back-to-top:hover { transform: translateY(-3px); background: #1a237e; }
     </style>
 </head>
 <body>
@@ -98,17 +96,15 @@
 
     <div class="header-container">
         <div class="logo-bar">
-            <div style="display: flex; align-items: center; gap: 10px; background: #ffffff;">
-                <a href="/" style="display: flex; align-items: center; gap: 10px; text-decoration: none; background: #ffffff;">
-                    <div class="logo-img-wrapper">
-                        <img src="https://pulnew.pages.dev/logopulnew2.png" alt="Logo">
-                    </div>
-                    <div style="font-size: 25px; font-weight: 800; color: #1a237e; letter-spacing: -0.5px; line-height: 0.95; background: #ffffff;">
-                        PUL<span style="color: #d32f2f;">NEW</span><span style="font-size: 13px; font-weight: 600; color: #666; display: block; margin-top: 2px;">.com</span>
-                    </div>
-                </a>
-            </div>
-            <div style="font-size: 12px; color: #555; font-weight: 700; text-transform: uppercase; background: #ffffff;" id="live-date"></div>
+            <a href="/" style="display: flex; align-items: center; gap: 10px; text-decoration: none;">
+                <div class="logo-img-wrapper">
+                    <img src="https://pulnew.pages.dev/logopulnew2.png" alt="Logo">
+                </div>
+                <div style="font-size: 25px; font-weight: 800; color: #1a237e; letter-spacing: -0.5px; line-height: 0.95;">
+                    PUL<span style="color: #d32f2f;">NEW</span><span style="font-size: 13px; font-weight: 600; color: #666; display: block; margin-top: 2px;">.com</span>
+                </div>
+            </a>
+            <div style="font-size: 12px; color: #555; font-weight: 700; text-transform: uppercase;" id="live-date"></div>
         </div>
     </div>
     
@@ -156,11 +152,8 @@
 
     window.addEventListener('scroll', () => {
         const btn = document.getElementById('btnScrollTop');
-        if (window.scrollY > 300) {
-            btn.classList.add('show');
-        } else {
-            btn.classList.remove('show');
-        }
+        if (window.scrollY > 300) btn.classList.add('show');
+        else btn.classList.remove('show');
     });
 
     const urlParams = new URLSearchParams(window.location.search);
@@ -204,8 +197,11 @@
             formatText = '<p>Konten isi berita kosong.</p>';
         }
 
-        // Logika Pengecekan Kategori: Jika kosong atau bernilai "robot", hilangkan elemen HTML kategori
-        const tampilkanKategori = (post.category && post.category.trim() !== "" && post.category.toLowerCase() !== "robot") 
+        // LOGIKA PENGECEKAN KONTEN ROBOT
+        const apakahRobot = post.body && (post.body.includes('http://') || post.body.includes('https://') || post.body.includes('sumber asli'));
+
+        // Sembunyikan label kategori merah jika merupakan berita robot
+        const tampilkanKategori = (post.category && post.category.trim() !== "" && !apakahRobot) 
             ? `<span class="article-category">${post.category}</span>` 
             : '';
 
@@ -229,8 +225,10 @@
         const batasTampil = sisaBerita.slice(0, 6);
 
         batasTampil.forEach(post => {
-            // Logika Pengecekan Kategori pada bagian Rekomendasi/Berita Terkait
-            const tampilkanKategori = (post.category && post.category.trim() !== "" && post.category.toLowerCase() !== "robot") 
+            // LOGIKA PENGECEKAN KONTEN ROBOT DI HALAMAN REKOMENDASI
+            const apakahRobot = post.body && (post.body.includes('http://') || post.body.includes('https://') || post.body.includes('sumber asli'));
+
+            const tampilkanKategori = (post.category && post.category.trim() !== "" && !apakahRobot) 
                 ? `<span class="category">${post.category}</span>` 
                 : '';
 
@@ -251,7 +249,7 @@
         const container = document.getElementById('running-text-container');
         if (!container) return;
         let htmlContent = '';
-        posts.forEach(post => {
+        posts.slice(0, 10).forEach(post => {
             htmlContent += `<a href="/berita.html?slug=${post.slug}" class="ticker-item">🔥 ${post.title} &nbsp;&nbsp;&nbsp;&nbsp;</a>`;
         });
         container.innerHTML = htmlContent;
