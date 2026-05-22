@@ -43,7 +43,7 @@
             width: 100%; 
         }
         
-        /* Desain dasar kartu berita */
+        /* Desain dasar kartu berita (Vertikal Kebawah) */
         .news-card { background: white; display: flex; flex-direction: column; text-decoration: none; color: inherit; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 5px rgba(0,0,0,0.05); transition: transform 0.2s, box-shadow 0.2s; }
         .news-card:hover { transform: translateY(-3px); box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
         .news-card img { width: 100%; height: 110px; object-fit: cover; background: transparent !important; }
@@ -85,7 +85,7 @@
             .news-card:nth-child(6n+6) h3 { font-size: 17px; }
         }
 
-        /* FOOTER KATEGORI SEJAJAR */
+        /* FOOTER STYLE */
         footer { background: #101726; color: #b0b8c4; padding: 30px 20px 20px 20px; font-size: 13px; border-top: 4px solid #1a237e; width: 100%; text-align: center; }
         .footer-content { max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }
         .footer-logo { font-size: 22px; font-weight: 800; color: white; }
@@ -115,7 +115,7 @@
 
     <div class="header-container">
         <div class="logo-bar">
-            <a href="/" style="display: flex; align-items: center; gap: 10px; text-decoration: none;">
+            <a href="https://pulnew.pages.dev/" style="display: flex; align-items: center; gap: 10px; text-decoration: none;">
                 <div class="logo-img-wrapper">
                     <img src="https://pulnew.pages.dev/logopulnew2.png" alt="Logo">
                 </div>
@@ -129,7 +129,7 @@
     
     <div class="nav-menu-wrapper">
         <div class="nav-menu" id="nav-categories">
-            <a href="#" class="active" onclick="gantiFilterKategori('Semua')">Home</a>
+            <a href="#" class="active" onclick="gantiFilterKategori('Home')">Home</a>
             <a href="#" onclick="gantiFilterKategori('Politik')">Politik</a>
             <a href="#" onclick="gantiFilterKategori('Ekonomi')">Ekonomi</a>
             <a href="#" onclick="gantiFilterKategori('Teknologi')">Teknologi</a>
@@ -160,7 +160,7 @@
             <p style="font-size: 13px; color: #b0b8c4;">Menyajikan informasi langsung ke perangkat anda</p>
             
             <div class="footer-categories">
-                <a href="#" onclick="gantiFilterKategori('Semua')">Home</a>
+                <a href="#" onclick="gantiFilterKategori('Home')">Home</a>
                 <span>|</span>
                 <a href="#" onclick="gantiFilterKategori('Politik')">Politik</a>
                 <span>|</span>
@@ -271,15 +271,23 @@
         });
         
         containerTop.innerHTML = htmlContent;
-        containerBottom.innerHTML = htmlContent; // Mengisi teks berjalan bagian bawah
+        containerBottom.innerHTML = htmlContent;
     }
 
     function gantiFilterKategori(namaKategori) {
-        event.preventDefault();
+        if (event) event.preventDefault();
+        
+        if (namaKategori === "Semua" || namaKategori === "Home") {
+            window.location.href = 'https://pulnew.pages.dev/';
+            return;
+        }
+        
         kategoriAktif = namaKategori;
-        const newUrl = namaKategori === "Semua" ? "/" : `/?kategori=${namaKategori}`;
+        const newUrl = `/?kategori=${namaKategori}`;
         window.history.pushState({ path: newUrl }, '', newUrl);
+        
         prosesDanTampilkan();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
     ambilDataBerita();
