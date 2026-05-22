@@ -127,12 +127,17 @@
             <p style="max-width: 500px; margin: 0 auto; font-size: 13px; color: #b0b8c4;">Menyajikan informasi langsung ke perangkat anda</p>
             
             <div class="footer-categories">
-                <a href="#" onclick="filterKategori('Politik')">Politik</a>
-                <a href="#" onclick="filterKategori('Ekonomi')">Ekonomi</a>
-                <a href="#" onclick="filterKategori('Teknologi')">Teknologi</a>
-                <a href="#" onclick="filterKategori('Olahraga')">Olahraga</a>
-                <a href="#" onclick="filterKategori('Hiburan')">Hiburan</a>
                 <a href="#" onclick="filterKategori('Home')">Home</a>
+                <span>|</span>
+                <a href="#" onclick="filterKategori('Politik')">Politik</a>
+                <span>|</span>
+                <a href="#" onclick="filterKategori('Ekonomi')">Ekonomi</a>
+                <span>|</span>
+                <a href="#" onclick="filterKategori('Teknologi')">Teknologi</a>
+                <span>|</span>
+                <a href="#" onclick="filterKategori('Olahraga')">Olahraga</a>
+                <span>|</span>
+                <a href="#" onclick="filterKategori('Hiburan')">Hiburan</a>
             </div>
 
             <div class="footer-bottom">&copy; 2026 PULNEW.com. All Rights Reserved.</div>
@@ -188,11 +193,16 @@
         }
 
         posts.forEach((post) => {
+            // Logika Penyaringan: Label kategori hanya dibuat jika bukan bertuliskan "robot" atau bukan string kosong
+            const tampilkanKategori = (post.category && post.category.trim() !== "" && post.category.toLowerCase() !== "robot") 
+                ? `<span class="category">${post.category}</span>` 
+                : '';
+
             const cardHtml = `
                 <a href="/berita.html?slug=${post.slug}" class="news-card">
                     <img src="${post.image || 'https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=700'}" alt="${post.title}">
                     <div class="card-info">
-                        <span class="category">${post.category || 'Nasional'}</span>
+                        ${tampilkanKategori}
                         <h3>${post.title}</h3>
                     </div>
                 </a>
@@ -232,3 +242,4 @@
     </script>
 </body>
 </html>
+
