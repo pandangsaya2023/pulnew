@@ -7,15 +7,18 @@ import os
 import random
 
 def rewrite_with_ai(title, link):
-    """Fungsi murni menembak API Groq - Bebas dari pemblokiran Google"""
+    """Fungsi murni menembak API Groq dengan Header Standar agar lolos 403"""
     api_key = os.getenv("GROQ_API_KEY")
     if not api_key:
         print("GROQ_API_KEY belum diset di GitHub Secrets")
         return f"Baca selengkapnya di {link}"
 
+    # Pengaman otomatis dari spasi atau karakter enter tak sengaja saat copypaste di HP
+    api_key = api_key.strip()
+
     url = "https://api.groq.com/openai/v1/chat/completions"
     
-    # Menggunakan model Llama 3 yang sangat fasih berbahasa Indonesia
+    # Prompt untuk merombak kalimat berita tanpa merubah fakta peristiwa asli
     payload = {
         "model": "llama3-8b-8192",
         "messages": [
@@ -30,8 +33,11 @@ def rewrite_with_ai(title, link):
     try:
         data_kirim = json.dumps(payload).encode('utf-8')
         req = urllib.request.Request(url, data=data_kirim)
-        req.add_header('Content-Type', 'application/json')
+        
+        # Header standar industri untuk bypass blokir keamanan cloud
         req.add_header('Authorization', f'Bearer {api_key}')
+        req.add_header('Content-Type', 'application/json')
+        req.add_header('User-Agent', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36')
         
         with urllib.request.urlopen(req, timeout=15) as response:
             res_data = json.loads(response.read().decode('utf-8'))
@@ -70,31 +76,35 @@ def deteksi_kategori_otomatis(judul):
     elif any(x in j for x in ['hiburan', 'artis', 'film', 'musik', 'gosip']): return "Hiburan"
     else: return "Politik"
 
+# Load database berita lama jika ada
 if os.path.exists(path_json):
     try:
         with open(path_json, 'r', encoding='utf-8') as f:
             data_lama = json.load(f)
             daftar_berita = data_lama.get("posts", []) if isinstance(data_lama, dict) else data_lama
-    except Exception: daftar_berita = []
-else: daftar_berita = []
+    except Exception: 
+        daftar_berita = []
+else: 
+    daftar_berita = []
 
 slug_tercatat = {b["slug"] for b in daftar_berita if "slug" in b}
 berita_baru_semua_media = []
 
+# Proses penarikan berita dari RSS Feeds
 for sumber in sumber_rss:
     nama_media = sumber["media"]
     url = sumber["url"]
     print(f"Mengambil berita dari {nama_media}...")
 
     try:
-        headers = {'User-Agent': "Mozilla/5.0"}
+        headers = {'User-Agent': "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
         req = urllib.request.Request(url, headers=headers)
         with urllib.request.urlopen(req, timeout=15) as response:
             root = ET.fromstring(response.read())
 
         hitung = 0
         for item in root.findall('.//item'):
-            if hitung >= 3: break
+            if hitung >= 3: break # Ambil maksimal 3 berita per media agar hemat token
             title_node = item.find('title')
             link_node = item.find('link')
             if title_node is None or link_node is None: continue
@@ -103,6 +113,7 @@ for sumber in sumber_rss:
             link = link_node.text.strip()
             slug = buat_slug(title)
 
+            # Lewati jika berita sudah pernah diambil sebelumnya
             if slug in slug_tercatat: continue
 
             image_url = "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=600"
@@ -113,18 +124,25 @@ for sumber in sumber_rss:
 
             id_unik = int(datetime.now().strftime("%d%H%M%S")) + random.randint(10, 99)
             berita_baru_semua_media.append({
-                "id": id_unik, "title": title, "slug": slug, "category": kategori_terpilih,
-                "date": datetime.now().strftime("%Y-%m-%dT%H:%M:%S+07:00"), "image": image_url, "body": isi_artikel
+                "id": id_unik, 
+                "title": title, 
+                "slug": slug, 
+                "category": kategori_terpilih,
+                "date": datetime.now().strftime("%Y-%m-%dT%H:%M:%S+07:00"), 
+                "image": image_url, 
+                "body": isi_artikel
             })
             slug_tercatat.add(slug)
             hitung += 1
     except Exception as e:
         print(f"Media {nama_media} dilewati. Detail: {e}")
 
+# Jika ada berita baru, gabungkan dan simpan kembali ke posts.json
 if berita_baru_semua_media:
     random.shuffle(berita_baru_semua_media)
     daftar_berita = berita_baru_semua_media + daftar_berita
     with open(path_json, 'w', encoding='utf-8') as f:
-        json.dump({"posts": daftar_berita[:120]}, f, indent=2, ensure_ascii=False)
+        json.dump({"posts": daftar_berita[:120]}, f, indent=2, ensure_ascii=False) # Batasi maksimal 120 berita tersimpan
     print("Sukses Besar Memperbarui Data Berita!")
-
+else:
+    print("Tidak ada berita baru yang perlu ditambahkan saat ini.")
