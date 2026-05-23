@@ -20,13 +20,14 @@ Tulis ulang pakai gaya jurnalistik, jangan copy.
 Akhiri dengan: Berita selengkapnya bisa dibaca di {link}"""
 
     try:
-        # Menggunakan endpoint v1 yang lebih stabil untuk menghindari Error 403 di server otomatis
-        url = f"https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key={api_key}"
+        # ENDPOINT FIX: Menggunakan rute resmi v1beta yang valid untuk gemini-1.5-flash
+        url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key={api_key}"
         payload = {
             "contents": [{"parts": [{"text": prompt}]}],
             "generationConfig": {"temperature": 0.7, "maxOutputTokens": 800}
         }
-        res = requests.post(url, json=payload, timeout=60)
+        headers = {"Content-Type": "application/json"}
+        res = requests.post(url, json=payload, headers=headers, timeout=60)
         res.raise_for_status()
         return res.json()["candidates"][0]["content"]["parts"][0]["text"]
     except Exception as e:
@@ -47,7 +48,7 @@ sumber_rss = [
     {"media": "Bisnis.com", "url": "https://www.bisnis.com/rss"}
 ]
 
-# JALUR DIPERBAIKI: Langsung ke root utama, sejajar dengan index.html agar terbaca oleh Cloudflare Pages
+# Jalur penyimpanan sejajar dengan file utama
 path_json = "posts.json"
 
 def buat_slug(judul):
@@ -141,8 +142,11 @@ for sumber in sumber_rss:
             print(f" -> Generate artikel pakai Gemini: {title}")
             isi_artikel = rewrite_with_gemini(title, link)
 
+            # Penambahan format ID integer statis agar serasi dengan loop index.html lama Anda
+            id_unik = int(datetime.now().strftime("%d%H%M%S")) + random.randint(10, 99)
+
             struktur_berita = {
-                "id": int(datetime.now().strftime("%d%H%M%S")) + random.randint(10, 99),
+                "id": id_unik,
                 "title": title,
                 "slug": slug,
                 "category": kategori_terpilih,
@@ -163,8 +167,10 @@ if berita_baru_semua_media:
     daftar_berita = berita_baru_semua_media + daftar_berita
     daftar_berita = daftar_berita[:120]
 
+    # FORMAT DIPERBAIKI: Mengembalikan bungkus {"posts": ...} agar langsung serasi dengan index.html Anda
     with open(path_json, 'w', encoding='utf-8') as f:
-        json.dump(daftar_berita, f, indent=2, ensure_ascii=False)
+        json.dump({"posts": daftar_berita}, f, indent=2, ensure_ascii=False)
     print(f"Sukses! Berhasil menambahkan {len(berita_baru_semua_media)} berita nasional campuran secara proporsional.")
 else:
     print("Tidak ada berita baru yang ditarik.")
+
