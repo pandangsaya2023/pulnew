@@ -1,44 +1,38 @@
 name: Robot Ambil Berita Otomatis
 
 on:
+  workflow_dispatch: # Biar bisa diklik manual pakai tombol Run Workflow
   schedule:
-    - cron: '0 */6 * * *'  # Jalan tiap 6 jam
-  workflow_dispatch: 
+    - cron: '0 */2 * * *' # Berjalan otomatis setiap 2 jam
 
 jobs:
   scrape:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
-    
+
     steps:
-    - name: Memeriksa Repositori Kode
-      uses: actions/checkout@v4
-      with:
-        persist-credentials: true
+      - name: Memeriksa Repositori Kode
+        uses: actions/checkout@v4
 
-    - name: Menyiapkan Sistem Python
-      uses: actions/setup-python@v5
-      with:
-        python-version: '3.x'
+      - name: Menyiapkan Sistem Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
 
-    - name: Install dependencies
-      run: pip install google-generativeai
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests google-generativeai
 
-    - name: Menjalankan Robot Pengambil Berita
-      env:
-        GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-      run: python ambil_berita.py
+      - name: Menjalankan Robot Pengambil Berita
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: |
+          python ambil_berita.py
 
-    - name: Menyimpan Perubahan Kembali ke GitHub
-      run: |
-        git config --global user.name "Robot Berita Otomatis"
-        git config --global user.email "bot@pulnew.com"
-        git add public/posts.json
-        
-        if ! git diff --cached --quiet; then
-          git commit -m "Update berita otomatis dari media daerah"
-          git push origin main
-        else
-          echo "Tidak ada perubahan data berita terbaru."
-        fi
+      - name: Menyimpan Perubahan Kembali ke GitHub
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add posts.json
+          git diff-index --quiet HEAD || git commit -m "Update database berita otomatis [skip ci]"
+          git push
