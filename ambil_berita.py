@@ -5,10 +5,10 @@ from datetime import datetime
 import re
 import os
 import random
-import google.generativeai as genai
+from genai import Client
 
 def rewrite_with_gemini(title, link):
-    """Fungsi resmi menggunakan SDK Google Generative AI"""
+    """Fungsi resmi menggunakan pustaka Google GenAI masa depan"""
     api_key = os.getenv("GEMINI_API_KEY")
 
     if not api_key:
@@ -16,20 +16,21 @@ def rewrite_with_gemini(title, link):
         return f"Baca selengkapnya di {link}"
 
     try:
-        # Konfigurasi API Key secara resmi lewat SDK
-        genai.configure(api_key=api_key)
-        
-        # Memanggil model gemini-1.5-flash standar
-        model = genai.GenerativeModel('gemini-1.5-flash')
+        # Inisialisasi klien resmi Google GenAI menggunakan API Key
+        client = Client(api_key=api_key)
         
         prompt = f"""Buat artikel 300 kata bahasa Indonesia dengan judul: "{title}"
 Tulis ulang pakai gaya jurnalistik, jangan copy.
 Akhiri dengan: Berita selengkapnya bisa dibaca di {link}"""
 
-        response = model.generate_content(prompt)
+        # Pemanggilan model menggunakan struktur client terbaru yang dijamin v1 stabil
+        response = client.models.generate_content(
+            model='gemini-1.5-flash',
+            contents=prompt,
+        )
         return response.text
     except Exception as e:
-        print(f"Error SDK Gemini: {e}")
+        print(f"Error SDK GenAI: {e}")
         return f"Baca selengkapnya di {link}"
 
 # Database Media Nasional Campuran
@@ -46,7 +47,7 @@ sumber_rss = [
     {"media": "Bisnis.com", "url": "https://www.bisnis.com/rss"}
 ]
 
-# Jalur file utama website Anda
+# Jalur file database berita utama website Anda
 path_json = "posts.json"
 
 def buat_slug(judul):
@@ -137,7 +138,7 @@ for sumber in sumber_rss:
 
             kategori_terpilih = deteksi_kategori_otomatis(title)
 
-            print(f" -> Generate artikel pakai SDK Gemini: {title}")
+            print(f" -> Generate artikel pakai SDK GenAI Baru: {title}")
             isi_artikel = rewrite_with_gemini(title, link)
 
             id_unik = int(datetime.now().strftime("%d%H%M%S")) + random.randint(10, 99)
