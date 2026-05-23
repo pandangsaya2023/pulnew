@@ -1,6 +1,87 @@
 {
   "posts": [
     {
+      "id": 23182339,
+      "title": "TNI Berangkatkan 744 Prajurit Kontingen Garuda ke Libanon",
+      "slug": "tni-berangkatkan-744-prajurit-kontingen-garuda-ke-libanon",
+      "category": "Politik",
+      "date": "2026-05-23T18:23:10+07:00",
+      "image": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=600",
+      "body": "Baca selengkapnya di https://nasional.tempo.co/read/2104924/tni-berangkatkan-744-prajurit-kontingen-garuda-ke-libanon"
+    },
+    {
+      "id": 23182379,
+      "title": "Meraup Berkah dari Bawang Goreng, Saryati Sulap Hasil Pertanian Tembus Swalayan",
+      "slug": "meraup-berkah-dari-bawang-goreng-saryati-sulap-hasil-pertani",
+      "category": "Politik",
+      "date": "2026-05-23T18:23:14+07:00",
+      "image": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=600",
+      "body": "Baca selengkapnya di https://www.tribunnews.com/bisnis/7833434/meraup-berkah-dari-bawang-goreng-saryati-sulap-hasil-pertanian-tembus-swalayan"
+    },
+    {
+      "id": 23182355,
+      "title": "Rafflesia Arnoldii Mekar Sempurna di Rejang Lebong",
+      "slug": "rafflesia-arnoldii-mekar-sempurna-di-rejang-lebong",
+      "category": "Politik",
+      "date": "2026-05-23T18:23:12+07:00",
+      "image": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=600",
+      "body": "Baca selengkapnya di https://news.republika.co.id/berita/tfi3z81330000/rafflesia-arnoldii-mekar-sempurna-di-rejang-lebong"
+    },
+    {
+      "id": 23182354,
+      "title": "Kontroversi Sekolah Maung Gagasan Dedi Mulyadi",
+      "slug": "kontroversi-sekolah-maung-gagasan-dedi-mulyadi",
+      "category": "Politik",
+      "date": "2026-05-23T18:23:10+07:00",
+      "image": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=600",
+      "body": "Baca selengkapnya di https://nasional.tempo.co/read/2104886/kontroversi-sekolah-maung-gagasan-dedi-mulyadi"
+    },
+    {
+      "id": 23182329,
+      "title": "Rosan Beberkan Alasan Penunjukan Luke Mahony Jadi Dirut DSI",
+      "slug": "rosan-beberkan-alasan-penunjukan-luke-mahony-jadi-dirut-dsi",
+      "category": "Politik",
+      "date": "2026-05-23T18:23:10+07:00",
+      "image": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=600",
+      "body": "Baca selengkapnya di https://nasional.tempo.co/read/2104922/rosan-beberkan-alasan-penunjukan-luke-mahony-jadi-dirut-dsi"
+    },
+    {
+      "id": 23182402,
+      "title": "Waktunya Persib Bandung Rayakan Gelar, Eliano Reijnders: di Sini Lebih Gila dari Eropa",
+      "slug": "waktunya-persib-bandung-rayakan-gelar-eliano-reijnders-di-si",
+      "category": "Politik",
+      "date": "2026-05-23T18:23:14+07:00",
+      "image": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=600",
+      "body": "Baca selengkapnya di https://www.tribunnews.com/superskor/7833429/waktunya-persib-bandung-rayakan-gelar-eliano-reijnders-di-sini-lebih-gila-dari-eropa"
+    },
+    {
+      "id": 23182377,
+      "title": "Pemkab Nagan Raya dan DPRK Bahas Penanganan Bencana di Kemendagri",
+      "slug": "pemkab-nagan-raya-dan-dprk-bahas-penanganan-bencana-di-kemen",
+      "category": "Politik",
+      "date": "2026-05-23T18:23:12+07:00",
+      "image": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=600",
+      "body": "Baca selengkapnya di https://news.republika.co.id/berita/tfi5dn5230000/pemkab-nagan-raya-dan-dprk-bahas-penanganan-bencana-di-kemendagri"
+    },
+    {
+      "id": 23182330,
+      "title": "TNI AL Perkuat Hubungan Militer dengan Angkatan Laut Jepang",
+      "slug": "tni-al-perkuat-hubungan-militer-dengan-angkatan-laut-jepang",
+      "category": "Politik",
+      "date": "2026-05-23T18:23:12+07:00",
+      "image": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=600",
+      "body": "Baca selengkapnya di https://news.republika.co.id/berita/tfi4oe3430000/tni-al-perkuat-hubungan-militer-dengan-angkatan-laut-jepang"
+    },
+    {
+      "id": 23182372,
+      "title": "Seskab Teddy: CEO GoTo Komitmen Terapkan Kebijakan Prabowo Soal Pendapatan Pengemudi Gojek",
+      "slug": "seskab-teddy-ceo-goto-komitmen-terapkan-kebijakan-prabowo-so",
+      "category": "Politik",
+      "date": "2026-05-23T18:23:14+07:00",
+      "image": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=600",
+      "body": "Baca selengkapnya di https://www.tribunnews.com/bisnis/7833433/seskab-teddy-ceo-goto-komitmen-terapkan-kebijakan-prabowo-soal-pendapatan-pengemudi-gojek"
+    },
+    {
       "id": 23172223,
       "title": "Momen Mbah Marsiyah Pertama Kali Lihat Ka'bah: Sudah Diharapkan Sejak Lama",
       "slug": "momen-mbah-marsiyah-pertama-kali-lihat-kabah-sudah-diharapka",
