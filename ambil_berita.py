@@ -73,8 +73,6 @@ sumber_rss = [
     {"media": "Jawa Pos", "url": "https://www.jawapos.com/feed"}
 ]
 
-]
-
 path_json = "posts.json"
 if os.path.exists(path_json):
     with open(path_json, 'r', encoding='utf-8') as f:
