@@ -1,684 +1,763 @@
-{
-  "posts": [
-    {
-      "title": "Jurnalis Republika Spill Suasana Kapal Zionis Isral Kayak di Film Squid Game",
-      "slug": "jurnalis-republika-spill-suasana-kapal-zionis-isral-kayak-di",
-      "category": "Hiburan",
-      "date": "2026-05-23T13:11:26+07:00",
-      "image": "https://static.republika.co.id/uploads/images/detailnews/085228700-1779541201-maxresdefaultjpg.jpg",
-      "body": "Baca selengkapnya di https://republika.co.id/page/shorts/yt-tfhqs1548517291/jurnalis-republika-spill-suasana-kapal-zionis-isral-kayak-di-film-squid-game"
-    },
-    {
-      "title": "Jamaah An-Nadzir di Gowa Rayakan Idul Adha pada 26 Mei 2026",
-      "slug": "jamaah-an-nadzir-di-gowa-rayakan-idul-adha-pada-26-mei-2026",
-      "category": "Politik",
-      "date": "2026-05-23T13:11:26+07:00",
-      "image": "https://static.republika.co.id/uploads/images/detailnews/015778000-1749093681-830-556.jpg",
-      "body": "Baca selengkapnya di https://khazanah.republika.co.id/berita/tfhpr2366/jamaah-annadzir-di-gowa-rayakan-idul-adha-pada-26-mei-2026"
-    },
-    {
-      "title": "Sesditjen Dukcapil Dorong AktivasiIKD di Belitung Timur untuk Sistem Perlindungan Sosial",
-      "slug": "sesditjen-dukcapil-dorong-aktivasiikd-di-belitung-timur-untu",
-      "category": "Politik",
-      "date": "2026-05-23T13:11:25+07:00",
-      "image": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=600",
-      "body": "Baca selengkapnya di https://nasional.tempo.co/read/2105091/sesditjen-dukcapil-dorong-aktivasiikd-di-belitung-timur-untuk-sistem-perlindungan-sosial"
-    },
-    {
-      "title": "Pemerintah Minta KBIHU Ikuti Aturan Jelang Puncak Ibadah Haji, Ancam Cabut Izin jika Masih Bandel",
-      "slug": "pemerintah-minta-kbihu-ikuti-aturan-jelang-puncak-ibadah-haj",
-      "category": "Politik",
-      "date": "2026-05-23T13:11:26+07:00",
-      "image": "https://pict.sindonews.com/dyn/850/pena/news/2026/05/23/786/1710033/pemerintah-minta-kbihu-ikuti-aturan-jelang-puncak-ibadah-haji-ancam-cabut-izin-jika-masih-bandel-pjh.jpg",
-      "body": "Baca selengkapnya di https://kalam.sindonews.com/read/1710033/786/pemerintah-minta-kbihu-ikuti-aturan-jelang-puncak-ibadah-haji-ancam-cabut-izin-jika-masih-bandel-1779537910"
-    },
-    {
-      "title": "Prabowo: Indonesia Bisa Swasembada Daging dalam 4-5 Tahun",
-      "slug": "prabowo-indonesia-bisa-swasembada-daging-dalam-4-5-tahun",
-      "category": "Politik",
-      "date": "2026-05-23T13:11:24+07:00",
-      "image": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=600",
-      "body": "Baca selengkapnya di https://nasional.tempo.co/read/2105106/prabowo-indonesia-bisa-swasembada-daging-dalam-4-5-tahun"
-    },
-    {
-      "title": "Harga iCar V23 Resmi Diumumkan, tak Sampai Rp400 Juta, Incar Kaum Urban Berjiwa Petualang",
-      "slug": "harga-icar-v23-resmi-diumumkan-tak-sampai-rp400-juta-incar-k",
-      "category": "Teknologi",
-      "date": "2026-05-23T13:11:26+07:00",
-      "image": "https://static.republika.co.id/uploads/images/detailnews/_260523194633-996.png",
-      "body": "Baca selengkapnya di https://ekonomi.republika.co.id/berita/tfhqk4348/harga-icar-v23-resmi-diumumkan-tak-sampai-rp400-juta-incar-kaum-urban-berjiwa-petualang"
-    },
-    {
-      "title": "Di Forum Internasional Malaysia, PUI Tegaskan Dukungan Pembebasan Ghannouchi",
-      "slug": "di-forum-internasional-malaysia-pui-tegaskan-dukungan-pembeb",
-      "category": "Politik",
-      "date": "2026-05-23T13:11:27+07:00",
-      "image": "https://pict.sindonews.com/dyn/850/pena/news/2026/05/23/15/1710029/di-forum-internasional-malaysia-pui-tegaskan-dukungan-pembebasan-ghannouchi-xsv.jpg",
-      "body": "Baca selengkapnya di https://nasional.sindonews.com/read/1710029/15/di-forum-internasional-malaysia-pui-tegaskan-dukungan-pembebasan-ghannouchi-1779537956"
-    },
-    {
-      "title": "Prabowo: 19 Bulan Saya Pimpin, Pencapaian Kita Sudah Banyak",
-      "slug": "prabowo-19-bulan-saya-pimpin-pencapaian-kita-sudah-banyak",
-      "category": "Teknologi",
-      "date": "2026-05-23T13:11:24+07:00",
-      "image": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=600",
-      "body": "Baca selengkapnya di https://nasional.tempo.co/read/2105110/prabowo-19-bulan-saya-pimpin-pencapaian-kita-sudah-banyak"
-    },
-    {
-      "title": "Kisah Tegar Istri Jemaah Haji Firdaus: Ikut Cari Suami Selama Seminggu, Kini Ikhlas Melepasnya",
-      "slug": "kisah-tegar-istri-jemaah-haji-firdaus-ikut-cari-suami-selama",
-      "category": "Politik",
-      "date": "2026-05-23T13:11:27+07:00",
-      "image": "https://pict.sindonews.com/dyn/850/pena/news/2026/05/23/786/1710031/kisah-tegar-istri-jemaah-haji-firdaus-ikut-cari-suami-selama-seminggu-kini-ikhlas-melepasnya-mni.jpg",
-      "body": "Baca selengkapnya di https://kalam.sindonews.com/read/1710031/786/kisah-tegar-istri-jemaah-haji-firdaus-ikut-cari-suami-selama-seminggu-kini-ikhlas-melepasnya-1779537924"
-    },
-    {
-      "title": "Ketika Gen Z Dipaksa Beradaptasi dengan Ribetnya Birokrasi",
-      "slug": "ketika-gen-z-dipaksa-beradaptasi-dengan-ribetnya-birokrasi",
-      "category": "Politik",
-      "date": "2026-05-23T08:33:06+07:00",
-      "image": "https://static.republika.co.id/uploads/images/detailnews/aglaya-qaulan_260523152602-853.jpg",
-      "body": "Berita terhangat hari ini dilaporkan oleh media Republika. Informasi selengkapnya mengenai topik ini dapat Anda baca langsung melalui tautan resmi sumber asli berikut: https://analisis.republika.co.id/berita/tfhe83282/ketika-gen-z-dipaksa-beradaptasi-dengan-ribetnya-birokrasi"
-    },
-    {
-      "title": "Prabowo Bergurau Ingin Reshuffle Zulkifli Hasan",
-      "slug": "prabowo-bergurau-ingin-reshuffle-zulkifli-hasan",
-      "category": "Politik",
-      "date": "2026-05-23T08:33:05+07:00",
-      "image": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=600",
-      "body": "Berita terhangat hari ini dilaporkan oleh media Tempo. Informasi selengkapnya mengenai topik ini dapat Anda baca langsung melalui tautan resmi sumber asli berikut: https://nasional.tempo.co/read/2105068/prabowo-bergurau-ingin-reshuffle-zulkifli-hasan"
-    },
-    {
-      "title": "Objek Wisata The Little Niagara Kembali Dibuka Usai 3 Pekan Ditutup Akibat Longsor",
-      "slug": "objek-wisata-the-little-niagara-kembali-dibuka-usai-3-pekan-",
-      "category": "Teknologi",
-      "date": "2026-05-23T08:33:06+07:00",
-      "image": "https://static.republika.co.id/uploads/images/detailnews/objek-wisata-curug-malela-di-kampung-manglid-desa-cicadas_260523153047-404.jpeg",
-      "body": "Berita terhangat hari ini dilaporkan oleh media Republika. Informasi selengkapnya mengenai topik ini dapat Anda baca langsung melalui tautan resmi sumber asli berikut: https://rejabar.republika.co.id/berita/tfheei368/objek-wisata-the-little-niagara-kembali-dibuka-usai-3-pekan-ditutup-akibat-longsor"
-    },
-    {
-      "title": "Akad Massal KUR 1.000 UMKM, BRI bersama Pemerintah Dorong Penguatan Ekonomi Kreatif di Bali",
-      "slug": "akad-massal-kur-1000-umkm-bri-bersama-pemerintah-dorong-peng",
-      "category": "Ekonomi",
-      "date": "2026-05-23T08:33:07+07:00",
-      "image": "https://pict.sindonews.com/dyn/850/pena/news/2026/05/23/178/1709927/akad-massal-kur-1000-umkm-bri-bersama-pemerintah-dorong-penguatan-ekonomi-kreatif-di-bali-vbc.jpeg",
-      "body": "Berita terhangat hari ini dilaporkan oleh media Okezone. Informasi selengkapnya mengenai topik ini dapat Anda baca langsung melalui tautan resmi sumber asli berikut: https://ekbis.sindonews.com/read/1709927/178/akad-massal-kur-1000-umkm-bri-bersama-pemerintah-dorong-penguatan-ekonomi-kreatif-di-bali-1779523539"
-    },
-    {
-      "title": "Lesperssi Soroti Keterlibatan TNI dalam Perburuan Begal",
-      "slug": "lesperssi-soroti-keterlibatan-tni-dalam-perburuan-begal",
-      "category": "Politik",
-      "date": "2026-05-23T08:33:05+07:00",
-      "image": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=600",
-      "body": "Berita terhangat hari ini dilaporkan oleh media Tempo. Informasi selengkapnya mengenai topik ini dapat Anda baca langsung melalui tautan resmi sumber asli berikut: https://nasional.tempo.co/read/2105071/lesperssi-soroti-keterlibatan-tni-dalam-perburuan-begal"
-    },
-    {
-      "title": "Sumatera Blackout, InJourney Pastikan Bandara Beroperasi Normal",
-      "slug": "sumatera-blackout-injourney-pastikan-bandara-beroperasi-norm",
-      "category": "Politik",
-      "date": "2026-05-23T08:33:07+07:00",
-      "image": "https://pict.sindonews.com/dyn/850/pena/news/2026/05/23/34/1709931/sumatera-blackout-injourney-pastikan-bandara-di-sumatera-beroperasi-normal-knl.jpeg",
-      "body": "Berita terhangat hari ini dilaporkan oleh media Okezone. Informasi selengkapnya mengenai topik ini dapat Anda baca langsung melalui tautan resmi sumber asli berikut: https://ekbis.sindonews.com/read/1709931/34/sumatera-blackout-injourney-pastikan-bandara-beroperasi-normal-1779523527"
-    },
-    {
-      "title": "Kisah Model Asal Tulungagung Audisi Miss Indonesia 2026 Demi Wujudkan Mimpi",
-      "slug": "kisah-model-asal-tulungagung-audisi-miss-indonesia-2026-demi",
-      "category": "Politik",
-      "date": "2026-05-23T08:33:07+07:00",
-      "image": "https://pict.sindonews.com/dyn/850/pena/news/2026/05/23/187/1709925/kisah-model-asal-tulungagung-audisi-miss-indonesia-2026-demi-wujudkan-mimpi-ttq.jpg",
-      "body": "Berita terhangat hari ini dilaporkan oleh media Okezone. Informasi selengkapnya mengenai topik ini dapat Anda baca langsung melalui tautan resmi sumber asli berikut: https://lifestyle.sindonews.com/read/1709925/187/kisah-model-asal-tulungagung-audisi-miss-indonesia-2026-demi-wujudkan-mimpi-1779523524"
-    },
-    {
-      "title": "Prabowo: Tunda Dulu Banyak Bangun Kantor Instansi Baru",
-      "slug": "prabowo-tunda-dulu-banyak-bangun-kantor-instansi-baru",
-      "category": "Politik",
-      "date": "2026-05-23T08:33:05+07:00",
-      "image": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=600",
-      "body": "Berita terhangat hari ini dilaporkan oleh media Tempo. Informasi selengkapnya mengenai topik ini dapat Anda baca langsung melalui tautan resmi sumber asli berikut: https://nasional.tempo.co/read/2105073/prabowo-tunda-dulu-banyak-bangun-kantor-instansi-baru"
-    },
-    {
-      "title": "16.046 SPPG Raih SLHS, Tata Kelola Program MBG Makin Diperkuat",
-      "slug": "16046-sppg-raih-slhs-tata-kelola-program-mbg-makin-diperkuat",
-      "category": "Teknologi",
-      "date": "2026-05-23T08:33:06+07:00",
-      "image": "https://static.republika.co.id/uploads/images/detailnews/096882300-1765902849-830-556.jpg",
-      "body": "Berita terhangat hari ini dilaporkan oleh media Republika. Informasi selengkapnya mengenai topik ini dapat Anda baca langsung melalui tautan resmi sumber asli berikut: https://news.republika.co.id/berita/tfhbnh368/16046-sppg-raih-slhs-tata-kelola-program-mbg-makin-diperkuat"
-    },
-    {
-      "title": "Pemadaman Listrik Total, Warga Banda Aceh Padati Warung Kopi",
-      "slug": "pemadaman-listrik-total-warga-banda-aceh-padati-warung-kopi",
-      "category": "Politik",
-      "date": "2026-05-22T18:24:02+07:00",
-      "image": "https://static.republika.co.id/uploads/images/detailnews/045630300-1779473733-IMG-20260522-WA0017_1jpg.jpg",
-      "body": "Berita terhangat hari ini dilaporkan oleh media Republika. Informasi selengkapnya mengenai topik ini dapat Anda baca langsung melalui tautan resmi sumber asli berikut: https://news.republika.co.id/berita/tfgapx7630000/pemadaman-listrik-total-warga-banda-aceh-padati-warung-kopi"
-    },
-    {
-      "title": "CBN Dorong Transformasi Digital Perhotelan di Sumatera Utara Lewat Business Gathering",
-      "slug": "cbn-dorong-transformasi-digital-perhotelan-di-sumatera-utara",
-      "category": "Politik",
-      "date": "2026-05-22T18:24:00+07:00",
-      "image": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=600",
-      "body": "Berita terhangat hari ini dilaporkan oleh media Tempo. Informasi selengkapnya mengenai topik ini dapat Anda baca langsung melalui tautan resmi sumber asli berikut: https://nasional.tempo.co/read/2104992/cbn-dorong-transformasi-digital-perhotelan-di-sumatera-utara-lewat-business-gathering"
-    },
-    {
-      "title": "APBN 2027 Bisa Jadi Alat Perjuangan Bangsa",
-      "slug": "apbn-2027-bisa-jadi-alat-perjuangan-bangsa",
-      "category": "Politik",
-      "date": "2026-05-22T18:24:03+07:00",
-      "image": "https://pict.sindonews.com/dyn/850/pena/news/2026/05/22/12/1709803/apbn-2027-bisa-jadi-alat-perjuangan-bangsa-qao.jpeg",
-      "body": "Berita terhangat hari ini dilaporkan oleh media Okezone. Informasi selengkapnya mengenai topik ini dapat Anda baca langsung melalui tautan resmi sumber asli berikut: https://nasional.sindonews.com/read/1709803/12/apbn-2027-bisa-jadi-alat-perjuangan-bangsa-1779465919"
-    },
-    {
-      "title": "TPNPB-OPM Tuding Militer Gunakan Drone Bom di Nduga",
-      "slug": "tpnpb-opm-tuding-militer-gunakan-drone-bom-di-nduga",
-      "category": "Politik",
-      "date": "2026-05-22T18:24:00+07:00",
-      "image": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=600",
-      "body": "Berita terhangat hari ini dilaporkan oleh media Tempo. Informasi selengkapnya mengenai topik ini dapat Anda baca langsung melalui tautan resmi sumber asli berikut: https://nasional.tempo.co/read/2104987/tpnpb-opm-tuding-militer-gunakan-drone-bom-di-nduga"
-    },
-    {
-      "title": "Majelis Etik Ombudsman RI: Standar Etika Setara KPK",
-      "slug": "majelis-etik-ombudsman-ri-standar-etika-setara-kpk",
-      "category": "Politik",
-      "date": "2026-05-22T18:24:02+07:00",
-      "image": "https://static.republika.co.id/uploads/images/detailnews/058300400-1779471907-Majelis-Etik-Ombudsman-Mintai.jpg",
-      "body": "Berita terhangat hari ini dilaporkan oleh media Republika. Informasi selengkapnya mengenai topik ini dapat Anda baca langsung melalui tautan resmi sumber asli berikut: https://news.republika.co.id/berita/tfg9b710030000/majelis-etik-ombudsman-ri-standar-etika-setara-kpk"
-    },
-    {
-      "title": "Kemenko Kumham Imipas Raih Penghargaan Istimewa Digital Innovation in Public Services di DIA 2026",
-      "slug": "kemenko-kumham-imipas-raih-penghargaan-istimewa-digital-inno",
-      "category": "Teknologi",
-      "date": "2026-05-22T18:24:03+07:00",
-      "image": "https://pict.sindonews.com/dyn/850/pena/news/2026/05/22/15/1709805/kemenko-kumham-imipas-raih-penghargaan-istimewa-digital-innovation-in-public-services-di-dia-2026-mlk.jpg",
-      "body": "Berita terhangat hari ini dilaporkan oleh media Okezone. Informasi selengkapnya mengenai topik ini dapat Anda baca langsung melalui tautan resmi sumber asli berikut: https://nasional.sindonews.com/read/1709805/15/kemenko-kumham-imipas-raih-penghargaan-istimewa-digital-innovation-in-public-services-di-dia-2026-1779465949"
-    },
-    {
-      "title": "Purbaya soal Nasib Djaka Budhi Utama: Lihat Pekan Depan",
-      "slug": "purbaya-soal-nasib-djaka-budhi-utama-lihat-pekan-depan",
-      "category": "Politik",
-      "date": "2026-05-22T18:24:00+07:00",
-      "image": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=600",
-      "body": "Berita terhangat hari ini dilaporkan oleh media Tempo. Informasi selengkapnya mengenai topik ini dapat Anda baca langsung melalui tautan resmi sumber asli berikut: https://nasional.tempo.co/read/2104999/purbaya-soal-nasib-djaka-budhi-utama-lihat-pekan-depan"
-    },
-    {
-      "title": "Herdman: FIFA Match Day Diperkuat Pemain Eropa, Piala ASEAN oleh Pemain Lokal",
-      "slug": "herdman-fifa-match-day-diperkuat-pemain-eropa-piala-asean-ol",
-      "category": "Teknologi",
-      "date": "2026-05-22T18:24:02+07:00",
-      "image": "https://static.republika.co.id/uploads/images/detailnews/069940900-1779472820-IMG-20260522-WA0031jpg.jpg",
-      "body": "Berita terhangat hari ini dilaporkan oleh media Republika. Informasi selengkapnya mengenai topik ini dapat Anda baca langsung melalui tautan resmi sumber asli berikut: https://news.republika.co.id/berita/tfga0k8530000/herdman-fifa-match-day-diperkuat-pemain-eropa-piala-asean-oleh-pemain-lokal"
-    },
-    {
-      "title": "Gangguan Transmisi 275 kV Jadi Penyebab Listrik Padam di Sumatera",
-      "slug": "gangguan-transmisi-275-kv-jadi-penyebab-listrik-padam-di-sum",
-      "category": "Politik",
-      "date": "2026-05-22T18:24:03+07:00",
-      "image": "https://pict.sindonews.com/dyn/850/pena/news/2026/05/22/34/1709807/gangguan-transmisi-275-kv-jadi-penyebab-listrik-padam-di-sumatera-tik.jpg",
-      "body": "Berita terhangat hari ini dilaporkan oleh media Okezone. Informasi selengkapnya mengenai topik ini dapat Anda baca langsung melalui tautan resmi sumber asli berikut: https://ekbis.sindonews.com/read/1709807/34/gangguan-transmisi-275-kv-jadi-penyebab-listrik-padam-di-sumatera-1779465920"
-    },
-    {
-      "title": "MNC Animation Siap Adopsi Teknologi AI, Hary Tanoesoedibjo: Faster, Cheaper, and Better",
-      "slug": "mnc-animation-siap-adopsi-teknologi-ai-hary-tanoesoedibjo-fa",
-      "category": "Teknologi",
-      "date": "2026-05-22T10:39:25+07:00",
-      "image": "https://pict.sindonews.com/dyn/850/pena/news/2026/05/22/158/1709637/mnc-animation-siap-adopsi-teknologi-ai-hary-tanoesoedibjo-faster-cheaper-and-better-kno.jpg",
-      "body": "Berita terhangat hari ini dilaporkan oleh media Okezone. Informasi selengkapnya mengenai topik ini dapat Anda baca langsung melalui tautan resmi sumber asli berikut: https://lifestyle.sindonews.com/read/1709637/158/mnc-animation-siap-adopsi-teknologi-ai-hary-tanoesoedibjo-faster-cheaper-and-better-1779440711"
-    },
-    {
-      "title": "Jelang Idul Adha, Andi Harun Perkuat Benteng Stabilitas Harga dengan Strategi 4K",
-      "slug": "jelang-idul-adha-andi-harun-perkuat-benteng-stabilitas-harga",
-      "category": "Politik",
-      "date": "2026-05-22T10:39:22+07:00",
-      "image": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=600",
-      "body": "Berita terhangat hari ini dilaporkan oleh media Tempo. Informasi selengkapnya mengenai topik ini dapat Anda baca langsung melalui tautan resmi sumber asli berikut: https://nasional.tempo.co/read/2104942/jelang-idul-adha-andi-harun-perkuat-benteng-stabilitas-harga-dengan-strategi-4k"
-    },
-    {
-      "title": "Menuju Perjalanan Penyucian Hati: Manasik Haji 2026 bersama Jejak Imani",
-      "slug": "menuju-perjalanan-penyucian-hati-manasik-haji-2026-bersama-j",
-      "category": "Politik",
-      "date": "2026-05-22T10:39:22+07:00",
-      "image": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=600",
-      "body": "Berita terhangat hari ini dilaporkan oleh media Tempo. Informasi selengkapnya mengenai topik ini dapat Anda baca langsung melalui tautan resmi sumber asli berikut: https://nasional.tempo.co/read/2104946/menuju-perjalanan-penyucian-hati-manasik-haji-2026-bersama-jejak-imani"
-    },
-    {
-      "title": "IRGC Izinkan 35 Kapal Lewati Selat Hormuz dalam 24 Jam Terakhir",
-      "slug": "irgc-izinkan-35-kapal-lewati-selat-hormuz-dalam-24-jam-terak",
-      "category": "Politik",
-      "date": "2026-05-22T10:39:25+07:00",
-      "image": "https://pict.sindonews.com/dyn/850/pena/news/2026/05/22/43/1709639/irgc-izinkan-35-kapal-lewati-selat-hormuz-dalam-24-jam-terakhir-kcl.jpg",
-      "body": "Berita terhangat hari ini dilaporkan oleh media Okezone. Informasi selengkapnya mengenai topik ini dapat Anda baca langsung melalui tautan resmi sumber asli berikut: https://international.sindonews.com/read/1709639/43/irgc-izinkan-35-kapal-lewati-selat-hormuz-dalam-24-jam-terakhir-1779444324"
-    },
-    {
-      "title": "BEM UI Kirim Karangan Bunga Duka Cita ke Istana",
-      "slug": "bem-ui-kirim-karangan-bunga-duka-cita-ke-istana",
-      "category": "Politik",
-      "date": "2026-05-22T10:39:22+07:00",
-      "image": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=600",
-      "body": "Berita terhangat hari ini dilaporkan oleh media Tempo. Informasi selengkapnya mengenai topik ini dapat Anda baca langsung melalui tautan resmi sumber asli berikut: https://nasional.tempo.co/read/2104947/bem-ui-kirim-karangan-bunga-duka-cita-ke-istana"
-    },
-    {
-      "title": "Jadi Tersangka Korupsi, Hery Susanto Akan Diperiksa Majelis Etik Ombudsman Pekan Depan",
-      "slug": "jadi-tersangka-korupsi-hery-susanto-akan-diperiksa-majelis-e",
-      "category": "Politik",
-      "date": "2026-05-22T10:39:25+07:00",
-      "image": "https://pict.sindonews.com/dyn/850/pena/news/2026/05/22/13/1709645/jadi-tersangka-korupsi-hery-susanto-akan-diperiksa-majelis-etik-ombudsman-pekan-depan-mps.jpg",
-      "body": "Berita terhangat hari ini dilaporkan oleh media Okezone. Informasi selengkapnya mengenai topik ini dapat Anda baca langsung melalui tautan resmi sumber asli berikut: https://nasional.sindonews.com/read/1709645/13/jadi-tersangka-korupsi-hery-susanto-akan-diperiksa-majelis-etik-ombudsman-pekan-depan-1779444312"
-    },
-    {
-      "title": "Gaza Masuki Fase Kelaparan Paling Berbahaya",
-      "slug": "gaza-masuki-fase-kelaparan-paling-berbahaya",
-      "category": "Politik",
-      "date": "2026-05-22T10:39:23+07:00",
-      "image": "https://static.republika.co.id/uploads/images/detailnews/_260227144258-565.png",
-      "body": "Berita terhangat hari ini dilaporkan oleh media Republika. Informasi selengkapnya mengenai topik ini dapat Anda baca langsung melalui tautan resmi sumber asli berikut: https://news.republika.co.id/berita/tffo7o393/gaza-masuki-fase-kelaparan-paling-berbahaya"
-    },
-    {
-      "title": "Pemprov DKI Beri Insentif PBB, Ringankan Beban Warga Jakarta",
-      "slug": "pemprov-dki-beri-insentif-pbb-ringankan-beban-warga-jakarta",
-      "category": "Politik",
-      "date": "2026-05-22T10:39:23+07:00",
-      "image": "https://static.republika.co.id/uploads/images/detailnews/057788000-1656928188-830-556.jpg",
-      "body": "Berita terhangat hari ini dilaporkan oleh media Republika. Informasi selengkapnya mengenai topik ini dapat Anda baca langsung melalui tautan resmi sumber asli berikut: https://news.republika.co.id/berita/tffp5x487/pemprov-dki-beri-insentif-pbb-ringankan-beban-warga-jakarta"
-    },
-    {
-      "title": "Rayakan Persib Juara Akhir Pekan Ini, Lautan Bobotoh Bakal Penuhi Bandung",
-      "slug": "rayakan-persib-juara-akhir-pekan-ini-lautan-bobotoh-bakal-pe",
-      "category": "Olahraga",
-      "date": "2026-05-22T10:39:23+07:00",
-      "image": "https://static.republika.co.id/uploads/images/detailnews/040667000-1767949056-830-556.jpg",
-      "body": "Berita terhangat hari ini dilaporkan oleh media Republika. Informasi selengkapnya mengenai topik ini dapat Anda baca langsung melalui tautan resmi sumber asli berikut: https://rejabar.republika.co.id/berita/tffpbo282/rayakan-persib-juara-akhir-pekan-ini-lautan-bobotoh-bakal-penuhi-bandung"
-    },
-    {
-      "title": "Prancis Tegaskan Tidak Tepat bagi NATO untuk Berperan dalam Misi Hormuz",
-      "slug": "prancis-tegaskan-tidak-tepat-bagi-nato-untuk-berperan-dalam-",
-      "category": "Politik",
-      "date": "2026-05-21T22:50:33+07:00",
-      "image": "https://pict.sindonews.com/dyn/850/pena/news/2026/05/21/41/1709375/prancis-tegaskan-tidak-tepat-bagi-nato-untuk-berperan-dalam-misi-hormuz-trb.jpg",
-      "body": "Berita terhangat hari ini dilaporkan oleh media Okezone. Informasi selengkapnya mengenai topik ini dapat Anda baca langsung melalui tautan resmi sumber asli berikut: https://international.sindonews.com/read/1709375/41/prancis-tegaskan-tidak-tepat-bagi-nato-untuk-berperan-dalam-misi-hormuz-1779372349"
-    },
-    {
-      "title": "Anggota Geng Motor Dituntut 20 Tahun Penjara atas Kasus Pembunuhan di Medan",
-      "slug": "anggota-geng-motor-dituntut-20-tahun-penjara-atas-kasus-pemb",
-      "category": "Politik",
-      "date": "2026-05-21T22:50:32+07:00",
-      "image": "https://static.republika.co.id/uploads/images/detailnews/049985600-1779403506-1001055500jpg.jpg",
-      "body": "Berita terhangat hari ini dilaporkan oleh media Republika. Informasi selengkapnya mengenai topik ini dapat Anda baca langsung melalui tautan resmi sumber asli berikut: https://news.republika.co.id/berita/tfesj63530000/anggota-geng-motor-dituntut-20-tahun-penjara-atas-kasus-pembunuhan-di-medan"
-    },
-    {
-      "title": "Gubernur Sumatera Utara Bobby Nasution Tegas Tolak Proyek Mark Up",
-      "slug": "gubernur-sumatera-utara-bobby-nasution-tegas-tolak-proyek-ma",
-      "category": "Politik",
-      "date": "2026-05-21T22:50:31+07:00",
-      "image": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=600",
-      "body": "Berita terhangat hari ini dilaporkan oleh media Tempo. Informasi selengkapnya mengenai topik ini dapat Anda baca langsung melalui tautan resmi sumber asli berikut: https://nasional.tempo.co/read/2104794/gubernur-sumatera-utara-bobby-nasution-tegas-tolak-proyek-mark-up"
-    },
-    {
-      "title": "CCTV Diskominfo Badung Bantu Polisi Ungkap Kasus Pembunuhan",
-      "slug": "cctv-diskominfo-badung-bantu-polisi-ungkap-kasus-pembunuhan",
-      "category": "Politik",
-      "date": "2026-05-21T22:50:32+07:00",
-      "image": "https://static.republika.co.id/uploads/images/detailnews/011784800-1779402607-eca194bf-ebfb-4060-ba18-f92e28.jpg",
-      "body": "Berita terhangat hari ini dilaporkan oleh media Republika. Informasi selengkapnya mengenai topik ini dapat Anda baca langsung melalui tautan resmi sumber asli berikut: https://news.republika.co.id/berita/tferu78030000/cctv-diskominfo-badung-bantu-polisi-ungkap-kasus-pembunuhan"
-    },
-    {
-      "title": "Mengukur Potensi Properti dan Bisnis dari Arah Perkembangan Kawasan",
-      "slug": "mengukur-potensi-properti-dan-bisnis-dari-arah-perkembangan-",
-      "category": "Ekonomi",
-      "date": "2026-05-21T22:50:33+07:00",
-      "image": "https://pict.sindonews.com/dyn/850/pena/news/2026/05/21/34/1709397/mengukur-potensi-properti-dan-bisnis-dari-arah-perkembangan-kawasan-jdl.jpeg",
-      "body": "Berita terhangat hari ini dilaporkan oleh media Okezone. Informasi selengkapnya mengenai topik ini dapat Anda baca langsung melalui tautan resmi sumber asli berikut: https://ekbis.sindonews.com/read/1709397/34/mengukur-potensi-properti-dan-bisnis-dari-arah-perkembangan-kawasan-1779375935"
-    },
-    {
-      "title": "DPR Ajak Perempuan Perkuat Peran Pengambil Keputusan",
-      "slug": "dpr-ajak-perempuan-perkuat-peran-pengambil-keputusan",
-      "category": "Politik",
-      "date": "2026-05-21T22:50:31+07:00",
-      "image": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=600",
-      "body": "Berita terhangat hari ini dilaporkan oleh media Tempo. Informasi selengkapnya mengenai topik ini dapat Anda baca langsung melalui tautan resmi sumber asli berikut: https://nasional.tempo.co/read/2104801/dpr-ajak-perempuan-perkuat-peran-pengambil-keputusan"
-    },
-    {
-      "title": "Lebih dari Seribu Orang Ikuti Aksi Kamisan Reformasi 1998",
-      "slug": "lebih-dari-seribu-orang-ikuti-aksi-kamisan-reformasi-1998",
-      "category": "Politik",
-      "date": "2026-05-21T22:50:31+07:00",
-      "image": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=600",
-      "body": "Berita terhangat hari ini dilaporkan oleh media Tempo. Informasi selengkapnya mengenai topik ini dapat Anda baca langsung melalui tautan resmi sumber asli berikut: https://nasional.tempo.co/read/2104781/lebih-dari-seribu-orang-ikuti-aksi-kamisan-reformasi-1998"
-    },
-    {
-      "title": "Bangun Jembatan Gantung 240 Meter di Aceh Tamiang, TNI AD: Puluhan Tahun Warga tak Punya Akses",
-      "slug": "bangun-jembatan-gantung-240-meter-di-aceh-tamiang-tni-ad-pul",
-      "category": "Politik",
-      "date": "2026-05-21T22:50:32+07:00",
-      "image": "https://static.republika.co.id/uploads/images/detailnews/ilustrasi-jembatan-yang-dibangun-tni-di-aceh_260521232339-593.png",
-      "body": "Berita terhangat hari ini dilaporkan oleh media Republika. Informasi selengkapnya mengenai topik ini dapat Anda baca langsung melalui tautan resmi sumber asli berikut: https://republika.co.id/berita//tfeawy451/bangun-jembatan-gantung-240-meter-di-aceh-tamiang-tni-ad-puluhan-tahun-warga-tak-punya-akses"
-    },
-    {
-      "title": "Hindari 8 Kesalahan Ini Saat Melaksanakan Ibadah Kurban Nanti!",
-      "slug": "hindari-8-kesalahan-ini-saat-melaksanakan-ibadah-kurban-nant",
-      "category": "Politik",
-      "date": "2026-05-21T22:50:33+07:00",
-      "image": "https://pict.sindonews.com/dyn/850/pena/news/2026/05/21/70/1709313/hindari-8-kesalahan-ini-saat-melaksanakan-ibadah-kurban-nanti-oyg.jpg",
-      "body": "Berita terhangat hari ini dilaporkan oleh media Okezone. Informasi selengkapnya mengenai topik ini dapat Anda baca langsung melalui tautan resmi sumber asli berikut: https://kalam.sindonews.com/read/1709313/70/hindari-8-kesalahan-ini-saat-melaksanakan-ibadah-kurban-nanti-1779361520"
-    },
-    {
-      "title": "Pantai hingga Hutan, Tour de Bintan 2026 Tambah Kategori Poin Ranking Dunia UCI",
-      "slug": "pantai-hingga-hutan-tour-de-bintan-2026-tambah-kategori-poin",
-      "category": "Olahraga",
-      "date": "2026-05-21T16:30:00+07:00",
-      "image": "https://asset.tribunnews.com/cGQxDxEaJQOakaJppXpO-7JhaFs=/148x99/filters:quality(30):format(webp):focal(0.5x0.5:0.5x0.5)/tribunnews/foto/bank/originals/Pebalap-di-ajang-balap-sepeda-internasional-Tour-de-Bintan.jpg",
-      "body": "Berita terhangat hari ini dilaporkan oleh media Tribunnews. Informasi selengkapnya mengenai topik ini dapat Anda baca langsung melalui tautan resmi sumber asli berikut: https://www.tribunnews.com/sport/7832677/pantai-hingga-hutan-tour-de-bintan-2026-tambah-kategori-poin-ranking-dunia-uci"
-    },
-    {
-      "title": "PNM Dukung Integrasi Ekosistem UMKM Lewat SAPA UMKM",
-      "slug": "pnm-dukung-integrasi-ekosistem-umkm-lewat-sapa-umkm",
-      "category": "Ekonomi",
-      "date": "2026-05-21T16:30:00+07:00",
-      "image": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=600",
-      "body": "Berita terhangat hari ini dilaporkan oleh media Tempo. Informasi selengkapnya mengenai topik ini dapat Anda baca langsung melalui tautan resmi sumber asli berikut: https://nasional.tempo.co/read/2104807/pnm-dukung-integrasi-ekosistem-umkm-lewat-sapa-umkm"
-    },
-    {
-      "title": "BTS akan Tampil di American Music Awards 2026 Setelah Empat Tahun Absen",
-      "slug": "bts-akan-tampil-di-american-music-awards-2026-setelah-empat-",
-      "category": "Hiburan",
-      "date": "2026-05-21T16:30:00+07:00",
-      "image": "https://static.republika.co.id/uploads/images/detailnews/foto-yang-dirilis-oleh-bighit-musicnetflix-menunjukkan-grup-k-pop_260322124539-810.jpg",
-      "body": "Berita terhangat hari ini dilaporkan oleh media Republika. Informasi selengkapnya mengenai topik ini dapat Anda baca langsung melalui tautan resmi sumber asli berikut: https://ameera.republika.co.id/berita/tfeb24425/bts-akan-tampil-di-american-music-awards-2026-setelah-empat-tahun-absen"
-    },
-    {
-      "title": "3 Kali Coba Terobos Imigrasi, 13 Haji Nonprosedural Digagalkan di Bandara Kualanamu",
-      "slug": "3-kali-coba-terobos-imigrasi-13-haji-nonprosedural-digagalka",
-      "category": "Ekonomi",
-      "date": "2026-05-21T16:30:00+07:00",
-      "image": "https://pict.sindonews.com/dyn/850/pena/news/2026/05/21/174/1709399/3-kali-gagal-terobos-imigrasi-13-haji-nonprosedural-digagalkan-di-bandara-kualanamu-vlf.jpg",
-      "body": "Berita terhangat hari ini dilaporkan oleh media Okezone. Informasi selengkapnya mengenai topik ini dapat Anda baca langsung melalui tautan resmi sumber asli berikut: https://daerah.sindonews.com/read/1709399/174/3-kali-coba-terobos-imigrasi-13-haji-nonprosedural-digagalkan-di-bandara-kualanamu-1779375959"
-    },
-    {
-      "title": "Pelajar Ikut Kamisan saat Peringatan Reformasi: Jangan Diam",
-      "slug": "pelajar-ikut-kamisan-saat-peringatan-reformasi-jangan-diam",
-      "category": "Politik",
-      "date": "2026-05-21T16:30:00+07:00",
-      "image": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=600",
-      "body": "Berita terhangat hari ini dilaporkan oleh media Tempo. Informasi selengkapnya mengenai topik ini dapat Anda baca langsung melalui tautan resmi sumber asli berikut: https://nasional.tempo.co/read/2104808/pelajar-ikut-kamisan-saat-peringatan-reformasi-jangan-diam"
-    },
-    {
-      "title": "Dari Saigon ke Teheran: Inilah Kemiripan Perang Iran dan Vietnam",
-      "slug": "dari-saigon-ke-teheran-inilah-kemiripan-perang-iran-dan-viet",
-      "category": "Politik",
-      "date": "2026-05-21T16:30:00+07:00",
-      "image": "https://static.republika.co.id/uploads/images/detailnews/_260511075125-771.png",
-      "body": "Berita terhangat hari ini dilaporkan oleh media Republika. Informasi selengkapnya mengenai topik ini dapat Anda baca langsung melalui tautan resmi sumber asli berikut: https://khazanah.republika.co.id/berita/tfeavl320/dari-saigon-ke-teheran-inilah-kemiripan-perang-iran-dan-vietnam"
-    },
-    {
-      "title": "Roy Suryo Cs Soroti Munculnya Perubahan Pasal hingga Double Sprindik dari Polda Metro",
-      "slug": "roy-suryo-cs-soroti-munculnya-perubahan-pasal-hingga-double-",
-      "category": "Politik",
-      "date": "2026-05-21T16:30:00+07:00",
-      "image": "https://pict.sindonews.com/dyn/850/pena/news/2026/05/21/6/1709393/roy-suryo-cs-soroti-munculnya-perubahan-pasal-hingga-double-sprindik-dari-polda-metro-uum.jpg",
-      "body": "Berita terhangat hari ini dilaporkan oleh media Okezone. Informasi selengkapnya mengenai topik ini dapat Anda baca langsung melalui tautan resmi sumber asli berikut: https://daerah.sindonews.com/read/1709393/6/roy-suryo-cs-soroti-munculnya-perubahan-pasal-hingga-double-sprindik-dari-polda-metro-1779375907"
-    },
-    {
-      "title": "Neuer Kembali, Gnabry Dicoret, Ini Skuad Lengkap Jerman untuk Piala Dunia 2026",
-      "slug": "neuer-kembali-gnabry-dicoret-ini-skuad-lengkap-jerman-untuk-",
-      "category": "Olahraga",
-      "date": "2026-05-21T16:30:00+07:00",
-      "image": "https://static.republika.co.id/uploads/images/detailnews/manuel-neuer-_150112045005-850.jpg",
-      "body": "Berita terhangat hari ini dilaporkan oleh media Republika. Informasi selengkapnya mengenai topik ini dapat Anda baca langsung melalui tautan resmi sumber asli berikut: https://news.republika.co.id/berita/tfe8kt451/neuer-kembali-gnabry-dicoret-ini-skuad-lengkap-jerman-untuk-piala-dunia-2026"
-    },
-    {
-      "title": "Mayat Wanita Asal Serang Ditemukan Tergantung di Pohon Melinjo, Hasil Autopsi Temukan Kejanggalan",
-      "slug": "mayat-wanita-asal-serang-ditemukan-tergantung-di-pohon-melin",
-      "category": "Ekonomi",
-      "date": "2026-05-21T16:30:00+07:00",
-      "image": "https://asset.tribunnews.com/0USnCBDM2NBz2n8YbEUsThy9zrQ=/148x99/filters:quality(30):format(webp):focal(0.5x0.5:0.5x0.5)/tribunnews/foto/bank/originals/Tempat-kejadian-perkara-TKP-penemuan-mayat-perempuan-di-serang.jpg",
-      "body": "Berita terhangat hari ini dilaporkan oleh media Tribunnews. Informasi selengkapnya mengenai topik ini dapat Anda baca langsung melalui tautan resmi sumber asli berikut: https://www.tribunnews.com/regional/7832676/mayat-wanita-asal-serang-ditemukan-tergantung-di-pohon-melinjo-hasil-autopsi-temukan-kejanggalan"
-    },
-    {
-      "title": "Pemerintah Perpanjang WFH ASN hingga 2 Bulan ke Depan",
-      "slug": "pemerintah-perpanjang-wfh-asn-hingga-2-bulan-ke-depan",
-      "category": "Ekonomi",
-      "date": "2026-05-21T16:30:00+07:00",
-      "image": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=600",
-      "body": "Berita terhangat hari ini dilaporkan oleh media Tempo. Informasi selengkapnya mengenai topik ini dapat Anda baca langsung melalui tautan resmi sumber asli berikut: https://nasional.tempo.co/read/2104810/pemerintah-perpanjang-wfh-asn-hingga-2-bulan-ke-depan"
-    },
-    {
-      "title": "bank bjb Rayakan HUT ke-65 dengan Ragam Promo, Inovasi, dan Program Sosial",
-      "slug": "bank-bjb-rayakan-hut-ke-65-dengan-ragam-promo-inovasi-dan-pr",
-      "category": "Ekonomi",
-      "date": "2026-05-21T16:30:00+07:00",
-      "image": "https://pict.sindonews.com/dyn/850/pena/news/2026/05/21/178/1709401/bank-bjb-rayakan-hut-ke65-dengan-ragam-promo-inovasi-dan-program-sosial-mpz.jpg",
-      "body": "Berita terhangat hari ini dilaporkan oleh media Okezone. Informasi selengkapnya mengenai topik ini dapat Anda baca langsung melalui tautan resmi sumber asli berikut: https://ekbis.sindonews.com/read/1709401/178/bank-bjb-rayakan-hut-ke-65-dengan-ragam-promo-inovasi-dan-program-sosial-1779379557"
-    },
-    {
-      "title": "28 Tahun Reformasi, 98 Resolution Network Dukung Prabowo-Gibran Hadirkan Pemerataan Ekonomi",
-      "slug": "28-tahun-reformasi-98-resolution-network-dukung-prabowo-gibr",
-      "category": "Ekonomi",
-      "date": "2026-05-21T16:30:00+07:00",
-      "image": "https://asset.tribunnews.com/vgtRGBYJbyW0SdupA87M3PFN8DQ=/148x99/filters:quality(30):format(webp):focal(0.5x0.5:0.5x0.5)/tribunnews/foto/bank/originals/28reformasitahun-98-RN.jpg",
-      "body": "Berita terhangat hari ini dilaporkan oleh media Tribunnews. Informasi selengkapnya mengenai topik ini dapat Anda baca langsung melalui tautan resmi sumber asli berikut: https://www.tribunnews.com/nasional/7832675/28-tahun-reformasi-98-resolution-network-dukung-prabowo-gibran-hadirkan-pemerataan-ekonomi"
-    },
-    {
-      "title": "Tanggapan Ganjar soal Prabowo Pilu dengar Kritik PDIP",
-      "slug": "tanggapan-ganjar-soal-prabowo-pilu-dengar-kritik-pdip",
-      "category": "Politik",
-      "date": "2026-05-21T08:13:00+07:00",
-      "image": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=600",
-      "body": "Berita terhangat hari ini dilaporkan oleh media Tempo. Informasi selengkapnya mengenai topik ini dapat Anda baca langsung melalui tautan resmi sumber asli berikut:"
-    },
-    {
-      "title": "Dukung Keberlanjutan Pasokan Gas Domestik, PGN Siap Serap Pasokan LNG dari Proyek Abadi LNG Blok Masela",
-      "slug": "dukung-keberlanjutan-pasokan-gas-domestik-pgn-siap-serap-pas",
-      "category": "Ekonomi",
-      "date": "2026-05-21T08:13:00+07:00",
-      "image": "https://pict.sindonews.com/dyn/850/pena/news/2026/05/21/34/1709221/dukung-keberlanjutan-pasokan-gas-domestik-pgn-siap-serap-pasokan-lng-dari-proyek-abadi-lng-blok-masela-tfc.jpeg",
-      "body": "Berita terhangat hari ini dilaporkan oleh media Okezone. Informasi selengkapnya mengenai topik ini dapat Anda baca langsung melalui tautan resmi sumber asli berikut: https://ekbis.sindonews.com/read/1709221/34/dukung-keberlanjutan-pasokan-gas-domestik-pgn-siap-serap-pasokan-lng-dari-proyek-abadi-lng-blok-masela-1779350704"
-    },
-    {
-      "title": "Anak di Bawah 7 Tahun Bisa Masuk SD, Ini Syaratnya",
-      "slug": "anak-di-bawah-7-tahun-bisa-masuk-sd-ini-syaratnya",
-      "category": "Ekonomi",
-      "date": "2026-05-21T08:13:00+07:00",
-      "image": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=600",
-      "body": "Berita terhangat hari ini dilaporkan oleh media Tempo. Informasi selengkapnya mengenai topik ini dapat Anda baca langsung melalui tautan resmi sumber asli berikut: https://nasional.tempo.co/read/2104720/anak-di-bawah-7-tahun-bisa-masuk-sd-ini-syaratnya"
-    },
-    {
-      "title": "Bus Shalawat akan Berhenti Besok, Jamaah Haji RI Diminta tak Paksakan Diri ke Masjidil Haram",
-      "slug": "bus-shalawat-akan-berhenti-besok-jamaah-haji-ri-diminta-tak-",
-      "category": "Politik",
-      "date": "2026-05-21T08:13:00+07:00",
-      "image": "https://static.republika.co.id/uploads/images/detailnews/025966700-1747749104-830-556.jpg",
-      "body": "Berita terhangat hari ini dilaporkan oleh media Republika. Informasi selengkapnya mengenai topik ini dapat Anda baca langsung melalui tautan resmi sumber asli berikut: https://khazanah.republika.co.id/berita/tfdnui483/bus-shalawat-akan-berhenti-besok-jamaah-haji-ri-diminta-tak-paksakan-diri-ke-masjidil-haram"
-    },
-    {
-      "title": "Link Daftar Pelatihan Vokasi Nasional 2026 untuk Lulusan SMA/SMK, Cek Benefitnya",
-      "slug": "link-daftar-pelatihan-vokasi-nasional-2026-untuk-lulusan-sma",
-      "category": "Ekonomi",
-      "date": "2026-05-21T08:13:00+07:00",
-      "image": "https://pict.sindonews.com/dyn/850/pena/news/2026/05/21/212/1709217/link-daftar-pelatihan-vokasi-nasional-batch-2-2026-untuk-lulusan-smasmk-cek-benefitnya-wkd.jpg",
-      "body": "Berita terhangat hari ini dilaporkan oleh media Okezone. Informasi selengkapnya mengenai topik ini dapat Anda baca langsung melalui tautan resmi sumber asli berikut: https://edukasi.sindonews.com/read/1709217/212/link-daftar-pelatihan-vokasi-nasional-2026-untuk-lulusan-smasmk-cek-benefitnya-1779347107"
-    },
-    {
-      "title": "PM Sanchez Angkat Suara, 44 Relawan Global Sumud dari Spanyol Dibebaskan",
-      "slug": "pm-sanchez-angkat-suara-44-relawan-global-sumud-dari-spanyol",
-      "category": "Politik",
-      "date": "2026-05-21T08:13:00+07:00",
-      "image": "https://static.republika.co.id/uploads/images/detailnews/_260521111808-489.png",
-      "body": "Berita terhangat hari ini dilaporkan oleh media Republika. Informasi selengkapnya mengenai topik ini dapat Anda baca langsung melalui tautan resmi sumber asli berikut: https://news.republika.co.id/berita/tfdnmg393/pm-sanchez-angkat-suara-44-relawan-global-sumud-dari-spanyol-dibebaskan"
-    },
-    {
-      "title": "Kemendikdasmen Tetapkan Batas Rombongan Belajar SPMB 2026",
-      "slug": "kemendikdasmen-tetapkan-batas-rombongan-belajar-spmb-2026",
-      "category": "Politik",
-      "date": "2026-05-21T08:13:00+07:00",
-      "image": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=600",
-      "body": "Berita terhangat hari ini dilaporkan oleh media Tempo. Informasi selengkapnya mengenai topik ini dapat Anda baca langsung melalui tautan resmi sumber asli berikut: https://nasional.tempo.co/read/2104710/kemendikdasmen-tetapkan-batas-rombongan-belajar-spmb-2026"
-    },
-    {
-      "title": "Aksi Ojol Forkot Warnai Kawasan Medan Merdeka Selatan",
-      "slug": "aksi-ojol-forkot-warnai-kawasan-medan-merdeka-selatan",
-      "category": "Ekonomi",
-      "date": "2026-05-21T08:13:00+07:00",
-      "image": "https://pict.sindonews.com/dyn/850/pena/news/2026/05/21/6/1709219/aksi-ojol-forkot-warnai-kawasan-medan-merdeka-selatan-oil.jpg",
-      "body": "Berita terhangat hari ini dilaporkan oleh media Okezone. Informasi selengkapnya mengenai topik ini dapat Anda baca langsung melalui tautan resmi sumber asli berikut: https://daerah.sindonews.com/read/1709219/6/aksi-ojol-forkot-warnai-kawasan-medan-merdeka-selatan-1779347128"
-    },
-    {
-      "title": "Bupati Jeje Dukung Langkah Dedi Mulyadi Hentikan Alih Fungsi Lahan di Kawasan Hutan",
-      "slug": "bupati-jeje-dukung-langkah-dedi-mulyadi-hentikan-alih-fungsi",
-      "category": "Politik",
-      "date": "2026-05-21T08:13:00+07:00",
-      "image": "https://static.republika.co.id/uploads/images/detailnews/bupati-bandung-barat-jeje-ritchie-ismail_260521151157-356.jpg",
-      "body": "Berita terhangat hari ini dilaporkan oleh media Republika. Informasi selengkapnya mengenai topik ini dapat Anda baca langsung melalui tautan resmi sumber asli berikut: https://rejabar.republika.co.id/berita/tfdo5z368/bupati-jeje-dukung-langkah-dedi-mulyadi-hentikan-alih-fungsi-lahan-di-kawasan-hutan"
-    },
-    {
-      "title": "Profil Basral Graito Hutomo, peraih emas skateboard SEA Games 2025",
-      "slug": "profil-basral-graito-hutomo-peraih-emas-skateboard-sea-games",
-      "category": "Olahraga",
-      "date": "2026-05-21T05:36:00+07:00",
-      "image": "https://img.antaranews.com/cache/800x533/2025/12/15/WhatsApp-Image-2025-12-15-at-1.45.15-AM.jpeg",
-      "body": "Berita terkini mengenai topik Olahraga. Informasi selengkapnya mengenai berita ini dapat Anda baca langsung melalui tautan resmi sumber asli penyedia media berikut: https://www.antaranews.com/berita/5319445/profil-basral-graito-hutomo-peraih-emas-skateboard-sea-games-2025"
-    },
-    {
-      "title": "Tiga kapal perang Pakistan sandar di Jakarta, ini agenda lengkapnya",
-      "slug": "tiga-kapal-perang-pakistan-sandar-di-jakarta-ini-agenda-leng",
-      "category": "Politik",
-      "date": "2026-05-21T05:36:00+07:00",
-      "image": "https://img.antaranews.com/cache/800x533/2026/05/21/1001406440.jpg",
-      "body": "Berita terkini mengenai topik Nasional. Informasi selengkapnya mengenai berita ini dapat Anda baca langsung melalui tautan resmi sumber asli penyedia media berikut: https://www.antaranews.com/berita/5576047/tiga-kapal-perang-pakistan-sandar-di-jakarta-ini-agenda-lengkapnya"
-    },
-    {
-      "title": "Aston Villa juara Liga Europa 2025/26, Unai Emery raih trofi kelima",
-      "slug": "aston-villa-juara-liga-europa-202526-unai-emery-raih-trofi-k",
-      "category": "Olahraga",
-      "date": "2026-05-21T05:36:00+07:00",
-      "image": "https://img.antaranews.com/cache/800x533/2026/05/21/1000036010.jpg",
-      "body": "Berita terkini mengenai topik Nasional. Informasi selengkapnya mengenai berita ini dapat Anda baca langsung melalui tautan resmi sumber asli penyedia media berikut: https://www.antaranews.com/berita/5575843/aston-villa-juara-liga-europa-2025-26-unai-emery-raih-trofi-kelima"
-    },
-    {
-      "title": "Simak tata cara dan aturan bermain olahraga Petanque",
-      "slug": "simak-tata-cara-dan-aturan-bermain-olahraga-petanque",
-      "category": "Olahraga",
-      "date": "2026-05-21T05:36:00+07:00",
-      "image": "https://img.antaranews.com/cache/800x533/2023/05/22/pentaque.jpg",
-      "body": "Berita terkini mengenai topik Olahraga. Informasi selengkapnya mengenai berita ini dapat Anda baca langsung melalui tautan resmi sumber asli penyedia media berikut: https://www.antaranews.com/berita/5300674/simak-tata-cara-dan-aturan-bermain-olahraga-petanque"
-    },
-    {
-      "title": "SEA Games: mempererat tali persaudaraan lewat olahraga",
-      "slug": "sea-games-mempererat-tali-persaudaraan-lewat-olahraga",
-      "category": "Olahraga",
-      "date": "2026-05-21T05:36:00+07:00",
-      "image": "https://img.antaranews.com/cache/800x533/2025/12/16/tim-dayung-quadruple-sculls-putra-indonesia-raih-medali-emas-2691082.jpg",
-      "body": "Berita terkini mengenai topik Olahraga. Informasi selengkapnya mengenai berita ini dapat Anda baca langsung melalui tautan resmi sumber asli penyedia media berikut: https://www.antaranews.com/berita/5307148/sea-games-mempererat-tali-persaudaraan-lewat-olahraga"
-    },
-    {
-      "title": "Jangan Kaget, Begini Cara 'Aneh' Jerapah Jantan Ajak Kawin Betina",
-      "slug": "jangan-kaget-begini-cara-aneh-jerapah-jantan-ajak-kawin-beti",
-      "category": "Hiburan",
-      "date": "2026-05-21T05:36:00+07:00",
-      "image": "https://static.republika.co.id/uploads/images/detailnews/cara-unik-jerapah-jantan-mengajak-jerapah-betina-kawin_230214142937-479.jpg",
-      "body": "Berita terkini mengenai topik Hiburan. Informasi selengkapnya mengenai berita ini dapat Anda baca langsung melalui tautan resmi sumber asli penyedia media berikut: https://ameera.republika.co.id/berita/rq27mh425/jangan-kaget-begini-cara-aneh-jerapah-jantan-ajak-kawin-betina"
-    },
-    {
-      "title": "Kemensos pastikan kesiapan dana Rp1 triliun untuk Aceh, Sumut, Sumbar",
-      "slug": "kemensos-pastikan-kesiapan-dana-rp1-triliun-untuk-aceh-sumut",
-      "category": "Ekonomi",
-      "date": "2026-05-21T05:36:00+07:00",
-      "image": "https://img.antaranews.com/cache/800x533/2026/05/21/pertemuan-mensos-dan-wagub-aceh-terkait-penanganan-pascabencana-2792057.jpg",
-      "body": "Berita terkini mengenai topik Nasional. Informasi selengkapnya mengenai berita ini dapat Anda baca langsung melalui tautan resmi sumber asli penyedia media berikut: https://www.antaranews.com/berita/5575568/kemensos-pastikan-kesiapan-dana-rp1-triliun-untuk-aceh-sumut-sumbar"
-    },
-    {
-      "title": "Mengenal olahraga Sepak Takraw: Aturan dan cara bermainnya",
-      "slug": "mengenal-olahraga-sepak-takraw-aturan-dan-cara-bermainnya",
-      "category": "Olahraga",
-      "date": "2026-05-21T05:36:00+07:00",
-      "image": "https://img.antaranews.com/cache/800x533/2025/06/27/1000945174_1.jpg",
-      "body": "Berita terkini mengenai topik Olahraga. Informasi selengkapnya mengenai berita ini dapat Anda baca langsung melalui tautan resmi sumber asli penyedia media berikut: https://www.antaranews.com/berita/5300677/mengenal-olahraga-sepak-takraw-aturan-dan-cara-bermainnya"
-    },
-    {
-      "title": "Henry Cavill tak Ada di Trailer Film The Flash, Penggemar Kecewa",
-      "slug": "henry-cavill-tak-ada-di-trailer-film-the-flash-penggemar-kec",
-      "category": "Hiburan",
-      "date": "2026-05-21T05:36:00+07:00",
-      "image": "https://static.republika.co.id/uploads/images/detailnews/superman-versi-henry_211013160143-455.jpeg",
-      "body": "Berita terkini mengenai topik Hiburan. Informasi selengkapnya mengenai berita ini dapat Anda baca langsung melalui tautan resmi sumber asli penyedia media berikut: https://ameera.republika.co.id/berita/rq26ce425/henry-cavill-tak-ada-di-trailer-film-the-flash-penggemar-kecewa"
-    },
-    {
-      "title": "Harga tiket dan jadwal pertandingan AFC Futsal Asia Cup Indonesia 2026",
-      "slug": "harga-tiket-dan-jadwal-pertandingan-afc-futsal-asia-cup-indo",
-      "category": "Olahraga",
-      "date": "2026-05-21T05:36:00+07:00",
-      "image": "https://img.antaranews.com/cache/800x533/2026/01/05/Latihan-Timnas-Futsal-Indonesia-050126-Ada-1.jpg",
-      "body": "Berita terkini mengenai topik Olahraga. Informasi selengkapnya mengenai berita ini dapat Anda baca langsung melalui tautan resmi sumber asli penyedia media berikut: https://www.antaranews.com/berita/5350369/harga-tiket-dan-jadwal-pertandingan-afc-futsal-asia-cup-indonesia-2026"
-    },
-    {
-      "title": "Danantara jelaskan alasan pilih bentuk BUMN baru khusus ekspor",
-      "slug": "danantara-jelaskan-alasan-pilih-bentuk-bumn-baru-khusus-eksp",
-      "category": "Ekonomi",
-      "date": "2026-05-21T05:36:00+07:00",
-      "image": "https://img.antaranews.com/cache/800x533/2026/05/21/tempImage4xAXFY.jpg",
-      "body": "Berita terkini mengenai topik Nasional. Informasi selengkapnya mengenai berita ini dapat Anda baca langsung melalui tautan resmi sumber asli penyedia media berikut: https://www.antaranews.com/berita/5575132/danantara-jelaskan-alasan-pilih-bentuk-bumn-baru-khusus-ekspor"
-    },
-    {
-      "title": "BP BUMN tegaskan peranan BUMN sebagai jangkar stabilitas pasar modal",
-      "slug": "bp-bumn-tegaskan-peranan-bumn-sebagai-jangkar-stabilitas-pas",
-      "category": "Ekonomi",
-      "date": "2026-05-21T05:36:00+07:00",
-      "image": "https://img.antaranews.com/cache/800x533/2026/05/21/469453.jpg",
-      "body": "Berita terkini mengenai topik Nasional. Informasi selengkapnya mengenai berita ini dapat Anda baca langsung melalui tautan resmi sumber asli penyedia media berikut: https://www.antaranews.com/berita/5575223/bp-bumn-tegaskan-peranan-bumn-sebagai-jangkar-stabilitas-pasar-modal"
-    },
-    {
-      "title": "Serial 'Salma’s Season' Jelajahi Keberagaman Muslim di Australia",
-      "slug": "serial-salmas-season-jelajahi-keberagaman-muslim-di-australi",
-      "category": "Hiburan",
-      "date": "2026-05-21T05:36:00+07:00",
-      "image": "https://static.republika.co.id/uploads/images/detailnews/serial-salmas-season-hadir-dengan-cerita-kehidupan-para-muslim_230214151820-409.png",
-      "body": "Berita terkini mengenai topik Hiburan. Informasi selengkapnya mengenai berita ini dapat Anda baca langsung melalui tautan resmi sumber asli penyedia media berikut: https://ameera.republika.co.id/berita/rq29sp425/serial-salmas-season-jelajahi-keberagaman-muslim-di-australia"
-    },
-    {
-      "title": "Konser 'Kenopsia', Coba Bangkitkan Dunia Perkusi Tanah Air dari Mati Suri",
-      "slug": "konser-kenopsia-coba-bangkitkan-dunia-perkusi-tanah-air-dari",
-      "category": "Hiburan",
-      "date": "2026-05-21T05:36:00+07:00",
-      "image": "https://static.republika.co.id/uploads/images/detailnews/yayasan-musik-amadeus-indonesia-ymai-menggelar-konser-kenopsia-yang_230214161647-624.jpg",
-      "body": "Berita terkini mengenai topik Hiburan. Informasi selengkapnya mengenai berita ini dapat Anda baca langsung melalui tautan resmi sumber asli penyedia media berikut: https://ameera.republika.co.id/berita/rq2cjx425/konser-kenopsia-coba-bangkitkan-dunia-perkusi-tanah-air-dari-mati-suri"
-    },
-    {
-      "title": "Hijrah, Aming Meminta Doa Agar Tetap Istiqomah",
-      "slug": "hijrah-aming-meminta-doa-agar-tetap-istiqomah",
-      "category": "Hiburan",
-      "date": "2026-05-21T05:36:00+07:00",
-      "image": "https://static.republika.co.id/uploads/images/detailnews/_230214155052-457.png",
-      "body": "Berita terkini mengenai topik Hiburan. Informasi selengkapnya mengenai berita ini dapat Anda baca langsung melalui tautan resmi sumber asli penyedia media berikut: https://ameera.republika.co.id/berita/rq2bkc330/hijrah-aming-meminta-doa-agar-tetap-istiqomah"
-    },
-    {
-      "title": "[Kalimantan] Jadi Kepala Daerah tak Mudah, Bima Arya: Butuh Inovasi untuk Jawab Persoalan Lokal Hingga Global",
-      "slug": "jadi-kepala-daerah-tak-mudah-bima-arya-butuh-inovasi-untuk-j",
-      "category": "Politik",
-      "date": "2026-05-21T03:57:00+07:00",
-      "image": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=600",
-      "body": "Berita seputar wilayah Kalimantan. Informasi selengkapnya mengenai topik ini dapat Anda baca langsung melalui tautan resmi sumber asli penyedia media berita berikut: https://republika.co.id/berita//tekla4483/jadi-kepala-daerah-tak-mudah-bima-arya-butuh-inovasi-untuk-jawab-persoalan-lokal-hingga-global"
-    },
-    {
-      "title": "[Kalimantan] Anak-Anak Putri Banjarmasin Tunjukkan Antusiasme Tinggi Terhadap Sepak Bola",
-      "slug": "anak-anak-putri-banjarmasin-tunjukkan-antusiasme-tinggi-terh",
-      "category": "Olahraga",
-      "date": "2026-05-21T03:57:00+07:00",
-      "image": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=600",
-      "body": "Berita seputar wilayah Kalimantan. Informasi selengkapnya mengenai topik ini dapat Anda baca langsung melalui tautan resmi sumber asli penyedia media berita berikut: https://republika.co.id/berita//tehsy2456/anak-anak-putri-banjarmasin-tunjukkan-antusiasme-tinggi-terhadap-sepak-bola"
-    },
-    {
-      "title": "[Sulawesi] Relawan Logis 08 Minta Tunda Investasi Ayam, Ini Alasannya",
-      "slug": "relawan-logis-08-minta-tunda-investasi-ayam-ini-alasannya",
-      "category": "Ekonomi",
-      "date": "2026-05-21T03:57:00+07:00",
-      "image": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=600",
-      "body": "Berita seputar wilayah Sulawesi. Informasi selengkapnya mengenai topik ini dapat Anda baca langsung melalui tautan resmi sumber asli penyedia media berita berikut: https://republika.co.id/berita//tf6t65320/relawan-logis-08-minta-tunda-investasi-ayam-ini-alasannya"
-    },
-    {
-      "title": "[Sulawesi] Tembus Pedalaman, Pemprov Papua akan Bangun Pelabuhan Plus Genjot Infrastruktur Transportasi",
-      "slug": "tembus-pedalaman-pemprov-papua-akan-bangun-pelabuhan-plus-ge",
-      "category": "Ekonomi",
-      "date": "2026-05-21T03:57:00+07:00",
-      "image": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=600",
-      "body": "Berita seputar wilayah Sulawesi. Informasi selengkapnya mengenai topik ini dapat Anda baca langsung melalui tautan resmi sumber asli penyedia media berita berikut: https://republika.co.id/berita//tf6uyo451/tembus-pedalaman-pemprov-papua-akan-bangun-pelabuhan-plus-genjot-infrastruktur-transportasi"
-    }
-  ]
-}
+[
+  {
+    "id": 23142599,
+    "title": "Olly Dondokambey Minta Kader Tuntaskan Proses Konsolidasi",
+    "slug": "olly-dondokambey-minta-kader-tuntaskan-proses-konsolidasi",
+    "category": "Politik",
+    "date": "2026-05-23T14:25:14+07:00",
+    "image": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=600",
+    "body": "Baca selengkapnya di https://nasional.tempo.co/read/2105087/olly-dondokambey-minta-kader-tuntaskan-proses-konsolidasi"
+  },
+  {
+    "id": 23142534,
+    "title": "Nabi Ibrahim dan Peristiwa Pencarian Tuhan",
+    "slug": "nabi-ibrahim-dan-peristiwa-pencarian-tuhan",
+    "category": "Politik",
+    "date": "2026-05-23T14:25:15+07:00",
+    "image": "https://static.republika.co.id/uploads/images/detailnews/061438400-1779545702-maxresdefaultjpg.jpg",
+    "body": "Baca selengkapnya di https://republika.co.id/page/shorts/yt-tfhu921546477476/nabi-ibrahim-dan-peristiwa-pencarian-tuhan"
+  },
+  {
+    "id": 23142556,
+    "title": "Cara Akses Platform Rumah Pendidikan Kemendikdasmen untuk Guru, Siswa, dan Orang Tua",
+    "slug": "cara-akses-platform-rumah-pendidikan-kemendikdasmen-untuk-gu",
+    "category": "Politik",
+    "date": "2026-05-23T14:25:16+07:00",
+    "image": "https://pict.sindonews.com/dyn/850/pena/news/2026/05/23/212/1709979/cara-akses-platform-rumah-pendidikan-kemendikdasmen-untuk-guru-siswa-dan-orang-tua-bmk.jpg",
+    "body": "Baca selengkapnya di https://edukasi.sindonews.com/read/1709979/212/cara-akses-platform-rumah-pendidikan-kemendikdasmen-untuk-guru-siswa-dan-orang-tua-1779530708"
+  },
+  {
+    "id": 23142587,
+    "title": "V+Short Jadi Rumah Baru untuk Semua Microdrama Favorit, Download Aplikasinya Sekarang!",
+    "slug": "vshort-jadi-rumah-baru-untuk-semua-microdrama-favorit-downlo",
+    "category": "Teknologi",
+    "date": "2026-05-23T14:25:16+07:00",
+    "image": "https://pict.sindonews.com/dyn/850/pena/news/2026/05/23/158/1710051/vshort-jadi-rumah-baru-untuk-semua-microdrama-favorit-download-aplikasinya-sekarang-nwz.jpg",
+    "body": "Baca selengkapnya di https://lifestyle.sindonews.com/read/1710051/158/vshort-jadi-rumah-baru-untuk-semua-microdrama-favorit-download-aplikasinya-sekarang-1779541524"
+  },
+  {
+    "id": 23142537,
+    "title": "Prabowo: 19 Bulan Saya Pimpin, Capaian Kita Sudah Banyak",
+    "slug": "prabowo-19-bulan-saya-pimpin-capaian-kita-sudah-banyak",
+    "category": "Teknologi",
+    "date": "2026-05-23T14:25:14+07:00",
+    "image": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=600",
+    "body": "Baca selengkapnya di https://nasional.tempo.co/read/2105110/prabowo-19-bulan-saya-pimpin-capaian-kita-sudah-banyak"
+  },
+  {
+    "id": 23142564,
+    "title": "Misbakhun: Tidak Mungkin APBN Kita Bangkrut!",
+    "slug": "misbakhun-tidak-mungkin-apbn-kita-bangkrut",
+    "category": "Politik",
+    "date": "2026-05-23T14:25:15+07:00",
+    "image": "https://static.republika.co.id/uploads/images/detailnews/ketua-komisi-xi-dpr-ri-mukhamad-misbakhun-usai-rapat_260519070857-748.jpg",
+    "body": "Baca selengkapnya di https://ekonomi.republika.co.id/berita/tfhu3b377/misbakhun-tidak-mungkin-apbn-kita-bangkrut"
+  },
+  {
+    "id": 23142542,
+    "title": "Polda Metro Jaya Siap Tindak Tegas Pocong Begal yang Resahkan Warga",
+    "slug": "polda-metro-jaya-siap-tindak-tegas-pocong-begal-yang-resahka",
+    "category": "Politik",
+    "date": "2026-05-23T14:25:16+07:00",
+    "image": "https://pict.sindonews.com/dyn/850/pena/news/2026/05/23/6/1710055/polda-metro-jaya-siap-tindak-tegas-pocong-begal-yang-resahkan-warga-vhf.jpg",
+    "body": "Baca selengkapnya di https://daerah.sindonews.com/read/1710055/6/polda-metro-jaya-siap-tindak-tegas-pocong-begal-yang-resahkan-warga-1779541511"
+  },
+  {
+    "id": 23142587,
+    "title": "Jemaah Haji Hilang Ditemukan Wafat Dimakamkan di Arab Saudi",
+    "slug": "jemaah-haji-hilang-ditemukan-wafat-dimakamkan-di-arab-saudi",
+    "category": "Politik",
+    "date": "2026-05-23T14:25:14+07:00",
+    "image": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=600",
+    "body": "Baca selengkapnya di https://nasional.tempo.co/read/2105088/jemaah-haji-hilang-ditemukan-wafat-dimakamkan-di-arab-saudi"
+  },
+  {
+    "id": 23142548,
+    "title": "Potensial Dikembangkan di Yogya, Budi Mulia Dua Culinary School Kembali Gelar Pelatihan Wirausaha",
+    "slug": "potensial-dikembangkan-di-yogya-budi-mulia-dua-culinary-scho",
+    "category": "Politik",
+    "date": "2026-05-23T14:25:15+07:00",
+    "image": "https://static.republika.co.id/uploads/images/detailnews/suasana-pembukaan-program-kecakapan-wirausaha-pkw-tahun-2026-oleh_260523211256-539.jpg",
+    "body": "Baca selengkapnya di https://rejogja.republika.co.id/berita/tfhu72291/potensial-dikembangkan-di-yogya-budi-mulia-dua-culinary-school-kembali-gelar-pelatihan-wirausaha"
+  },
+  {
+    "title": "Jurnalis Republika Spill Suasana Kapal Zionis Isral Kayak di Film Squid Game",
+    "slug": "jurnalis-republika-spill-suasana-kapal-zionis-isral-kayak-di",
+    "category": "Hiburan",
+    "date": "2026-05-23T13:11:26+07:00",
+    "image": "https://static.republika.co.id/uploads/images/detailnews/085228700-1779541201-maxresdefaultjpg.jpg",
+    "body": "Baca selengkapnya di https://republika.co.id/page/shorts/yt-tfhqs1548517291/jurnalis-republika-spill-suasana-kapal-zionis-isral-kayak-di-film-squid-game"
+  },
+  {
+    "title": "Jamaah An-Nadzir di Gowa Rayakan Idul Adha pada 26 Mei 2026",
+    "slug": "jamaah-an-nadzir-di-gowa-rayakan-idul-adha-pada-26-mei-2026",
+    "category": "Politik",
+    "date": "2026-05-23T13:11:26+07:00",
+    "image": "https://static.republika.co.id/uploads/images/detailnews/015778000-1749093681-830-556.jpg",
+    "body": "Baca selengkapnya di https://khazanah.republika.co.id/berita/tfhpr2366/jamaah-annadzir-di-gowa-rayakan-idul-adha-pada-26-mei-2026"
+  },
+  {
+    "title": "Sesditjen Dukcapil Dorong AktivasiIKD di Belitung Timur untuk Sistem Perlindungan Sosial",
+    "slug": "sesditjen-dukcapil-dorong-aktivasiikd-di-belitung-timur-untu",
+    "category": "Politik",
+    "date": "2026-05-23T13:11:25+07:00",
+    "image": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=600",
+    "body": "Baca selengkapnya di https://nasional.tempo.co/read/2105091/sesditjen-dukcapil-dorong-aktivasiikd-di-belitung-timur-untuk-sistem-perlindungan-sosial"
+  },
+  {
+    "title": "Pemerintah Minta KBIHU Ikuti Aturan Jelang Puncak Ibadah Haji, Ancam Cabut Izin jika Masih Bandel",
+    "slug": "pemerintah-minta-kbihu-ikuti-aturan-jelang-puncak-ibadah-haj",
+    "category": "Politik",
+    "date": "2026-05-23T13:11:26+07:00",
+    "image": "https://pict.sindonews.com/dyn/850/pena/news/2026/05/23/786/1710033/pemerintah-minta-kbihu-ikuti-aturan-jelang-puncak-ibadah-haji-ancam-cabut-izin-jika-masih-bandel-pjh.jpg",
+    "body": "Baca selengkapnya di https://kalam.sindonews.com/read/1710033/786/pemerintah-minta-kbihu-ikuti-aturan-jelang-puncak-ibadah-haji-ancam-cabut-izin-jika-masih-bandel-1779537910"
+  },
+  {
+    "title": "Prabowo: Indonesia Bisa Swasembada Daging dalam 4-5 Tahun",
+    "slug": "prabowo-indonesia-bisa-swasembada-daging-dalam-4-5-tahun",
+    "category": "Politik",
+    "date": "2026-05-23T13:11:24+07:00",
+    "image": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=600",
+    "body": "Baca selengkapnya di https://nasional.tempo.co/read/2105106/prabowo-indonesia-bisa-swasembada-daging-dalam-4-5-tahun"
+  },
+  {
+    "title": "Harga iCar V23 Resmi Diumumkan, tak Sampai Rp400 Juta, Incar Kaum Urban Berjiwa Petualang",
+    "slug": "harga-icar-v23-resmi-diumumkan-tak-sampai-rp400-juta-incar-k",
+    "category": "Teknologi",
+    "date": "2026-05-23T13:11:26+07:00",
+    "image": "https://static.republika.co.id/uploads/images/detailnews/_260523194633-996.png",
+    "body": "Baca selengkapnya di https://ekonomi.republika.co.id/berita/tfhqk4348/harga-icar-v23-resmi-diumumkan-tak-sampai-rp400-juta-incar-kaum-urban-berjiwa-petualang"
+  },
+  {
+    "title": "Di Forum Internasional Malaysia, PUI Tegaskan Dukungan Pembebasan Ghannouchi",
+    "slug": "di-forum-internasional-malaysia-pui-tegaskan-dukungan-pembeb",
+    "category": "Politik",
+    "date": "2026-05-23T13:11:27+07:00",
+    "image": "https://pict.sindonews.com/dyn/850/pena/news/2026/05/23/15/1710029/di-forum-internasional-malaysia-pui-tegaskan-dukungan-pembebasan-ghannouchi-xsv.jpg",
+    "body": "Baca selengkapnya di https://nasional.sindonews.com/read/1710029/15/di-forum-internasional-malaysia-pui-tegaskan-dukungan-pembebasan-ghannouchi-1779537956"
+  },
+  {
+    "title": "Prabowo: 19 Bulan Saya Pimpin, Pencapaian Kita Sudah Banyak",
+    "slug": "prabowo-19-bulan-saya-pimpin-pencapaian-kita-sudah-banyak",
+    "category": "Teknologi",
+    "date": "2026-05-23T13:11:24+07:00",
+    "image": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=600",
+    "body": "Baca selengkapnya di https://nasional.tempo.co/read/2105110/prabowo-19-bulan-saya-pimpin-pencapaian-kita-sudah-banyak"
+  },
+  {
+    "title": "Kisah Tegar Istri Jemaah Haji Firdaus: Ikut Cari Suami Selama Seminggu, Kini Ikhlas Melepasnya",
+    "slug": "kisah-tegar-istri-jemaah-haji-firdaus-ikut-cari-suami-selama",
+    "category": "Politik",
+    "date": "2026-05-23T13:11:27+07:00",
+    "image": "https://pict.sindonews.com/dyn/850/pena/news/2026/05/23/786/1710031/kisah-tegar-istri-jemaah-haji-firdaus-ikut-cari-suami-selama-seminggu-kini-ikhlas-melepasnya-mni.jpg",
+    "body": "Baca selengkapnya di https://kalam.sindonews.com/read/1710031/786/kisah-tegar-istri-jemaah-haji-firdaus-ikut-cari-suami-selama-seminggu-kini-ikhlas-melepasnya-1779537924"
+  },
+  {
+    "title": "Ketika Gen Z Dipaksa Beradaptasi dengan Ribetnya Birokrasi",
+    "slug": "ketika-gen-z-dipaksa-beradaptasi-dengan-ribetnya-birokrasi",
+    "category": "Politik",
+    "date": "2026-05-23T08:33:06+07:00",
+    "image": "https://static.republika.co.id/uploads/images/detailnews/aglaya-qaulan_260523152602-853.jpg",
+    "body": "Berita terhangat hari ini dilaporkan oleh media Republika. Informasi selengkapnya mengenai topik ini dapat Anda baca langsung melalui tautan resmi sumber asli berikut: https://analisis.republika.co.id/berita/tfhe83282/ketika-gen-z-dipaksa-beradaptasi-dengan-ribetnya-birokrasi"
+  },
+  {
+    "title": "Prabowo Bergurau Ingin Reshuffle Zulkifli Hasan",
+    "slug": "prabowo-bergurau-ingin-reshuffle-zulkifli-hasan",
+    "category": "Politik",
+    "date": "2026-05-23T08:33:05+07:00",
+    "image": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=600",
+    "body": "Berita terhangat hari ini dilaporkan oleh media Tempo. Informasi selengkapnya mengenai topik ini dapat Anda baca langsung melalui tautan resmi sumber asli berikut: https://nasional.tempo.co/read/2105068/prabowo-bergurau-ingin-reshuffle-zulkifli-hasan"
+  },
+  {
+    "title": "Objek Wisata The Little Niagara Kembali Dibuka Usai 3 Pekan Ditutup Akibat Longsor",
+    "slug": "objek-wisata-the-little-niagara-kembali-dibuka-usai-3-pekan-",
+    "category": "Teknologi",
+    "date": "2026-05-23T08:33:06+07:00",
+    "image": "https://static.republika.co.id/uploads/images/detailnews/objek-wisata-curug-malela-di-kampung-manglid-desa-cicadas_260523153047-404.jpeg",
+    "body": "Berita terhangat hari ini dilaporkan oleh media Republika. Informasi selengkapnya mengenai topik ini dapat Anda baca langsung melalui tautan resmi sumber asli berikut: https://rejabar.republika.co.id/berita/tfheei368/objek-wisata-the-little-niagara-kembali-dibuka-usai-3-pekan-ditutup-akibat-longsor"
+  },
+  {
+    "title": "Akad Massal KUR 1.000 UMKM, BRI bersama Pemerintah Dorong Penguatan Ekonomi Kreatif di Bali",
+    "slug": "akad-massal-kur-1000-umkm-bri-bersama-pemerintah-dorong-peng",
+    "category": "Ekonomi",
+    "date": "2026-05-23T08:33:07+07:00",
+    "image": "https://pict.sindonews.com/dyn/850/pena/news/2026/05/23/178/1709927/akad-massal-kur-1000-umkm-bri-bersama-pemerintah-dorong-penguatan-ekonomi-kreatif-di-bali-vbc.jpeg",
+    "body": "Berita terhangat hari ini dilaporkan oleh media Okezone. Informasi selengkapnya mengenai topik ini dapat Anda baca langsung melalui tautan resmi sumber asli berikut: https://ekbis.sindonews.com/read/1709927/178/akad-massal-kur-1000-umkm-bri-bersama-pemerintah-dorong-penguatan-ekonomi-kreatif-di-bali-1779523539"
+  },
+  {
+    "title": "Lesperssi Soroti Keterlibatan TNI dalam Perburuan Begal",
+    "slug": "lesperssi-soroti-keterlibatan-tni-dalam-perburuan-begal",
+    "category": "Politik",
+    "date": "2026-05-23T08:33:05+07:00",
+    "image": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=600",
+    "body": "Berita terhangat hari ini dilaporkan oleh media Tempo. Informasi selengkapnya mengenai topik ini dapat Anda baca langsung melalui tautan resmi sumber asli berikut: https://nasional.tempo.co/read/2105071/lesperssi-soroti-keterlibatan-tni-dalam-perburuan-begal"
+  },
+  {
+    "title": "Sumatera Blackout, InJourney Pastikan Bandara Beroperasi Normal",
+    "slug": "sumatera-blackout-injourney-pastikan-bandara-beroperasi-norm",
+    "category": "Politik",
+    "date": "2026-05-23T08:33:07+07:00",
+    "image": "https://pict.sindonews.com/dyn/850/pena/news/2026/05/23/34/1709931/sumatera-blackout-injourney-pastikan-bandara-di-sumatera-beroperasi-normal-knl.jpeg",
+    "body": "Berita terhangat hari ini dilaporkan oleh media Okezone. Informasi selengkapnya mengenai topik ini dapat Anda baca langsung melalui tautan resmi sumber asli berikut: https://ekbis.sindonews.com/read/1709931/34/sumatera-blackout-injourney-pastikan-bandara-beroperasi-normal-1779523527"
+  },
+  {
+    "title": "Kisah Model Asal Tulungagung Audisi Miss Indonesia 2026 Demi Wujudkan Mimpi",
+    "slug": "kisah-model-asal-tulungagung-audisi-miss-indonesia-2026-demi",
+    "category": "Politik",
+    "date": "2026-05-23T08:33:07+07:00",
+    "image": "https://pict.sindonews.com/dyn/850/pena/news/2026/05/23/187/1709925/kisah-model-asal-tulungagung-audisi-miss-indonesia-2026-demi-wujudkan-mimpi-ttq.jpg",
+    "body": "Berita terhangat hari ini dilaporkan oleh media Okezone. Informasi selengkapnya mengenai topik ini dapat Anda baca langsung melalui tautan resmi sumber asli berikut: https://lifestyle.sindonews.com/read/1709925/187/kisah-model-asal-tulungagung-audisi-miss-indonesia-2026-demi-wujudkan-mimpi-1779523524"
+  },
+  {
+    "title": "Prabowo: Tunda Dulu Banyak Bangun Kantor Instansi Baru",
+    "slug": "prabowo-tunda-dulu-banyak-bangun-kantor-instansi-baru",
+    "category": "Politik",
+    "date": "2026-05-23T08:33:05+07:00",
+    "image": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=600",
+    "body": "Berita terhangat hari ini dilaporkan oleh media Tempo. Informasi selengkapnya mengenai topik ini dapat Anda baca langsung melalui tautan resmi sumber asli berikut: https://nasional.tempo.co/read/2105073/prabowo-tunda-dulu-banyak-bangun-kantor-instansi-baru"
+  },
+  {
+    "title": "16.046 SPPG Raih SLHS, Tata Kelola Program MBG Makin Diperkuat",
+    "slug": "16046-sppg-raih-slhs-tata-kelola-program-mbg-makin-diperkuat",
+    "category": "Teknologi",
+    "date": "2026-05-23T08:33:06+07:00",
+    "image": "https://static.republika.co.id/uploads/images/detailnews/096882300-1765902849-830-556.jpg",
+    "body": "Berita terhangat hari ini dilaporkan oleh media Republika. Informasi selengkapnya mengenai topik ini dapat Anda baca langsung melalui tautan resmi sumber asli berikut: https://news.republika.co.id/berita/tfhbnh368/16046-sppg-raih-slhs-tata-kelola-program-mbg-makin-diperkuat"
+  },
+  {
+    "title": "Pemadaman Listrik Total, Warga Banda Aceh Padati Warung Kopi",
+    "slug": "pemadaman-listrik-total-warga-banda-aceh-padati-warung-kopi",
+    "category": "Politik",
+    "date": "2026-05-22T18:24:02+07:00",
+    "image": "https://static.republika.co.id/uploads/images/detailnews/045630300-1779473733-IMG-20260522-WA0017_1jpg.jpg",
+    "body": "Berita terhangat hari ini dilaporkan oleh media Republika. Informasi selengkapnya mengenai topik ini dapat Anda baca langsung melalui tautan resmi sumber asli berikut: https://news.republika.co.id/berita/tfgapx7630000/pemadaman-listrik-total-warga-banda-aceh-padati-warung-kopi"
+  },
+  {
+    "title": "CBN Dorong Transformasi Digital Perhotelan di Sumatera Utara Lewat Business Gathering",
+    "slug": "cbn-dorong-transformasi-digital-perhotelan-di-sumatera-utara",
+    "category": "Politik",
+    "date": "2026-05-22T18:24:00+07:00",
+    "image": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=600",
+    "body": "Berita terhangat hari ini dilaporkan oleh media Tempo. Informasi selengkapnya mengenai topik ini dapat Anda baca langsung melalui tautan resmi sumber asli berikut: https://nasional.tempo.co/read/2104992/cbn-dorong-transformasi-digital-perhotelan-di-sumatera-utara-lewat-business-gathering"
+  },
+  {
+    "title": "APBN 2027 Bisa Jadi Alat Perjuangan Bangsa",
+    "slug": "apbn-2027-bisa-jadi-alat-perjuangan-bangsa",
+    "category": "Politik",
+    "date": "2026-05-22T18:24:03+07:00",
+    "image": "https://pict.sindonews.com/dyn/850/pena/news/2026/05/22/12/1709803/apbn-2027-bisa-jadi-alat-perjuangan-bangsa-qao.jpeg",
+    "body": "Berita terhangat hari ini dilaporkan oleh media Okezone. Informasi selengkapnya mengenai topik ini dapat Anda baca langsung melalui tautan resmi sumber asli berikut: https://nasional.sindonews.com/read/1709803/12/apbn-2027-bisa-jadi-alat-perjuangan-bangsa-1779465919"
+  },
+  {
+    "title": "TPNPB-OPM Tuding Militer Gunakan Drone Bom di Nduga",
+    "slug": "tpnpb-opm-tuding-militer-gunakan-drone-bom-di-nduga",
+    "category": "Politik",
+    "date": "2026-05-22T18:24:00+07:00",
+    "image": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=600",
+    "body": "Berita terhangat hari ini dilaporkan oleh media Tempo. Informasi selengkapnya mengenai topik ini dapat Anda baca langsung melalui tautan resmi sumber asli berikut: https://nasional.tempo.co/read/2104987/tpnpb-opm-tuding-militer-gunakan-drone-bom-di-nduga"
+  },
+  {
+    "title": "Majelis Etik Ombudsman RI: Standar Etika Setara KPK",
+    "slug": "majelis-etik-ombudsman-ri-standar-etika-setara-kpk",
+    "category": "Politik",
+    "date": "2026-05-22T18:24:02+07:00",
+    "image": "https://static.republika.co.id/uploads/images/detailnews/058300400-1779471907-Majelis-Etik-Ombudsman-Mintai.jpg",
+    "body": "Berita terhangat hari ini dilaporkan oleh media Republika. Informasi selengkapnya mengenai topik ini dapat Anda baca langsung melalui tautan resmi sumber asli berikut: https://news.republika.co.id/berita/tfg9b710030000/majelis-etik-ombudsman-ri-standar-etika-setara-kpk"
+  },
+  {
+    "title": "Kemenko Kumham Imipas Raih Penghargaan Istimewa Digital Innovation in Public Services di DIA 2026",
+    "slug": "kemenko-kumham-imipas-raih-penghargaan-istimewa-digital-inno",
+    "category": "Teknologi",
+    "date": "2026-05-22T18:24:03+07:00",
+    "image": "https://pict.sindonews.com/dyn/850/pena/news/2026/05/22/15/1709805/kemenko-kumham-imipas-raih-penghargaan-istimewa-digital-innovation-in-public-services-di-dia-2026-mlk.jpg",
+    "body": "Berita terhangat hari ini dilaporkan oleh media Okezone. Informasi selengkapnya mengenai topik ini dapat Anda baca langsung melalui tautan resmi sumber asli berikut: https://nasional.sindonews.com/read/1709805/15/kemenko-kumham-imipas-raih-penghargaan-istimewa-digital-innovation-in-public-services-di-dia-2026-1779465949"
+  },
+  {
+    "title": "Purbaya soal Nasib Djaka Budhi Utama: Lihat Pekan Depan",
+    "slug": "purbaya-soal-nasib-djaka-budhi-utama-lihat-pekan-depan",
+    "category": "Politik",
+    "date": "2026-05-22T18:24:00+07:00",
+    "image": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=600",
+    "body": "Berita terhangat hari ini dilaporkan oleh media Tempo. Informasi selengkapnya mengenai topik ini dapat Anda baca langsung melalui tautan resmi sumber asli berikut: https://nasional.tempo.co/read/2104999/purbaya-soal-nasib-djaka-budhi-utama-lihat-pekan-depan"
+  },
+  {
+    "title": "Herdman: FIFA Match Day Diperkuat Pemain Eropa, Piala ASEAN oleh Pemain Lokal",
+    "slug": "herdman-fifa-match-day-diperkuat-pemain-eropa-piala-asean-ol",
+    "category": "Teknologi",
+    "date": "2026-05-22T18:24:02+07:00",
+    "image": "https://static.republika.co.id/uploads/images/detailnews/069940900-1779472820-IMG-20260522-WA0031jpg.jpg",
+    "body": "Berita terhangat hari ini dilaporkan oleh media Republika. Informasi selengkapnya mengenai topik ini dapat Anda baca langsung melalui tautan resmi sumber asli berikut: https://news.republika.co.id/berita/tfga0k8530000/herdman-fifa-match-day-diperkuat-pemain-eropa-piala-asean-oleh-pemain-lokal"
+  },
+  {
+    "title": "Gangguan Transmisi 275 kV Jadi Penyebab Listrik Padam di Sumatera",
+    "slug": "gangguan-transmisi-275-kv-jadi-penyebab-listrik-padam-di-sum",
+    "category": "Politik",
+    "date": "2026-05-22T18:24:03+07:00",
+    "image": "https://pict.sindonews.com/dyn/850/pena/news/2026/05/22/34/1709807/gangguan-transmisi-275-kv-jadi-penyebab-listrik-padam-di-sumatera-tik.jpg",
+    "body": "Berita terhangat hari ini dilaporkan oleh media Okezone. Informasi selengkapnya mengenai topik ini dapat Anda baca langsung melalui tautan resmi sumber asli berikut: https://ekbis.sindonews.com/read/1709807/34/gangguan-transmisi-275-kv-jadi-penyebab-listrik-padam-di-sumatera-1779465920"
+  },
+  {
+    "title": "MNC Animation Siap Adopsi Teknologi AI, Hary Tanoesoedibjo: Faster, Cheaper, and Better",
+    "slug": "mnc-animation-siap-adopsi-teknologi-ai-hary-tanoesoedibjo-fa",
+    "category": "Teknologi",
+    "date": "2026-05-22T10:39:25+07:00",
+    "image": "https://pict.sindonews.com/dyn/850/pena/news/2026/05/22/158/1709637/mnc-animation-siap-adopsi-teknologi-ai-hary-tanoesoedibjo-faster-cheaper-and-better-kno.jpg",
+    "body": "Berita terhangat hari ini dilaporkan oleh media Okezone. Informasi selengkapnya mengenai topik ini dapat Anda baca langsung melalui tautan resmi sumber asli berikut: https://lifestyle.sindonews.com/read/1709637/158/mnc-animation-siap-adopsi-teknologi-ai-hary-tanoesoedibjo-faster-cheaper-and-better-1779440711"
+  },
+  {
+    "title": "Jelang Idul Adha, Andi Harun Perkuat Benteng Stabilitas Harga dengan Strategi 4K",
+    "slug": "jelang-idul-adha-andi-harun-perkuat-benteng-stabilitas-harga",
+    "category": "Politik",
+    "date": "2026-05-22T10:39:22+07:00",
+    "image": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=600",
+    "body": "Berita terhangat hari ini dilaporkan oleh media Tempo. Informasi selengkapnya mengenai topik ini dapat Anda baca langsung melalui tautan resmi sumber asli berikut: https://nasional.tempo.co/read/2104942/jelang-idul-adha-andi-harun-perkuat-benteng-stabilitas-harga-dengan-strategi-4k"
+  },
+  {
+    "title": "Menuju Perjalanan Penyucian Hati: Manasik Haji 2026 bersama Jejak Imani",
+    "slug": "menuju-perjalanan-penyucian-hati-manasik-haji-2026-bersama-j",
+    "category": "Politik",
+    "date": "2026-05-22T10:39:22+07:00",
+    "image": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=600",
+    "body": "Berita terhangat hari ini dilaporkan oleh media Tempo. Informasi selengkapnya mengenai topik ini dapat Anda baca langsung melalui tautan resmi sumber asli berikut: https://nasional.tempo.co/read/2104946/menuju-perjalanan-penyucian-hati-manasik-haji-2026-bersama-jejak-imani"
+  },
+  {
+    "title": "IRGC Izinkan 35 Kapal Lewati Selat Hormuz dalam 24 Jam Terakhir",
+    "slug": "irgc-izinkan-35-kapal-lewati-selat-hormuz-dalam-24-jam-terak",
+    "category": "Politik",
+    "date": "2026-05-22T10:39:25+07:00",
+    "image": "https://pict.sindonews.com/dyn/850/pena/news/2026/05/22/43/1709639/irgc-izinkan-35-kapal-lewati-selat-hormuz-dalam-24-jam-terakhir-kcl.jpg",
+    "body": "Berita terhangat hari ini dilaporkan oleh media Okezone. Informasi selengkapnya mengenai topik ini dapat Anda baca langsung melalui tautan resmi sumber asli berikut: https://international.sindonews.com/read/1709639/43/irgc-izinkan-35-kapal-lewati-selat-hormuz-dalam-24-jam-terakhir-1779444324"
+  },
+  {
+    "title": "BEM UI Kirim Karangan Bunga Duka Cita ke Istana",
+    "slug": "bem-ui-kirim-karangan-bunga-duka-cita-ke-istana",
+    "category": "Politik",
+    "date": "2026-05-22T10:39:22+07:00",
+    "image": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=600",
+    "body": "Berita terhangat hari ini dilaporkan oleh media Tempo. Informasi selengkapnya mengenai topik ini dapat Anda baca langsung melalui tautan resmi sumber asli berikut: https://nasional.tempo.co/read/2104947/bem-ui-kirim-karangan-bunga-duka-cita-ke-istana"
+  },
+  {
+    "title": "Jadi Tersangka Korupsi, Hery Susanto Akan Diperiksa Majelis Etik Ombudsman Pekan Depan",
+    "slug": "jadi-tersangka-korupsi-hery-susanto-akan-diperiksa-majelis-e",
+    "category": "Politik",
+    "date": "2026-05-22T10:39:25+07:00",
+    "image": "https://pict.sindonews.com/dyn/850/pena/news/2026/05/22/13/1709645/jadi-tersangka-korupsi-hery-susanto-akan-diperiksa-majelis-etik-ombudsman-pekan-depan-mps.jpg",
+    "body": "Berita terhangat hari ini dilaporkan oleh media Okezone. Informasi selengkapnya mengenai topik ini dapat Anda baca langsung melalui tautan resmi sumber asli berikut: https://nasional.sindonews.com/read/1709645/13/jadi-tersangka-korupsi-hery-susanto-akan-diperiksa-majelis-etik-ombudsman-pekan-depan-1779444312"
+  },
+  {
+    "title": "Gaza Masuki Fase Kelaparan Paling Berbahaya",
+    "slug": "gaza-masuki-fase-kelaparan-paling-berbahaya",
+    "category": "Politik",
+    "date": "2026-05-22T10:39:23+07:00",
+    "image": "https://static.republika.co.id/uploads/images/detailnews/_260227144258-565.png",
+    "body": "Berita terhangat hari ini dilaporkan oleh media Republika. Informasi selengkapnya mengenai topik ini dapat Anda baca langsung melalui tautan resmi sumber asli berikut: https://news.republika.co.id/berita/tffo7o393/gaza-masuki-fase-kelaparan-paling-berbahaya"
+  },
+  {
+    "title": "Pemprov DKI Beri Insentif PBB, Ringankan Beban Warga Jakarta",
+    "slug": "pemprov-dki-beri-insentif-pbb-ringankan-beban-warga-jakarta",
+    "category": "Politik",
+    "date": "2026-05-22T10:39:23+07:00",
+    "image": "https://static.republika.co.id/uploads/images/detailnews/057788000-1656928188-830-556.jpg",
+    "body": "Berita terhangat hari ini dilaporkan oleh media Republika. Informasi selengkapnya mengenai topik ini dapat Anda baca langsung melalui tautan resmi sumber asli berikut: https://news.republika.co.id/berita/tffp5x487/pemprov-dki-beri-insentif-pbb-ringankan-beban-warga-jakarta"
+  },
+  {
+    "title": "Rayakan Persib Juara Akhir Pekan Ini, Lautan Bobotoh Bakal Penuhi Bandung",
+    "slug": "rayakan-persib-juara-akhir-pekan-ini-lautan-bobotoh-bakal-pe",
+    "category": "Olahraga",
+    "date": "2026-05-22T10:39:23+07:00",
+    "image": "https://static.republika.co.id/uploads/images/detailnews/040667000-1767949056-830-556.jpg",
+    "body": "Berita terhangat hari ini dilaporkan oleh media Republika. Informasi selengkapnya mengenai topik ini dapat Anda baca langsung melalui tautan resmi sumber asli berikut: https://rejabar.republika.co.id/berita/tffpbo282/rayakan-persib-juara-akhir-pekan-ini-lautan-bobotoh-bakal-penuhi-bandung"
+  },
+  {
+    "title": "Prancis Tegaskan Tidak Tepat bagi NATO untuk Berperan dalam Misi Hormuz",
+    "slug": "prancis-tegaskan-tidak-tepat-bagi-nato-untuk-berperan-dalam-",
+    "category": "Politik",
+    "date": "2026-05-21T22:50:33+07:00",
+    "image": "https://pict.sindonews.com/dyn/850/pena/news/2026/05/21/41/1709375/prancis-tegaskan-tidak-tepat-bagi-nato-untuk-berperan-dalam-misi-hormuz-trb.jpg",
+    "body": "Berita terhangat hari ini dilaporkan oleh media Okezone. Informasi selengkapnya mengenai topik ini dapat Anda baca langsung melalui tautan resmi sumber asli berikut: https://international.sindonews.com/read/1709375/41/prancis-tegaskan-tidak-tepat-bagi-nato-untuk-berperan-dalam-misi-hormuz-1779372349"
+  },
+  {
+    "title": "Anggota Geng Motor Dituntut 20 Tahun Penjara atas Kasus Pembunuhan di Medan",
+    "slug": "anggota-geng-motor-dituntut-20-tahun-penjara-atas-kasus-pemb",
+    "category": "Politik",
+    "date": "2026-05-21T22:50:32+07:00",
+    "image": "https://static.republika.co.id/uploads/images/detailnews/049985600-1779403506-1001055500jpg.jpg",
+    "body": "Berita terhangat hari ini dilaporkan oleh media Republika. Informasi selengkapnya mengenai topik ini dapat Anda baca langsung melalui tautan resmi sumber asli berikut: https://news.republika.co.id/berita/tfesj63530000/anggota-geng-motor-dituntut-20-tahun-penjara-atas-kasus-pembunuhan-di-medan"
+  },
+  {
+    "title": "Gubernur Sumatera Utara Bobby Nasution Tegas Tolak Proyek Mark Up",
+    "slug": "gubernur-sumatera-utara-bobby-nasution-tegas-tolak-proyek-ma",
+    "category": "Politik",
+    "date": "2026-05-21T22:50:31+07:00",
+    "image": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=600",
+    "body": "Berita terhangat hari ini dilaporkan oleh media Tempo. Informasi selengkapnya mengenai topik ini dapat Anda baca langsung melalui tautan resmi sumber asli berikut: https://nasional.tempo.co/read/2104794/gubernur-sumatera-utara-bobby-nasution-tegas-tolak-proyek-mark-up"
+  },
+  {
+    "title": "CCTV Diskominfo Badung Bantu Polisi Ungkap Kasus Pembunuhan",
+    "slug": "cctv-diskominfo-badung-bantu-polisi-ungkap-kasus-pembunuhan",
+    "category": "Politik",
+    "date": "2026-05-21T22:50:32+07:00",
+    "image": "https://static.republika.co.id/uploads/images/detailnews/011784800-1779402607-eca194bf-ebfb-4060-ba18-f92e28.jpg",
+    "body": "Berita terhangat hari ini dilaporkan oleh media Republika. Informasi selengkapnya mengenai topik ini dapat Anda baca langsung melalui tautan resmi sumber asli berikut: https://news.republika.co.id/berita/tferu78030000/cctv-diskominfo-badung-bantu-polisi-ungkap-kasus-pembunuhan"
+  },
+  {
+    "title": "Mengukur Potensi Properti dan Bisnis dari Arah Perkembangan Kawasan",
+    "slug": "mengukur-potensi-properti-dan-bisnis-dari-arah-perkembangan-",
+    "category": "Ekonomi",
+    "date": "2026-05-21T22:50:33+07:00",
+    "image": "https://pict.sindonews.com/dyn/850/pena/news/2026/05/21/34/1709397/mengukur-potensi-properti-dan-bisnis-dari-arah-perkembangan-kawasan-jdl.jpeg",
+    "body": "Berita terhangat hari ini dilaporkan oleh media Okezone. Informasi selengkapnya mengenai topik ini dapat Anda baca langsung melalui tautan resmi sumber asli berikut: https://ekbis.sindonews.com/read/1709397/34/mengukur-potensi-properti-dan-bisnis-dari-arah-perkembangan-kawasan-1779375935"
+  },
+  {
+    "title": "DPR Ajak Perempuan Perkuat Peran Pengambil Keputusan",
+    "slug": "dpr-ajak-perempuan-perkuat-peran-pengambil-keputusan",
+    "category": "Politik",
+    "date": "2026-05-21T22:50:31+07:00",
+    "image": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=600",
+    "body": "Berita terhangat hari ini dilaporkan oleh media Tempo. Informasi selengkapnya mengenai topik ini dapat Anda baca langsung melalui tautan resmi sumber asli berikut: https://nasional.tempo.co/read/2104801/dpr-ajak-perempuan-perkuat-peran-pengambil-keputusan"
+  },
+  {
+    "title": "Lebih dari Seribu Orang Ikuti Aksi Kamisan Reformasi 1998",
+    "slug": "lebih-dari-seribu-orang-ikuti-aksi-kamisan-reformasi-1998",
+    "category": "Politik",
+    "date": "2026-05-21T22:50:31+07:00",
+    "image": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=600",
+    "body": "Berita terhangat hari ini dilaporkan oleh media Tempo. Informasi selengkapnya mengenai topik ini dapat Anda baca langsung melalui tautan resmi sumber asli berikut: https://nasional.tempo.co/read/2104781/lebih-dari-seribu-orang-ikuti-aksi-kamisan-reformasi-1998"
+  },
+  {
+    "title": "Bangun Jembatan Gantung 240 Meter di Aceh Tamiang, TNI AD: Puluhan Tahun Warga tak Punya Akses",
+    "slug": "bangun-jembatan-gantung-240-meter-di-aceh-tamiang-tni-ad-pul",
+    "category": "Politik",
+    "date": "2026-05-21T22:50:32+07:00",
+    "image": "https://static.republika.co.id/uploads/images/detailnews/ilustrasi-jembatan-yang-dibangun-tni-di-aceh_260521232339-593.png",
+    "body": "Berita terhangat hari ini dilaporkan oleh media Republika. Informasi selengkapnya mengenai topik ini dapat Anda baca langsung melalui tautan resmi sumber asli berikut: https://republika.co.id/berita//tfeawy451/bangun-jembatan-gantung-240-meter-di-aceh-tamiang-tni-ad-puluhan-tahun-warga-tak-punya-akses"
+  },
+  {
+    "title": "Hindari 8 Kesalahan Ini Saat Melaksanakan Ibadah Kurban Nanti!",
+    "slug": "hindari-8-kesalahan-ini-saat-melaksanakan-ibadah-kurban-nant",
+    "category": "Politik",
+    "date": "2026-05-21T22:50:33+07:00",
+    "image": "https://pict.sindonews.com/dyn/850/pena/news/2026/05/21/70/1709313/hindari-8-kesalahan-ini-saat-melaksanakan-ibadah-kurban-nanti-oyg.jpg",
+    "body": "Berita terhangat hari ini dilaporkan oleh media Okezone. Informasi selengkapnya mengenai topik ini dapat Anda baca langsung melalui tautan resmi sumber asli berikut: https://kalam.sindonews.com/read/1709313/70/hindari-8-kesalahan-ini-saat-melaksanakan-ibadah-kurban-nanti-1779361520"
+  },
+  {
+    "title": "Pantai hingga Hutan, Tour de Bintan 2026 Tambah Kategori Poin Ranking Dunia UCI",
+    "slug": "pantai-hingga-hutan-tour-de-bintan-2026-tambah-kategori-poin",
+    "category": "Olahraga",
+    "date": "2026-05-21T16:30:00+07:00",
+    "image": "https://asset.tribunnews.com/cGQxDxEaJQOakaJppXpO-7JhaFs=/148x99/filters:quality(30):format(webp):focal(0.5x0.5:0.5x0.5)/tribunnews/foto/bank/originals/Pebalap-di-ajang-balap-sepeda-internasional-Tour-de-Bintan.jpg",
+    "body": "Berita terhangat hari ini dilaporkan oleh media Tribunnews. Informasi selengkapnya mengenai topik ini dapat Anda baca langsung melalui tautan resmi sumber asli berikut: https://www.tribunnews.com/sport/7832677/pantai-hingga-hutan-tour-de-bintan-2026-tambah-kategori-poin-ranking-dunia-uci"
+  },
+  {
+    "title": "PNM Dukung Integrasi Ekosistem UMKM Lewat SAPA UMKM",
+    "slug": "pnm-dukung-integrasi-ekosistem-umkm-lewat-sapa-umkm",
+    "category": "Ekonomi",
+    "date": "2026-05-21T16:30:00+07:00",
+    "image": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=600",
+    "body": "Berita terhangat hari ini dilaporkan oleh media Tempo. Informasi selengkapnya mengenai topik ini dapat Anda baca langsung melalui tautan resmi sumber asli berikut: https://nasional.tempo.co/read/2104807/pnm-dukung-integrasi-ekosistem-umkm-lewat-sapa-umkm"
+  },
+  {
+    "title": "BTS akan Tampil di American Music Awards 2026 Setelah Empat Tahun Absen",
+    "slug": "bts-akan-tampil-di-american-music-awards-2026-setelah-empat-",
+    "category": "Hiburan",
+    "date": "2026-05-21T16:30:00+07:00",
+    "image": "https://static.republika.co.id/uploads/images/detailnews/foto-yang-dirilis-oleh-bighit-musicnetflix-menunjukkan-grup-k-pop_260322124539-810.jpg",
+    "body": "Berita terhangat hari ini dilaporkan oleh media Republika. Informasi selengkapnya mengenai topik ini dapat Anda baca langsung melalui tautan resmi sumber asli berikut: https://ameera.republika.co.id/berita/tfeb24425/bts-akan-tampil-di-american-music-awards-2026-setelah-empat-tahun-absen"
+  },
+  {
+    "title": "3 Kali Coba Terobos Imigrasi, 13 Haji Nonprosedural Digagalkan di Bandara Kualanamu",
+    "slug": "3-kali-coba-terobos-imigrasi-13-haji-nonprosedural-digagalka",
+    "category": "Ekonomi",
+    "date": "2026-05-21T16:30:00+07:00",
+    "image": "https://pict.sindonews.com/dyn/850/pena/news/2026/05/21/174/1709399/3-kali-gagal-terobos-imigrasi-13-haji-nonprosedural-digagalkan-di-bandara-kualanamu-vlf.jpg",
+    "body": "Berita terhangat hari ini dilaporkan oleh media Okezone. Informasi selengkapnya mengenai topik ini dapat Anda baca langsung melalui tautan resmi sumber asli berikut: https://daerah.sindonews.com/read/1709399/174/3-kali-coba-terobos-imigrasi-13-haji-nonprosedural-digagalkan-di-bandara-kualanamu-1779375959"
+  },
+  {
+    "title": "Pelajar Ikut Kamisan saat Peringatan Reformasi: Jangan Diam",
+    "slug": "pelajar-ikut-kamisan-saat-peringatan-reformasi-jangan-diam",
+    "category": "Politik",
+    "date": "2026-05-21T16:30:00+07:00",
+    "image": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=600",
+    "body": "Berita terhangat hari ini dilaporkan oleh media Tempo. Informasi selengkapnya mengenai topik ini dapat Anda baca langsung melalui tautan resmi sumber asli berikut: https://nasional.tempo.co/read/2104808/pelajar-ikut-kamisan-saat-peringatan-reformasi-jangan-diam"
+  },
+  {
+    "title": "Dari Saigon ke Teheran: Inilah Kemiripan Perang Iran dan Vietnam",
+    "slug": "dari-saigon-ke-teheran-inilah-kemiripan-perang-iran-dan-viet",
+    "category": "Politik",
+    "date": "2026-05-21T16:30:00+07:00",
+    "image": "https://static.republika.co.id/uploads/images/detailnews/_260511075125-771.png",
+    "body": "Berita terhangat hari ini dilaporkan oleh media Republika. Informasi selengkapnya mengenai topik ini dapat Anda baca langsung melalui tautan resmi sumber asli berikut: https://khazanah.republika.co.id/berita/tfeavl320/dari-saigon-ke-teheran-inilah-kemiripan-perang-iran-dan-vietnam"
+  },
+  {
+    "title": "Roy Suryo Cs Soroti Munculnya Perubahan Pasal hingga Double Sprindik dari Polda Metro",
+    "slug": "roy-suryo-cs-soroti-munculnya-perubahan-pasal-hingga-double-",
+    "category": "Politik",
+    "date": "2026-05-21T16:30:00+07:00",
+    "image": "https://pict.sindonews.com/dyn/850/pena/news/2026/05/21/6/1709393/roy-suryo-cs-soroti-munculnya-perubahan-pasal-hingga-double-sprindik-dari-polda-metro-uum.jpg",
+    "body": "Berita terhangat hari ini dilaporkan oleh media Okezone. Informasi selengkapnya mengenai topik ini dapat Anda baca langsung melalui tautan resmi sumber asli berikut: https://daerah.sindonews.com/read/1709393/6/roy-suryo-cs-soroti-munculnya-perubahan-pasal-hingga-double-sprindik-dari-polda-metro-1779375907"
+  },
+  {
+    "title": "Neuer Kembali, Gnabry Dicoret, Ini Skuad Lengkap Jerman untuk Piala Dunia 2026",
+    "slug": "neuer-kembali-gnabry-dicoret-ini-skuad-lengkap-jerman-untuk-",
+    "category": "Olahraga",
+    "date": "2026-05-21T16:30:00+07:00",
+    "image": "https://static.republika.co.id/uploads/images/detailnews/manuel-neuer-_150112045005-850.jpg",
+    "body": "Berita terhangat hari ini dilaporkan oleh media Republika. Informasi selengkapnya mengenai topik ini dapat Anda baca langsung melalui tautan resmi sumber asli berikut: https://news.republika.co.id/berita/tfe8kt451/neuer-kembali-gnabry-dicoret-ini-skuad-lengkap-jerman-untuk-piala-dunia-2026"
+  },
+  {
+    "title": "Mayat Wanita Asal Serang Ditemukan Tergantung di Pohon Melinjo, Hasil Autopsi Temukan Kejanggalan",
+    "slug": "mayat-wanita-asal-serang-ditemukan-tergantung-di-pohon-melin",
+    "category": "Ekonomi",
+    "date": "2026-05-21T16:30:00+07:00",
+    "image": "https://asset.tribunnews.com/0USnCBDM2NBz2n8YbEUsThy9zrQ=/148x99/filters:quality(30):format(webp):focal(0.5x0.5:0.5x0.5)/tribunnews/foto/bank/originals/Tempat-kejadian-perkara-TKP-penemuan-mayat-perempuan-di-serang.jpg",
+    "body": "Berita terhangat hari ini dilaporkan oleh media Tribunnews. Informasi selengkapnya mengenai topik ini dapat Anda baca langsung melalui tautan resmi sumber asli berikut: https://www.tribunnews.com/regional/7832676/mayat-wanita-asal-serang-ditemukan-tergantung-di-pohon-melinjo-hasil-autopsi-temukan-kejanggalan"
+  },
+  {
+    "title": "Pemerintah Perpanjang WFH ASN hingga 2 Bulan ke Depan",
+    "slug": "pemerintah-perpanjang-wfh-asn-hingga-2-bulan-ke-depan",
+    "category": "Ekonomi",
+    "date": "2026-05-21T16:30:00+07:00",
+    "image": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=600",
+    "body": "Berita terhangat hari ini dilaporkan oleh media Tempo. Informasi selengkapnya mengenai topik ini dapat Anda baca langsung melalui tautan resmi sumber asli berikut: https://nasional.tempo.co/read/2104810/pemerintah-perpanjang-wfh-asn-hingga-2-bulan-ke-depan"
+  },
+  {
+    "title": "bank bjb Rayakan HUT ke-65 dengan Ragam Promo, Inovasi, dan Program Sosial",
+    "slug": "bank-bjb-rayakan-hut-ke-65-dengan-ragam-promo-inovasi-dan-pr",
+    "category": "Ekonomi",
+    "date": "2026-05-21T16:30:00+07:00",
+    "image": "https://pict.sindonews.com/dyn/850/pena/news/2026/05/21/178/1709401/bank-bjb-rayakan-hut-ke65-dengan-ragam-promo-inovasi-dan-program-sosial-mpz.jpg",
+    "body": "Berita terhangat hari ini dilaporkan oleh media Okezone. Informasi selengkapnya mengenai topik ini dapat Anda baca langsung melalui tautan resmi sumber asli berikut: https://ekbis.sindonews.com/read/1709401/178/bank-bjb-rayakan-hut-ke-65-dengan-ragam-promo-inovasi-dan-program-sosial-1779379557"
+  },
+  {
+    "title": "28 Tahun Reformasi, 98 Resolution Network Dukung Prabowo-Gibran Hadirkan Pemerataan Ekonomi",
+    "slug": "28-tahun-reformasi-98-resolution-network-dukung-prabowo-gibr",
+    "category": "Ekonomi",
+    "date": "2026-05-21T16:30:00+07:00",
+    "image": "https://asset.tribunnews.com/vgtRGBYJbyW0SdupA87M3PFN8DQ=/148x99/filters:quality(30):format(webp):focal(0.5x0.5:0.5x0.5)/tribunnews/foto/bank/originals/28reformasitahun-98-RN.jpg",
+    "body": "Berita terhangat hari ini dilaporkan oleh media Tribunnews. Informasi selengkapnya mengenai topik ini dapat Anda baca langsung melalui tautan resmi sumber asli berikut: https://www.tribunnews.com/nasional/7832675/28-tahun-reformasi-98-resolution-network-dukung-prabowo-gibran-hadirkan-pemerataan-ekonomi"
+  },
+  {
+    "title": "Tanggapan Ganjar soal Prabowo Pilu dengar Kritik PDIP",
+    "slug": "tanggapan-ganjar-soal-prabowo-pilu-dengar-kritik-pdip",
+    "category": "Politik",
+    "date": "2026-05-21T08:13:00+07:00",
+    "image": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=600",
+    "body": "Berita terhangat hari ini dilaporkan oleh media Tempo. Informasi selengkapnya mengenai topik ini dapat Anda baca langsung melalui tautan resmi sumber asli berikut:"
+  },
+  {
+    "title": "Dukung Keberlanjutan Pasokan Gas Domestik, PGN Siap Serap Pasokan LNG dari Proyek Abadi LNG Blok Masela",
+    "slug": "dukung-keberlanjutan-pasokan-gas-domestik-pgn-siap-serap-pas",
+    "category": "Ekonomi",
+    "date": "2026-05-21T08:13:00+07:00",
+    "image": "https://pict.sindonews.com/dyn/850/pena/news/2026/05/21/34/1709221/dukung-keberlanjutan-pasokan-gas-domestik-pgn-siap-serap-pasokan-lng-dari-proyek-abadi-lng-blok-masela-tfc.jpeg",
+    "body": "Berita terhangat hari ini dilaporkan oleh media Okezone. Informasi selengkapnya mengenai topik ini dapat Anda baca langsung melalui tautan resmi sumber asli berikut: https://ekbis.sindonews.com/read/1709221/34/dukung-keberlanjutan-pasokan-gas-domestik-pgn-siap-serap-pasokan-lng-dari-proyek-abadi-lng-blok-masela-1779350704"
+  },
+  {
+    "title": "Anak di Bawah 7 Tahun Bisa Masuk SD, Ini Syaratnya",
+    "slug": "anak-di-bawah-7-tahun-bisa-masuk-sd-ini-syaratnya",
+    "category": "Ekonomi",
+    "date": "2026-05-21T08:13:00+07:00",
+    "image": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=600",
+    "body": "Berita terhangat hari ini dilaporkan oleh media Tempo. Informasi selengkapnya mengenai topik ini dapat Anda baca langsung melalui tautan resmi sumber asli berikut: https://nasional.tempo.co/read/2104720/anak-di-bawah-7-tahun-bisa-masuk-sd-ini-syaratnya"
+  },
+  {
+    "title": "Bus Shalawat akan Berhenti Besok, Jamaah Haji RI Diminta tak Paksakan Diri ke Masjidil Haram",
+    "slug": "bus-shalawat-akan-berhenti-besok-jamaah-haji-ri-diminta-tak-",
+    "category": "Politik",
+    "date": "2026-05-21T08:13:00+07:00",
+    "image": "https://static.republika.co.id/uploads/images/detailnews/025966700-1747749104-830-556.jpg",
+    "body": "Berita terhangat hari ini dilaporkan oleh media Republika. Informasi selengkapnya mengenai topik ini dapat Anda baca langsung melalui tautan resmi sumber asli berikut: https://khazanah.republika.co.id/berita/tfdnui483/bus-shalawat-akan-berhenti-besok-jamaah-haji-ri-diminta-tak-paksakan-diri-ke-masjidil-haram"
+  },
+  {
+    "title": "Link Daftar Pelatihan Vokasi Nasional 2026 untuk Lulusan SMA/SMK, Cek Benefitnya",
+    "slug": "link-daftar-pelatihan-vokasi-nasional-2026-untuk-lulusan-sma",
+    "category": "Ekonomi",
+    "date": "2026-05-21T08:13:00+07:00",
+    "image": "https://pict.sindonews.com/dyn/850/pena/news/2026/05/21/212/1709217/link-daftar-pelatihan-vokasi-nasional-batch-2-2026-untuk-lulusan-smasmk-cek-benefitnya-wkd.jpg",
+    "body": "Berita terhangat hari ini dilaporkan oleh media Okezone. Informasi selengkapnya mengenai topik ini dapat Anda baca langsung melalui tautan resmi sumber asli berikut: https://edukasi.sindonews.com/read/1709217/212/link-daftar-pelatihan-vokasi-nasional-2026-untuk-lulusan-smasmk-cek-benefitnya-1779347107"
+  },
+  {
+    "title": "PM Sanchez Angkat Suara, 44 Relawan Global Sumud dari Spanyol Dibebaskan",
+    "slug": "pm-sanchez-angkat-suara-44-relawan-global-sumud-dari-spanyol",
+    "category": "Politik",
+    "date": "2026-05-21T08:13:00+07:00",
+    "image": "https://static.republika.co.id/uploads/images/detailnews/_260521111808-489.png",
+    "body": "Berita terhangat hari ini dilaporkan oleh media Republika. Informasi selengkapnya mengenai topik ini dapat Anda baca langsung melalui tautan resmi sumber asli berikut: https://news.republika.co.id/berita/tfdnmg393/pm-sanchez-angkat-suara-44-relawan-global-sumud-dari-spanyol-dibebaskan"
+  },
+  {
+    "title": "Kemendikdasmen Tetapkan Batas Rombongan Belajar SPMB 2026",
+    "slug": "kemendikdasmen-tetapkan-batas-rombongan-belajar-spmb-2026",
+    "category": "Politik",
+    "date": "2026-05-21T08:13:00+07:00",
+    "image": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=600",
+    "body": "Berita terhangat hari ini dilaporkan oleh media Tempo. Informasi selengkapnya mengenai topik ini dapat Anda baca langsung melalui tautan resmi sumber asli berikut: https://nasional.tempo.co/read/2104710/kemendikdasmen-tetapkan-batas-rombongan-belajar-spmb-2026"
+  },
+  {
+    "title": "Aksi Ojol Forkot Warnai Kawasan Medan Merdeka Selatan",
+    "slug": "aksi-ojol-forkot-warnai-kawasan-medan-merdeka-selatan",
+    "category": "Ekonomi",
+    "date": "2026-05-21T08:13:00+07:00",
+    "image": "https://pict.sindonews.com/dyn/850/pena/news/2026/05/21/6/1709219/aksi-ojol-forkot-warnai-kawasan-medan-merdeka-selatan-oil.jpg",
+    "body": "Berita terhangat hari ini dilaporkan oleh media Okezone. Informasi selengkapnya mengenai topik ini dapat Anda baca langsung melalui tautan resmi sumber asli berikut: https://daerah.sindonews.com/read/1709219/6/aksi-ojol-forkot-warnai-kawasan-medan-merdeka-selatan-1779347128"
+  },
+  {
+    "title": "Bupati Jeje Dukung Langkah Dedi Mulyadi Hentikan Alih Fungsi Lahan di Kawasan Hutan",
+    "slug": "bupati-jeje-dukung-langkah-dedi-mulyadi-hentikan-alih-fungsi",
+    "category": "Politik",
+    "date": "2026-05-21T08:13:00+07:00",
+    "image": "https://static.republika.co.id/uploads/images/detailnews/bupati-bandung-barat-jeje-ritchie-ismail_260521151157-356.jpg",
+    "body": "Berita terhangat hari ini dilaporkan oleh media Republika. Informasi selengkapnya mengenai topik ini dapat Anda baca langsung melalui tautan resmi sumber asli berikut: https://rejabar.republika.co.id/berita/tfdo5z368/bupati-jeje-dukung-langkah-dedi-mulyadi-hentikan-alih-fungsi-lahan-di-kawasan-hutan"
+  },
+  {
+    "title": "Profil Basral Graito Hutomo, peraih emas skateboard SEA Games 2025",
+    "slug": "profil-basral-graito-hutomo-peraih-emas-skateboard-sea-games",
+    "category": "Olahraga",
+    "date": "2026-05-21T05:36:00+07:00",
+    "image": "https://img.antaranews.com/cache/800x533/2025/12/15/WhatsApp-Image-2025-12-15-at-1.45.15-AM.jpeg",
+    "body": "Berita terkini mengenai topik Olahraga. Informasi selengkapnya mengenai berita ini dapat Anda baca langsung melalui tautan resmi sumber asli penyedia media berikut: https://www.antaranews.com/berita/5319445/profil-basral-graito-hutomo-peraih-emas-skateboard-sea-games-2025"
+  },
+  {
+    "title": "Tiga kapal perang Pakistan sandar di Jakarta, ini agenda lengkapnya",
+    "slug": "tiga-kapal-perang-pakistan-sandar-di-jakarta-ini-agenda-leng",
+    "category": "Politik",
+    "date": "2026-05-21T05:36:00+07:00",
+    "image": "https://img.antaranews.com/cache/800x533/2026/05/21/1001406440.jpg",
+    "body": "Berita terkini mengenai topik Nasional. Informasi selengkapnya mengenai berita ini dapat Anda baca langsung melalui tautan resmi sumber asli penyedia media berikut: https://www.antaranews.com/berita/5576047/tiga-kapal-perang-pakistan-sandar-di-jakarta-ini-agenda-lengkapnya"
+  },
+  {
+    "title": "Aston Villa juara Liga Europa 2025/26, Unai Emery raih trofi kelima",
+    "slug": "aston-villa-juara-liga-europa-202526-unai-emery-raih-trofi-k",
+    "category": "Olahraga",
+    "date": "2026-05-21T05:36:00+07:00",
+    "image": "https://img.antaranews.com/cache/800x533/2026/05/21/1000036010.jpg",
+    "body": "Berita terkini mengenai topik Nasional. Informasi selengkapnya mengenai berita ini dapat Anda baca langsung melalui tautan resmi sumber asli penyedia media berikut: https://www.antaranews.com/berita/5575843/aston-villa-juara-liga-europa-2025-26-unai-emery-raih-trofi-kelima"
+  },
+  {
+    "title": "Simak tata cara dan aturan bermain olahraga Petanque",
+    "slug": "simak-tata-cara-dan-aturan-bermain-olahraga-petanque",
+    "category": "Olahraga",
+    "date": "2026-05-21T05:36:00+07:00",
+    "image": "https://img.antaranews.com/cache/800x533/2023/05/22/pentaque.jpg",
+    "body": "Berita terkini mengenai topik Olahraga. Informasi selengkapnya mengenai berita ini dapat Anda baca langsung melalui tautan resmi sumber asli penyedia media berikut: https://www.antaranews.com/berita/5300674/simak-tata-cara-dan-aturan-bermain-olahraga-petanque"
+  },
+  {
+    "title": "SEA Games: mempererat tali persaudaraan lewat olahraga",
+    "slug": "sea-games-mempererat-tali-persaudaraan-lewat-olahraga",
+    "category": "Olahraga",
+    "date": "2026-05-21T05:36:00+07:00",
+    "image": "https://img.antaranews.com/cache/800x533/2025/12/16/tim-dayung-quadruple-sculls-putra-indonesia-raih-medali-emas-2691082.jpg",
+    "body": "Berita terkini mengenai topik Olahraga. Informasi selengkapnya mengenai berita ini dapat Anda baca langsung melalui tautan resmi sumber asli penyedia media berikut: https://www.antaranews.com/berita/5307148/sea-games-mempererat-tali-persaudaraan-lewat-olahraga"
+  },
+  {
+    "title": "Jangan Kaget, Begini Cara 'Aneh' Jerapah Jantan Ajak Kawin Betina",
+    "slug": "jangan-kaget-begini-cara-aneh-jerapah-jantan-ajak-kawin-beti",
+    "category": "Hiburan",
+    "date": "2026-05-21T05:36:00+07:00",
+    "image": "https://static.republika.co.id/uploads/images/detailnews/cara-unik-jerapah-jantan-mengajak-jerapah-betina-kawin_230214142937-479.jpg",
+    "body": "Berita terkini mengenai topik Hiburan. Informasi selengkapnya mengenai berita ini dapat Anda baca langsung melalui tautan resmi sumber asli penyedia media berikut: https://ameera.republika.co.id/berita/rq27mh425/jangan-kaget-begini-cara-aneh-jerapah-jantan-ajak-kawin-betina"
+  },
+  {
+    "title": "Kemensos pastikan kesiapan dana Rp1 triliun untuk Aceh, Sumut, Sumbar",
+    "slug": "kemensos-pastikan-kesiapan-dana-rp1-triliun-untuk-aceh-sumut",
+    "category": "Ekonomi",
+    "date": "2026-05-21T05:36:00+07:00",
+    "image": "https://img.antaranews.com/cache/800x533/2026/05/21/pertemuan-mensos-dan-wagub-aceh-terkait-penanganan-pascabencana-2792057.jpg",
+    "body": "Berita terkini mengenai topik Nasional. Informasi selengkapnya mengenai berita ini dapat Anda baca langsung melalui tautan resmi sumber asli penyedia media berikut: https://www.antaranews.com/berita/5575568/kemensos-pastikan-kesiapan-dana-rp1-triliun-untuk-aceh-sumut-sumbar"
+  },
+  {
+    "title": "Mengenal olahraga Sepak Takraw: Aturan dan cara bermainnya",
+    "slug": "mengenal-olahraga-sepak-takraw-aturan-dan-cara-bermainnya",
+    "category": "Olahraga",
+    "date": "2026-05-21T05:36:00+07:00",
+    "image": "https://img.antaranews.com/cache/800x533/2025/06/27/1000945174_1.jpg",
+    "body": "Berita terkini mengenai topik Olahraga. Informasi selengkapnya mengenai berita ini dapat Anda baca langsung melalui tautan resmi sumber asli penyedia media berikut: https://www.antaranews.com/berita/5300677/mengenal-olahraga-sepak-takraw-aturan-dan-cara-bermainnya"
+  },
+  {
+    "title": "Henry Cavill tak Ada di Trailer Film The Flash, Penggemar Kecewa",
+    "slug": "henry-cavill-tak-ada-di-trailer-film-the-flash-penggemar-kec",
+    "category": "Hiburan",
+    "date": "2026-05-21T05:36:00+07:00",
+    "image": "https://static.republika.co.id/uploads/images/detailnews/superman-versi-henry_211013160143-455.jpeg",
+    "body": "Berita terkini mengenai topik Hiburan. Informasi selengkapnya mengenai berita ini dapat Anda baca langsung melalui tautan resmi sumber asli penyedia media berikut: https://ameera.republika.co.id/berita/rq26ce425/henry-cavill-tak-ada-di-trailer-film-the-flash-penggemar-kecewa"
+  },
+  {
+    "title": "Harga tiket dan jadwal pertandingan AFC Futsal Asia Cup Indonesia 2026",
+    "slug": "harga-tiket-dan-jadwal-pertandingan-afc-futsal-asia-cup-indo",
+    "category": "Olahraga",
+    "date": "2026-05-21T05:36:00+07:00",
+    "image": "https://img.antaranews.com/cache/800x533/2026/01/05/Latihan-Timnas-Futsal-Indonesia-050126-Ada-1.jpg",
+    "body": "Berita terkini mengenai topik Olahraga. Informasi selengkapnya mengenai berita ini dapat Anda baca langsung melalui tautan resmi sumber asli penyedia media berikut: https://www.antaranews.com/berita/5350369/harga-tiket-dan-jadwal-pertandingan-afc-futsal-asia-cup-indonesia-2026"
+  },
+  {
+    "title": "Danantara jelaskan alasan pilih bentuk BUMN baru khusus ekspor",
+    "slug": "danantara-jelaskan-alasan-pilih-bentuk-bumn-baru-khusus-eksp",
+    "category": "Ekonomi",
+    "date": "2026-05-21T05:36:00+07:00",
+    "image": "https://img.antaranews.com/cache/800x533/2026/05/21/tempImage4xAXFY.jpg",
+    "body": "Berita terkini mengenai topik Nasional. Informasi selengkapnya mengenai berita ini dapat Anda baca langsung melalui tautan resmi sumber asli penyedia media berikut: https://www.antaranews.com/berita/5575132/danantara-jelaskan-alasan-pilih-bentuk-bumn-baru-khusus-ekspor"
+  },
+  {
+    "title": "BP BUMN tegaskan peranan BUMN sebagai jangkar stabilitas pasar modal",
+    "slug": "bp-bumn-tegaskan-peranan-bumn-sebagai-jangkar-stabilitas-pas",
+    "category": "Ekonomi",
+    "date": "2026-05-21T05:36:00+07:00",
+    "image": "https://img.antaranews.com/cache/800x533/2026/05/21/469453.jpg",
+    "body": "Berita terkini mengenai topik Nasional. Informasi selengkapnya mengenai berita ini dapat Anda baca langsung melalui tautan resmi sumber asli penyedia media berikut: https://www.antaranews.com/berita/5575223/bp-bumn-tegaskan-peranan-bumn-sebagai-jangkar-stabilitas-pasar-modal"
+  },
+  {
+    "title": "Serial 'Salma’s Season' Jelajahi Keberagaman Muslim di Australia",
+    "slug": "serial-salmas-season-jelajahi-keberagaman-muslim-di-australi",
+    "category": "Hiburan",
+    "date": "2026-05-21T05:36:00+07:00",
+    "image": "https://static.republika.co.id/uploads/images/detailnews/serial-salmas-season-hadir-dengan-cerita-kehidupan-para-muslim_230214151820-409.png",
+    "body": "Berita terkini mengenai topik Hiburan. Informasi selengkapnya mengenai berita ini dapat Anda baca langsung melalui tautan resmi sumber asli penyedia media berikut: https://ameera.republika.co.id/berita/rq29sp425/serial-salmas-season-jelajahi-keberagaman-muslim-di-australia"
+  },
+  {
+    "title": "Konser 'Kenopsia', Coba Bangkitkan Dunia Perkusi Tanah Air dari Mati Suri",
+    "slug": "konser-kenopsia-coba-bangkitkan-dunia-perkusi-tanah-air-dari",
+    "category": "Hiburan",
+    "date": "2026-05-21T05:36:00+07:00",
+    "image": "https://static.republika.co.id/uploads/images/detailnews/yayasan-musik-amadeus-indonesia-ymai-menggelar-konser-kenopsia-yang_230214161647-624.jpg",
+    "body": "Berita terkini mengenai topik Hiburan. Informasi selengkapnya mengenai berita ini dapat Anda baca langsung melalui tautan resmi sumber asli penyedia media berikut: https://ameera.republika.co.id/berita/rq2cjx425/konser-kenopsia-coba-bangkitkan-dunia-perkusi-tanah-air-dari-mati-suri"
+  },
+  {
+    "title": "Hijrah, Aming Meminta Doa Agar Tetap Istiqomah",
+    "slug": "hijrah-aming-meminta-doa-agar-tetap-istiqomah",
+    "category": "Hiburan",
+    "date": "2026-05-21T05:36:00+07:00",
+    "image": "https://static.republika.co.id/uploads/images/detailnews/_230214155052-457.png",
+    "body": "Berita terkini mengenai topik Hiburan. Informasi selengkapnya mengenai berita ini dapat Anda baca langsung melalui tautan resmi sumber asli penyedia media berikut: https://ameera.republika.co.id/berita/rq2bkc330/hijrah-aming-meminta-doa-agar-tetap-istiqomah"
+  },
+  {
+    "title": "[Kalimantan] Jadi Kepala Daerah tak Mudah, Bima Arya: Butuh Inovasi untuk Jawab Persoalan Lokal Hingga Global",
+    "slug": "jadi-kepala-daerah-tak-mudah-bima-arya-butuh-inovasi-untuk-j",
+    "category": "Politik",
+    "date": "2026-05-21T03:57:00+07:00",
+    "image": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=600",
+    "body": "Berita seputar wilayah Kalimantan. Informasi selengkapnya mengenai topik ini dapat Anda baca langsung melalui tautan resmi sumber asli penyedia media berita berikut: https://republika.co.id/berita//tekla4483/jadi-kepala-daerah-tak-mudah-bima-arya-butuh-inovasi-untuk-jawab-persoalan-lokal-hingga-global"
+  },
+  {
+    "title": "[Kalimantan] Anak-Anak Putri Banjarmasin Tunjukkan Antusiasme Tinggi Terhadap Sepak Bola",
+    "slug": "anak-anak-putri-banjarmasin-tunjukkan-antusiasme-tinggi-terh",
+    "category": "Olahraga",
+    "date": "2026-05-21T03:57:00+07:00",
+    "image": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=600",
+    "body": "Berita seputar wilayah Kalimantan. Informasi selengkapnya mengenai topik ini dapat Anda baca langsung melalui tautan resmi sumber asli penyedia media berita berikut: https://republika.co.id/berita//tehsy2456/anak-anak-putri-banjarmasin-tunjukkan-antusiasme-tinggi-terhadap-sepak-bola"
+  },
+  {
+    "title": "[Sulawesi] Relawan Logis 08 Minta Tunda Investasi Ayam, Ini Alasannya",
+    "slug": "relawan-logis-08-minta-tunda-investasi-ayam-ini-alasannya",
+    "category": "Ekonomi",
+    "date": "2026-05-21T03:57:00+07:00",
+    "image": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=600",
+    "body": "Berita seputar wilayah Sulawesi. Informasi selengkapnya mengenai topik ini dapat Anda baca langsung melalui tautan resmi sumber asli penyedia media berita berikut: https://republika.co.id/berita//tf6t65320/relawan-logis-08-minta-tunda-investasi-ayam-ini-alasannya"
+  },
+  {
+    "title": "[Sulawesi] Tembus Pedalaman, Pemprov Papua akan Bangun Pelabuhan Plus Genjot Infrastruktur Transportasi",
+    "slug": "tembus-pedalaman-pemprov-papua-akan-bangun-pelabuhan-plus-ge",
+    "category": "Ekonomi",
+    "date": "2026-05-21T03:57:00+07:00",
+    "image": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=600",
+    "body": "Berita seputar wilayah Sulawesi. Informasi selengkapnya mengenai topik ini dapat Anda baca langsung melalui tautan resmi sumber asli penyedia media berita berikut: https://republika.co.id/berita//tf6uyo451/tembus-pedalaman-pemprov-papua-akan-bangun-pelabuhan-plus-genjot-infrastruktur-transportasi"
+  }
+]
