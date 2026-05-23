@@ -20,17 +20,20 @@ Tulis ulang pakai gaya jurnalistik, jangan copy.
 Akhiri dengan: Berita selengkapnya bisa dibaca di {link}"""
 
     try:
-        # PERBAIKAN URL: Menggunakan rute v1beta dengan pemanggilan parameter key yang tepat
-        url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent"
+        # PERBAIKAN ENDPOINT MUTAKHIR: Menggunakan rute resmi v1beta post content
+        url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent"
+        
         payload = {
-            "contents": [{"parts": [{"text": prompt}]}],
-            "generationConfig": {"temperature": 0.7, "maxOutputTokens": 800}
+            "contents": [{
+                "parts": [{"text": prompt}]
+            }]
         }
         headers = {"Content-Type": "application/json"}
         params = {"key": api_key}
         
-        res = requests.post(url, json=payload, headers=headers, params=params, timeout=60)
+        res = requests.post(url, json=payload, headers=headers, params=params, timeout=30)
         res.raise_for_status()
+        
         return res.json()["candidates"][0]["content"]["parts"][0]["text"]
     except Exception as e:
         print(f"Error Gemini: {e}")
@@ -50,7 +53,7 @@ sumber_rss = [
     {"media": "Bisnis.com", "url": "https://www.bisnis.com/rss"}
 ]
 
-# Jalur file posts.json tetap di folder utama (root)
+# File disimpan di root utama agar terbaca index.html
 path_json = "posts.json"
 
 def buat_slug(judul):
@@ -168,7 +171,7 @@ if berita_baru_semua_media:
     daftar_berita = berita_baru_semua_media + daftar_berita
     daftar_berita = daftar_berita[:120]
 
-    # Menyimpan dalam format struktur {"posts": [...]} yang mutlak dicari index.html Anda
+    # Menyimpan wajib dibungkus {"posts": ...} agar sinkron dengan file HTML
     with open(path_json, 'w', encoding='utf-8') as f:
         json.dump({"posts": daftar_berita}, f, indent=2, ensure_ascii=False)
     print(f"Sukses! Berhasil menambahkan {len(berita_baru_semua_media)} berita nasional campuran secara proporsional.")
