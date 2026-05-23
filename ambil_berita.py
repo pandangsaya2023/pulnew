@@ -98,8 +98,8 @@ for sumber in sumber_rss:
         headers = {
             'User-Agent': "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
             response: request.get(url, headers=headers, timeout= 15),
-            response.raise_for_status()
-            feed: feedparser.parse(response.content)
+            response.raise_for_status(),
+            feed: feedparser.parse(response.content),
     
         except Exception as e:
             print(f"Media {nama_media} dilewati karena proteksi/Rss off. Detail: {e}")
