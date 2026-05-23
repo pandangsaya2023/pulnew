@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Detail Artikel Berita - PULNEW</title>
+    <meta name="description" content="Baca isi artikel berita selengkapnya di PULNEW.">
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif; }
+        html, body { background: #f4f6f9; color: #333; display: flex; flex-direction: column; min-height: 100vh; overflow-x: hidden; width: 100%; }
+        
+        /* HEADER LOGO BAR */
+        .header-container { width: 100%; background: #ffffff; box-shadow: 0 2px 4px rgba(0,0,0,0.08); overflow: hidden; }
+        .logo-bar { max-width: 1200px; margin: 0 auto; padding: 12px 20px; display: flex; align-items: center; justify-content: space-between; }
+        .logo-text { font-size: 28px; font-weight: 900; color: #1a237e; text-decoration: none; letter-spacing: -1px; }
+        .logo-text span { color: #d32f2f; }
+        .btn-kembali { background: #1a237e; color: white; text-decoration: none; padding: 6px 14px; border-radius: 4px; font-size: 13px; font-weight: bold; transition: background 0.2s; }
+        .btn-kembali:hover { background: #d32f2f; }
+
+        /* CONTAINER UTAMA & DETAIL ARTIKEL */
+        .container { max-width: 1200px; width: 100%; margin: 0 auto; padding: 15px 10px; flex: 1; overflow: hidden; }
+        .article-wrapper { background: white; padding: 15px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); margin-bottom: 25px; width: 100%; overflow: hidden; }
+        .article-category { color: #d32f2f; font-size: 12px; font-weight: 700; text-transform: uppercase; margin-bottom: 10px; display: block; letter-spacing: 0.5px; }
+        .article-title { font-size: 21px; font-weight: 800; line-height: 1.3; color: #111; margin-bottom: 12px; }
+        .article-meta { font-size: 13px; color: #666; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px solid #eee; display: flex; gap: 15px; }
+        
+        .main-image-container { width: 100%; overflow: hidden; border-radius: 8px; margin-bottom: 20px; }
+        .main-image-container img { width: 100%; height: auto; display: block; object-fit: cover; border-radius: 8px; }
+        
+        .article-body { font-size: 16px; line-height: 1.7; color: #222; overflow-wrap: break-word; }
+        .article-body p { margin-bottom: 16px; text-align: justify; }
+
+        /* SLOT RUANG IKLAN KHUSUS DI HALAMAN BACA BERITA */
+        .ads-box-inside { text-align: center; background: #f8f9fa; padding: 15px; border: 1px dashed #ccc; border-radius: 6px; margin: 20px 0; width: 100%; }
+        .ads-box-label { font-size: 9px; color: #aaa; text-transform: uppercase; display: block; margin-bottom: 5px; }
+        .ads-box-content { font-weight: bold; color: #777; font-size: 12px; }
+
+        /* REKOMENDASI BERITA TERKAIT DI BAWAH */
+        .recommendation-title { font-size: 18px; font-weight: 700; color: #111; margin: 35px 0 15px 0; border-left: 4px solid #d32f2f; padding-left: 10px; text-transform: uppercase; }
+        .news-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 8px; width: 100%; }
+        .news-card { background: white; display: flex; flex-direction: column; text-decoration: none; color: inherit; border-radius: 6px; overflow: hidden; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+        .news-card img { width: 100%; object-fit: cover; background: #eee; }
+        .news-card .card-info { padding: 8px; display: flex; flex-direction: column; flex-grow: 1; }
+        .news-card .category { color: #d32f2f; font-size: 9px; font-weight: 700; text-transform: uppercase; margin-bottom: 3px; display: block; }
+
+        /* REKOMENDASI POLA SPAN 1-3-2 DI MOBILE */
+        .grid-span-full { grid-column: span 6; }
+        .grid-span-full img { height: 160px; }
+        .grid-span-full h3 { font-size: 13px; font-weight: 700; line-height: 1.3; color: #111; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+
+        .grid-span-2 { grid-column: span 2; } 
+        .grid-span-2 img { height: 75px; }
+        .grid-span-2 h3 { font-size: 10px; font-weight: 600; line-height: 1.2; color: #111; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+
+        .grid-span-3 { grid-column: span 3; } 
+        .grid-span-3 img { height: 105px; }
+        .grid-span-3 h3 { font-size: 11px; font-weight: 700; line-height: 1.2; color: #111; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+
+        /* DESKTOP MEDIA PENYESUAIAN */
+        @media (min-width: 768px) {
+            .container { padding: 25px 20px; }
+            .article-wrapper { padding: 35px; border-radius: 8px; }
+            .article-title { font-size: 34px; margin-bottom: 15px; }
+            .main-image-container img { height: 480px; width: 100%; object-fit: cover; }
+            .news-grid { gap: 20px; }
+
+            .grid-span-full img { height: 320px; }
+            .grid-span-full h3 { font-size: 20px; }
+            .grid-span-2 img { height: 160px; }
+            .grid-span-2 h3 { font-size: 14px; }
+            .grid-span-3 img { height: 220px; }
+            .grid-span-3 h3 { font-size: 17px; }
+        }
+
+        footer { background: #101726; color: #b0b8c4; padding: 20px; font-size: 13px; border-top: 4px solid #1a237e; text-align: center; margin-top: auto; }
+    </style>
+</head>
+<body>
+
+    <div class="header-container">
+        <div class="logo-bar">
+            <a href="index.html" class="logo-text">PUL<span>NEW</span></a>
+            <a href="index.html" class="btn-kembali"> Beranda</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="article-wrapper" id="content-container">
+            <p style="text-align:center; padding:40px; color:#666;">Sedang memproses dokumen artikel...</p>
+        </div>
+
+        <div class="recommendation-title">Rekomendasi Berita Terkait</div>
+        <div class="news-grid" id="recommendation-container">
+            </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 PULNEW. All Rights Reserved. Hak Cipta Dilindungi Undang-Undang.</p>
+    </footer>
+
+    <script>
+        async function muatDetailBerita() {
+            const paramUrl = new URLSearchParams(window.location.search);
+            const idBerita = parseInt(paramUrl.get('id'));
+
+            if (!idBerita) {
+                tampilkanPesanError("ID Berita Tidak Ditemukan.");
+                return;
+            }
+
+            try {
+                const respon = await fetch('posts.json');
+                const listBerita = await respon.json();
+
+                const itemBerita = listBerita.find(b => b.id === idBerita);
+
+                if (itemBerita) {
+                    // =======================================================================
+                    // INTEGRASI FITUR OTOMATISASI JUDUL & DESKRIPSI META SEO UNTUK GOOGLE
+                    // =======================================================================
+                    document.title = `${itemBerita.title} - PULNEW`;
+                    
+                    let potongDeskripsi = itemBerita.body ? itemBerita.body.replace(/<[^>]*>/g, '').substring(0, 150) + "..." : itemBerita.title;
+                    
+                    let metaSEO = document.querySelector('meta[name="description"]');
+                    if (!metaSEO) {
+                        metaSEO = document.createElement('meta');
+                        metaSEO.name = "description";
+                        document.head.appendChild(metaSEO);
+                    }
+                    metaSEO.setAttribute('content', potongDeskripsi);
+                    // =======================================================================
+
+                    bukaKomponenArtikel(indeksKonversiParagrafIklan(itemBerita));
+                    
+                    const sisaBeritaRekomendasi = listBerita.filter(b => b.id !== idBerita);
+                    tampilkanRekomendasiGrid(sisaBeritaRekomendasi.slice(0, 6)); 
+
+                } else {
+                    tampilkanPesanError("Maaf, artikel berita tidak terdaftar atau telah dihapus.");
+                }
+            } catch (error) {
+                console.error("Gagal memproses data artikel berita:", error);
+                tampilkanPesanError("Terjadi kegagalan komunikasi koneksi sistem.");
+            }
+        }
+
+        // FUNGSI MENYISIPKAN SLOT RUANG IKLAN DI TENGAH PARAGRAF SECARA OTOMATIS
+        function indeksKonversiParagrafIklan(berita) {
+            let isiTeksOriginal = berita.body || "";
+            let arrayParagraf = isiTeksOriginal.split(/\\n\\n|\\n/);
+            
+            const htmlIklanDalamArtikel = `
+                <div class="ads-box-inside">
+                    <span class="ads-box-label">- SPONSORED ADVERTISEMENT -</span>
+                    <div class="ads-box-content">RUANG IKLAN TENGAH PARAGRAF (RESPONSIVE ADS)</div>
+                </div>
+                `;
+
+            let teksAkhirDikonversi = "";
+            
+            if(arrayParagraf.length > 2) {
+                arrayParagraf.forEach((paragraf, i) => {
+                    if (paragraf.trim() !== "") {
+                        teksAkhirDikonversi += `<p>${paragraf}</p>`;
+                        if (i === 1) { 
+                            teksAkhirDikonversi += htmlIklanDalamArtikel;
+                        }
+                    }
+                });
+            } else {
+                arrayParagraf.forEach((paragraf, i) => {
+                    if (paragraf.trim() !== "") {
+                        teksAkhirDikonversi += `<p>${paragraf}</p>`;
+                        if (i === 0) {
+                            teksAkhirDikonversi += htmlIklanDalamArtikel;
+                        }
+                    }
+                });
+            }
+            return teksAkhirDikonversi;
+        }
+
+        function bukaKomponenArtikel(isiTeksBodyHtml) {
+            const paramUrl = new URLSearchParams(window.location.search);
+            const idBerita = parseInt(paramUrl.get('id'));
+            
+            fetch('posts.json').then(res => res.json()).then(data => {
+                const item = data.find(b => b.id === idBerita);
+                const wrapper = document.getElementById('content-container');
+                
+                wrapper.innerHTML = `
+                    <span class="article-category">${item.category || 'Berita'}</span>
+                    <h1 class="article-title">${item.title}</h1>
+                    <div class="article-meta">
+                        <span>✍️ Redaksi: <strong>PULNEW</strong></span>
+                        <span>📅 ID Publikasi: #${item.id}</span>
+                    </div>
+                    <div class="main-image-container">
+                        <img src="${item.image || 'https://via.placeholder.com/800x450'}" alt="Foto Utama">
+                    </div>
+                    <div class="article-body">
+                        ${isiTeksBodyHtml}
+                    </div>
+                `;
+            });
+        }
+
+        // LOGIKA REPEAT BERULANG POLA 1-3-2 UNTUK GRID BERITA TERKAIT
+        function tampilkanRekomendasiGrid(daftarRekomendasi) {
+            const kontainerRekomendasi = document.getElementById('recommendation-container');
+            if (daftarRekomendasi.length === 0) {
+                kontainerRekomendasi.innerHTML = "<p style='grid-column:span 6; text-align:center; color:#888;'>Belum ada berita terkait lainnya.</p>";
+                return;
+            }
+
+            let htmlGrid = "";
+            daftarRekomendasi.forEach((item, indeks) => {
+                const posisiPola = indeks % 6; 
+                let kelasSpan = "";
+
+                if (posisiPola === 0) {
+                    kelasSpan = "grid-span-full";
+                } else if (posisiPola >= 1 && posisiPola <= 3) {
+                    kelasSpan = "grid-span-2";
+                } else if (posisiPola >= 4 && posisiPola <= 5) {
+                    kelasSpan = "grid-span-3";
+                }
+
+                htmlGrid += `
+                    <a href="berita.html?id=${item.id}" class="news-card ${kelasSpan}">
+                        <img src="${item.image || 'https://via.placeholder.com/400x250'}" alt="Gambar Berita">
+                        <div class="card-info">
+                            <span class="category">${item.category || 'Berita'}</span>
+                            <h3>${item.title}</h3>
+                        </div>
+                    </a>
+                `;
+            });
+            kontainerRekomendasi.innerHTML = htmlGrid;
+        }
+
+        function tampilkanPesanError(pesan) {
+            document.getElementById('content-container').innerHTML = `
+                <div style="text-align:center; padding:50px 10px; color:#d32f2f;">
+                    <h2 style="margin-bottom:15px;">⚠️ Terjadi Masalah</h2>
+                    <p style="color:#555; margin-bottom:20px;">${pesan}</p>
+                    <a href="index.html" style="background:#1a237e; color:white; padding:10px 20px; text-decoration:none; border-radius:4px; font-weight:bold;">Kembali ke Beranda</a>
+                </div>
+            `;
+        }
+
+        window.onload = muatDetailBerita;
+    </script>
+</body>
+</html>
+
