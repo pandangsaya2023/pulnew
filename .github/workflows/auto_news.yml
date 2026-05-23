@@ -24,7 +24,6 @@ jobs:
 
     - name: Install dependencies
       run: pip install google-generativeai
-      run: pip install requests
 
     - name: Menjalankan Robot Pengambil Berita
       env:
