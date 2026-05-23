@@ -21,7 +21,7 @@ Akhiri dengan: Berita selengkapnya bisa dibaca di {link}"""
 
     try:
         # ENDPOINT FIX: Menggunakan rute resmi v1beta yang valid untuk gemini-1.5-flash
-        url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key={api_key}"
+        url = f"https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key={api_key}"
         payload = {
             "contents": [{"parts": [{"text": prompt}]}],
             "generationConfig": {"temperature": 0.7, "maxOutputTokens": 800}
