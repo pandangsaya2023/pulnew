@@ -30,7 +30,7 @@ Akhiri dengan: Berita selengkapnya bisa dibaca di {link}"""
 
         # Pemanggilan model generasi konten
         response = client.models.generate_content(
-            model='gemini-1.0-pro',
+            model='gemini-1.5-flash',
             contents=prompt,
         )
         return response.text
