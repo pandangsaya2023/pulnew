@@ -50,7 +50,7 @@
         .slide-overlay .category { color: #ff5252; font-size: 10px; font-weight: 700; text-transform: uppercase; margin-bottom: 4px; }
         .slide-overlay h2 { font-size: 15px; font-weight: 800; line-height: 1.3; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 
-        /* STRUKTUR GRID 6 KOLOM TETAP UNTUK MOBILE & DESKTOP (POLA KUNCI 1-3-2) */
+        /* STRUKTUR GRID 6 KOLOM TETAP */
         .news-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 8px; width: 100%; }
         .news-card { background: white; display: flex; flex-direction: column; text-decoration: none; color: inherit; border-radius: 6px; overflow: hidden; box-shadow: 0 2px 4px rgba(0,0,0,0.05); transition: transform 0.2s, box-shadow 0.2s; }
         .news-card:hover { transform: translateY(-3px); box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
@@ -94,7 +94,6 @@
             .ads-container-leaderboard { margin: 20px auto 10px auto; padding: 20px; }
         }
 
-        /* FOOTER RE-DESIGN */
         footer { background: #101726; color: #b0b8c4; padding: 20px; font-size: 13px; border-top: 4px solid #1a237e; width: 100%; margin-top: auto; }
         .footer-content { max-width: 1200px; margin: 0 auto; text-align: center; display: flex; flex-direction: column; gap: 10px; }
         .footer-logo { font-size: 22px; font-weight: 800; color: white; }
@@ -141,8 +140,7 @@
 
         <div class="category-title" id="section-title">Berita Terkini</div>
         
-        <div class="news-grid" id="news-container">
-            </div>
+        <div class="news-grid" id="news-container"></div>
     </div>
 
     <footer>
@@ -160,13 +158,11 @@
         let indexSlideAktif = 0;
         let intervalSlide;
 
-        // 1. MEMBACA FILE DATA JSON (VERSI TAHAN BANTING & ANTI CACHE)
         async function muatDataBerita() {
             try {
                 const respon = await fetch('posts.json?v=' + new Date().getTime());
                 const dataMentah = await respon.json();
                 
-                // Mendeteksi otomatis apakah format data dibungkus objek (.posts) atau array langsung
                 if (dataMentah && dataMentah.posts) {
                     dataBeritaGlobal = dataMentah.posts;
                 } else if (Array.isArray(dataMentah)) {
@@ -186,20 +182,18 @@
             }
         }
 
-
-        // 2. MEMBUAT TEKS BERJALAN DINAMIS
         function buatRunningText() {
             const tickerSpace = document.getElementById('ticker-space');
             if (dataBeritaGlobal.length === 0) return;
             
             let htmlTicker = "";
             dataBeritaGlobal.slice(0, 5).forEach(item => {
-                htmlTicker += `<a href="berita.html?id=${item.id}" class="ticker-item">🔥 ${item.title}</a>`;
+                // DIUBAH MENJADI SLUG AGAR SINKRON DENGAN BERITA.HTML
+                htmlTicker += `<a href="berita.html?slug=${item.slug}" class="ticker-item">🔥 ${item.title}</a>`;
             });
             tickerSpace.innerHTML = htmlTicker;
         }
 
-        // 3. MEMBUAT HERO SLIDER UNTUK DESKTOP
         function buatHeroSlider() {
             const sliderSpace = document.getElementById('hero-slider');
             if (dataBeritaGlobal.length === 0) return;
@@ -209,8 +203,9 @@
             
             dataSlide.forEach((item, indeks) => {
                 const kelasAktif = indeks === 0 ? 'active' : '';
+                // DIUBAH MENJADI SLUG AGAR SINKRON DENGAN BERITA.HTML
                 htmlSlider += `
-                    <a href="berita.html?id=${item.id}" class="slide-item ${kelasAktif}">
+                    <a href="berita.html?slug=${item.slug}" class="slide-item ${kelasAktif}">
                         <img src="${item.image || 'https://via.placeholder.com/800x400'}" alt="Banner">
                         <div class="slide-overlay">
                             <span class="category">${item.category || 'INFO'}</span>
@@ -236,7 +231,6 @@
             listSlide[indexSlideAktif].classList.add('active');
         }
 
-        // 4. LOGIKA PENGATURAN POLA GRID KUNCI MATI (1-3-2) SECARA BERULANG
         function tampilkanGridBerita(daftarBerita) {
             const kontainerGrid = document.getElementById('news-container');
             if (daftarBerita.length === 0) {
@@ -258,8 +252,9 @@
                     kelasSpan = "grid-span-3";
                 }
 
+                // DIUBAH MENJADI SLUG AGAR SINKRON DENGAN BERITA.HTML
                 htmlKonten += `
-                    <a href="berita.html?id=${item.id}" class="news-card ${kelasSpan}">
+                    <a href="berita.html?slug=${item.slug}" class="news-card ${kelasSpan}">
                         <img src="${item.image || 'https://via.placeholder.com/400x250'}" alt="Gambar Berita">
                         <div class="card-info">
                             <span class="category">${item.category || 'Berita'}</span>
@@ -272,7 +267,6 @@
             kontainerGrid.innerHTML = htmlKonten;
         }
 
-        // 5. FILTER KATEGORI SEKALIGUS MERUBAH JUDUL & DESKRIPSI META SEO SECARA DINAMIS
         function filterKategori(namaKategori, elemenMenu) {
             document.querySelectorAll('.nav-menu a').forEach(a => a.classList.remove('active'));
             elemenMenu.classList.add('active');
@@ -295,7 +289,6 @@
                 deskripsiHalaman = `Baca kumpulan informasi hangat, ulasan tajam, dan kabar terupdate khusus rubrik Kategori ${namaKategori} hanya di portal berita PULNEW.`;
             }
 
-            // PERUBAHAN META SEO DINAMIS UNTUK ROBOT GOOGLE
             document.title = judulHalaman;
             let metaDesc = document.querySelector('meta[name="description"]');
             if (metaDesc) {
