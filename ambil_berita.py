@@ -20,7 +20,7 @@ Tulis ulang pakai gaya jurnalistik, jangan copy.
 Akhiri dengan: Berita selengkapnya bisa dibaca di {link}"""
 
     try:
-        url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent"
+        url = f"https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent"
         payload = {
             "contents": [{"parts": [{"text": prompt}]}],
             "generationConfig": {"temperature": 0.7, "maxOutputTokens": 800}
