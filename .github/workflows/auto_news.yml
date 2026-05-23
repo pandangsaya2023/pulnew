@@ -2,7 +2,7 @@ name: Robot Ambil Berita Otomatis
 
 on:
   schedule:
-    - cron: '0 */6 *'  # Jalan tiap 6 jam
+    - cron: '0 */6 * * *'  # Jalan tiap 6 jam
   workflow_dispatch: 
 
 jobs:
