@@ -5,38 +5,31 @@ from datetime import datetime
 import re
 import os
 import random
-import requests
+import google.generativeai as genai
 
 def rewrite_with_gemini(title, link):
-    """Fungsi resmi interaksi API Gemini Flash v1beta"""
+    """Fungsi resmi menggunakan SDK Google Generative AI"""
     api_key = os.getenv("GEMINI_API_KEY")
 
     if not api_key:
         print("GEMINI_API_KEY belum diset di GitHub Secrets")
         return f"Baca selengkapnya di {link}"
 
-    prompt = f"""Buat artikel 300 kata bahasa Indonesia dengan judul: "{title}"
+    try:
+        # Konfigurasi API Key secara resmi lewat SDK
+        genai.configure(api_key=api_key)
+        
+        # Memanggil model gemini-1.5-flash standar
+        model = genai.GenerativeModel('gemini-1.5-flash')
+        
+        prompt = f"""Buat artikel 300 kata bahasa Indonesia dengan judul: "{title}"
 Tulis ulang pakai gaya jurnalistik, jangan copy.
 Akhiri dengan: Berita selengkapnya bisa dibaca di {link}"""
 
-    # URL TERKUNCI: Menggunakan endpoint POST resmi tanpa embel-embel parameter di buntutnya
-    url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent"
-    
-    payload = {
-        "contents": [{
-            "parts": [{"text": prompt}]
-        }]
-    }
-    headers = {"Content-Type": "application/json"}
-    # Solusi 404: Kunci API dipisahkan ke dalam dictionary params agar dibentuk otomatis oleh library requests
-    query_params = {"key": api_key}
-
-    try:
-        res = requests.post(url, json=payload, headers=headers, params=query_params, timeout=30)
-        res.raise_for_status()
-        return res.json()["candidates"][0]["content"]["parts"][0]["text"]
+        response = model.generate_content(prompt)
+        return response.text
     except Exception as e:
-        print(f"Error Gemini: {e}")
+        print(f"Error SDK Gemini: {e}")
         return f"Baca selengkapnya di {link}"
 
 # Database Media Nasional Campuran
@@ -53,7 +46,7 @@ sumber_rss = [
     {"media": "Bisnis.com", "url": "https://www.bisnis.com/rss"}
 ]
 
-# Jalur file database berita utama website Anda
+# Jalur file utama website Anda
 path_json = "posts.json"
 
 def buat_slug(judul):
@@ -82,7 +75,7 @@ def deteksi_kategori_otomatis(judul):
     else:
         return "Politik"
 
-# Memuat timbunan berita lama agar tidak hilang saat menumpuk data baru
+# Memuat timbunan berita lama
 if os.path.exists(path_json):
     try:
         with open(path_json, 'r', encoding='utf-8') as f:
@@ -144,7 +137,7 @@ for sumber in sumber_rss:
 
             kategori_terpilih = deteksi_kategori_otomatis(title)
 
-            print(f" -> Generate artikel pakai Gemini: {title}")
+            print(f" -> Generate artikel pakai SDK Gemini: {title}")
             isi_artikel = rewrite_with_gemini(title, link)
 
             id_unik = int(datetime.now().strftime("%d%H%M%S")) + random.randint(10, 99)
