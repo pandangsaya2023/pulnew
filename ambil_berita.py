@@ -4,6 +4,7 @@ import re
 import time
 import random
 import requests
+from datetime import datetime
 from openai import OpenAI
 from bs4 import BeautifulSoup
 
@@ -38,27 +39,28 @@ def rewrite_with_ai(title, link):
     except:
         return f"Berita selengkapnya bisa dibaca di {link}"
 
-# --- 3. PROSES UTAMA DENGAN BEAUTIFULSOUP ---
+# --- 3. PROSES UTAMA ---
 sumber_rss = [
     {"media": "Antara", "url": "https://www.antaranews.com/rss/nasional"},
     {"media": "Pikiran Rakyat", "url": "https://www.pikiran-rakyat.com/feed"},
     {"media": "Tribunnews", "url": "https://www.tribunnews.com/rss"},
     {"media": "Republika", "url": "https://www.republika.co.id/rss"},
     {"media": "Okezone", "url": "https://sindonews.com/rss"},
-    {"media": "Antara Nasional", "url": "https://www.antaranews.com/rss/nasional"},
     # {"media": "VOA Indonesia", "url": "https://www.voaindonesia.com/api/z$yqepviqpq"},
     {"media": "DW Indonesia", "url": "https://rss.dw.com/rdf/rss-id-indonesia"},
     # {"media": "Pikiran Rakyat", "url": "https://www.pikiran-rakyat.com/feed"},
     {"media": "Jawa Pos", "url": "https://www.jawapos.com/feed"}
 ]
 
-
 path_json = "posts.json"
 daftar_berita = []
 if os.path.exists(path_json):
-    with open(path_json, 'r', encoding='utf-8') as f:
-        data = json.load(f)
-        daftar_berita = data.get("posts", []) if isinstance(data, dict) else data
+    try:
+        with open(path_json, 'r', encoding='utf-8') as f:
+            data = json.load(f)
+            daftar_berita = data.get("posts", []) if isinstance(data, dict) else data
+    except:
+        daftar_berita = []
 
 slug_tercatat = {b["slug"] for b in daftar_berita if "slug" in b}
 berita_baru = []
@@ -67,10 +69,9 @@ for sumber in sumber_rss:
     print(f"Mengakses {sumber['media']}...")
     try:
         response = requests.get(sumber['url'], headers={'User-Agent': 'Mozilla/5.0'}, timeout=10)
-        # Menggunakan BeautifulSoup untuk parsing XML/RSS agar lebih toleran terhadap error
+        # Menggunakan BeautifulSoup 'xml' untuk parsing yang anti-error
         soup = BeautifulSoup(response.content, 'xml')
         
-        # Mencari semua tag 'item'
         for item in soup.find_all('item'):
             title = item.find('title').get_text(strip=True)
             link = item.find('link').get_text(strip=True)
@@ -81,8 +82,10 @@ for sumber in sumber_rss:
                 body = rewrite_with_ai(title, link)
                 berita_baru.append({
                     "id": int(time.time()),
-                    "title": title, "slug": slug, "category": "Politik",
-                    "date": datetime.now().isoformat(),
+                    "title": title, 
+                    "slug": slug, 
+                    "category": "Politik",
+                    "date": datetime.now().isoformat(), # Sekarang 'datetime' sudah dikenali
                     "image": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=600",
                     "body": body
                 })
