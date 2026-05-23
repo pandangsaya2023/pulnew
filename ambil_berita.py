@@ -20,7 +20,8 @@ Tulis ulang pakai gaya jurnalistik, jangan copy.
 Akhiri dengan: Berita selengkapnya bisa dibaca di {link}"""
 
     try:
-        url = f"https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent"
+        # Menggunakan endpoint v1 yang lebih stabil untuk menghindari Error 403 di server otomatis
+        url = f"https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key={api_key}"
         payload = {
             "contents": [{"parts": [{"text": prompt}]}],
             "generationConfig": {"temperature": 0.7, "maxOutputTokens": 800}
@@ -46,7 +47,8 @@ sumber_rss = [
     {"media": "Bisnis.com", "url": "https://www.bisnis.com/rss"}
 ]
 
-path_json = "public/posts.json"
+# JALUR DIPERBAIKI: Langsung ke root utama, sejajar dengan index.html agar terbaca oleh Cloudflare Pages
+path_json = "posts.json"
 
 def buat_slug(judul):
     judul = judul.lower()
@@ -79,7 +81,6 @@ if os.path.exists(path_json):
     try:
         with open(path_json, 'r', encoding='utf-8') as f:
             data_lama = json.load(f)
-            # Menangani jika struktur json berupa object {"posts": [...]} atau langsung list [...]
             if isinstance(data_lama, dict):
                 daftar_berita = data_lama.get("posts", [])
             else:
@@ -103,7 +104,6 @@ for sumber in sumber_rss:
             'User-Agent': "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
         }
         
-        # Penarikan data XML menggunakan urllib (lebih aman dari proteksi cloudflare di beberapa RSS)
         req = urllib.request.Request(url, headers=headers)
         response = urllib.request.urlopen(req, timeout=15)
         xml_data = response.read()
@@ -127,7 +127,6 @@ for sumber in sumber_rss:
             if slug in slug_tercatat:
                 continue
 
-            # Cari gambar otomatis
             image_url = "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=600"
             enclosure = item.find('enclosure')
             if enclosure is not None and 'url' in enclosure.attrib:
@@ -139,12 +138,11 @@ for sumber in sumber_rss:
 
             kategori_terpilih = deteksi_kategori_otomatis(title)
 
-            # === PANGGIL GEMINI ===
             print(f" -> Generate artikel pakai Gemini: {title}")
             isi_artikel = rewrite_with_gemini(title, link)
 
             struktur_berita = {
-                "id": int(datetime.now().strftime("%d%H%M%S")) + random.randint(10, 99), # Ditambah ID angka untuk kecocokan index.html Anda
+                "id": int(datetime.now().strftime("%d%H%M%S")) + random.randint(10, 99),
                 "title": title,
                 "slug": slug,
                 "category": kategori_terpilih,
@@ -165,7 +163,6 @@ if berita_baru_semua_media:
     daftar_berita = berita_baru_semua_media + daftar_berita
     daftar_berita = daftar_berita[:120]
 
-    # Simpan dalam format list langsung demi kecocokan looping JavaScript di index.html Anda
     with open(path_json, 'w', encoding='utf-8') as f:
         json.dump(daftar_berita, f, indent=2, ensure_ascii=False)
     print(f"Sukses! Berhasil menambahkan {len(berita_baru_semua_media)} berita nasional campuran secara proporsional.")
