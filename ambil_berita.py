@@ -20,14 +20,16 @@ Tulis ulang pakai gaya jurnalistik, jangan copy.
 Akhiri dengan: Berita selengkapnya bisa dibaca di {link}"""
 
     try:
-        # ENDPOINT FIX: Menggunakan rute resmi v1beta yang valid untuk gemini-1.5-flash
-        url = f"https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key={api_key}"
+        # PERBAIKAN URL: Menggunakan rute v1beta dengan pemanggilan parameter key yang tepat
+        url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent"
         payload = {
             "contents": [{"parts": [{"text": prompt}]}],
             "generationConfig": {"temperature": 0.7, "maxOutputTokens": 800}
         }
         headers = {"Content-Type": "application/json"}
-        res = requests.post(url, json=payload, headers=headers, timeout=60)
+        params = {"key": api_key}
+        
+        res = requests.post(url, json=payload, headers=headers, params=params, timeout=60)
         res.raise_for_status()
         return res.json()["candidates"][0]["content"]["parts"][0]["text"]
     except Exception as e:
@@ -48,7 +50,7 @@ sumber_rss = [
     {"media": "Bisnis.com", "url": "https://www.bisnis.com/rss"}
 ]
 
-# Jalur penyimpanan sejajar dengan file utama
+# Jalur file posts.json tetap di folder utama (root)
 path_json = "posts.json"
 
 def buat_slug(judul):
@@ -142,7 +144,6 @@ for sumber in sumber_rss:
             print(f" -> Generate artikel pakai Gemini: {title}")
             isi_artikel = rewrite_with_gemini(title, link)
 
-            # Penambahan format ID integer statis agar serasi dengan loop index.html lama Anda
             id_unik = int(datetime.now().strftime("%d%H%M%S")) + random.randint(10, 99)
 
             struktur_berita = {
@@ -167,7 +168,7 @@ if berita_baru_semua_media:
     daftar_berita = berita_baru_semua_media + daftar_berita
     daftar_berita = daftar_berita[:120]
 
-    # FORMAT DIPERBAIKI: Mengembalikan bungkus {"posts": ...} agar langsung serasi dengan index.html Anda
+    # Menyimpan dalam format struktur {"posts": [...]} yang mutlak dicari index.html Anda
     with open(path_json, 'w', encoding='utf-8') as f:
         json.dump({"posts": daftar_berita}, f, indent=2, ensure_ascii=False)
     print(f"Sukses! Berhasil menambahkan {len(berita_baru_semua_media)} berita nasional campuran secara proporsional.")
