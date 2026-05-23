@@ -64,10 +64,15 @@ def rewrite_with_ai(title, link):
 
 # --- 3. PROSES UTAMA ---
 sumber_rss = [
-    {"media": "Detikcom", "url": "https://rss.detik.com/index.php/detikcom"},
-    {"media": "Tempo", "url": "https://rss.tempo.co/nasional"},
     {"media": "Republika", "url": "https://www.republika.co.id/rss"},
-    {"media": "Okezone", "url": "https://sindonews.com/rss"}
+    {"media": "Okezone", "url": "https://sindonews.com/rss"},
+    {"media": "Antara Nasional", "url": "https://www.antaranews.com/rss/nasional"},
+    {"media": "VOA Indonesia", "url": "https://www.voaindonesia.com/api/z$yqepviqpq"},
+    {"media": "DW Indonesia", "url": "https://rss.dw.com/rdf/rss-id-indonesia"},
+    {"media": "Pikiran Rakyat", "url": "https://www.pikiran-rakyat.com/feed"},
+    {"media": "Jawa Pos", "url": "https://www.jawapos.com/feed"}
+]
+
 ]
 
 path_json = "posts.json"
