@@ -45,7 +45,7 @@ def rewrite_with_ai(title, link):
 sumber_rss = [
     # {"media": "Antara", "url": "https://www.antaranews.com/rss/nasional"},
     {"media": "Pikiran Rakyat", "url": "https://www.pikiran-rakyat.com/feed"},
-    {"media": "Tribunnews", "url": "https://www.tribunnews.com/rss"}
+    {"media": "Tribunnews", "url": "https://www.tribunnews.com/rss"},
     {"media": "Republika", "url": "https://www.republika.co.id/rss"},
     {"media": "Okezone", "url": "https://sindonews.com/rss"},
     {"media": "Antara Nasional", "url": "https://www.antaranews.com/rss/nasional"},
