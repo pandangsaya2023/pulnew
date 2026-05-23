@@ -8,14 +8,14 @@ import random
 from openai import OpenAI
 
 def rewrite_with_ai(title, link):
-    """Fungsi resmi menggunakan OpenAI SDK sesuai standar dokumentasi Groq"""
+    """Fungsi resmi menggunakan OpenAI SDK dengan model terbaru yang aktif"""
     api_key = os.getenv("GROQ_API_KEY")
     if not api_key:
         print("GROQ_API_KEY belum diset di GitHub Secrets")
         return f"Baca selengkapnya di {link}"
 
     try:
-        # Inisialisasi client Groq menggunakan SDK Resmi OpenAI sesuai dokumentasi
+        # Inisialisasi client Groq menggunakan SDK Resmi
         client = OpenAI(
             api_key=api_key.strip(),
             base_url="https://api.groq.com/openai/v1",
@@ -23,9 +23,9 @@ def rewrite_with_ai(title, link):
 
         prompt = f'Buat artikel berita sepanjang 300 kata dalam bahasa Indonesia berdasarkan judul ini: "{title}". Tulis ulang menggunakan gaya bahasa jurnalistik yang rapi, profesional, dan jangan menyalin teks asli. Akhiri artikel dengan kalimat persis: "Berita selengkapnya bisa dibaca di {link}"'
 
-        # Pemanggilan model sesuai struktur standar Groq Cloud
+        # MENGGUNAKAN MODEL TERBARU YANG AKTIF DAN DIDUKUNG GROQ
         completion = client.chat.completions.create(
-            model="llama3-8b-8192",
+            model="llama-3.1-8b-instant",
             messages=[
                 {
                     "role": "user",
