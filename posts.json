@@ -1,6 +1,87 @@
 {
   "posts": [
     {
+      "id": 23160789,
+      "title": "Sri Sultan Jamu Wedang Semlo ke Megawati Soekarnoputri di Kraton",
+      "slug": "sri-sultan-jamu-wedang-semlo-ke-megawati-soekarnoputri-di-kr",
+      "category": "Politik",
+      "date": "2026-05-23T16:07:20+07:00",
+      "image": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=600",
+      "body": "Baca selengkapnya di https://nasional.tempo.co/read/2105053/sri-sultan-jamu-wedang-semlo-ke-megawati-soekarnoputri-di-kraton"
+    },
+    {
+      "id": 23160733,
+      "title": "Richard Lee Segera Disidang usai Berkas Perkara Lengkap",
+      "slug": "richard-lee-segera-disidang-usai-berkas-perkara-lengkap",
+      "category": "Teknologi",
+      "date": "2026-05-23T16:07:22+07:00",
+      "image": "https://pict.sindonews.com/dyn/850/pena/news/2026/05/23/187/1710045/richard-lee-segera-disidang-usai-berkas-perkara-lengkap-mds.jpg",
+      "body": "Baca selengkapnya di https://lifestyle.sindonews.com/read/1710045/187/richard-lee-segera-disidang-usai-berkas-perkara-lengkap-1779541548"
+    },
+    {
+      "id": 23160748,
+      "title": "OSL Indonesia Dorong Edukasi Kripto Melalui Mekanisme Insentif",
+      "slug": "osl-indonesia-dorong-edukasi-kripto-melalui-mekanisme-insent",
+      "category": "Politik",
+      "date": "2026-05-23T16:07:22+07:00",
+      "image": "https://pict.sindonews.com/dyn/850/pena/news/2026/05/23/34/1710053/osl-indonesia-dorong-edukasi-kripto-melalui-mekanisme-insentif-xzc.jpeg",
+      "body": "Baca selengkapnya di https://ekbis.sindonews.com/read/1710053/34/osl-indonesia-dorong-edukasi-kripto-melalui-mekanisme-insentif-1779541555"
+    },
+    {
+      "id": 23160744,
+      "title": "Persib Bandung Juara Super League 2026, Borneo Gigit Jari",
+      "slug": "persib-bandung-juara-super-league-2026-borneo-gigit-jari",
+      "category": "Olahraga",
+      "date": "2026-05-23T16:07:22+07:00",
+      "image": "https://static.republika.co.id/uploads/images/detailnews/012449900-1779544565-830-556.jpg",
+      "body": "Baca selengkapnya di https://rejabar.republika.co.id/berita/tfhtit282/persib-bandung-juara-super-league-2026-borneo-gigit-jari"
+    },
+    {
+      "id": 23160814,
+      "title": "Prabowo Ikut Panen Udang dengan Petambak di Kebumen",
+      "slug": "prabowo-ikut-panen-udang-dengan-petambak-di-kebumen",
+      "category": "Politik",
+      "date": "2026-05-23T16:07:20+07:00",
+      "image": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=600",
+      "body": "Baca selengkapnya di https://nasional.tempo.co/read/2105055/prabowo-ikut-panen-udang-dengan-petambak-di-kebumen"
+    },
+    {
+      "id": 23160802,
+      "title": "Teddy Bertemu CEO GoTo, Bahas Kebijakan Prabowo soal Ojol",
+      "slug": "teddy-bertemu-ceo-goto-bahas-kebijakan-prabowo-soal-ojol",
+      "category": "Politik",
+      "date": "2026-05-23T16:07:20+07:00",
+      "image": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=600",
+      "body": "Baca selengkapnya di https://nasional.tempo.co/read/2105050/teddy-bertemu-ceo-goto-bahas-kebijakan-prabowo-soal-ojol"
+    },
+    {
+      "id": 23160735,
+      "title": "Cara Akses Platform Rumah Pendidikan Kemendikdasmen untuk Guru, Siswa, dan Orang Tua",
+      "slug": "cara-akses-platform-rumah-pendidikan-kemendikdasmen-untuk-gu",
+      "category": "Politik",
+      "date": "2026-05-23T16:07:22+07:00",
+      "image": "https://pict.sindonews.com/dyn/850/pena/news/2026/05/23/212/1709979/cara-akses-platform-rumah-pendidikan-kemendikdasmen-untuk-guru-siswa-dan-orang-tua-bmk.jpg",
+      "body": "Baca selengkapnya di https://edukasi.sindonews.com/read/1709979/212/cara-akses-platform-rumah-pendidikan-kemendikdasmen-untuk-guru-siswa-dan-orang-tua-1779530708"
+    },
+    {
+      "id": 23160739,
+      "title": "AS Dilaporkan akan Menyerang, Iran Tutup Wilayah Udara, Semua Izin Penerbangan Sipil Ditangguhkan",
+      "slug": "as-dilaporkan-akan-menyerang-iran-tutup-wilayah-udara-semua-",
+      "category": "Politik",
+      "date": "2026-05-23T16:07:22+07:00",
+      "image": "https://static.republika.co.id/uploads/images/detailnews/warga-iran-berjalan-di-depan-lukisan-raksasa-mengilustrasikan-kapal_260421112547-400.jpg",
+      "body": "Baca selengkapnya di https://khazanah.republika.co.id/berita/tfhsux483/as-dilaporkan-akan-menyerang-iran-tutup-wilayah-udara-semua-izin-penerbangan-sipil-ditangguhkan"
+    },
+    {
+      "id": 23160752,
+      "title": "Jelang Mubes, Kosgoro 1957 Matangkan Agenda Transformasi Organisasi",
+      "slug": "jelang-mubes-kosgoro-1957-matangkan-agenda-transformasi-orga",
+      "category": "Politik",
+      "date": "2026-05-23T16:07:21+07:00",
+      "image": "https://static.republika.co.id/uploads/images/detailnews/_260523225805-583.png",
+      "body": "Baca selengkapnya di https://news.republika.co.id/berita/tfhyqe416/jelang-mubes-kosgoro-1957-matangkan-agenda-transformasi-organisasi"
+    },
+    {
       "id": 23155149,
       "title": "Empat Bulan Jelang Asian Games 2026, Petinju Pangeran Februzio Matangkan Persiapan di JBL",
       "slug": "empat-bulan-jelang-asian-games-2026-petinju-pangeran-februzi",
