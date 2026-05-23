@@ -79,7 +79,11 @@ if os.path.exists(path_json):
     try:
         with open(path_json, 'r', encoding='utf-8') as f:
             data_lama = json.load(f)
-            daftar_berita = data_lama.get("posts", [])
+            # Menangani jika struktur json berupa object {"posts": [...]} atau langsung list [...]
+            if isinstance(data_lama, dict):
+                daftar_berita = data_lama.get("posts", [])
+            else:
+                daftar_berita = data_lama
     except Exception:
         daftar_berita = []
 else:
@@ -96,18 +100,12 @@ for sumber in sumber_rss:
 
     try:
         headers = {
-            'User-Agent': "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-            response: request.get(url, headers=headers, timeout= 15),
-            response.raise_for_status(),
-            feed: feedparser.parse(response.content),
-    
-        except Exception as e:
-            print(f"Media {nama_media} dilewati karena proteksi/Rss off. Detail: {e}")
-    continue
-        
+            'User-Agent': "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
         }
+        
+        # Penarikan data XML menggunakan urllib (lebih aman dari proteksi cloudflare di beberapa RSS)
         req = urllib.request.Request(url, headers=headers)
-        response = urllib.request.urlopen(req, timeout=10)
+        response = urllib.request.urlopen(req, timeout=15)
         xml_data = response.read()
         root = ET.fromstring(xml_data)
 
@@ -141,17 +139,18 @@ for sumber in sumber_rss:
 
             kategori_terpilih = deteksi_kategori_otomatis(title)
 
-            # === BAGIAN YANG DIGANTI: PANGGIL GEMINI ===
+            # === PANGGIL GEMINI ===
             print(f" -> Generate artikel pakai Gemini: {title}")
             isi_artikel = rewrite_with_gemini(title, link)
 
             struktur_berita = {
+                "id": int(datetime.now().strftime("%d%H%M%S")) + random.randint(10, 99), # Ditambah ID angka untuk kecocokan index.html Anda
                 "title": title,
                 "slug": slug,
                 "category": kategori_terpilih,
                 "date": datetime.now().strftime("%Y-%m-%dT%H:%M:%S+07:00"),
                 "image": image_url,
-                "body": isi_artikel # sekarang isinya hasil Gemini
+                "body": isi_artikel
             }
 
             berita_baru_semua_media.append(struktur_berita)
@@ -166,8 +165,9 @@ if berita_baru_semua_media:
     daftar_berita = berita_baru_semua_media + daftar_berita
     daftar_berita = daftar_berita[:120]
 
+    # Simpan dalam format list langsung demi kecocokan looping JavaScript di index.html Anda
     with open(path_json, 'w', encoding='utf-8') as f:
-        json.dump({"posts": daftar_berita}, f, indent=2, ensure_ascii=False)
+        json.dump(daftar_berita, f, indent=2, ensure_ascii=False)
     print(f"Sukses! Berhasil menambahkan {len(berita_baru_semua_media)} berita nasional campuran secara proporsional.")
 else:
     print("Tidak ada berita baru yang ditarik.")
