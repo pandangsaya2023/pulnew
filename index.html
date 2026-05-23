@@ -160,11 +160,20 @@
         let indexSlideAktif = 0;
         let intervalSlide;
 
-        // 1. MEMBACA FILE DATA JSON
+        // 1. MEMBACA FILE DATA JSON (VERSI TAHAN BANTING & ANTI CACHE)
         async function muatDataBerita() {
             try {
-                const respon = await fetch('posts.json');
-                dataBeritaGlobal = await respon.json();
+                const respon = await fetch('posts.json?v=' + new Date().getTime());
+                const dataMentah = await respon.json();
+                
+                // Mendeteksi otomatis apakah format data dibungkus objek (.posts) atau array langsung
+                if (dataMentah && dataMentah.posts) {
+                    dataBeritaGlobal = dataMentah.posts;
+                } else if (Array.isArray(dataMentah)) {
+                    dataBeritaGlobal = dataMentah;
+                } else {
+                    dataBeritaGlobal = [];
+                }
                 
                 dataBeritaGlobal.sort((a, b) => b.id - a.id);
 
@@ -176,6 +185,7 @@
                 document.getElementById('news-container').innerHTML = `<p style="grid-column:span 6; text-align:center; padding:30px; color:red;">Gagal memuat berita. Pastikan posts.json tersedia.</p>`;
             }
         }
+
 
         // 2. MEMBUAT TEKS BERJALAN DINAMIS
         function buatRunningText() {
