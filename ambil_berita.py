@@ -3,53 +3,55 @@ import json
 import xml.etree.ElementTree as ET
 from datetime import datetime
 import re
-import urllib.request
 import time
 import random
+import requests
 from openai import OpenAI
 from bs4 import BeautifulSoup
 
-# --- 1. FUNGSI UNTUK MENGAMBIL ISI BERITA DARI WEB ---
+# --- 1. FUNGSI SCRAPING YANG LEBIH TANGGUH ---
 def ambil_konten_berita(url):
+    """Mengambil teks dengan header browser yang menyamar sebagai manusia"""
     try:
-        # Meniru perilaku browser asli agar tidak kena blokir 403 Forbidden
         headers = {
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36',
-            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8',
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
             'Referer': 'https://www.google.com/'
         }
-        req = urllib.request.Request(url, headers=headers)
-        with urllib.request.urlopen(req, timeout=15) as response:
-            soup = BeautifulSoup(response.read(), 'html.parser')
-            # Mengambil teks dari tag <p> sebagai bahan mentah
+        response = requests.get(url, headers=headers, timeout=15)
+        if response.status_code == 200:
+            soup = BeautifulSoup(response.content, 'html.parser')
+            # Ambil semua teks dari tag <p>
             paragraphs = [p.get_text() for p in soup.find_all('p')]
-            return " ".join(paragraphs)[:4000] # Batasi agar tidak overload
+            return " ".join(paragraphs)[:4000] # Maksimal 4000 karakter
+        else:
+            print(f"  -> Gagal akses (Status {response.status_code}): {url}")
+            return ""
     except Exception as e:
-        print(f"Gagal mengambil isi {url}: {e}")
+        print(f"  -> Error Scraping: {e}")
         return ""
 
-# --- 2. FUNGSI AI UNTUK MENULIS ULANG BERITA ---
+# --- 2. FUNGSI AI DENGAN PROMPT PROFESIONAL ---
 def rewrite_with_ai(title, link):
     api_key = os.getenv("GROQ_API_KEY")
-    if not api_key:
-        return f"Baca selengkapnya di {link}"
-
     konten_asli = ambil_konten_berita(link)
     
+    if not konten_asli:
+        return f"Berita selengkapnya dapat dibaca di {link}"
+
     try:
         client = OpenAI(api_key=api_key.strip(), base_url="https://api.groq.com/openai/v1")
         prompt = f"""
-        Anda adalah jurnalis senior. Kembangkan judul dan konten berita berikut menjadi artikel berita utuh yang profesional, unik, dan informatif.
+        Anda adalah jurnalis profesional. Tulis ulang berita berikut menjadi artikel yang menarik dan mendalam.
         Judul: {title}
         Konten Mentah: {konten_asli}
         
         Instruksi:
-        1. Tulis dalam 3-4 paragraf yang mengalir (jangan gunakan format daftar/poin).
-        2. Jangan menyalin teks asli, lakukan penulisan ulang (paraphrase) yang kreatif.
-        3. Wajib gunakan bahasa Indonesia yang baku dan menarik.
-        4. Di paragraf paling akhir, wajib tambahkan kalimat: "Berita selengkapnya bisa dibaca di {link}"
+        1. Buatlah artikel sepanjang minimal 3 paragraf.
+        2. Gunakan gaya bahasa jurnalistik yang mengalir dan unik (paraphrase).
+        3. Dilarang menyalin teks mentah, tulis ulang dengan struktur kalimat yang baru.
+        4. Wajib akhiri dengan kalimat: "Berita selengkapnya bisa dibaca di {link}"
         """
-
+        
         completion = client.chat.completions.create(
             model="llama-3.1-8b-instant",
             messages=[{"role": "user", "content": prompt}],
@@ -57,26 +59,24 @@ def rewrite_with_ai(title, link):
         )
         return completion.choices[0].message.content
     except Exception as e:
-        print(f"Error AI: {e}")
-        return f"Baca selengkapnya di {link}"
+        print(f"  -> Error AI: {e}")
+        return f"Berita selengkapnya bisa dibaca di {link}"
 
 # --- 3. PROSES UTAMA ---
 sumber_rss = [
     {"media": "Detikcom", "url": "https://rss.detik.com/index.php/detikcom"},
-    {"media": "Kompas", "url": "https://nasional.kompas.com/rss/index.xml"},
     {"media": "Tempo", "url": "https://rss.tempo.co/nasional"},
     {"media": "Republika", "url": "https://www.republika.co.id/rss"},
     {"media": "Okezone", "url": "https://sindonews.com/rss"}
 ]
 
 path_json = "posts.json"
-
-# Load Data Lama
-daftar_berita = []
 if os.path.exists(path_json):
     with open(path_json, 'r', encoding='utf-8') as f:
         data = json.load(f)
         daftar_berita = data.get("posts", []) if isinstance(data, dict) else data
+else:
+    daftar_berita = []
 
 slug_tercatat = {b["slug"] for b in daftar_berita if "slug" in b}
 berita_baru = []
@@ -84,31 +84,31 @@ berita_baru = []
 for sumber in sumber_rss:
     print(f"Memproses {sumber['media']}...")
     try:
-        req = urllib.request.Request(sumber["url"], headers={'User-Agent': 'Mozilla/5.0'})
-        with urllib.request.urlopen(req, timeout=15) as response:
-            root = ET.fromstring(response.read())
-            for item in root.findall('.//item'):
-                title = item.find('title').text.strip()
-                link = item.find('link').text.strip()
-                slug = re.sub(r'[^a-z0-9]', '-', title.lower())[:60]
-                
-                if slug in slug_tercatat: continue
-                
-                print(f" - Menulis: {title}")
-                body = rewrite_with_ai(title, link)
-                
-                berita_baru.append({
-                    "id": int(datetime.now().strftime("%H%M%S")) + random.randint(100,999),
-                    "title": title,
-                    "slug": slug,
-                    "category": "Politik", # Bisa disesuaikan lagi
-                    "date": datetime.now().isoformat(),
-                    "image": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=600",
-                    "body": body
-                })
-                slug_tercatat.add(slug)
-                time.sleep(2) # Jeda agar tidak terkena rate-limit
-                if len(berita_baru) >= 3: break
+        response = requests.get(sumber['url'], headers={'User-Agent': 'Mozilla/5.0'}, timeout=15)
+        root = ET.fromstring(response.content)
+        
+        for item in root.findall('.//item'):
+            title = item.find('title').text.strip()
+            link = item.find('link').text.strip()
+            slug = re.sub(r'[^a-z0-9]', '-', title.lower())[:60]
+            
+            if slug in slug_tercatat: continue
+            
+            print(f" -> Menulis: {title}")
+            body = rewrite_with_ai(title, link)
+            
+            berita_baru.append({
+                "id": int(datetime.now().strftime("%H%M%S")) + random.randint(100,999),
+                "title": title,
+                "slug": slug,
+                "category": "Politik",
+                "date": datetime.now().isoformat(),
+                "image": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=600",
+                "body": body
+            })
+            slug_tercatat.add(slug)
+            time.sleep(5) # JEDA 5 DETIK AGAR TIDAK DIBLOKIR
+            if len(berita_baru) >= 3: break
     except Exception as e:
         print(f"Gagal memproses {sumber['media']}: {e}")
 
@@ -116,5 +116,5 @@ if berita_baru:
     daftar_berita = berita_baru + daftar_berita
     with open(path_json, 'w', encoding='utf-8') as f:
         json.dump({"posts": daftar_berita[:100]}, f, indent=2, ensure_ascii=False)
-    print("Sukses Update Berita!")
+    print("Update Berita Selesai!")
 
