@@ -8,38 +8,38 @@ import random
 import requests
 
 def rewrite_with_gemini(title, link):
-    """Fungsi buat nyuruh Gemini bikin artikel dari judul"""
+    """Fungsi resmi interaksi API Gemini Flash v1beta"""
     api_key = os.getenv("GEMINI_API_KEY")
 
     if not api_key:
-        print("GEMINI_API_KEY belum diset")
+        print("GEMINI_API_KEY belum diset di GitHub Secrets")
         return f"Baca selengkapnya di {link}"
 
     prompt = f"""Buat artikel 300 kata bahasa Indonesia dengan judul: "{title}"
 Tulis ulang pakai gaya jurnalistik, jangan copy.
 Akhiri dengan: Berita selengkapnya bisa dibaca di {link}"""
 
+    # URL TERKUNCI: Menggunakan endpoint POST resmi tanpa embel-embel parameter di buntutnya
+    url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent"
+    
+    payload = {
+        "contents": [{
+            "parts": [{"text": prompt}]
+        }]
+    }
+    headers = {"Content-Type": "application/json"}
+    # Solusi 404: Kunci API dipisahkan ke dalam dictionary params agar dibentuk otomatis oleh library requests
+    query_params = {"key": api_key}
+
     try:
-        # PERBAIKAN ENDPOINT MUTAKHIR: Menggunakan rute resmi v1beta post content
-        url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent"
-        
-        payload = {
-            "contents": [{
-                "parts": [{"text": prompt}]
-            }]
-        }
-        headers = {"Content-Type": "application/json"}
-        params = {"key": api_key}
-        
-        res = requests.post(url, json=payload, headers=headers, params=params, timeout=30)
+        res = requests.post(url, json=payload, headers=headers, params=query_params, timeout=30)
         res.raise_for_status()
-        
         return res.json()["candidates"][0]["content"]["parts"][0]["text"]
     except Exception as e:
         print(f"Error Gemini: {e}")
         return f"Baca selengkapnya di {link}"
 
-# Mengintegrasikan seluruh database media yang kamu berikan
+# Database Media Nasional Campuran
 sumber_rss = [
     {"media": "Detikcom", "url": "https://rss.detik.com/index.php/detikcom"},
     {"media": "Kompas", "url": "https://nasional.kompas.com/rss/index.xml"},
@@ -53,7 +53,7 @@ sumber_rss = [
     {"media": "Bisnis.com", "url": "https://www.bisnis.com/rss"}
 ]
 
-# File disimpan di root utama agar terbaca index.html
+# Jalur file database berita utama website Anda
 path_json = "posts.json"
 
 def buat_slug(judul):
@@ -82,7 +82,7 @@ def deteksi_kategori_otomatis(judul):
     else:
         return "Politik"
 
-# Load berita lama
+# Memuat timbunan berita lama agar tidak hilang saat menumpuk data baru
 if os.path.exists(path_json):
     try:
         with open(path_json, 'r', encoding='utf-8') as f:
@@ -99,7 +99,7 @@ else:
 slug_tercatat = {b["slug"] for b in daftar_berita if "slug" in b}
 berita_baru_semua_media = []
 
-# Loop mengambil berita dari setiap media
+# Proses penarikan data RSS feed dari 10 portal berita
 for sumber in sumber_rss:
     nama_media = sumber["media"]
     url = sumber["url"]
@@ -171,10 +171,9 @@ if berita_baru_semua_media:
     daftar_berita = berita_baru_semua_media + daftar_berita
     daftar_berita = daftar_berita[:120]
 
-    # Menyimpan wajib dibungkus {"posts": ...} agar sinkron dengan file HTML
+    # Menjaga pembungkusan objek tetap bernama "posts" agar lolos validasi JavaScript frontend
     with open(path_json, 'w', encoding='utf-8') as f:
         json.dump({"posts": daftar_berita}, f, indent=2, ensure_ascii=False)
     print(f"Sukses! Berhasil menambahkan {len(berita_baru_semua_media)} berita nasional campuran secara proporsional.")
 else:
     print("Tidak ada berita baru yang ditarik.")
-
