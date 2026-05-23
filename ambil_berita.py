@@ -5,11 +5,12 @@ from datetime import datetime
 import re
 import os
 import random
-# PERBAIKAN IMPORT: Menggunakan cara panggil resmi SDK google-genai
 from google import genai
+# Mengimpor modul konfigurasi tipe data resmi dari Google
+from google.genai import types
 
 def rewrite_with_gemini(title, link):
-    """Fungsi resmi menggunakan pustaka Google GenAI terbaru"""
+    """Fungsi resmi menggunakan pustaka Google GenAI dengan Kunci Jalur V1"""
     api_key = os.getenv("GEMINI_API_KEY")
 
     if not api_key:
@@ -17,14 +18,17 @@ def rewrite_with_gemini(title, link):
         return f"Baca selengkapnya di {link}"
 
     try:
-        # Inisialisasi klien resmi menggunakan google-genai
-        client = genai.Client(api_key=api_key)
+        # PERBAIKAN UTAMA: Memaksa Client SDK Baru agar mengunci rute ke API versi 'v1' stabil
+        client = genai.Client(
+            api_key=api_key,
+            http_options={'api_version': 'v1'}
+        )
         
         prompt = f"""Buat artikel 300 kata bahasa Indonesia dengan judul: "{title}"
 Tulis ulang pakai gaya jurnalistik, jangan copy.
 Akhiri dengan: Berita selengkapnya bisa dibaca di {link}"""
 
-        # Pemanggilan model dengan jalur resmi v1 stabil bawaan SDK
+        # Pemanggilan model generasi konten
         response = client.models.generate_content(
             model='gemini-1.5-flash',
             contents=prompt,
