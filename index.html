@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>PULNEW - Portal Berita Terkini & Terpercaya</title>
+    <meta name="description" content="PULNEW menyajikan berita terkini, terpopuler, hukum, politik, ekonomi, dan informasi terpercaya langsung ke layar Anda.">
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif; scroll-behavior: smooth; }
+        html, body { background: #f4f6f9; color: #333; display: flex; flex-direction: column; min-height: 100vh; overflow-x: hidden; width: 100%; }
+        
+        /* RUNNING TEXT / TICKER BAR */
+        .top-header { background: #d32f2f; color: white; padding: 8px 12px; display: flex; align-items: center; gap: 10px; font-size: 13px; overflow: hidden; position: relative; width: 100%; }
+        .breaking-badge { background: #fff; color: #d32f2f; padding: 3px 8px; border-radius: 12px; font-weight: 700; font-size: 11px; flex-shrink: 0; z-index: 2; box-shadow: 2px 0 5px rgba(0,0,0,0.2); }
+        .ticker-wrapper { overflow: hidden; width: 100%; display: flex; }
+        .ticker-content { display: inline-block; white-space: nowrap; padding-left: 100%; animation: ticker 120s linear infinite; }
+        .ticker-item { display: inline-block; padding-right: 40px; font-weight: 500; color: white; text-decoration: none; }
+        .ticker-item:hover { text-decoration: underline; }
+        @keyframes ticker { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(-100%, 0, 0); } }
+
+        /* HEADER & LOGO BAR */
+        .header-container { width: 100%; background: #ffffff; box-shadow: 0 2px 4px rgba(0,0,0,0.08); overflow: hidden; }
+        .logo-bar { max-width: 1200px; margin: 0 auto; padding: 12px 20px; display: flex; justify-content: space-between; align-items: center; }
+        .logo-text { font-size: 28px; font-weight: 900; color: #1a237e; text-decoration: none; letter-spacing: -1px; }
+        .logo-text span { color: #d32f2f; }
+        
+        /* NAV MENU WRAPPER */
+        .nav-menu-wrapper { background: #1a237e; width: 100%; overflow: hidden; }
+        .nav-menu { max-width: 1200px; margin: 0 auto; padding: 0 10px; display: flex; gap: 5px; overflow-x: auto; scrollbar-width: none; }
+        .nav-menu::-webkit-scrollbar { display: none; }
+        .nav-menu a { color: rgba(255,255,255,0.8); text-decoration: none; padding: 15px 12px; font-size: 14px; font-weight: 600; white-space: nowrap; display: inline-block; transition: all 0.2s; border-bottom: 3px solid transparent; }
+        .nav-menu a:hover, .nav-menu a.active { color: white; border-bottom-color: #d32f2f; background: rgba(255,255,255,0.05); }
+
+        /* SLOT RUANG IKLAN KHUSUS */
+        .ads-container-leaderboard { max-width: 1200px; width: calc(100% - 20px); margin: 15px auto 5px auto; text-align: center; background: #eaedf2; padding: 12px; border: 1px dashed #adbac7; border-radius: 6px; }
+        .ads-label { font-size: 10px; color: #768390; font-weight: 600; text-transform: uppercase; display: block; margin-bottom: 6px; letter-spacing: 1px; }
+        .ads-placeholder { font-size: 13px; font-weight: 700; color: #57606a; padding: 10px 0; }
+
+        /* CONTAINER UTAMA */
+        .container { max-width: 1200px; width: 100%; margin: 0 auto; padding: 15px 10px; flex: 1; overflow: hidden; }
+        .category-title { font-size: 18px; font-weight: 700; color: #111; margin-bottom: 15px; border-left: 4px solid #d32f2f; padding-left: 10px; text-transform: uppercase; }
+        
+        /* AUTO-SLIDER BERITA UTAMA */
+        .hero-slider-container { width: 100%; position: relative; height: 210px; border-radius: 8px; overflow: hidden; margin-bottom: 15px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); display: none; }
+        .slide-item { position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 0.8s ease-in-out; display: flex; flex-direction: column; text-decoration: none; z-index: 1; }
+        .slide-item.active { opacity: 1; z-index: 2; }
+        .slide-item img { width: 100%; height: 100%; object-fit: cover; }
+        .slide-overlay { position: absolute; bottom: 0; left: 0; width: 100%; background: linear-gradient(transparent, rgba(0,0,0,0.85)); padding: 25px 15px 15px 15px; color: white; display: flex; flex-direction: column; justify-content: flex-end; }
+        .slide-overlay .category { color: #ff5252; font-size: 10px; font-weight: 700; text-transform: uppercase; margin-bottom: 4px; }
+        .slide-overlay h2 { font-size: 15px; font-weight: 800; line-height: 1.3; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+
+        /* STRUKTUR GRID 6 KOLOM TETAP UNTUK MOBILE & DESKTOP (POLA KUNCI 1-3-2) */
+        .news-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 8px; width: 100%; }
+        .news-card { background: white; display: flex; flex-direction: column; text-decoration: none; color: inherit; border-radius: 6px; overflow: hidden; box-shadow: 0 2px 4px rgba(0,0,0,0.05); transition: transform 0.2s, box-shadow 0.2s; }
+        .news-card:hover { transform: translateY(-3px); box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        .news-card img { width: 100%; object-fit: cover; background: #e1e4e8; }
+        .news-card .card-info { padding: 8px; display: flex; flex-direction: column; flex-grow: 1; }
+        .news-card .category { color: #d32f2f; font-size: 9px; font-weight: 700; text-transform: uppercase; margin-bottom: 3px; display: block; }
+        
+        /* SPAN POLA 1-3-2 DI LAYAR HP (MOBILE) */
+        .grid-span-full { grid-column: span 6; }
+        .grid-span-full img { height: 160px; }
+        .grid-span-full h3 { font-size: 13px; font-weight: 700; line-height: 1.3; color: #111; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+
+        .grid-span-2 { grid-column: span 2; } 
+        .grid-span-2 img { height: 75px; }
+        .grid-span-2 h3 { font-size: 10px; font-weight: 600; line-height: 1.2; color: #111; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+
+        .grid-span-3 { grid-column: span 3; } 
+        .grid-span-3 img { height: 105px; }
+        .grid-span-3 h3 { font-size: 11px; font-weight: 700; line-height: 1.2; color: #111; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+        
+        /* RESPONSIVE LAYOUT UNTUK LAPTOP / DESKTOP */
+        @media (min-width: 768px) {
+            .news-grid { gap: 20px; }
+            .container { padding: 25px 20px; }
+            .hero-slider-container { height: 420px; margin-bottom: 25px; display: block; }
+            .slide-overlay { padding: 40px 25px 25px 25px; }
+            .slide-overlay h2 { font-size: 26px; }
+            
+            .news-card { border-radius: 8px; }
+            .news-card .card-info { padding: 12px; }
+            .news-card .category { font-size: 10px; margin-bottom: 5px; }
+
+            .grid-span-full img { height: 320px; } 
+            .grid-span-full h3 { font-size: 20px; }
+            
+            .grid-span-2 img { height: 160px; }
+            .grid-span-2 h3 { font-size: 14px; font-weight: 700; }
+            
+            .grid-span-3 img { height: 220px; }
+            .grid-span-3 h3 { font-size: 17px; font-weight: 700; }
+            .ads-container-leaderboard { margin: 20px auto 10px auto; padding: 20px; }
+        }
+
+        /* FOOTER RE-DESIGN */
+        footer { background: #101726; color: #b0b8c4; padding: 20px; font-size: 13px; border-top: 4px solid #1a237e; width: 100%; margin-top: auto; }
+        .footer-content { max-width: 1200px; margin: 0 auto; text-align: center; display: flex; flex-direction: column; gap: 10px; }
+        .footer-logo { font-size: 22px; font-weight: 800; color: white; }
+        .footer-logo span { color: #d32f2f; }
+        .footer-bottom { border-top: 1px solid #1e293b; padding-top: 10px; font-size: 11px; color: #64748b; }
+    </style>
+</head>
+<body>
+
+    <div class="top-header">
+        <div class="breaking-badge">UTAMA</div>
+        <div class="ticker-wrapper">
+            <div class="ticker-content" id="ticker-space">
+                <span class="ticker-item">Memuat berita terbaru hari ini...</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-container">
+        <div class="logo-bar">
+            <a href="/" class="logo-text">PUL<span>NEW</span></a>
+        </div>
+    </div>
+
+    <div class="nav-menu-wrapper">
+        <div class="nav-menu" id="category-menu">
+            <a href="#" class="active" onclick="filterKategori('all', this)">Semua</a>
+            <a href="#" onclick="filterKategori('Hukum', this)">Hukum</a>
+            <a href="#" onclick="filterKategori('Politik', this)">Politik</a>
+            <a href="#" onclick="filterKategori('Ekonomi', this)">Ekonomi</a>
+            <a href="#" onclick="filterKategori('Olahraga', this)">Olahraga</a>
+            <a href="#" onclick="filterKategori('Hiburan', this)">Hiburan</a>
+        </div>
+    </div>
+
+    <div class="ads-container-leaderboard">
+        <span class="ads-label">- SPONSORED ADVERTISEMENT -</span>
+        <div class="ads-placeholder">
+            RUANG IKLAN UTAMA (BANNER RESPONSIVE / SLOT 728x90)
+        </div>
+    </div>
+    <div class="container">
+        <div class="hero-slider-container" id="hero-slider"></div>
+
+        <div class="category-title" id="section-title">Berita Terkini</div>
+        
+        <div class="news-grid" id="news-container">
+            </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">PUL<span>NEW</span></div>
+            <p>Portal Berita Independen, Cepat, Akurat, dan Terpercaya Nasional.</p>
+            <div class="footer-bottom">
+                &copy; 2026 PULNEW. All Rights Reserved. Terdaftar Media Siber Indonesia.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        let dataBeritaGlobal = [];
+        let indexSlideAktif = 0;
+        let intervalSlide;
+
+        // 1. MEMBACA FILE DATA JSON
+        async function muatDataBerita() {
+            try {
+                const respon = await fetch('posts.json');
+                dataBeritaGlobal = await respon.json();
+                
+                dataBeritaGlobal.sort((a, b) => b.id - a.id);
+
+                buatRunningText();
+                buatHeroSlider();
+                tampilkanGridBerita(dataBeritaGlobal);
+            } catch (error) {
+                console.error("Gagal membaca database posts.json:", error);
+                document.getElementById('news-container').innerHTML = `<p style="grid-column:span 6; text-align:center; padding:30px; color:red;">Gagal memuat berita. Pastikan posts.json tersedia.</p>`;
+            }
+        }
+
+        // 2. MEMBUAT TEKS BERJALAN DINAMIS
+        function buatRunningText() {
+            const tickerSpace = document.getElementById('ticker-space');
+            if (dataBeritaGlobal.length === 0) return;
+            
+            let htmlTicker = "";
+            dataBeritaGlobal.slice(0, 5).forEach(item => {
+                htmlTicker += `<a href="berita.html?id=${item.id}" class="ticker-item">🔥 ${item.title}</a>`;
+            });
+            tickerSpace.innerHTML = htmlTicker;
+        }
+
+        // 3. MEMBUAT HERO SLIDER UNTUK DESKTOP
+        function buatHeroSlider() {
+            const sliderSpace = document.getElementById('hero-slider');
+            if (dataBeritaGlobal.length === 0) return;
+
+            let htmlSlider = "";
+            const dataSlide = dataBeritaGlobal.slice(0, 3);
+            
+            dataSlide.forEach((item, indeks) => {
+                const kelasAktif = indeks === 0 ? 'active' : '';
+                htmlSlider += `
+                    <a href="berita.html?id=${item.id}" class="slide-item ${kelasAktif}">
+                        <img src="${item.image || 'https://via.placeholder.com/800x400'}" alt="Banner">
+                        <div class="slide-overlay">
+                            <span class="category">${item.category || 'INFO'}</span>
+                            <h2>${item.title}</h2>
+                        </div>
+                    </a>
+                `;
+            });
+            sliderSpace.innerHTML = htmlSlider;
+            
+            if(dataSlide.length > 1) {
+                clearInterval(intervalSlide);
+                intervalSlide = setInterval(putarSliderOtomatis, 5000);
+            }
+        }
+
+        function putarSliderOtomatis() {
+            const listSlide = document.querySelectorAll('.slide-item');
+            if(listSlide.length === 0) return;
+            
+            listSlide[indexSlideAktif].classList.remove('active');
+            indexSlideAktif = (indexSlideAktif + 1) % listSlide.length;
+            listSlide[indexSlideAktif].classList.add('active');
+        }
+
+        // 4. LOGIKA PENGATURAN POLA GRID KUNCI MATI (1-3-2) SECARA BERULANG
+        function tampilkanGridBerita(daftarBerita) {
+            const kontainerGrid = document.getElementById('news-container');
+            if (daftarBerita.length === 0) {
+                kontainerGrid.innerHTML = `<p style="grid-column:span 6; text-align:center; padding:5px; color:#666;">Tidak ada berita di kategori ini.</p>`;
+                return;
+            }
+
+            let htmlKonten = "";
+
+            daftarBerita.forEach((item, indeks) => {
+                const posisiPola = indeks % 6; 
+                let kelasSpan = "";
+
+                if (posisiPola === 0) {
+                    kelasSpan = "grid-span-full";
+                } else if (posisiPola >= 1 && posisiPola <= 3) {
+                    kelasSpan = "grid-span-2";
+                } else if (posisiPola >= 4 && posisiPola <= 5) {
+                    kelasSpan = "grid-span-3";
+                }
+
+                htmlKonten += `
+                    <a href="berita.html?id=${item.id}" class="news-card ${kelasSpan}">
+                        <img src="${item.image || 'https://via.placeholder.com/400x250'}" alt="Gambar Berita">
+                        <div class="card-info">
+                            <span class="category">${item.category || 'Berita'}</span>
+                            <h3>${item.title}</h3>
+                        </div>
+                    </a>
+                `;
+            });
+
+            kontainerGrid.innerHTML = htmlKonten;
+        }
+
+        // 5. FILTER KATEGORI SEKALIGUS MERUBAH JUDUL & DESKRIPSI META SEO SECARA DINAMIS
+        function filterKategori(namaKategori, elemenMenu) {
+            document.querySelectorAll('.nav-menu a').forEach(a => a.classList.remove('active'));
+            elemenMenu.classList.add('active');
+
+            let beritaDisaring = [];
+            let judulHalaman = "";
+            let deskripsiHalaman = "";
+
+            if (namaKategori === 'all') {
+                beritaDisaring = dataBeritaGlobal;
+                document.getElementById('section-title').innerText = "Berita Terkini";
+                
+                judulHalaman = "PULNEW - Portal Berita Terkini & Terpercaya";
+                deskripsiHalaman = "PULNEW menyajikan kumpulan berita terlengkap hari ini mengenai hukum, politik, ekonomi, olahraga, dan hiburan tanah air secara faktual.";
+            } else {
+                beritaDisaring = dataBeritaGlobal.filter(item => item.category && item.category.toLowerCase() === namaKategori.toLowerCase());
+                document.getElementById('section-title').innerText = "Kategori: " + namaKategori;
+                
+                judulHalaman = `Berita Seputar ${namaKategori} Terbaru Hari Ini - PULNEW`;
+                deskripsiHalaman = `Baca kumpulan informasi hangat, ulasan tajam, dan kabar terupdate khusus rubrik Kategori ${namaKategori} hanya di portal berita PULNEW.`;
+            }
+
+            // PERUBAHAN META SEO DINAMIS UNTUK ROBOT GOOGLE
+            document.title = judulHalaman;
+            let metaDesc = document.querySelector('meta[name="description"]');
+            if (metaDesc) {
+                metaDesc.setAttribute('content', deskripsiHalaman);
+            }
+
+            tampilkanGridBerita(beritaDisaring);
+        }
+
+        window.onload = muatDataBerita;
+    </script>
+</body>
+</html>
