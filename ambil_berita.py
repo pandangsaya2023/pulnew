@@ -8,31 +8,32 @@ import random
 from openai import OpenAI
 
 def rewrite_with_ai(title, link):
-    """Fungsi resmi menggunakan OpenAI SDK dengan model terbaru yang aktif"""
+    """Fungsi AI dengan Prompt Ketat agar menghasilkan artikel panjang yang unik"""
     api_key = os.getenv("GROQ_API_KEY")
     if not api_key:
         print("GROQ_API_KEY belum diset di GitHub Secrets")
         return f"Baca selengkapnya di {link}"
 
     try:
-        # Inisialisasi client Groq menggunakan SDK Resmi
         client = OpenAI(
             api_key=api_key.strip(),
             base_url="https://api.groq.com/openai/v1",
         )
 
-        prompt = f'Buat artikel berita sepanjang 300 kata dalam bahasa Indonesia berdasarkan judul ini: "{title}". Tulis ulang menggunakan gaya bahasa jurnalistik yang rapi, profesional, dan jangan menyalin teks asli. Akhiri artikel dengan kalimat persis: "Berita selengkapnya bisa dibaca di {link}"'
-
-        # MENGGUNAKAN MODEL TERBARU YANG AKTIF DAN DIDUKUNG GROQ
+        # Menggunakan kombinasi System dan User message agar AI patuh pada format panjang
         completion = client.chat.completions.create(
             model="llama-3.1-8b-instant",
             messages=[
                 {
+                    "role": "system",
+                    "content": "Anda adalah seorang jurnalis senior Indonesia yang ahli menulis berita unik, mendalam, dan kaya kosakata. Tugas Anda adalah mengembangkan judul menjadi artikel berita utuh yang terdiri dari 3 sampai 4 paragraf. Jangan memberikan jawaban yang singkat, templat, atau mirip dengan artikel lain."
+                },
+                {
                     "role": "user",
-                    "content": prompt
+                    "content": f'Buatlah sebuah artikel berita yang lengkap, menarik, dan informatif dalam bahasa Indonesia sepanjang minimal 250-300 kata berdasarkan topik judul berikut: "{title}". \n\nKetentuan penulisan:\n1. Tulis dalam bentuk 3-4 paragraf yang mengalir secara profesional.\n2. Gunakan variasi kalimat yang kreatif dan jangan mengulang-ulang kalimat yang sama di setiap berita.\n3. Di akhir paragraf paling bawah, wajib tambahkan kalimat penutup ini secara persis: "Berita selengkapnya bisa dibaca di {link}"'
                 }
             ],
-            temperature=0.7,
+            temperature=0.8, # Menaikkan kreativitas agar teks tidak monoton/kembar
         )
         
         return completion.choices[0].message.content
@@ -112,7 +113,7 @@ for sumber in sumber_rss:
             image_url = "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=600"
             kategori_terpilih = deteksi_kategori_otomatis(title)
 
-            print(f" -> Jalankan Pembuatan Berita AI Resmi SDK: {title}")
+            print(f" -> Jalankan Pembuatan Berita AI Berparagraf: {title}")
             isi_artikel = rewrite_with_ai(title, link)
 
             id_unik = int(datetime.now().strftime("%d%H%M%S")) + random.randint(10, 99)
@@ -135,6 +136,6 @@ if berita_baru_semua_media:
     daftar_berita = berita_baru_semua_media + daftar_berita
     with open(path_json, 'w', encoding='utf-8') as f:
         json.dump({"posts": daftar_berita[:120]}, f, indent=2, ensure_ascii=False)
-    print("Sukses Besar Memperbarui Data Berita dengan SDK Resmi!")
+    print("Sukses Besar Memperbarui Data Berita Panjang!")
 else:
     print("Tidak ada berita baru saat ini.")
