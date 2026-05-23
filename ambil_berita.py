@@ -1,49 +1,43 @@
-import urllib.request
+import os
 import json
 import xml.etree.ElementTree as ET
 from datetime import datetime
 import re
-import os
+import urllib.request
 import random
+from openai import OpenAI
 
 def rewrite_with_ai(title, link):
-    """Fungsi murni menembak API Groq dengan Header Standar agar lolos 403"""
+    """Fungsi resmi menggunakan OpenAI SDK sesuai standar dokumentasi Groq"""
     api_key = os.getenv("GROQ_API_KEY")
     if not api_key:
         print("GROQ_API_KEY belum diset di GitHub Secrets")
         return f"Baca selengkapnya di {link}"
 
-    # Pengaman otomatis dari spasi atau karakter enter tak sengaja saat copypaste di HP
-    api_key = api_key.strip()
-
-    url = "https://api.groq.com/openai/v1/chat/completions"
-    
-    # Prompt untuk merombak kalimat berita tanpa merubah fakta peristiwa asli
-    payload = {
-        "model": "llama3-8b-8192",
-        "messages": [
-            {
-                "role": "user",
-                "content": f'Buat artikel berita sepanjang 300 kata dalam bahasa Indonesia berdasarkan judul ini: "{title}". Tulis ulang menggunakan gaya bahasa jurnalistik yang rapi, profesional, dan jangan menyalin teks asli. Akhiri artikel dengan kalimat persis: "Berita selengkapnya bisa dibaca di {link}"'
-            }
-        ],
-        "temperature": 0.7
-    }
-    
     try:
-        data_kirim = json.dumps(payload).encode('utf-8')
-        req = urllib.request.Request(url, data=data_kirim)
+        # Inisialisasi client Groq menggunakan SDK Resmi OpenAI sesuai dokumentasi
+        client = OpenAI(
+            api_key=api_key.strip(),
+            base_url="https://api.groq.com/openai/v1",
+        )
+
+        prompt = f'Buat artikel berita sepanjang 300 kata dalam bahasa Indonesia berdasarkan judul ini: "{title}". Tulis ulang menggunakan gaya bahasa jurnalistik yang rapi, profesional, dan jangan menyalin teks asli. Akhiri artikel dengan kalimat persis: "Berita selengkapnya bisa dibaca di {link}"'
+
+        # Pemanggilan model sesuai struktur standar Groq Cloud
+        completion = client.chat.completions.create(
+            model="llama3-8b-8192",
+            messages=[
+                {
+                    "role": "user",
+                    "content": prompt
+                }
+            ],
+            temperature=0.7,
+        )
         
-        # Header standar industri untuk bypass blokir keamanan cloud
-        req.add_header('Authorization', f'Bearer {api_key}')
-        req.add_header('Content-Type', 'application/json')
-        req.add_header('User-Agent', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36')
-        
-        with urllib.request.urlopen(req, timeout=15) as response:
-            res_data = json.loads(response.read().decode('utf-8'))
-            return res_data['choices'][0]['message']['content']
+        return completion.choices[0].message.content
     except Exception as e:
-        print(f"Error Koneksi Groq: {e}")
+        print(f"Error Koneksi Groq SDK: {e}")
         return f"Baca selengkapnya di {link}"
 
 # Database Media Nasional Campuran
@@ -76,7 +70,7 @@ def deteksi_kategori_otomatis(judul):
     elif any(x in j for x in ['hiburan', 'artis', 'film', 'musik', 'gosip']): return "Hiburan"
     else: return "Politik"
 
-# Load database berita lama jika ada
+# Load database berita lama
 if os.path.exists(path_json):
     try:
         with open(path_json, 'r', encoding='utf-8') as f:
@@ -90,7 +84,7 @@ else:
 slug_tercatat = {b["slug"] for b in daftar_berita if "slug" in b}
 berita_baru_semua_media = []
 
-# Proses penarikan berita dari RSS Feeds
+# Proses penarikan berita
 for sumber in sumber_rss:
     nama_media = sumber["media"]
     url = sumber["url"]
@@ -104,7 +98,7 @@ for sumber in sumber_rss:
 
         hitung = 0
         for item in root.findall('.//item'):
-            if hitung >= 3: break # Ambil maksimal 3 berita per media agar hemat token
+            if hitung >= 3: break
             title_node = item.find('title')
             link_node = item.find('link')
             if title_node is None or link_node is None: continue
@@ -113,13 +107,12 @@ for sumber in sumber_rss:
             link = link_node.text.strip()
             slug = buat_slug(title)
 
-            # Lewati jika berita sudah pernah diambil sebelumnya
             if slug in slug_tercatat: continue
 
             image_url = "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=600"
             kategori_terpilih = deteksi_kategori_otomatis(title)
 
-            print(f" -> Jalankan Pembuatan Berita AI: {title}")
+            print(f" -> Jalankan Pembuatan Berita AI Resmi SDK: {title}")
             isi_artikel = rewrite_with_ai(title, link)
 
             id_unik = int(datetime.now().strftime("%d%H%M%S")) + random.randint(10, 99)
@@ -137,12 +130,11 @@ for sumber in sumber_rss:
     except Exception as e:
         print(f"Media {nama_media} dilewati. Detail: {e}")
 
-# Jika ada berita baru, gabungkan dan simpan kembali ke posts.json
 if berita_baru_semua_media:
     random.shuffle(berita_baru_semua_media)
     daftar_berita = berita_baru_semua_media + daftar_berita
     with open(path_json, 'w', encoding='utf-8') as f:
-        json.dump({"posts": daftar_berita[:120]}, f, indent=2, ensure_ascii=False) # Batasi maksimal 120 berita tersimpan
-    print("Sukses Besar Memperbarui Data Berita!")
+        json.dump({"posts": daftar_berita[:120]}, f, indent=2, ensure_ascii=False)
+    print("Sukses Besar Memperbarui Data Berita dengan SDK Resmi!")
 else:
-    print("Tidak ada berita baru yang perlu ditambahkan saat ini.")
+    print("Tidak ada berita baru saat ini.")
