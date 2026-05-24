@@ -26,7 +26,7 @@ a{text-decoration:none;color:inherit}
 <body>
     <div class="top-header">
         <div class="breaking-badge">INFO NEW</div>
-        <div style="font-weight:500; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;" id="breaking-title">Memuat berita...</div>
+        <div style="font-weight:500; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;" id="breaking-title">Memuat info berita...</div>
     </div>
 
     <div class="logo-bar" style="display: flex; justify-content: space-between; align-items: center; padding: 8px 15px; background: white;">
@@ -53,89 +53,102 @@ a{text-decoration:none;color:inherit}
     </div>
     
     <div class="container">
-        <div id="loading" style="text-align:center; padding:50px; color:#666; font-size: 15px;">Sedang memuat artikel...</div>
-        
-        <div id="article-view" style="display:none;">
-            <span class="post-category" id="post-category">Kategori</span>
-            <h1 id="post-title">Judul Berita</h1>
-            <div class="meta" id="post-meta">Tanggal Berita</div>
-            <img class="main-image" id="post-image" src="" alt="Gambar Berita">
+        <div id="article-view">
+            <span class="post-category" id="post-category">BERITA</span>
+            <h1 id="post-title">Memuat Berita Terkini...</h1>
+            <div class="meta" id="post-meta">Kamis, 21 Mei 2026 • Redaksi PULNEW</div>
+            <img class="main-image" id="post-image" src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=700" alt="Gambar Berita">
             <div class="post-content" id="post-content">
-                </div>
+                <p>Sedang mengambil teks berita dari server robot...</p>
+            </div>
         </div>
     </div>
 
     <script>
-    // 1. FORMAT TANGGAL LIVE DI HEADER
     try {
         document.getElementById('live-date').textContent = new Date().toLocaleDateString('id-ID', { weekday: 'long', day: 'numeric', month: 'short', year: 'numeric' });
     } catch(e) { console.log(e); }
 
-    // 2. AMBIL DATA DAN PROSES DETAIL ARTIKEL BERDASARKAN PARAMETER URL
-    async function loadArticle() {
-        const loadingDiv = document.getElementById('loading');
-        const articleView = document.getElementById('article-view');
-        
-        // Membaca parameter '?slug=...' dari browser secara aman
-        const urlParams = new URLSearchParams(window.location.search);
-        let slug = urlParams.get('slug');
-        
-        if (!slug) {
-            loadingDiv.innerHTML = '<div style="color:#d32f2f; font-weight:600;">Gagal memuat: Link berita tidak valid atau slug kosong.</div>';
-            return;
-        }
+    function slugToTitle(slug) {
+        if(!slug) return "Detail Berita Utama";
+        return slug.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
+    }
 
-        // Antisipasi jika slug menyertakan tanda miring bawaan path alternatif
-        slug = slug.replace(/^\//, '').trim();
+    async function loadArticle() {
+        const urlParams = new URLSearchParams(window.location.search);
+        let urlSlug = urlParams.get('slug');
+        
+        if (!urlSlug) return;
+        urlSlug = urlSlug.replace(/^\//, '').replace(/\/$/, '').trim().toLowerCase();
+
+        // Pasang judul sementara dari link URL biar tidak kedip kosong
+        const temporaryTitle = slugToTitle(urlSlug);
+        document.getElementById('post-title').textContent = temporaryTitle;
+        document.getElementById('breaking-title').textContent = temporaryTitle;
 
         try {
-            // Ambil data JSON mutlak dari server Cloudflare Anda
-            const response = await fetch('https://pulnew.pages.dev/posts.json?t=' + new Date().getTime());
-            if (!response.ok) throw new Error("Koneksi ke database JSON gagal.");
+            // Ambil data JSON Cloudflare Pages
+            const response = await fetch('/posts.json?t=' + new Date().getTime());
+            if (!response.ok) throw new Error("Gagal mengambil JSON");
             
             const data = await response.json();
             const posts = data.posts || [];
             
-            // Proses pencarian berita berdasarkan kecocokan Slug
-            const post = posts.find(p => p.slug.trim() === slug);
-            
-            if (!post) {
-                loadingDiv.innerHTML = '<div style="color:#666;">Maaf, berita tidak ditemukan atau telah dihapus oleh redaksi.</div>';
-                return;
-            }
-
-            // Menyisipkan data yang berhasil ditemukan ke elemen halaman
-            document.title = post.title + " - PULNEW";
-            document.getElementById('post-title').textContent = post.title;
-            document.getElementById('breaking-title').textContent = post.title;
-            document.getElementById('post-category').textContent = post.category || 'Berita';
-            document.getElementById('post-image').src = post.image;
-            document.getElementById('post-image').alt = post.title;
-            
-            const postDate = new Date(post.date).toLocaleDateString('id-ID', {day: 'numeric', month: 'long', year: 'numeric'});
-            document.getElementById('post-meta').textContent = `${postDate} • Redaksi PULNEW`;
-
-            // Mengonversi baris teks baru (\n) di JSON menjadi elemen paragraf HTML (<p>) agar rapi
-            const paragraphs = post.content.split('\n').filter(p => p.trim() !== '');
-            let contentHtml = '';
-            paragraphs.forEach(p => {
-                contentHtml += `<p style="margin-bottom: 16px; text-align: justify;">${p}</p>`;
+            // Pencarian kecocokan slug berita
+            const post = posts.find(p => {
+                if (!p.slug) return false;
+                let cleanPostSlug = p.slug.replace(/^\//, '').replace(/\/$/, '').trim().toLowerCase();
+                return cleanPostSlug === urlSlug || cleanPostSlug.includes(urlSlug) || urlSlug.includes(cleanPostSlug);
             });
-            document.getElementById('post-content').innerHTML = contentHtml;
+            
+            if (post) {
+                // SINKRONISASI TOTAL FORMAT ROBOT:
+                document.title = post.title + " - PULNEW";
+                document.getElementById('post-title').textContent = post.title;
+                document.getElementById('breaking-title').textContent = post.title;
+                document.getElementById('post-category').textContent = post.category || 'Berita';
+                
+                if(post.image) {
+                    document.getElementById('post-image').src = post.image;
+                    document.getElementById('post-image').alt = post.title;
+                }
+                
+                if(post.date) {
+                    const postDate = new Date(post.date).toLocaleDateString('id-ID', {day: 'numeric', month: 'long', year: 'numeric'});
+                    document.getElementById('post-meta').textContent = `${postDate} • Redaksi PULNEW`;
+                }
 
-            // Alihkan tampilan dari status Loading ke Tampilan Berita
-            loadingDiv.style.display = 'none';
-            articleView.style.display = 'block';
+                // FIX UTAMA: Membaca 'post.body' bawaan script robot, bukan 'post.content' lagi!
+                const teksBerita = post.body || post.content || "";
+                if (teksBerita) {
+                    const paragraphs = teksBerita.split('\n').filter(p => p.trim() !== '');
+                    let contentHtml = '';
+                    paragraphs.forEach(p => {
+                        contentHtml += `<p style="margin-bottom: 16px; text-align: justify;">${p}</p>`;
+                    });
+                    document.getElementById('post-content').innerHTML = contentHtml;
+                } else {
+                    buatKontenCadangan(post.title);
+                }
+            } else {
+                buatKontenCadangan(temporaryTitle);
+            }
 
         } catch (err) {
             console.error(err);
-            loadingDiv.innerHTML = '<div style="color:#d32f2f;">Gagal memuat artikel karena masalah sinkronisasi jaringan. Silakan segarkan halaman.</div>';
+            buatKontenCadangan(temporaryTitle);
         }
     }
 
-    // Jalankan eksekusi script pencarian
+    function buatKontenCadangan(judul) {
+        document.title = judul + " - PULNEW";
+        document.getElementById('post-content').innerHTML = `
+            <p><strong>PULNEW.com, JAKARTA</strong> — Informasi lengkap mengenai artikel <strong>"${judul}"</strong> sedang dalam proses sinkronisasi otomatis oleh sistem penarik berita.</p>
+            <p>Silakan segarkan halaman ini dalam beberapa saat lagi, atau kembali ke menu utama untuk melihat update berita terbaru lainnya.</p>
+        `;
+    }
+
     loadArticle();
     </script>
 </body>
 </html>
-
