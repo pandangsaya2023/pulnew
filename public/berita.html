@@ -144,6 +144,14 @@
                 <span>|</span>
                 <a href="#" onclick="gantiFilterKategori('Hiburan')">Hiburan</a>
             </div>
+            <div class="footer-categories">
+                <a href="https://pulnew.pages.dev/?kategori=Politik">Home</a> |
+                <a href="https://pulnew.pages.dev/?kategori=Politik">Politik</a> |
+                <a href="https://pulnew.pages.dev/?kategori=Politik">Ekonomi</a> |
+                <a href="https://pulnew.pages.dev/?kategori=Politik">Teknologi</a> |
+                <a href="https://pulnew.pages.dev/?kategori=Politik">Olahraga</a> |
+                <a href="https://pulnew.pages.dev/?kategori=Ekonomi">Hiiburan</a>
+            </div>
 
             <div class="footer-bottom">&copy; 2026 PULNEW.com. All Rights Reserved.</div>
         </div>
@@ -180,26 +188,7 @@
         document.getElementById('btnScrollTop').style.display = (window.scrollY > 300) ? "flex" : "none";
     };
 
-    async function muatHalamanBerita() {
-        const slugTujuan = new URLSearchParams(window.location.search).get('slug');
-        if (!slugTujuan) return;
-
-        try {
-            const response = await fetch('https://raw.githubusercontent.com/pandangsaya2023/pulnew/main/posts.json?t=' + new Date().getTime());
-            const data = await response.json();
-            const posts = data.posts || [];
-            const post = posts.find(p => p.slug === slugTujuan);
-            
-            if (post) {
-                document.getElementById('content-area').innerHTML = `
-                    <div class="article-wrapper">
-                        <span class="article-category">${post.category || 'Berita'}</span>
-                        <h1 class="article-title">${post.title}</h1>
-                        <img src="${post.image}" class="main-image">
-                        <div class="article-body">${post.body.replace(/\n/g, '<br>')}</div>
-                    </div>
-                `;
-                
+    
                 const container = document.getElementById('recommendation-container');
                 posts.filter(p => p.slug !== slugTujuan).slice(0, 6).forEach((p, i) => {
                     const cls = i === 0 ? 'grid-span-full' : (i < 4 ? 'grid-span-2' : 'grid-span-3');
