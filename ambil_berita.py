@@ -83,7 +83,6 @@ sumber_rss = [
     # {"media": "Pikiran Rakyat", "url": "https://www.pikiran-rakyat.com/feed"},
     {"media": "Jawa Pos", "url": "https://www.jawapos.com/feed"}
 ]
-]
 
 path_json = "posts.json"
 daftar_berita = []
