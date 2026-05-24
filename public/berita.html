@@ -3,31 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detail Berita - PULNEW</title>
+    <title>PULNEW - Detail Berita</title>
     <style>
-        /* CSS Dasar & Reset */
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: sans-serif; }
-        body { background: #f4f6f9; color: #333; line-height: 1.6; }
+        /* CSS Lengkap & Rapi */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
+        body { background: #f4f6f9; color: #333; line-height: 1.6; display: flex; flex-direction: column; min-height: 100vh; }
 
-        /* HEADER & LOGO */
-        .header-container { background: #fff; padding: 15px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        /* Header & Logo */
+        .header-container { background: #fff; padding: 15px 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
         .logo-bar { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
-        .logo-img { height: 50px; }
+        .logo-img { height: 50px; object-fit: contain; }
 
-        /* KONTEN */
-        .container { max-width: 1200px; margin: 20px auto; padding: 0 15px; }
-        .article-wrapper { background: white; padding: 25px; border-radius: 8px; }
-        .article-category { color: #d32f2f; font-weight: bold; font-size: 14px; text-transform: uppercase; margin-bottom: 10px; display: block; }
-        .article-title { font-size: 28px; margin-bottom: 15px; }
+        /* Container Artikel */
+        .container { max-width: 900px; margin: 20px auto; padding: 0 15px; flex-grow: 1; width: 100%; }
+        .article-wrapper { background: white; padding: 30px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+        .article-category { color: #d32f2f; font-weight: 800; font-size: 13px; text-transform: uppercase; margin-bottom: 10px; display: block; }
+        .article-title { font-size: 32px; font-weight: 800; margin-bottom: 15px; line-height: 1.2; }
         .main-image { width: 100%; border-radius: 8px; margin-bottom: 20px; }
-        .iklan-box { width: 100%; text-align: center; margin: 20px 0; background: #eee; padding: 15px; border-radius: 6px; font-weight: bold; }
-
-        /* FOOTER & KATEGORI */
-        footer { background: #101726; color: #b0b8c4; padding: 30px; text-align: center; margin-top: 40px; }
-        .footer-categories { margin-bottom: 15px; }
-        .footer-categories a { color: #fff; text-decoration: none; margin: 0 10px; font-size: 14px; }
+        .iklan-box { width: 100%; text-align: center; margin: 20px 0; background: #eee; padding: 15px; border-radius: 6px; font-weight: bold; color: #666; }
         
-        /* TOMBOL BACK TO TOP */
+        /* Footer */
+        footer { background: #101726; color: #b0b8c4; padding: 30px; text-align: center; margin-top: 50px; }
+        .footer-categories { margin-bottom: 15px; display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; }
+        .footer-categories a { color: #fff; text-decoration: none; font-size: 14px; }
+        
+        /* Tombol Scroll */
         #btnScrollTop { position: fixed; bottom: 20px; right: 20px; background: #d32f2f; color: white; width: 45px; height: 45px; border-radius: 50%; display: none; align-items: center; justify-content: center; cursor: pointer; z-index: 1000; font-size: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.3); }
     </style>
 </head>
@@ -36,19 +36,20 @@
     <div class="header-container">
         <div class="logo-bar">
             <a href="https://pulnew.pages.dev/"><img src="https://raw.githubusercontent.com/pandangsaya2023/pulnew/main/logopulnew2.png" class="logo-img"></a>
-            <div id="live-date"></div>
+            <div id="live-date" style="font-size: 13px; font-weight: 600;"></div>
         </div>
     </div>
 
     <div class="container">
-        <div id="content-area">Memuat berita...</div>
+        <div id="content-area">Memuat artikel...</div>
     </div>
 
     <footer>
         <div class="footer-categories">
             <a href="https://pulnew.pages.dev/?kategori=Politik">Politik</a> |
             <a href="https://pulnew.pages.dev/?kategori=Ekonomi">Ekonomi</a> |
-            <a href="https://pulnew.pages.dev/?kategori=Teknologi">Teknologi</a>
+            <a href="https://pulnew.pages.dev/?kategori=Teknologi">Teknologi</a> |
+            <a href="https://pulnew.pages.dev/?kategori=Olahraga">Olahraga</a>
         </div>
         <p>&copy; 2026 PULNEW.com. All Rights Reserved.</p>
     </footer>
@@ -56,19 +57,19 @@
     <div id="btnScrollTop" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">↑</div>
 
     <script>
-    // Set Tanggal
+    // Tanggal
     document.getElementById('live-date').textContent = new Date().toLocaleDateString('id-ID', { weekday: 'long', day: 'numeric', month: 'short', year: 'numeric' });
 
-    // Script Tampil Tombol Scroll
+    // Tombol Scroll
     window.onscroll = () => {
         document.getElementById('btnScrollTop').style.display = (window.scrollY > 300) ? "flex" : "none";
     };
 
-    // Ambil Data Berita
+    // Muat Berita
     async function muatHalamanBerita() {
         const slugTujuan = new URLSearchParams(window.location.search).get('slug');
         if (!slugTujuan) return;
-        
+
         try {
             const response = await fetch('https://raw.githubusercontent.com/pandangsaya2023/pulnew/main/posts.json?t=' + new Date().getTime());
             const data = await response.json();
@@ -77,19 +78,22 @@
             if (post) {
                 document.getElementById('content-area').innerHTML = `
                     <div class="article-wrapper">
-                        <span class="article-category">${post.category || 'Berita'}</span>
+                        <span class="article-category">${post.category || 'BERITA'}</span>
                         <h1 class="article-title">${post.title}</h1>
                         <img src="${post.image}" class="main-image">
-                        <div class="iklan-box">RUANG IKLAN</div>
-                        <div style="font-size: 16px;">${post.body.replace(/\n/g, '<br>')}</div>
+                        <div class="iklan-box">RUANG IKLAN ARTIKEL</div>
+                        <div style="font-size: 17px; line-height: 1.8; color: #333;">${post.body.replace(/\n/g, '<br>')}</div>
                     </div>
                 `;
+            } else {
+                document.getElementById('content-area').innerHTML = "Artikel tidak ditemukan.";
             }
         } catch (e) {
-            document.getElementById('content-area').innerHTML = "Artikel tidak ditemukan.";
+            document.getElementById('content-area').innerHTML = "Gagal mengambil data.";
         }
     }
     muatHalamanBerita();
     </script>
 </body>
 </html>
+
