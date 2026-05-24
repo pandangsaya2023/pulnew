@@ -153,6 +153,37 @@ Ini berita html
         <div class="news-grid" id="recommendation-container"></div>
     </div>
 
+    // FUNGSI INI ADALAH KUNCI PERBAIKANNYA
+    async function muatHalamanBerita() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const slugTujuan = urlParams.get('slug');
+
+        if (!slugTujuan) {
+            tampilkanError("Alamat artikel tidak ditemukan.");
+            return;
+        }
+
+        try {
+            // PERUBAHAN UTAMA: Menggunakan URL GitHub Pages agar tidak kena error 400
+            const response = await fetch('https://pandangsaya2023.github.io/pulnew/posts.json?t=' + new Date().getTime());
+            const data = await response.json();
+            const daftarPosts = data.posts || [];
+            const artikelDipilih = daftarPosts.find(p => p.slug === slugTujuan);
+            
+            if (artikelDipilih) {
+                document.title = `${artikelDipilih.title} - PULNEW`;
+                tampilkanIsiArtikel(artikelDipilih);
+                tampilkanRekomendasi(daftarPosts, slugTujuan);
+                updateRunningText(daftarPosts);
+            } else {
+                tampilkanError("Artikel sudah tidak tersedia.");
+            }
+        } catch (err) {
+            tampilkanError("Gagal mengambil berita. Pastikan koneksi stabil.");
+            console.error(err);
+        }
+    }
+
     <div class="bottom-ticker-bar">
         <div class="breaking-badge">INFO NEW</div>
         <div class="ticker-wrapper">
