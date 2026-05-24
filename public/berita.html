@@ -2,37 +2,28 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detail Berita - PULNEW</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>PULNEW - Detail Berita</title>
     <style>
-        /* Mengambil style dari index agar konsisten */
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif; }
+        /* (Style dari index.html Anda) */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif; scroll-behavior: smooth; }
         html, body { background: #f4f6f9; color: #333; display: flex; flex-direction: column; min-height: 100vh; overflow-x: hidden; width: 100%; }
         
-        /* HEADER */
         .header-container { width: 100%; background: #ffffff !important; box-shadow: 0 2px 4px rgba(0,0,0,0.08); }
         .logo-bar { max-width: 1200px; margin: 0 auto; padding: 12px 20px; display: flex; justify-content: space-between; align-items: center; }
         .logo-img-wrapper { height: 55px; width: 55px; display: flex; align-items: center; justify-content: center; background: #ffffff !important; border-radius: 4px; overflow: hidden; }
         .logo-img-wrapper img { height: 100%; width: 100%; object-fit: contain; }
-
-        /* NAV MENU */
+        
         .nav-menu-wrapper { background: #1a237e; width: 100%; }
         .nav-menu { max-width: 1200px; margin: 0 auto; padding: 0 10px; display: flex; gap: 5px; overflow-x: auto; }
-        .nav-menu a { color: rgba(255,255,255,0.8); text-decoration: none; padding: 15px 12px; font-size: 14px; font-weight: 600; }
+        .nav-menu a { color: rgba(255,255,255,0.8); text-decoration: none; padding: 15px 12px; font-size: 14px; font-weight: 600; white-space: nowrap; }
         .nav-menu a:hover { color: white; background: rgba(255,255,255,0.05); }
 
-        /* ARTIKEL */
-        .container { max-width: 900px; width: 100%; margin: 20px auto; padding: 0 15px; flex: 1; }
-        .article-wrapper { background: white; padding: 30px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
-        .article-category { color: #d32f2f; font-weight: 700; font-size: 12px; text-transform: uppercase; margin-bottom: 10px; display: block; }
-        .main-image { width: 100%; border-radius: 8px; margin: 15px 0; }
-        .iklan-box { width: 100%; text-align: center; margin: 20px 0; background: #eee; padding: 15px; border-radius: 6px; color: #666; font-weight: bold; }
+        .container { max-width: 900px; width: 100%; margin: 20px auto; padding: 15px; background: white; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .article-body { line-height: 1.8; font-size: 17px; margin-top: 20px; }
         
-        /* FOOTER */
-        footer { background: #101726; color: #b0b8c4; padding: 30px; text-align: center; margin-top: 40px; }
-        .footer-categories { margin: 10px 0; }
+        footer { background: #101726; color: #b0b8c4; padding: 20px; text-align: center; margin-top: 40px; }
         .footer-categories a { color: #38bdf8; text-decoration: none; margin: 0 5px; }
-        
         #btnScrollTop { position: fixed; bottom: 20px; right: 20px; background: #d32f2f; color: white; width: 40px; height: 40px; border-radius: 50%; display: none; align-items: center; justify-content: center; z-index: 1000; cursor: pointer; }
     </style>
 </head>
@@ -58,9 +49,9 @@
             <a href="https://pulnew.pages.dev/?kategori=Teknologi">Teknologi</a>
         </div>
     </div>
-
+    
     <div class="container" id="content-area">
-        Memuat berita...
+        <p>Memuat berita...</p>
     </div>
 
     <footer>
@@ -69,7 +60,7 @@
             <a href="https://pulnew.pages.dev/?kategori=Ekonomi">Ekonomi</a> |
             <a href="https://pulnew.pages.dev/?kategori=Teknologi">Teknologi</a>
         </div>
-        <p>&copy; 2026 PULNEW.com</p>
+        <p>&copy; 2026 PULNEW.com. All Rights Reserved.</p>
     </footer>
 
     <div id="btnScrollTop" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">↑</div>
@@ -83,6 +74,8 @@
 
     async function muatHalamanBerita() {
         const slugTujuan = new URLSearchParams(window.location.search).get('slug');
+        if (!slugTujuan) return;
+        
         try {
             const response = await fetch('https://pandangsaya2023.github.io/pulnew/posts.json?t=' + new Date().getTime());
             const data = await response.json();
@@ -90,19 +83,16 @@
             
             if (post) {
                 document.getElementById('content-area').innerHTML = `
-                    <div class="article-wrapper">
-                        <span class="article-category">${post.category || 'BERITA'}</span>
-                        <h1>${post.title}</h1>
-                        <img src="${post.image}" class="main-image">
-                        <div class="iklan-box">RUANG IKLAN</div>
-                        <div style="font-size: 17px; line-height: 1.8;">${post.body.replace(/\n/g, '<br>')}</div>
-                    </div>
+                    <span style="color:#d32f2f; font-weight:bold; text-transform:uppercase;">${post.category || 'BERITA'}</span>
+                    <h1 style="margin:10px 0;">${post.title}</h1>
+                    <img src="${post.image}" style="width:100%; border-radius:8px;">
+                    <div class="article-body">${post.body.replace(/\n/g, '<br>')}</div>
                 `;
             } else {
                 document.getElementById('content-area').innerHTML = "Artikel tidak ditemukan.";
             }
         } catch (e) {
-            document.getElementById('content-area').innerHTML = "Gagal memuat.";
+            document.getElementById('content-area').innerHTML = "Gagal memuat artikel.";
         }
     }
     muatHalamanBerita();
