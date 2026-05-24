@@ -7,33 +7,38 @@
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: sans-serif; }
         body { background: #f4f6f9; color: #333; line-height: 1.6; }
+        
+        /* Header & Logo */
         .header-container { background: #fff; padding: 15px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
         .logo-bar { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+        .logo-img { height: 50px; }
+        
+        /* Container */
         .container { max-width: 1200px; margin: 20px auto; padding: 0 15px; }
-        .article-wrapper { background: white; padding: 25px; border-radius: 8px; }
-        .article-category { color: #d32f2f; font-weight: bold; font-size: 12px; text-transform: uppercase; }
-        .article-title { font-size: 28px; margin: 10px 0; }
+        .article-wrapper { background: white; padding: 25px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+        .article-category { color: #d32f2f; font-weight: bold; font-size: 12px; text-transform: uppercase; margin-bottom: 10px; display: block; }
+        .article-title { font-size: 28px; margin-bottom: 15px; }
         .main-image { width: 100%; border-radius: 8px; margin-bottom: 20px; }
         
         /* Grid Berita Terkait */
         .news-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 15px; margin-top: 20px; }
-        .news-card { background: white; padding: 10px; border-radius: 6px; text-decoration: none; color: #333; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
-        .news-card img { width: 100%; height: 100px; object-fit: cover; border-radius: 4px; }
+        .news-card { background: white; padding: 10px; border-radius: 6px; text-decoration: none; color: #333; box-shadow: 0 2px 4px rgba(0,0,0,0.05); display: flex; flex-direction: column; }
+        .news-card img { width: 100%; height: 120px; object-fit: cover; border-radius: 4px; margin-bottom: 8px; }
         .grid-span-full { grid-column: span 6; }
         .grid-span-2 { grid-column: span 2; }
         .grid-span-3 { grid-column: span 3; }
         
-        /* Footer */
+        /* Footer & Button */
         footer { background: #101726; color: #b0b8c4; padding: 30px; text-align: center; margin-top: 40px; }
-        #btnScrollTop { position: fixed; bottom: 20px; right: 20px; background: #d32f2f; color: white; padding: 10px 15px; border-radius: 50%; display: none; cursor: pointer; }
+        #btnScrollTop { position: fixed; bottom: 20px; right: 20px; background: #d32f2f; color: white; width: 40px; height: 40px; border-radius: 50%; display: none; align-items: center; justify-content: center; cursor: pointer; z-index: 1000; font-weight: bold; box-shadow: 0 2px 10px rgba(0,0,0,0.3); }
     </style>
 </head>
 <body>
 
     <div class="header-container">
         <div class="logo-bar">
-            <a href="https://pulnew.pages.dev/"><img src="https://raw.githubusercontent.com/pandangsaya2023/pulnew/main/logopulnew2.png" style="height:50px;"></a>
-            <div id="live-date"></div>
+            <a href="https://pulnew.pages.dev/"><img src="https://raw.githubusercontent.com/pandangsaya2023/pulnew/main/logopulnew2.png" class="logo-img"></a>
+            <div id="live-date" style="font-size: 12px;"></div>
         </div>
     </div>
 
@@ -48,13 +53,13 @@
         <p>&copy; 2026 PULNEW.com. All Rights Reserved.</p>
     </footer>
 
-    <div id="btnScrollTop" onclick="window.scrollTo(0,0)">↑</div>
+    <div id="btnScrollTop" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">↑</div>
 
     <script>
     document.getElementById('live-date').textContent = new Date().toLocaleDateString('id-ID', { weekday: 'long', day: 'numeric', month: 'short', year: 'numeric' });
 
     window.onscroll = () => {
-        document.getElementById('btnScrollTop').style.display = (window.scrollY > 300) ? "block" : "none";
+        document.getElementById('btnScrollTop').style.display = (window.scrollY > 300) ? "flex" : "none";
     };
 
     async function muatHalamanBerita() {
@@ -68,7 +73,6 @@
             const post = posts.find(p => p.slug === slugTujuan);
             
             if (post) {
-                // Tampilkan Kategori dan Isi
                 document.getElementById('content-area').innerHTML = `
                     <div class="article-wrapper">
                         <span class="article-category">${post.category || 'Berita'}</span>
@@ -78,14 +82,13 @@
                     </div>
                 `;
                 
-                // Tampilkan Berita Terkait
                 const container = document.getElementById('recommendation-container');
                 posts.filter(p => p.slug !== slugTujuan).slice(0, 6).forEach((p, i) => {
                     const cls = i === 0 ? 'grid-span-full' : (i < 4 ? 'grid-span-2' : 'grid-span-3');
                     container.innerHTML += `
                         <a href="/berita.html?slug=${p.slug}" class="news-card ${cls}">
                             <img src="${p.image}">
-                            <p>${p.title}</p>
+                            <p style="font-size: 12px; font-weight: bold;">${p.title}</p>
                         </a>
                     `;
                 });
