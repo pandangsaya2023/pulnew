@@ -35,7 +35,7 @@
         .container { max-width: 1200px; width: 100%; margin: 0 auto; padding: 15px 10px; flex: 1; overflow: hidden; }
         .category-title { font-size: 18px; font-weight: 700; color: #111; margin-bottom: 15px; border-left: 4px solid #d32f2f; padding-left: 10px; text-transform: uppercase; }
         
-        /* AUTO-SLIDER BERITA UTAMA BERGERAK OTOMATIS */
+        /* AUTO-SLIDER BERITA UTAMA FULL SCREEN */
         .hero-slider-container { width: 100%; position: relative; height: 210px; border-radius: 8px; overflow: hidden; margin-bottom: 15px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
         .slide-item { position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 0.8s ease-in-out; display: flex; flex-direction: column; text-decoration: none; z-index: 1; }
         .slide-item.active { opacity: 1; z-index: 2; }
@@ -44,7 +44,7 @@
         .slide-overlay .category { color: #ff5252; font-size: 10px; font-weight: 700; text-transform: uppercase; margin-bottom: 4px; }
         .slide-overlay h2 { font-size: 15px; font-weight: 800; line-height: 1.3; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-shadow: 1px 1px 3px rgba(0,0,0,0.8); }
 
-        /* STRUKTUR GRID UTAMA (TOTAL 6 KOLOM) */
+        /* STRUKTUR GRID UTAMA */
         .news-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; width: 100%; }
         
         /* Desain dasar kartu berita */
@@ -55,12 +55,11 @@
         .news-card .category { color: #d32f2f; font-size: 10px; font-weight: 700; text-transform: uppercase; margin-bottom: 4px; display: block; }
         .news-card h3 { font-size: 12px; font-weight: 700; line-height: 1.3; color: #111; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
 
-        /* FORMAT GRID UNTUK DI LAYAR HP (DIBUAT 2 KOLOM SEJAJAR AGAR SIMETRIS) */
-        .grid-span-full { grid-column: span 6; }
-        .grid-span-2 { grid-column: span 3; } 
+        /* SOLUSI KUNCI GRID DINAMIS (DIINJEKSI VIA JAVASCRIPT CLASS) */
+        .grid-span-2 { grid-column: span 3; } /* Di HP otomatis 2 kolom sejajar dulu agar proporsional */
         .grid-span-3 { grid-column: span 3; }
         
-        /* PENYESUAIAN KHUSUS DESKTOP / LAPTOP / TABLET LEBAR */
+        /* PENYESUAIAN DESKTOP/LAPTOP */
         @media (min-width: 768px) {
             .news-grid { gap: 20px; }
             .container { padding: 25px 20px; }
@@ -71,16 +70,10 @@
             .news-card img { height: 180px; }
             .news-card h3 { font-size: 15px; }
 
-            /* RUMUS FIX PASTI BERULANG 1 -> 3 -> 2 */
-            .grid-span-full { grid-column: span 6; }
-            .grid-span-full img { height: 320px; } 
-            .grid-span-full h3 { font-size: 20px; }
-            
-            .grid-span-2 { grid-column: span 2; } /* Berjejer 3 kartu pas (2+2+2 = 6) */
-            .grid-span-2 img { height: 160px; }
-            
-            .grid-span-3 { grid-column: span 3; } /* Berjejer 2 kartu pas (3+3 = 6) */
-            .grid-span-3 img { height: 220px; }
+            /* Presisi Pola Ruang Grid Desktop */
+            .grid-span-2 { grid-column: span 2; }
+            .grid-span-3 { grid-column: span 3; }
+            .grid-span-3 img { height: 230px; }
             .grid-span-3 h3 { font-size: 17px; }
         }
 
@@ -100,7 +93,7 @@
 
         .footer-tagline { font-size: 12px; color: #b0b8c4; margin: 0; line-height: 1.2; text-align: center; }
         
-        /* Kategori dan Tulisan di Bawah Rata Tengah Sempurna */
+        /* Tetap Rata Tengah Sempurna */
         .footer-categories { display: flex; justify-content: center; align-items: center; gap: 6px; flex-wrap: wrap; margin: 2px auto; max-width: 100%; line-height: 1; text-align: center; }
         .footer-categories a { color: #38bdf8; text-decoration: none; font-weight: 400; font-size: 11px; transition: color 0.2s; white-space: nowrap; }
         .footer-categories a:hover { color: white; }
@@ -258,7 +251,7 @@
             return;
         }
 
-        // Ambil 4 berita teratas untuk sistem slider berputar otomatis
+        // Jalankan sistem pembagi slider (4 berita teratas)
         const dataSlider = posts.slice(0, 4);
         const dataGrid = posts.slice(4);
 
@@ -292,7 +285,7 @@
         bangunGridBerita(dataGrid);
     }
 
-    // PENGGERAK KUNCI GRID YANG AKURAT UNTUK POLA BERULANG (1 -> 3 -> 2)
+    // PENGGERAK POLA GRID MATEMATIS AKURAT (3 -> 2)
     function bangunGridBerita(posts) {
         const container = document.getElementById('news-container');
         container.innerHTML = '';
@@ -306,17 +299,9 @@
             const apakahRobot = post.body && (post.body.includes('http://') || post.body.includes('https://') || post.body.includes('sumber asli'));
             const tampilkanKategori = (post.category && post.category.trim() !== "" && !apakahRobot) ? `<span class="category">${post.category}</span>` : '';
 
-            // Menghitung modular sisa bagi angka 6 untuk siklus (0 sampai 5)
-            let sisaBagi = index % 6;
-            let classUkuran = '';
-
-            if (sisaBagi === 0) {
-                classUkuran = 'grid-span-full'; // Urutan ke-1 (Pola 1 - Besar Full)
-            } else if (sisaBagi >= 1 && sisaBagi <= 3) {
-                classUkuran = 'grid-span-2';   // Urutan ke-2, 3, 4 (Pola 3 - Sedang Berjejer 3)
-            } else {
-                classUkuran = 'grid-span-3';   // Urutan ke-5, 6 (Pola 2 - Kecil Berjejer 2)
-            }
+            // Menghitung siklus modular dasar 5 elemen (3 kolom kecil, kemudian 2 kolom lebar)
+            let sisaBagi = index % 5;
+            let classUkuran = (sisaBagi < 3) ? 'grid-span-2' : 'grid-span-3';
 
             container.innerHTML += `
                 <a href="/berita.html?slug=${post.slug}" class="news-card ${classUkuran}">
@@ -364,3 +349,4 @@
     </script>
 </body>
 </html>
+
