@@ -223,9 +223,8 @@
             
             const urlParams = new URLSearchParams(window.location.search);
             const paramKategori = urlParams.get('kategori');
-            if(paramKategori) {
-                kategoriAktif = paramKategori;
-            }
+            kategoriAktif = paramKategori;
+            
 
             prosesDanTampilkan();
             updateRunningText(masterPosts);
