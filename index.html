@@ -136,7 +136,6 @@
             RUANG IKLAN UTAMA (BANNER RESPONSIVE / SLOT 728x90)
         </div>
     </div>
-    
     <div class="container">
         <div class="hero-slider-container" id="hero-slider"></div>
 
@@ -161,11 +160,10 @@
         let indexSlideAktif = 0;
         let intervalSlide;
 
-        // 1. MEMBACA FILE DATA JSON (SUDAH DITAMBAHKAN KODE ANTI-CACHE)
+        // 1. MEMBACA FILE DATA JSON
         async function muatDataBerita() {
             try {
-                // Trik unik '?v=' agar browser tidak mengunci data eror yang lama
-                const respon = await fetch('posts.json?v=' + new Date().getTime());
+                const respon = await fetch('posts.json');
                 dataBeritaGlobal = await respon.json();
                 
                 dataBeritaGlobal.sort((a, b) => b.id - a.id);
