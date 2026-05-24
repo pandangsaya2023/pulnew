@@ -206,8 +206,14 @@ Ini berita html
             return;
         }
         try {
-            const response = await fetch('/posts.json?t=' + new Date().getTime());
-            const data = await response.json();
+            // Ubah menjadi:
+            fetch('https://pandangsaya2023.github.io/pulnew/posts.json?t=' + new Date().getTime())
+           .then(response => response.json())
+           .then(data => {
+            // ... kode selanjutnya ...
+
+            //const response = await fetch('/posts.json?t=' + new Date().getTime());
+            //const data = await response.json();
             const daftarPosts = data.posts || [];
             const artikelDipilih = daftarPosts.find(p => p.slug === slugTujuan);
             
