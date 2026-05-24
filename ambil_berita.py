@@ -5,6 +5,32 @@ from datetime import datetime
 import re
 import os
 import random
+import requests
+
+def rewrite_with_gemini(title, link):
+    """Fungsi buat nyuruh Gemini bikin artikel dari judul"""
+    api_key = os.getenv("GEMINI_API_KEY")
+
+    if not api_key:
+        print("GEMINI_API_KEY belum diset")
+        return f"Baca selengkapnya di {link}"
+
+    prompt = f"""Buat artikel 300 kata bahasa Indonesia dengan judul: "{title}"
+Tulis ulang pakai gaya jurnalistik, jangan copy.
+Akhiri dengan: Berita selengkapnya bisa dibaca di {link}"""
+
+    try:
+        url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent"
+        payload = {
+            "contents": [{"parts": [{"text": prompt}]}],
+            "generationConfig": {"temperature": 0.7, "maxOutputTokens": 800}
+        }
+        res = requests.post(url, json=payload, timeout=60)
+        res.raise_for_status()
+        return res.json()["candidates"][0]["content"]["parts"][0]["text"]
+    except Exception as e:
+        print(f"Error Gemini: {e}")
+        return f"Baca selengkapnya di {link}"
 
 # Mengintegrasikan seluruh database media yang kamu berikan
 sumber_rss = [
@@ -14,7 +40,7 @@ sumber_rss = [
     {"media": "CNN Indonesia", "url": "https://www.cnnindonesia.com/nasional/rss"},
     {"media": "Liputan6", "url": "https://www.liputan6.com/rss"},
     {"media": "Republika", "url": "https://www.republika.co.id/rss"},
-    {"media": "Okezone", "url": "https://sindonews.com/rss"}, # Menggunakan sindo/okezone network yang stabil
+    {"media": "Okezone", "url": "https://sindonews.com/rss"},
     {"media": "Tribunnews", "url": "https://www.tribunnews.com/rss"},
     {"media": "Suara", "url": "https://www.suara.com/rss/news"},
     {"media": "Bisnis.com", "url": "https://www.bisnis.com/rss"}
@@ -28,11 +54,9 @@ def buat_slug(judul):
     judul = re.sub(r'[\s-]+', '-', judul).strip('-')
     return judul[:60]
 
-# MESIN DETEKSI KATEGORI OTOMATIS BERDASARKAN KATA KUNCI JUDUL
 def deteksi_kategori_otomatis(judul):
     j = judul.lower()
-    
-    # Kamus Kata Kunci
+
     ekonomi_keywords = ['ekonomi', 'saham', 'rupiah', 'dolar', 'bisnis', 'keuangan', 'pasar', 'investasi', 'komoditas', 'umkm', 'anggaran', 'inflasi', 'pajak', 'tarif']
     teknologi_keywords = ['teknologi', 'gadget', 'hp', 'smartphone', 'ai', 'kecerdasan buatan', 'aplikasi', 'cyber', 'hacker', 'android', 'ios', 'internet', 'sains', 'robot']
     olahraga_keywords = ['olahraga', 'sepakbola', 'bola', 'timnas', 'liga', 'bulutangkis', 'badminton', 'motogp', 'f1', 'atlet', 'juara', 'bertanding', 'match', 'piala']
@@ -48,15 +72,18 @@ def deteksi_kategori_otomatis(judul):
     elif any(x in j for x in hiburan_keywords):
         return "Hiburan"
     else:
-        # Jika berita umum, nasional, atau tidak terdeteksi spesifik, diarahkan ke Politik/Umum agar web tetap seimbang
         return "Politik"
 
-# Load berita lama agar aman berdampingan dengan berita baru
+# Load berita lama
 if os.path.exists(path_json):
     try:
         with open(path_json, 'r', encoding='utf-8') as f:
             data_lama = json.load(f)
-            daftar_berita = data_lama.get("posts", [])
+            # Menangani jika struktur json berupa object {"posts": [...]} atau langsung list [...]
+            if isinstance(data_lama, dict):
+                daftar_berita = data_lama.get("posts", [])
+            else:
+                daftar_berita = data_lama
     except Exception:
         daftar_berita = []
 else:
@@ -65,41 +92,41 @@ else:
 slug_tercatat = {b["slug"] for b in daftar_berita if "slug" in b}
 berita_baru_semua_media = []
 
-# Loop mengambil berita dari setiap media secara proporsional
+# Loop mengambil berita dari setiap media
 for sumber in sumber_rss:
     nama_media = sumber["media"]
     url = sumber["url"]
     print(f"Mengambil berita dari {nama_media}...")
-    
+
     try:
         headers = {
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
+            'User-Agent': "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
         }
+        
+        # Penarikan data XML menggunakan urllib (lebih aman dari proteksi cloudflare di beberapa RSS)
         req = urllib.request.Request(url, headers=headers)
-        response = urllib.request.urlopen(req, timeout=10)
+        response = urllib.request.urlopen(req, timeout=15)
         xml_data = response.read()
         root = ET.fromstring(xml_data)
-        
-        # PROPORSIONAL: Batasi maksimal mengambil 3 berita teratas per media agar adil & variatif
+
         hitung = 0
         for item in root.findall('.//item'):
-            if hitung >= 3: 
+            if hitung >= 3:
                 break
-                
+
             title_node = item.find('title')
             link_node = item.find('link')
-            
+
             if title_node is None or link_node is None:
                 continue
-                
+
             title = title_node.text.strip()
             link = link_node.text.strip()
             slug = buat_slug(title)
-            
-            # Cek duplikasi agar berita tidak kembar
+
             if slug in slug_tercatat:
                 continue
-            
+
             # Cari gambar otomatis
             image_url = "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=600"
             enclosure = item.find('enclosure')
@@ -109,38 +136,38 @@ for sumber in sumber_rss:
                 media_content = item.find('{http://search.yahoo.com/mrss/}content')
                 if media_content is not None and 'url' in media_content.attrib:
                     image_url = media_content.attrib['url']
-            
-            # Proses klasifikasi kategori otomatis
+
             kategori_terpilih = deteksi_kategori_otomatis(title)
-            
+
+            # === PANGGIL GEMINI ===
+            print(f" -> Generate artikel pakai Gemini: {title}")
+            isi_artikel = rewrite_with_gemini(title, link)
+
             struktur_berita = {
+                "id": int(datetime.now().strftime("%d%H%M%S")) + random.randint(10, 99), # Ditambah ID angka untuk kecocokan index.html Anda
                 "title": title,
                 "slug": slug,
                 "category": kategori_terpilih,
                 "date": datetime.now().strftime("%Y-%m-%dT%H:%M:%S+07:00"),
                 "image": image_url,
-                "body": f"Berita terhangat hari ini dilaporkan oleh media {nama_media}. Informasi selengkapnya mengenai topik ini dapat Anda baca langsung melalui tautan resmi sumber asli berikut: {link}"
+                "body": isi_artikel
             }
-            
+
             berita_baru_semua_media.append(struktur_berita)
             slug_tercatat.add(slug)
             hitung += 1
-            
+
     except Exception as e:
         print(f"Media {nama_media} dilewati karena proteksi/Rss off. Detail: {e}")
 
 if berita_baru_semua_media:
-    # Mengacak kiriman agar feed berita di halaman depan tercampur rata antar media berbeda
     random.shuffle(berita_baru_semua_media)
-    
-    # Gabungkan dengan postingan lama (termasuk berita manual buatanmu dari Sveltia CMS)
     daftar_berita = berita_baru_semua_media + daftar_berita
-    
-    # Batasi kapasitas penampung agar halaman web tetap loading cepat
     daftar_berita = daftar_berita[:120]
-    
+
+    # Simpan dalam format list langsung demi kecocokan looping JavaScript di index.html Anda
     with open(path_json, 'w', encoding='utf-8') as f:
-        json.dump({"posts": daftar_berita}, f, indent=2, ensure_ascii=False)
+        json.dump(daftar_berita, f, indent=2, ensure_ascii=False)
     print(f"Sukses! Berhasil menambahkan {len(berita_baru_semua_media)} berita nasional campuran secara proporsional.")
 else:
     print("Tidak ada berita baru yang ditarik.")
