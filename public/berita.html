@@ -1,154 +1,261 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Portal Berita - PULNEW</title>
-<style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif}
-body{background:#f5f5f5;color:#333}
-.top-header{background:#d32f2f;color:white;padding:8px 12px;display:flex;align-items:center;gap:10px;font-size:13px}
-.breaking-badge{background:#fff;color:#d32f2f;padding:3px 8px;border-radius:12px;font-weight:700;font-size:11px;flex-shrink:0}
-.logo-bar{background:white;padding:10px 15px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 2px 4px rgba(0,0,0,0.1)}
-.nav-menu{background:#1a237e;padding:10px 15px;display:flex;gap:15px;overflow-x:auto;scrollbar-width:none}
-.nav-menu::-webkit-scrollbar{display:none}
-.nav-menu a{color:white;text-decoration:none;font-size:13px;font-weight:500;white-space:nowrap}
-.container{max-width:700px;margin:0 auto;background:white;min-height:100vh;padding:20px 15px}
-.post-category{color:#d32f2f;font-weight:700;font-size:14px;text-transform:uppercase;margin-bottom:10px;display:inline-block}
-h1{font-size:24px;font-weight:700;line-height:1.3;margin-bottom:10px;color:#111}
-.meta{font-size:13px;color:#666;margin-bottom:20px;padding-bottom:15px;border-bottom:1px solid #eee}
-.main-image{width:100%;max-height:380px;object-fit:cover;border-radius:6px;margin-bottom:20px;background:#eee}
-.post-content{font-size:16px;line-height:1.8;color:#222}
-.post-content p{margin-bottom:15px}
-a{text-decoration:none;color:inherit}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Detail Berita - PULNEW</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif; scroll-behavior: smooth; }
+        
+        html, body { background: #f4f6f9; color: #333; display: flex; flex-direction: column; min-height: 100vh; overflow-x: hidden; width: 100%; }
+        
+        /* RUNNING TEXT STYLE */
+        .top-header { background: #d32f2f; color: white; padding: 8px 12px; display: flex; align-items: center; gap: 10px; font-size: 13px; overflow: hidden; position: relative; width: 100%; }
+        .breaking-badge { background: #fff; color: #d32f2f; padding: 3px 8px; border-radius: 12px; font-weight: 700; font-size: 11px; flex-shrink: 0; z-index: 2; box-shadow: 2px 0 5px rgba(0,0,0,0.2); }
+        .ticker-wrapper { overflow: hidden; width: 100%; display: flex; }
+        .ticker-content { display: inline-block; white-space: nowrap; padding-left: 100%; animation: ticker 120s linear infinite; }
+        .ticker-item { display: inline-block; padding-right: 40px; font-weight: 500; color: white; text-decoration: none; }
+        .ticker-item:hover { text-decoration: underline; }
+        @keyframes ticker { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(-100%, 0, 0); } }
+
+        /* HEADER & LOGO BAR */
+        .header-container { width: 100%; background: #ffffff !important; box-shadow: 0 2px 4px rgba(0,0,0,0.08); overflow: hidden; }
+        .logo-bar { max-width: 1200px; margin: 0 auto; padding: 12px 20px; display: flex; justify-content: space-between; align-items: center; background: #ffffff !important; }
+        .logo-img-wrapper { height: 55px; width: 55px; display: flex; align-items: center; justify-content: center; background: #ffffff !important; border-radius: 4px; overflow: hidden; flex-shrink: 0; }
+        .logo-img-wrapper img { height: 100%; width: 100%; object-fit: contain; background: #ffffff !important; filter: none !important; mix-blend-mode: normal !important; }
+        
+        .nav-menu-wrapper { background: #1a237e; width: 100%; overflow: hidden; }
+        .nav-menu { max-width: 1200px; margin: 0 auto; padding: 12px 20px; display: flex; gap: 20px; }
+        .nav-menu a { color: white; text-decoration: none; font-size: 14px; font-weight: 500; white-space: nowrap; }
+        
+        /* CONTAINER UTAMA & DETAIL ARTIKEL */
+        .container { max-width: 1200px; width: 100%; margin: 0 auto; padding: 20px 15px; flex: 1; overflow: hidden; }
+        
+        .article-wrapper { background: white; padding: 15px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); margin-bottom: 25px; width: 100%; overflow: hidden; }
+        .article-category { color: #d32f2f; font-size: 12px; font-weight: 700; text-transform: uppercase; margin-bottom: 10px; display: block; }
+        .article-title { font-size: 22px; font-weight: 800; line-height: 1.3; color: #111; margin-bottom: 12px; }
+        .article-meta { font-size: 13px; color: #666; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px solid #eee; }
+        
+        .main-image-container { width: 100%; overflow: hidden; border-radius: 8px !important; margin-bottom: 20px; background: transparent !important; }
+        .main-image-container img { width: 100%; height: auto; display: block; object-fit: cover; background: transparent !important; border-radius: 8px !important; }
+        
+        .article-body { font-size: 16px; line-height: 1.7; color: #222; word-break: break-word; overflow-wrap: break-word; }
+        .article-body p { margin-bottom: 16px; text-align: justify; word-break: break-word; overflow-wrap: break-word; }
+        .article-body a { word-break: break-all; color: #1a237e; }
+
+        /* REKOMENDASI BERITA */
+        .recommendation-title { font-size: 18px; font-weight: 700; color: #111; margin: 30px 0 15px 0; border-left: 4px solid #d32f2f; padding-left: 10px; }
+        .news-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; width: 100%; }
+        
+        .news-card { background: white; display: flex; flex-direction: column; text-decoration: none; color: inherit; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .news-card img { width: 100%; height: 110px; object-fit: cover; background: transparent !important; border-top-left-radius: 8px !important; border-top-right-radius: 8px !important; }
+        .news-card .card-info { padding: 10px; display: flex; flex-direction: column; flex-grow: 1; }
+        .news-card .category { color: #d32f2f; font-size: 11px; font-weight: 700; text-transform: uppercase; margin-bottom: 4px; display: block; }
+        .news-card h3 { font-size: 13px; font-weight: 700; line-height: 1.4; color: #111; }
+
+        #error-msg { text-align: center; padding: 50px 20px; color: #d32f2f; font-size: 16px; font-weight: 500; }
+
+        @media (min-width: 768px) {
+            .container { padding: 25px 20px; }
+            .article-wrapper { padding: 40px; }
+            .article-title { font-size: 36px; margin-bottom: 15px; }
+            .main-image-container img { height: 500px; } 
+            .article-body { font-size: 18px; }
+            .news-grid { grid-template-columns: repeat(3, 1fr); gap: 20px; }
+            .news-card img { height: 160px; }
+            .news-card h3 { font-size: 15px; }
+        }
+
+        /* PERBAIKAN FOOTER SAMA SEPERTI INDEX */
+        footer { background: #101726; color: #b0b8c4; padding: 30px 20px 20px 20px; font-size: 13px; border-top: 4px solid #1a237e; margin-top: 40px; width: 100%; overflow: hidden; position: relative; }
+        .footer-content { max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; text-align: center; }
+        .footer-logo { font-size: 22px; font-weight: 800; color: white; }
+        .footer-logo span { color: #d32f2f; }
+        
+        .footer-categories { display: flex; justify-content: center; align-items: center; gap: 8px; flex-wrap: wrap; margin: 5px auto; max-width: 100%; padding: 0 10px; }
+        .footer-categories a { color: #38bdf8; text-decoration: none; font-weight: 400; font-size: 11px; transition: color 0.2s; white-space: nowrap; }
+        .footer-categories a:hover { color: white; }
+        .footer-categories span { color: #334155; font-size: 11px; }
+        .footer-bottom { border-top: 1px solid #1e293b; padding-top: 15px; font-size: 12px; color: #64748b; }
+
+        /* TOMBOL PANAH ATAS MELAYANG */
+        .back-to-top { position: fixed; bottom: 25px; right: 25px; background: #d32f2f; color: white; width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; font-size: 20px; font-weight: bold; box-shadow: 0 4px 8px rgba(0,0,0,0.3); z-index: 99; transition: opacity 0.3s, transform 0.2s; opacity: 0; visibility: hidden; }
+        .back-to-top.show { opacity: 1; visibility: visible; }
+        .back-to-top:hover { transform: translateY(-3px); background: #1a237e; }
+    </style>
 </head>
 <body>
+
     <div class="top-header">
         <div class="breaking-badge">INFO NEW</div>
-        <div style="font-weight:500; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;" id="breaking-title">Memuat info berita...</div>
-    </div>
-
-    <div class="logo-bar" style="display: flex; justify-content: space-between; align-items: center; padding: 8px 15px; background: white;">
-        <div style="display: flex; align-items: center; gap: 10px;">
-            <a href="/" style="display: flex; align-items: center; gap: 10px; text-decoration: none;">
-                <div style="height: 55px; width: 55px; display: flex; align-items: center; justify-content: center; background: white; border-radius: 4px; overflow: hidden; flex-shrink: 0;">
-                    <img src="https://pulnew.pages.dev/logopulnew1.jpg" alt="Logo PULNEW" style="height: 100%; width: 100%; object-fit: contain; filter: brightness(1.18) contrast(1.35); mix-blend-mode: darken;">
-                </div>
-                <div style="font-size: 25px; font-weight: 800; color: #1a237e; letter-spacing: -0.5px; line-height: 0.95;">
-                    PUL<span style="color: #d32f2f;">NEW</span><span style="font-size: 13px; font-weight: 600; color: #666; display: block; margin-top: 2px;">.com</span>
-                </div>
-            </a>
-        </div>
-        <div style="font-size: 11px; color: #555; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; text-align: right; line-height: 1.3;" id="live-date"></div>
-    </div>
-    
-    <div class="nav-menu">
-        <a href="/">Home</a>
-        <a href="/?kategori=Politik">Politik</a>
-        <a href="/?kategori=Ekonomi">Ekonomi</a>
-        <a href="/?kategori=Teknologi">Teknologi</a>
-        <a href="/?kategori=Olahraga">Olahraga</a>
-        <a href="/?kategori=Hiburan">Hiburan</a>
-    </div>
-    
-    <div class="container">
-        <div id="article-view">
-            <span class="post-category" id="post-category">BERITA</span>
-            <h1 id="post-title">Memuat Berita Terkini...</h1>
-            <div class="meta" id="post-meta">Kamis, 21 Mei 2026 • Redaksi PULNEW</div>
-            <img class="main-image" id="post-image" src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=700" alt="Gambar Berita">
-            <div class="post-content" id="post-content">
-                <p>Sedang mengambil teks berita dari server robot...</p>
+        <div class="ticker-wrapper">
+            <div class="ticker-content" id="running-text-container">
+                <span class="ticker-item">Memuat berita terbaru...</span>
             </div>
         </div>
     </div>
 
+    <div class="header-container">
+        <div class="logo-bar">
+            <div style="display: flex; align-items: center; gap: 10px; background: #ffffff;">
+                <a href="/" style="display: flex; align-items: center; gap: 10px; text-decoration: none; background: #ffffff;">
+                    <div class="logo-img-wrapper">
+                        <img src="https://pulnew.pages.dev/logopulnew2.png" alt="Logo">
+                    </div>
+                    <div style="font-size: 25px; font-weight: 800; color: #1a237e; letter-spacing: -0.5px; line-height: 0.95; background: #ffffff;">
+                        PUL<span style="color: #d32f2f;">NEW</span><span style="font-size: 13px; font-weight: 600; color: #666; display: block; margin-top: 2px;">.com</span>
+                    </div>
+                </a>
+            </div>
+            <div style="font-size: 12px; color: #555; font-weight: 700; text-transform: uppercase; background: #ffffff;" id="live-date"></div>
+        </div>
+    </div>
+    
+    <div class="nav-menu-wrapper">
+        <div class="nav-menu">
+            <a href="/" style="font-weight: 700;">&larr; Kembali ke Home</a>
+        </div>
+    </div>
+    
+    <div class="container">
+        <div id="content-area">
+            <div style="text-align: center; padding: 40px; color: #666;">Membuka lembaran artikel...</div>
+        </div>
+        <div class="recommendation-title">Berita Terkait Lainnya</div>
+        <div class="news-grid" id="recommendation-container"></div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">PUL<span>NEW</span>.com</div>
+            <p style="font-size: 13px; color: #b0b8c4;">Menyajikan informasi langsung ke perangkat anda</p>
+            
+            <div class="footer-categories">
+                <a href="/">Home</a>
+                <span>|</span>
+                <a href="/index.html?kategori=Politik" onclick="pindahKategori('Politik')">Politik</a>
+                <span>|</span>
+                <a href="/index.html?kategori=Ekonomi" onclick="pindahKategori('Ekonomi')">Ekonomi</a>
+                <span>|</span>
+                <a href="/index.html?kategori=Teknologi" onclick="pindahKategori('Teknologi')">Teknologi</a>
+                <span>|</span>
+                <a href="/index.html?kategori=Olahraga" onclick="pindahKategori('Olahraga')">Olahraga</a>
+                <span>|</span>
+                <a href="/index.html?kategori=Hiburan" onclick="pindahKategori('Hiburan')">Hiburan</a>
+            </div>
+
+            <div class="footer-bottom">&copy; 2026 PULNEW.com. All Rights Reserved.</div>
+        </div>
+    </footer>
+
+    <a href="#" class="back-to-top" id="btnScrollTop">&#8593;</a>
+
     <script>
-    try {
-        document.getElementById('live-date').textContent = new Date().toLocaleDateString('id-ID', { weekday: 'long', day: 'numeric', month: 'short', year: 'numeric' });
-    } catch(e) { console.log(e); }
+    document.getElementById('live-date').textContent = new Date().toLocaleDateString('id-ID', { weekday: 'long', day: 'numeric', month: 'short', year: 'numeric' });
 
-    function slugToTitle(slug) {
-        if(!slug) return "Detail Berita Utama";
-        return slug.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
-    }
+    window.addEventListener('scroll', () => {
+        const btn = document.getElementById('btnScrollTop');
+        if (window.scrollY > 300) {
+            btn.classList.add('show');
+        } else {
+            btn.classList.remove('show');
+        }
+    });
 
-    async function loadArticle() {
-        const urlParams = new URLSearchParams(window.location.search);
-        let urlSlug = urlParams.get('slug');
-        
-        if (!urlSlug) return;
-        urlSlug = urlSlug.replace(/^\//, '').replace(/\/$/, '').trim().toLowerCase();
+    const urlParams = new URLSearchParams(window.location.search);
+    const slugTujuan = urlParams.get('slug');
 
-        // Pasang judul sementara dari link URL biar tidak kedip kosong
-        const temporaryTitle = slugToTitle(urlSlug);
-        document.getElementById('post-title').textContent = temporaryTitle;
-        document.getElementById('breaking-title').textContent = temporaryTitle;
-
+    async function muatHalamanBerita() {
+        if (!slugTujuan) {
+            tampilkanError("Parameter alamat artikel kosong.");
+            return;
+        }
         try {
-            // Ambil data JSON Cloudflare Pages
             const response = await fetch('/posts.json?t=' + new Date().getTime());
-            if (!response.ok) throw new Error("Gagal mengambil JSON");
-            
             const data = await response.json();
-            const posts = data.posts || [];
+            const daftarPosts = data.posts || [];
+            const artikelDipilih = daftarPosts.find(p => p.slug === slugTujuan);
             
-            // Pencarian kecocokan slug berita
-            const post = posts.find(p => {
-                if (!p.slug) return false;
-                let cleanPostSlug = p.slug.replace(/^\//, '').replace(/\/$/, '').trim().toLowerCase();
-                return cleanPostSlug === urlSlug || cleanPostSlug.includes(urlSlug) || urlSlug.includes(cleanPostSlug);
-            });
-            
-            if (post) {
-                // SINKRONISASI TOTAL FORMAT ROBOT:
-                document.title = post.title + " - PULNEW";
-                document.getElementById('post-title').textContent = post.title;
-                document.getElementById('breaking-title').textContent = post.title;
-                document.getElementById('post-category').textContent = post.category || 'Berita';
-                
-                if(post.image) {
-                    document.getElementById('post-image').src = post.image;
-                    document.getElementById('post-image').alt = post.title;
-                }
-                
-                if(post.date) {
-                    const postDate = new Date(post.date).toLocaleDateString('id-ID', {day: 'numeric', month: 'long', year: 'numeric'});
-                    document.getElementById('post-meta').textContent = `${postDate} • Redaksi PULNEW`;
-                }
-
-                // FIX UTAMA: Membaca 'post.body' bawaan script robot, bukan 'post.content' lagi!
-                const teksBerita = post.body || post.content || "";
-                if (teksBerita) {
-                    const paragraphs = teksBerita.split('\n').filter(p => p.trim() !== '');
-                    let contentHtml = '';
-                    paragraphs.forEach(p => {
-                        contentHtml += `<p style="margin-bottom: 16px; text-align: justify;">${p}</p>`;
-                    });
-                    document.getElementById('post-content').innerHTML = contentHtml;
-                } else {
-                    buatKontenCadangan(post.title);
-                }
+            if (artikelDipilih) {
+                document.title = `${artikelDipilih.title} - PULNEW`;
+                tampilkanIsiArtikel(artikelDipilih);
+                tampilkanRekomendasi(daftarPosts, slugTujuan);
+                updateRunningText(daftarPosts);
             } else {
-                buatKontenCadangan(temporaryTitle);
+                tampilkanError("Artikel tidak ditemukan.");
             }
-
         } catch (err) {
-            console.error(err);
-            buatKontenCadangan(temporaryTitle);
+            tampilkanError("Hubungan robot terputus.");
         }
     }
 
-    function buatKontenCadangan(judul) {
-        document.title = judul + " - PULNEW";
-        document.getElementById('post-content').innerHTML = `
-            <p><strong>PULNEW.com, JAKARTA</strong> — Informasi lengkap mengenai artikel <strong>"${judul}"</strong> sedang dalam proses sinkronisasi otomatis oleh sistem penarik berita.</p>
-            <p>Silakan segarkan halaman ini dalam beberapa saat lagi, atau kembali ke menu utama untuk melihat update berita terbaru lainnya.</p>
+    function tampilkanIsiArtikel(post) {
+        const area = document.getElementById('content-area');
+        let formatText = '';
+        if (post.body) {
+            formatText = post.body.split('\n\n').map(p => {
+                let text = p.replace(/\n/g, '<br>');
+                const urlRegex = /(https?:\/\/[^\s]+)/g;
+                text = text.replace(urlRegex, url => `<a href="${url}" target="_blank">${url}</a>`);
+                return `<p>${text}</p>`;
+            }).join('');
+        } else {
+            formatText = '<p>Konten isi berita kosong.</p>';
+        }
+
+        area.innerHTML = `
+            <div class="article-wrapper">
+                <span class="article-category">${post.category || 'Nasional'}</span>
+                <h1 class="article-title">${post.title}</h1>
+                <div class="article-meta">Oleh: <strong>Redaksi PULNEW</strong></div>
+                <div class="main-image-container">
+                    <img src="${post.image || 'https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=1200'}" alt="${post.title}">
+                </div>
+                <div class="article-body">${formatText}</div>
+            </div>
         `;
     }
 
-    loadArticle();
+    function tampilkanRekomendasi(posts, slugSekarang) {
+        const container = document.getElementById('recommendation-container');
+        container.innerHTML = '';
+        const sisaBerita = posts.filter(p => p.slug !== slugSekarang);
+        const batasTampil = sisaBerita.slice(0, 6);
+
+        batasTampil.forEach(post => {
+            const cardHtml = `
+                <a href="/berita.html?slug=${post.slug}" class="news-card">
+                    <img src="${post.image || 'https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=500'}" alt="${post.title}">
+                    <div class="card-info">
+                        <span class="category">${post.category || 'Nasional'}</span>
+                        <h3>${post.title}</h3>
+                    </div>
+                </a>
+            `;
+            container.innerHTML += cardHtml;
+        });
+    }
+
+    function updateRunningText(posts) {
+        const container = document.getElementById('running-text-container');
+        if (!container) return;
+        let htmlContent = '';
+        posts.forEach(post => {
+            htmlContent += `<a href="/berita.html?slug=${post.slug}" class="ticker-item">🔥 ${post.title} &nbsp;&nbsp;&nbsp;&nbsp;</a>`;
+        });
+        container.innerHTML = htmlContent;
+    }
+
+    function pindahKategori(namaKategori) {
+        event.preventDefault();
+        window.location.href = '/index.html?kategori=' + namaKategori;
+    }
+
+    function tampilkanError(pesan) {
+        document.getElementById('content-area').innerHTML = `<div id="error-msg">${pesan}</div>`;
+    }
+
+    muatHalamanBerita();
     </script>
 </body>
 </html>
