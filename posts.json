@@ -1,16 +1,1 @@
-[
-  {
-    "id": 2,
-    "title": "Uji Coba Berita Kedua Pulnew",
-    "category": "Hukum",
-    "image": "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=500",
-    "body": "Ini adalah baris contoh isi paragraf berita kedua untuk memastikan sistem berjalan lancar."
-  },
-  {
-    "id": 1,
-    "title": "Selamat Datang di Portal Berita Baru PULNEW",
-    "category": "Politik",
-    "image": "https://images.unsplash.com/photo-1541872703-74c5e44368f9?w=500",
-    "body": "PULNEW kini hadir dengan tampilan baru yang lebih cepat diakses melalui jaringan seluler maupun komputer."
-  }
-]
+{ "posts": [ ... ] }
