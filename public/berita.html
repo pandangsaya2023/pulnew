@@ -72,7 +72,7 @@
         document.getElementById('btnScrollTop').style.display = (window.scrollY > 300) ? "flex" : "none";
     };
 
-    async function muatHalamanBerita() {
+        async function muatHalamanBerita() {
         const slugTujuan = new URLSearchParams(window.location.search).get('slug');
         if (!slugTujuan) return;
         
@@ -82,12 +82,20 @@
             const post = data.posts.find(p => p.slug === slugTujuan);
             
             if (post) {
-                document.getElementById('content-area').innerHTML = `
-                    <span style="color:#d32f2f; font-weight:bold; text-transform:uppercase;">${post.category || 'BERITA'}</span>
-                    <h1 style="margin:10px 0;">${post.title}</h1>
-                    <img src="${post.image}" style="width:100%; border-radius:8px;">
-                    <div class="article-body">${post.body.replace(/\n/g, '<br>')}</div>
+                // Menyiapkan elemen konten
+                const container = document.getElementById('content-area');
+                container.innerHTML = `
+                    <div class="article-wrapper">
+                        <span class="article-category">${post.category || 'BERITA'}</span>
+                        <h1 style="margin:10px 0; font-size: 28px;">${post.title}</h1>
+                        <img src="${post.image}" style="width:100%; border-radius:8px; margin: 15px 0;">
+                        <div id="body-text" style="font-size: 17px; line-height: 1.8; color: #333; text-align: justify;"></div>
+                    </div>
                 `;
+                
+                // Menggunakan innerText untuk isi berita agar AI-generated text tampil rapi
+                // Kita ganti \n dengan <br> secara lebih aman
+                document.getElementById('body-text').innerHTML = post.body.replace(/\n/g, '<br>');
             } else {
                 document.getElementById('content-area').innerHTML = "Artikel tidak ditemukan.";
             }
@@ -96,6 +104,7 @@
         }
     }
     muatHalamanBerita();
+
     </script>
 </body>
 </html>
