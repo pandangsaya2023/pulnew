@@ -5,35 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Detail Berita - PULNEW</title>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif; }
+        /* CSS Dasar & Reset */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: sans-serif; }
         body { background: #f4f6f9; color: #333; line-height: 1.6; }
-        
-        /* Header & Logo */
-        .header-container { width: 100%; background: #ffffff; box-shadow: 0 2px 4px rgba(0,0,0,0.08); }
-        .logo-bar { max-width: 1200px; margin: 0 auto; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; }
-        .logo-img { height: 50px; object-fit: contain; }
-        
-        /* Container */
+
+        /* HEADER & LOGO */
+        .header-container { background: #fff; padding: 15px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .logo-bar { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+        .logo-img { height: 50px; }
+
+        /* KONTEN */
         .container { max-width: 1200px; margin: 20px auto; padding: 0 15px; }
-        .article-wrapper { background: white; padding: 25px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
-        .article-category { color: #d32f2f; font-weight: 800; font-size: 12px; text-transform: uppercase; margin-bottom: 10px; display: block; }
-        .article-title { font-size: 28px; margin-bottom: 15px; line-height: 1.3; }
+        .article-wrapper { background: white; padding: 25px; border-radius: 8px; }
+        .article-category { color: #d32f2f; font-weight: bold; font-size: 14px; text-transform: uppercase; margin-bottom: 10px; display: block; }
+        .article-title { font-size: 28px; margin-bottom: 15px; }
         .main-image { width: 100%; border-radius: 8px; margin-bottom: 20px; }
-        .iklan-box { width: 100%; text-align: center; margin: 20px 0; background: #eee; padding: 15px; border-radius: 6px; color: #666; font-weight: bold; }
-        
-        /* Grid Berita Terkait */
-        .news-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 15px; margin-top: 20px; }
-        .news-card { background: white; padding: 10px; border-radius: 6px; text-decoration: none; color: #333; box-shadow: 0 2px 4px rgba(0,0,0,0.05); display: flex; flex-direction: column; }
-        .news-card img { width: 100%; height: 120px; object-fit: cover; border-radius: 4px; margin-bottom: 8px; }
-        .grid-span-full { grid-column: span 6; }
-        .grid-span-2 { grid-column: span 2; }
-        .grid-span-3 { grid-column: span 3; }
-        
-        /* Footer */
+        .iklan-box { width: 100%; text-align: center; margin: 20px 0; background: #eee; padding: 15px; border-radius: 6px; font-weight: bold; }
+
+        /* FOOTER & KATEGORI */
         footer { background: #101726; color: #b0b8c4; padding: 30px; text-align: center; margin-top: 40px; }
+        .footer-categories { margin-bottom: 15px; }
+        .footer-categories a { color: #fff; text-decoration: none; margin: 0 10px; font-size: 14px; }
         
-        /* Back to Top */
-        #btnScrollTop { position: fixed; bottom: 20px; right: 20px; background: #d32f2f; color: white; width: 45px; height: 45px; border-radius: 50%; display: none; align-items: center; justify-content: center; cursor: pointer; z-index: 1000; font-weight: bold; font-size: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.3); }
+        /* TOMBOL BACK TO TOP */
+        #btnScrollTop { position: fixed; bottom: 20px; right: 20px; background: #d32f2f; color: white; width: 45px; height: 45px; border-radius: 50%; display: none; align-items: center; justify-content: center; cursor: pointer; z-index: 1000; font-size: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.3); }
     </style>
 </head>
 <body>
@@ -41,69 +36,57 @@
     <div class="header-container">
         <div class="logo-bar">
             <a href="https://pulnew.pages.dev/"><img src="https://raw.githubusercontent.com/pandangsaya2023/pulnew/main/logopulnew2.png" class="logo-img"></a>
-            <div id="live-date" style="font-size: 12px; font-weight: bold;"></div>
+            <div id="live-date"></div>
         </div>
     </div>
 
     <div class="container">
         <div id="content-area">Memuat berita...</div>
-        
-        <h3 style="margin-top:40px; border-left: 4px solid #d32f2f; padding-left: 10px;">Berita Terkait Lainnya</h3>
-        <div class="news-grid" id="recommendation-container"></div>
     </div>
 
     <footer>
-        <p>PULNEW - Menyajikan informasi langsung ke perangkat anda</p>
-        <p style="margin-top:10px;">&copy; 2026 PULNEW.com. All Rights Reserved.</p>
+        <div class="footer-categories">
+            <a href="https://pulnew.pages.dev/?kategori=Politik">Politik</a> |
+            <a href="https://pulnew.pages.dev/?kategori=Ekonomi">Ekonomi</a> |
+            <a href="https://pulnew.pages.dev/?kategori=Teknologi">Teknologi</a>
+        </div>
+        <p>&copy; 2026 PULNEW.com. All Rights Reserved.</p>
     </footer>
 
     <div id="btnScrollTop" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">↑</div>
 
     <script>
+    // Set Tanggal
     document.getElementById('live-date').textContent = new Date().toLocaleDateString('id-ID', { weekday: 'long', day: 'numeric', month: 'short', year: 'numeric' });
 
+    // Script Tampil Tombol Scroll
     window.onscroll = () => {
         document.getElementById('btnScrollTop').style.display = (window.scrollY > 300) ? "flex" : "none";
     };
 
+    // Ambil Data Berita
     async function muatHalamanBerita() {
         const slugTujuan = new URLSearchParams(window.location.search).get('slug');
         if (!slugTujuan) return;
-
+        
         try {
             const response = await fetch('https://raw.githubusercontent.com/pandangsaya2023/pulnew/main/posts.json?t=' + new Date().getTime());
             const data = await response.json();
-            const posts = data.posts || [];
-            const post = posts.find(p => p.slug === slugTujuan);
+            const post = data.posts.find(p => p.slug === slugTujuan);
             
             if (post) {
-                // Tampilkan isi artikel
                 document.getElementById('content-area').innerHTML = `
                     <div class="article-wrapper">
-                        <span class="article-category">${post.category || 'BERITA'}</span>
+                        <span class="article-category">${post.category || 'Berita'}</span>
                         <h1 class="article-title">${post.title}</h1>
                         <img src="${post.image}" class="main-image">
-                        <div class="iklan-box">RUANG IKLAN ARTIKEL</div>
-                        <div style="font-size: 16px; line-height: 1.8;">${post.body.replace(/\n/g, '<br>')}</div>
+                        <div class="iklan-box">RUANG IKLAN</div>
+                        <div style="font-size: 16px;">${post.body.replace(/\n/g, '<br>')}</div>
                     </div>
                 `;
-                
-                // Tampilkan grid berita terkait
-                const container = document.getElementById('recommendation-container');
-                posts.filter(p => p.slug !== slugTujuan).slice(0, 6).forEach((p, i) => {
-                    const cls = i === 0 ? 'grid-span-full' : (i < 4 ? 'grid-span-2' : 'grid-span-3');
-                    container.innerHTML += `
-                        <a href="/berita.html?slug=${p.slug}" class="news-card ${cls}">
-                            <img src="${p.image}">
-                            <p style="font-size: 12px; font-weight: bold;">${p.title}</p>
-                        </a>
-                    `;
-                });
-            } else {
-                document.getElementById('content-area').innerHTML = "Artikel tidak ditemukan.";
             }
         } catch (e) {
-            document.getElementById('content-area').innerHTML = "Gagal memuat berita.";
+            document.getElementById('content-area').innerHTML = "Artikel tidak ditemukan.";
         }
     }
     muatHalamanBerita();
