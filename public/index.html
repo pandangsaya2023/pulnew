@@ -6,28 +6,58 @@
     <title>PULNEW - Portal Berita Terkini</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif; }
-        html, body { background: #f4f6f9; color: #333; display: flex; flex-direction: column; min-height: 100vh; }
+        html, body { background: #f4f6f9; color: #333; min-height: 100vh; }
         
+        /* HEADER STICKY DENGAN EFEK BAYANGAN DINAMIS */
+        .header-container { 
+            background: #ffffff; 
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 3px solid #d32f2f;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06); /* Bayangan kecil default */
+            transition: box-shadow 0.25s ease; /* Animasi halus */
+        }
+        .header-container.scrolled {
+            box-shadow: 0 4px 16px rgba(0,0,0,0.15); /* Bayangan tebal saat scroll */
+        }
+        .logo-bar { 
+            max-width: 800px; 
+            margin: 0 auto; 
+            padding: 12px 20px; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+        }
+        .logo-img-wrapper { height: 50px; width: 50px; }
+        .logo-img-wrapper img { height: 100%; width: 100%; object-fit: contain; }
+
         /* RUNNING TEXT */
-        .top-header, .bottom-ticker-bar { background: #d32f2f; color: white; padding: 8px 12px; display: flex; align-items: center; gap: 10px; font-size: 13px; overflow: hidden; width: 100%; }
-        .bottom-ticker-bar { margin-top: 30px; }
+        .top-header { 
+            background: #d32f2f; 
+            color: white; 
+            padding: 8px 12px; 
+            display: flex; 
+            align-items: center; 
+            gap: 10px; 
+            font-size: 13px; 
+            overflow: hidden; 
+            width: 100%; 
+        }
         .breaking-badge { background: #fff; color: #d32f2f; padding: 3px 8px; border-radius: 12px; font-weight: 700; font-size: 11px; flex-shrink: 0; }
         .ticker-wrapper { overflow: hidden; width: 100%; }
         .ticker-content { display: inline-block; white-space: nowrap; padding-left: 100%; animation: ticker 120s linear infinite; }
         .ticker-item { display: inline-block; padding-right: 40px; font-weight: 500; color: white; text-decoration: none; }
         @keyframes ticker { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(-100%, 0, 0); } }
 
-        /* HEADER */
-        .header-container { background: #ffffff; box-shadow: 0 2px 4px rgba(0,0,0,0.08); }
-        .logo-bar { max-width: 800px; margin: 0 auto; padding: 12px 20px; display: flex; justify-content: space-between; align-items: center; }
-        .logo-img-wrapper { height: 55px; width: 55px; }
-        .logo-img-wrapper img { height: 100%; width: 100%; object-fit: contain; }
-
-        /* CONTAINER */
-        .container { max-width: 800px; width: 100%; margin: 0 auto; padding: 15px 10px; flex: 1; }
+        .container { 
+            max-width: 800px; 
+            width: 100%; 
+            margin: 0 auto; 
+            padding: 20px 10px 15px 10px; 
+        }
         
-        /* LIST BERITA - GAMBAR BESAR DI ATAS */
-        .news-list { display: flex; flex-direction: column; gap: 16px; }
+        .news-list { display: flex; flex-direction: column; gap: 18px; }
         
         .news-card { 
             background: white; 
@@ -35,25 +65,28 @@
             flex-direction: column;
             text-decoration: none; 
             color: inherit; 
-            border-radius: 10px; 
+            border-radius: 12px; 
             overflow: hidden; 
             box-shadow: 0 2px 8px rgba(0,0,0,0.08); 
-            transition: transform 0.2s;
+            transition: transform 0.2s, box-shadow 0.2s;
         }
-        .news-card:hover { transform: translateY(-3px); box-shadow: 0 4px 12px rgba(0,0,0,0.12); }
+        .news-card:hover { 
+            transform: translateY(-3px); 
+            box-shadow: 0 6px 16px rgba(0,0,0,0.12); 
+        }
         
         .news-card img { 
             width: 100%; 
-            height: 200px; 
+            height: 210px; 
             object-fit: cover; 
         }
         
         .news-card .card-content {
-            padding: 12px 14px 16px 14px;
+            padding: 14px 16px 18px 16px;
         }
         
         .news-card h3 { 
-            font-size: 16px; 
+            font-size: 17px; 
             font-weight: 700; 
             line-height: 1.4; 
             color: #111; 
@@ -63,20 +96,33 @@
             overflow: hidden;
         }
 
-        /* FOOTER */
-        footer { background: #101726; color: #b0b8c4; padding: 16px 20px; font-size: 13px; border-top: 4px solid #1a237e; }
+        footer { background: #101726; color: #b0b8c4; padding: 20px; font-size: 13px; border-top: 4px solid #1a237e; margin-top: 30px; }
         .footer-content { max-width: 800px; margin: 0 auto; text-align: center; }
         .footer-logo { font-size: 20px; font-weight: 800; color: white; margin-bottom: 6px; }
         .footer-logo span { color: #d32f2f; }
         .footer-bottom { border-top: 1px solid #1e293b; padding-top: 8px; margin-top: 10px; font-size: 11px; color: #64748b; }
 
         @media (min-width: 768px) {
-            .news-card img { height: 280px; }
-            .news-card h3 { font-size: 18px; }
+            .news-card img { height: 300px; }
+            .news-card h3 { font-size: 19px; }
         }
     </style>
 </head>
 <body>
+
+    <div class="header-container" id="mainHeader">
+        <div class="logo-bar">
+            <a href="https://pulnew.pages.dev/" style="display: flex; align-items: center; gap: 10px; text-decoration: none;">
+                <div class="logo-img-wrapper">
+                    <img src="https://pulnew.pages.dev/logopulnew2.png" alt="Logo">
+                </div>
+                <div style="font-size: 24px; font-weight: 800; color: #1a237e;">
+                    PUL<span style="color: #d32f2f;">NEW</span>
+                </div>
+            </a>
+            <div style="font-size: 12px; color: #555; font-weight: 700;" id="live-date"></div>
+        </div>
+    </div>
 
     <div class="top-header">
         <div class="breaking-badge">INFO NEW</div>
@@ -86,33 +132,10 @@
             </div>
         </div>
     </div>
-
-    <div class="header-container">
-        <div class="logo-bar">
-            <a href="https://pulnew.pages.dev/" style="display: flex; align-items: center; gap: 10px; text-decoration: none;">
-                <div class="logo-img-wrapper">
-                    <img src="https://pulnew.pages.dev/logopulnew2.png" alt="Logo">
-                </div>
-                <div style="font-size: 25px; font-weight: 800; color: #1a237e;">
-                    PUL<span style="color: #d32f2f;">NEW</span>
-                </div>
-            </a>
-            <div style="font-size: 12px; color: #555; font-weight: 700;" id="live-date"></div>
-        </div>
-    </div>
     
     <div class="container">
         <div class="news-list" id="news-container">
             <div style="text-align: center; padding: 40px; color: #666;">Menyelaraskan informasi...</div>
-        </div>
-    </div>
-
-    <div class="bottom-ticker-bar">
-        <div class="breaking-badge">INFO NEW</div>
-        <div class="ticker-wrapper">
-            <div class="ticker-content" id="running-text-container-bottom">
-                <span class="ticker-item">Memuat berita terbaru...</span>
-            </div>
         </div>
     </div>
 
@@ -126,6 +149,16 @@
 
     <script>
     document.getElementById('live-date').textContent = new Date().toLocaleDateString('id-ID', { weekday: 'long', day: 'numeric', month: 'short', year: 'numeric' });
+
+    // EFEK BAYANGAN HEADER SAAT SCROLL
+    const header = document.getElementById('mainHeader');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 10) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+    });
 
     let masterPosts = [];
 
@@ -159,15 +192,11 @@
 
     function updateRunningText(posts) {
         const containerTop = document.getElementById('running-text-container');
-        const containerBottom = document.getElementById('running-text-container-bottom');
-        
         let htmlContent = '';
         posts.slice(0, 10).forEach(post => {
             htmlContent += `<a href="/berita.html?slug=${post.slug}" class="ticker-item">🔥 ${post.title} &nbsp;&nbsp;&nbsp;&nbsp;</a>`;
         });
-        
         containerTop.innerHTML = htmlContent;
-        containerBottom.innerHTML = htmlContent;
     }
 
     ambilDataBerita();
