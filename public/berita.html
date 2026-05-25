@@ -59,13 +59,15 @@
             const data = await response.json();
             const post = data.posts.find(p => p.slug === slugTujuan);
             
-            if (post) {
-                const isiBerita = post.body.split('\n').map(p => p.trim() ? `<p>${p}</p>` : '').join('');
-                document.getElementById('content-area').innerHTML = `
-                    <h1 class="article-title">${post.title}</h1>
-                    <img src="${post.image}" class="main-image">
-                    <div class="article-body">${isiBerita}</div>
-                `;
+            // Pastikan bagian ini di berita.html sudah bersih
+        if (post) {
+            document.getElementById('content-area').innerHTML = `
+            <h1 class="article-title">${post.title}</h1>
+            <img src="${post.image}" class="main-image">
+            <div class="article-body">${isiBerita}</div>
+        `;
+    }
+
                 // Teks yang muncul di running text
                 document.getElementById('running-text').textContent = "INFO NEWS: " + post.title + " | PULNEW.com - Update Informasi Terkini | " + post.title;
             }
