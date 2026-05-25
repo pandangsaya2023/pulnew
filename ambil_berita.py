@@ -125,7 +125,7 @@ for sumber in sumber_rss:
                     "category": "Politik",
                     "date": datetime.now().isoformat(),
                     "image": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=600",
-                    "body": body
+                    "body": content
                 })
                 slug_tercatat.add(slug)
                 time.sleep(8)
