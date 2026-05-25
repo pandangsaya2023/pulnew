@@ -7,7 +7,7 @@ media_folder: public/media
 public_folder: /media
 
 collections:
-    - name: posts
+  - name: posts
     label: Berita
     folder: public/posts
     create: true
@@ -15,38 +15,39 @@ collections:
     extension: json
     format: json
     fields:
-            - label: "Judul"
+      - label: "Judul"
         name: "title"
         widget: "string"
         required: true
-            - label: "Slug"
+      - label: "Slug"
         name: "slug"
         widget: "string"
         required: true
         hint: "Contoh: berita-terbaru-hari-ini. Pakai huruf kecil dan tanda -"
-            - label: "Kategori"
+      - label: "Kategori"
         name: "category"
         widget: "select"
         options: ["Politik", "Ekonomi", "Teknologi", "Olahraga", "Hiburan"]
-            - label: "Tanggal"
+      - label: "Tanggal"
         name: "date"
         widget: "datetime"
         format: "YYYY-MM-DD HH:mm:ss"
         default: "now"
-            - label: "Gambar Utama"
+      - label: "Gambar Utama"
         name: "image"
         widget: "image"
         required: false
-            - label: "Ringkasan"
+      - label: "Ringkasan"
         name: "excerpt"
         widget: "text"
         required: false
-            - label: "Isi Berita"
+      - label: "Isi Berita"
         name: "body"
         widget: "markdown"
         required: true
     view_filters:
-            - label: "Terbaru"
+      - label: "Terbaru"
         field: "date"
         sort: "date"
         sort_direction: "descending"
+
