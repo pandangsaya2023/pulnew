@@ -88,7 +88,7 @@ path_json = "public/posts.json"
 daftar_berita = []
 if os.path.exists(path_json):
     with open("public/posts.json", "w", encoding="utf-8") as f:
-    json.dump({"posts": daftar_berita}, f, ensure_ascii=False, indent=2)
+        json.dump({"posts": daftar_berita}, f, ensure_ascii=False, indent=2)
          
         try:
             data = json.load(f)
