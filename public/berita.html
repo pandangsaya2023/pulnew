@@ -3,39 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PULNEW - Baca Berita</title>
+    <title>PULNEW - Detail Berita</title>
     <style>
         /* Pengaturan Dasar */
         body, html { margin: 0; padding: 0; height: 100%; overflow: hidden; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #ffffff; }
         .app-container { display: flex; flex-direction: column; height: 100vh; }
 
         /* HEADER */
-        header { padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; background: white; border-bottom: 1px solid #f0f0f0; }
-        .logo-text { font-size: 22px; font-weight: 900; color: #1a237e; }
+        header { padding: 12px 15px; display: flex; justify-content: space-between; align-items: center; background: white; border-bottom: 1px solid #eee; }
+        .logo-text { font-size: 20px; font-weight: 900; color: #1a237e; }
         .logo-text span { color: #d32f2f; }
         
-        /* TOMBOL BERANDA - Warna sejuk (Light Blue) */
-        .btn-beranda { 
-            background: #e3f2fd; 
-            color: #1565c0; 
-            padding: 6px 15px; 
-            border-radius: 20px; 
-            font-size: 13px; 
-            font-weight: bold; 
-            text-decoration: none; 
-            border: 1px solid #bbdefb;
-        }
+        /* TOMBOL BERANDA - Biru Sejuk */
+        .btn-beranda { background: #e3f2fd; color: #1565c0; padding: 5px 12px; border-radius: 15px; font-size: 12px; font-weight: bold; text-decoration: none; border: 1px solid #bbdefb; }
 
-        /* AREA KONTEN - Fix agar tidak melebar */
-        .content-wrapper { flex: 1; overflow-y: auto; padding: 20px; }
-        .article-box { max-width: 650px; margin: 0 auto; word-wrap: break-word; }
-        .article-title { font-size: 24px; font-weight: 800; margin-bottom: 15px; line-height: 1.3; color: #000; }
-        .main-image { width: 100%; height: auto; border-radius: 8px; margin-bottom: 15px; }
-        .article-body { font-size: 17px; line-height: 1.7; color: #333; text-align: justify; word-break: break-word; }
+        /* AREA KONTEN - Rapat & Responsif */
+        .content-wrapper { flex: 1; overflow-y: auto; padding: 15px; }
+        .article-box { max-width: 600px; margin: 0 auto; word-wrap: break-word; }
+        .article-title { font-size: 22px; font-weight: 800; margin-bottom: 15px; line-height: 1.2; color: #000; }
+        .main-image { width: 100%; height: auto; border-radius: 6px; margin-bottom: 15px; }
+        
+        /* Jarak Paragraf Diatur Rapat (10px) */
+        .article-body { font-size: 16px; line-height: 1.5; color: #333; text-align: justify; word-break: break-word; }
+        .article-body p { margin-bottom: 10px; }
 
-        /* RUNNING TEXT - Fixed di bawah */
-        .footer-ticker { background: #d32f2f; color: white; padding: 10px; font-size: 13px; white-space: nowrap; overflow: hidden; z-index: 10; width: 100%; }
-        .ticker-content { display: inline-block; padding-left: 100%; animation: scroll 20s linear infinite; }
+        /* RUNNING TEXT - Tetap Terlihat */
+        .footer-ticker { background: #d32f2f; color: white; padding: 8px 10px; font-size: 13px; font-weight: 600; white-space: nowrap; overflow: hidden; z-index: 10; width: 100%; }
+        .ticker-content { display: inline-block; padding-left: 100%; animation: scroll 25s linear infinite; }
         @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-100%); } }
     </style>
 </head>
@@ -55,7 +49,7 @@
 
         <div class="footer-ticker">
             <div class="ticker-content" id="running-text">
-                INFO NEWS: Memuat berita terkini...
+                INFO NEWS: Sedang memuat informasi terkini...
             </div>
         </div>
     </div>
@@ -69,12 +63,15 @@
             const post = data.posts.find(p => p.slug === slugTujuan);
             
             if (post) {
+                // Membungkus setiap paragraf dengan <p> agar jaraknya bisa dikontrol lewat CSS
+                const isiBerita = post.body.split('\n').map(p => p.trim() ? `<p>${p}</p>` : '').join('');
+                
                 document.getElementById('content-area').innerHTML = `
                     <h1 class="article-title">${post.title}</h1>
                     <img src="${post.image}" class="main-image">
-                    <div class="article-body">${post.body.replace(/\n/g, '<br><br>')}</div>
+                    <div class="article-body">${isiBerita}</div>
                 `;
-                document.getElementById('running-text').textContent = "INFO NEWS: " + post.title + " | Selamat Datang di PULNEW.com - Update Informasi Terkini ";
+                document.getElementById('running-text').textContent = "INFO NEWS: " + post.title + " | PULNEW.com - Update Informasi Terkini ";
             }
         } catch (e) {
             document.getElementById('content-area').innerHTML = "Artikel tidak ditemukan.";
@@ -84,4 +81,3 @@
     </script>
 </body>
 </html>
-
