@@ -110,7 +110,10 @@ for sumber in sumber_rss:
         for item in soup.find_all('item'):
             title = item.find('title').get_text(strip=True)
             link = item.find('link').get_text(strip=True)
-            slug = re.sub(r'[^a-z0-9]', '-', title.lower())[:60]
+            slug = re.sub(r'[^a-z0-9]+', '-', title.lower()).strip('-')[:60]
+            if not slug:
+                slug = f"berita-{int(time.time() * 1000)}"
+            #slug = re.sub(r'[^a-z0-9]+', '-', title.lower())[:60]
             
             if slug not in slug_tercatat:
                 print(f" -> Menulis: {title}")
