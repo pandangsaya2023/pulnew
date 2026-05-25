@@ -2,8 +2,6 @@
 title: Gambar Kucing
 date: 2026-05-19T18:24:00+07:00
 draft: false
-categories:
-  - Hiburan
 ---
 
 Ini gambar kucing yang diupload admin yang diupload engan sveltia cms , berhaskl upload dengan personal token
