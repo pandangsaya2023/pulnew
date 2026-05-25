@@ -19,7 +19,7 @@ collections:
             widget: "list"
             fields:
               - {label: "Title", name: "title", widget: "string", required: true}
-              - {label: "Slug", name: "slug", widget: "string", required: true}
+              #- {label: "Slug", name: "slug", widget: "string", required: true}
               # PERBAIKAN: Menambahkan pilihan kategori agar tersimpan di posts.json
               #- label: "Category"
                 #name: "category"
