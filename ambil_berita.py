@@ -85,20 +85,22 @@ sumber_rss = [
 ]
 
 path_json = "public/posts.json"
+
+# 1. Baca data lama dulu
 daftar_berita = []
 if os.path.exists(path_json):
-    with open("public/posts.json", "w", encoding="utf-8") as f:
-        json.dump({"posts": daftar_berita}, f, ensure_ascii=False, indent=2)
-         
+    with open(path_json, 'r', encoding='utf-8') as f:
         try:
             data = json.load(f)
             daftar_berita = data.get("posts", []) if isinstance(data, dict) else data
         except:
             daftar_berita = []
 
+# 2. Bikin set slug yang udah ada biar ga duplikat
 slug_tercatat = {b["slug"] for b in daftar_berita if "slug" in b}
 berita_baru = []
 
+# 3. Loop RSS dan scrape berita baru
 for sumber in sumber_rss:
     print(f"Mengakses {sumber['media']}...")
     try:
@@ -114,7 +116,7 @@ for sumber in sumber_rss:
                 print(f" -> Menulis: {title}")
                 body = rewrite_with_ai(title, link)
                 berita_baru.append({
-                    "id": int(time.time()),
+                    "id": int(time.time() * 1000), # pakai ms biar ga tabrakan id
                     "title": title, 
                     "slug": slug, 
                     "category": "Politik",
@@ -123,13 +125,17 @@ for sumber in sumber_rss:
                     "body": body
                 })
                 slug_tercatat.add(slug)
-                time.sleep(8) # Jeda lebih lama agar semakin sulit dideteksi bot
-            if len(berita_baru) >= 2: break # Hanya ambil 2 berita per sumber agar tidak kena limit
+                time.sleep(8)
+            if len(berita_baru) >= 2: 
+                break
     except Exception as e:
         print(f"Error pada {sumber['media']}: {e}")
 
+# 4. Gabungin dan simpan
 if berita_baru:
-    daftar_berita = berita_baru + daftar_berita
+    daftar_berita = berita_baru + daftar_berita  # berita baru taro di depan
     with open(path_json, 'w', encoding='utf-8') as f:
         json.dump({"posts": daftar_berita[:50]}, f, indent=2, ensure_ascii=False)
-    print("Selesai Update!")
+    print(f"Selesai Update! Nambah {len(berita_baru)} berita")
+else:
+    print("Ga ada berita baru")
