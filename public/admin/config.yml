@@ -25,6 +25,6 @@ collections:
                 #name: "category"
                 #widget: "select"
                 #options: ["Politik", "Ekonomi", "Teknologi", "Olahraga", "Hiburan"]
-              #- {label: "Date", name: "date", widget: "datetime", format: "YYYY-MM-DDTHH:mm:ssZ"}
+              - {label: "Date", name: "date", widget: "datetime", format: "YYYY-MM-DDTHH:mm:ssZ"}
               - {label: "Image", name: "image", widget: "image", required: false}
               - {label: "Body", name: "body", widget: "markdown", required: true}
