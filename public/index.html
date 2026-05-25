@@ -48,6 +48,23 @@
             width: 100%; 
             object-fit: contain; 
         }
+        .logo-text {
+            font-size: 24px; 
+            font-weight: 800; 
+            color: #1a237e;
+        }
+        .logo-new {
+            color: #d32f2f;
+        }
+        .logo-com {
+            animation: colorCycle 6s ease-in-out infinite;
+        }
+        @keyframes colorCycle {
+            0%   { color: #64748b; }
+            33%  { color: #475569; }
+            66%  { color: #64748b; }
+            100% { color: #64748b; }
+        }
 
         /* RUNNING TEXT - STICKY DI BAWAH HEADER */
         .top-header { 
@@ -61,7 +78,7 @@
             overflow: hidden; 
             width: 100%;
             position: sticky;
-            top: 74px; /* Tinggi header logo */
+            top: 76px;
             z-index: 199;
         }
         .breaking-badge { 
@@ -181,7 +198,7 @@
         @media (min-width: 768px) {
             .news-card img { height: 300px; }
             .news-card h3 { font-size: 19px; }
-            .top-header { top: 76px; }
+            .top-header { top: 78px; }
         }
     </style>
 </head>
@@ -194,8 +211,8 @@
                 <div class="logo-img-wrapper">
                     <img src="https://pulnew.pages.dev/logopulnew2.png" alt="Logo">
                 </div>
-                <div style="font-size: 24px; font-weight: 800; color: #1a237e;">
-                    PUL<span style="color: #d32f2f;">NEW</span>
+                <div class="logo-text">
+                    PUL<span class="logo-new">NEW</span><span class="logo-com">.COM</span>
                 </div>
             </a>
             <div style="font-size: 12px; color: #555; font-weight: 700;" id="live-date"></div>
@@ -222,9 +239,9 @@
     <!-- FOOTER -->
     <footer>
         <div class="footer-content">
-            <div class="footer-logo">PUL<span>NEW</span>.com</div>
+            <div class="footer-logo">PUL<span>NEW</span>.COM</div>
             <p>Menyajikan informasi langsung ke perangkat anda</p>
-            <div class="footer-bottom">&copy; 2026 PULNEW.com. All Rights Reserved.</div>
+            <div class="footer-bottom">&copy; 2026 PULNEW.COM. All Rights Reserved.</div>
         </div>
     </footer>
 
