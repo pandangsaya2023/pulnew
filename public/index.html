@@ -263,56 +263,21 @@
             header.classList.remove('scrolled');
         }
     });
-
-    async function loadPosts() {
-    const container = document.getElementById('berita-container'); // ganti sesuai id div lu
-  
-  // List slug berita yang udah ada. Nanti bisa lu update manual tiap nambah berita
-    const slugs = ['kucing-chiyo-part-2']; 
-  
-    try {
-      const posts = await Promise.all(
-      slugs.map(async slug => {
-        const res = await fetch(`/posts/${slug}.json`);
-        if (!res.ok) return null;
-        return res.json();
-      })
-    );
-
-    // Filter yang null dan urutin dari terbaru
-    const validPosts = posts.filter(p => p).sort((a, b) => new Date(b.date) - new Date(a.date));
-
-    container.innerHTML = validPosts.map(post => `
-      <div class="card">
-        <img src="${post.image}" alt="${post.title}">
-        <h2>${post.title}</h2>
-        <p>${post.excerpt}</p>
-        <a href="/berita.html?slug=${post.slug}">Baca Selengkapnya</a>
-      </div>
-    `).join('');
-
-  } catch (err) {
-    container.innerHTML = '<p>Gagal memuat berita</p>';
-    console.error(err);
-  }
-}
-
-loadPosts();
-        
-    // Ambil data berita
-    //let masterPosts = [];
-    //async function ambilDataBerita() {
-        //try {
-            //const response = await fetch('https://pandangsaya2023.github.io/pulnew/posts.json?t=' + new Date().getTime());
-            //const response = await fetch('posts.json?t=' + new Date().getTime());
-            //const data = await response.json();
-            //masterPosts = data.posts || [];
-            //tampilkanBerita(masterPosts);
-            //updateRunningText(masterPosts);
-        //} catch (err) {
-            //document.getElementById('news-container').innerHTML = '<div style="text-align:center; padding:40px; color:#d32f2f;">Gagal memuat berita.</div>';
-        //}
-    //}
+    
+    Ambil data berita
+    let masterPosts = [];
+    async function ambilDataBerita() {
+        try {
+            const response = await fetch('https://pandangsaya2023.github.io/pulnew/posts.json?t=' + new Date().getTime());
+            const response = await fetch('posts.json?t=' + new Date().getTime());
+            const data = await response.json();
+            masterPosts = data.posts || [];
+            tampilkanBerita(masterPosts);
+            updateRunningText(masterPosts);
+        } catch (err) {
+            document.getElementById('news-container').innerHTML = '<div style="text-align:center; padding:40px; color:#d32f2f;">Gagal memuat berita.</div>';
+        }
+    }
 
     // Tampilkan kartu berita
     function tampilkanBerita(posts) {
