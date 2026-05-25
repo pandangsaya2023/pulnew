@@ -86,7 +86,7 @@ sumber_rss = [
 
 path_json = "public/posts.json"
 
-# 1. Baca data lama dulu
+# Baca file lama
 daftar_berita = []
 if os.path.exists(path_json):
     with open(path_json, 'r', encoding='utf-8') as f:
@@ -96,11 +96,9 @@ if os.path.exists(path_json):
         except:
             daftar_berita = []
 
-# 2. Bikin set slug yang udah ada biar ga duplikat
 slug_tercatat = {b["slug"] for b in daftar_berita if "slug" in b}
 berita_baru = []
 
-# 3. Loop RSS dan scrape berita baru
 for sumber in sumber_rss:
     print(f"Mengakses {sumber['media']}...")
     try:
@@ -110,16 +108,18 @@ for sumber in sumber_rss:
         for item in soup.find_all('item'):
             title = item.find('title').get_text(strip=True)
             link = item.find('link').get_text(strip=True)
+            
             slug = re.sub(r'[^a-z0-9]+', '-', title.lower()).strip('-')[:60]
             if not slug:
                 slug = f"berita-{int(time.time() * 1000)}"
-            #slug = re.sub(r'[^a-z0-9]+', '-', title.lower())[:60]
             
             if slug not in slug_tercatat:
                 print(f" -> Menulis: {title}")
                 body = rewrite_with_ai(title, link)
+                
+                # PENTING: pakai "content", bukan "body"
                 berita_baru.append({
-                    "id": int(time.time() * 1000), # pakai ms biar ga tabrakan id
+                    "id": int(time.time() * 1000),
                     "title": title, 
                     "slug": slug, 
                     "category": "Politik",
@@ -134,9 +134,8 @@ for sumber in sumber_rss:
     except Exception as e:
         print(f"Error pada {sumber['media']}: {e}")
 
-# 4. Gabungin dan simpan
 if berita_baru:
-    daftar_berita = berita_baru + daftar_berita  # berita baru taro di depan
+    daftar_berita = berita_baru + daftar_berita
     with open(path_json, 'w', encoding='utf-8') as f:
         json.dump({"posts": daftar_berita[:50]}, f, indent=2, ensure_ascii=False)
     print(f"Selesai Update! Nambah {len(berita_baru)} berita")
