@@ -5,26 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PULNEW - Membaca Berita</title>
     <style>
+        /* Reset & Base */
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background-color: #fcfcfc; color: #2d3436; line-height: 1.8; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background-color: #f8f9fa; color: #2d3436; line-height: 1.6; }
         
-        /* Layout Utama */
-        .page-wrapper { max-width: 700px; margin: 0 auto; padding: 20px; }
-        
-        /* Header Minimalis */
-        header { padding: 30px 0; text-align: center; }
-        .logo-text { font-size: 28px; font-weight: 900; color: #1a237e; letter-spacing: -1px; }
+        /* Container Utama */
+        .page-wrapper { max-width: 650px; margin: 0 auto; padding: 15px; }
+
+        /* Header Minimalis dengan Logo & Navigasi */
+        header { padding: 20px 0; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #eee; margin-bottom: 20px; }
+        .logo-text { font-size: 22px; font-weight: 900; color: #1a237e; }
         .logo-text span { color: #d32f2f; }
+        .back-link { font-size: 13px; font-weight: bold; color: #d32f2f; text-decoration: none; background: #fff1f1; padding: 6px 12px; border-radius: 20px; border: 1px solid #ffcdd2; }
 
         /* Area Berita */
-        .article-category { display: inline-block; background: #d32f2f; color: white; padding: 4px 12px; font-size: 11px; font-weight: bold; text-transform: uppercase; border-radius: 4px; margin-bottom: 15px; }
-        .article-title { font-size: 36px; font-weight: 800; line-height: 1.2; margin-bottom: 20px; color: #000; }
-        .main-image { width: 100%; height: auto; border-radius: 12px; margin-bottom: 25px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
-        .article-content { font-size: 19px; color: #444; text-align: justify; }
+        .article-category { color: #d32f2f; font-size: 11px; font-weight: 800; text-transform: uppercase; margin-bottom: 8px; display: block; }
+        .article-title { font-size: 28px; font-weight: 800; line-height: 1.2; margin-bottom: 15px; color: #000; word-wrap: break-word; }
+        .main-image { width: 100%; height: auto; border-radius: 8px; margin-bottom: 20px; }
         
-        /* Navigasi Balik */
-        .back-nav { margin-top: 50px; text-align: center; }
-        .back-nav a { color: #d32f2f; text-decoration: none; font-weight: bold; }
+        /* FIX UNTUK TULISAN MELEBAR */
+        .article-content { 
+            font-size: 17px; 
+            color: #333; 
+            text-align: justify; 
+            word-wrap: break-word; 
+            overflow-wrap: break-word; 
+            hyphens: auto; 
+        }
+        .article-content a { color: #1a237e; word-break: break-all; }
     </style>
 </head>
 <body>
@@ -34,14 +42,11 @@
             <a href="https://pulnew.pages.dev/" style="text-decoration:none;">
                 <div class="logo-text">PUL<span>NEW</span>.com</div>
             </a>
+            <a href="https://pulnew.pages.dev/" class="back-link">← Beranda</a>
         </header>
 
         <div id="content-area">
-            <p>Sedang memuat berita...</p>
-        </div>
-
-        <div class="back-nav">
-            <a href="https://pulnew.pages.dev/">← Kembali ke Beranda</a>
+            <p>Memuat berita...</p>
         </div>
     </div>
 
