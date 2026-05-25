@@ -94,7 +94,7 @@ if os.path.exists(path_json):
         except:
             daftar_berita = []
 
-#slug_tercatat = {b["slug"] for b in daftar_berita if "slug" in b}
+slug_tercatat = {b["slug"] for b in daftar_berita if "slug" in b}
 berita_baru = []
 
 for sumber in sumber_rss:
