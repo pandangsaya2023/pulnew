@@ -46,18 +46,30 @@
         .logo-img-wrapper img { 
             height: 100%; 
             width: 100%; 
-            object-fit: contain; 
-        }
+            object-fit: contain;
+            
         .logo-text {
             font-size: 24px; 
             font-weight: 800; 
             color: #1a237e;
         }
+
         .logo-new {
             color: #d32f2f;
         }
+
         .logo-com {
-            animation: colorCycle 6s ease-in-out infinite;
+            font-size: 0.7em; /* Dibikin 70% dari ukuran PULNEW */
+            font-weight: 600;
+            animation: colorCycle 8s ease-in-out infinite;
+            vertical-align: baseline; /* Biar sejajar bawah */
+        }
+
+        /* Animasi warna subtle */
+        @keyframes colorCycle {
+            0%   { color: #94a3b8; }  /* Abu-abu terang */
+            50%  { color: #64748b; }  /* Abu-abu medium */
+            100% { color: #94a3b8; }  /* Balik lagi */
         }
         @keyframes colorCycle {
             0%   { color: #64748b; }
