@@ -1,6 +1,6 @@
 ---
 posts:
-  - Testing
+  - testing
 image: /images/contoh.jpg
 title: Judul Berita
 slug: judul-berita
