@@ -56,9 +56,9 @@
         const slugTujuan = new URLSearchParams(window.location.search).get('slug');
         try {
             //const response = await fetch('https://pandangsaya2023.github.io/pulnew/posts.json?t=' + new Date().getTime());
-            const response = await fetch('posts.json?t=' + new Date().getTime());
+            const response = await fetch('/posts/${slugTujuan}.json?t=' + new Date().getTime());
             const data = await response.json();
-            const post = data.posts.find(p => p.slug === slugTujuan);
+            //const post = data.posts.find(p => p.slug === slugTujuan);
             
             if (post) {
                 const isiBerita = post.body.split('\n').map(p => p.trim() ? `<p>${p}</p>` : '').join('');
