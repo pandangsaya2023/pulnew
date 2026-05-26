@@ -50,4 +50,10 @@ collections:
         field: "date"
         sort: "date"
         sort_direction: "descending"
-
+  - name: "index"
+    label: "Index Berita"
+    folder: "public/posts"
+    create: false
+    delete: false
+    fields:
+      - {label: "Daftar Berita", name: "posts", widget: "list", field: {widget: "string"}}
