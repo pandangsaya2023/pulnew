@@ -53,27 +53,27 @@
 
     <script>
     async function muatHalamanBerita() {
-        const slugTujuan = new URLSearchParams(window.location.search).get('slug');
-        try {
-            //const response = await fetch('https://pandangsaya2023.github.io/pulnew/posts.json?t=' + new Date().getTime());
-            const response = await fetch('posts.json?t=' + new Date().getTime());
-            const data = await response.json();
-            const post = data.posts.find(p => p.slug === slugTujuan);
-            
-            if (post) {
-                const isiBerita = post.body.split('\n').map(p => p.trim() ? `<p>${p}</p>` : '').join('');
-                document.getElementById('content-area').innerHTML = `
-                    <h1 class="article-title">${post.title}</h1>
-                    <img src="${post.image}" class="main-image">
-                    <div class="article-body">${isiBerita}</div>
-                `;
-                // Teks yang muncul di running text
-                document.getElementById('running-text').textContent = "INFO NEWS: " + post.title + " | PULNEW.com - Update Informasi Terkini | " + post.title;
-            }
-        } catch (e) {
-            document.getElementById('content-area').innerHTML = "Artikel tidak ditemukan.";
-        }
+      const params = new URLSearchParams(window.location.search);
+      const slugTujuan = params.get('slug'); // Pastikan URL Anda ?slug=nama-berita
+    
+      try {
+          const response = await fetch('https://pandangsaya2023.github.io/pulnew/posts.json?t=' + new Date().getTime());
+          const data = await response.json();
+        
+          // Mencari berita berdasarkan slug
+          const post = data.posts.find(p => p.slug === slugTujuan);
+        
+          if (post) {
+              // Tampilkan berita
+              document.getElementById('content-area').innerHTML = `...`; 
+          } else {
+            document.getElementById('content-area').innerHTML = "Berita tidak ditemukan. Pastikan slug benar.";
+          }
+      } catch (e) {
+          document.getElementById('content-area').innerHTML = "Gagal memuat data.";
+      }
     }
+
     muatHalamanBerita();
     </script>
 </body>
