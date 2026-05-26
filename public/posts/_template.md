@@ -5,6 +5,7 @@ posts:
   - kucing-chiyo-part-3
   - gempa-m.42-jakarta-pagi-ini
   - daftar-berita
+  - awan
 image: /images/contoh.jpg
 title: Judul Berita
 slug: judul-berita
