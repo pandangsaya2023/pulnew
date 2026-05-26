@@ -55,6 +55,12 @@
     async function muatHalamanBerita() {
         const slugTujuan = new URLSearchParams(window.location.search).get('slug');
         console.log("Slug yang kebaca: ", slugTujuan); // buat cek di console
+
+        if (!slugTujuan) {
+            document.getElementById('content-area').innerHTML = "Slug tidak ada.";
+            return;
+        }
+  
         try {
             //const response = await fetch('https://pandangsaya2023.github.io/pulnew/posts.json?t=' + new Date().getTime());
             const response = await fetch('/posts/${slugTujuan}.json?t=' + new Date().getTime());
