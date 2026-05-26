@@ -1,6 +1,6 @@
 ---
 posts:
-  - Kucing 4
+  - Kucing4
 image: /images/contoh.jpg
 title: Judul Berita
 slug: judul-berita
