@@ -19,6 +19,7 @@ collections:
             widget: "list"
             fields:
               - {label: "Title", name: "title", widget: "string", required: true}
+              - {label: "Slug", name: "slug", widget: "string", required: true} # WAJIB ADA
               - {label: "Date", name: "date", widget: "datetime", format: "YYYY-MM-DDTHH:mm:ssZ"}
               - {label: "Image", name: "image", widget: "image", required: false}
               - {label: "Body", name: "body", widget: "markdown", required: true}
