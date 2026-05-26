@@ -9,12 +9,6 @@ public_folder: /media
 collections:
   - name: "posts"
     label: "Berita"
-    folder: "public/posts"
-    create: true
-    slug: "{{slug}}"
-    extension: "json"
-    format: "json"
-    
     files:
       - file: "public/posts.json"
         name: "daftar_berita"
