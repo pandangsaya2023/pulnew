@@ -1,6 +1,8 @@
 ---
 posts:
   - Kucing4
+  - kucing-chiyo-part-2
+  - kucing-chiyo-part-3
 image: /images/contoh.jpg
 title: Judul Berita
 slug: judul-berita
