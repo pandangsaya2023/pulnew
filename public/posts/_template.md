@@ -1,6 +1,7 @@
 ---
 posts:
   - testing
+  - Kucing chiyo 3
 image: /images/contoh.jpg
 title: Judul Berita
 slug: judul-berita
