@@ -268,12 +268,17 @@
     let masterPosts = [];
     async function ambilDataBerita() {
         try {
-            //const response = await fetch('https://pandangsaya2023.github.io/pulnew/posts.json?t=' + new Date().getTime());
             const response = await fetch('posts.json?t=' + new Date().getTime());
             const data = await response.json();
             masterPosts = data.posts || [];
-            tampilkanBerita(masterPosts);
-            updateRunningText(masterPosts);
+
+            // --- SORTING BERITA TERBARU KE TERLAMA ---
+            const sortedPosts = masterPosts.sort((a, b) => {
+                return new Date(b.date) - new Date(a.date);
+            });
+
+            tampilkanBerita(sortedPosts);
+            updateRunningText(sortedPosts);
         } catch (err) {
             document.getElementById('news-container').innerHTML = '<div style="text-align:center; padding:40px; color:#d32f2f;">Gagal memuat berita.</div>';
         }
