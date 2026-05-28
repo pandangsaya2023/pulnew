@@ -4,229 +4,345 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PULNEW - Portal Info Terkini</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
     <style>
-        * { 
-            margin: 0; 
-            padding: 0; 
-            box-sizing: border-box; 
-            font-family: -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif; 
+        :root {
+            --jarak-utama: 12px;
+            --warna-merah: #d32f2f;
+            --warna-biru: #1a237e;
+            --warna-bg: #f4f6f9;
         }
-        
-        html, body { 
-            background: #f4f6f9; 
-            color: #333; 
-            min-height: 100vh; 
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;
         }
-        
+
+        html, body {
+            background: var(--warna-bg);
+            color: #333;
+            min-height: 100vh;
+        }
+
+        h1, h2, h3,.logo-text {
+            font-family: 'Poppins', sans-serif;
+        }
+
         /* HEADER LOGO - STICKY */
-        .header-container { 
-            background: #ffffff; 
+      .header-container {
+            background: #ffffff;
             position: sticky;
             top: 0;
             z-index: 200;
-            border-bottom: 3px solid #d32f2f;
+            border-bottom: 3px solid var(--warna-merah);
             box-shadow: 0 2px 4px rgba(0,0,0,0.06);
             transition: box-shadow 0.25s ease;
         }
-        .header-container.scrolled {
+      .header-container.scrolled {
             box-shadow: 0 4px 16px rgba(0,0,0,0.15);
         }
-        .logo-bar { 
-            max-width: 800px; 
-            margin: 0 auto; 
-            padding: 12px 20px; 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
+      .logo-bar {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 12px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
-        .logo-img-wrapper { 
-            height: 50px; 
-            width: 50px; 
+      .logo-img-wrapper {
+            height: 50px;
+            width: 50px;
         }
-        .logo-img-wrapper img { 
-            height: 100%; 
-            width: 100%; 
-            object-fit: contain; 
+      .logo-img-wrapper img {
+            height: 100%;
+            width: 100%;
+            object-fit: contain;
         }
-        .logo-text {
-            font-size: 24px; 
-            font-weight: 800; 
-            color: #1a237e;
+      .logo-text {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--warna-biru);
         }
-        .logo-new {
-            color: #d32f2f;
+      .logo-new {
+            color: var(--warna-merah);
         }
-        .logo-com {
+      .logo-com {
             animation: colorCycle 6s ease-in-out infinite;
         }
         @keyframes colorCycle {
-            0%   { color: #64748b; }
-            33%  { color: #475569; }
-            66%  { color: #64748b; }
+            0% { color: #64748b; }
+            33% { color: #475569; }
+            66% { color: #64748b; }
             100% { color: #64748b; }
         }
 
-        /* RUNNING TEXT - STICKY DI BAWAH HEADER */
-        .top-header { 
-            background: #d32f2f; 
-            color: white; 
-            padding: 8px 12px; 
-            display: flex; 
-            align-items: center; 
-            gap: 10px; 
-            font-size: 13px; 
-            overflow: hidden; 
+        /* RUNNING TEXT */
+      .top-header {
+            background: var(--warna-merah);
+            color: white;
+            padding: 8px 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 13px;
+            overflow: hidden;
             width: 100%;
             position: sticky;
             top: 76px;
             z-index: 199;
         }
-        .breaking-badge { 
-            background: #fff; 
-            color: #d32f2f; 
-            padding: 3px 8px; 
-            border-radius: 12px; 
-            font-weight: 700; 
-            font-size: 11px; 
-            flex-shrink: 0; 
+      .breaking-badge {
+            background: #fff;
+            color: var(--warna-merah);
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 11px;
+            flex-shrink: 0;
         }
-        .ticker-wrapper { 
-            overflow: hidden; 
-            width: 100%; 
+      .ticker-wrapper {
+            overflow: hidden;
+            width: 100%;
         }
-        .ticker-content { 
-            display: inline-block; 
-            white-space: nowrap; 
-            padding-left: 100%; 
-            animation: ticker 120s linear infinite; 
+      .ticker-content {
+            display: inline-block;
+            white-space: nowrap;
+            padding-left: 100%;
+            animation: ticker 120s linear infinite;
         }
-        .ticker-item { 
-            display: inline-block; 
-            padding-right: 40px; 
-            font-weight: 500; 
-            color: white; 
-            text-decoration: none; 
+      .ticker-item {
+            display: inline-block;
+            padding-right: 40px;
+            font-weight: 500;
+            color: white;
+            text-decoration: none;
         }
-        @keyframes ticker { 
-            0% { transform: translate3d(0, 0, 0); } 
-            100% { transform: translate3d(-100%, 0, 0); } 
+        @keyframes ticker {
+            0% { transform: translate3d(0, 0, 0); }
+            100% { transform: translate3d(-100%, 0, 0); }
         }
 
-        
-        /* CONTAINER KONTEN */
-        .container { 
-            max-width: 800px; 
-            width: 100%; 
-            margin: 0 auto; 
-            padding: 20px 10px 15px 10px; 
+        /* CONTAINER */
+      .container {
+            max-width: 800px;
+            width: 100%;
+            margin: 0 auto;
+            padding: var(--jarak-utama) 10px;
         }
-        
-        /* Bungkus iklan biar center */
-        .ads-placeholder {
+
+        /* IKLAN */
+      .ads-placeholder {
             display: flex;
             justify-content: center;
             align-items: center;
             width: 100%;
-            margin: 10px auto;
-            padding: 10px;
+            margin: var(--jarak-utama) auto;
+            padding: 8px;
             background: #f9f9f9;
             border: 1px dashed #ccc;
-            /*box-sizing: border-box;*/
+            border-radius: 6px;
         }
-
-        /* Bikin gambar iklan responsif */
-        .ads-placeholder img {
+      .ads-placeholder img {
             max-width: 100%;
             height: auto;
-            /*display: block;*/
+            display: block;
+        }
+        @media (min-width: 728px) {
+          .ads-placeholder img {max-width: 728px;}
         }
 
-        /* Optional: biar di desktop ukurannya nggak lebih dari 728px */
-        /*@media (min-width: 728px) {
-            .ads-placeholder img {
-            max-width: 728px;}
-        }*/
-        
+        /* HERO - Berita Utama */
+      .news-hero {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: var(--jarak-utama);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+      .news-hero img {
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+            display: block;
+        }
+      .news-hero.hero-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 20px 16px;
+            background: linear-gradient(transparent, rgba(0,0,0,0.85));
+            color: white;
+        }
+      .news-hero h2 {
+            font-size: 20px;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+      .badge {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            background: var(--warna-merah);
+            color: white;
+        }
+
+        /* GRID 2 KOLOM */
+      .news-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--jarak-utama);
+            margin-bottom: var(--jarak-utama);
+        }
+
         /* LIST KARTU BERITA */
-        .news-list { 
-            display: flex; 
-            flex-direction: column; 
-            gap: 18px; 
-        }
-        
-        .news-card { 
-            background: white; 
-            display: flex; 
+      .news-list {
+            display: flex;
             flex-direction: column;
-            text-decoration: none; 
-            color: inherit; 
-            border-radius: 12px; 
-            overflow: hidden; 
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08); 
+            gap: var(--jarak-utama);
+        }
+
+      .news-card {
+            background: white;
+            display: flex;
+            flex-direction: column;
+            text-decoration: none;
+            color: inherit;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
             transition: transform 0.2s, box-shadow 0.2s;
+            border-left: 3px solid transparent;
         }
-        .news-card:hover { 
-            transform: translateY(-3px); 
-            box-shadow: 0 6px 16px rgba(0,0,0,0.12); 
+      .news-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+            border-left-color: var(--warna-merah);
         }
-        
-        .news-card img { 
-            width: 100%; 
-            height: 210px; 
-            object-fit: cover; 
+
+      .news-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
         }
-        
-        .news-card .card-content {
-            padding: 14px 16px 18px 16px;
+
+      .news-card.card-content {
+            padding: 12px 14px 16px 14px;
         }
-        
-        .news-card h3 { 
-            font-size: 17px; 
-            font-weight: 700; 
-            line-height: 1.4; 
-            color: #111; 
-            display: -webkit-box; 
-            -webkit-line-clamp: 3; 
-            -webkit-box-orient: vertical; 
+
+      .news-card h3 {
+            font-size: 16px;
+            font-weight: 700;
+            line-height: 1.4;
+            color: #111;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
             overflow: hidden;
         }
 
+      .section-title {
+            font-size: 18px;
+            font-weight: 800;
+            color: var(--warna-biru);
+            margin: 20px 0 12px 0;
+            padding-left: 8px;
+            border-left: 4px solid var(--warna-merah);
+        }
+
+        /* TRENDING SECTION */
+      .trending-list {
+            background: white;
+            border-radius: 12px;
+            padding: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            margin-bottom: var(--jarak-utama);
+        }
+      .trending-item {
+            display: flex;
+            gap: 12px;
+            padding: 12px 8px;
+            border-bottom: 1px solid #eee;
+            text-decoration: none;
+            color: inherit;
+            transition: background 0.2s;
+        }
+      .trending-item:last-child {
+            border-bottom: none;
+        }
+      .trending-item:hover {
+            background: #f9f9f9;
+        }
+      .trending-number {
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--warna-merah);
+            font-family: 'Poppins', sans-serif;
+            line-height: 1;
+            min-width: 32px;
+        }
+      .trending-content h4 {
+            font-size: 15px;
+            font-weight: 700;
+            line-height: 1.4;
+            color: #111;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+      .trending-content.badge {
+            margin-bottom: 4px;
+            margin-top: 4px;
+        }
+
         /* FOOTER */
-        footer { 
-            background: #101726; 
-            color: #b0b8c4; 
-            padding: 20px; 
-            font-size: 13px; 
-            border-top: 4px solid #1a237e; 
-            margin-top: 30px; 
+        footer {
+            background: #101726;
+            color: #b0b8c4;
+            padding: 20px;
+            font-size: 13px;
+            border-top: 4px solid var(--warna-biru);
+            margin-top: calc(var(--jarak-utama) + 10px);
         }
-        .footer-content { 
-            max-width: 800px; 
-            margin: 0 auto; 
-            text-align: center; 
+      .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
         }
-        .footer-logo { 
-            font-size: 20px; 
-            font-weight: 800; 
-            color: white; 
-            margin-bottom: 6px; 
+      .footer-logo {
+            font-size: 20px;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 6px;
         }
-        .footer-logo span { 
-            color: #d32f2f; 
+      .footer-logo span {
+            color: var(--warna-merah);
         }
-        .footer-bottom { 
-            border-top: 1px solid #1e293b; 
-            padding-top: 8px; 
-            margin-top: 10px; 
-            font-size: 11px; 
-            color: #64748b; 
+      .footer-bottom {
+            border-top: 1px solid #1e293b;
+            padding-top: 8px;
+            margin-top: 10px;
+            font-size: 11px;
+            color: #64748b;
         }
 
         @media (min-width: 768px) {
-            .news-card img { height: 300px; }
-            .news-card h3 { font-size: 19px; }
-            .top-header { top: 78px; }
-            .ads-placeholder img {max-width: 728px;}
+          .news-hero img { height: 320px; }
+          .news-hero h2 { font-size: 26px; }
+          .news-card img { height: 200px; }
+          .top-header { top: 78px; }
+        }
+
+        @media (max-width: 600px) {
+          .news-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -256,25 +372,25 @@
             </div>
         </div>
     </div>
-    
-    <!-- RUANG IKLAN 728×90 -->
+
+    <!-- IKLAN ATAS -->
     <div class="ads-container-leaderboard">
         <div class="ads-placeholder">
-            <img src="https://pulnew.pages.dev/iklan_atas1.png">
+            <img src="https://pulnew.pages.dev/iklan_atas1.png" alt="Iklan">
         </div>
     </div>
-    
+
     <!-- KONTEN BERITA -->
     <div class="container">
-        <div class="news-list" id="news-container">
+        <div id="news-container">
             <div style="text-align: center; padding: 40px; color: #666;">Menyelaraskan informasi...</div>
         </div>
     </div>
 
-    <!-- RUANG IKLAN 728×90  -->
+    <!-- IKLAN TENGAH -->
     <div class="ads-container-leaderboard">
         <div class="ads-placeholder">
-            <img src="https://pulnew.pages.dev/iklan_atas1.png">
+            <img src="https://pulnew.pages.dev/iklan_atas1.png" alt="Iklan">
         </div>
     </div>
 
@@ -282,42 +398,43 @@
     <footer>
         <div class="footer-content">
             <div class="footer-logo">PUL<span>NEW</span>.COM</div>
-            <p>Menyajikan informasi langsung ke perangkat anda</p>
+            <p>Menyajikan informasi <span style="color: var(--warna-merah); font-weight: 700;">langsung</span> ke perangkat anda</p>
             <div class="footer-bottom">&copy; 2026 PULNEW.COM. All Rights Reserved.</div>
         </div>
     </footer>
 
     <script>
-    // Tanggal hari ini
-    document.getElementById('live-date').textContent = new Date().toLocaleDateString('id-ID', { 
-        weekday: 'long', 
-        day: 'numeric', 
-        month: 'short', 
-        year: 'numeric' 
+    document.getElementById('live-date').textContent = new Date().toLocaleDateString('id-ID', {
+        weekday: 'long',
+        day: 'numeric',
+        month: 'short',
+        year: 'numeric'
     });
 
-    // Efek bayangan header pas scroll
     const header = document.getElementById('mainHeader');
     window.addEventListener('scroll', () => {
-        if (window.scrollY > 10) {
-            header.classList.add('scrolled');
-        } else {
-            header.classList.remove('scrolled');
-        }
+        header.classList.toggle('scrolled', window.scrollY > 10);
     });
-   
-    // Ambil data berita
+
     let masterPosts = [];
+
+    // Warna badge berdasarkan kategori
+    const kategoriWarna = {
+        'POLITIK': '#1a237e',
+        'OLAHRAGA': '#2e7d32',
+        'TEKNOLOGI': '#6a1b9a',
+        'EKONOMI': '#f57c00',
+        'HIBURAN': '#c2185b',
+        'NASIONAL': '#d32f2f'
+    };
+
     async function ambilDataBerita() {
         try {
             const response = await fetch('posts.json?t=' + new Date().getTime());
             const data = await response.json();
             masterPosts = data.posts || [];
 
-            // --- SORTING BERITA TERBARU KE TERLAMA ---
-            const sortedPosts = masterPosts.sort((a, b) => {
-                return new Date(b.date) - new Date(a.date);
-            });
+            const sortedPosts = masterPosts.sort((a, b) => new Date(b.date) - new Date(a.date));
 
             tampilkanBerita(sortedPosts);
             updateRunningText(sortedPosts);
@@ -326,24 +443,85 @@
         }
     }
 
-    // Tampilkan kartu berita
     function tampilkanBerita(posts) {
         const container = document.getElementById('news-container');
-        container.innerHTML = '';
-        
-        posts.forEach(post => {
-            container.innerHTML += `
-                <a href="/berita.html?slug=${post.slug}" class="news-card">
-                    <img src="${post.image || 'https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=700'}" alt="${post.title}">
-                    <div class="card-content">
-                        <h3>${post.title}</h3>
-                    </div>
-                </a>
-            `;
-        });
+        if (posts.length === 0) return;
+
+        let html = '';
+
+        // 1. HERO - Berita paling baru
+        const hero = posts[0];
+        const heroKategori = hero.kategori || 'BERITA';
+        html += `
+            <a href="/berita.html?slug=${hero.slug}" class="news-hero">
+                <img src="${hero.image || 'https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=700'}" alt="${hero.title}" loading="lazy">
+                <div class="hero-content">
+                    <span class="badge" style="background: ${kategoriWarna[heroKategori] || '#d32f2f'}">${heroKategori}</span>
+                    <h2>${hero.title}</h2>
+                </div>
+            </a>
+        `;
+
+        // 2. GRID 2 KOLOM - Berita 2-5
+        if (posts.length > 1) {
+            html += '<div class="news-grid">';
+            posts.slice(1, 5).forEach(post => {
+                const kategori = post.kategori || 'BERITA';
+                html += `
+                    <a href="/berita.html?slug=${post.slug}" class="news-card">
+                        <img src="${post.image || 'https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=700'}" alt="${post.title}" loading="lazy">
+                        <div class="card-content">
+                            <span class="badge" style="background: ${kategoriWarna[kategori] || '#d32f2f'}">${kategori}</span>
+                            <h3>${post.title}</h3>
+                        </div>
+                    </a>
+                `;
+            });
+            html += '</div>';
+        }
+
+        // 3. TRENDING HARI INI - Berita 6-10 dengan nomor besar
+        if (posts.length > 5) {
+            html += '<h3 class="section-title">🔥 Trending Hari Ini</h3>';
+            html += '<div class="trending-list">';
+            posts.slice(5, 10).forEach((post, index) => {
+                const kategori = post.kategori || 'BERITA';
+                const nomor = index + 1;
+                html += `
+                    <a href="/berita.html?slug=${post.slug}" class="trending-item">
+                        <div class="trending-number">${nomor}</div>
+                        <div class="trending-content">
+                            <span class="badge" style="background: ${kategoriWarna[kategori] || '#d32f2f'}">${kategori}</span>
+                            <h4>${post.title}</h4>
+                        </div>
+                    </a>
+                `;
+            });
+            html += '</div>';
+        }
+
+        // 4. BERITA TERBARU - Sisanya
+        if (posts.length > 10) {
+            html += '<h3 class="section-title">Berita Terbaru</h3>';
+            html += '<div class="news-list">';
+            posts.slice(10).forEach(post => {
+                const kategori = post.kategori || 'BERITA';
+                html += `
+                    <a href="/berita.html?slug=${post.slug}" class="news-card">
+                        <img src="${post.image || 'https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=700'}" alt="${post.title}" loading="lazy" style="height: 180px;">
+                        <div class="card-content">
+                            <span class="badge" style="background: ${kategoriWarna[kategori] || '#d32f2f'}">${kategori}</span>
+                            <h3>${post.title}</h3>
+                        </div>
+                    </a>
+                `;
+            });
+            html += '</div>';
+        }
+
+        container.innerHTML = html;
     }
 
-    // Update running text
     function updateRunningText(posts) {
         const containerTop = document.getElementById('running-text-container');
         let htmlContent = '';
