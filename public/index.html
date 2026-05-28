@@ -121,10 +121,31 @@
             padding: 20px 10px 15px 10px; 
         }
         
-        /* SLOT RUANG IKLAN KHUSUS */
-        .ads-container-leaderboard { max-width: 1200px; width: calc(100% - 20px); margin: 15px auto 5px auto; text-align: center; background: #eaedf2; padding: 12px; border: 1px dashed #adbac7; border-radius: 6px; }
-        .ads-label { font-size: 10px; color: #768390; font-weight: 600; text-transform: uppercase; display: block; margin-bottom: 6px; letter-spacing: 1px; }
-        .ads-placeholder { font-size: 13px; font-weight: 700; color: #57606a; padding: 10px 0; }
+        /* Bungkus iklan biar center */
+        .ads-placeholder {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            margin: 15px auto;
+            padding: 10px;
+            background: #f9f9f9;
+            border: 1px dashed #ccc;
+            box-sizing: border-box;
+        }
+
+        /* Bikin gambar iklan responsif */
+        .ads-placeholder img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Optional: biar di desktop ukurannya nggak lebih dari 728px */
+        /*@media (min-width: 728px) {
+            .ads-placeholder img {
+            max-width: 728px;}
+        }*/
         
         /* LIST KARTU BERITA */
         .news-list { 
@@ -205,6 +226,7 @@
             .news-card img { height: 300px; }
             .news-card h3 { font-size: 19px; }
             .top-header { top: 78px; }
+            .ads-placeholder img {max-width: 728px;}
         }
     </style>
 </head>
