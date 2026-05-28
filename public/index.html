@@ -31,7 +31,7 @@
         }
 
         /* HEADER LOGO - STICKY */
-     .header-container {
+       .header-container {
             background: #ffffff;
             position: sticky;
             top: 0;
@@ -40,10 +40,10 @@
             box-shadow: 0 2px 4px rgba(0,0,0,0.06);
             transition: box-shadow 0.25s ease;
         }
-     .header-container.scrolled {
+       .header-container.scrolled {
             box-shadow: 0 4px 16px rgba(0,0,0,0.15);
         }
-     .logo-bar {
+       .logo-bar {
             max-width: 1100px;
             margin: 0 auto;
             padding: 12px 20px;
@@ -51,24 +51,24 @@
             justify-content: space-between;
             align-items: center;
         }
-     .logo-img-wrapper {
+       .logo-img-wrapper {
             height: 50px;
             width: 50px;
         }
-     .logo-img-wrapper img {
+       .logo-img-wrapper img {
             height: 100%;
             width: 100%;
             object-fit: contain;
         }
-     .logo-text {
+       .logo-text {
             font-size: 24px;
             font-weight: 800;
             color: var(--warna-biru);
         }
-     .logo-new {
+       .logo-new {
             color: var(--warna-merah);
         }
-     .logo-com {
+       .logo-com {
             animation: colorCycle 6s ease-in-out infinite;
         }
         @keyframes colorCycle {
@@ -79,7 +79,7 @@
         }
 
         /* RUNNING TEXT */
-     .top-header {
+       .top-header {
             background: var(--warna-merah);
             color: white;
             padding: 8px 12px;
@@ -93,7 +93,7 @@
             top: 76px;
             z-index: 199;
         }
-     .breaking-badge {
+       .breaking-badge {
             background: #fff;
             color: var(--warna-merah);
             padding: 3px 8px;
@@ -102,17 +102,17 @@
             font-size: 11px;
             flex-shrink: 0;
         }
-     .ticker-wrapper {
+       .ticker-wrapper {
             overflow: hidden;
             width: 100%;
         }
-     .ticker-content {
+       .ticker-content {
             display: inline-block;
             white-space: nowrap;
             padding-left: 100%;
             animation: ticker 120s linear infinite;
         }
-     .ticker-item {
+       .ticker-item {
             display: inline-block;
             padding-right: 40px;
             font-weight: 500;
@@ -124,66 +124,22 @@
             100% { transform: translate3d(-100%, 0, 0); }
         }
 
-        /* CONTAINER - LEBAR DESKTOP + GRID 2 KOLOM */
-     .container {
+        /* CONTAINER - FULL WIDTH */
+       .container {
             max-width: 1100px;
             width: 100%;
             margin: 0 auto;
             padding: var(--jarak-utama) 10px;
         }
 
-     .main-layout {
+       .main-layout {
             display: grid;
             grid-template-columns: 1fr;
             gap: 20px;
         }
 
-        @media (min-width: 992px) {
-         .main-layout {
-                grid-template-columns: 1fr 320px; /* Konten 1fr, Sidebar 320px */
-            }
-        }
-
-        /* IKLAN */
-     .ads-placeholder {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 100%;
-            margin: var(--jarak-utama) auto;
-            padding: 8px;
-            background: #f9f9f9;
-            border: 1px dashed #ccc;
-            border-radius: 6px;
-        }
-     .ads-placeholder img {
-            max-width: 100%;
-            height: auto;
-            display: block;
-        }
-        @media (min-width: 728px) {
-         .ads-placeholder img {max-width: 728px;}
-        }
-
-        /* IKLAN SIDEBAR 300x250 */
-     .ads-sidebar {
-            background: #f9f9f9;
-            border: 1px dashed #ccc;
-            border-radius: 8px;
-            padding: 10px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 250px;
-        }
-     .ads-sidebar img {
-            max-width: 300px;
-            width: 100%;
-            height: auto;
-        }
-
         /* HERO - Berita Utama */
-     .news-hero {
+       .news-hero {
             position: relative;
             border-radius: 12px;
             overflow: hidden;
@@ -192,13 +148,13 @@
             text-decoration: none;
             display: block;
         }
-     .news-hero img {
+       .news-hero img {
             width: 100%;
             height: 240px;
             object-fit: cover;
             display: block;
         }
-     .news-hero.hero-content {
+       .news-hero.hero-content {
             position: absolute;
             bottom: 0;
             left: 0;
@@ -207,14 +163,14 @@
             background: linear-gradient(transparent, rgba(0,0,0,0.85));
             color: white;
         }
-     .news-hero h2 {
+       .news-hero h2 {
             font-size: 20px;
             font-weight: 700;
             line-height: 1.3;
             text-decoration: none;
             color: white;
         }
-     .badge {
+       .badge {
             display: inline-block;
             padding: 3px 8px;
             border-radius: 6px;
@@ -226,7 +182,7 @@
         }
 
         /* GRID 2 KOLOM */
-     .news-grid {
+       .news-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: var(--jarak-utama);
@@ -234,13 +190,13 @@
         }
 
         /* LIST KARTU BERITA */
-     .news-list {
+       .news-list {
             display: flex;
             flex-direction: column;
             gap: var(--jarak-utama);
         }
 
-     .news-card {
+       .news-card {
             background: white;
             display: flex;
             flex-direction: column;
@@ -252,23 +208,23 @@
             transition: transform 0.2s, box-shadow 0.2s;
             border-left: 3px solid transparent;
         }
-     .news-card:hover {
+       .news-card:hover {
             transform: translateY(-3px);
             box-shadow: 0 6px 16px rgba(0,0,0,0.12);
             border-left-color: var(--warna-merah);
         }
 
-     .news-card img {
+       .news-card img {
             width: 100%;
             height: 180px;
             object-fit: cover;
         }
 
-     .news-card.card-content {
+       .news-card.card-content {
             padding: 12px 14px 16px 14px;
         }
 
-     .news-card h3 {
+       .news-card h3 {
             font-size: 16px;
             font-weight: 700;
             line-height: 1.4;
@@ -279,7 +235,7 @@
             overflow: hidden;
         }
 
-     .section-title {
+       .section-title {
             font-size: 18px;
             font-weight: 800;
             color: var(--warna-biru);
@@ -289,14 +245,14 @@
         }
 
         /* TRENDING SECTION */
-     .trending-list {
+       .trending-list {
             background: white;
             border-radius: 12px;
             padding: 12px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.08);
             margin-bottom: var(--jarak-utama);
         }
-     .trending-item {
+       .trending-item {
             display: flex;
             gap: 12px;
             padding: 12px 8px;
@@ -305,13 +261,13 @@
             color: inherit;
             transition: background 0.2s;
         }
-     .trending-item:last-child {
+       .trending-item:last-child {
             border-bottom: none;
         }
-     .trending-item:hover {
+       .trending-item:hover {
             background: #f9f9f9;
         }
-     .trending-number {
+       .trending-number {
             font-size: 28px;
             font-weight: 800;
             color: var(--warna-merah);
@@ -319,7 +275,7 @@
             line-height: 1;
             min-width: 32px;
         }
-     .trending-content h4 {
+       .trending-content h4 {
             font-size: 15px;
             font-weight: 700;
             line-height: 1.4;
@@ -330,85 +286,87 @@
             overflow: hidden;
         }
 
-        /* SIDEBAR */
-     .sidebar {
-            position: sticky;
-            top: 100px;
-            height: fit-content;
+        /* CAROUSEL BERITA TERBARU */
+       .carousel-wrapper {
+            position: relative;
+            margin: 20px 0 30px 0;
         }
-
-     .sidebar-widget {
+       .carousel-container {
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+       .carousel-container::-webkit-scrollbar {
+            display: none;
+        }
+       .carousel-track {
+            display: flex;
+            gap: 12px;
+            padding-bottom: 8px;
+        }
+       .carousel-card {
+            flex: 0 0 280px;
             background: white;
             border-radius: 12px;
-            padding: 16px;
-            margin-bottom: 20px;
+            overflow: hidden;
             box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-        }
-
-     .sidebar-title {
-            font-size: 16px;
-            font-weight: 800;
-            color: var(--warna-biru);
-            margin-bottom: 12px;
-            padding-bottom: 8px;
-            border-bottom: 2px solid var(--warna-merah);
-        }
-
-     .sidebar-list {
-            list-style: none;
-        }
-
-     .sidebar-item {
-            display: flex;
-            gap: 10px;
-            padding: 10px 0;
-            border-bottom: 1px solid #f0f0f0;
             text-decoration: none;
             color: inherit;
-            transition: background 0.2s;
+            transition: transform 0.2s;
         }
-     .sidebar-item:last-child {
-            border-bottom: none;
+       .carousel-card:hover {
+            transform: translateY(-4px);
         }
-     .sidebar-item:hover {
-            background: #f9f9f9;
-            padding-left: 5px;
+       .carousel-card img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
         }
-
-     .sidebar-number {
-            font-size: 20px;
-            font-weight: 800;
-            color: var(--warna-merah);
-            min-width: 24px;
+       .carousel-card.card-content {
+            padding: 12px;
         }
-
-     .sidebar-item h5 {
+       .carousel-card h4 {
             font-size: 14px;
-            font-weight: 600;
+            font-weight: 700;
             line-height: 1.4;
             display: -webkit-box;
             -webkit-line-clamp: 2;
             -webkit-box-orient: vertical;
             overflow: hidden;
         }
-
-        /* TOMBOL LOAD MORE */
-     .load-more-btn {
-            display: block;
-            margin: 20px auto;
-            padding: 12px 28px;
-            background: var(--warna-merah);
-            color: white;
+       .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: white;
             border: none;
-            border-radius: 8px;
-            font-weight: 700;
-            font-size: 15px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
             cursor: pointer;
-            transition: background 0.2s, transform 0.1s;
+            font-size: 20px;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
-     .load-more-btn:hover {
-            background: #b71c1c;
-            transform: translateY(-2px);
+       .carousel-btn.prev { left: -10px; }
+       .carousel-btn.next { right: -10px; }
+       .carousel-btn:hover { background: #f5f5f5; }
+
+        @media (max-width: 600px) {
+           .news-grid { grid-template-columns: 1fr; }
+           .carousel-card { flex: 0 0 240px; }
+           .carousel-btn { display: none; }
+        }
+
+        @media (min-width: 768px) {
+           .news-hero img { height: 320px; }
+           .news-hero h2 { font-size: 26px; }
+           .news-card img { height: 200px; }
+           .top-header { top: 78px; }
         }
 
         /* FOOTER */
@@ -420,39 +378,26 @@
             border-top: 4px solid var(--warna-biru);
             margin-top: calc(var(--jarak-utama) + 10px);
         }
-     .footer-content {
+       .footer-content {
             max-width: 1100px;
             margin: 0 auto;
             text-align: center;
         }
-     .footer-logo {
+       .footer-logo {
             font-size: 20px;
             font-weight: 800;
             color: white;
             margin-bottom: 6px;
         }
-     .footer-logo span {
+       .footer-logo span {
             color: var(--warna-merah);
         }
-     .footer-bottom {
+       .footer-bottom {
             border-top: 1px solid #1e293b;
             padding-top: 8px;
             margin-top: 10px;
             font-size: 11px;
             color: #64748b;
-        }
-
-        @media (min-width: 768px) {
-         .news-hero img { height: 320px; }
-         .news-hero h2 { font-size: 26px; }
-         .news-card img { height: 200px; }
-         .top-header { top: 78px; }
-        }
-
-        @media (max-width: 600px) {
-         .news-grid {
-                grid-template-columns: 1fr;
-            }
         }
     </style>
 </head>
@@ -483,66 +428,14 @@
         </div>
     </div>
 
-    <!-- IKLAN ATAS -->
-    <div class="ads-container-leaderboard">
-        <div class="ads-placeholder">
-            <img src="https://pulnew.pages.dev/iklan_atas1.png" alt="Iklan">
-        </div>
-    </div>
-
-    <!-- KONTEN BERITA + SIDEBAR -->
+    <!-- KONTEN BERITA -->
     <div class="container">
         <div class="main-layout">
-
-            <!-- KONTEN UTAMA KIRI -->
             <div class="main-content">
                 <div id="news-container">
                     <div style="text-align: center; padding: 40px; color: #666;">Menyelaraskan informasi...</div>
                 </div>
             </div>
-
-            <!-- SIDEBAR KAN -->
-            <aside class="sidebar">
-                <!-- Iklan Sidebar -->
-                <div class="sidebar-widget">
-                    <h3 class="sidebar-title">Iklan</h3>
-                    <div class="ads-sidebar">
-                        <img src="https://pulnew.pages.dev/iklan_atas1.png" alt="Iklan Sidebar">
-                        <!-- Ganti img ini dengan kode AdSense kalau udah disetujui -->
-                    </div>
-                </div>
-
-                <!-- Terpopuler -->
-                <div class="sidebar-widget">
-                    <h3 class="sidebar-title">🔥 Terpopuler</h3>
-                    <ul class="sidebar-list" id="sidebar-populer">
-                        <li style="padding: 20px; text-align: center; color: #666;">Memuat...</li>
-                    </ul>
-                </div>
-
-                <!-- Kategori -->
-                <div class="sidebar-widget">
-                    <h3 class="sidebar-title">Kategori</h3>
-                    <ul class="sidebar-list" id="sidebar-kategori">
-                        <li style="padding: 10px 0; color: #666;">Memuat kategori...</li>
-                    </ul>
-                </div>
-
-                <!-- Iklan Sidebar 2 -->
-                <div class="sidebar-widget">
-                    <div class="ads-sidebar">
-                        <img src="https://pulnew.pages.dev/iklan_atas1.png" alt="Iklan Sidebar 2">
-                    </div>
-                </div>
-            </aside>
-
-        </div>
-    </div>
-
-    <!-- IKLAN TENGAH -->
-    <div class="ads-container-leaderboard">
-        <div class="ads-placeholder">
-            <img src="https://pulnew.pages.dev/iklan_atas1.png" alt="Iklan">
         </div>
     </div>
 
@@ -569,7 +462,6 @@
     });
 
     let masterPosts = [];
-    let jumlahTampil = 10;
 
     const kategoriWarna = {
         'POLITIK': '#0097A7',
@@ -586,12 +478,9 @@
             const response = await fetch('posts.json?t=' + new Date().getTime());
             const data = await response.json();
             masterPosts = data.posts || [];
-
             const sortedPosts = masterPosts.sort((a, b) => new Date(b.date) - new Date(a.date));
-
             tampilkanBerita(sortedPosts);
             updateRunningText(sortedPosts);
-            updateSidebar(sortedPosts);
         } catch (err) {
             document.getElementById('news-container').innerHTML = '<div style="text-align:center; padding:40px; color:#d32f2f;">Gagal memuat berita.</div>';
         }
@@ -654,41 +543,44 @@
             html += '</div>';
         }
 
-        // 4. BERITA TERBARU + LOAD MORE
+        // 4. CAROUSEL BERITA TERBARU - 10 berita lainnya
         if (posts.length > 10) {
             html += '<h3 class="section-title">Berita Terbaru</h3>';
-            html += '<div class="news-list" id="news-list-dinamis">';
+            html += `
+            <div class="carousel-wrapper">
+                <button class="carousel-btn prev" onclick="scrollCarousel(-1)">‹</button>
+                <div class="carousel-container" id="carousel">
+                    <div class="carousel-track">
+            `;
 
-            const batas = Math.min(jumlahTampil, posts.length);
-            posts.slice(10, batas).forEach(post => {
+            posts.slice(10, 20).forEach(post => {
                 const kategori = post.kategori || 'BERITA';
                 html += `
-                    <a href="/berita.html?slug=${post.slug}" class="news-card">
+                    <a href="/berita.html?slug=${post.slug}" class="carousel-card">
                         <img src="${post.image || 'https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=700'}" alt="${post.title}" loading="lazy">
                         <div class="card-content">
                             <span class="badge" style="background: ${kategoriWarna[kategori] || '#d32f2f'}">${kategori}</span>
-                            <h3>${post.title}</h3>
+                            <h4>${post.title}</h4>
                         </div>
                     </a>
                 `;
             });
 
-            html += '</div>';
-
-            if (jumlahTampil < posts.length) {
-                html += `<button class="load-more-btn" onclick="loadMore()">Muat 10 Berita Lainnya</button>`;
-            }
+            html += `
+                    </div>
+                </div>
+                <button class="carousel-btn next" onclick="scrollCarousel(1)">›</button>
+            </div>
+            `;
         }
 
         container.innerHTML = html;
     }
 
-    function loadMore() {
-        jumlahTampil += 10;
-        tampilkanBerita(masterPosts);
-        setTimeout(() => {
-            document.querySelector('.load-more-btn')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        }, 100);
+    function scrollCarousel(direction) {
+        const carousel = document.getElementById('carousel');
+        const scrollAmount = 292; // 280px card + 12px gap
+        carousel.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
     }
 
     function updateRunningText(posts) {
@@ -698,44 +590,6 @@
             htmlContent += `<a href="/berita.html?slug=${post.slug}" class="ticker-item">🔥 ${post.title} &nbsp;&nbsp;&nbsp;&nbsp;</a>`;
         });
         containerTop.innerHTML = htmlContent;
-    }
-
-    function updateSidebar(posts) {
-        // Sidebar Terpopuler
-        const populerContainer = document.getElementById('sidebar-populer');
-        let populerHTML = '';
-        posts.slice(0, 5).forEach((post, index) => {
-            populerHTML += `
-                <li>
-                    <a href="/berita.html?slug=${post.slug}" class="sidebar-item">
-                        <span class="sidebar-number">${index + 1}</span>
-                        <h5>${post.title}</h5>
-                    </a>
-                </li>
-            `;
-        });
-        populerContainer.innerHTML = populerHTML;
-
-        // Sidebar Kategori
-        const kategoriCount = {};
-        posts.forEach(post => {
-            const kat = post.kategori || 'BERITA';
-            kategoriCount[kat] = (kategoriCount[kat] || 0) + 1;
-        });
-
-        const kategoriContainer = document.getElementById('sidebar-kategori');
-        let kategoriHTML = '';
-        Object.entries(kategoriCount).slice(0, 6).forEach(([kat, count]) => {
-            kategoriHTML += `
-                <li>
-                    <a href="#" class="sidebar-item" style="justify-content: space-between;">
-                        <span>${kat}</span>
-                        <span style="background: #f0f0f0; padding: 2px 8px; border-radius: 12px; font-size: 12px;">${count}</span>
-                    </a>
-                </li>
-            `;
-        });
-        kategoriContainer.innerHTML = kategoriHTML;
     }
 
     ambilDataBerita();
