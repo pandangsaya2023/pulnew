@@ -189,6 +189,7 @@
             padding: 20px 16px;
             background: linear-gradient(transparent, rgba(0,0,0,0.85));
             color: white;
+            z-index: 2;
         }
      .news-hero h2 {
             font-size: 20px;
@@ -197,7 +198,7 @@
             text-decoration: none;
             color: white;
         }
-     .badge {
+     .news-hero.badge {
             display: inline-block;
             padding: 3px 8px;
             border-radius: 6px;
@@ -206,6 +207,8 @@
             margin-bottom: 8px;
             background: var(--warna-merah);
             color: white;
+            position: relative;
+            z-index: 3;
         }
 
         /* GRID 2 KOLOM */
@@ -284,14 +287,14 @@
             scroll-snap-type: x mandatory;
             -webkit-overflow-scrolling: touch;
             padding-bottom: 10px;
-            scrollbar-width: none; /* Firefox */
+            scrollbar-width: none;
         }
      .carousel-container::-webkit-scrollbar {
-            display: none; /* Chrome/Safari */
+            display: none;
         }
 
      .carousel-item {
-            flex: 0 0 280px; /* Lebar tiap item */
+            flex: 0 0 280px;
             scroll-snap-align: start;
         }
 
@@ -480,10 +483,10 @@
                 grid-template-columns: 1fr;
             }
          .carousel-item {
-                flex: 0 0 85%; /* Di HP item lebih lebar */
+                flex: 0 0 85%;
             }
          .carousel-nav {
-                display: none; /* Tombol panah sembunyi di HP, pakai swipe aja */
+                display: none;
             }
         }
     </style>
@@ -667,7 +670,7 @@
             html += '</div>';
         }
 
-        // 4. BERITA TERBARU - JADI CAROUSEL
+        // 4. BERITA TERBARU - CAROUSEL
         if (posts.length > 10) {
             html += '<h3 class="section-title">Berita Terbaru</h3>';
             html += '<div class="carousel-wrapper">';
@@ -690,7 +693,6 @@
 
             html += '</div>';
 
-            // Tombol navigasi carousel
             html += `
                 <div class="carousel-nav">
                     <button class="carousel-btn" id="carousel-prev" onclick="scrollCarousel(-1)">‹</button>
@@ -701,14 +703,13 @@
         }
 
         container.innerHTML = html;
-
-        // Init tombol carousel
         initCarousel();
     }
 
     function scrollCarousel(direction) {
         const container = document.getElementById('carousel-berita');
-        const scrollAmount = 300; // geser 300px per klik
+        if (!container) return;
+        const scrollAmount = 300;
         container.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
     }
 
@@ -738,7 +739,6 @@
     }
 
     function updateSidebar(posts) {
-        // Sidebar Terpopuler
         const populerContainer = document.getElementById('sidebar-populer');
         let populerHTML = '';
         posts.slice(0, 5).forEach((post, index) => {
@@ -753,7 +753,6 @@
         });
         populerContainer.innerHTML = populerHTML;
 
-        // Sidebar Kategori
         const kategoriCount = {};
         posts.forEach(post => {
             const kat = post.kategori || 'BERITA';
