@@ -140,7 +140,7 @@
 
         @media (min-width: 992px) {
          .main-layout {
-                grid-template-columns: 1fr 320px;
+                grid-template-columns: 1fr 320px; /* Konten 1fr, Sidebar 320px */
             }
         }
 
@@ -163,6 +163,23 @@
         }
         @media (min-width: 728px) {
          .ads-placeholder img {max-width: 728px;}
+        }
+
+        /* IKLAN SIDEBAR 300x250 */
+     .ads-sidebar {
+            background: #f9f9f9;
+            border: 1px dashed #ccc;
+            border-radius: 8px;
+            padding: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 250px;
+        }
+     .ads-sidebar img {
+            max-width: 300px;
+            width: 100%;
+            height: auto;
         }
 
         /* HERO - Berita Utama */
@@ -189,7 +206,6 @@
             padding: 20px 16px;
             background: linear-gradient(transparent, rgba(0,0,0,0.85));
             color: white;
-            z-index: 2;
         }
      .news-hero h2 {
             font-size: 20px;
@@ -198,7 +214,7 @@
             text-decoration: none;
             color: white;
         }
-     .news-hero.badge {
+     .badge {
             display: inline-block;
             padding: 3px 8px;
             border-radius: 6px;
@@ -207,8 +223,6 @@
             margin-bottom: 8px;
             background: var(--warna-merah);
             color: white;
-            position: relative;
-            z-index: 3;
         }
 
         /* GRID 2 KOLOM */
@@ -272,68 +286,6 @@
             margin: 20px 0 12px 0;
             padding-left: 8px;
             border-left: 4px solid var(--warna-merah);
-        }
-
-        /* CAROUSEL BERITA TERBARU */
-     .carousel-wrapper {
-            position: relative;
-            margin-bottom: 20px;
-        }
-
-     .carousel-container {
-            display: flex;
-            gap: var(--jarak-utama);
-            overflow-x: auto;
-            scroll-snap-type: x mandatory;
-            -webkit-overflow-scrolling: touch;
-            padding-bottom: 10px;
-            scrollbar-width: none;
-        }
-     .carousel-container::-webkit-scrollbar {
-            display: none;
-        }
-
-     .carousel-item {
-            flex: 0 0 280px;
-            scroll-snap-align: start;
-        }
-
-     .carousel-nav {
-            display: flex;
-            justify-content: space-between;
-            position: absolute;
-            top: 50%;
-            left: -10px;
-            right: -10px;
-            transform: translateY(-50%);
-            pointer-events: none;
-            z-index: 10;
-        }
-
-     .carousel-btn {
-            background: white;
-            border: none;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 20px;
-            color: var(--warna-biru);
-            pointer-events: all;
-            transition: all 0.2s;
-        }
-     .carousel-btn:hover {
-            background: var(--warna-merah);
-            color: white;
-            transform: scale(1.1);
-        }
-     .carousel-btn:disabled {
-            opacity: 0.3;
-            cursor: not-allowed;
         }
 
         /* TRENDING SECTION */
@@ -440,6 +392,25 @@
             overflow: hidden;
         }
 
+        /* TOMBOL LOAD MORE */
+     .load-more-btn {
+            display: block;
+            margin: 20px auto;
+            padding: 12px 28px;
+            background: var(--warna-merah);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 15px;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.1s;
+        }
+     .load-more-btn:hover {
+            background: #b71c1c;
+            transform: translateY(-2px);
+        }
+
         /* FOOTER */
         footer {
             background: #101726;
@@ -481,12 +452,6 @@
         @media (max-width: 600px) {
          .news-grid {
                 grid-template-columns: 1fr;
-            }
-         .carousel-item {
-                flex: 0 0 85%;
-            }
-         .carousel-nav {
-                display: none;
             }
         }
     </style>
@@ -538,6 +503,16 @@
 
             <!-- SIDEBAR KAN -->
             <aside class="sidebar">
+                <!-- Iklan Sidebar -->
+                <div class="sidebar-widget">
+                    <h3 class="sidebar-title">Iklan</h3>
+                    <div class="ads-sidebar">
+                        <img src="https://pulnew.pages.dev/iklan_atas1.png" alt="Iklan Sidebar">
+                        <!-- Ganti img ini dengan kode AdSense kalau udah disetujui -->
+                    </div>
+                </div>
+
+                <!-- Terpopuler -->
                 <div class="sidebar-widget">
                     <h3 class="sidebar-title">🔥 Terpopuler</h3>
                     <ul class="sidebar-list" id="sidebar-populer">
@@ -545,11 +520,19 @@
                     </ul>
                 </div>
 
+                <!-- Kategori -->
                 <div class="sidebar-widget">
                     <h3 class="sidebar-title">Kategori</h3>
                     <ul class="sidebar-list" id="sidebar-kategori">
                         <li style="padding: 10px 0; color: #666;">Memuat kategori...</li>
                     </ul>
+                </div>
+
+                <!-- Iklan Sidebar 2 -->
+                <div class="sidebar-widget">
+                    <div class="ads-sidebar">
+                        <img src="https://pulnew.pages.dev/iklan_atas1.png" alt="Iklan Sidebar 2">
+                    </div>
                 </div>
             </aside>
 
@@ -586,6 +569,7 @@
     });
 
     let masterPosts = [];
+    let jumlahTampil = 10;
 
     const kategoriWarna = {
         'POLITIK': '#1a237e',
@@ -670,63 +654,41 @@
             html += '</div>';
         }
 
-        // 4. BERITA TERBARU - CAROUSEL
+        // 4. BERITA TERBARU + LOAD MORE
         if (posts.length > 10) {
             html += '<h3 class="section-title">Berita Terbaru</h3>';
-            html += '<div class="carousel-wrapper">';
-            html += '<div class="carousel-container" id="carousel-berita">';
+            html += '<div class="news-list" id="news-list-dinamis">';
 
-            posts.slice(10).forEach(post => {
+            const batas = Math.min(jumlahTampil, posts.length);
+            posts.slice(10, batas).forEach(post => {
                 const kategori = post.kategori || 'BERITA';
                 html += `
-                    <div class="carousel-item">
-                        <a href="/berita.html?slug=${post.slug}" class="news-card">
-                            <img src="${post.image || 'https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=700'}" alt="${post.title}" loading="lazy">
-                            <div class="card-content">
-                                <span class="badge" style="background: ${kategoriWarna[kategori] || '#d32f2f'}">${kategori}</span>
-                                <h3>${post.title}</h3>
-                            </div>
-                        </a>
-                    </div>
+                    <a href="/berita.html?slug=${post.slug}" class="news-card">
+                        <img src="${post.image || 'https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=700'}" alt="${post.title}" loading="lazy">
+                        <div class="card-content">
+                            <span class="badge" style="background: ${kategoriWarna[kategori] || '#d32f2f'}">${kategori}</span>
+                            <h3>${post.title}</h3>
+                        </div>
+                    </a>
                 `;
             });
 
             html += '</div>';
 
-            html += `
-                <div class="carousel-nav">
-                    <button class="carousel-btn" id="carousel-prev" onclick="scrollCarousel(-1)">‹</button>
-                    <button class="carousel-btn" id="carousel-next" onclick="scrollCarousel(1)">›</button>
-                </div>
-            `;
-            html += '</div>';
+            if (jumlahTampil < posts.length) {
+                html += `<button class="load-more-btn" onclick="loadMore()">Muat 10 Berita Lainnya</button>`;
+            }
         }
 
         container.innerHTML = html;
-        initCarousel();
     }
 
-    function scrollCarousel(direction) {
-        const container = document.getElementById('carousel-berita');
-        if (!container) return;
-        const scrollAmount = 300;
-        container.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
-    }
-
-    function initCarousel() {
-        const container = document.getElementById('carousel-berita');
-        if (!container) return;
-
-        const prevBtn = document.getElementById('carousel-prev');
-        const nextBtn = document.getElementById('carousel-next');
-
-        const updateButtons = () => {
-            prevBtn.disabled = container.scrollLeft <= 0;
-            nextBtn.disabled = container.scrollLeft >= container.scrollWidth - container.clientWidth - 10;
-        };
-
-        container.addEventListener('scroll', updateButtons);
-        updateButtons();
+    function loadMore() {
+        jumlahTampil += 10;
+        tampilkanBerita(masterPosts);
+        setTimeout(() => {
+            document.querySelector('.load-more-btn')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }, 100);
     }
 
     function updateRunningText(posts) {
@@ -739,6 +701,7 @@
     }
 
     function updateSidebar(posts) {
+        // Sidebar Terpopuler
         const populerContainer = document.getElementById('sidebar-populer');
         let populerHTML = '';
         posts.slice(0, 5).forEach((post, index) => {
@@ -753,6 +716,7 @@
         });
         populerContainer.innerHTML = populerHTML;
 
+        // Sidebar Kategori
         const kategoriCount = {};
         posts.forEach(post => {
             const kat = post.kategori || 'BERITA';
