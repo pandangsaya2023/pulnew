@@ -112,6 +112,7 @@
             100% { transform: translate3d(-100%, 0, 0); } 
         }
 
+        
         /* CONTAINER KONTEN */
         .container { 
             max-width: 800px; 
@@ -119,6 +120,11 @@
             margin: 0 auto; 
             padding: 20px 10px 15px 10px; 
         }
+        
+        /* SLOT RUANG IKLAN KHUSUS */
+        .ads-container-leaderboard { max-width: 1200px; width: calc(100% - 20px); margin: 15px auto 5px auto; text-align: center; background: #eaedf2; padding: 12px; border: 1px dashed #adbac7; border-radius: 6px; }
+        .ads-label { font-size: 10px; color: #768390; font-weight: 600; text-transform: uppercase; display: block; margin-bottom: 6px; letter-spacing: 1px; }
+        .ads-placeholder { font-size: 13px; font-weight: 700; color: #57606a; padding: 10px 0; }
         
         /* LIST KARTU BERITA */
         .news-list { 
@@ -226,6 +232,14 @@
             <div class="ticker-content" id="running-text-container">
                 <span class="ticker-item">Memuat berita terbaru...</span>
             </div>
+        </div>
+    </div>
+    
+    <!-- RUANG IKLAN -->
+    <div class="ads-container-leaderboard">
+        <span class="ads-label">- SPONSORED ADVERTISEMENT -</span>
+        <div class="ads-placeholder">
+            RUANG IKLAN UTAMA (BANNER RESPONSIVE / SLOT 728x90)
         </div>
     </div>
     
