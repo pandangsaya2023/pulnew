@@ -270,19 +270,23 @@
             color: inherit;
             display: flex;
             flex-direction: row;
+            gap: 12px; /* ini jarak antara gambar dan teks */
+            padding: 10px; /* ini biar ada jarak ke tepi kartu berita */
         }
       .carousel-item img {
             width: 40%;
             height: 120px;
             object-fit: cover;
             flex-shrink: 0;
+            border-radius: 8px; /* biar gambar rouded, gak kotak nempel */
         }
       .carousel-item.card-content {
-            padding: 12px;
+            padding: 0px; /* hapus padding lama biat gak double */
             display: flex;
             flex-direction: column;
             justify-content: center;
             flex: 1;
+            gap: 6px; /* jarak antara badge kategori dengan judul */
         }
       .carousel-item h4 {
             font-size: 15px;
