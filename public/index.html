@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PULNEW - Portal Info Terkini</title>
     <style>
+        :root {
+            --jarak-utama: 12px; /* Ubah ini aja buat ngatur semua jarak */
+        }
+
         * { 
             margin: 0; 
             padding: 0; 
@@ -118,40 +122,39 @@
             max-width: 800px; 
             width: 100%; 
             margin: 0 auto; 
-            padding: 20px 10px 15px 10px; 
+            padding: var(--jarak-utama) 10px var(--jarak-utama) 10px; 
         }
         
-        /* Bungkus iklan biar center */
+        /* IKLAN */
         .ads-placeholder {
             display: flex;
             justify-content: center;
             align-items: center;
             width: 100%;
-            margin: 10px auto;
-            padding: 10px;
+            margin: var(--jarak-utama) auto;
+            padding: 8px;
             background: #f9f9f9;
             border: 1px dashed #ccc;
-            /*box-sizing: border-box;*/
+            border-radius: 6px;
         }
 
-        /* Bikin gambar iklan responsif */
         .ads-placeholder img {
             max-width: 100%;
             height: auto;
-            /*display: block;*/
+            display: block;
         }
 
-        /* Optional: biar di desktop ukurannya nggak lebih dari 728px */
-        /*@media (min-width: 728px) {
+        @media (min-width: 728px) {
             .ads-placeholder img {
-            max-width: 728px;}
-        }*/
+                max-width: 728px;
+            }
+        }
         
         /* LIST KARTU BERITA */
         .news-list { 
             display: flex; 
             flex-direction: column; 
-            gap: 18px; 
+            gap: var(--jarak-utama); 
         }
         
         .news-card { 
@@ -198,7 +201,7 @@
             padding: 20px; 
             font-size: 13px; 
             border-top: 4px solid #1a237e; 
-            margin-top: 30px; 
+            margin-top: calc(var(--jarak-utama) + 6px); 
         }
         .footer-content { 
             max-width: 800px; 
@@ -226,7 +229,6 @@
             .news-card img { height: 300px; }
             .news-card h3 { font-size: 19px; }
             .top-header { top: 78px; }
-            .ads-placeholder img {max-width: 728px;}
         }
     </style>
 </head>
@@ -260,7 +262,7 @@
     <!-- RUANG IKLAN 728×90 -->
     <div class="ads-container-leaderboard">
         <div class="ads-placeholder">
-            <img src="https://pulnew.pages.dev/iklan_atas1.png">
+            <img src="https://pulnew.pages.dev/iklan_atas1.png" alt="Iklan">
         </div>
     </div>
     
@@ -274,7 +276,7 @@
     <!-- RUANG IKLAN 728×90  -->
     <div class="ads-container-leaderboard">
         <div class="ads-placeholder">
-            <img src="https://pulnew.pages.dev/iklan_atas1.png">
+            <img src="https://pulnew.pages.dev/iklan_atas1.png" alt="Iklan">
         </div>
     </div>
 
