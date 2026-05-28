@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PULNEW - Portal Info Terkini</title>
+    
+    <!-- Google AdSense Script -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXX" crossorigin="anonymous"></script>
+    
     <style>
         * { 
             margin: 0; 
@@ -16,6 +20,7 @@
             background: #f4f6f9; 
             color: #333; 
             min-height: 100vh; 
+            padding-bottom: 60px; /* Space buat sticky ad */
         }
         
         /* HEADER LOGO - STICKY */
@@ -112,6 +117,14 @@
             100% { transform: translate3d(-100%, 0, 0); } 
         }
 
+        /* AD SLOT - ABOVE THE FOLD */
+        .ad-slot-top {
+            max-width: 800px;
+            margin: 15px auto;
+            padding: 0 10px;
+            text-align: center;
+        }
+
         /* CONTAINER KONTEN */
         .container { 
             max-width: 800px; 
@@ -164,6 +177,37 @@
             overflow: hidden;
         }
 
+        /* AD SLOT - IN-FEED */
+        .ad-slot-infeed {
+            background: white;
+            padding: 15px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            text-align: center;
+        }
+
+        /* STICKY FOOTER AD */
+        .ad-slot-sticky {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: #fff;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+            z-index: 999;
+            text-align: center;
+            padding: 5px 0;
+        }
+        .ad-slot-sticky .close-ad {
+            position: absolute;
+            top: 2px;
+            right: 8px;
+            font-size: 20px;
+            color: #666;
+            cursor: pointer;
+            line-height: 1;
+        }
+
         /* FOOTER */
         footer { 
             background: #101726; 
@@ -199,6 +243,7 @@
             .news-card img { height: 300px; }
             .news-card h3 { font-size: 19px; }
             .top-header { top: 78px; }
+            .ad-slot-sticky { display: none; } /* Sembunyikan sticky di desktop */
         }
     </style>
 </head>
@@ -228,12 +273,37 @@
             </div>
         </div>
     </div>
+
+    <!-- IKLAN 1: ABOVE THE FOLD -->
+    <div class="ad-slot-top">
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-XXXX"
+             data-ad-slot="slot-XXXX"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
     
     <!-- KONTEN BERITA -->
     <div class="container">
         <div class="news-list" id="news-container">
             <div style="text-align: center; padding: 40px; color: #666;">Menyelaraskan informasi...</div>
         </div>
+    </div>
+
+    <!-- IKLAN 3: STICKY FOOTER MOBILE -->
+    <div class="ad-slot-sticky" id="stickyAd">
+        <span class="close-ad" onclick="document.getElementById('stickyAd').style.display='none'">×</span>
+        <ins class="adsbygoogle"
+             style="display:inline-block;width:320px;height:50px"
+             data-ad-client="ca-pub-XXXX"
+             data-ad-slot="slot-XXXX"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
     </div>
 
     <!-- FOOTER -->
@@ -272,7 +342,7 @@
             const data = await response.json();
             masterPosts = data.posts || [];
 
-            // --- SORTING BERITA TERBARU KE TERLAMA ---
+            // SORTING BERITA TERBARU KE TERLAMA
             const sortedPosts = masterPosts.sort((a, b) => {
                 return new Date(b.date) - new Date(a.date);
             });
@@ -284,12 +354,13 @@
         }
     }
 
-    // Tampilkan kartu berita
+    // Tampilkan kartu berita + sisipin iklan in-feed
     function tampilkanBerita(posts) {
         const container = document.getElementById('news-container');
         container.innerHTML = '';
         
-        posts.forEach(post => {
+        posts.forEach((post, index) => {
+            // Tambah kartu berita
             container.innerHTML += `
                 <a href="/berita.html?slug=${post.slug}" class="news-card">
                     <img src="${post.image || 'https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=700'}" alt="${post.title}">
@@ -298,6 +369,23 @@
                     </div>
                 </a>
             `;
+
+            // Sisioin iklan setelah kartu ke-3 dan ke-6
+            if (index === 2 || index === 5) {
+                container.innerHTML += `
+                    <div class="ad-slot-infeed">
+                        <ins class="adsbygoogle"
+                             style="display:block"
+                             data-ad-client="ca-pub-XXXX"
+                             data-ad-slot="slot-XXXX"
+                             data-ad-format="auto"
+                             data-full-width-responsive="true"></ins>
+                        <script>
+                             (adsbygoogle = window.adsbygoogle || []).push({});
+                        </script>
+                    </div>
+                `;
+            }
         });
     }
 
