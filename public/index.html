@@ -477,11 +477,11 @@
 
         // 4. CAROUSEL HORIZONTAL - HANYA BERITA TERBARU #11 sampai #20
         if (posts.length > 10) {
-            html += '<h3 class="section-title">Berita Terbaru</h3>';
+            html += '<h3 class="section-title">Berita Lain</h3>';
             html += '<div class="latest-carousel">';
             html += '<div class="carousel-scroll">';
 
-            posts.slice(10, 20).forEach(post => {
+            posts.slice(10, 50).forEach(post => {
                 html += `
                     <a href="/berita.html?slug=${post.slug}" class="carousel-item">
                         <img src="${post.image}" alt="${post.title}" loading="lazy">
