@@ -393,7 +393,24 @@
         year: 'numeric'
     });
 
-    const kategoriWarna = {
+        const kategoriWarna = {
+        // 4 warna utama dari logo
+        'NASIONAL': '#1B5E20',    // Hijau tua - paling kuat untuk berita utama
+        'POLITIK': '#2E7D32',     // Hijau medium - kontras bagus
+        'TEKNOLOGI': '#26C6DA',   // Hijau tosca - warna khas tech
+        'EKONOMI': '#4DD0E1',     // Cyan muda - warna cerah
+    
+        // Warna pelengkap biar lengkap
+        'OLAHRAGA': '#388E3C',    // Hijau lebih terang
+        'HIBURAN': '#26A69A',     // Tosca gelap
+        'PENDIDIKAN': '#0097A7',  // Biru kehijauan
+        'HUKUM': '#00ACC1',       // Cyan medium
+    
+        // Default
+      ..'BERITA': '#1B5E20'
+    };
+        
+        /* const kategoriWarna = {
         'POLITIK': '#0097A7',
         'OLAHRAGA': '#388E4C',
         'TEKNOLOGI': '#26C6DA',
@@ -401,7 +418,7 @@
         'HIBURAN': '#26A69A',
         'NASIONAL': '#1B5E20',
         'BERITA': '#8B4513'
-    };
+    };*/
 
     async function ambilDataBerita() {
         try {
