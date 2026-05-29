@@ -405,21 +405,11 @@
         'HIBURAN': '#26A69A',     // Tosca gelap
         'PENDIDIKAN': '#0097A7',  // Biru kehijauan
         'HUKUM': '#00ACC1',       // Cyan medium
-    
+        
         // Default
-        'BERITA': '#1B5E20'
+        'BERITA': '#8B4513'
     };
         
-        /* const kategoriWarna = {
-        'POLITIK': '#0097A7',
-        'OLAHRAGA': '#388E4C',
-        'TEKNOLOGI': '#26C6DA',
-        'EKONOMI': '#2E7D32',
-        'HIBURAN': '#26A69A',
-        'NASIONAL': '#1B5E20',
-        'BERITA': '#8B4513'
-    };*/
-
     async function ambilDataBerita() {
         try {
             const response = await fetch('posts.json?t=' + new Date().getTime());
