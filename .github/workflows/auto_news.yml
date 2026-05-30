@@ -23,6 +23,11 @@ jobs:
         run: |
           mkdir -p public/posts
           # Memastikan jq terinstall (bawaan ubuntu sudah ada)
+          # Tambahkan ini di dalam skrip jq Anda sebelum disimpan ke posts.json
+          
+          # Ini akan menambahkan "kategori": "BERITA" jika field tersebut kosong
+          jq '.posts |= map(. + {kategori: (.kategori // "BERITA")})' final.json > public/posts.json
+
           # Mengambil setiap objek di dalam array "posts" di posts.json dan membuat file baru
           jq -c '.posts[]' public/posts.json | while read -r line; do
             # Mengambil slug untuk dijadikan nama file
