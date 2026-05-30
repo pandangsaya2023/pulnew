@@ -457,15 +457,31 @@
 
         // 1. HERO - berita #1
         const hero = posts[0];
+
+        // Tambahkan pengecekan kategori agar lebih aman
+        const kat = post.kategori ? post.kategori.toUpperCase() : 'BERITA';
+        const warna = kategoriWarna[kat] || '#d32f2f';
+
+        // Contoh penggunaan di dalam loop:
         html += `
-            <a href="/berita.html?slug=${hero.slug}" class="news-hero">
-                <img src="${hero.image}" alt="${hero.title}" loading="lazy">
-                <div class="hero-content">
-                    <span class="badge" style="background: ${kategoriWarna[hero.kategori] || '#d32f2f'}">${hero.kategori || 'BERITA'}</span>
-                    <h2>${hero.title}</h2>
+            <a href="/berita.html?slug=${post.slug}" class="news-card">
+                <img src="${post.image}" alt="${post.title}" loading="lazy">
+                <div class="card-content">
+                    <span class="badge" style="background: ${warna}">${kat}</span>
+                    <h3>${post.title}</h3>
                 </div>
             </a>
         `;
+
+        //html += `
+            //<a href="/berita.html?slug=${hero.slug}" class="news-hero">
+                //<img src="${hero.image}" alt="${hero.title}" loading="lazy">
+                //<div class="hero-content">
+                    //<span class="badge" style="background: ${kategoriWarna[hero.kategori] || '#d32f2f'}">${hero.kategori || 'BERITA'}</span>
+                    //<h2>${hero.title}</h2>
+                //</div>
+            //</a>
+        //`;
 
         // 2. GRID - berita #2 sampai #5
         if (posts.length > 1) {
