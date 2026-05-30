@@ -455,9 +455,9 @@
 
         let html = '';
 
-        // Helper untuk warna kategori yang aman
+        // Fungsi pembantu untuk kategori
         const getBadge = (post) => {
-            const kat = post.kategori ? post.kategori.toUpperCase() : 'BERITA';
+            const kat = (post.kategori || 'BERITA').toUpperCase();
             const warna = kategoriWarna[kat] || '#d32f2f';
             return `<span class="badge" style="background: ${warna}">${kat}</span>`;
         };
@@ -508,11 +508,10 @@
             });
             html += '</div>';
         }
-    
+
         container.innerHTML = html;
     }
 
-        
         // 4. CAROUSEL HORIZONTAL - HANYA BERITA TERBARU #11 sampai #20
         if (posts.length > 10) {
             html += '<h3 class="section-title">Berita Lain</h3>';
