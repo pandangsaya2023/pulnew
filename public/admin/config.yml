@@ -13,6 +13,11 @@ collections:
       - file: "public/posts.json"
         name: "daftar_berita"
         label: "Daftar Berita"
+        view_filters:
+          - label: "Terbaru"
+            field: "date"
+            sort: "date"
+            sort_direction: "descending"
         fields:
           - label: "Daftar Berita"
             name: "posts"
@@ -24,8 +29,3 @@ collections:
               - {label: "Tanggal", name: "date", widget: "datetime", format: "YYYY-MM-DDTHH:mm:ssZ"}
               - {label: "Gambar Utama", name: "image", widget: "image", required: false}
               - {label: "Isi Berita", name: "body", widget: "markdown"}
-    view_filters:
-      - label: "Terbaru"
-        field: "date"
-        sort: "date"
-        sort_direction: "descending"
