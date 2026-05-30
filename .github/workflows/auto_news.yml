@@ -32,6 +32,12 @@ jobs:
         run: |
           python ambil_berita.py
 
+      - name: Menggabungkan dan Mengurutkan Berita
+        run: |
+          # Menggabungkan berita robot dan manual, lalu mengurutkan berdasarkan date
+          cat public/posts.json | jq '.posts |= sort_by(.date) | .posts |= reverse' > temp.json
+          mv temp.json public/posts.json
+
       - name: Menyimpan Perubahan Kembali ke GitHub
         run: |
           git config --global user.name "github-actions[bot]"
