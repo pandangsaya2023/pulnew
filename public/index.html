@@ -451,37 +451,28 @@
 
     function tampilkanBerita(posts) {
         const container = document.getElementById('news-container');
-        if (posts.length === 0) return;
+        if (!posts || posts.length === 0) return;
 
         let html = '';
 
+        // Helper untuk warna kategori yang aman
+        const getBadge = (post) => {
+            const kat = post.kategori ? post.kategori.toUpperCase() : 'BERITA';
+            const warna = kategoriWarna[kat] || '#d32f2f';
+            return `<span class="badge" style="background: ${warna}">${kat}</span>`;
+        };
+
         // 1. HERO - berita #1
         const hero = posts[0];
-
-        // Tambahkan pengecekan kategori agar lebih aman
-        const kat = post.kategori ? post.kategori.toUpperCase() : 'BERITA';
-        const warna = kategoriWarna[kat] || '#d32f2f';
-
-        // Contoh penggunaan di dalam loop:
         html += `
-            <a href="/berita.html?slug=${post.slug}" class="news-card">
-                <img src="${post.image}" alt="${post.title}" loading="lazy">
-                <div class="card-content">
-                    <span class="badge" style="background: ${warna}">${kat}</span>
-                    <h3>${post.title}</h3>
+            <a href="/berita.html?slug=${hero.slug}" class="news-hero">
+                <img src="${hero.image}" alt="${hero.title}" loading="lazy">
+                <div class="hero-content">
+                    ${getBadge(hero)}
+                    <h2>${hero.title}</h2>
                 </div>
             </a>
         `;
-
-        //html += `
-            //<a href="/berita.html?slug=${hero.slug}" class="news-hero">
-                //<img src="${hero.image}" alt="${hero.title}" loading="lazy">
-                //<div class="hero-content">
-                    //<span class="badge" style="background: ${kategoriWarna[hero.kategori] || '#d32f2f'}">${hero.kategori || 'BERITA'}</span>
-                    //<h2>${hero.title}</h2>
-                //</div>
-            //</a>
-        //`;
 
         // 2. GRID - berita #2 sampai #5
         if (posts.length > 1) {
@@ -491,7 +482,7 @@
                     <a href="/berita.html?slug=${post.slug}" class="news-card">
                         <img src="${post.image}" alt="${post.title}" loading="lazy">
                         <div class="card-content">
-                            <span class="badge" style="background: ${kategoriWarna[post.kategori] || '#d32f2f'}">${post.kategori || 'BERITA'}</span>
+                            ${getBadge(post)}
                             <h3>${post.title}</h3>
                         </div>
                     </a>
@@ -509,7 +500,7 @@
                     <a href="/berita.html?slug=${post.slug}" class="trending-item">
                         <div class="trending-number">${index + 1}</div>
                         <div class="trending-content">
-                            <span class="badge" style="background: ${kategoriWarna[post.kategori] || '#d32f2f'}">${post.kategori || 'BERITA'}</span>
+                            ${getBadge(post)}
                             <h4>${post.title}</h4>
                         </div>
                     </a>
@@ -517,6 +508,10 @@
             });
             html += '</div>';
         }
+    
+        container.innerHTML = html;
+    }
+
         
         // 4. CAROUSEL HORIZONTAL - HANYA BERITA TERBARU #11 sampai #20
         if (posts.length > 10) {
