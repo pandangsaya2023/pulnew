@@ -526,42 +526,42 @@
         container.innerHTML = html;
 
         function tampilkanPerKategori(posts) {
-        const container = document.getElementById('news-container');
+          const container = document.getElementById('news-container');
 
-        // kumpulin berita per kategori, skip yang udah ditampil di atas
-        const kategoriMap = {};
-        posts.slice(20).forEach(post => {
-        const kat = post.kategori || 'BERITA';
-        if (!kategoriMap[kat]) kategoriMap[kat] = [];
-          kategoriMap[kat].push(post);
-        }    );
+          // kumpulin berita per kategori, skip yang udah ditampil di atas
+          const kategoriMap = {};
+          posts.slice(20).forEach(post => {
+          const kat = post.kategori || 'BERITA';
+          if (!kategoriMap[kat]) kategoriMap[kat] = [];
+            kategoriMap[kat].push(post);
+          }    );
 
-        // urutan kategori biar konsisten
-        const urutanKategori = ['NASIONAL', 'EKONOMI', 'OLAHRAGA', 'TEKNOLOGI', 'HIBURAN', 'BERITA'];
+          // urutan kategori biar konsisten
+          const urutanKategori = ['NASIONAL', 'EKONOMI', 'OLAHRAGA', 'TEKNOLOGI', 'HIBURAN', 'BERITA'];
 
-        let html = '';
-        urutanKategori.forEach(kat => {
-        if (!kategoriMap[kat] || kategoriMap[kat].length === 0) return;
+          let html = '';
+          urutanKategori.forEach(kat => {
+          if (!kategoriMap[kat] || kategoriMap[kat].length === 0) return;
 
-        html += `
-            <section class="kategori-section">
-                <div class="kategori-header">
-                    <h2>${kat}</h2>
-                    <a href="/kategori.html?k=${kat}" class="lihat-semua">Lihat Semua →</a>
-                </div>
-                <div class="news-list">
-        `;
+          html += `
+              <section class="kategori-section">
+                  <div class="kategori-header">
+                      <h2>${kat}</h2>
+                      <a href="/kategori.html?k=${kat}" class="lihat-semua">Lihat Semua →</a>
+                  </div>
+                  <div class="news-list">
+          `;
 
-        // tampilkan 5 berita terbaru per kategori
-        kategoriMap[kat].slice(0, 5).forEach(post => {
-            html += `
-                <a href="/berita.html?slug=${post.slug}" class="news-row">
-                    <img src="${post.image || 'https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=120'}" alt="${post.title}" loading="lazy">
-                    <div>
-                        <h3>${post.title}</h3>
-                        <span class="news-date">${new Date(post.date).toLocaleDateString('id-ID', {day: 'numeric', month: 'short'})}</span>
-                    </div>
-                </a>
+          // tampilkan 5 berita terbaru per kategori
+          kategoriMap[kat].slice(0, 5).forEach(post => {
+          html += `
+            <a href="/berita.html?slug=${post.slug}" class="news-row">
+            <img src="${post.image || 'https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=120'}" alt="${post.title}" loading="lazy">
+            <div>
+              <h3>${post.title}</h3>
+              <span class="news-date">${new Date(post.date).toLocaleDateString('id-ID', {day: 'numeric', month: 'short'})}</span>
+            </div>
+            </a>
             `;
         });
 
