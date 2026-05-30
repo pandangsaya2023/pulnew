@@ -9,23 +9,20 @@ public_folder: "/media"
 collections:
   - name: "posts"
     label: "Berita"
-    files:
-      - file: "public/posts.json"
-        name: "daftar_berita"
-        label: "Daftar Berita"
-        view_filters:
-          - label: "Terbaru"
-            field: "date"
-            sort: "date"
-            sort_direction: "descending"
-        fields:
-          - label: "Daftar Berita"
-            name: "posts"
-            widget: "list"
-            fields:
-              - {label: "Judul", name: "title", widget: "string"}
-              - {label: "Slug", name: "slug", widget: "string"}
-              - {label: "Kategori", name: "kategori", widget: "select", options: ["NASIONAL", "POLITIK", "TEKNOLOGI", "EKONOMI", "OLAHRAGA", "HIBURAN", "PENDIDIKAN", "HUKUM", "KESEHATAN"]}
-              - {label: "Tanggal", name: "date", widget: "datetime", format: "YYYY-MM-DDTHH:mm:ssZ"}
-              - {label: "Gambar Utama", name: "image", widget: "image", required: false}
-              - {label: "Isi Berita", name: "body", widget: "markdown"}
+    folder: "public/posts"
+    create: true
+    slug: "{{slug}}"
+    extension: "json"
+    format: "json"
+    fields:
+      - {label: "Judul", name: "title", widget: "string", required: true}
+      - {label: "Slug", name: "slug", widget: "string", required: true}
+      - {label: "Kategori", name: "kategori", widget: "select", options: ["NASIONAL", "POLITIK", "TEKNOLOGI", "EKONOMI", "OLAHRAGA", "HIBURAN", "PENDIDIKAN", "HUKUM", "KESEHATAN"]}
+      - {label: "Tanggal", name: "date", widget: "datetime", format: "YYYY-MM-DDTHH:mm:ssZ"}
+      - {label: "Gambar Utama", name: "image", widget: "image", required: false}
+      - {label: "Isi Berita", name: "body", widget: "markdown", required: true}
+    view_filters:
+      - label: "Terbaru"
+        field: "date"
+        sort: "date"
+        sort_direction: "descending"
