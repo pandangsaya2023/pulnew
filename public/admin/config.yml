@@ -1,0 +1,28 @@
+backend:
+  name: github
+  repo: pandangsaya2023/pulnew
+  branch: main
+
+media_folder: "public/media"
+public_folder: "/media"
+
+collections:
+  - name: "posts"
+    label: "Berita"
+    folder: "public/posts"
+    create: true
+    slug: "{{slug}}"
+    extension: "json"
+    format: "json"
+    fields:
+      - {label: "Judul", name: "title", widget: "string", required: true}
+      - {label: "Slug", name: "slug", widget: "string", hint: "Contoh: berita-terbaru (tanpa spasi)", required: true}
+      - {label: "Kategori", name: "kategori", widget: "select", options: ["NASIONAL", "POLITIK", "TEKNOLOGI", "EKONOMI", "OLAHRAGA", "HIBURAN", "PENDIDIKAN", "HUKUM", "KESEHATAN"]}
+      - {label: "Tanggal", name: "date", widget: "datetime", format: "YYYY-MM-DDTHH:mm:ssZ", default: "now"}
+      - {label: "Gambar Utama", name: "image", widget: "image", required: false}
+      - {label: "Isi Berita", name: "body", widget: "markdown", required: true}
+    view_filters:
+      - label: "Terbaru"
+        field: "date"
+        sort: "date"
+        sort_direction: "descending"
