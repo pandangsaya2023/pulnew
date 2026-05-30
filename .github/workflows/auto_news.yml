@@ -32,10 +32,37 @@ jobs:
         run: |
           python ambil_berita.py
 
+      - name: Menggabungkan Berita Manual & Otomatis
+        run: |
+          # 1. Pastikan folder public/posts ada
+          mkdir -p public/posts
+          
+          # 2. Buat file sementara untuk menampung semua berita
+          echo '{"posts": [' > temp.json
+          
+          # 3. Masukkan semua berita manual (dari folder public/posts/*.json)
+          # Gunakan jq untuk memastikan format file manual valid
+          if ls public/posts/*.json 1> /dev/null 2>&1; then
+            jq -c '.' public/posts/*.json | sed '$!s/$/,/' >> temp.json
+          fi
+          
+          # 4. Tambahkan koma jika ada berita robot yang akan ditambahkan
+          echo ',' >> temp.json
+          
+          # 5. Masukkan data hasil robot (asumsi robot menghasilkan data di posts.json)
+          # Kita ambil array posts dari file yang sudah ada
+          jq -c '.posts[]' public/posts.json | sed '$!s/$/,/' >> temp.json
+          
+          # 6. Tutup file JSON
+          echo ']}' >> temp.json
+          
+          # 7. Timpa posts.json dengan hasil gabungan
+          mv temp.json public/posts.json
+
       - name: Menyimpan Perubahan Kembali ke GitHub
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add public/posts.json
-          git diff-index --quiet HEAD || git commit -m "Update database berita otomatis"
+          git diff-index --quiet HEAD || git commit -m "Update database berita (Manual + Robot)"
           git push
