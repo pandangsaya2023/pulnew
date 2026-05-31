@@ -437,10 +437,10 @@
             const res = await fetch('/api/posts?t=' + Date.now());
             if (!res.ok) throw new Error('Gagal ambil data dari API');
             
-            //const { urls, error } = await res.json();
-            const data = await res.json();
-            const urls = Array.isArray.data() ? data : data.urls;
-            //if (error) throw new Error(error);
+            const { urls, error } = await res.json();
+            const urls = await res.json();
+            
+            if (error) throw new Error(error);
             if (!urls || urls.length === 0) throw new Error('Tidak ada berita');
 
             const posts = await Promise.all(
