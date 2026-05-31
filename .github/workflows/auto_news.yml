@@ -19,8 +19,8 @@ jobs:
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
         run: python ambil_berita.py
 
-      #- name: Menggabungkan Berita Manual & Robot
-        #run: |
+      - name: Menggabungkan Berita Manual & Robot
+        run: |
         
       - name: Auto Tambah Content ke Semua Berita
         run: |
@@ -43,16 +43,16 @@ jobs:
           # Lalu kita gabungkan dengan file-file di public/posts/*.json
           
           # Buat file sementara
-          #$echo '{"posts": []}' > temp_gabungan.json
+          $echo '{"posts": []}' > temp_gabungan.json
       
           # Masukkan hasil dari robot ke dalam temp_gabungan.json
-          #jq -s '.[0].posts + .[1:]' public/posts.json <(jq -s '.' public/posts/*.json) > final.json
+          jq -s '.[0].posts + .[1:]' public/posts.json <(jq -s '.' public/posts/*.json) > final.json
           
           # 3. Urutkan berdasarkan tanggal (Terbaru di atas)
-          #jq '.posts |= sort_by(.date) | .posts |= reverse' final.json > public/posts.json
+          jq '.posts |= sort_by(.date) | .posts |= reverse' final.json > public/posts.json
           
           # Hapus file sementara
-          #rm temp_gabungan.json final.json
+          rm temp_gabungan.json final.json
 
       - name: Menyimpan Perubahan Kembali ke GitHub
         run: |
