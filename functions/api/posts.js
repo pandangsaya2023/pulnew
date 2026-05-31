@@ -1,26 +1,23 @@
-export async function onRequest() {
+export async function onRequest(context) {
+  const { env } = context;
+  
   try {
-    const githubRes = await fetch(
-      'https://api.github.com/repos/pandangsaya2023/pulnew/contents/public/posts',
-      { headers: { 'User-Agent': 'pulnew-site' } }
-    );
+    const { results } = await env.MY_BUCKET.list({ prefix: 'posts/' });
     
-    const files = await githubRes.json();
+    const urls = results
+      .filter(obj => obj.key.endsWith('.json'))
+      .map(obj => `https://pandangsaya2023.github.io/pulnew/${obj.key}`);
     
-    // Balikin cuma URL download, jangan fetch isinya di server
-    const urls = files
-      .filter(f => f.name.endsWith('.json'))
-      .map(f => f.download_url);
-    
-    return new Response(JSON.stringify({ urls }), {
-      headers: { 
+    return new Response(JSON.stringify(urls), {
+      headers: {
         'Content-Type': 'application/json',
-        'Cache-Control': 'no-cache' 
+        'Access-Control-Allow-Origin': '*',
+        'Cache-Control': 'no-cache'
       }
     });
     
   } catch (err) {
-    return new Response(JSON.stringify({ error: err.message, urls: [] }), {
+    return new Response(JSON.stringify({ error: err.message }), {
       status: 500,
       headers: { 'Content-Type': 'application/json' }
     });
