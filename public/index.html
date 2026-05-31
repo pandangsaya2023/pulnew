@@ -460,15 +460,15 @@
         const warna = kategoriWarna[kat] || '#d32f2f';
 
         // Contoh penggunaan di dalam loop:
-        //html += `
-            //<a href="/berita.html?slug=${post.slug}" class="news-card">
-                //<img src="${post.image}" alt="${post.title}" loading="lazy">
-                //<div class="card-content">
-                    //<span class="badge" style="background: ${warna}">${kat}</span>
-                    //<h3>${post.title}</h3>
-                //</div>
-            //</a>
-        //`;
+        html += `
+            <a href="/berita.html?slug=${post.slug}" class="news-card">
+                <img src="${post.image}" alt="${post.title}" loading="lazy">
+                <div class="card-content">
+                    <span class="badge" style="background: ${warna}">${kat}</span>
+                    <h3>${post.title}</h3>
+                </div>
+            </a>
+        `;
 
         // 1. HERO - berita #1
         const hero = posts[0];
