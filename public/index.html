@@ -439,7 +439,8 @@
         
     async function ambilDataBerita() {
         try {
-            const response = await fetch('posts.json?t=' + new Date().getTime());
+            //const response = await fetch('posts.json?t=' + new Date().getTime());
+            const response = await fetch('api/posts?t=' + new Date().getTime());
             const data = await response.json();
             const sortedPosts = (data.posts || []).sort((a, b) => new Date(b.date) - new Date(a.date));
             tampilkanBerita(sortedPosts);
