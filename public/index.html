@@ -127,14 +127,12 @@
             padding: 10px;
             background: #f9f9f9;
             border: 1px dashed #ccc;
-            /*box-sizing: border-box;*/
         }
 
         /* Bikin gambar iklan responsif */
         .ads-placeholder img {
             max-width: 100%;
             height: auto;
-            /*display: block;*/
         }
         
         /* HERO */
@@ -153,7 +151,7 @@
             object-fit: cover;
             display: block;
         }
-      .news-hero.hero-content {
+      .hero-content {
             position: absolute;
             bottom: 0;
             left: 0;
@@ -163,11 +161,11 @@
             color: white;
         }
       .news-hero h2 {
-            font-size: 15px; /* ukuran font untuk judul berita utama paling atas */
+            font-size: 15px;
             font-weight: 700;
             line-height: 1.3;
-            color: black;
-            padding: 4px 14px 8px 14px; /* untuk jarak teks dari tepi kiri atas kiri bawah kanan */
+            color: white;
+            padding: 4px 14px 8px 14px;
         }
       .badge {
             display: inline-block;
@@ -207,15 +205,15 @@
             height: 180px;
             object-fit: cover;
         }
-      /*.news-card.card-content {
+      .card-content {
             padding: 12px 14px 16px 14px;
-        }*/
+        }
       .news-card h3 {
-            font-size: 15px; /* ukurn font untuk judul di bawah judul berita utama */
+            font-size: 15px;
             font-weight: 700;
             line-height: 1.4;
             color: #111;
-            padding: 2px 14px 8px 14px; /* untuk jarak judul dari atas kiri bawah kanan */
+            padding: 2px 14px 8px 14px;
             display: -webkit-box;
             -webkit-line-clamp: 3;
             -webkit-box-orient: vertical;
@@ -292,23 +290,23 @@
             color: inherit;
             display: flex;
             flex-direction: row;
-            gap: 12px; /* ini jarak antara gambar dan teks */
-            padding: 10px; /* ini biar ada jarak ke tepi kartu berita */
+            gap: 12px;
+            padding: 10px;
         }
       .carousel-item img {
             width: 40%;
             height: 120px;
             object-fit: cover;
             flex-shrink: 0;
-            border-radius: 8px; /* biar gambar rouded, gak kotak nempel */
+            border-radius: 8px;
         }
-      .carousel-item.card-content {
-            padding: 0px; /* hapus padding lama biat gak double */
+      .carousel-item .card-content {
+            padding: 0px;
             display: flex;
             flex-direction: column;
             justify-content: center;
             flex: 1;
-            gap: 6px; /* jarak antara badge kategori dengan judul */
+            gap: 6px;
         }
       .carousel-item h4 {
             font-size: 15px;
@@ -420,91 +418,74 @@
         year: 'numeric'
     });
 
-        const kategoriWarna = {
-        // 4 warna utama dari logo
-        'NASIONAL': '#1B5E20',    // Hijau tua - paling kuat untuk berita utama
-        'POLITIK': '#1B5E20',     // Hijau tua
-        'TEKNOLOGI': '#26C6DA',   // Hijau tosca - warna khas tech
-        'EKONOMI': '#D32f2f',     // Merah - warna
-    
-        // Warna pelengkap biar lengkap
-        'OLAHRAGA': '#D32f2f',    // Merah
-        'HIBURAN': '#D32f2f',     // Merah
-        'PENDIDIKAN': '#D32f2f',  // Merah
-        'HUKUM': '#D32f2f',       // Merah
-        'KESEHATAN': '#D32f2f',   // Merah
-        // Default
+    const kategoriWarna = {
+        'NASIONAL': '#1B5E20',
+        'POLITIK': '#1B5E20',
+        'TEKNOLOGI': '#26C6DA',
+        'EKONOMI': '#D32f2f',
+        'OLAHRAGA': '#D32f2f',
+        'HIBURAN': '#D32f2f',
+        'PENDIDIKAN': '#D32f2f',
+        'HUKUM': '#D32f2f',
+        'KESEHATAN': '#D32f2f',
         'BERITA': '#D32f2f'
     };
         
     async function ambilDataBerita() {
+        const container = document.getElementById('news-container');
+        try {
+            const res = await fetch('/api/posts?t=' + Date.now());
+            if (!res.ok) throw new Error('Gagal ambil data dari API');
+            
+            const { urls, error } = await res.json();
+            if (error) throw new Error(error);
+            if (!urls || urls.length === 0) throw new Error('Tidak ada berita');
 
-       // async function loadPosts() {
-    const res = await fetch('/api/posts');
-    const { urls } = await res.json();
-  
-    const posts = await Promise.all(
-      urls.map(url => fetch(url).then(r => r.json()))
-    );
-  
-    posts.sort((a, b) => new Date(b.date) - new Date(a.date));
-  
-  //tampilkanBerita(posts); // pakai fungsi kamu yang udah ada
+            const posts = await Promise.all(
+                urls.map(url => fetch(url).then(r => r.json()))
+            );
+      
+            posts.sort((a, b) => new Date(b.date) - new Date(a.date));
+      
+            tampilkanBerita(posts);
+            updateRunningText(posts);
+
+        } catch (err) {
+            console.error(err);
+            container.innerHTML = `<div style="text-align:center; padding:40px; color:#d32f2f;">Gagal memuat berita: ${err.message}</div>`;
         }
-        //try {
-            //const response = await fetch('posts.json?t=' + new Date().getTime());
-            //const response = await fetch('api/posts?t=' + new Date().getTime());
-            //const data = await response.json();
-            //const sortedPosts = (data.posts || []).sort((a, b) => new Date(b.date) - new Date(a.date));
-            //tampilkanBerita(sortedPosts);
-            //updateRunningText(sortedPosts);
-        //} catch (err) {
-            //document.getElementById('news-container').innerHTML = '<div style="text-align:center; padding:40px; color:#d32f2f;">Gagal memuat berita.</div>';
-        //}
     }
 
     function tampilkanBerita(posts) {
         const container = document.getElementById('news-container');
-        if (posts.length === 0) return;
+        if (posts.length === 0) {
+            container.innerHTML = '<div style="text-align:center; padding:40px; color:#666;">Belum ada berita</div>';
+            return;
+        }
 
         let html = '';
 
-        //Tambahkan pengecekan kategori agar lebih aman
-        //const kat = post.kategori ? post.kategori.toUpperCase() : 'BERITA';
-        //const warna = kategoriWarna[kat] || '#d32f2f';
-
-        // Contoh penggunaan di dalam loop:
-        //html += `
-            //<a href="/berita.html?slug=${post.slug}" class="news-card">
-                //<img src="${post.image}" alt="${post.title}" loading="lazy">
-                //<div class="card-content">
-                    //<span class="badge" style="background: ${warna}">${kat}</span>
-                    //<h3>${post.title}</h3>
-                //</div>
-            //</a>
-        //`;
-
-        // 1. HERO - berita #1
         const hero = posts[0];
+        const warnaHero = kategoriWarna[hero.kategori?.toUpperCase()] || '#d32f2f';
         html += `
             <a href="/berita.html?slug=${hero.slug}" class="news-hero">
                 <img src="${hero.image}" alt="${hero.title}" loading="lazy">
                 <div class="hero-content">
-                    <span class="badge" style="background: ${kategoriWarna[hero.kategori] || '#d32f2f'}">${hero.kategori || 'BERITA'}</span>
+                    <span class="badge" style="background: ${warnaHero}">${hero.kategori || 'BERITA'}</span>
                     <h2>${hero.title}</h2>
                 </div>
             </a>
         `;
 
-        // 2. GRID - berita #2 sampai #5
         if (posts.length > 1) {
             html += '<div class="news-grid">';
             posts.slice(1, 5).forEach(post => {
+                const warna = kategoriWarna[post.kategori?.toUpperCase()] || '#d32f2f';
                 html += `
                     <a href="/berita.html?slug=${post.slug}" class="news-card">
                         <img src="${post.image}" alt="${post.title}" loading="lazy">
                         <div class="card-content">
-                            <span class="badge" style="background: ${kategoriWarna[post.kategori] || '#d32f2f'}">${post.kategori || 'BERITA'}</span>
+                            <span class="badge" style="background: ${warna}">${post.kategori || 'BERITA'}</span>
                             <h3>${post.title}</h3>
                         </div>
                     </a>
@@ -513,16 +494,16 @@
             html += '</div>';
         }
 
-        // 3. TRENDING - berita #6 sampai #10
         if (posts.length > 5) {
             html += '<h3 class="section-title">🔥 Trending Hari Ini</h3>';
             html += '<div class="trending-list">';
             posts.slice(5, 10).forEach((post, index) => {
+                const warna = kategoriWarna[post.kategori?.toUpperCase()] || '#d32f2f';
                 html += `
                     <a href="/berita.html?slug=${post.slug}" class="trending-item">
                         <div class="trending-number">${index + 1}</div>
                         <div class="trending-content">
-                            <span class="badge" style="background: ${kategoriWarna[post.kategori] || '#d32f2f'}">${post.kategori || 'BERITA'}</span>
+                            <span class="badge" style="background: ${warna}">${post.kategori || 'BERITA'}</span>
                             <h4>${post.title}</h4>
                         </div>
                     </a>
@@ -531,24 +512,21 @@
             html += '</div>';
         }
         
-        // 4. CAROUSEL HORIZONTAL - HANYA BERITA TERBARU #11 sampai #20
         if (posts.length > 10) {
             html += '<h3 class="section-title">Berita Lain</h3>';
-            html += '<div class="latest-carousel">';
-            html += '<div class="carousel-scroll">';
-
+            html += '<div class="latest-carousel"><div class="carousel-scroll">';
             posts.slice(10, 50).forEach(post => {
+                const warna = kategoriWarna[post.kategori?.toUpperCase()] || '#d32f2f';
                 html += `
                     <a href="/berita.html?slug=${post.slug}" class="carousel-item">
                         <img src="${post.image}" alt="${post.title}" loading="lazy">
                         <div class="card-content">
-                            <span class="badge" style="background: ${kategoriWarna[post.kategori] || '#d32f2f'}">${post.kategori || 'BERITA'}</span>
+                            <span class="badge" style="background: ${warna}">${post.kategori || 'BERITA'}</span>
                             <h4>${post.title}</h4>
                         </div>
                     </a>
                 `;
             });
-
             html += '</div></div>';
         }
 
@@ -557,6 +535,7 @@
 
     function updateRunningText(posts) {
         const containerTop = document.getElementById('running-text-container');
+        if (!posts || posts.length === 0) return;
         let htmlContent = '';
         posts.slice(0, 10).forEach(post => {
             htmlContent += `<a href="/berita.html?slug=${post.slug}" class="ticker-item">🔥 ${post.title} &nbsp;&nbsp;&nbsp;&nbsp;</a>`;
