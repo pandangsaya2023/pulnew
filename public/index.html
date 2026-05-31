@@ -439,7 +439,7 @@
             
             //const { urls, error } = await res.json();
             const data = await res.json();
-            const urls = Array.isArray(data) ? data : data.urls;
+            //const urls = Array.isArray(data) ? data : data.urls;
             //if (error) throw new Error(error);
             if (!urls || urls.length === 0) throw new Error('Tidak ada berita');
 
