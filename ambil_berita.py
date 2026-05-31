@@ -45,12 +45,12 @@ Wajib akhiri dengan: "Berita selengkapnya bisa dibaca di {link}"
             model="llama-3.1-8b-instant",
             messages=[{"role": "user", "content": prompt}],
             temperature=0.7,
-            max_tokens=2500
+            max_tokens=1200
         )
         return completion.choices[0].message.content
     except Exception as e:
         print(f"Error AI: {e}")
-        return f"Berita selengkapnya bisa dibaca di {link}"
+        return konten_asli [:1500] + f"... Berita selengkapnya bisa dibaca di {link}"
 
 # Sumber RSS
 sumber_rss = [
