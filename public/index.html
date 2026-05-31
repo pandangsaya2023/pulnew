@@ -440,7 +440,7 @@
             //const { urls, error } = await res.json();
             const urls = await res.json();
             if (error) throw new Error(error);
-            if (!urls || urls.length === 0) throw new Error('Tidak ada berita');
+            //if (!urls || urls.length === 0) throw new Error('Tidak ada berita');
 
             const posts = await Promise.all(
                 urls.map(url => fetch(url).then(r => r.json()))
