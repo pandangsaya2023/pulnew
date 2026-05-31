@@ -438,7 +438,8 @@
             if (!res.ok) throw new Error('Gagal ambil data dari API');
             
             //const { urls, error } = await res.json();
-            const urls = await res.json();
+            const data = await res.json();
+            const urls = Arrays.isArray.data() ? data : data.urls;
             //if (error) throw new Error(error);
             if (!urls || urls.length === 0) throw new Error('Tidak ada berita');
 
