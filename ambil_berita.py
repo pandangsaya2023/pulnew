@@ -50,7 +50,8 @@ Wajib akhiri dengan: "Berita selengkapnya bisa dibaca di {link}"
         return completion.choices[0].message.content
     except Exception as e:
         print(f"Error AI: {e}")
-        return konten_asli [:1500] + f"... Berita selengkapnya bisa dibaca di {link}"
+        return konten_asli[:400] + "..."
+        return f"{ringkasan} Berita selengkapnya bisa dibaca di {link}"
 
 # Sumber RSS
 sumber_rss = [
