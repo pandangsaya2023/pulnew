@@ -472,6 +472,7 @@
                 <img src="${hero.image}" alt="${hero.title}" loading="lazy">
                 <div class="hero-content">
                     <span class="badge" style="background: ${warnaHero}">${hero.kategori || 'BERITA'}</span>
+                    <p style="margin:8px 0; color:#666">${hero.content || hero.body.substring(0, 180) + '...'}</p>
                     <h2>${hero.title}</h2>
                 </div>
             </a>
@@ -486,6 +487,7 @@
                         <img src="${post.image}" alt="${post.title}" loading="lazy">
                         <div class="card-content">
                             <span class="badge" style="background: ${warna}">${post.kategori || 'BERITA'}</span>
+                            <p style="font-size:14px; color:#666; margin:4px 0">${post.content || post.body.substring(0, 180) + '...'}</p>
                             <h3>${post.title}</h3>
                         </div>
                     </a>
@@ -504,6 +506,7 @@
                         <div class="trending-number">${index + 1}</div>
                         <div class="trending-content">
                             <span class="badge" style="background: ${warna}">${post.kategori || 'BERITA'}</span>
+                            post.body.substring(0, 180) + '...'}</p>
                             <h4>${post.title}</h4>
                         </div>
                     </a>
@@ -522,6 +525,7 @@
                         <img src="${post.image}" alt="${post.title}" loading="lazy">
                         <div class="card-content">
                             <span class="badge" style="background: ${warna}">${post.kategori || 'BERITA'}</span>
+                            post.body.substring(0, 180) + '...'}</p>
                             <h4>${post.title}</h4>
                         </div>
                     </a>
