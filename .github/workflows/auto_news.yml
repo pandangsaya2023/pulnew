@@ -27,7 +27,7 @@ jobs:
           # Gabungkan semua file JSON + auto bikin content dari 180 karakter body
           jq -s '
             map(
-              if.body then
+              if .body then
                .content = (.body[0:180] | rtrimstr(" ") | rtrimstr(",") | rtrimstr(".") | rtrimstr("!") | rtrimstr("?")) + "..."
               else. end
             )
