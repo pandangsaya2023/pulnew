@@ -31,13 +31,13 @@ jobs:
           
           # Buat file sementara
           echo '{"posts": []}' > temp_gabungan.json
-          
-          # Masukkan hasil dari robot ke dalam temp_gabungan.json
-          jq -s '.[0].posts + .[1:]' public/posts.json <(jq -s '.' public/posts/*.json) > final.json
 
           # Ini akan menambahkan "kategori": "BERITA" jika field tersebut kosong
           jq '.posts |= map(. + {kategori: (.kategori // "BERITA")})' final.json > public/posts.json
-
+          
+          # Masukkan hasil dari robot ke dalam temp_gabungan.json
+          jq -s '.[0].posts + .[1:]' public/posts.json <(jq -s '.' public/posts/*.json) > final.json
+          
           # 3. Urutkan berdasarkan tanggal (Terbaru di atas)
           jq '.posts |= sort_by(.date) | .posts |= reverse' final.json > public/posts.json
           
