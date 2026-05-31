@@ -25,6 +25,7 @@ jobs:
           sudo apt-get install -y jq
           
           # 2. Buat file posts.json baru dari hasil robot dan berita manual
+          # Tambahkan ini di dalam skrip jq Anda sebelum disimpan ke posts.json
           # Kita ambil array posts dari hasil robot terlebih dahulu
           # Lalu kita gabungkan dengan file-file di public/posts/*.json
           
@@ -33,7 +34,10 @@ jobs:
           
           # Masukkan hasil dari robot ke dalam temp_gabungan.json
           jq -s '.[0].posts + .[1:]' public/posts.json <(jq -s '.' public/posts/*.json) > final.json
-          
+
+          # Ini akan menambahkan "kategori": "BERITA" jika field tersebut kosong
+          jq '.posts |= map(. + {kategori: (.kategori // "BERITA")})' final.json > public/posts.json
+
           # 3. Urutkan berdasarkan tanggal (Terbaru di atas)
           jq '.posts |= sort_by(.date) | .posts |= reverse' final.json > public/posts.json
           
