@@ -122,7 +122,7 @@ for sumber in sumber_rss:
                     "id": int(time.time() * 1000),
                     "title": title, 
                     "slug": slug, 
-                    #"category": "Politik",
+                    "category": "BERITA",
                     "date": datetime.now().isoformat(),
                     "image": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=600",
                     "content": body,
