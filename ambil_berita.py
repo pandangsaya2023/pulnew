@@ -112,7 +112,7 @@ for sumber in sumber_rss:
 
                 slug_tercatat.add(slug)
                 jumlah_baru += 1
-                time.sleep(10) # jeda 10 detik biar gak diblokir
+                time.sleep(15) # jeda 15 detik biar gak diblokir
 
             if jumlah_baru >= 5: # max 5 berita per run
                 break
