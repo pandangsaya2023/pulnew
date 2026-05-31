@@ -27,7 +27,8 @@ jobs:
           sudo apt-get install -y jq
           for file in public/posts/*.json; do
             jq '
-              if .body and (.content | not) then
+              if .lock == true then .
+              elif .body and (.content | not) then
                 .content = (.body[0:180] | rtrimstr(" ") | rtrimstr(",") | rtrimstr(".") | rtrimstr("!") | rtrimstr("?")) + "..."
               else. end
             ' "$file" > "$file.tmp" && mv "$file.tmp" "$file"
