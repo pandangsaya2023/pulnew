@@ -19,10 +19,22 @@ jobs:
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
         run: python ambil_berita.py
 
-      - name: Menggabungkan Berita Manual & Robot
+      #- name: Menggabungkan Berita Manual & Robot
+        #run: |
+        
+      - name: Auto Tambah Content ke Semua Berita
         run: |
-          # 1. Pastikan jq terinstall
           sudo apt-get install -y jq
+          for file in public/posts/*.json; do
+            jq '
+              if .body and (.content | not) then
+                .content = (.body[0:180] | rtrimstr(" ") | rtrimstr(",") | rtrimstr(".") | rtrimstr("!") | rtrimstr("?")) + "..."
+              else. end
+            ' "$file" > "$file.tmp" && mv "$file.tmp" "$file"
+          done
+          
+          # 1. Pastikan jq terinstall
+          #sudo apt-get install -y jq
           
           # 2. Buat file posts.json baru dari hasil robot dan berita manual
           # Tambahkan ini di dalam skrip jq Anda sebelum disimpan ke posts.json
@@ -30,16 +42,16 @@ jobs:
           # Lalu kita gabungkan dengan file-file di public/posts/*.json
           
           # Buat file sementara
-          echo '{"posts": []}' > temp_gabungan.json
+          #$echo '{"posts": []}' > temp_gabungan.json
       
           # Masukkan hasil dari robot ke dalam temp_gabungan.json
-          jq -s '.[0].posts + .[1:]' public/posts.json <(jq -s '.' public/posts/*.json) > final.json
+          #jq -s '.[0].posts + .[1:]' public/posts.json <(jq -s '.' public/posts/*.json) > final.json
           
           # 3. Urutkan berdasarkan tanggal (Terbaru di atas)
-          jq '.posts |= sort_by(.date) | .posts |= reverse' final.json > public/posts.json
+          #jq '.posts |= sort_by(.date) | .posts |= reverse' final.json > public/posts.json
           
           # Hapus file sementara
-          rm temp_gabungan.json final.json
+          #rm temp_gabungan.json final.json
 
       - name: Menyimpan Perubahan Kembali ke GitHub
         run: |
