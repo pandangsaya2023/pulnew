@@ -1,28 +1,50 @@
-- name: Menggabungkan Berita Manual & Robot
-  run: |
-    # 1. Pastikan jq terinstall
-    sudo apt-get install -y jq
-          
-    # 2. Buat file posts.json baru dari hasil robot dan berita manual
-    # Kita ambil array posts dari hasil robot terlebih dahulu
-    # Lalu kita gabungkan dengan file-file di public/posts/*.json
-          
-    # Buat file sementara
-    echo '{"posts": []}' > temp_gabungan.json
-          
-    # Masukkan hasil dari robot ke dalam temp_gabungan.json
-    jq -s '.[0].posts + .[1:]' public/posts.json <(jq -s '.' public/posts/*.json) > final.json
-          
-    # 3. Urutkan berdasarkan tanggal (Terbaru di atas)
-    jq '.posts |= sort_by(.date) | .posts |= reverse' final.json > public/posts.json
-          
-    # Hapus file sementara
-    rm temp_gabungan.json final.json
+name: Robot Ambil Berita Otomatis
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 */6 * * *'
 
-- name: Menyimpan Perubahan Kembali ke GitHub
-  run: |
-    git config --global user.name "github-actions[bot]"
-    git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-    git add public/posts.json
-    git diff-index --quiet HEAD || git commit -m "Update gabungan berita manual dan robot"
-    git push
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Menyiapkan Python & Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests openai beautifulsoup4 lxml
+      
+      - name: Jalankan Robot Pengambil Berita
+        env:
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+        run: python ambil_berita.py
+
+      - name: Menggabungkan Berita Manual & Robot
+        run: |
+          # 1. Pastikan jq terinstall
+          sudo apt-get install -y jq
+          
+          # 2. Buat file posts.json baru dari hasil robot dan berita manual
+          # Kita ambil array posts dari hasil robot terlebih dahulu
+          # Lalu kita gabungkan dengan file-file di public/posts/*.json
+          
+          # Buat file sementara
+          echo '{"posts": []}' > temp_gabungan.json
+          
+          # Masukkan hasil dari robot ke dalam temp_gabungan.json
+          jq -s '.[0].posts + .[1:]' public/posts.json <(jq -s '.' public/posts/*.json) > final.json
+          
+          # 3. Urutkan berdasarkan tanggal (Terbaru di atas)
+          jq '.posts |= sort_by(.date) | .posts |= reverse' final.json > public/posts.json
+          
+          # Hapus file sementara
+          rm temp_gabungan.json final.json
+
+      - name: Menyimpan Perubahan Kembali ke GitHub
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public/posts.json
+          git diff-index --quiet HEAD || git commit -m "Update gabungan berita manual dan robot"
+          git push
+
