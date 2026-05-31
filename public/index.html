@@ -438,16 +438,29 @@
     };
         
     async function ambilDataBerita() {
-        try {
-            //const response = await fetch('posts.json?t=' + new Date().getTime());
-            const response = await fetch('api/posts?t=' + new Date().getTime());
-            const data = await response.json();
-            const sortedPosts = (data.posts || []).sort((a, b) => new Date(b.date) - new Date(a.date));
-            tampilkanBerita(sortedPosts);
-            updateRunningText(sortedPosts);
-        } catch (err) {
-            document.getElementById('news-container').innerHTML = '<div style="text-align:center; padding:40px; color:#d32f2f;">Gagal memuat berita.</div>';
+
+       // async function loadPosts() {
+    const res = await fetch('/api/posts');
+    const { urls } = await res.json();
+  
+    const posts = await Promise.all(
+      urls.map(url => fetch(url).then(r => r.json()))
+    );
+  
+    posts.sort((a, b) => new Date(b.date) - new Date(a.date));
+  
+  //tampilkanBerita(posts); // pakai fungsi kamu yang udah ada
         }
+        //try {
+            //const response = await fetch('posts.json?t=' + new Date().getTime());
+            //const response = await fetch('api/posts?t=' + new Date().getTime());
+            //const data = await response.json();
+            //const sortedPosts = (data.posts || []).sort((a, b) => new Date(b.date) - new Date(a.date));
+            //tampilkanBerita(sortedPosts);
+            //updateRunningText(sortedPosts);
+        //} catch (err) {
+            //document.getElementById('news-container').innerHTML = '<div style="text-align:center; padding:40px; color:#d32f2f;">Gagal memuat berita.</div>';
+        //}
     }
 
     function tampilkanBerita(posts) {
