@@ -195,7 +195,16 @@
             const res = await fetch('/api/posts?t=' + Date.now());
             if (!res.ok) throw new Error('Gagal ambil data dari API');
             
-            const { urls, error } = await res.json();
+            //const { urls, error } = await res.json();
+            const res = await fetch('/api/posts?t=' + Date.now());
+            if (!res.ok) throw new Error('Gagal ambil data dari API');
+
+            const data = await res.json();
+
+            // TANGKAPIN 2 FORMAT: {urls: [...]} atau langsung [...]
+            const urls = Array.isArray(data) ? data : data.urls;
+            const error = data.error;
+
             if (error) throw new Error(error);
             if (!urls || urls.length === 0) throw new Error('Tidak ada berita');
 
