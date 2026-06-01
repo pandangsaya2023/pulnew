@@ -36,8 +36,69 @@
 
         .section-title {
             font-size: 18px; font-weight: 800; color: var(--warna-biru);
-            margin: 30px 0 22px 0; padding-left: 8px; border-left: 4px solid var(--warna-merah);
+            margin: 30px 0 15px 0; padding-left: 8px; border-left: 4px solid var(--warna-merah);
         }
+
+        /* KARTU BERITA UTAMA */
+        .top-news-grid {
+            display: grid; gap: 12px; margin-bottom: 30px;
+        }
+        @media (min-width: 768px) {
+            .top-news-grid {
+                grid-template-columns: 2fr 1fr;
+            }
+        }
+        .main-card {
+            background: white; border-radius: 12px; overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08); text-decoration: none; color: inherit;
+        }
+        .main-card img {
+            width: 100%; height: 250px; object-fit: cover;
+        }
+        .main-card .content { padding: 16px; }
+        .badge {
+            display: inline-block; padding: 4px 10px; border-radius: 6px;
+            font-size: 12px; font-weight: 700; margin-bottom: 8px; color: white;
+        }
+        .main-card h2 {
+            font-size: 22px; font-weight: 800; line-height: 1.3; margin-bottom: 8px;
+            display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+        }
+        .side-cards {
+            display: grid; gap: 12px;
+        }
+        .side-card {
+            background: white; border-radius: 12px; overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08); text-decoration: none; color: inherit;
+            display: flex; gap: 12px; padding: 10px;
+        }
+        .side-card img {
+            width: 120px; height: 90px; object-fit: cover; border-radius: 8px; flex-shrink: 0;
+        }
+        .side-card h4 {
+            font-size: 14px; font-weight: 700; line-height: 1.4;
+            display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
+        }
+
+        /* TRENDING */
+        .trending-list {
+            background: white; border-radius: 12px; padding: 16px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08); margin-bottom: 30px;
+        }
+        .trending-item {
+            display: flex; gap: 12px; padding: 12px 0; border-bottom: 1px solid #eee;
+            text-decoration: none; color: inherit;
+        }
+        .trending-item:last-child { border-bottom: none; }
+        .trending-number {
+            font-size: 24px; font-weight: 800; color: var(--warna-merah); min-width: 30px;
+        }
+        .trending-item h4 {
+            font-size: 15px; font-weight: 700; line-height: 1.4;
+            display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+        }
+
+        /* CAROUSEL */
         .latest-carousel { position: relative; margin: 20px 0 30px 0; }
         .carousel-scroll {
             display: flex; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory;
@@ -57,10 +118,6 @@
         .carousel-item .card-content {
             padding: 0px; display: flex; flex-direction: column; justify-content: center;
             flex: 1; gap: 6px;
-        }
-        .carousel-item .badge {
-            display: inline-block; padding: 3px 8px; border-radius: 5px;
-            font-size: 11px; font-weight: 700; color: white;
         }
         .carousel-item h4 {
             font-size: 15px; font-weight: 700; line-height: 1.4; color: #111;
@@ -96,11 +153,17 @@
     </div>
 
     <div class="container">
+        <!-- KARTU BERITA UTAMA -->
+        <div class="top-news-grid" id="top-news"></div>
+
+        <!-- TRENDING -->
+        <h3 class="section-title">Trending</h3>
+        <div class="trending-list" id="trending-list"></div>
+
+        <!-- BERITA TERBARU CAROUSEL -->
         <h3 class="section-title">Berita Terbaru</h3>
         <div class="latest-carousel">
-            <div class="carousel-scroll" id="main-carousel">
-                <div style="text-align: center; padding: 40px; color: #666;">Memuat berita...</div>
-            </div>
+            <div class="carousel-scroll" id="main-carousel"></div>
         </div>
     </div>
 
@@ -135,46 +198,105 @@
             const posts = await Promise.all(urls.map(url => fetch(url).then(r => r.json())));
             posts.sort((a, b) => new Date(b.date || b.created_at) - new Date(a.date || a.created_at));
 
-            let html = '';
-            posts.slice(0, 20).forEach(post => {
-                const kategori = post.kategori || post.category || post.tag || 'BERITA';
-                const warna = kategoriWarna[kategori.toUpperCase()] || '#d32f2f';
-                html += `
-                    <a href="/berita.html?slug=${post.slug}" class="carousel-item">
-                        <img src="${post.image}" alt="${post.title}" loading="lazy">
-                        <div class="card-content">
-                            <span class="badge" style="background: ${warna}">${kategori}</span>
-                            <h4>${post.title}</h4>
-                        </div>
-                    </a>
-                `;
-            });
-            
-            document.getElementById('main-carousel').innerHTML = html;
-            
-            // Auto scroll
-            const carousel = document.getElementById('main-carousel');
-            if (carousel) {
-                let scrollAmount = 0; let userScrolling = false;
-                const scrollStep = carousel.querySelector('.carousel-item')?.offsetWidth + 12 || 300;
-                carousel.addEventListener('scroll', () => {
-                    userScrolling = true;
-                    setTimeout(() => { userScrolling = false; }, 3000);
-                });
-                setInterval(() => {
-                    if (!userScrolling) {
-                        scrollAmount += scrollStep;
-                        if (scrollAmount >= carousel.scrollWidth - carousel.clientWidth - 10) {
-                            scrollAmount = 0;
-                        }
-                        carousel.scrollTo({ left: scrollAmount, behavior: 'smooth' });
-                    }
-                }, 3500);
-            }
+            renderTopNews(posts);
+            renderTrending(posts);
+            renderCarousel(posts);
 
         } catch (err) {
             console.error(err);
-            document.getElementById('main-carousel').innerHTML = `<div style="text-align:center; padding:40px; color:#d32f2f;">Gagal memuat berita: ${err.message}</div>`;
+            document.getElementById('top-news').innerHTML = `<div style="text-align:center; padding:40px; color:#d32f2f;">Gagal memuat berita: ${err.message}</div>`;
+        }
+    }
+
+    function renderTopNews(posts) {
+        const topPosts = posts.slice(0, 3);
+        let html = '';
+        
+        // Berita utama besar
+        if (topPosts[0]) {
+            const kategori = topPosts[0].kategori || topPosts[0].category || topPosts[0].tag || 'BERITA';
+            const warna = kategoriWarna[kategori.toUpperCase()] || '#d32f2f';
+            html += `
+                <a href="/berita.html?slug=${topPosts[0].slug}" class="main-card">
+                    <img src="${topPosts[0].image}" alt="${topPosts[0].title}" loading="lazy">
+                    <div class="content">
+                        <span class="badge" style="background: ${warna}">${kategori}</span>
+                        <h2>${topPosts[0].title}</h2>
+                    </div>
+                </a>
+            `;
+        }
+
+        // 2 berita kecil di samping
+        html += '<div class="side-cards">';
+        topPosts.slice(1, 3).forEach(post => {
+            const kategori = post.kategori || post.category || post.tag || 'BERITA';
+            const warna = kategoriWarna[kategori.toUpperCase()] || '#d32f2f';
+            html += `
+                <a href="/berita.html?slug=${post.slug}" class="side-card">
+                    <img src="${post.image}" alt="${post.title}" loading="lazy">
+                    <div>
+                        <span class="badge" style="background: ${warna}">${kategori}</span>
+                        <h4>${post.title}</h4>
+                    </div>
+                </a>
+            `;
+        });
+        html += '</div>';
+
+        document.getElementById('top-news').innerHTML = html;
+    }
+
+    function renderTrending(posts) {
+        const trendingPosts = posts.slice(3, 8); // ambil 5 berita untuk trending
+        let html = '';
+        trendingPosts.forEach((post, index) => {
+            html += `
+                <a href="/berita.html?slug=${post.slug}" class="trending-item">
+                    <div class="trending-number">${index + 1}</div>
+                    <h4>${post.title}</h4>
+                </a>
+            `;
+        });
+        document.getElementById('trending-list').innerHTML = html;
+    }
+
+    function renderCarousel(posts) {
+        let html = '';
+        posts.slice(0, 20).forEach(post => {
+            const kategori = post.kategori || post.category || post.tag || 'BERITA';
+            const warna = kategoriWarna[kategori.toUpperCase()] || '#d32f2f';
+            html += `
+                <a href="/berita.html?slug=${post.slug}" class="carousel-item">
+                    <img src="${post.image}" alt="${post.title}" loading="lazy">
+                    <div class="card-content">
+                        <span class="badge" style="background: ${warna}">${kategori}</span>
+                        <h4>${post.title}</h4>
+                    </div>
+                </a>
+            `;
+        });
+        
+        document.getElementById('main-carousel').innerHTML = html;
+        
+        // Auto scroll
+        const carousel = document.getElementById('main-carousel');
+        if (carousel) {
+            let scrollAmount = 0; let userScrolling = false;
+            const scrollStep = carousel.querySelector('.carousel-item')?.offsetWidth + 12 || 300;
+            carousel.addEventListener('scroll', () => {
+                userScrolling = true;
+                setTimeout(() => { userScrolling = false; }, 3000);
+            });
+            setInterval(() => {
+                if (!userScrolling) {
+                    scrollAmount += scrollStep;
+                    if (scrollAmount >= carousel.scrollWidth - carousel.clientWidth - 10) {
+                        scrollAmount = 0;
+                    }
+                    carousel.scrollTo({ left: scrollAmount, behavior: 'smooth' });
+                }
+            }, 3500);
         }
     }
 
