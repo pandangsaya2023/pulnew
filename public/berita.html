@@ -293,11 +293,22 @@
         }
 
         try {
-            const res = await fetch('/api/posts/' + slug + '?t=' + Date.now());
+            // Ambil semua post dulu, sama kayak di index.html
+            const res = await fetch('/api/posts?t=' + Date.now());
             if (!res.ok) throw new Error('Gagal ambil data');
             
-            const post = await res.json();
-            
+            const { urls, error } = await res.json();
+            if (error) throw new Error(error);
+            if (!urls || urls.length === 0) throw new Error('Tidak ada berita');
+
+            const posts = await Promise.all(
+                urls.map(url => fetch(url).then(r => r.json()))
+            );
+
+            // Cari post yang slug-nya cocok
+            const post = posts.find(p => p.slug === slug);
+            if (!post) throw new Error('Berita tidak ditemukan');
+
             document.getElementById('page-title').textContent = post.title + ' - PULNEW';
             
             const warna = kategoriWarna[post.kategori?.toUpperCase()] || '#d32f2f';
@@ -316,27 +327,18 @@
             `;
 
             // Load berita lain untuk carousel
-            loadRelatedPosts(slug);
+            loadRelatedPosts(slug, posts);
 
         } catch (err) {
             console.error(err);
-            document.getElementById('article-container').innerHTML = `<div style="text-align:center; padding:40px; color:#d32f2f;">Gagal memuat berita</div>`;
+            document.getElementById('article-container').innerHTML = `<div style="text-align:center; padding:40px; color:#d32f2f;">Gagal memuat berita: ${err.message}</div>`;
         }
     }
 
-    async function loadRelatedPosts(currentSlug) {
+    function loadRelatedPosts(currentSlug, allPosts) {
         try {
-            const res = await fetch('/api/posts?t=' + Date.now());
-            const { urls } = await res.json();
-            
-            const posts = await Promise.all(
-                urls.map(url => fetch(url).then(r => r.json()))
-            );
-            
-            posts.sort((a, b) => new Date(b.date) - new Date(a.date));
-            
             // Filter berita selain yang sedang dibuka
-            const related = posts.filter(p => p.slug !== currentSlug).slice(0, 20);
+            const related = allPosts.filter(p => p.slug !== currentSlug).slice(0, 20);
             
             let html = '';
             related.forEach(post => {
