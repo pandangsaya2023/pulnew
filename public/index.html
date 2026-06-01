@@ -266,6 +266,12 @@
             position: relative;
             margin: 20px 0 30px 0;
         }
+
+      .carousel-track {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+        
       .carousel-scroll {
             display: flex;
             gap: 12px;
@@ -318,6 +324,22 @@
             -webkit-box-orient: vertical;
             overflow: hidden;
         }
+
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0,0,0,0.5);
+            color: white;
+            border: none;
+            font-size: 30px;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 50%;
+            z-index: 2;
+        }
+        .carousel-btn.prev { left: 10px; }
+        .carousel-btn.next { right: 10px; }
 
         @media (min-width: 768px) {
           .news-hero img { height: 320px; }
