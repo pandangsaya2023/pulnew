@@ -533,26 +533,32 @@
 
         container.innerHTML = html;
 
-        // Auto scroll carousel "Berita Lain"
+        // Auto scroll carousel "Berita Lain" - LOOPING TERUS
         const carousel = document.querySelector('.carousel-scroll');
         if (carousel) {
             let scrollAmount = 0;
+            let userScrolling = false;
             const scrollStep = carousel.querySelector('.carousel-item')?.offsetWidth + 12 || 300;
             
-            const autoScroll = setInterval(() => {
-                scrollAmount += scrollStep;
-                if (scrollAmount >= carousel.scrollWidth - carousel.clientWidth) {
-                    scrollAmount = 0;
-                }
-                carousel.scrollTo({
-                    left: scrollAmount,
-                    behavior: 'smooth'
-                });
-            }, 3500);
-
+            // Deteksi kalau user lagi scroll manual
             carousel.addEventListener('scroll', () => {
-                clearInterval(autoScroll);
+                userScrolling = true;
+                setTimeout(() => { userScrolling = false; }, 3000);
             });
+            
+            setInterval(() => {
+                if (!userScrolling) {
+                    scrollAmount += scrollStep;
+                    // Kalau udah mentok kanan, balik ke awal
+                    if (scrollAmount >= carousel.scrollWidth - carousel.clientWidth - 10) {
+                        scrollAmount = 0;
+                    }
+                    carousel.scrollTo({
+                        left: scrollAmount,
+                        behavior: 'smooth'
+                    });
+                }
+            }, 3500);
         }
     }
 
