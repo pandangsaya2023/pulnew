@@ -99,12 +99,21 @@
             posts.sort((a, b) => new Date(b.date || b.created_at) - new Date(a.date || a.created_at));
 
             // Cari berita yang sedang dibuka
-            const post = posts.find(p => p.slug === slugTujuan);
-            if (!post) {
+            //const post = posts.find(p => p.slug === slugTujuan);
+            //if (!post) {
+                //contentArea.innerHTML = "Berita tidak ditemukan.<br><small>Mungkin sudah dihapus atau pindah</small>";
+                //return;
+            //}
+
+            // Cari berdasarkan URL, bukan slug field
+            const postUrl = urls.find(u => u.toLowerCase().includes(slugTujuan.toLowerCase()));
+            if (!postUrl) {
                 contentArea.innerHTML = "Berita tidak ditemukan.<br><small>Mungkin sudah dihapus atau pindah</small>";
                 return;
             }
 
+            const post = await fetch(postUrl).then(r => r.json());
+            
             // Render isi berita utama
             const isiBerita = post.body.split('\n').map(p => p.trim() ? `<p>${p}</p>` : '').join('');
             let html = `
@@ -114,7 +123,10 @@
             `;
 
             // Tambah section berita terkait
-            const related = posts.filter(p => p.slug !== slugTujuan).slice(0, 5);
+            //const related = posts.filter(p => p.slug !== slugTujuan).slice(0, 5);
+            const related = posts
+            .filter(p => !postUrl.includes(p.slug || p.title.toLowerCase().replace(/\s+/g, '-')))
+            .slice(0, 5);
             if (related.length > 0) {
                 html += `<div class="related-section"><div class="related-title">Berita Lainnya</div>`;
                 related.forEach(r => {
