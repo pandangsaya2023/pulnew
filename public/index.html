@@ -465,6 +465,26 @@
 
         let html = '';
 
+        // Carousel auto slide
+        if (posts.length > 0) {
+          html += `
+            <div class="carousel">
+              <div class="carousel-track" id="carousel-track">
+                ${posts.slice(0, 5).map(post => `
+                  <div class="carousel-item">
+                    <a href="berita.html?slug=${post.slug}">
+                      <img src="${post.image}" alt="${post.title}" loading="lazy">
+                      <div class="caption">${post.title}</div>
+                    </a>
+                  </div>
+                `).join('')}
+              </div>
+              <button class="carousel-btn prev">‹</button>
+              <button class="carousel-btn next">›</button>
+            </div>
+            `;
+        }
+        
         const hero = posts[0];
         const warnaHero = kategoriWarna[hero.kategori?.toUpperCase()] || '#d32f2f';
         html += `
@@ -531,6 +551,27 @@
         }
 
         container.innerHTML = html;
+        // Auto carousel
+        let carouselIndex = 0;
+        const track = document.getElementById('carousel-track');
+        if (track) {
+          const totalSlides = Math.min(posts.length, 5);
+          const interval = setInterval(() => {
+            carouselIndex = (carouselIndex + 1) % totalSlides;
+            track.style.transform = `translateX(-${carouselIndex * 100}%)`;
+          }, 4000);
+
+        document.querySelector('.carousel-btn.next').onclick = () => {
+            clearInterval(interval);
+            carouselIndex = (carouselIndex + 1) % totalSlides;
+            track.style.transform = `translateX(-${carouselIndex * 100}%)`;
+          };
+        document.querySelector('.carousel-btn.prev').onclick = () => {
+            clearInterval(interval);
+            carouselIndex = (carouselIndex - 1 + totalSlides) % totalSlides;
+            track.style.transform = `translateX(-${carouselIndex * 100}%)`;
+          };
+        }
     }
 
     function updateRunningText(posts) {
