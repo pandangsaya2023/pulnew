@@ -158,6 +158,28 @@
             border-top: 1px solid #1e293b; padding-top: 8px; margin-top: 10px;
             font-size: 11px; color: #64748b;
         }
+
+        .ad-slot {
+            margin: 20px auto;
+            text-align: center;
+        }
+        .ad-slot img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 8px;
+        }
+        .ad-banner-top, .ad-banner-bottom {
+            max-width: 728px;
+        }
+        .ad-inarticle {
+            max-width: 600px;
+        }
+        @media (max-width: 768px) {
+            .ad-banner-top, .ad-banner-bottom {
+                max-width: 100%;
+            }
+        }
     </style>
 </head>
 <body>
@@ -183,10 +205,11 @@
         </div>
     </div>
 
-    <div class="ads-container-leaderboard">
-        <div class="ads-placeholder">
-            <img src="https://pulnew.pages.dev/iklan_atas1.png">
-        </div>
+    <!-- Iklan Banner Atas -->
+    <div class="ad-slot ad-banner-top">
+        <a href="https://link-iklan-anda.com" target="_blank" rel="nofollow">
+            <img src="https://pulnew.pages.dev/iklan_atas1.png" alt="Iklan">
+        </a>
     </div>
 
     <div class="container">
@@ -290,6 +313,15 @@
             </a>
         `;
 
+        // Iklan Tengah Beranda
+        html += `
+            <div class="ad-slot ad-inarticle">
+                <a href="https://link-iklan-anda.com" target="_blank" rel="nofollow">
+                    <img src="https://pulnew.pages.dev/iklan_tengah.jpg" alt="Iklan">
+                </a>
+            </div>
+        `;
+
         if (posts.length > 1) {
             html += '<div class="news-grid">';
             posts.slice(1, 5).forEach(post => {
@@ -347,6 +379,13 @@
         }
 
         container.innerHTML = html;
+
+        <!-- Iklan Bawah Beranda -->
+        <div class="ad-slot ad-banner-bottom">
+            <a href="https://link-iklan-anda.com" target="_blank" rel="nofollow">
+                <img src="https://pulnew.pages.dev/iklan_bawah.jpg" alt="Iklan">
+            </a>
+        </div>
 
         const carousel = document.getElementById('main-carousel');
         if (carousel) {
