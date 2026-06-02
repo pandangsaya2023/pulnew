@@ -313,15 +313,6 @@
             </a>
         `;
 
-        // Iklan Tengah Beranda
-        html += `
-            <div class="ad-slot ad-inarticle">
-                <a href="https://link-iklan-anda.com" target="_blank" rel="nofollow">
-                    <img src="https://pulnew.pages.dev/iklan_tengah1.png" alt="Iklan">
-                </a>
-            </div>
-        `;
-
         if (posts.length > 1) {
             html += '<div class="news-grid">';
             posts.slice(1, 5).forEach(post => {
@@ -339,6 +330,15 @@
             });
             html += '</div>';
         }
+
+        // Iklan Tengah Beranda
+        html += `
+            <div class="ad-slot ad-inarticle">
+                <a href="https://link-iklan-anda.com" target="_blank" rel="nofollow">
+                    <img src="https://pulnew.pages.dev/iklan_tengah1.png" alt="Iklan">
+                </a>
+            </div>
+        `;
 
         if (posts.length > 5) {
             html += '<h3 class="section-title">🔥 Trending Hari Ini</h3>';
