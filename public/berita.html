@@ -4,6 +4,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>PULNEW - Detail Berita</title>
+
+<!-- Meta default, nanti diganti dinamis sama JS -->
+<meta property="og:title" content="PULNEW.com - Update Informasi Terkini">
+<meta property="og:description" content="Berita Pulo Sidakalek dan sekitarnya. Cepat, akurat, terpercaya.">
+<meta property="og:image" content="https://pulnew.pages.dev/media/og-default.jpg">
+<meta property="og:url" content="">
+<meta property="og:type" content="article">
+<meta name="twitter:card" content="summary_large_image">
+
 <style>
 body, html { margin: 0; padding: 0; height: 100%; font-family: sans-serif; background: #ffffff; }
 .app-container { display: flex; flex-direction: column; height: 100vh; }
@@ -15,12 +24,11 @@ header { padding: 15px; display: flex; justify-content: space-between; align-ite
 
 .content-wrapper { flex: 1; overflow-y: auto; padding: 15px; padding-bottom: 60px; }
 .article-box { max-width: 600px; margin: 0 auto; }
-.article-title { font-size: 22px; font-weight: 800; margin-bottom: 5px; line-height: 1.3; }
-.main-image { width: 100%; border-radius: 6px; margin-bottom: 5px; }
+.article-title { font-size: 22px; font-weight: 800; margin-bottom: 15px; line-height: 1.3; }
+.main-image { width: 100%; border-radius: 6px; margin-bottom: 15px; }
 .article-body { font-size: 16px; line-height: 1.7; color: #333; text-align: justify; word-break: break-word; }
 .article-body p { margin-bottom: 15px; }
 
-/* Berita terkait */
 .related-section { margin-top: 30px; padding-top: 20px; border-top: 2px solid #eee; }
 .related-title { font-size: 18px; font-weight: 800; color: #1a237e; margin-bottom: 12px; }
 .related-item { display: flex; gap: 12px; padding: 10px 0; border-bottom: 1px solid #f0f0f0; text-decoration: none; color: inherit; }
@@ -31,24 +39,10 @@ header { padding: 15px; display: flex; justify-content: space-between; align-ite
 .ticker-content { display: inline-block; white-space: nowrap; padding-left: 100%; animation: ticker 40s linear infinite; }
 @keyframes ticker { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(-100%, 0, 0); } }
 
-/* Iklan */
-.ad-slot {
-    margin-top: 10px auto;
-    text-align: center;
-}
-.ad-slot img {
-    margin-top: 5px;
-    margin-bottom: 5px;
-    width: 100%;
-    height: auto;
-    display: block; /* typo titik udah dihapus */
-    border-radius: 8px;
-}
-.ad-news-top, .ad-news-middle {
-    margin-top: 5px;
-    margin-bottom: 5px;
-    max-width: 600px;
-}
+.ad-slot { margin: 15px auto; text-align: center; }
+.ad-slot img { width: 100%; height: auto; display: block; border-radius: 8px; }
+.ad-news-top { margin-top: 5px; margin-bottom: 20px; }
+.ad-news-middle { margin-top: 25px; margin-bottom: 25px; }
 </style>
 </head>
 <body>
@@ -59,13 +53,6 @@ header { padding: 15px; display: flex; justify-content: space-between; align-ite
         <a href="https://pulnew.pages.dev/" class="btn-beranda">← Beranda</a>
     </header>
 
-    <!-- Iklan Atas Berita -->
-    <div class="ad-slot ad-news-top">
-        <a href="https://link-iklan-anda.com" target="_blank" rel="nofollow">
-            <img src="/media/iklan_berita_atas1.png" alt="Iklan">
-        </a>
-    </div>
-
     <div class="content-wrapper">
         <div class="article-box" id="content-area">Memuat berita...</div>
     </div>
@@ -74,8 +61,43 @@ header { padding: 15px; display: flex; justify-content: space-between; align-ite
         <div class="ticker-content" id="running-text">MEMUAT INFORMASI TERKINI...</div>
     </div>
 </div>
-    
+
 <script>
+function updateMetaTags(post, slug) {
+    document.title = post.title + " - PULNEW.com";
+    
+    // Update atau buat meta tag Open Graph
+    const setMeta = (property, content) => {
+        let meta = document.querySelector(`meta[property="${property}"]`);
+        if (!meta) {
+            meta = document.createElement('meta');
+            meta.setAttribute('property', property);
+            document.head.appendChild(meta);
+        }
+        meta.setAttribute('content', content);
+    };
+    
+    setMeta('og:title', post.title);
+    setMeta('og:description', (post.body || '').substring(0, 160) + '...');
+    setMeta('og:image', post.image);
+    setMeta('og:url', window.location.href);
+    
+    // Twitter
+    const setTwitter = (name, content) => {
+        let meta = document.querySelector(`meta[name="${name}"]`);
+        if (!meta) {
+            meta = document.createElement('meta');
+            meta.setAttribute('name', name);
+            document.head.appendChild(meta);
+        }
+        meta.setAttribute('content', content);
+    };
+    
+    setTwitter('twitter:title', post.title);
+    setTwitter('twitter:description', (post.body || '').substring(0, 160) + '...');
+    setTwitter('twitter:image', post.image);
+}
+
 async function fetchPosts() {
     const maxRetry = 3;
     for (let i = 0; i < maxRetry; i++) {
@@ -122,16 +144,25 @@ async function muatHalamanBerita() {
         }
 
         const post = await fetch(postUrl).then(r => r.json());
+        
+        // UPDATE META TAG BUAT PREVIEW SHARE
+        updateMetaTags(post, slugTujuan);
 
-        // BIKIN ISI BERITA DULU BARU DIPAKAI
         const isiBerita = (post.body || '').split('\n').map(p => p.trim() ? `<p>${p}</p>` : '').join('');
 
         let html = `
             <h1 class="article-title">${post.title}</h1>
+            
+            <div class="ad-slot ad-news-top">
+                <a href="https://link-iklan-anda.com" target="_blank" rel="nofollow">
+                    <img src="/media/iklan_berita_atas1.png" alt="Iklan">
+                </a>
+            </div>
+
             <img src="${post.image}" class="main-image" alt="${post.title}">
+            
             <div class="article-body">${isiBerita}</div>
 
-            <!-- Iklan Tengah Berita -->
             <div class="ad-slot ad-news-middle">
                 <a href="https://link-iklan-anda.com" target="_blank" rel="nofollow">
                     <img src="/media/iklan_berita_tengah1.png" alt="Iklan">
