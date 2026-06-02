@@ -30,6 +30,20 @@
         .footer-ticker { background: #d32f2f; color: white; padding: 8px 0; font-size: 13px; overflow: hidden; width: 100%; position: fixed; bottom: 0; left: 0; z-index: 999; }
         .ticker-content { display: inline-block; white-space: nowrap; padding-left: 100%; animation: ticker 40s linear infinite; }
         @keyframes ticker { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(-100%, 0, 0); } }
+
+        .ad-slot {
+            margin: 25px auto;
+            text-align: center;
+        }
+        .ad-slot img {
+            width: 100%;
+            height: auto;
+           .display: block;
+            border-radius: 8px;
+        }
+        .ad-news-top, .ad-news-middle {
+            max-width: 600px;
+        }
     </style>
 </head>
 <body>
@@ -113,17 +127,40 @@
             }
 
             const post = await fetch(postUrl).then(r => r.json());
-            
-            // Render isi berita utama
-            const isiBerita = post.body.split('\n').map(p => p.trim() ? `<p>${p}</p>` : '').join('');
+
             let html = `
                 <h1 class="article-title">${post.title}</h1>
+                
+                <!-- Iklan Atas Berita -->
+                <div class="ad-slot ad-news-top">
+                    <a href="https://link-iklan-anda.com" target="_blank" rel="nofollow">
+                        <img src="https://pulnew.pages.dev/iklan_atas1.png" alt="Iklan">
+                    </a>
+                </div>
+
                 <img src="${post.image}" class="main-image" alt="${post.title}">
+                
                 <div class="article-body">${isiBerita}</div>
+
+                <!-- Iklan Tengah Berita -->
+                <div class="ad-slot ad-news-middle">
+                    <a href="https://link-iklan-anda.com" target="_blank" rel="nofollow">
+                        <img src="https://pulnew.pages.dev/iklan_tengah1.png" alt="Iklan">
+                    </a>
+                </div>
             `;
+            
+            // Render isi berita utama
+            //const isiBerita = post.body.split('\n').map(p => p.trim() ? `<p>${p}</p>` : '').join('');
+            //let html = `
+                //<h1 class="article-title">${post.title}</h1>
+                //<img src="${post.image}" class="main-image" alt="${post.title}">
+                //<div class="article-body">${isiBerita}</div>
+            //`;
 
             // Tambah section berita terkait
             //const related = posts.filter(p => p.slug !== slugTujuan).slice(0, 5);
+            
             const related = posts
             .filter(p => !postUrl.includes(p.slug || p.title.toLowerCase().replace(/\s+/g, '-')))
             .slice(0, 5);
