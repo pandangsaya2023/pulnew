@@ -189,16 +189,18 @@
 
         .banner-bottom {
             max-width: 768px;
-            margin: 0px auto;
+            margin: 12px auto!important;
             height: 180px; /* fix tinggi 180px */
             overflow: hidden;
             border-radius: 12px;
+            padding: 0!important;
         }
 
         .banner-bottom img {
             width: 100%;
             height: 100%;
             object-fit: cover; /* biar gambar nutupin full tanpa gepeng */
+            display: block!important;
         }
 
         /* Kalau gak ada gambar, sembunyiin total biar gak ada gap */
@@ -207,9 +209,10 @@
         }
         
         .banner-bottom:has(img[src=""]) {
-            display: none;
-            margin: 0;
+            display: none!important;
+            margin: 0!important;
         }
+        
         .ad-inarticle {
             max-width: 600px;
         }
