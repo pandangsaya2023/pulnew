@@ -183,8 +183,32 @@
             display: block;
             border-radius: 8px;
         }
-        .ad-banner-top, .ad-banner-bottom {
+        .ad-banner-top { /*, .ad-banner-bottom {*/
             max-width: 728px;
+        }
+
+        .banner-bottom {
+            max-width: 768px;
+            margin: 30px auto;
+            height: 180px; /* fix tinggi 180px */
+            overflow: hidden;
+            border-radius: 12px;
+        }
+
+        .banner-bottom img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* biar gambar nutupin full tanpa gepeng */
+        }
+
+        /* Kalau gak ada gambar, sembunyiin total biar gak ada gap */
+        .banner-bottom img[src=""] {
+            display: none;
+        }
+        
+        .banner-bottom:has(img[src=""]) {
+            display: none;
+            margin: 0;
         }
         .ad-inarticle {
             max-width: 600px;
