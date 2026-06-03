@@ -187,34 +187,29 @@
             max-width: 728px;
         }
 
-        .ad-slot.banner-bottom {
-            max-width: 768px;
-            margin: 5px auto!important;
-            height: 180px; /* fix tinggi 180px */
-            overflow: hidden;
-            border-radius: 12px;
+        .ad-slot.ad-banner-bottom {
+            margin: 12px auto!important; /* turun dari 20px jadi 12px */
             padding: 0!important;
+            max-width: 768px;
         }
 
-        .ad-slot.banner-bottom img {
+        .ad-slot.ad-banner-bottom img {
             width: 100%;
-            height: 100%;
-            object-fit: cover; /* biar gambar nutupin full tanpa gepeng */
-            display: block!important;
+            height: 180px; /* fix tinggi 180px */
+            object-fit: cover;
+            display: block;
+            border-radius: 12px;
         }
 
-        /* Kalau gak ada gambar, sembunyiin total biar gak ada gap */
-        .ad-slot.banner-bottom img[src=""] {
-            display: none;
-        }
-        
-        .ad-slot.banner-bottom:has(img[src=""]) {
+        /* Kalau gambar gak ada, sembunyiin total */
+        .ad-slot.ad-banner-bottom:has(img[src=""], img:not([src])) {
             display: none!important;
             margin: 0!important;
         }
 
+        /* Rapetin jarak ke footer */
         footer {
-            margin-top: 12px!important;
+            margin-top: 12px!important; /* turun dari 30px jadi 12px */
         }
         
         .ad-inarticle {
