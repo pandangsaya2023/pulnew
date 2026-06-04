@@ -74,11 +74,11 @@
             display: flex; justify-content: center; align-items: center; width: 100%;
             margin: 8px auto; padding: 10px; background: #f9f9f9; border: 1px dashed #ccc;
         }
-       .ads-placeholder img { max-width: 100%; height: auto; }
+       .ads-placeholder img { margin-top: 2px; margin-bottom: 2px; max-width: 100%; height: auto; }
 
        .news-hero {
             position: relative; border-radius: 12px; overflow: hidden;
-            margin-top: 2px; margin-bottom: 3px /* var(--jarak-utama)*/; box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            margin-bottom: var(--jarak-utama); box-shadow: 0 4px 12px rgba(0,0,0,0.1);
             text-decoration: none; display: block;
         }
        .news-hero img { width: 100%; height: 240px; object-fit: cover; display: block; }
