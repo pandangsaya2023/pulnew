@@ -23,15 +23,13 @@ jobs:
       - name: Menggabungkan Berita Manual & Robot
         run: |
           sudo apt-get install -y jq
-          # Membuat folder jika belum ada
           mkdir -p public/posts
           
-          # Menggabungkan semua file JSON di folder public/posts/ menjadi satu file posts.json
-          # Kita pastikan setiap item memiliki key "posts"
-          jq -s '{posts: [.[].posts[]]}' public/posts/*.json > temp_merge.json
+          # Gabungkan file, lewati file yang rusak, dan pastikan format JSON benar
+          jq -s 'map(select(.posts != null)) | {posts: map(.posts) | add | unique_by(.slug)}' public/posts/*.json > temp_merge.json
           
-          # Mengurutkan berdasarkan tanggal terbaru dan memastikan slug unik
-          jq '.posts |= unique_by(.slug) | .posts |= sort_by(.date) | .posts |= reverse' temp_merge.json > public/posts.json
+          # Tambahkan kategori default "BERITA" jika kosong, urutkan tanggal terbaru
+          jq '.posts |= map(. + {kategori: (.kategori // "BERITA")}) | .posts |= sort_by(.date) | .posts |= reverse' temp_merge.json > public/posts.json
           
           # Hapus file sementara
           rm temp_merge.json
