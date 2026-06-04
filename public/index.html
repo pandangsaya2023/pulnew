@@ -48,10 +48,16 @@
        .logo-new { color: var(--warna-merah); }
 
        .top-header {
-            background: var(--warna-merah); color: white; padding: 4px 12px;
-            display: flex; align-items: center; gap: 6px; font-size: 13px;margin-top: 0;
+            background: var(--warna-merah); color: white; padding: 6px 12px;
+            display: flex; align-items: center; gap: 8px; font-size: 13px;
+            font-weight: 600; white-space: nowrap; min-height: 32px;
         }
-        
+
+        .top-header span:first-child {
+            flex-shrink: 0;
+            font-weight: 700;
+        }
+
        .breaking-badge {
             background: #fff; color: var(--warna-merah); padding: 3px 8px;
             border-radius: 12px; font-weight: 700; font-size: 11px; flex-shrink: 0;
