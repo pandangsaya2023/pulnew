@@ -49,8 +49,7 @@
 
        .top-header {
             background: var(--warna-merah); color: white; padding: 4px 12px;
-            display: flex; align-items: center; gap: 6px; font-size: 13px;
-            top: 0; z-index: 199; margin-top: 0;
+            display: flex; align-items: center; gap: 6px; font-size: 13px;margin-top: 0;
         }
         
        .breaking-badge {
@@ -59,8 +58,8 @@
         }
         
        .ticker-wrapper {
-            overflow: hidden; width: 100%; position: sticky;
-            top: 0; z-index: 999; background: var(--warna-merah);
+            overflow: hidden; width: 100%; position: fixed;
+            top: 66px; left: 0; z-index: 999; background: var(--warna-merah);
         }
         
        .ticker-content {
@@ -79,7 +78,7 @@
         }
 
        .container { max-width: 1100px; width: 100%; margin: 0 auto;
-                   padding: 0 var(--jarak-utama) var(--jarak-utama) var(--jarak-utama);
+                   padding: 46px var(--jarak-utama) var(--jarak-utama) var(--jarak-utama);
                   }
         
        .ads-placeholder {
