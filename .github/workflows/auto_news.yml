@@ -25,20 +25,14 @@ jobs:
           sudo apt-get install -y jq
           mkdir -p public/posts
           
-          # Gabungkan file, lewati file yang rusak, dan pastikan format JSON benar
-          jq -s 'map(select(.posts != null)) | {posts: map(.posts) | add | unique_by(.slug)}' public/posts/*.json > temp_merge.json
-          
-          # Tambahkan kategori default "BERITA" jika kosong, urutkan tanggal terbaru
-          jq '.posts |= map(. + {kategori: (.kategori // "BERITA")}) | .posts |= sort_by(.date) | .posts |= reverse' temp_merge.json > public/posts.json
-          
-          # Hapus file sementara
-          rm temp_merge.json
+          # Membuat file posts.json dari semua file di public/posts/
+          # Kita gunakan -s untuk mengumpulkan semua dan 'add' untuk menggabungkan array
+          jq -s 'map(.posts) | add | unique_by(.slug) | sort_by(.date) | reverse | {posts: .}' public/posts/*.json > public/posts.json
 
       - name: Menyimpan Perubahan Kembali ke GitHub
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add public/posts/ public/posts.json
-          git diff-index --quiet HEAD || git commit -m "Update berita gabungan dan otomatis"
-          git pull --rebase origin main || true
+          git diff-index --quiet HEAD || git commit -m "Update berita otomatis"
           git push
