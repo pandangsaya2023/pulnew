@@ -20,25 +20,6 @@ jobs:
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
         run: python ambil_berita.py
 
-      #- name: Menggabungkan Berita Manual & Robot
-        #run: |
-          #sudo apt-get install -y jq
-
-          # Kalau final.json belum ada, bikin array kosong biar gak error
-          #[ -f final.json ] || echo '[]' > final.json
-
-          # Gabungkan semua file json di public/posts/ jadi 1 array
-          #jq -s '.' public/posts/*.json > semua_berita.json
-
-          # Merge sama data lama, hapus duplikat berdasarkan slug, urutkan terbaru
-          #jq -s 'add | unique_by(.slug) | sort_by(.date) | reverse' final.json semua_berita.json > public/posts.json
-
-          # Backup final.json buat run berikutnya
-          #cp public/posts.json final.json
-
-          # Bersih-bersih file sementara
-          #rm semua_berita.json
-
       - name: Menyimpan Perubahan Kembali ke GitHub
         run: |
           git config --global user.name "github-actions[bot]"
