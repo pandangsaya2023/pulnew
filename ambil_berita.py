@@ -108,8 +108,15 @@ for sumber in sumber_rss:
                 }
 
                 # Simpan per file: public/posts/slug.json
+                # Kita bungkus objek berita ke dalam key "posts" agar terbaca oleh jq
+                berita_wrapper = {"posts": [berita]} 
                 with open(f'public/posts/{slug}.json', 'w', encoding='utf-8') as f:
-                    json.dump(berita, f, indent=2, ensure_ascii=False)
+                    json.dump(berita_wrapper, f, indent=2, ensure_ascii=False)
+
+
+                # Simpan per file: public/posts/slug.json
+                #with open(f'public/posts/{slug}.json', 'w', encoding='utf-8') as f:
+                    #json.dump(berita, f, indent=2, ensure_ascii=False)
 
                 slug_tercatat.add(slug)
                 jumlah_baru += 1
