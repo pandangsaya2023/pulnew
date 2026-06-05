@@ -352,7 +352,7 @@
 
         let html = '';
 
-        const hero = posts[0];
+        const hero = postsToShow[0]; //posts[0];
         const kategoriHero = hero.kategori || hero.category || hero.tag || 'BERITA';
         const warnaHero = kategoriWarna[kategoriHero.toUpperCase()] || '#d32f2f';
         html += `
@@ -365,9 +365,9 @@
             </a>
         `;
 
-        if (posts.length > 1) {
+        if  (postsToShow > 1) { // (posts.length > 1) {
             html += '<div class="news-grid">';
-            posts.slice(1, 5).forEach(post => {
+            postsToShow.slice(1, 5).forEach(post => {  // posts.slice(1, 5).forEach(post => {
                 const kategori = post.kategori || post.category || post.tag || 'BERITA';
                 const warna = kategoriWarna[kategori.toUpperCase()] || '#d32f2f';
                 html += `
