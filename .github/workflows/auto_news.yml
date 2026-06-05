@@ -26,6 +26,7 @@ jobs:
       - name: Buat Pull Request Otomatis
         uses: peter-evans/create-pull-request@v5
         with:
+          token: ${{secrets.GITHUB_TOKEN}}
           commit-message: "Update berita otomatis + preview WA"
           title: "Update Berita Otomatis - ${{ github.run_number }}"
           body: "Robot berhasil ambil berita baru. Silakan review sebelum merge."
