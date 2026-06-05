@@ -343,6 +343,13 @@
             return;
         }
 
+        // filter cuma tampilkan yang published = true
+        const postsToShow = posts.filter(p => p.published === true);
+        if (postsToShow.length == 0) {
+            container.innerHTML = `<div style="text-align:center; padding:40px; color:#666;">Belum ada berita</div>`;
+            return;
+        }
+
         let html = '';
 
         const hero = posts[0];
