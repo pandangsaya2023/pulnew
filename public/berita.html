@@ -118,7 +118,7 @@ function updateMetaTags(post, slug) {
     
     setMeta('og:title', post.title);
     setMeta('og:description', (post.body || '').substring(0, 160) + '...');
-    setMeta('og:image', post.image);
+    setMeta('og:image', content="https://pulnew.pages.dev/media/og-default.jpg") /*post.image);*/
     setMeta('og:url', window.location.href);
     
     // Twitter
@@ -134,7 +134,7 @@ function updateMetaTags(post, slug) {
     
     setTwitter('twitter:title', post.title);
     setTwitter('twitter:description', (post.body || '').substring(0, 160) + '...');
-    setTwitter('twitter:image', post.image);
+    setTwitter('twitter:image', content="https://pulnew.pages.dev/media/og-default.jpg"); /*post.image);*/
 }
 
 async function fetchPosts() {
