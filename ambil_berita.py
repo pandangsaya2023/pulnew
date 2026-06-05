@@ -176,7 +176,6 @@ for sumber in sumber_rss:
                     "image": img_url,
                     "kategori": "BERITA",
                     "date": datetime.now().isoformat(),
-                    "published": false
                 }
 
                 # Simpan per file: public/posts/slug.json - KODE LAMA
