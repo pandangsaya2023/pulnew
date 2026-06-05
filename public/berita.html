@@ -14,13 +14,63 @@
 <meta name="twitter:card" content="summary_large_image">
 
 <style>
-body, html { margin: 0; padding: 0; height: 100%; font-family: sans-serif; background: #ffffff; }
+/*body, html { margin: 0; padding: 0; height: 100%; font-family: sans-serif; background: #ffffff; }
 .app-container { display: flex; flex-direction: column; height: 100vh; }
 
 header { padding: 15px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #eee; background: white; }
 .logo-text { font-size: 20px; font-weight: 900; color: #1a237e; }
 .logo-text span { color: #d32f2f; }
 .btn-beranda { background: #e3f2fd; color: #1565c0; padding: 5px 12px; border-radius: 15px; font-size: 12px; font-weight: bold; text-decoration: none; border: 1px solid #bbdefb; }
+*/
+
+:root {
+    --jarak-utama: 12px;
+    --warna-merah: #d32f2f;
+    --warna-biru: #1a237e;
+    --warna-bg: #f4f6f9;
+ }
+* {
+    margin: 0; padding: 0; box-sizing: border-box;
+    font-family: -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;
+  }
+    html, body { background: var(--warna-bg); color: #333; min-height: 100vh; }
+    h1, h2, h3, h4,.logo-text { font-family: 'Poppins', sans-serif; }
+
+.header-container {
+    background: #ffffff; position: sticky; top: 0; z-index: 200;
+    border-bottom: 3px solid var(--warna-merah); box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+ }
+.logo-bar {
+    max-width: 1100px; margin: 0 auto; padding: 7px 20px;
+    display: flex; justify-content: space-between; align-items: center;
+}
+.logo-img-wrapper { height: 50px; width: 50px; }
+.logo-img-wrapper img { height: 100%; width: 100%; object-fit: contain; }
+.logo-text { font-size: 24px; font-weight: 800; color: var(--warna-biru); }
+.logo-new { color: var(--warna-merah); }
+
+.top-header {
+    background: var(--warna-merah); color: white; padding: 4px 12px;
+    display: flex; align-items: center; gap: 10px; font-size: 13px;
+    position: sticky; top: 65px; z-index: 199; height: 35;
+ }
+.breaking-badge {
+    background: #fff; color: var(--warna-merah); padding: 4px 6px;
+    border-radius: 12px; font-weight: 700; font-size: 11px; flex-shrink: 0;
+}
+.ticker-wrapper { overflow: hidden; width: 100%; }
+.ticker-content {
+    display: inline-block; white-space: nowrap; padding-left: 100%;
+    animation: ticker 120s linear infinite;
+}
+.ticker-item {
+    display: inline-block; padding-right: 40px; font-weight: 500;
+    color: white; text-decoration: none;
+}
+@keyframes ticker {
+    0% { transform: translate3d(0, 0, 0); }
+    100% { transform: translate3d(-100%, 0, 0); }
+}
 
 .content-wrapper { flex: 1; overflow-y: auto; padding: 15px; padding-bottom: 60px; }
 .article-box { max-width: 600px; margin: 0 auto; }
