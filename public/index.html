@@ -290,7 +290,7 @@
     </div>
     
     <div class="top-header">
-        <div class="breaking-badge">INFO NEW</div>
+        <div class="breaking-badge">INFO NEW ➡️</div>
         <div class="ticker-wrapper">
             <div class="ticker-content" id="running-text-container">
                 <span class="ticker-item">Memuat berita terbaru...</span>
@@ -325,9 +325,22 @@
     });
 
     const kategoriWarna = {
+    'NASIONAL': '#1a237e',      // Biru dongker - kredibel, formal
+    'POLITIK': '#1a237e',       // Ikutin nasional, biar keliatan serius
+    'EKONOMI': '#f57c00',       // Orange - energi, uang, kontras bagus
+    'TEKNOLOGI': '#0288d1',     // Biru muda - kesan modern, digital
+    'PENDIDIKAN': '#2e7d32',    // Hijau - tumbuh, ilmu, adem
+    'HUKUM': '#6a1b9a',         // Ungu - wibawa, keadilan
+    'HIBURAN': '#d32f2f',       // Merah - tetep merah buat heboh
+    'OLAHRAGA': '#d32f2f',      // Merah juga, semangat
+    'KESEHATAN': '#009688',     // Tosca - sehat, bersih
+    'BERITA': '#d32f2f'         // Default merah
+    };
+        
+        /*const kategoriWarna = {
         'NASIONAL': '#1B5E20', 'POLITIK': '#1B5E20', 'TEKNOLOGI': '#26C6DA',
         'EKONOMI': '#D32f2f', 'OLAHRAGA': '#D32f2f', 'HIBURAN': '#D32f2f',
-        'PENDIDIKAN': '#D32f2f', 'HUKUM': '#D32f2f', 'KESEHATAN': '#D32f2f', 'BERITA': '#d32f2f'
+        'PENDIDIKAN': '#D32f2f', 'HUKUM': '#D32f2f', 'KESEHATAN': '#D32f2f', 'BERITA': '#d32f2f'*/
     };
 
     async function fetchPosts() {
