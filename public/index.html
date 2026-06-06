@@ -77,8 +77,42 @@
             max-width: 1100px; margin: 0 auto; padding: 7px 20px;
             display: flex; justify-content: space-between; align-items: center;
         }
-      .logo-img-wrapper { height: 50px; width: 50px; }
-      .logo-img-wrapper img { height: 100%; width: 100%; object-fit: contain; }
+        
+        /* Anti gerak pas logo di tap */
+        .logo-bar a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            -webkit-tap-highlight-color: transparent; /* ilangin flash biru di HP */
+            user-select: none; /* biar gak kepilih pas tap lama */
+        }
+
+        /* Kunci logo biar gak gerak sama sekali */
+        .logo-img-wrapper,
+        .logo-img-wrapper img,
+        .logo-text {
+            font-size: 24px; font-weight: 800; transform: translateZ(0);
+            backface-visibility: hidden; color: var(--warna-biru);
+            transition: none !important;
+            }
+
+        /* Fix space bawah gambar yang bikin goyang */
+        .logo-img-wrapper img {
+            display: block; /* ini penting */
+            height: 100%;
+            width: 100%;
+            object-fit: contain;
+        }
+
+        /* Pastikan link logo gak ikut efek hover card */
+        .logo-bar a:hover,
+        .logo-bar a:active {
+            transform: none !important;
+        }
+    
+      /*.logo-img-wrapper { height: 50px; width: 50px; }*/
+      /*.logo-img-wrapper img { height: 100%; width: 100%; object-fit: contain; }*/
       .logo-text { font-size: 24px; font-weight: 800; color: var(--warna-biru); }
       .logo-new { color: var(--warna-merah); }
 
