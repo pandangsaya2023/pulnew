@@ -279,14 +279,16 @@
     </div>
 
     <div class="category-nav">
-        <a href="/" class="active">Beranda</a>
-        <a href="/kategori/nasional">Nasional</a>
-        <a href="/kategori/politik">Politik</a>
-        <a href="/kategori/ekonomi">Ekonomi</a>
-        <a href="/kategori/teknologi">Teknologi</a>
-        <a href="/kategori/pendidikan">Pendidikan</a>
-        <a href="/kategori/hukum">Hukum</a>
-        <a href="/kategori/hiburan">Hiburan</a>
+        <a href="#" class="active" data-kategori="SEMUA"<Beranda</a>
+        <a href="#" data-kategori="NASIONAL">Nasional</a>
+        <a href="#" data-kategori="POLITIK">Politik</a>
+        <a href="#" data-kategori="EKONOMI">Ekonomi</a>
+        <a href="#" data-kategori="TEKNOLOGI">Teknologi</a>
+        <a href="#" data-kategori="KESEHATAN">Kesehatan</a>
+        <a href="#" data-kategori="PENDIDIKAN">Pendidikan</a>
+        <a href="#" data-kategori="HUKUM">Hukum</a>
+        <a href="#" data-kategori="OLAHRAGA">Olahraga</a>
+        <a href="#" data-kategori="HJBURAN">Hiburan</a>
     </div>
     
     <div class="top-header">
@@ -385,6 +387,16 @@
             const posts = await Promise.all(
                 urls.slice(0, 30).map(url => fetch(url).then(r => r.json()))
             );
+
+            // Event klik kategori
+            document.querySelectorAll('.category-nav a').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const kategori = link.dataset.kategori;
+                    filterBerita(kategori);
+                    window.scrollTo({ top: 0, behavior: 'smooth' }); // auto scroll ke atas
+                });
+            });
 
             posts.sort((a, b) => new Date(b.date || b.created_at) - new Date(a.date || a.created_at));
 
@@ -513,6 +525,28 @@
                 }
             }, 2000);
         }
+    }
+
+    function filterBerita(kategori) {
+        // Reset active class
+        document.querySelectorAll('.category-nav a').forEach(a => a.classList.remove('active'));
+        document.querySelector(`[data-kategori="${kategori}"]`).classList.add('active');
+    
+        // Filter data
+        let filteredPosts = allPosts;
+        if (kategori !== 'SEMUA') {
+            filteredPosts = allPosts.filter(post => 
+                (post.kategori || post.category || post.tag || '').toUpperCase() === kategori
+            );
+        }
+    
+        // Render ulang
+        const grid = document.getElementById('beritaGrid');
+        if (filteredPosts.length === 0) {
+            grid.innerHTML = '<p style="padding:20px;text-align:center;color:#999">Belum ada berita di kategori ini</p>';
+            return;
+        }
+        tampilkanBerita(filteredPosts);
     }
 
     function updateRunningText(posts) {
