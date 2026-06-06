@@ -32,27 +32,70 @@
     background: #ffffff; position: sticky; top: 0; z-index: 200;
     border-bottom: 2px solid var(--warna-merah); box-shadow: 0 2px 4px rgba(0,0,0,0.06);
  }
+       
 .logo-bar {
-    max-width: 1100px; margin: 0 auto; padding: 7px 20px;
-    display: flex; justify-content: space-between; align-items: center;
+    max-width: 1100px; 
+    margin: 0 auto; 
+    padding: 7px 20px;
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center;
 }
-.logo-img-wrapper { height: 50px; width: 50px; }
-.logo-img-wrapper img { height: 100%; width: 100%; object-fit: contain; }
-.logo-text { font-size: 24px; font-weight: 800; color: var(--warna-biru); }
-.logo-new { color: var(--warna-merah); }
 
-.btn-beranda {
-  background: #2e7d32; /* #1a237e; biru sejuk, bisa ganti #2e7d32 kalau mau hijau mint */
-  color: white;
-  padding: 4px 12px;
-  border-radius: 6px;
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 12px;
-  transition: 0.2s;
+/* Link logo - kunci total */
+.logo-bar > a {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+    outline: none; /* ilangin outline pas di tap */
 }
+
+/* Matikan semua efek pas active */
+.logo-bar > a:active,
+.logo-bar > a:focus {
+    transform: none !important;
+    opacity: 1 !important;
+}
+
+/* Wrapper logo - jangan dikasih height fixed kalau logo nya emang gede */
+.logo-img-wrapper {
+    line-height: 0; /* ilangin space bawah gambar */
+}
+
+.logo-img-wrapper img {
+    display: block; /* penting banget */
+    max-height: 45px; /* atur sesuai ukuran logo lu, SS lu keliatan ~80-100px */
+    width: auto;
+    vertical-align: middle;
+}
+
+.logo-text {
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--warna-biru);
+    line-height: 1;
+}
+
+.logo-new {
+    color: var(--warna-merah);
+}
+    
+.btn-beranda {
+    background: #2e7d32; /* #1a237e; biru sejuk, bisa ganti #2e7d32 kalau mau hijau mint */
+    color: white;
+    padding: 4px 12px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 12px;
+    transition: 0.2s;
+}
+    
 .btn-beranda:hover {
-  background: #f4f6f9; /* agak gelap pas dihover */
+    background: #f4f6f9; /* agak gelap pas dihover */
 }
 
 .content-wrapper { flex: 1; overflow-y: auto; padding: 15px; padding-bottom: 60px; }
