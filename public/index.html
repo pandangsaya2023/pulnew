@@ -37,6 +37,43 @@
             background: #ffffff; position: sticky; top: 0; z-index: 200;
             border-bottom: 3px solid var(--warna-merah); box-shadow: 0 2px 4px rgba(0,0,0,0.06);
         }
+
+        .category-nav {
+          display: flex;
+          gap: 8px;
+          overflow-x: auto;
+          padding: 10px 15px;
+          background: white;
+          border-bottom: 1px solid #eee;
+          position: sticky;
+          top: 60px; /* sesuaikan sama tinggi header lu */
+          z-index: 100;
+          scrollbar-width: none; /* ilangin scrollbar di firefox */
+        }
+        
+        .category-nav::-webkit-scrollbar {
+          display: none; /* ilangin scrollbar di chrome/safari */
+        }
+        
+        .category-nav a {
+          padding: 6px 14px;
+          background: #f4f6f9;
+          border-radius: 20px;
+          font-size: 13px;
+          font-weight: 600;
+          color: #1a237e;
+          text-decoration: none;
+          white-space: nowrap;
+          transition: 0.2s;
+        }
+        
+        .category-nav a:hover,
+        
+        .category-nav a.active {
+          background: #1a237e;
+          color: white;
+        }
+        
        .logo-bar {
             max-width: 1100px; margin: 0 auto; padding: 7px 20px;
             display: flex; justify-content: space-between; align-items: center;
@@ -241,6 +278,17 @@
         </div>
     </div>
 
+    <div class="category-nav">
+        <a href="/" class="active">Beranda</a>
+        <a href="/kategori/nasional">Nasional</a>
+        <a href="/kategori/politik">Politik</a>
+        <a href="/kategori/ekonomi">Ekonomi</a>
+        <a href="/kategori/teknologi">Teknologi</a>
+        <a href="/kategori/pendidikan">Pendidikan</a>
+        <a href="/kategori/hukum">Hukum</a>
+        <a href="/kategori/hiburan">Hiburan</a>
+    </div>
+    
     <div class="top-header">
         <div class="breaking-badge">INFO NEW</div>
         <div class="ticker-wrapper">
