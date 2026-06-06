@@ -39,82 +39,89 @@
         }
 
        .category-nav {
-          display: flex;
-          gap: 8px;
-          overflow-x: auto;
-          padding: 5px 10px;
-          background: white;
-          border-bottom: 1px solid #eee;
-          position: sticky;
-          top: 55px;
-          z-index: 100;
-          scrollbar-width: none;
+            display: flex;
+            gap: 8px;
+            overflow-x: auto;
+            padding: 5px 10px;
+            background: white;
+            border-bottom: 1px solid #eee;
+            position: sticky;
+            top: 55px;
+            z-index: 100;
+            scrollbar-width: none;
         }
 
        .category-nav::-webkit-scrollbar {
-          display: none;
+            display: none;
         }
 
        .category-nav a {
-          padding: 4px 9px;
-          background: #1a237e;
-          border-radius: 10px;
-          font-size: 10px;
-          font-weight: 600;
-          color: white;
-          text-decoration: none;
-          white-space: nowrap;
-          transition: 0.2s;
+            padding: 4px 9px;
+            background: #1a237e;
+            border-radius: 10px;
+            font-size: 10px;
+            font-weight: 600;
+            color: white;
+            text-decoration: none;
+            white-space: nowrap;
+            transition: 0.2s;
         }
 
        .category-nav a:hover,
        .category-nav a.active {
-          background: #d32f2f;
-          color: white;
-        }
-
-      .logo-bar {
-            max-width: 1100px; margin: 0 auto; padding: 7px 20px;
-            display: flex; justify-content: space-between; align-items: center;
+            background: #d32f2f;
+            color: white;
         }
         
-        /* Anti gerak pas logo di tap */
-        .logo-bar a {
-            display: flex;
+        .logo-bar {
+            max-width: 1100px; 
+            margin: 0 auto; 
+            padding: 7px 20px;
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center;
+        }
+
+        /* Link logo - kunci total */
+        .logo-bar > a {
+            display: inline-flex;
             align-items: center;
             gap: 10px;
             text-decoration: none;
-            -webkit-tap-highlight-color: transparent; /* ilangin flash biru di HP */
-            user-select: none; /* biar gak kepilih pas tap lama */
+            -webkit-tap-highlight-color: transparent;
+            user-select: none;
+            outline: none; /* ilangin outline pas di tap */
         }
 
-        /* Kunci logo biar gak gerak sama sekali */
-        .logo-img-wrapper,
-        .logo-img-wrapper img,
-        .logo-text {
-            transform: translateZ(0);
-            backface-visibility: hidden;
-            transition: none !important;
-            }
-
-        /* Fix space bawah gambar yang bikin goyang */
-        .logo-img-wrapper img {
-            display: block; /* ini penting */
-            height: 100%;
-            width: 100%;
-            object-fit: contain;
-        }
-
-        /* Pastikan link logo gak ikut efek hover card */
-        .logo-bar a:hover,
-        .logo-bar a:active {
+        /* Matikan semua efek pas active */
+        .logo-bar > a:active,
+        .logo-bar > a:focus {
             transform: none !important;
+            opacity: 1 !important;
         }
-    
-      /*.logo-img-wrapper { height: 50px; width: 50px; }*/
-      /*.logo-img-wrapper img { height: 100%; width: 100%; object-fit: contain; }*/
-      /*.logo-text { font-size: 24px; font-weight: 800; color: var(--warna-biru); }*/
-      /*.logo-new { color: var(--warna-merah); }*/
+
+        /* Wrapper logo - jangan dikasih height fixed kalau logo nya emang gede */
+        .logo-img-wrapper {
+            line-height: 0; /* ilangin space bawah gambar */
+        }
+
+        .logo-img-wrapper img {
+            display: block; /* penting banget */
+            max-height: 80px; /* atur sesuai ukuran logo lu, SS lu keliatan ~80-100px */
+            width: auto;
+            vertical-align: middle;
+        }
+
+        .logo-text {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--warna-biru);
+            line-height: 1;
+        }
+
+        .logo-new {
+            color: var(--warna-merah);
+        }
 
       .top-header {
             background: var(--warna-biru); color: white; padding: 4px 12px;
