@@ -345,6 +345,7 @@
         'PENDIDIKAN': '#D32f2f', 'HUKUM': '#D32f2f', 'KESEHATAN': '#D32f2f', 'BERITA': '#d32f2f'
     };*/
 
+    let allPosts = []; // disini untuk menyimpan semua berita
     async function fetchPosts() {
         const maxRetry = 3;
         for (let i = 0; i < maxRetry; i++) {
@@ -393,61 +394,66 @@
                 link.addEventListener('click', (e) => {
                     e.preventDefault();
                     const kategori = link.dataset.kategori;
-                    filterBerita(kategori);
-                    window.scrollTo({ top: 0, behavior: 'smooth' }); // auto scroll ke atas
+                    filterBerita(kategori, true);
+                    //window.scrollTo({ top: 0, behavior: 'smooth' }); // auto scroll ke atas//
                 });
             });
 
+            allPosts = posts; // simpen data
             posts.sort((a, b) => new Date(b.date || b.created_at) - new Date(a.date || a.created_at));
 
-            tampilkanBerita(posts);
-            updateRunningText(posts);
+            // Cek URL pas awal load
+            const params = new URLSearchParams(window.location.search);
+            const kategoriURL = params.get('kategori');
+            if (kategoriURL) {
+                filterBerita(kategoriURL.toUpperCase(), false);
+            } else {
+                filterBerita('SEMUA', false);
+            }
 
+            updateRunningText(posts);
         } catch (err) {
             console.error(err);
             container.innerHTML = '<div style="text-align:center; padding:40px; color:#666;">Belum ada berita saat ini<br><small>Silakan refresh beberapa saat lagi</small></div>';
         }
     }
 
-    function tampilkanBerita(posts) {
+    function filterBerita(kategori, updateURL = true) {
+        // 1. Set active class
+        document.querySelectorAll('.category-nav a').forEach(a => a.classList.remove('active'));
+        const activeLink = document.querySelector(`[data-kategori="${kategori}"]`);
+        if (activeLink) activeLink.classList.add('active');
+    
+        // 2. Filter data
+        let filteredPosts = allPosts;
+        if (kategori !== 'SEMUA') {
+            filteredPosts = allPosts.filter(post => 
+                (post.kategori || post.category || post.tag || '').toUpperCase() === kategori
+            );
+        }
+    
+        // 3. Update judul tab
+        const namaKategori = kategori === 'SEMUA' ? 'Beranda' : 
+            kategori.charAt(0) + kategori.slice(1).toLowerCase();
+        document.title = `Berita ${namaKategori} - PULNEW.COM`;
+    
+        // 4. Update URL
+        if (updateURL) {
+            const url = kategori === 'SEMUA' 
+                ? window.location.pathname 
+                : `?kategori=${kategori.toLowerCase()}`;
+            history.pushState({kategori}, '', url);
+        }
+    
+        // 5. Render ulang - FIX: pake news-container bukan beritaGrid
         const container = document.getElementById('news-container');
-        if (posts.length === 0) {
-            container.innerHTML = '<div style="text-align:center; padding:40px; color:#666;">Belum ada berita</div>';
+        if (filteredPosts.length === 0) {
+            container.innerHTML = '<div style="text-align:center; padding:40px; color:#666;">Belum ada berita di kategori ini</div>';
             return;
         }
-
-        let html = '';
-
-        const hero = posts[0];
-        const kategoriHero = hero.kategori || hero.category || hero.tag || 'BERITA';
-        const warnaHero = kategoriWarna[kategoriHero.toUpperCase()] || '#d32f2f';
-        html += `
-            <a href="/berita.html?slug=${hero.slug}" class="news-hero">
-                <img src="${hero.image}" alt="${hero.title}" loading="lazy">
-                <div class="hero-content">
-                    <span class="badge" style="background: ${warnaHero}">${kategoriHero}</span>
-                    <h2>${hero.title}</h2>
-                </div>
-            </a>
-        `;
-
-        if  (posts.length > 1) {
-            html += '<div class="news-grid">';
-            posts.slice(1, 5).forEach(post => {
-                const kategori = post.kategori || post.category || post.tag || 'BERITA';
-                const warna = kategoriWarna[kategori.toUpperCase()] || '#d32f2f';
-                html += `
-                    <a href="/berita.html?slug=${post.slug}" class="news-card">
-                        <img src="${post.image}" alt="${post.title}" loading="lazy">
-                        <div class="card-content">
-                            <span class="badge" style="background: ${warna}">${kategori}</span>
-                            <h3>${post.title}</h3>
-                        </div>
-                    </a>
-                `;
-            });
-            html += '</div>';
-        }
+        tampilkanBerita(filteredPosts);
+       .window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
 
         // Iklan Tengah Beranda
         html += `
