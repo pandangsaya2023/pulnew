@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PULNEW.COM - Portal Berita Terpercaya</title>
+    <style>
+        :root {
+            --warna-biru: #1e3a8a;
+            --warna-merah: #d32f2f;
+            --warna-hitam: #111827;
+            --warna-abu: #f3f4f6;
+            --warna-putih: #ffffff;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+            background-color: var(--warna-abu);
+            color: var(--warna-hitam);
+            line-height: 1.6;
+        }
+        .header { background: var(--warna-putih); box-shadow: 0 2px 4px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 100; }
+        .logo-bar { max-width: 1100px; margin: 0 auto; padding: 7px 20px; display: flex; justify-content: space-between; align-items: center; }
+        
+        /* Link logo - anti gerak */
+        .logo-bar > a {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            -webkit-tap-highlight-color: transparent;
+            user-select: none;
+            outline: none;
+        }
+        .logo-bar > a:active, .logo-bar > a:focus { transform: none !important; opacity: 1 !important; }
+        
+        .logo-img-wrapper { line-height: 0; }
+        .logo-img-wrapper img {
+            display: block;
+            max-height: 45px; /* ukuran logo, ganti sesuai selera */
+            width: auto;
+            vertical-align: middle;
+        }
+        .logo-text { font-size: 24px; font-weight: 800; color: var(--warna-biru); line-height: 1; }
+        .logo-new { color: var(--warna-merah); }
+        .date-display { font-size: 14px; color: #6b7280; font-weight: 500; }
+        .nav-bar { background: var(--warna-biru); }
+        .nav-container { max-width: 1100px; margin: 0 auto; padding: 0 20px; display: flex; gap: 5px; overflow-x: auto; }
+        .nav-link { color: var(--warna-putih); text-decoration: none; padding: 12px 16px; font-weight: 600; font-size: 14px; white-space: nowrap; transition: background 0.2s; }
+        .nav-link:hover { background: rgba(255,255,255,0.1); }
+        .nav-link.active { background: var(--warna-merah); }
+        .ticker { background: var(--warna-hitam); color: var(--warna-putih); padding: 8px 0; overflow: hidden; }
+        .ticker-content { max-width: 1100px; margin: 0 auto; padding: 0 20px; display: flex; align-items: center; gap: 15px; }
+        .ticker-label { background: var(--warna-merah); padding: 4px 10px; border-radius: 4px; font-weight: 700; font-size: 12px; flex-shrink: 0; }
+        .ticker-text { flex: 1; overflow: hidden; white-space: nowrap; font-size: 14px; }
+        .ad-banner { max-width: 1100px; margin: 15px auto; padding: 0 20px; }
+        .ad-placeholder { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; text-align: center; padding: 20px; border-radius: 8px; font-weight: 600; }
+        .main-container { max-width: 1100px; margin: 20px auto; padding: 0 20px; }
+        .news-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
+        .news-card { background: var(--warna-putih); border-radius: 10px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.08); transition: transform 0.2s, box-shadow 0.2s; text-decoration: none; color: inherit; display: block; }
+        .news-card:hover { transform: translateY(-3px); box-shadow: 0 4px 12px rgba(0,0,0,0.12); }
+        .news-card img { width: 100%; height: 180px; object-fit: cover; display: block; }
+        .card-content { padding: 15px; }
+        .badge { display: inline-block; padding: 4px 10px; border-radius: 4px; font-size: 11px; font-weight: 700; color: white; text-transform: uppercase; margin-bottom: 8px; }
+        .news-card h3 { font-size: 16px; line-height: 1.4; margin-bottom: 6px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+        .news-date { font-size: 11px; color: #999; margin-top: 6px; }
+        
+        /* Section YouTube */
+        .yt-section { max-width: 1100px; margin: 30px auto; padding: 0 20px; }
+        .yt-header {
+            display: flex; justify-content: space-between; align-items: center;
+            margin-bottom: 15px; border-bottom: 2px solid var(--warna-merah); padding-bottom: 8px;
+        }
+        .yt-header h2 { font-size: 20px; color: var(--warna-biru); margin: 0; }
+        .yt-header a { font-size: 13px; color: var(--warna-merah); text-decoration: none; font-weight: 600; }
+        .yt-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 15px; }
+        .yt-card {
+            background: white; border-radius: 10px; overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08); transition: transform 0.2s;
+            text-decoration: none; color: inherit; display: block;
+        }
+        .yt-card:hover { transform: translateY(-3px); }
+        .yt-thumb { position: relative; padding-top: 56.25%; background: #000; }
+        .yt-thumb img {
+            position: absolute; top: 0; left: 0;
+            width: 100%; height: 100%; object-fit: cover;
+        }
+        .yt-play {
+            position: absolute; top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px; height: 60px;
+            background: rgba(211, 47, 47, 0.9);
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            color: white; font-size: 24px; pointer-events: none;
+        }
+        .yt-title {
+            padding: 12px; font-size: 14px; font-weight: 600; line-height: 1.4;
+            display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+        }
+        
+        .footer { background: var(--warna-hitam); color: var(--warna-putih); text-align: center; padding: 30px 20px; margin-top: 40px; }
+        .footer p { font-size: 14px; opacity: 0.8; }
+        
+        @media (max-width: 768px) {
+            .logo-text { font-size: 20px; }
+            .date-display { font-size: 12px; }
+            .news-grid { grid-template-columns: 1fr; gap: 15px; }
+            .yt-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+            .yt-header h2 { font-size: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="logo-bar">
+            <a href="https://pulnew.pages.dev/">
+                <div class="logo-img-wrapper">
+                    <img src="https://pulnew.pages.dev/logopulnew.png" alt="Logo PULNEW">
+                </div>
+                <div class="logo-text">PUL<span class="logo-new">NEW</span>.COM</div>
+            </a>
+            <div class="date-display" id="currentDate"></div>
+        </div>
+        <nav class="nav-bar">
+            <div class="nav-container">
+                <a href="/" class="nav-link active">Beranda</a>
+                <a href="/nasional" class="nav-link">Nasional</a>
+                <a href="/politik" class="nav-link">Politik</a>
+                <a href="/ekonomi" class="nav-link">Ekonomi</a>
+                <a href="/teknologi" class="nav-link">Teknologi</a>
+                <a href="/kesehatan" class="nav-link">Kesehatan</a>
+                <a href="/olahraga" class="nav-link">Olahraga</a>
+                <a href="/hiburan" class="nav-link">Hiburan</a>
+            </div>
+        </nav>
+    </header>
+
+    <div class="ticker">
+        <div class="ticker-content">
+            <span class="ticker-label">INFO NEW</span>
+            <div class="ticker-text" id="tickerText">Memuat berita terbaru...</div>
+        </div>
+    </div>
+
+    <div class="ad-banner">
+        <div class="ad-placeholder">Iklan Banner 728x90</div>
+    </div>
+
+    <main class="main-container">
+        <div class="news-grid" id="mainGrid"></div>
+    </main>
+
+    <!-- Section Video YouTube -->
+    <section class="yt-section">
+        <div class="yt-header">
+            <h2>📺 Video Pilihan</h2>
+            <a href="https://youtube.com/@PULNEW" target="_blank" rel="noopener">Lihat Semua →</a>
+        </div>
+        <div class="yt-grid" id="ytGrid"></div>
+    </section>
+
+    <footer class="footer">
+        <p>&copy; 2026 PULNEW.COM - Portal Berita Terpercaya</p>
+    </footer>
+
+    <script>
+        // Tampilkan tanggal
+        document.getElementById('currentDate').textContent = new Date().toLocaleDateString('id-ID', {
+            weekday: 'long', day: 'numeric', month: 'short', year: 'numeric'
+        });
+
+        // Format tanggal relatif
+        function formatTanggal(tanggal) {
+            const now = new Date();
+            const date = new Date(tanggal);
+            const diffMs = now - date;
+            const diffMenit = Math.floor(diffMs / 60000);
+            const diffJam = Math.floor(diffMs / 3600000);
+            const diffHari = Math.floor(diffMs / 86400000);
+
+            if (diffMenit < 1) return 'Baru saja';
+            if (diffMenit < 60) return `${diffMenit} menit lalu`;
+            if (diffJam < 24) return `${diffJam} jam lalu`;
+            if (diffHari < 7) return `${diffHari} hari lalu`;
+            return date.toLocaleDateString('id-ID', {day: 'numeric', month: 'short'});
+        }
+
+        // Warna kategori
+        function getWarnaKategori(kategori) {
+            const warna = {
+                'nasional': '#1e3a8a', 'politik': '#d32f2f', 'ekonomi': '#059669',
+                'teknologi': '#7c3aed', 'kesehatan': '#dc2626', 'olahraga': '#ea580c',
+                'hiburan': '#c2410c', 'pendidikan': '#0891b2'
+            };
+            return warna[kategori.toLowerCase()] || '#6b7280';
+        }
+
+        // Ambil data berita dari JSON
+        async function tampilkanBerita() {
+            try {
+                const res = await fetch('/api/posts.json');
+                const posts = await res.json();
+                
+                if (!posts || posts.length === 0) {
+                    document.getElementById('mainGrid').innerHTML = '<p style="grid-column:1/-1;text-align:center;padding:40px;">Belum ada berita.</p>';
+                    return;
+                }
+
+                let html = '';
+                posts.slice(0, 12).forEach(post => {
+                    const kategori = post.category || 'Umum';
+                    const warna = getWarnaKategori(kategori);
+                    const tanggal = formatTanggal(post.date || post.created_at || Date.now());
+                    
+                    html += `
+                        <a href="/berita.html?slug=${post.slug}" class="news-card">
+                            <img src="${post.image}" alt="${post.title}" loading="lazy">
+                            <div class="card-content">
+                                <span class="badge" style="background:${warna}">${kategori}</span>
+                                <h3>${post.title}</h3>
+                                <div class="news-date">${tanggal}</div>
+                            </div>
+                        </a>
+                    `;
+                });
+                document.getElementById('mainGrid').innerHTML = html;
+
+                // Ticker
+                const tickerText = posts.slice(0, 5).map(p => p.title).join(' ••• ');
+                document.getElementById('tickerText').textContent = tickerText || 'Selamat datang di PULNEW.COM';
+
+            } catch (e) {
+                console.error('Gagal load berita:', e);
+                document.getElementById('mainGrid').innerHTML = '<p style="grid-column:1/-1;text-align:center;padding:40px;">Gagal memuat berita.</p>';
+            }
+        }
+
+        // Data video YouTube - GANTI DENGAN ID VIDEO LU
+        const ytVideos = [
+            {
+                id: 'dQw4w9WgXcQ', // ganti dengan ID video YouTube PULNEW
+                title: 'Update Terbaru Rekayasa Lalin Konser EXO di GBK'
+            },
+            {
+                id: '9bZkp7q19f0', // ganti dengan ID video YouTube PULNEW
+                title: 'Fakta Menarik di Balik Konser Raisa yang Sold Out'
+            },
+            {
+                id: 'kJQP7kiw5Fk', // ganti dengan ID video YouTube PULNEW
+                title: 'Analisis Ekonomi Indonesia Triwulan 3 2026'
+            },
+            {
+                id: 'L0MK7qz13bU', // ganti dengan ID video YouTube PULNEW
+                title: 'Tips Kesehatan Menghadapi Musim Hujan'
+            }
+        ];
+
+        function tampilkanYT() {
+            const grid = document.getElementById('ytGrid');
+            if (!grid) return;
+            
+            grid.innerHTML = ytVideos.map(v => `
+                <a href="https://www.youtube.com/watch?v=${v.id}" target="_blank" rel="noopener" class="yt-card">
+                    <div class="yt-thumb">
+                        <img src="https://img.youtube.com/vi/${v.id}/mqdefault.jpg" loading="lazy" alt="${v.title}">
+                        <div class="yt-play">▶</div>
+                    </div>
+                    <div class="yt-title">${v.title}</div>
+                </a>
+            `).join('');
+        }
+
+        // Jalankan saat halaman load
+        document.addEventListener('DOMContentLoaded', () => {
+            tampilkanBerita();
+            tampilkanYT();
+        });
+    </script>
+</body>
+</html>
