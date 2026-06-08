@@ -162,10 +162,11 @@
 
       .video-container {
           position: relative;
-          padding-bottom: 56.25%; /* Rasio 16:9 */
-          height: 0;
+          padding-bottom: 0 !important; /*56.25%; *//* Rasio 16:9 */
+          height: auto !important; /* 0;*/
+          object-fit: cover;
           overflow: hidden;
-          max-width: 100%;
+          max-width: 100% !important;
       }
 
       .video-container iframe {
