@@ -586,11 +586,7 @@
         `;
 
         container.innerHTML = html;
-        <div class="video-container">
-            <iframe src="https://youtube.com/embed/nl1TunGdWo8?si=-Vtrd9cOtvRG83nB" allowfullscreen></iframe>
-            <!--catatan ==>> ini video pemko medan rico waas idul adha 2026-->
-        </div>
-
+        
         const carousel = document.getElementById('main-carousel');
         if (carousel) {
             let scrollAmount = 0; let userScrolling = false;
@@ -647,6 +643,11 @@
         tampilkanBerita(filteredPosts);
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }
+
+    <div class="video-container">
+        <iframe src="https://youtube.com/embed/nl1TunGdWo8?si=-Vtrd9cOtvRG83nB" allowfullscreen></iframe>
+        <!--catatan ==>> ini video pemko medan rico waas idul adha 2026-->
+    </div>
 
     function updateRunningText(posts) {
         const containerTop = document.getElementById('running-text-container');
