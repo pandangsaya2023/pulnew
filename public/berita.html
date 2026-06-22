@@ -105,7 +105,11 @@
 .article-body { font-size: 16px; line-height: 1.7; color: #333; text-align: left; word-break: break-word; }
 .article-body p { margin-top: 5px; margin-bottom: 15px; }
 
-.related-section { margin-top: 30px; padding-top: 20px; border-top: 2px solid #eee; }
+/*.related-section { margin-top: 30px; padding-top: 20px; border-top: 2px solid #eee; }*/
+.section-title {
+    font-size: 18px; font-weight: 800; color: var(--warna-biru);
+    margin: 22px 0 15px 0; padding-left: 3px; border-left: 4px solid var(--warna-merah);
+}
 .related-title { font-size: 18px; font-weight: 800; color: #1a237e; margin-bottom: 12px; }
 .related-item { display: flex; gap: 12px; padding: 10px 0; border-bottom: 1px solid #f0f0f0; text-decoration: none; color: inherit; }
 .related-item img { width: 80px; height: 60px; object-fit: cover; border-radius: 6px; flex-shrink: 0; }
@@ -254,7 +258,7 @@ async function muatHalamanBerita() {
         
         const related = posts.filter(p => !postUrl.includes(p.slug || p.title.toLowerCase().replace(/\s+/g, '-'))).slice(0, 5);
         if (related.length > 0) {
-            html += `<div class="related-section"><div class="related-title">Berita Lainnya</div>`;
+            html += `<div class="section-title"><div class="related-title">Berita Lainnya</div>`;
             related.forEach(r => {
                 html += `
                     <a href="/berita.html?slug=${r.slug}" class="related-item">
