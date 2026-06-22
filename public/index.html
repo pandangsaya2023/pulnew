@@ -35,13 +35,28 @@
         html, body { background: var(--warna-bg); color: #333; min-height: 100vh; }
         h1, h2, h3, h4,.logo-text { font-family: 'Poppins', sans-serif; }
 
-      .header-container {
-            background: #ffffff; position: sticky; top: 0; z-index: 200;
+        /* PLAYER STICKY - INI KUNCINYA */
+        #audio-player {
+            position: sticky;
+            top: 0;
+            z-index: 9999;
+            background: #000;
+            border-bottom: 2px solid var(--warna-merah);
+        }
+        #audio-player iframe {
+            width: 100%;
+            height: 200px;
+            border: none;
+            display: block;
+        }
+
+     .header-container {
+            background: #ffffff; position: sticky; top: 200px; z-index: 200;
             border-bottom: 2px solid var(--warna-merah);
             box-shadow: 0 2px 4px rgba(0,0,0,0.06);
         }
 
-       .category-nav {
+      .category-nav {
             display: flex;
             gap: 8px;
             overflow-x: auto;
@@ -49,16 +64,16 @@
             background: var(--warna-biru);
             border-bottom: 1px solid #eee;
             position: sticky;
-            top: 55px;
+            top: 255px;
             z-index: 100;
             scrollbar-width: none;
         }
 
-       .category-nav::-webkit-scrollbar {
+      .category-nav::-webkit-scrollbar {
             display: none;
         }
 
-       .category-nav a {
+      .category-nav a {
             padding: 4.5px 9px;
             background: #1a237e;
             border-radius: 10px;
@@ -70,81 +85,78 @@
             transition: 0.2s;
             line-height: 1;
             display: flex;
-            /*align-item: center;*/
             justify-content: center;
+            cursor: pointer;
         }
 
-       .category-nav a:hover,
-       .category-nav a.active {
+      .category-nav a:hover,
+      .category-nav a.active {
             background: #d32f2f;
             color: white;
         }
-        
-        .logo-bar {
-            max-width: 1100px; 
-            margin: 0 auto; 
+
+       .logo-bar {
+            max-width: 1100px;
+            margin: 0 auto;
             padding: 7px 20px;
-            display: flex; 
-            justify-content: space-between; 
+            display: flex;
+            justify-content: space-between;
             align-items: center;
         }
 
-        /* Link logo - kunci total */
-        .logo-bar > a {
+       .logo-bar > a {
             display: inline-flex;
             align-items: center;
             gap: 10px;
             text-decoration: none;
             -webkit-tap-highlight-color: transparent;
             user-select: none;
-            outline: none; /* ilangin outline pas di tap */
+            outline: none;
         }
 
-        /* Matikan semua efek pas active */
-        .logo-bar > a:active,
-        .logo-bar > a:focus {
-            transform: none !important;
-            opacity: 1 !important;
+       .logo-bar > a:active,
+       .logo-bar > a:focus {
+            transform: none!important;
+            opacity: 1!important;
         }
 
-        /* Wrapper logo - jangan dikasih height fixed kalau logo nya emang gede */
-        .logo-img-wrapper {
-            line-height: 0; /* ilangin space bawah gambar */
+       .logo-img-wrapper {
+            line-height: 0;
         }
 
-        .logo-img-wrapper img {
-            display: block; /* penting banget */
-            max-height: 45px; /* atur sesuai ukuran logo lu, SS lu keliatan ~80-100px */
+       .logo-img-wrapper img {
+            display: block;
+            max-height: 45px;
             width: auto;
             vertical-align: middle;
         }
 
-        .logo-text {
+       .logo-text {
             font-size: 24px;
             font-weight: 800;
             color: var(--warna-biru);
             line-height: 1;
         }
 
-        .logo-new {
+       .logo-new {
             color: var(--warna-merah);
         }
 
-      .top-header {
+     .top-header {
             background: var(--warna-biru); color: white; padding: 6px 12px;
             display: flex; align-items: center; gap: 10px; font-size: 11px;
-            position: sticky; top: 60px; z-index: 199;
+            position: sticky; top: 310px; z-index: 199;
         }
-      .breaking-badge {
+     .breaking-badge {
             background: var(--warna-biru); color: white; padding: 0 8px;
             border-radius: 8px; font-weight: 700; font-size: 10px; flex-shrink: 0;
         }
-      .ticker-wrapper { overflow: hidden; width: 100%; }
-      .ticker-content {
+     .ticker-wrapper { overflow: hidden; width: 100%; }
+     .ticker-content {
             display: inline-block; white-space: nowrap; padding-left: 100%;
             animation: ticker 120s linear infinite;
         }
-      .ticker-item {
+     .ticker-item {
             display: inline-block; padding-right: 40px; font-weight: 500;
             color: white; text-decoration: none;
         }
@@ -153,114 +165,96 @@
             100% { transform: translate3d(-100%, 0, 0); }
         }
 
-      .container { max-width: 1100px; width: 100%; margin: 0 auto; padding: var(--jarak-utama) 10px; }
-      .ads-placeholder {
+     .container { max-width: 1100px; width: 100%; margin: 0 auto; padding: var(--jarak-utama) 10px; }
+     .ads-placeholder {
             display: flex; justify-content: center; align-items: center; width: 100%;
             margin: 8px auto; padding: 10px; background: #f9f9f9;
         }
-      .ads-placeholder img { max-width: 100%; height: auto; }
+     .ads-placeholder img { max-width: 100%; height: auto; }
 
-      .video-container {
-          position: relative;
-          padding-bottom: 56.25%; /* Rasio 16:9 */
-          height: 0;
-          overflow: hidden;
-          max-width: 100%;
-      }
-
-      .video-container iframe {
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100% !important;
-          height: 100%;
-          display: block;
-          border: none;
-      }
-
-      .news-hero {
+     .news-hero {
             position: relative; border-radius: 12px; overflow: hidden;
             margin-bottom: var(--jarak-utama); box-shadow: 0 4px 12px rgba(0,0,0,0.1);
             text-decoration: none; display: block;
         }
-      .news-hero img { width: 100%; height: 240px; object-fit: cover; display: block; }
-      .hero-content {
+     .news-hero img { width: 100%; height: 240px; object-fit: cover; display: block; }
+     .hero-content {
             position: absolute; bottom: 0; left: 0; right: 0; padding: 20px 16px;
             background: linear-gradient(transparent, rgba(0,0,0,0.85)); color: white;
         }
-      .news-hero h2 { font-size: 15px; font-weight: 700; line-height: 1.3; color: white; padding: 4px 14px 8px 14px; }
-      .badge {
+     .news-hero h2 { font-size: 15px; font-weight: 700; line-height: 1.3; color: white; padding: 4px 14px 8px 14px; }
+     .badge {
             display: inline-block; padding: 3px 8px; border-radius: 6px; font-size: 11px;
             font-weight: 700; margin-bottom: 10px; background: var(--warna-merah); color: white;
         }
 
-      .news-grid {
+     .news-grid {
             display: grid; grid-template-columns: 1fr 1fr; gap: var(--jarak-utama);
             margin-bottom: var(--jarak-utama);
         }
-      .news-card {
+     .news-card {
             background: white; display: flex; flex-direction: column; text-decoration: none;
             color: inherit; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.08);
             transition: transform 0.2s;
         }
-      .news-card:hover { transform: translateY(-3px); }
-      .news-card img { width: 100%; height: 180px; object-fit: cover; }
-      .card-content { padding: 12px 14px 16px 14px; }
-      .news-card h3 {
+     .news-card:hover { transform: translateY(-3px); }
+     .news-card img { width: 100%; height: 180px; object-fit: cover; }
+     .card-content { padding: 12px 14px 16px 14px; }
+     .news-card h3 {
             font-size: 15px; font-weight: 700; line-height: 1.4; color: #111; transition: 0.2s;
             padding: 2px 14px 8px 14px; display: -webkit-box; -webkit-line-clamp: 3;
             -webkit-box-orient: vertical; overflow: hidden;
         }
 
-      .section-title {
+     .section-title {
             font-size: 18px; font-weight: 800; color: var(--warna-biru);
             margin: 22px 0 15px 0; padding-left: 3px; border-left: 4px solid var(--warna-merah);
         }
 
-      .trending-list {
+     .trending-list {
             background: white; border-radius: 12px; padding: 12px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.08); margin-bottom: var(--jarak-utama);
         }
-      .trending-item {
+     .trending-item {
             display: flex; gap: 12px; padding: 12px 8px; border-bottom: 1px solid #eee;
             text-decoration: none; color: inherit;
         }
-      .trending-number { font-size: 28px; font-weight: 800; color: var(--warna-merah); min-width: 32px; }
-      .trending-content h4 {
+     .trending-number { font-size: 28px; font-weight: 800; color: var(--warna-merah); min-width: 32px; }
+     .trending-content h4 {
             font-size: 15px; font-weight: 700; line-height: 1.4;
             display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
         }
 
-       .latest-carousel { position: relative; margin: 1px 0px 1px 0px; }
+      .latest-carousel { position: relative; margin: 1px 0px 1px 0px; }
 
-      .carousel-scroll {
+     .carousel-scroll {
             display: flex; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory;
             -webkit-overflow-scrolling: touch; padding-bottom: 8px; scrollbar-width: none;
             scroll-behavior: smooth;
         }
-      .carousel-scroll::-webkit-scrollbar { display: none; }
-      .carousel-item {
+     .carousel-scroll::-webkit-scrollbar { display: none; }
+     .carousel-item {
             flex: 0 0 80%; max-width: 500px; scroll-snap-align: start; background: white;
             border-radius: 12px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.08);
             text-decoration: none; color: inherit; display: flex; flex-direction: row;
             gap: 12px; padding: 10px;
         }
-      .carousel-item img {
+     .carousel-item img {
             width: 40%; height: 120px; object-fit: cover; flex-shrink: 0; border-radius: 8px;
         }
-      .carousel-item.card-content {
+     .carousel-item.card-content {
             padding: 0px; display: flex; flex-direction: column; justify-content: center;
             flex: 1; gap: 6px;
         }
-      .carousel-item h4 {
+     .carousel-item h4 {
             font-size: 15px; font-weight: 700; line-height: 1.4; color: #111;
             display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
         }
 
         @media (min-width: 768px) {
-        .news-hero img { height: 320px; }
-        .news-hero h2 { font-size: 26px; }
-        .carousel-item { flex: 0 0 60%; }
+       .news-hero img { height: 320px; }
+       .news-hero h2 { font-size: 26px; }
+       .carousel-item { flex: 0 0 60%; }
         }
         @media (max-width: 600px) {.news-grid { grid-template-columns: 1fr; } }
 
@@ -268,41 +262,41 @@
             background: #101726; color: #b0b8c4; padding: 12px 20px 20px 20px!important; font-size: 13px;
             border-top: 4px solid var(--warna-biru); margin-top: 0px!important;
         }
-      .footer-content { max-width: 1100px; margin: 0 auto; text-align: center; }
-      .footer-logo { font-size: 20px; font-weight: 800; color: white; margin-bottom: 4px!important; }
-      .footer-logo span { color: var(--warna-merah); }
-      
-      .footer-bottom {
+     .footer-content { max-width: 1100px; margin: 0 auto; text-align: center; }
+     .footer-logo { font-size: 20px; font-weight: 800; color: white; margin-bottom: 4px!important; }
+     .footer-logo span { color: var(--warna-merah); }
+
+     .footer-bottom {
             border-top: 1px solid #1e293b; padding-top: 8px; margin-top: 10px;
             font-size: 11px; color: #64748b;
        }
 
-       .footer-link { color: #64748b; font-size: 10.5px;  text-decoration: none; margin: 0 4px; }
-        
-       .ad-slot {
+      .footer-link { color: #64748b; font-size: 10.5px; text-decoration: none; margin: 0 4px; }
+
+      .ad-slot {
             margin: 10px auto;
             padding: 0!important;
             text-align: center;
        }
 
-       .ad-slot img {
+      .ad-slot img {
             width: 100%;
             height: auto;
             display: block;
             border-radius: 8px;
         }
-        
-       .ad-banner-top {
+
+      .ad-banner-top {
             max-width: 768px;
         }
 
-       .ad-slot.ad-banner-bottom {
+      .ad-slot.ad-banner-bottom {
             margin: 5px auto 0px auto!important;
             padding: 0px!important;
             max-width: 768px;
         }
 
-       .ad-slot.ad-banner-bottom img {
+      .ad-slot.ad-banner-bottom img {
             width: 100%;
             height: auto;
             aspect-ratio: 768 / 180;
@@ -312,7 +306,7 @@
             background: #f0f0f0;
         }
 
-       .ad-slot.ad-banner-bottom:has(img[src=""], img:not([src])) {
+      .ad-slot.ad-banner-bottom:has(img[src=""], img:not([src])) {
             display: none!important;
             margin: 0px!important;
         }
@@ -321,11 +315,11 @@
             margin-top: 5px!important;
         }
 
-       .ad-inarticle {
+      .ad-inarticle {
             max-width: 600px;
         }
         @media (max-width: 768px) {
-           .ad-banner-top,.ad-banner-bottom {
+          .ad-banner-top,.ad-banner-bottom {
                 max-width: 100%;
             }
         }
@@ -333,9 +327,17 @@
 </head>
 <body>
 
+    <!-- PLAYER YOUTUBE STICKY - GAK IKUT KEHAPUS PAS GANTI MENU -->
+    <div id="audio-player">
+        <iframe id="ytplayer"
+            src="https://youtube.com/embed/bKVkOR0Kur8?si=Mo_uMnk0gbI6IeIZ?enablejsapi=1&autoplay=1&mute=1&playsinline=1&rel=0"
+            allow="autoplay; encrypted-media" allowfullscreen>
+        </iframe>
+    </div>
+
     <div class="header-container">
         <div class="logo-bar">
-            <a href="https://pulnew.pages.dev/" style="display: flex; align-items: center; gap: 10px; text-decoration: none;">
+            <a href="#" class="menu-link" data-kategori="SEMUA" style="display: flex; align-items: center; gap: 10px; text-decoration: none;">
                 <div class="logo-img-wrapper">
                     <img src="https://pulnew.pages.dev/logopulnew.png" alt="Logo">
                 </div>
@@ -346,20 +348,20 @@
     </div>
 
     <div class="category-nav">
-        <a href="#" class="active" data-kategori="SEMUA">Beranda</a>
-        <a href="#" data-kategori="NASIONAL">Nasional</a>
-        <a href="#" data-kategori="POLITIK">Politik</a>
-        <a href="#" data-kategori="EKONOMI">Ekonomi</a>
-        <a href="#" data-kategori="TEKNOLOGI">Teknologi</a>
-        <a href="#" data-kategori="KESEHATAN">Kesehatan</a>
-        <a href="#" data-kategori="PENDIDIKAN">Pendidikan</a>
-        <a href="#" data-kategori="HUKUM">Hukum</a>
-        <a href="#" data-kategori="OLAHRAGA">Olahraga</a>
-        <a href="#" data-kategori="HIBURAN">Hiburan</a>
+        <a class="active menu-link" data-kategori="SEMUA">Beranda</a>
+        <a class="menu-link" data-kategori="NASIONAL">Nasional</a>
+        <a class="menu-link" data-kategori="POLITIK">Politik</a>
+        <a class="menu-link" data-kategori="EKONOMI">Ekonomi</a>
+        <a class="menu-link" data-kategori="TEKNOLOGI">Teknologi</a>
+        <a class="menu-link" data-kategori="KESEHATAN">Kesehatan</a>
+        <a class="menu-link" data-kategori="PENDIDIKAN">Pendidikan</a>
+        <a class="menu-link" data-kategori="HUKUM">Hukum</a>
+        <a class="menu-link" data-kategori="OLAHRAGA">Olahraga</a>
+        <a class="menu-link" data-kategori="HIBURAN">Hiburan</a>
     </div>
 
     <div class="top-header">
-        <div class="breaking-badge">INFO NEW  ➡️</div>
+        <div class="breaking-badge">INFO NEW ➡️</div>
         <div class="ticker-wrapper">
             <div class="ticker-content" id="running-text-container">
                 <span class="ticker-item">Memuat berita terbaru...</span>
@@ -374,31 +376,24 @@
         </a>
     </div>
 
-    <div class="video-container">
-        <!--<iframe src="https://youtube.com/embed/LyPP1hs52gw?si=2-xouD8a5beGxan-"?modestbranding=1&rel=0&playsinline=1></iframe>-->
-        <<iframe src="https://youtube.com/embed/bKVkOR0Kur8?si=Mo_uMnk0gbI6IeIZ" allowfullscreen></iframe>
-    </div>
-
-    <div class="container">
-        <div id="news-container">
-            <div style="text-align: center; padding: 40px; color: #666;">Menyelaraskan informasi...</div>
+    <!-- KONTEN DINAMIS - INI YG DIGANTI JS -->
+    <div id="content">
+        <div class="container">
+            <div id="news-container">
+                <div style="text-align: center; padding: 40px; color: #666;">Menyelaraskan informasi...</div>
+            </div>
         </div>
     </div>
-
-    <!--<div class="video-container">
-        <iframe src="https://youtube.com/embed/nl1TunGdWo8?si=-Vtrd9cOtvRG83nB" allowfullscreen></iframe>
-        catatan ==>> ini video pemko medan rico waas idul adha 2026
-    </div>-->
 
     <footer>
         <div class="footer-content">
             <div class="footer-logo">PUL<span>NEW</span>.COM</div>
             <p>Menyajikan informasi <span style="color: var(--warna-merah); font-weight: 700;">langsung</span> ke perangkat anda</p>
-            <a href="/about.html"; class="footer-link">Tentang</a>  |
-            <a href="/privacy.html"; class="footer-link">Privacy</a>  |
-            <a href="/pedoman-media-siber.html" class="footer-link">Pedoman Media Siber</a>  |
-            <a href="/disclaimer.html"; class="footer-link">Disclaimer</a>  |
-            <a href="/contact.html"; class="footer-link">Kontak</a>
+            <a href="/about.html" class="footer-link">Tentang</a> |
+            <a href="/privacy.html" class="footer-link">Privacy</a> |
+            <a href="/pedoman-media-siber.html" class="footer-link">Pedoman Media Siber</a> |
+            <a href="/disclaimer.html" class="footer-link">Disclaimer</a> |
+            <a href="/contact.html" class="footer-link">Kontak</a>
             <div class="footer-bottom">&copy; 2026 PULNEW.COM. All Rights Reserved.</div>
         </div>
     </footer>
@@ -408,7 +403,7 @@
         weekday: 'long', day: 'numeric', month: 'short', year: 'numeric'
     });
 
-    let allPosts = []; // SIMPEN DATA GLOBAL BUAT FILTER
+    let allPosts = [];
 
     const kategoriWarna = {
     'NASIONAL': '#1a237e',
@@ -422,6 +417,17 @@
     'KESEHATAN': '#009688',
     'BERITA': '#d32f2f'
     };
+
+    // Fungsi SPA: cegah reload, ganti konten doang
+    function initRouter() {
+        document.querySelectorAll('.menu-link').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const kategori = link.dataset.kategori;
+                filterBerita(kategori, true);
+            });
+        });
+    }
 
     async function fetchPosts() {
         const maxRetry = 3;
@@ -467,9 +473,8 @@
             );
 
             posts.sort((a, b) => new Date(b.date || b.created_at) - new Date(a.date || a.created_at));
-            allPosts = posts; // SIMPEN KE GLOBAL
+            allPosts = posts;
 
-            // Cek URL pas awal load
             const params = new URLSearchParams(window.location.search);
             const kategoriURL = params.get('kategori');
             if (kategoriURL) {
@@ -479,17 +484,8 @@
             }
 
             updateRunningText(posts);
+            initRouter();
 
-            // Event klik kategori
-            document.querySelectorAll('.category-nav a').forEach(link => {
-                link.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    const kategori = link.dataset.kategori;
-                    filterBerita(kategori, true);
-                });
-            });
-
-            // Biar tombol back/forward jalan
             window.addEventListener('popstate', (e) => {
                 const kategori = e.state?.kategori || 'SEMUA';
                 filterBerita(kategori, false);
@@ -596,7 +592,7 @@
         `;
 
         container.innerHTML = html;
-        
+
         const carousel = document.getElementById('main-carousel');
         if (carousel) {
             let scrollAmount = 0; let userScrolling = false;
@@ -618,12 +614,10 @@
     }
 
     function filterBerita(kategori, updateURL = true) {
-        // Set active class
         document.querySelectorAll('.category-nav a').forEach(a => a.classList.remove('active'));
         const activeLink = document.querySelector(`[data-kategori="${kategori}"]`);
         if (activeLink) activeLink.classList.add('active');
 
-        // Filter data
         let filteredPosts = allPosts;
         if (kategori!== 'SEMUA') {
             filteredPosts = allPosts.filter(post =>
@@ -631,27 +625,24 @@
             );
         }
 
-        // Update judul tab
         const namaKategori = kategori === 'SEMUA'? 'Beranda' :
             kategori.charAt(0) + kategori.slice(1).toLowerCase();
         document.title = `Berita ${namaKategori} - PULNEW.COM`;
 
-        // Update URL
         if (updateURL) {
             const url = kategori === 'SEMUA'
-               ? window.location.pathname
+              ? window.location.pathname
                 : `?kategori=${kategori.toLowerCase()}`;
             history.pushState({kategori}, '', url);
         }
 
-        // Render ulang
         const container = document.getElementById('news-container');
         if (filteredPosts.length === 0) {
             container.innerHTML = '<div style="text-align:center; padding:40px; color:#666;">Belum ada berita di kategori ini</div>';
             return;
         }
         tampilkanBerita(filteredPosts);
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        document.getElementById('content').scrollIntoView({ behavior: 'smooth' });
     }
 
     function updateRunningText(posts) {
