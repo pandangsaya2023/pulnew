@@ -7,7 +7,6 @@ on:
 jobs:
   scrape:
     runs-on: ubuntu-latest
-    
     steps:
       - uses: actions/checkout@v4
 
@@ -20,13 +19,12 @@ jobs:
         env:
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
         run: python ambil_berita.py
-      
+
       - name: Menyimpan Perubahan Kembali ke GitHub
-       run: |
-         git config --global user.name "github-actions[bot]"
-         git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          
-         git add public/posts/ berita/ images/
-         git diff-index --quiet HEAD || git commit -m "Update berita otomatis + preview"
-         git pull --rebase origin main || true
-         git push
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public/posts/
+          git diff-index --quiet HEAD || git commit -m "Update berita otomatis"
+          git pull --rebase origin main || true
+          git push
