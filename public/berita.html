@@ -43,7 +43,7 @@ h1, h2, h3, h4,.logo-text { font-family: 'Poppins', sans-serif; }
 .related-item h4 { font-size: 14px; font-weight: 700; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; margin: 0; }
 .footer-ticker { background: #d32f2f; color: white; padding: 8px 0; font-size: 13px; overflow: hidden; width: 100%; position: fixed; bottom: 0; left: 0; z-index: 999; }
 .ticker-content { display: inline-block; white-space: nowrap; padding-left: 100%; animation: ticker 40s linear infinite; }
-@keyframes ticker { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(-100%, 0, 0); } }
+@keyframes ticker { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(-100%, 0, 0); }
 .ad-slot { margin: 15px auto; text-align: center; }
 .ad-slot img { width: 100%; height: auto; display: block; border-radius: 8px; }
 .ad-news-top { margin-top: 5px; margin-bottom: 20px; }
@@ -98,7 +98,6 @@ function updateMetaTags(post, slug) {
 async function fetchPosts() {
     if (cacheUrls && Date.now() - cacheUrlsTime < 300000) return cacheUrls;
     try {
-        // UBAH DARI /api/posts MENJADI /posts.json
         const res = await fetch('/posts.json?t=' + Date.now(), { cache: 'no-store' });
         if (!res.ok) throw new Error('HTTP ' + res.status);
         const data = await res.json();
@@ -142,7 +141,6 @@ async function muatHalamanBerita() {
         const posts = await Promise.all(urls.slice(0, 20).map(url => fetchPostDetail(url))).then(results => results.filter(Boolean));
         posts.sort((a, b) => new Date(b.date || b.created_at) - new Date(a.date || a.created_at));
 
-        // UBAH DARI CARI DI URLS MENJADI LANGSUNG TEMBAK /posts/slug.json
         const postUrl = `/posts/${slugTujuan}.json`;
         const post = await fetchPostDetail(postUrl);
         
