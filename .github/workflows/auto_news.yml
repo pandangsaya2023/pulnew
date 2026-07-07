@@ -24,8 +24,13 @@ jobs:
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          # Pastikan folder-folder ada (jika belum ada, buat agar tidak error saat add)
+          mkdir -p public/posts
+          mkdir -p public/berita
+          mkdir -p public/images
           # Tambahkan folder 'berita' secara eksplisit disini
           git add public/posts/ public/berita/ images/
+          # Commit hanya jika ada perubahan
           git diff-index --quiet HEAD || git commit -m "Update berita otomatis dan file preview"
           git pull --rebase origin main || true
           git push
