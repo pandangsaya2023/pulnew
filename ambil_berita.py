@@ -19,7 +19,7 @@ sumber_rss = [
     {"media": "Jawa Pos", "url": "https://www.jawapos.com/feed"}
 ]
 
-# --- FUNGSI UTAMA ---
+# --- FUNGSI ---
 def ambil_konten_berita(url):
     try:
         headers = {'User-Agent': 'Mozilla/5.0'}
@@ -34,6 +34,16 @@ def ambil_konten_berita(url):
         return "", None
     except: return "", None
 
+def ambil_gambar_asli(soup, url):
+    if soup:
+        img = soup.find('meta', property='og:image') or soup.find('img')
+        if img and (img.get('content') or img.get('src')):
+            img_url = img.get('content') or img.get('src')
+            if img_url.startswith('//'): img_url = 'https:' + img_url
+            if img_url.startswith('/'): img_url = url.rsplit('/', 1)[0] + img_url
+            return img_url
+    return f"{BASE_URL}/images/og-default.jpg"
+
 def rewrite_with_ai(title, link):
     api_key = os.getenv("GROQ_API_KEY")
     konten_asli, soup = ambil_konten_berita(link)
@@ -45,25 +55,6 @@ def rewrite_with_ai(title, link):
         completion = client.chat.completions.create(model="llama-3.1-8b-instant", messages=[{"role": "user", "content": prompt}], temperature=0.7, max_tokens=1200)
         return completion.choices[0].message.content, soup
     except: return konten_asli[:500] + "...", soup
-
-def ambil_gambar(soup, url, slug):
-    try:
-        img_url = ""
-        if soup:
-            img = soup.find('meta', property='og:image') or soup.find('img')
-            img_url = img.get('content') or img.get('src') if img else ""
-        if img_url and img_url.startswith('//'): img_url = 'https:' + img_url
-        if img_url and img_url.startswith('/'): img_url = url.rsplit('/', 1)[0] + img_url
-        if img_url:
-            filename = f"{slug}.jpg"
-            filepath = os.path.join('public/images', filename)
-            os.makedirs('public/images', exist_ok=True)
-            r = requests.get(img_url, headers={'User-Agent': 'Mozilla/5.0'}, timeout=10)
-            if r.status_code == 200:
-                with open(filepath, 'wb') as f: f.write(r.content)
-                return f"{BASE_URL}/images/{filename}"
-    except: pass
-    return f"{BASE_URL}/images/og-default.jpg"
 
 def bikin_html_statis(slug, title, img_url):
     folder_output = 'public/berita'
@@ -79,22 +70,23 @@ def bikin_html_statis(slug, title, img_url):
     <meta property="og:image" content="{img_url}">
     <meta property="og:url" content="{link_statis}">
     <meta property="og:type" content="article">
-    <meta http-equiv="refresh" content="5; url={BASE_URL}/berita.html?slug={slug}">
     <title>{title}</title>
 </head>
-<body style="text-align:center; padding:30px; font-family:sans-serif; background:#f4f4f4;">
+<body style="font-family:sans-serif; text-align:center; padding:50px; background:#f4f4f4;">
     <div style="background:white; padding:30px; border-radius:15px; max-width:500px; margin:auto; box-shadow:0 4px 10px rgba(0,0,0,0.1);">
-        <h3>{title}</h3>
-        <p>Mengalihkan ke berita lengkap dalam 5 detik...</p>
+        <h3 style="color:#333;">{title}</h3>
+        <p>Mengalihkan ke berita lengkap dalam 3 detik...</p>
         <a href="{link_wa}" style="display:block; margin:20px 0; padding:15px; background:#25D366; color:white; text-decoration:none; border-radius:10px; font-weight:bold; font-size:18px;">📲 Share ke WhatsApp</a>
-        <a href="{BASE_URL}/berita.html?slug={slug}" style="color:#666; font-size:14px;">Atau klik di sini jika tidak mengalihkan</a>
     </div>
+    <script>
+        setTimeout(function(){{ window.location.href = "{BASE_URL}/berita.html?slug={slug}"; }}, 3000);
+    </script>
 </body>
 </html>"""
     with open(f"{folder_output}/{slug}.html", "w", encoding="utf-8") as f:
         f.write(html)
 
-# --- EKSEKUSI UTAMA ---
+# --- EKSEKUSI ---
 os.makedirs('public/posts', exist_ok=True)
 slug_tercatat = {f.replace('.json', '') for f in os.listdir('public/posts') if f.endswith('.json')}
 jumlah_baru = 0
@@ -111,20 +103,16 @@ for sumber in sumber_rss:
             if not slug: slug = f"berita-{int(time.time() * 1000)}"
             if slug not in slug_tercatat:
                 body, soup_artikel = rewrite_with_ai(title, link)
-                img_url = ambil_gambar(soup_artikel, link, slug)
+                img_url = ambil_gambar_asli(soup_artikel, link)
                 berita = {"slug": slug, "title": title, "content": body[:200] + "...", "body": body, "image": img_url, "kategori": "BERITA", "date": datetime.now().isoformat()}
                 
-                # Simpan JSON
                 with open(f'public/posts/{slug}.json', 'w', encoding='utf-8') as f:
                     json.dump(berita, f, indent=2, ensure_ascii=False)
                 
-                # BUAT HTML STATIS UNTUK WHATSAPP
                 bikin_html_statis(slug, title, img_url)
-                
                 slug_tercatat.add(slug)
                 jumlah_baru += 1
                 time.sleep(10)
             if jumlah_baru >= 5: break
     except Exception as e: print(f"Error: {e}")
 print(f"Selesai! Nambah {jumlah_baru} berita baru")
-
