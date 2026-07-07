@@ -79,13 +79,16 @@ def bikin_html_statis(slug, title, img_url):
     <meta property="og:image" content="{img_url}">
     <meta property="og:url" content="{link_statis}">
     <meta property="og:type" content="article">
-    <meta http-equiv="refresh" content="3; url={BASE_URL}/berita.html?slug={slug}">
+    <meta http-equiv="refresh" content="5; url={BASE_URL}/berita.html?slug={slug}">
     <title>{title}</title>
 </head>
-<body style="text-align:center; padding-top:50px; font-family:sans-serif;">
-    <h3>{title}</h3>
-    <p>Mengalihkan ke berita lengkap...</p>
-    <a href="{link_wa}" style="display:inline-block; padding:15px; background:#25D366; color:white; text-decoration:none; border-radius:10px;">Share ke WhatsApp</a>
+<body style="text-align:center; padding:20px; font-family:sans-serif; background:#f4f4f4;">
+    <div style="background:white; padding:20px; border-radius:10px; max-width:500px; margin:auto;">
+        <h3>{title}</h3>
+        <p>Mengalihkan ke berita lengkap dalam 5 detik...</p>
+        <a href="{link_wa}" style="display:block; width:80%; margin:20px auto; padding:15px; background:#25D366; color:white; text-decoration:none; border-radius:10px; font-weight:bold;">Share ke WhatsApp</a>
+        <a href="{BASE_URL}/berita.html?slug={slug}" style="color:#666;">Atau klik di sini jika tidak mengalihkan</a>
+    </div>
 </body>
 </html>"""
     with open(f"{folder_output}/{slug}.html", "w", encoding="utf-8") as f:
