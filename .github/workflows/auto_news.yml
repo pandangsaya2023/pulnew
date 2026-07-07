@@ -25,7 +25,7 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
           # Tambahkan folder 'berita' secara eksplisit disini
-          git add public/posts/ public/berita/ images
+          git add public/posts/ public/berita/ images/
           git diff-index --quiet HEAD || git commit -m "Update berita otomatis dan file preview"
           git pull --rebase origin main || true
           git push
