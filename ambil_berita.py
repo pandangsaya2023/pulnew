@@ -15,10 +15,11 @@ sumber_rss = [
     {"media": "Tribunnews", "url": "https://www.tribunnews.com/rss"},
     {"media": "Republika", "url": "https://www.republika.co.id/rss"},
     {"media": "Okezone", "url": "https://sindonews.com/rss"},
+    {"media": "DW Indonesia", "url": "https://rss.dw.com/rdf/rss-id-indonesia"},
     {"media": "Jawa Pos", "url": "https://www.jawapos.com/feed"}
 ]
 
-# --- FUNGSI UTAMA ---
+# --- FUNGSI ---
 def ambil_konten_berita(url):
     try:
         headers = {'User-Agent': 'Mozilla/5.0'}
@@ -67,18 +68,25 @@ def ambil_gambar(soup, url, slug):
 def bikin_html_statis(slug, title, img_url):
     folder_output = 'public/berita'
     os.makedirs(folder_output, exist_ok=True)
+    link_statis = f"{BASE_URL}/berita/{slug}.html"
+    link_wa = f"https://wa.me/?text=Baca%20berita%20ini:%20{link_statis}"
+    
     html = f"""<!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta property="og:title" content="{title}">
     <meta property="og:image" content="{img_url}">
-    <meta property="og:url" content="{BASE_URL}/berita/{slug}.html">
+    <meta property="og:url" content="{link_statis}">
     <meta property="og:type" content="article">
-    <meta http-equiv="refresh" content="0; url={BASE_URL}/berita.html?slug={slug}">
+    <meta http-equiv="refresh" content="3; url={BASE_URL}/berita.html?slug={slug}">
     <title>{title}</title>
 </head>
-<body><p>Redirecting...</p></body>
+<body style="text-align:center; padding-top:50px; font-family:sans-serif;">
+    <h3>{title}</h3>
+    <p>Mengalihkan ke berita lengkap...</p>
+    <a href="{link_wa}" style="display:inline-block; padding:15px; background:#25D366; color:white; text-decoration:none; border-radius:10px;">Share ke WhatsApp</a>
+</body>
 </html>"""
     with open(f"{folder_output}/{slug}.html", "w", encoding="utf-8") as f:
         f.write(html)
