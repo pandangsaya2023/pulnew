@@ -19,7 +19,7 @@ sumber_rss = [
     {"media": "Jawa Pos", "url": "https://www.jawapos.com/feed"}
 ]
 
-# --- FUNGSI ---
+# --- FUNGSI UTAMA ---
 def ambil_konten_berita(url):
     try:
         headers = {'User-Agent': 'Mozilla/5.0'}
@@ -82,19 +82,19 @@ def bikin_html_statis(slug, title, img_url):
     <meta http-equiv="refresh" content="5; url={BASE_URL}/berita.html?slug={slug}">
     <title>{title}</title>
 </head>
-<body style="text-align:center; padding:20px; font-family:sans-serif; background:#f4f4f4;">
-    <div style="background:white; padding:20px; border-radius:10px; max-width:500px; margin:auto;">
+<body style="text-align:center; padding:30px; font-family:sans-serif; background:#f4f4f4;">
+    <div style="background:white; padding:30px; border-radius:15px; max-width:500px; margin:auto; box-shadow:0 4px 10px rgba(0,0,0,0.1);">
         <h3>{title}</h3>
         <p>Mengalihkan ke berita lengkap dalam 5 detik...</p>
-        <a href="{link_wa}" style="display:block; width:80%; margin:20px auto; padding:15px; background:#25D366; color:white; text-decoration:none; border-radius:10px; font-weight:bold;">Share ke WhatsApp</a>
-        <a href="{BASE_URL}/berita.html?slug={slug}" style="color:#666;">Atau klik di sini jika tidak mengalihkan</a>
+        <a href="{link_wa}" style="display:block; margin:20px 0; padding:15px; background:#25D366; color:white; text-decoration:none; border-radius:10px; font-weight:bold; font-size:18px;">📲 Share ke WhatsApp</a>
+        <a href="{BASE_URL}/berita.html?slug={slug}" style="color:#666; font-size:14px;">Atau klik di sini jika tidak mengalihkan</a>
     </div>
 </body>
 </html>"""
     with open(f"{folder_output}/{slug}.html", "w", encoding="utf-8") as f:
         f.write(html)
 
-# --- EKSEKUSI ---
+# --- EKSEKUSI UTAMA ---
 os.makedirs('public/posts', exist_ok=True)
 slug_tercatat = {f.replace('.json', '') for f in os.listdir('public/posts') if f.endswith('.json')}
 jumlah_baru = 0
@@ -113,11 +113,18 @@ for sumber in sumber_rss:
                 body, soup_artikel = rewrite_with_ai(title, link)
                 img_url = ambil_gambar(soup_artikel, link, slug)
                 berita = {"slug": slug, "title": title, "content": body[:200] + "...", "body": body, "image": img_url, "kategori": "BERITA", "date": datetime.now().isoformat()}
-                with open(f'public/posts/{slug}.json', 'w', encoding='utf-8') as f: json.dump(berita, f, indent=2, ensure_ascii=False)
+                
+                # Simpan JSON
+                with open(f'public/posts/{slug}.json', 'w', encoding='utf-8') as f:
+                    json.dump(berita, f, indent=2, ensure_ascii=False)
+                
+                # BUAT HTML STATIS UNTUK WHATSAPP
                 bikin_html_statis(slug, title, img_url)
+                
                 slug_tercatat.add(slug)
                 jumlah_baru += 1
                 time.sleep(10)
             if jumlah_baru >= 5: break
     except Exception as e: print(f"Error: {e}")
 print(f"Selesai! Nambah {jumlah_baru} berita baru")
+
