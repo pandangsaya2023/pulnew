@@ -35,13 +35,7 @@ def ambil_konten_berita(url):
     except: return "", None
 
 def ambil_gambar_asli(soup, url):
-    if soup:
-        img = soup.find('meta', property='og:image') or soup.find('img')
-        if img and (img.get('content') or img.get('src')):
-            img_url = img.get('content') or img.get('src')
-            if img_url.startswith('//'): img_url = 'https:' + img_url
-            if img_url.startswith('/'): img_url = url.rsplit('/', 1)[0] + img_url
-            return img_url
+    # Selalu menggunakan gambar default Anda sendiri
     return f"{BASE_URL}/images/og-default.jpg"
 
 def rewrite_with_ai(title, link):
@@ -75,12 +69,9 @@ def bikin_html_statis(slug, title, img_url):
 <body style="font-family:sans-serif; text-align:center; padding:50px; background:#f4f4f4;">
     <div style="background:white; padding:30px; border-radius:15px; max-width:500px; margin:auto; box-shadow:0 4px 10px rgba(0,0,0,0.1);">
         <h3 style="color:#333;">{title}</h3>
-        <p>Mengalihkan ke berita lengkap dalam 3 detik...</p>
-        <a href="{link_wa}" style="display:block; margin:20px 0; padding:15px; background:#25D366; color:white; text-decoration:none; border-radius:10px; font-weight:bold; font-size:18px;">📲 Share ke WhatsApp</a>
+        <a href="{BASE_URL}/berita.html?slug={slug}" style="display:block; margin:20px 0; padding:15px; background:#007bff; color:white; text-decoration:none; border-radius:10px; font-weight:bold;">Baca Berita Lengkap</a>
+        <a href="{link_wa}" style="display:block; margin:20px 0; padding:15px; background:#25D366; color:white; text-decoration:none; border-radius:10px; font-weight:bold;">📲 Share ke WhatsApp</a>
     </div>
-    <script>
-        setTimeout(function(){{ window.location.href = "{BASE_URL}/berita.html?slug={slug}"; }}, 3000);
-    </script>
 </body>
 </html>"""
     with open(f"{folder_output}/{slug}.html", "w", encoding="utf-8") as f:
@@ -116,3 +107,4 @@ for sumber in sumber_rss:
             if jumlah_baru >= 5: break
     except Exception as e: print(f"Error: {e}")
 print(f"Selesai! Nambah {jumlah_baru} berita baru")
+
