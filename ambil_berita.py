@@ -7,6 +7,11 @@ BASE_URL = "https://pulnew.pages.dev"
 sumber_rss = [
     {"media": "Antara", "url": "https://www.antaranews.com/rss/nasional"},
     {"media": "Pikiran Rakyat", "url": "https://www.pikiran-rakyat.com/feed"}
+    {"media": "Tribunnews", "url": "https://www.tribunnews.com/rss"},
+    {"media": "Republika", "url": "https://www.republika.co.id/rss"},
+    {"media": "Okezone", "url": "https://sindonews.com/rss"},
+    {"media": "DW Indonesia", "url": "https://rss.dw.com/rdf/rss-id-indonesia"},
+    {"media": "Jawa Pos", "url": "https://www.jawapos.com/feed"}
 ]
 
 # Fungsi untuk membuat file HTML perantara agar WhatsApp bisa menampilkan preview
