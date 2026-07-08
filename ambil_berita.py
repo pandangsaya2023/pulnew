@@ -13,8 +13,8 @@ sumber_rss = [
     {"media": "Tribunnews", "url": "https://www.tribunnews.com/rss"},
     {"media": "Republika", "url": "https://www.republika.co.id/rss"},
     {"media": "Okezone", "url": "https://sindonews.com/rss"},
-    {"media": "DW Indonesia", "url": "https://rss.dw.com/rdf/rss-id-indonesia"}
-    # Tambahkan yang lain satu per satu untuk mengetes mana yang aktif
+    {"media": "DW Indonesia", "url": "https://rss.dw.com/rdf/rss-id-indonesia"},
+    {"media": "Jawa Pos", "url": "https://www.jawapos.com/feed"}
 ]
 
 def bikin_html_statis(slug, title, image_url):
