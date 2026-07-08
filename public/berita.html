@@ -63,40 +63,34 @@
     }
 
     async function muatHalamanBerita() {
-        const slugTujuan = new URLSearchParams(window.location.search).get('slug');
+        const slug = new URLSearchParams(window.location.search).get('slug');
         const contentArea = document.getElementById('content-area');
-
-        if (!slugTujuan) { contentArea.innerHTML = `<div class="error">Slug tidak ditemukan.</div>`; return; }
-
+        
         try {
-            const res = await fetch(`/posts/${slugTujuan}.json`);
-            const post = await res.json();
+            // Ambil daftar dari posts.json
+            const response = await fetch('/posts.json?t=' + Date.now());
+            const daftarBerita = await response.json();
+            const post = daftarBerita.find(p => p.slug === slug);
             
-            updateMetaTags(post, slugTujuan);
-
-            const linkStatis = `https://pulnew.pages.dev/berita/${slugTujuan}.html`;
-            const shareText = `Baca berita ini: ${linkStatis}`;
-
-            let html = `
-                <h1 class="article-title">${post.title}</h1>
-                <img src="${post.image}" class="main-image" alt="${post.title}">
-                
-                <div style="margin: 20px 0; text-align: center;">
-                    <a href="https://wa.me/?text=${encodeURIComponent(shareText)}" 
-                       target="_blank" 
-                       style="display: inline-block; padding: 12px 20px; background: #25D366; color: white; text-decoration: none; border-radius: 50px; font-weight: bold;">
-                       📲 Share ke WhatsApp
-                    </a>
+            if (!post) { contentArea.innerHTML = "Berita tidak ditemukan."; return; }
+            
+            // Update Meta untuk WA
+            document.title = post.title;
+            document.querySelector('meta[property="og:title"]').setAttribute('content', post.title);
+            document.querySelector('meta[property="og:url"]').setAttribute('content', `https://pulnew.pages.dev/berita/${slug}.html`);
+            
+            // Tampilan
+            contentArea.innerHTML = `
+                <h1>${post.title}</h1>
+                <img src="${post.image}" style="width:100%">
+                <div style="margin:20px 0;">
+                    <a href="https://wa.me/?text=Baca: ${window.location.href}" style="background:#25D366; color:white; padding:10px; text-decoration:none; border-radius:5px;">Share ke WhatsApp</a>
                 </div>
-
-                <div class="article-body">${(post.body || post.content || '').replace(/\n/g, '<br>')}</div>
+                <div>${post.body.replace(/\n/g, '<br>')}</div>
             `;
-            contentArea.innerHTML = html;
-        } catch (e) {
-            contentArea.innerHTML = `<div class="error">Gagal memuat berita.</div>`;
-        }
+        } catch (e) { contentArea.innerHTML = "Gagal memuat."; }
     }
-    document.addEventListener('DOMContentLoaded', muatHalamanBerita);
+    muatHalamanBerita();
 </script>
 </body>
 </html>
