@@ -29,7 +29,7 @@ jobs:
           mkdir -p public/berita
           mkdir -p public/images
           # Tambahkan folder 'berita' secara eksplisit disini
-          git add public/posts/ public/berita/
+          git add public/posts/ public/berita/ public/post.json
           # Commit hanya jika ada perubahan
           git diff-index --quiet HEAD || git commit -m "Update berita otomatis dan file preview"
           git pull --rebase origin main || true
