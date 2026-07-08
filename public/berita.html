@@ -62,34 +62,44 @@
         setMeta('og:url', `https://pulnew.pages.dev/berita/${slug}.html`);
     }
 
-    async function muatHalamanBerita() {
-        const slug = new URLSearchParams(window.location.search).get('slug');
-        const contentArea = document.getElementById('content-area');
-        
-        try {
-            // Ambil daftar dari posts.json
-            const response = await fetch('/posts.json?t=' + Date.now());
-            const daftarBerita = await response.json();
-            const post = daftarBerita.find(p => p.slug === slug);
-            
-            if (!post) { contentArea.innerHTML = "Berita tidak ditemukan."; return; }
-            
-            // Update Meta untuk WA
-            document.title = post.title;
-            document.querySelector('meta[property="og:title"]').setAttribute('content', post.title);
-            document.querySelector('meta[property="og:url"]').setAttribute('content', `https://pulnew.pages.dev/berita/${slug}.html`);
-            
-            // Tampilan
-            contentArea.innerHTML = `
-                <h1>${post.title}</h1>
-                <img src="${post.image}" style="width:100%">
-                <div style="margin:20px 0;">
-                    <a href="https://wa.me/?text=Baca: ${window.location.href}" style="background:#25D366; color:white; padding:10px; text-decoration:none; border-radius:5px;">Share ke WhatsApp</a>
-                </div>
-                <div>${post.body.replace(/\n/g, '<br>')}</div>
-            `;
-        } catch (e) { contentArea.innerHTML = "Gagal memuat."; }
+async function muatHalamanBerita() {
+    const slug = new URLSearchParams(window.location.search).get('slug');
+    const contentArea = document.getElementById('content-area');
+    
+    if (!slug) {
+        contentArea.innerHTML = "Slug tidak ditemukan.";
+        return;
     }
+    
+    try {
+        const response = await fetch('/posts.json?t=' + Date.now());
+        const daftarBerita = await response.json();
+        
+        // PENCARIAN LEBIH FLEKSIBEL:
+        // Mencari post yang slug-nya mengandung kata dari URL
+        const post = daftarBerita.find(p => p.slug && p.slug.includes(slug) || slug.includes(p.slug));
+        
+        if (!post) { 
+            contentArea.innerHTML = "Berita tidak ditemukan. (Slug: " + slug + ")"; 
+            return; 
+        }
+        
+        // ... (sisanya tetap sama)
+        document.title = post.title;
+        contentArea.innerHTML = `
+            <h1>${post.title}</h1>
+            <img src="${post.image}" style="width:100%">
+            <div style="margin:20px 0;">
+                <a href="https://wa.me/?text=Baca:%20${window.location.href}" style="background:#25D366; color:white; padding:10px; text-decoration:none; border-radius:5px;">Share ke WhatsApp</a>
+            </div>
+            <div>${(post.body || '').replace(/\n/g, '<br>')}</div>
+        `;
+    } catch (e) { 
+        contentArea.innerHTML = "Gagal memuat data berita. Silakan refresh."; 
+        console.error(e);
+    }
+}
+
     muatHalamanBerita();
 </script>
 </body>
