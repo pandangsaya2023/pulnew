@@ -48,59 +48,40 @@
     <div class="article-box" id="content-area"><div class="loading">Memuat berita...</div></div>
 </div>
 
-<script>
-    function updateMetaTags(post, slug) {
-        document.title = post.title + " - PULNEW.com";
-        const setMeta = (property, content) => {
-            let meta = document.querySelector(`meta[property="${property}"]`);
-            if (!meta) { meta = document.createElement('meta'); meta.setAttribute('property', property); document.head.appendChild(meta); }
-            meta.setAttribute('content', content);
-        };
-        setMeta('og:title', post.title);
-        setMeta('og:image', post.image);
-        // Link statis agar gambar preview muncul di WA
-        setMeta('og:url', `https://pulnew.pages.dev/berita/${slug}.html`);
-    }
+    <script>
+        async function muatHalamanBerita() {
+            const params = new URLSearchParams(window.location.search);
+            const slug = params.get('slug');
+            const area = document.getElementById('content-area');
 
-async function muatHalamanBerita() {
-    const slug = new URLSearchParams(window.location.search).get('slug');
-    const contentArea = document.getElementById('content-area');
-    
-    if (!slug) {
-        contentArea.innerHTML = "Slug tidak ditemukan.";
-        return;
-    }
-    
-    try {
-        const response = await fetch('/posts.json?t=' + Date.now());
-        const daftarBerita = await response.json();
-        
-        // PENCARIAN LEBIH FLEKSIBEL:
-        // Mencari post yang slug-nya mengandung kata dari URL
-        const post = daftarBerita.find(p => p.slug && p.slug.includes(slug) || slug.includes(p.slug));
-        
-        if (!post) { 
-            contentArea.innerHTML = "Berita tidak ditemukan. (Slug: " + slug + ")"; 
-            return; 
+            try {
+                const res = await fetch('/posts.json?t=' + Date.now());
+                const data = await res.json();
+                const post = data.find(p => p.slug === slug);
+
+                if (!post) { area.innerHTML = "Berita tidak ditemukan."; return; }
+
+                // Update Meta Dinamis
+                document.title = post.title;
+                document.querySelector('meta[property="og:title"]').content = post.title;
+                document.querySelector('meta[property="og:url"]').content = window.location.href;
+                document.querySelector('meta[property="og:image"]').content = post.image;
+
+                area.innerHTML = `
+                    <h1 style="font-size: 22px;">${post.title}</h1>
+                    <img src="${post.image}" style="width:100%; border-radius:8px;">
+                    <div style="margin:20px 0;">
+                        <a href="https://wa.me/?text=Baca: ${window.location.href}" 
+                           style="background:#25D366; color:white; padding:12px 20px; text-decoration:none; border-radius:50px; font-weight:bold;">
+                           📲 Share ke WhatsApp
+                        </a>
+                    </div>
+                    <div>${post.body.replace(/\n/g, '<br>')}</div>
+                `;
+            } catch (e) { area.innerHTML = "Gagal memuat."; }
         }
-        
-        // ... (sisanya tetap sama)
-        document.title = post.title;
-        contentArea.innerHTML = `
-            <h1>${post.title}</h1>
-            <img src="${post.image}" style="width:100%">
-            <div style="margin:20px 0;">
-                <a href="https://wa.me/?text=Baca:%20${window.location.href}" style="background:#25D366; color:white; padding:10px; text-decoration:none; border-radius:5px;">Share ke WhatsApp</a>
-            </div>
-            <div>${(post.body || '').replace(/\n/g, '<br>')}</div>
-        `;
-    } catch (e) { 
-        contentArea.innerHTML = "Gagal memuat data berita. Silakan refresh."; 
-        console.error(e);
-    }
-}
-
-    muatHalamanBerita();
-</script>
+        muatHalamanBerita();
+    </script>
 </body>
 </html>
+
