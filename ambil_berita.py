@@ -9,6 +9,24 @@ sumber_rss = [
     {"media": "Pikiran Rakyat", "url": "https://www.pikiran-rakyat.com/feed"}
 ]
 
+# Fungsi untuk membuat file HTML perantara agar WhatsApp bisa menampilkan preview
+def bikin_html_statis(slug, title, image_url):
+    folder_output = 'public/berita'
+    os.makedirs(folder_output, exist_ok=True)
+    html = f"""<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta property="og:title" content="{title}">
+    <meta property="og:image" content="{image_url}">
+    <meta property="og:url" content="{BASE_URL}/berita/{slug}.html">
+    <meta property="og:type" content="article">
+    <meta http-equiv="refresh" content="0; url={BASE_URL}/berita.html?slug={slug}">
+    <title>{title}</title>
+</head>
+<body><script>window.location.href = "{BASE_URL}/berita.html?slug={slug}";</script></body>
+</html>"""
+    with open(f"{folder_output}/{slug}.html", "w", encoding="utf-8") as f: f.write(html)
+
 def rewrite_with_ai(title, link):
     api_key = os.getenv("GROQ_API_KEY")
     try:
@@ -30,13 +48,18 @@ for sumber in sumber_rss:
             slug = re.sub(r'[^a-z0-9]+', '-', title.lower()).strip('-')[:50]
             if slug not in slug_tercatat:
                 body = rewrite_with_ai(title, item.find('link').get_text())
-                # GUNAKAN GAMBAR DEFAULT AGAR PASTI MUNCUL DI WA
+                image_url = f"{BASE_URL}/media/og-default.jpg"
+                
                 berita = {
                     "slug": slug, "title": title, "body": body, 
-                    "image": f"{BASE_URL}/media/og-default.jpg", 
+                    "image": image_url, 
                     "date": datetime.now().isoformat()
                 }
+                # Simpan JSON
                 with open(f'public/posts/{slug}.json', 'w', encoding='utf-8') as f: json.dump(berita, f, indent=2, ensure_ascii=False)
+                # Buat file HTML perantara untuk WhatsApp
+                bikin_html_statis(slug, title, image_url)
+                
                 slug_tercatat.add(slug)
                 time.sleep(2)
     except: continue
@@ -44,3 +67,4 @@ for sumber in sumber_rss:
 # UPDATE INDEKS (posts.json)
 daftar = [json.load(open(f'public/posts/{f}', 'r', encoding='utf-8')) for f in os.listdir('public/posts') if f.endswith('.json')]
 with open('public/posts.json', 'w', encoding='utf-8') as f: json.dump(sorted(daftar, key=lambda x: x['date'], reverse=True), f, indent=2, ensure_ascii=False)
+
