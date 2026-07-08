@@ -154,6 +154,41 @@
 </div>
 
     <script>
+
+    function updateMetaTags(post, slug) {
+    document.title = post.title + " - PULNEW.com";
+
+    const setMeta = (property, content) => {
+        let meta = document.querySelector(`meta[property="${property}"]`);
+        if (!meta) {
+            meta = document.createElement('meta');
+            meta.setAttribute('property', property);
+            document.head.appendChild(meta);
+        }
+        meta.setAttribute('content', content);
+    };
+
+    setMeta('og:title', post.title);
+    setMeta('og:description', (post.body || '').substring(0, 160) + '...');
+    setMeta('og:image', post.image);
+    setMeta('og:url', window.location.href);
+
+    const setTwitter = (name, content) => {
+        let meta = document.querySelector(`meta[name="${name}"]`);
+        if (!meta) {
+            meta = document.createElement('meta');
+            meta.setAttribute('name', name);
+            document.head.appendChild(meta);
+        }
+        meta.setAttribute('content', content);
+    };
+
+    setTwitter('twitter:title', post.title);
+    setTwitter('twitter:description', (post.body || '').substring(0, 160) + '...');
+    setTwitter('twitter:image', post.image);
+        }
+
+        
         async function muatHalamanBerita() {
             const params = new URLSearchParams(window.location.search);
             const slug = params.get('slug');
@@ -166,6 +201,56 @@
 
                 if (!post) { area.innerHTML = "Berita tidak ditemukan."; return; }
 
+
+                updateMetaTags(post, slugTujuan);
+
+        const isiBerita = (post.body || post.content || '').split('\n').map(p => p.trim()? `<p>${p}</p>` : '').join('');
+
+        let html = `
+            <h1 class="article-title">${post.title}</h1>
+
+            <div class="ad-slot ad-news-top">
+                <a href="https://link-iklan-anda.com" target="_blank" rel="nofollow">
+                    <img src="/media/iklan_berita_atas1.png" alt="Iklan">
+                </a>
+            </div>
+
+            <img src="${post.image}" class="main-image" alt="${post.title}" loading="lazy">
+
+            <div class="article-body">${isiBerita}</div>
+
+            <div class="ad-slot ad-news-middle">
+                <a href="https://link-iklan-anda.com" target="_blank" rel="nofollow">
+                    <img src="/media/iklan_berita_tengah1.png" alt="Iklan">
+                </a>
+            </div>
+        `;
+
+        const related = posts.filter(p => p &&!postUrl.includes(p.slug || p.title.toLowerCase().replace(/\s+/g, '-'))).slice(0, 5);
+        if (related.length > 0) {
+            html += `<div class="related-section"><div class="section-title">Berita Lainnya</div>`;
+            related.forEach(r => {
+                html += `
+                    <a href="/berita.html?slug=${r.slug}" class="related-item">
+                        <img src="${r.image}" alt="${r.title}" loading="lazy">
+                        <h4>${r.title}</h4>
+                    </a>
+                `;
+            });
+            html += `</div>`;
+        }
+
+        contentArea.innerHTML = html;
+        runningText.textContent = `INFO NEWS: ${post.title} | PULNEW.com - Update Informasi Terkini`;
+
+    } catch (e) {
+        console.error(e);
+        contentArea.innerHTML = `<div class="error">Berita tidak dapat dimuat saat ini.<br><small>Server sibuk. Coba refresh 10 detik lagi</small><br><br><a href="/">← Kembali ke Beranda</a></div>`;
+            }
+
+
+
+                
                 // Update Meta Dinamis
                 document.title = post.title;
                 document.querySelector('meta[property="og:title"]').content = post.title;
