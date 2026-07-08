@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8902628805606588"
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-"
      crossorigin="anonymous"></script>
 
 <meta charset="UTF-8">
@@ -152,21 +152,37 @@
         <div class="ticker-content" id="running-text">MEMUAT INFORMASI TERKINI...</div>
     </div>
 </div>
-
+    
 <script>
     async function muatHalamanBerita() {
-        const slug = new URLSearchParams(window.location.search).get('slug');
+        // Mengambil slug dari URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const slugDariUrl = urlParams.get('slug');
         const area = document.getElementById('content-area');
         const ticker = document.getElementById('running-text');
 
-        if (!slug) { area.innerHTML = "Berita tidak ditemukan."; return; }
+        if (!slugDariUrl) { 
+            area.innerHTML = "<div class='error'>Parameter berita tidak ditemukan.</div>"; 
+            return; 
+        }
 
         try {
+            // Mengambil data berita dengan cache-busting
             const res = await fetch('/posts.json?t=' + Date.now());
             const data = await res.json();
-            const post = data.find(p => p.slug === slug);
+            
+            // LOGIKA PENCARIAN YANG DIPERBAIKI:
+            // Kita melakukan pembersihan slug agar lebih fleksibel
+            const post = data.find(p => {
+                const slugData = String(p.slug || '').trim();
+                const slugCari = String(slugDariUrl || '').trim();
+                return slugData === slugCari;
+            });
 
-            if (!post) { area.innerHTML = "Berita tidak ditemukan."; return; }
+            if (!post) { 
+                area.innerHTML = `<div class='error'>Berita "${slugDariUrl}" tidak ditemukan dalam database.</div>`; 
+                return; 
+            }
 
             // Update Meta dengan aman
             document.title = post.title;
@@ -178,14 +194,14 @@
             updateMeta('og:image', post.image);
             updateMeta('og:url', window.location.href);
 
-            // Render Konten + Fallback Gambar
+            // Render Konten
             area.innerHTML = `
                 <h1 style="font-size:22px; margin-bottom:15px; line-height:1.3;">${post.title}</h1>
                 <img src="${post.image}" class="main-image" onerror="this.src='https://pulnew.pages.dev/media/og-default.jpg'">
                 <div style="margin:15px 0;">
                     <a href="https://wa.me/?text=Baca: ${window.location.href}" style="background:#25D366; color:white; padding:10px 20px; text-decoration:none; border-radius:5px; font-weight:bold; display:inline-block;">📲 Share ke WhatsApp</a>
                 </div>
-                <div style="line-height:1.7; font-size:16px;">${post.body.replace(/\n/g, '<br>')}</div>
+                <div style="line-height:1.7; font-size:16px;">${(post.body || '').replace(/\n/g, '<br>')}</div>
                 <div class="related-section" id="related"><h3>Berita Lainnya</h3></div>
             `;
 
@@ -193,7 +209,7 @@
 
             // Render Related
             const relatedContainer = document.getElementById('related');
-            data.filter(p => p.slug !== slug).slice(0, 3).forEach(r => {
+            data.filter(p => p.slug !== post.slug).slice(0, 3).forEach(r => {
                 relatedContainer.innerHTML += `
                     <a href="/berita.html?slug=${r.slug}" class="related-item">
                         <img src="${r.image}" onerror="this.src='https://pulnew.pages.dev/media/og-default.jpg'">
@@ -201,7 +217,10 @@
                     </a>`;
             });
 
-        } catch (e) { area.innerHTML = "Gagal memuat berita."; }
+        } catch (e) { 
+            console.error(e);
+            area.innerHTML = "<div class='error'>Gagal memuat koneksi ke server berita.</div>"; 
+        }
     }
     muatHalamanBerita();
 </script>
