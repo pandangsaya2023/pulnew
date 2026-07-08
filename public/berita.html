@@ -152,12 +152,12 @@
         <div class="ticker-content" id="running-text">MEMUAT INFORMASI TERKINI...</div>
     </div>
 </div>
-    
+
+
 <script>
     async function muatHalamanBerita() {
-        // Mengambil slug dari URL
         const urlParams = new URLSearchParams(window.location.search);
-        const slugDariUrl = urlParams.get('slug');
+        const slugDariUrl = urlParams.get('slug'); // Mengambil slug dari URL
         const area = document.getElementById('content-area');
         const ticker = document.getElementById('running-text');
 
@@ -167,15 +167,14 @@
         }
 
         try {
-            // Mengambil data berita dengan cache-busting
+            // Menambahkan timestamp (?t=...) untuk membuang cache browser
             const res = await fetch('/posts.json?t=' + Date.now());
             const data = await res.json();
             
-            // LOGIKA PENCARIAN YANG DIPERBAIKI:
-            // Kita melakukan pembersihan slug agar lebih fleksibel
+            // Pencarian yang lebih fleksibel dengan .trim() dan toLowerCase()
             const post = data.find(p => {
-                const slugData = String(p.slug || '').trim();
-                const slugCari = String(slugDariUrl || '').trim();
+                const slugData = String(p.slug || '').trim().toLowerCase();
+                const slugCari = String(slugDariUrl || '').trim().toLowerCase();
                 return slugData === slugCari;
             });
 
@@ -196,18 +195,18 @@
 
             // Render Konten
             area.innerHTML = `
-                <h1 style="font-size:22px; margin-bottom:15px; line-height:1.3;">${post.title}</h1>
+                <h1 class="article-title">${post.title}</h1>
                 <img src="${post.image}" class="main-image" onerror="this.src='https://pulnew.pages.dev/media/og-default.jpg'">
                 <div style="margin:15px 0;">
                     <a href="https://wa.me/?text=Baca: ${window.location.href}" style="background:#25D366; color:white; padding:10px 20px; text-decoration:none; border-radius:5px; font-weight:bold; display:inline-block;">📲 Share ke WhatsApp</a>
                 </div>
-                <div style="line-height:1.7; font-size:16px;">${(post.body || '').replace(/\n/g, '<br>')}</div>
-                <div class="related-section" id="related"><h3>Berita Lainnya</h3></div>
+                <div class="article-body">${(post.body || '').replace(/\n/g, '<br>')}</div>
+                <div class="related-section" id="related"><h3 class="section-title">Berita Lainnya</h3></div>
             `;
 
-            ticker.textContent = `INFO NEWS: ${post.title} | PULNEW.COM - Update Informasi Terkini`;
+            ticker.textContent = `INFO NEWS: ${post.title} | PULNEW.COM`;
 
-            // Render Related
+            // Render Related Posts
             const relatedContainer = document.getElementById('related');
             data.filter(p => p.slug !== post.slug).slice(0, 3).forEach(r => {
                 relatedContainer.innerHTML += `
@@ -224,5 +223,7 @@
     }
     muatHalamanBerita();
 </script>
+
+    
 </body>
 </html>
