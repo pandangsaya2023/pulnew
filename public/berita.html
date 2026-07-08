@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8902628805606588" crossorigin="anonymous"></script>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-" crossorigin="anonymous"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>PULNEW - Detail Berita</title>
+
 <meta property="og:title" content="PULNEW.com - Update Informasi Terkini">
 <meta property="og:description" content="Menyajikan Informasi Langsung Ke Perangkat Anda">
 <meta property="og:image" content="https://pulnew.pages.dev/media/og-default.jpg">
 <meta property="og:url" content="">
 <meta property="og:type" content="article">
 <meta name="twitter:card" content="summary_large_image">
+
 <style>
 :root { --jarak-utama: 8px; --warna-merah: #d32f2f; --warna-biru: #1a237e; --warna-bg: #f4f6f9; }
 * { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif; }
@@ -35,7 +38,7 @@ h1, h2, h3, h4,.logo-text { font-family: 'Poppins', sans-serif; }
 .related-item h4 { font-size: 14px; font-weight: 700; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; margin: 0; }
 .footer-ticker { background: #d32f2f; color: white; padding: 8px 0; font-size: 13px; overflow: hidden; width: 100%; position: fixed; bottom: 0; left: 0; z-index: 999; }
 .ticker-content { display: inline-block; white-space: nowrap; padding-left: 100%; animation: ticker 40s linear infinite; }
-@keyframes ticker { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(-100%, 0, 0); }
+@keyframes ticker { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(-100%, 0, 0); } }
 .ad-slot { margin: 15px auto; text-align: center; }
 .ad-slot img { width: 100%; height: auto; display: block; border-radius: 8px; }
 .loading,.error { text-align:center; padding:60px 20px; }
@@ -43,63 +46,89 @@ h1, h2, h3, h4,.logo-text { font-family: 'Poppins', sans-serif; }
 </style>
 </head>
 <body>
+
 <div class="header-container">
     <div class="logo-bar">
-        <a href="https://pulnew.pages.dev/"><div class="logo-img-wrapper"><img src="https://pulnew.pages.dev/logopulnew.png" alt="Logo"></div><div class="logo-text">PUL<span class="logo-new">NEW</span>.COM</div></a>
+        <a href="https://pulnew.pages.dev/">
+          <div class="logo-img-wrapper"><img src="https://pulnew.pages.dev/logopulnew.png" alt="Logo"></div>
+          <div class="logo-text">PUL<span class="logo-new">NEW</span>.COM</div>
+        </a>
         <a href="https://pulnew.pages.dev/" class="btn-beranda">← Beranda</a>
     </div>
 </div>
- <div class="content-wrapper"><div class="article-box" id="content-area"><div class="loading">Memuat berita...</div></div></div>
+
+ <div class="content-wrapper">
+        <div class="article-box" id="content-area"><div class="loading">Memuat berita...</div></div>
+    </div>
     <div class="footer-ticker"><div class="ticker-content" id="running-text">MEMUAT INFORMASI TERKINI...</div></div>
 </div>
+
 <script>
 async function muatHalamanBerita() {
     const urlParams = new URLSearchParams(window.location.search);
-    let slugDariUrl = decodeURIComponent(urlParams.get('slug') || '').trim().toLowerCase();
+    let slugDariUrl = urlParams.get('slug');
     const area = document.getElementById('content-area');
-    if (!slugDariUrl) { area.innerHTML = "<div class='error'>Parameter berita tidak ditemukan.</div>"; return; }
+
+    if (!slugDariUrl) { 
+        area.innerHTML = "<div class='error'>Parameter berita tidak ditemukan.</div>"; 
+        return; 
+    }
+
+    // FIX 1: decodeURI biar spasi %20 jadi spasi lagi
+    slugDariUrl = decodeURIComponent(slugDariUrl).trim().toLowerCase();
 
     try {
         const res = await fetch('/posts.json?t=' + Date.now());
+        if(!res.ok) throw new Error('Gagal ambil posts.json');
         const data = await res.json();
         
-        // CARI BERITA: 1. by slug persis  2. by judul jadi slug
-        let post = data.find(p => String(p.slug || '').trim().toLowerCase() === slugDariUrl);
-        
-        if(!post){
-            // fallback: buat slug dari judul dan cari
-            post = data.find(p => String(p.title || '').trim().toLowerCase().replace(/[^a-z0-9]+/g, '-') === slugDariUrl);
-        }
+        // FIX 2: Cari slug yg fleksibel. Cocokkan juga kalau slug ada di URL file
+        const post = data.find(p => {
+            const slugData = String(p.slug || '').trim().toLowerCase();
+            const titleSlug = String(p.title || '').trim().toLowerCase().replace(/\s+/g, '-');
+            return slugData === slugDariUrl || titleSlug === slugDariUrl;
+        });
 
         if (!post) { 
-            area.innerHTML = `<div class='error'>Berita "${slugDariUrl}" tidak ditemukan.<br><small>Slug di Sveltia: ${data[0]?.slug || 'kosong'}</small></div>`; 
+            area.innerHTML = `<div class='error'>Berita "${slugDariUrl}" tidak ditemukan.<br><small>Cek apakah slug di Sveltia sudah diisi</small></div>`; 
             return; 
         }
 
-        // UPDATE META BUAT WA
+        // FIX 3: Update Meta buat WA
         document.title = post.title + " - PULNEW.com";
         document.querySelector('meta[property="og:title"]').setAttribute('content', post.title);
         document.querySelector('meta[property="og:description"]').setAttribute('content', (post.body || '').substring(0, 160));
-        document.querySelector('meta[property="og:image"]').setAttribute('content', 'https://pulnew.pages.dev' + post.image); // TAMBAH DOMAIN
+        document.querySelector('meta[property="og:image"]').setAttribute('content', post.image);
         document.querySelector('meta[property="og:url"]').setAttribute('content', window.location.href);
 
-        // Render
+        // Render Konten
         area.innerHTML = `
             <h1 class="article-title">${post.title}</h1>
             <div class="ad-slot"><img src="/media/iklan_berita_atas1.png" alt="Iklan"></div>
-            <img src="https://pulnew.pages.dev${post.image}" class="main-image">
-            <div style="margin:15px 0;"><a href="https://wa.me/?text=${encodeURIComponent(post.title + ' + window.location.href)}" target="_blank" style="background:#25D366; color:white; padding:10px 20px; text-decoration:none; border-radius:5px; font-weight:bold;">📲 Share ke WhatsApp</a></div>
+            <img src="${post.image}" class="main-image" onerror="this.src='https://pulnew.pages.dev/media/og-default.jpg'">
+            <div style="margin:15px 0;">
+                <a href="https://wa.me/?text=Baca: ${encodeURIComponent(window.location.href)}" target="_blank" style="background:#25D366; color:white; padding:10px 20px; text-decoration:none; border-radius:5px; font-weight:bold; display:inline-block;">📲 Share ke WhatsApp</a>
+            </div>
             <div class="article-body">${(post.body || '').replace(/\n/g, '<br>')}</div>
             <div class="related-section" id="related"><h3 class="section-title">Berita Lainnya</h3></div>
         `;
+
         document.getElementById('running-text').textContent = `INFO NEWS: ${post.title} | PULNEW.COM`;
-        
+
+        // Render Related Posts
         const relatedContainer = document.getElementById('related');
         data.filter(p => p.slug !== post.slug).slice(0, 3).forEach(r => {
-            relatedContainer.innerHTML += `<a href="/berita.html?slug=${encodeURIComponent(r.slug)}" class="related-item"><img src="https://pulnew.pages.dev${r.image}"><h4>${r.title}</h4></a>`;
+            relatedContainer.innerHTML += `
+                <a href="/berita.html?slug=${encodeURIComponent(r.slug)}" class="related-item">
+                    <img src="${r.image}" onerror="this.src='https://pulnew.pages.dev/media/og-default.jpg'">
+                    <h4>${r.title}</h4>
+                </a>`;
         });
 
-    } catch (e) { area.innerHTML = "<div class='error'>Gagal memuat koneksi ke server berita.</div>"; }
+    } catch (e) { 
+        console.error(e);
+        area.innerHTML = "<div class='error'>Gagal memuat koneksi ke server berita.</div>"; 
+    }
 }
 muatHalamanBerita();
 </script>
