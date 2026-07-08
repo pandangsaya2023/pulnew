@@ -9,7 +9,7 @@ HEADERS = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/
 
 sumber_rss = [
     {"media": "Antara", "url": "https://www.antaranews.com/rss/nasional"},
-    {"media": "Pikiran Rakyat", "url": "https://www.pikiran-rakyat.com/feed"}
+    {"media": "Pikiran Rakyat", "url": "https://www.pikiran-rakyat.com/feed"},
     {"media": "Tribunnews", "url": "https://www.tribunnews.com/rss"},
     {"media": "Republika", "url": "https://www.republika.co.id/rss"},
     {"media": "Okezone", "url": "https://sindonews.com/rss"},
