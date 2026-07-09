@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PULNEW CMS</title>
+
+  <!-- Tombol Bersih + Style -->
+  <style>
+    .btn-bersih { 
+      background:#25D366; 
+      color:white; 
+      border:none; 
+      padding:8px 15px; 
+      border-radius:5px; 
+      cursor:pointer; 
+      font-weight:bold; 
+      margin-top:10px; 
+      font-size:13px;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .btn-bersih:hover { background:#128C7E; }
+  </style>
+</head>
+<body>
+  <!-- LOAD SVELTIA CMS -->
+  <script src="https://unpkg.com/@sveltia/cms@latest/dist/sveltia-cms.js"></script>
+  
+  <script>
+    // FUNGSI TAMBAH TOMBOL OTOMATIS
+    function tambahTombolBersih(){
+      // Cari semua textarea dan editor markdown
+      let editors = document.querySelectorAll('textarea, [contenteditable="true"]');
+      
+      editors.forEach(editor => {
+        // Cek udah ada tombol belum biar gak dobel
+        if(editor.parentNode.querySelector('.btn-bersih')) return;
+        
+        let btn = document.createElement('button');
+        btn.innerHTML = '🧹 Bersihkan Teks WA';
+        btn.className = 'btn-bersih';
+        btn.type = 'button';
+        btn.title = 'Hapus karakter aneh dari copy WA';
+        
+        btn.onclick = function(){
+          let teks = '';
+          let isTextarea = editor.tagName === 'TEXTAREA';
+          
+          // Ambil isi
+          if(isTextarea) teks = editor.value;
+          else teks = editor.innerText;
+
+          // HAPUS KARAKTER ANEH DARI WA
+          teks = teks.replace(/[\u2018\u2019\u201A]/g, "'") // ' miring
+                     .replace(/[\u201C\u201D\u201E]/g, '"') // " miring
+                     .replace(/[\u2013\u2014]/g, '-') // - panjang
+                     .replace(/\u00A0/g, ' ') // spasi aneh &nbsp;
+                     .replace(/…/g, '...') // ...
+                     .replace(/\t/g, ' '); // tab
+
+          // Masukin lagi
+          if(isTextarea) {
+            editor.value = teks;
+            editor.dispatchEvent(new Event('input', {bubbles: true})); // kasih tau sveltia
+          } else {
+            editor.innerText = teks;
+            editor.dispatchEvent(new Event('input', {bubbles: true}));
+          }
+          
+          btn.innerHTML = '✅ Sudah Bersih!';
+          setTimeout(()=> btn.innerHTML = '🧹 Bersihkan Teks WA', 2000);
+        };
+        
+        // Taro tombol di bawah editor
+        editor.parentNode.appendChild(btn);
+      });
+    }
+
+    // Jalanin tiap 2 detik biar nongol di semua halaman edit
+    setInterval(tambahTombolBersih, 2000);
+  </script>
+</body>
+</html>
