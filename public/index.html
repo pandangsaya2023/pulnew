@@ -539,7 +539,7 @@
         const hero = posts[0];
         const kategoriHero = hero.kategori || hero.category || hero.tag || 'BERITA';
         const warnaHero = kategoriWarna[kategoriHero.toUpperCase()] || '#d32f2f';
-        const slug = post.slug; // INI KUNCI: AMBIL LANGSUNG DARI JSON
+        
         html += `
             <a href="/berita.html?slug=${hero.slug}" class="news-hero">
                 <img src="${hero.image}" alt="${hero.title}" loading="lazy">
