@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8902628805606588" crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PULNEW - Detail Berita</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="/pavicon.png">
+    
+    <!-- META DEFAULT - NANTI DIISI OTOMATIS PAKAI JS -->
+    <meta name="description" content="Portal Berita PULNEW.com">
+    <meta property="og:title" content="PULNEW.com">
+    <meta property="og:description" content="">
+    <meta property="og:image" content="https://pulnew.pages.dev/media/og-image.png">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="">
+
+    <style>
+        :root { --jarak-utama: 12px; --warna-merah: #d32f2f; --warna-biru: #1a237e; --warna-bg: #f4f6f9; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif; }
+        html, body { background: var(--warna-bg); color: #333; }
+        h1, h2, h3, h4,.logo-text { font-family: 'Poppins', sans-serif; }
+        
+       .header-container { background: #ffffff; position: sticky; top: 0; z-index: 200; border-bottom: 2px solid var(--warna-merah); box-shadow: 0 2px 4px rgba(0,0,0,0.06); }
+       .logo-bar { max-width: 1100px; margin: 0 auto; padding: 7px 20px; display: flex; justify-content: space-between; align-items: center; }
+       .logo-bar > a { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; }
+       .logo-img-wrapper img { display: block; max-height: 45px; width: auto; }
+       .logo-text { font-size: 24px; font-weight: 800; color: var(--warna-biru); }
+       .logo-new { color: var(--warna-merah); }
+       .btn-beranda { background: #2e7d32; color: white; padding: 6px 14px; border-radius: 6px; text-decoration: none; font-weight: 700; font-size: 12px; }
+       
+       .content-wrapper { max-width: 700px; width: 100%; margin: 0 auto; padding: 15px; padding-bottom: 60px; }
+       .article-box { background: #fff; padding: 20px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+       .article-category { display: inline-block; background: var(--warna-merah); color: #fff; padding: 4px 10px; border-radius: 6px; font-size: 12px; font-weight: 700; margin-bottom: 10px; }
+       .article-title { font-size: 26px; font-weight: 800; margin-bottom: 15px; line-height: 1.3; }
+       .article-meta { font-size: 12px; color: #777; margin-bottom: 15px; }
+       .main-image { width: 100%; max-width: 700px; height: auto; border-radius: 8px; margin-bottom: 20px; display: block; }
+       .article-body { font-size: 16px; line-height: 1.8; color: #333; }
+       .article-body p { margin-bottom: 15px; }
+       .article-body img { max-width: 100%; height: auto; border-radius: 8px; margin: 10px 0; }
+       
+       .related-section { margin-top: 30px; padding-top: 20px; border-top: 2px solid #eee; }
+       .section-title { font-size: 18px; font-weight: 800; color: var(--warna-biru); margin-bottom: 12px; padding-left: 8px; border-left: 4px solid var(--warna-merah); }
+       .related-item { display: flex; gap: 12px; padding: 10px 0; border-bottom: 1px solid #f0f0f0; text-decoration: none; color: inherit; }
+       .related-item img { width: 90px; height: 70px; object-fit: cover; border-radius: 6px; }
+       .related-item h4 { font-size: 14px; font-weight: 700; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+       
+       .footer-ticker { background: #d32f2f; color: white; padding: 8px 0; font-size: 13px; overflow: hidden; width: 100%; position: fixed; bottom: 0; left: 0; z-index: 999; }
+       .ticker-content { display: inline-block; white-space: nowrap; padding-left: 100%; animation: ticker 40s linear infinite; }
+        @keyframes ticker { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(-100%, 0, 0); } }
+        
+       .ad-slot { margin: 15px auto; text-align: center; max-width: 700px; }
+       .ad-slot img { width: 100%; max-width: 700px; height: auto; display: block; border-radius: 8px; margin: 0 auto; }
+    </style>
+</head>
+<body>
+
+    <div class="header-container">
+        <div class="logo-bar">
+            <a href="https://pulnew.pages.dev/">
+                <div class="logo-img-wrapper"><img src="https://pulnew.pages.dev/logopulnew.png" alt="Logo"></div>
+                <div class="logo-text">PUL<span class="logo-new">NEW</span>.COM</div>
+            </a>
+            <a href="https://pulnew.pages.dev/" class="btn-beranda">← Beranda</a>
+        </div>
+    </div>
+
+    <div class="content-wrapper">
+        <div class="article-box" id="content-area">Memuat berita...</div>
+    </div>
+
+    <div class="footer-ticker"><div class="ticker-content" id="running-text">MEMUAT INFORMASI TERKINI...</div></div>
+
+<script>
+async function muatHalamanBerita() {
+    const slugTujuan = new URLSearchParams(window.location.search).get('slug');
+    const contentArea = document.getElementById('content-area');
+    const runningText = document.getElementById('running-text');
+
+    if (!slugTujuan) { 
+        contentArea.innerHTML = "Error: Slug tidak ada di URL"; 
+        return; 
+    }
+
+    try {
+        const res = await fetch('/posts.json?t=' + Date.now(), { cache: 'no-store' });
+        if (!res.ok) throw new Error('Gagal load posts.json');
+        const posts = await res.json();
+        
+        const post = posts.find(p => p.slug === slugTujuan);
+        if (!post) { 
+            contentArea.innerHTML = `Berita tidak ditemukan.<br><small>Slug: ${slugTujuan}</small>`; 
+            return; 
+        }
+        
+        // KUNCI 1: FALLBACK BODY ATAU CONTENT
+        const isiMentah = post.body || post.content || '';
+        const deskripsi = isiMentah.substring(0, 160).replace(/\n/g, ' ').replace(/<[^>]*>/g, '');
+        const gambarUtama = post.image.startsWith('http')? post.image : 'https://pulnew.pages.dev' + post.image;
+
+        // KUNCI 2: UPDATE META DINAMIS BUAT SEO + SHARE WA
+        document.title = post.title + " - PULNEW.com";
+        document.querySelector('meta[name="description"]').setAttribute('content', deskripsi);
+        document.querySelector('meta[property="og:title"]').setAttribute('content', post.title);
+        document.querySelector('meta[property="og:description"]').setAttribute('content', deskripsi);
+        document.querySelector('meta[property="og:image"]').setAttribute('content', gambarUtama);
+        document.querySelector('meta[property="og:url"]').setAttribute('content', window.location.href);
+
+        const kategori = post.kategori || post.category || 'BERITA';
+        const tanggal = new Date(post.date || post.created_at).toLocaleDateString('id-ID', {day: 'numeric', month: 'long', year: 'numeric'});
+        const isi = isiMentah.split('\n').map(p => p.trim() ? `<p>${p}</p>` : '').join('');
+
+        let html = `
+            <span class="article-category">${kategori}</span>
+            <h1 class="article-title">${post.title}</h1>
+            <div class="article-meta">PULNEW.COM | ${tanggal}</div>
+            
+            <div class="ad-slot"><img src="https://pulnew.pages.dev/media/iklan_berita_atas1.png" alt="Iklan"></div>
+            
+            <img src="${gambarUtama}" class="main-image" alt="${post.title}">
+            
+            <div class="article-body">${isi}</div>
+            
+            <div class="ad-slot"><img src="https://pulnew.pages.dev/media/iklan_berita_tengah1.png" alt="Iklan"></div>
+        `;
+        
+        const related = posts.filter(p => p.slug !== slugTujuan).sort(() => 0.5 - Math.random()).slice(0, 5);
+        if (related.length > 0) {
+            html += `<div class="related-section"><div class="section-title">Berita Lainnya</div>`;
+            related.forEach(r => {
+                const gambarR = r.image.startsWith('http')? r.image : 'https://pulnew.pages.dev' + r.image;
+                html += `<a href="/berita.html?slug=${r.slug}" class="related-item"><img src="${gambarR}" alt="${r.title}"><h4>${r.title}</h4></a>`;
+            });
+            html += `</div>`;
+        }
+        contentArea.innerHTML = html;
+        runningText.textContent = `INFO NEWS: ${post.title} | PULNEW.COM`;
+
+    } catch (e) {
+        console.error(e);
+        contentArea.innerHTML = "Gagal memuat berita. Cek file posts.json";
+    }
+}
+muatHalamanBerita();
+</script>
+</body>
+</html>
