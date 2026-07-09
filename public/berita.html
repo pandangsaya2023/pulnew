@@ -64,13 +64,14 @@ h1, h2, h3, h4,.logo-text { font-family: 'Poppins', sans-serif; }
 
 .footer-ticker { background: #d32f2f; color: white; padding: 8px 0; font-size: 13px; overflow: hidden; width: 100%; position: fixed; bottom: 0; left: 0; z-index: 999; }
 .ticker-content { display: inline-block; white-space: nowrap; padding-left: 100%; animation: ticker 40s linear infinite; }
-@keyframes ticker { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(-100%, 0, 0); }
+@keyframes ticker { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(-100%, 0, 0); } }
 
 .ad-slot { margin: 15px auto; text-align: center; max-width: 100%; overflow: hidden; } /* FIX IKLAN JEBOL */
 .ad-slot img { width: 100%; max-width: 100%; height: auto; display: block; border-radius: 8px; }
 
 .loading,.error { text-align:center; padding:60px 20px; }
 .error { color: var(--warna-merah); }
+.error a { color: var(--warna-biru); font-weight: bold; }
 
 .btn-wa { background:#25D366; color:white; padding:10px 20px; text-decoration:none; border-radius:5px; font-weight:bold; display:inline-block; margin:15px 0; }
 
@@ -112,8 +113,9 @@ async function muatHalamanBerita() {
     const area = document.getElementById('content-area');
     const ticker = document.getElementById('running-text');
 
+    // FIX: KALAU GAK ADA SLUG LANGSUNG BALIK KE BERANDA
     if (!slugDariUrl) { 
-        area.innerHTML = "<div class='error'>Parameter berita tidak ditemukan.</div>"; 
+        window.location.href = "https://pulnew.pages.dev/"; 
         return; 
     }
     slugDariUrl = decodeURIComponent(slugDariUrl).toLowerCase().trim();
@@ -130,7 +132,7 @@ async function muatHalamanBerita() {
         }
 
         if (!post) { 
-            area.innerHTML = `<div class='error'>Berita "${slugDariUrl}" tidak ditemukan.<br><br>Daftar berita yg ada:<br>${data.map(p=>`<a href="/berita.html?slug=${p.slug}">${p.title}</a>`).join('<br>')}</div>`; 
+            area.innerHTML = `<div class='error'>Berita "${slugDariUrl}" tidak ditemukan.<br><br><a href="/">← Kembali ke Beranda</a></div>`; 
             return; 
         }
 
