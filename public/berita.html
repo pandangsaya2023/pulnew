@@ -23,7 +23,7 @@ h1, h2, h3, h4,.logo-text { font-family: 'Poppins', sans-serif; }
 .logo-text { font-size: 24px; font-weight: 800; color: var(--warna-biru); }
 .logo-new { color: var(--warna-merah); }
 .btn-beranda { background: #2e7d32; color: white; padding: 4px 12px; border-radius: 6px; text-decoration: none; font-weight: 600; font-size: 12px; }
-.content-wrapper { max-width: 600px; margin: 0 auto; padding: 15px; padding-bottom: 60px; } /* DIKUNCI LEBAR 600px */
+.content-wrapper { max-width: 600px; margin: 0 auto; padding: 15px; padding-bottom: 60px; } /* DIKUNCI 600px */
 .article-box { width: 100%; }
 .article-title { font-size: 22px; font-weight: 800; margin-bottom: 15px; line-height: 1.3; }
 .main-image { width: 100%; border-radius: 6px; margin-bottom: 15px; }
@@ -37,8 +37,8 @@ h1, h2, h3, h4,.logo-text { font-family: 'Poppins', sans-serif; }
 .footer-ticker { background: #d32f2f; color: white; padding: 8px 0; font-size: 13px; overflow: hidden; width: 100%; position: fixed; bottom: 0; left: 0; z-index: 999; }
 .ticker-content { display: inline-block; white-space: nowrap; padding-left: 100%; animation: ticker 40s linear infinite; }
 @keyframes ticker { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(-100%, 0, 0); }
-.ad-slot { margin: 15px 0; text-align: center; max-width: 600px; margin-left: auto; margin-right: auto; } /* DIKUNCI */
-.ad-slot img { width: 100%; max-width: 600px; height: auto; display: block; border-radius: 8px; } /* GAK MELEBAR LAGI */
+.ad-slot { margin: 15px 0; text-align: center; }
+.ad-slot img { width: 100%; max-width: 600px; height: auto; display: block; border-radius: 8px; margin: 0 auto; } /* GAK MELEBAR */
 </style>
 </head>
 <body>
@@ -68,34 +68,17 @@ function updateMetaTags(post) {
         meta.setAttribute('content', content);
     };
     setMeta('og:title', post.title);
-    setMeta('og:description', (post.body || '').replace(/<[^>]*>/g, '').substring(0, 160) + '...');
+    setMeta('og:description', (post.body || post.content || '').replace(/<[^>]*>/g, '').substring(0, 160) + '...');
     const imgUrl = post.image.startsWith('http') ? post.image : 'https://pulnew.pages.dev' + post.image;
     setMeta('og:image', imgUrl);
     setMeta('og:url', window.location.href);
 }
 
-// FIX: CEK 2 LOKASI FILE KARENA KAMU PAKAI public_folder: /media
-async function fetchPostBySlug(slug) {
-    const urls = [
-        `/posts/${slug}.json`,        // Lokasi 1
-        `/media/posts/${slug}.json`   // Lokasi 2: kalau ke save di media
-    ];
-    for (const url of urls) {
-        try {
-            const res = await fetch(url + '?t=' + Date.now(), { cache: 'no-store' });
-            if (res.ok) return await res.json();
-        } catch(e) {}
-    }
-    return null;
-}
-
-// AMBIL DAFTAR BUAT BERITA LAIN
-async function fetchPostsList() {
-    try {
-        const res = await fetch('/posts.json?t=' + Date.now());
-        if (res.ok) return await res.json();
-    } catch(e){}
-    return [];
+// KUNCI: BACA DARI 1 FILE posts.json SAJA. LEBIH CEPAT DAN ANTI 404
+async function fetchAllPosts() {
+    const res = await fetch('/posts.json?t=' + Date.now(), { cache: 'no-store' });
+    if (!res.ok) throw new Error('posts.json gagal dimuat');
+    return await res.json();
 }
 
 async function muatHalamanBerita() {
@@ -103,38 +86,47 @@ async function muatHalamanBerita() {
     const contentArea = document.getElementById('content-area');
     const runningText = document.getElementById('running-text');
 
-    if (!slugTujuan) { contentArea.innerHTML = "Slug tidak ditemukan."; return; }
+    if (!slugTujuan) { contentArea.innerHTML = "Slug tidak ditemukan di URL."; return; }
 
-    const post = await fetchPostBySlug(slugTujuan);
-    if (!post) {
-        contentArea.innerHTML = `Berita tidak ditemukan.<br><small>Cek apakah file ada di: /posts/${slugTujuan}.json</small>`;
-        return;
-    }
-    
-    updateMetaTags(post);
-    const isiBerita = (post.body || '').split('\n').map(p => p.trim() ? `<p>${p}</p>` : '').join('');
-    const gambar = post.image.startsWith('http') ? post.image : 'https://pulnew.pages.dev' + post.image;
+    try {
+        const posts = await fetchAllPosts();
+        
+        // CARI BERITA BERDASARKAN SLUG DI DALAM posts.json
+        const post = posts.find(p => p.slug === slugTujuan);
 
-    let html = `
-        <h1 class="article-title">${post.title}</h1>
-        <div class="ad-slot"><img src="https://pulnew.pages.dev/media/iklan_berita_atas1.png" alt="Iklan"></div>
-        <img src="${gambar}" class="main-image" alt="${post.title}">
-        <div class="article-body">${isiBerita}</div>
-        <div class="ad-slot"><img src="https://pulnew.pages.dev/media/iklan_berita_tengah1.png" alt="Iklan"></div>
-    `;
-    
-    const postsList = await fetchPostsList();
-    const related = postsList.filter(p => p.slug !== slugTujuan).slice(0, 5);
-    if (related.length > 0) {
-        html += `<div class="related-section"><div class="section-title">Berita Lainnya</div>`;
-        related.forEach(r => {
-            const gambarR = r.image.startsWith('http') ? r.image : 'https://pulnew.pages.dev' + r.image;
-            html += `<a href="/berita.html?slug=${r.slug}" class="related-item"><img src="${gambarR}" alt="${r.title}"><h4>${r.title}</h4></a>`;
-        });
-        html += `</div>`;
+        if (!post) {
+            contentArea.innerHTML = `Berita tidak ditemukan.<br><small>Slug: ${slugTujuan}</small>`;
+            return;
+        }
+        
+        updateMetaTags(post);
+        const isiBerita = (post.body || post.content || '').split('\n').map(p => p.trim() ? `<p>${p}</p>` : '').join('');
+        const gambar = post.image.startsWith('http') ? post.image : 'https://pulnew.pages.dev' + post.image;
+
+        let html = `
+            <h1 class="article-title">${post.title}</h1>
+            <div class="ad-slot"><img src="https://pulnew.pages.dev/media/iklan_berita_atas1.png" alt="Iklan"></div>
+            <img src="${gambar}" class="main-image" alt="${post.title}">
+            <div class="article-body">${isiBerita}</div>
+            <div class="ad-slot"><img src="https://pulnew.pages.dev/media/iklan_berita_tengah1.png" alt="Iklan"></div>
+        `;
+        
+        const related = posts.filter(p => p.slug !== slugTujuan).sort(() => 0.5 - Math.random()).slice(0, 5);
+        if (related.length > 0) {
+            html += `<div class="related-section"><div class="section-title">Berita Lainnya</div>`;
+            related.forEach(r => {
+                const gambarR = r.image.startsWith('http') ? r.image : 'https://pulnew.pages.dev' + r.image;
+                html += `<a href="/berita.html?slug=${r.slug}" class="related-item"><img src="${gambarR}" alt="${r.title}"><h4>${r.title}</h4></a>`;
+            });
+            html += `</div>`;
+        }
+        contentArea.innerHTML = html;
+        runningText.textContent = `INFO NEWS: ${post.title} | PULNEW.com`;
+
+    } catch (e) {
+        console.error(e);
+        contentArea.innerHTML = "Gagal memuat posts.json. Cek koneksi.";
     }
-    contentArea.innerHTML = html;
-    runningText.textContent = `INFO NEWS: ${post.title} | PULNEW.com`;
 }
 muatHalamanBerita();
 </script>
