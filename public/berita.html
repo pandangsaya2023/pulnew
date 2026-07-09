@@ -4,8 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>PULNEW - Detail Berita</title>
-
-<!-- Meta default, nanti diganti dinamis sama JS -->
 <meta property="og:title" content="PULNEW.com - Update Informasi Terkini">
 <meta property="og:description" content="Menyajikan Informasi Langsung Ke Perangkat Anda">
 <meta property="og:image" content="https://pulnew.pages.dev/media/og-default.jpg">
@@ -14,39 +12,33 @@
 <meta name="twitter:card" content="summary_large_image">
 
 <style>
-:root {
-    --jarak-utama: 8px;
-    --warna-merah: #d32f2f;
-    --warna-biru: #1a237e;
-    --warna-bg: #f4f6f9;
- }
+:root { --warna-merah: #d32f2f; --warna-biru: #1a237e; --warna-bg: #f4f6f9; }
 * { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif; }
 html, body { background: var(--warna-bg); color: #333; min-height: 100vh; }
 h1, h2, h3, h4,.logo-text { font-family: 'Poppins', sans-serif; }
-
-.header-container { background: #ffffff; position: sticky; top: 0; z-index: 200; border-bottom: 2px solid var(--warna-merah); box-shadow: 0 2px 4px rgba(0,0,0,0.06); }
+.header-container { background: #fff; position: sticky; top: 0; z-index: 200; border-bottom: 2px solid var(--warna-merah); box-shadow: 0 2px 4px rgba(0,0,0,0.06); }
 .logo-bar { max-width: 1100px; margin: 0 auto; padding: 7px 20px; display: flex; justify-content: space-between; align-items: center; }
 .logo-bar > a { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; }
 .logo-img-wrapper img { display: block; max-height: 45px; width: auto; }
-.logo-text { font-size: 24px; font-weight: 800; color: var(--warna-biru); line-height: 1; }
+.logo-text { font-size: 24px; font-weight: 800; color: var(--warna-biru); }
 .logo-new { color: var(--warna-merah); }
 .btn-beranda { background: #2e7d32; color: white; padding: 4px 12px; border-radius: 6px; text-decoration: none; font-weight: 600; font-size: 12px; }
-.content-wrapper { flex: 1; overflow-y: auto; padding: 15px; padding-bottom: 60px; }
-.article-box { max-width: 600px; margin: 0 auto; }
+.content-wrapper { max-width: 600px; margin: 0 auto; padding: 15px; padding-bottom: 60px; } /* DIKUNCI LEBAR 600px */
+.article-box { width: 100%; }
 .article-title { font-size: 22px; font-weight: 800; margin-bottom: 15px; line-height: 1.3; }
 .main-image { width: 100%; border-radius: 6px; margin-bottom: 15px; }
 .article-body { font-size: 16px; line-height: 1.7; color: #333; text-align: left; word-break: break-word; }
-.article-body p { margin-top: 5px; margin-bottom: 15px; }
+.article-body p { margin-bottom: 15px; }
 .related-section { margin-top: 30px; padding-top: 20px; border-top: 2px solid #eee; }
-.section-title { font-size: 18px; font-weight: 800; color: var(--warna-biru); margin: 5px 0 12px 0; padding-left: 3px; border-left: 4px solid var(--warna-merah); }
+.section-title { font-size: 18px; font-weight: 800; color: var(--warna-biru); margin-bottom: 12px; padding-left: 3px; border-left: 4px solid var(--warna-merah); }
 .related-item { display: flex; gap: 12px; padding: 10px 0; border-bottom: 1px solid #f0f0f0; text-decoration: none; color: inherit; }
 .related-item img { width: 80px; height: 60px; object-fit: cover; border-radius: 6px; flex-shrink: 0; }
-.related-item h4 { font-size: 14px; font-weight: 700; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; margin: 0; }
+.related-item h4 { font-size: 14px; font-weight: 700; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 .footer-ticker { background: #d32f2f; color: white; padding: 8px 0; font-size: 13px; overflow: hidden; width: 100%; position: fixed; bottom: 0; left: 0; z-index: 999; }
 .ticker-content { display: inline-block; white-space: nowrap; padding-left: 100%; animation: ticker 40s linear infinite; }
 @keyframes ticker { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(-100%, 0, 0); }
-.ad-slot { margin: 15px auto; text-align: center; }
-.ad-slot img { width: 100%; height: auto; display: block; border-radius: 8px; }
+.ad-slot { margin: 15px 0; text-align: center; max-width: 600px; margin-left: auto; margin-right: auto; } /* DIKUNCI */
+.ad-slot img { width: 100%; max-width: 600px; height: auto; display: block; border-radius: 8px; } /* GAK MELEBAR LAGI */
 </style>
 </head>
 <body>
@@ -54,22 +46,18 @@ h1, h2, h3, h4,.logo-text { font-family: 'Poppins', sans-serif; }
 <div class="header-container">
     <div class="logo-bar">
         <a href="https://pulnew.pages.dev/">
-          <div class="logo-img-wrapper">
-              <img src="https://pulnew.pages.dev/logopulnew.png" alt="Logo">
-          </div>
+          <div class="logo-img-wrapper"><img src="https://pulnew.pages.dev/logopulnew.png" alt="Logo"></div>
           <div class="logo-text">PUL<span class="logo-new">NEW</span>.COM</div>
         </a>
         <a href="https://pulnew.pages.dev/" class="btn-beranda">← Beranda</a>
     </div>
 </div>
 
- <div class="content-wrapper">
+<div class="content-wrapper">
     <div class="article-box" id="content-area">Memuat berita...</div>
 </div>
 
-<div class="footer-ticker">
-    <div class="ticker-content" id="running-text">MEMUAT INFORMASI TERKINI...</div>
-</div>
+<div class="footer-ticker"><div class="ticker-content" id="running-text">MEMUAT INFORMASI TERKINI...</div></div>
 
 <script>
 function updateMetaTags(post) {
@@ -81,30 +69,33 @@ function updateMetaTags(post) {
     };
     setMeta('og:title', post.title);
     setMeta('og:description', (post.body || '').replace(/<[^>]*>/g, '').substring(0, 160) + '...');
-    setMeta('og:image', post.image.startsWith('http') ? post.image : 'https://pulnew.pages.dev' + post.image);
+    const imgUrl = post.image.startsWith('http') ? post.image : 'https://pulnew.pages.dev' + post.image;
+    setMeta('og:image', imgUrl);
     setMeta('og:url', window.location.href);
 }
 
-// 1. AMBIL DAFTAR FILE DARI /public/posts/
-async function fetchPostsList() {
-    try {
-        const res = await fetch('/posts.json?t=' + Date.now()); // kita bikin 1 file index
-        if (res.ok) return await res.json();
-    } catch(e){}
-    
-    // fallback: kalau gak ada posts.json, scan manual folder
-    return [];
+// FIX: CEK 2 LOKASI FILE KARENA KAMU PAKAI public_folder: /media
+async function fetchPostBySlug(slug) {
+    const urls = [
+        `/posts/${slug}.json`,        // Lokasi 1
+        `/media/posts/${slug}.json`   // Lokasi 2: kalau ke save di media
+    ];
+    for (const url of urls) {
+        try {
+            const res = await fetch(url + '?t=' + Date.now(), { cache: 'no-store' });
+            if (res.ok) return await res.json();
+        } catch(e) {}
+    }
+    return null;
 }
 
-// 2. AMBIL 1 FILE BERITA BERDASARKAN SLUG
-async function fetchPostBySlug(slug) {
+// AMBIL DAFTAR BUAT BERITA LAIN
+async function fetchPostsList() {
     try {
-        const res = await fetch(`/posts/${slug}.json?t=` + Date.now(), { cache: 'no-store' });
-        if (!res.ok) throw new Error('404');
-        return await res.json();
-    } catch(e) {
-        return null;
-    }
+        const res = await fetch('/posts.json?t=' + Date.now());
+        if (res.ok) return await res.json();
+    } catch(e){}
+    return [];
 }
 
 async function muatHalamanBerita() {
@@ -112,56 +103,38 @@ async function muatHalamanBerita() {
     const contentArea = document.getElementById('content-area');
     const runningText = document.getElementById('running-text');
 
-    if (!slugTujuan) {
-        contentArea.innerHTML = "Slug tidak ditemukan.";
+    if (!slugTujuan) { contentArea.innerHTML = "Slug tidak ditemukan."; return; }
+
+    const post = await fetchPostBySlug(slugTujuan);
+    if (!post) {
+        contentArea.innerHTML = `Berita tidak ditemukan.<br><small>Cek apakah file ada di: /posts/${slugTujuan}.json</small>`;
         return;
     }
+    
+    updateMetaTags(post);
+    const isiBerita = (post.body || '').split('\n').map(p => p.trim() ? `<p>${p}</p>` : '').join('');
+    const gambar = post.image.startsWith('http') ? post.image : 'https://pulnew.pages.dev' + post.image;
 
-    try {
-        // AMBIL BERITA UTAMA
-        const post = await fetchPostBySlug(slugTujuan);
-        if (!post) {
-            contentArea.innerHTML = "Berita tidak ditemukan.<br><small>Mungkin sudah dihapus atau slug salah</small>";
-            return;
-        }
-        
-        updateMetaTags(post);
-
-        const isiBerita = (post.body || '').split('\n').map(p => p.trim() ? `<p>${p}</p>` : '').join('');
-        const gambar = post.image.startsWith('http') ? post.image : 'https://pulnew.pages.dev' + post.image;
-
-        let html = `
-            <h1 class="article-title">${post.title}</h1>
-            <div class="ad-slot"><img src="/media/iklan_berita_atas1.png" alt="Iklan"></div>
-            <img src="${gambar}" class="main-image" alt="${post.title}">
-            <div class="article-body">${isiBerita}</div>
-            <div class="ad-slot"><img src="/media/iklan_berita_tengah1.png" alt="Iklan"></div>
-        `;
-        
-        // AMBIL BERITA LAIN
-        const postsList = await fetchPostsList();
-        const related = postsList.filter(p => p.slug !== slugTujuan).slice(0, 5);
-        if (related.length > 0) {
-            html += `<div class="related-section"><div class="section-title">Berita Lainnya</div>`;
-            related.forEach(r => {
-                const gambarR = r.image.startsWith('http') ? r.image : 'https://pulnew.pages.dev' + r.image;
-                html += `
-                    <a href="/berita.html?slug=${r.slug}" class="related-item">
-                        <img src="${gambarR}" alt="${r.title}">
-                        <h4>${r.title}</h4>
-                    </a>
-                `;
-            });
-            html += `</div>`;
-        }
-
-        contentArea.innerHTML = html;
-        runningText.textContent = `INFO NEWS: ${post.title} | PULNEW.com`;
-
-    } catch (e) {
-        console.error(e);
-        contentArea.innerHTML = "Berita tidak dapat dimuat.<br><small>Silakan refresh</small>";
+    let html = `
+        <h1 class="article-title">${post.title}</h1>
+        <div class="ad-slot"><img src="https://pulnew.pages.dev/media/iklan_berita_atas1.png" alt="Iklan"></div>
+        <img src="${gambar}" class="main-image" alt="${post.title}">
+        <div class="article-body">${isiBerita}</div>
+        <div class="ad-slot"><img src="https://pulnew.pages.dev/media/iklan_berita_tengah1.png" alt="Iklan"></div>
+    `;
+    
+    const postsList = await fetchPostsList();
+    const related = postsList.filter(p => p.slug !== slugTujuan).slice(0, 5);
+    if (related.length > 0) {
+        html += `<div class="related-section"><div class="section-title">Berita Lainnya</div>`;
+        related.forEach(r => {
+            const gambarR = r.image.startsWith('http') ? r.image : 'https://pulnew.pages.dev' + r.image;
+            html += `<a href="/berita.html?slug=${r.slug}" class="related-item"><img src="${gambarR}" alt="${r.title}"><h4>${r.title}</h4></a>`;
+        });
+        html += `</div>`;
     }
+    contentArea.innerHTML = html;
+    runningText.textContent = `INFO NEWS: ${post.title} | PULNEW.com`;
 }
 muatHalamanBerita();
 </script>
