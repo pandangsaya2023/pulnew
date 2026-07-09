@@ -95,7 +95,9 @@ async function muatHalamanBerita() {
 
         const kategori = post.kategori || post.category || 'BERITA';
         const tanggal = new Date(post.date || post.created_at).toLocaleDateString('id-ID', {day: 'numeric', month: 'long', year: 'numeric'});
-        const isi = (post.body || post.content || '').split('\n').map(p => p.trim() ? `<p>${p}</p>` : '').join('');
+        // const isi = (post.body || post.content || '').split('\n').map(p => p.trim() ? `<p>${p}</p>` : '').join('');
+        const isiMentah = post.body || post.content || ''; // KUNCI: CEK BODY DULU, KALAU GAK ADA BARU CONTENT
+        const isi = isiMentah.split('\n').map(p => p.trim() ? `<p>${p}</p>` : '').join('');
 
         let html = `
             <span class="article-category">${kategori}</span>
