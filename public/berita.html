@@ -188,7 +188,7 @@ async function fetchPosts() {
     const maxRetry = 3;
     for (let i = 0; i < maxRetry; i++) {
         try {
-            const res = await fetch('/api/posts?t=' + Date.now() + '&r=' + Math.random(), {
+            const res = await fetch('/posts.json?t=' + Date.now() + '&r=' + Math.random(), {
                 cache: 'no-store',
                 headers: { 'Cache-Control': 'no-cache' }
             });
