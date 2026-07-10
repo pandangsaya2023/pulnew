@@ -138,7 +138,6 @@ for sumber in sumber_rss:
             if slug not in slug_tercatat:
                 print(f" -> Memproses: {title}")
                 body, soup_artikel = rewrite_with_groq(title, link, sumber['media'])
-                # img_url = img_url if img_url else f"{BASE_URL}/images/og-default.jpg"
                 img_url = ambil_gambar_asli(soup_artikel, link)
                 deskripsi = BeautifulSoup(body, 'html.parser').get_text()[:160] + "..."
 
