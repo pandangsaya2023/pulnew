@@ -62,10 +62,10 @@ def ambil_konten_berita(url):
         return "", None
 
 def ambil_gambar_asli(soup, url):
-    if soup:
-        og_image = soup.find('meta', property='og:image')
-        if og_image and og_image.get('content'):
-            return og_image['content']
+    # if soup:
+       # og_image = soup.find('meta', property='og:image')
+        # if og_image and og_image.get('content'):
+           # return og_image['content']
     return f"{BASE_URL}/images/og-default.jpg"
 
 def rewrite_with_groq(title, link, media):
@@ -146,7 +146,7 @@ for sumber in sumber_rss:
                     "meta_description": deskripsi,
                     "content": deskripsi,
                     "body": body,
-                    "image": img_url,
+                    "image": "",
                     "kategori": "BERITA",
                     "date": datetime.now().strftime("%Y-%m-%d %H:%M"),
                     "source": sumber['media']
