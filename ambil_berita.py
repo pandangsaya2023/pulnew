@@ -55,7 +55,7 @@ def load_data():
     return {"posts": []}
 
 def save_data(data):
-    """Simpan ke /posts.json"""
+    """Simpan ke /public/posts.json"""
     os.makedirs('/public/posts', exist_ok=True)
     with open(FILE_JSON, 'w', encoding='utf-8') as f:
         json.dump(data, f, ensure_ascii=False, indent=2)
