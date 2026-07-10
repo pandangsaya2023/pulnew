@@ -202,9 +202,9 @@ async function muatHalamanBerita() {
     }
 
     try {
-        // 1. AMBIL DARI 1 FILE SAJA: /posts.json
-        const res = await fetch('/posts.json?t=' + Date.now(), { cache: 'no-store' });
-        if (!res.ok) throw new Error('File /posts.json tidak ditemukan');
+        // 1. AMBIL DARI 1 FILE SAJA: /data/posts.json
+        const res = await fetch('/data/posts.json?t=' + Date.now(), { cache: 'no-store' });
+        if (!res.ok) throw new Error('File data/posts.json tidak ditemukan');
 
         const data = await res.json();
         const posts = data.posts || [];
