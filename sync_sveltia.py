@@ -13,20 +13,19 @@ def baca_posts_lama():
     try:
         with open(FILE_JSON, 'r', encoding='utf-8') as f:
             data = json.load(f)
-            # Jaga2 kalau isinya string
             if not isinstance(data.get("posts"), list):
                 return {}
-            return {b['slug']: b for b in data["posts"]}
+            # Bikin dict {slug: data_berita}
+            return {b['slug']: b for b in data["posts"] if 'slug' in b}
     except:
         return {}
 
 def simpan_posts(daftar_berita_dict):
     daftar_berita = list(daftar_berita_dict.values())
 
-    # Benerin date
-    for i, b in enumerate(daftar_berita):
+    for b in daftar_berita:
         if isinstance(b.get('date'), datetime):
-            daftar_berita[i]['date'] = b['date'].isoformat()
+            b['date'] = b['date'].isoformat()
 
     daftar_berita.sort(key=lambda x: x['date'], reverse=True)
     daftar_berita = daftar_berita[:200]
@@ -40,8 +39,7 @@ jumlah_update = 0
 
 for filepath in glob.glob(f"{FOLDER_SVELTIA}/*.md"):
     try:
-        post = frontmatter.load(filepath) # langsung baca file
-
+        post = frontmatter.load(filepath)
         meta = post.metadata
         slug = meta.get('slug') or os.path.basename(filepath).replace('.md', '')
 
@@ -58,7 +56,7 @@ for filepath in glob.glob(f"{FOLDER_SVELTIA}/*.md"):
             "date": date_val
         }
 
-        posts_dict = berita_baru # <-- INI. DIJAMIN BENER
+        posts_dict = berita_baru # <-- NAH INI. PAKE KURUNG KOTAK
         jumlah_update += 1
         print(f" -> Update/Tambah: {berita_baru['title'][:40]}...")
 
