@@ -9,7 +9,7 @@ from bs4 import BeautifulSoup
 
 # --- KONFIGURASI ---
 BASE_URL = "https://pulnew.pages.dev"
-FILE_JSON = "/posts.json" # PENTING: INI FILE UTAMA
+FILE_JSON = "data/posts.json" # PENTING: INI FILE UTAMA
 GROQ_API_KEY = os.getenv("GROQ_API_KEY")
 client = Groq(api_key=GROQ_API_KEY)
 
@@ -55,7 +55,8 @@ def load_data():
     return {"posts": []}
 
 def save_data(data):
-    """Simpan ke posts.json"""
+    """Simpan ke data/posts.json"""
+    os.makedirs('data', exist_ok=True)
     with open(FILE_JSON, 'w', encoding='utf-8') as f:
         json.dump(data, f, ensure_ascii=False, indent=2)
     print(f"✅ Data disimpan ke {FILE_JSON}. Total berita: {len(data['posts'])}")
