@@ -22,19 +22,27 @@ sumber_rss = [
     {"media": "Okezone", "url": "https://techno.okezone.com/rss"}
 ]
 
-# --- PROMPT BARU KHUS TEKNOLOGI GAYA PULNEW ---
-def prompt_rewrite_teknologi(title, konten_asli, link, media):
+# --- PROMPT KHUSUS GAYA PULNEW ---
+def prompt_rewrite_umum(title, konten_asli, link, media):
     return f"""
-    Kamu adalah Editor Teknologi PULNEW.com. Tulis ulang berita ini jadi artikel 400 kata gaya PULNEW.
+    
+    Kamu adalah Editor Senior PULNEW.com. Kamu profesional, analitis, dan punya wawasan luas di semua bidang.
+    Tugasmu: Tulis ulang berita ini jadi artikel 500 kata dengan standar media nasional.
 
-    ATURAN:
-    1. Bahasa: Indonesia, santai, informatif, mudah dimengerti orang awam
-    2. Panjang: 350-400 kata. Pakai <p> untuk paragraf dan <h2> untuk 2 subjudul
-    3. Struktur: Pembuka pakai analogi + Isi + Penutup "Dampaknya ke Indonesia"
-    4. Parafrase 100%. Jangan copy paste.
-    5. Akhiri dengan: <p><i>Sumber: {media}</i></p>
+    ATURAN PENULISAN:
+    1. Bahasa: Indonesia formal tapi mengalir. Tajam, padat, kredibel. Tanpa bahasa lebay.
+    2. Panjang: 450-500 kata. Gunakan tag <p> untuk paragraf dan <h2> untuk 3 subjudul.
+    3. Struktur: 
+       - Paragraf 1: Lead kuat, langsung ke inti berita + kenapa ini penting
+       - Isi: Bedah fakta + data + konteks
+       - Analisis: Berikan sudut pandang "Apa dampaknya bagi masyarakat/Indonesia"
+       - Penutup: Outlook ke depan
+    4. Gaya: Parafrase 100%. Jangan copy paste. Sesuaikan gaya bahasa dengan topik beritanya.
+       Kalau berita ekonomi = gaya bisnis. Kalau bola = gaya sport. Kalau politik = gaya tajam.
+    5. Tambahkan insight 1-2 kalimat hasil analisis kamu di setiap subjudul <h2>.
+    6. Akhiri dengan: <p><i>Sumber: {media}</i></p>
 
-    JUDUL: {title}
+    JUDUL ASLI: {title}
     KONTEN ASLI: {konten_asli}
     """
 
@@ -68,7 +76,7 @@ def rewrite_with_groq(title, link, media):
         return f"<p>Berita selengkapnya bisa dibaca di <a href='{link}'>{media}</a></p>", soup
 
     try:
-        prompt = prompt_rewrite_teknologi(title, konten_asli, link, media)
+        prompt = prompt_rewrite_umum(title, konten_asli, link, media)
         completion = client.chat.completions.create(
             model="llama-3.3-70b-versatile", # Pakai yg 70b biar bagus nulisnya
             messages=[{"role": "user", "content": prompt}],
@@ -125,8 +133,8 @@ for sumber in sumber_rss:
             link = item.find('link').get_text(strip=True)
 
             # FILTER KHUS TEKNOLOGI
-            if not any(k in title.lower() for k in ['ai', 'gadget', 'hp', 'smartphone', 'internet', 'teknologi', 'startup', 'aplikasi', 'data']):
-                continue
+            # if not any(k in title.lower() for k in ['ai', 'gadget', 'hp', 'smartphone', 'internet', 'teknologi', 'startup', 'aplikasi', 'data']):
+            #   continue
 
             slug = re.sub(r'[^a-z0-9]+', '-', title.lower()).strip('-')[:50]
             if not slug: slug = f"teknologi-{int(time.time() * 1000)}"
@@ -144,7 +152,7 @@ for sumber in sumber_rss:
                     "content": deskripsi,
                     "body": body,
                     "image": img_url,
-                    "kategori": "TEKNOLOGI",
+                    "kategori": "BERITA",
                     "date": datetime.now().strftime("%Y-%m-%d %H:%M"),
                     "source": sumber['media']
                 }
@@ -160,4 +168,4 @@ for sumber in sumber_rss:
     except Exception as e: print(f"Error: {e}")
     if jumlah_baru >= 10: break
 
-print(f"Selesai! Nambah {jumlah_baru} berita TEKNOLOGI baru")
+print(f"Selesai! Nambah {jumlah_baru} Berita Baru")
