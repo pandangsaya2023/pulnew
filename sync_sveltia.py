@@ -20,17 +20,21 @@ def baca_posts_lama():
 
 def simpan_posts(daftar_berita_dict):
     daftar_berita = list(daftar_berita_dict.values())
+    # PENTING: pastikan semua date jadi string ISO biar bisa di sort
+    for b in daftar_berita:
+        if isinstance(b['date'], datetime):
+            b['date'] = b['date'].isoformat()
+
     daftar_berita.sort(key=lambda x: x['date'], reverse=True)
-    daftar_berita = daftar_berita[:200] # simpan max 200 berita
+    daftar_berita = daftar_berita[:200]
     data = {"posts": daftar_berita}
     with open(FILE_JSON, 'w', encoding='utf-8') as f:
         json.dump(data, f, indent=2, ensure_ascii=False)
 
 print("Mulai sync Sveltia -> posts.json")
-posts_dict = baca_posts_lama() # ambil data lama dari robot RSS
+posts_dict = baca_posts_lama()
 jumlah_update = 0
 
-# Baca semua file.md di folder sveltia
 for filepath in glob.glob(f"{FOLDER_SVELTIA}/*.md"):
     try:
         with open(filepath, 'r', encoding='utf-8') as f:
@@ -38,6 +42,11 @@ for filepath in glob.glob(f"{FOLDER_SVELTIA}/*.md"):
 
         meta = post.metadata
         slug = meta.get('slug') or os.path.basename(filepath).replace('.md', '')
+        date_val = meta.get('date', datetime.now())
+
+        # Jaga2 kalau date dari sveltia udah datetime
+        if isinstance(date_val, datetime):
+            date_val = date_val.isoformat()
 
         berita = {
             "slug": slug,
@@ -45,12 +54,11 @@ for filepath in glob.glob(f"{FOLDER_SVELTIA}/*.md"):
             "body": post.content,
             "image": meta.get('image', 'https://pulnew.pages.dev/media/og-default.png'),
             "kategori": meta.get('kategori', 'NASIONAL'),
-            "date": meta.get('date', datetime.now().isoformat())
+            "date": date_val # udah pasti string
         }
 
-        # Timpa kalau ada, tambah kalau baru
         if posts_dict.get(slug)!= berita:
-            posts_dict[slug] = berita
+            posts_dict[slug] = berita # ini tadi typo, harusnya [slug]
             jumlah_update += 1
             print(f" -> Update/Tambah: {berita['title'][:40]}...")
 
