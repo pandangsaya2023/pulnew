@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8902628805606588"
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-"
      crossorigin="anonymous"></script>
 
     <meta charset="UTF-8">
@@ -432,7 +432,7 @@
         const maxRetry = 3;
         for (let i = 0; i < maxRetry; i++) {
             try {
-                const res = await fetch(('/posts.json')?'t=' + Date.now() + '&r=' + Math.random(), {
+                const res = await fetch('/posts.json?t=' + Date.now() + '&r=' + Math.random(), {
                     cache: 'no-store',
                     headers: { 'Cache-Control': 'no-cache' }
                 });
