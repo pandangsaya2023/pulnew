@@ -13,13 +13,14 @@ GROQ_API_KEY = os.getenv("GROQ_API_KEY")
 client = Groq(api_key=GROQ_API_KEY)
 
 sumber_rss = [
-    {"media": "Kompas", "url": "https://indeks.kompas.com/teknologi"},
+    {"media": "Kompas", "url": "https://indeks.kompas.com/nasional"},
     {"media": "Detik", "url": "https://rss.detik.com/index.php/detikinet"},
     {"media": "Antara", "url": "https://www.antaranews.com/rss/tekno"},
     {"media": "CNBC", "url": "https://www.cnbcindonesia.com/techno/rss"},
-    {"media": "Pikiran Rakyat", "url": "https://www.pikiran-rakyat.com/rss/teknologi"},
-    {"media": "Tribunnews", "url": "https://www.tribunnews.com/rss/techno"},
-    {"media": "Okezone", "url": "https://techno.okezone.com/rss"}
+    {"media": "Republika", "url": "https://www.republika.co.id/rss"},
+    {"media": "Pikiran Rakyat", "url": "https://www.pikiran-rakyat.com/feed"},
+    {"media": "Tribunnews", "url": "https://www.tribunnews.com/rss"},
+    {"media": "Okezone", "url": "https://sindonews.com/rss"}
 ]
 
 # --- PROMPT GAYA PULNEW ---
