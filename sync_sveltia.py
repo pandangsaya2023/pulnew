@@ -40,7 +40,6 @@ for filepath in glob.glob(f"{FOLDER_SVELTIA}/*.md"):
         meta = post.metadata
         slug = meta.get('slug') or os.path.basename(filepath).replace('.md', '')
         
-        # Paksa date jadi string ISO
         date_val = meta.get('date')
         if isinstance(date_val, datetime):
             date_val = date_val.isoformat()
@@ -56,7 +55,7 @@ for filepath in glob.glob(f"{FOLDER_SVELTIA}/*.md"):
             "date": date_val
         }
 
-        posts_dict = berita # INI YG BENER
+        posts_dict = berita # <--- INI KUNCINYA
         jumlah_update += 1
         print(f" -> Update/Tambah: {berita['title'][:40]}...")
 
