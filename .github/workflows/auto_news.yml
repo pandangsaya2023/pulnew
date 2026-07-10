@@ -7,8 +7,12 @@ on:
 jobs:
   scrape:
     runs-on: ubuntu-latest
+    permissions:
+        contents: write
+    
     steps:
-      - uses: actions/checkout@v4
+      - name: Chekout Repo
+        uses: actions/checkout@v4
 
       - name: Menyiapkan Python & Dependencies
         run: |
@@ -24,13 +28,11 @@ jobs:
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          # Pastikan folder-folder ada (jika belum ada, buat agar tidak error saat add)
-          mkdir -p public/posts
-          mkdir -p public/berita
-          mkdir -p public/images
-          # Tambahkan folder 'berita' secara eksplisit disini
-          git add public/posts/ public/berita/
+          
+          # Cuma add 1 file saja
+          git add posts.json
+    
           # Commit hanya jika ada perubahan
-          git diff-index --quiet HEAD || git commit -m "Update berita otomatis dan file preview"
-          git pull --rebase origin main || true
+          git diff --staged --quiet || git commit -m "Update berita otomatis: $(date +'%Y-%M-%D %H:%M')"
+          git pull --rebase origin main
           git push
