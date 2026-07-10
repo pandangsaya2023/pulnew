@@ -24,7 +24,7 @@ jobs:
       - name: Jalankan Robot Pengambil Berita
         env:
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
-        run: python ambil_berita.py
+        run: python scripts/ambil_berita.py
 
       - name: Menyimpan Perubahan Kembali ke GitHub
         run: |
