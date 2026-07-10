@@ -15,7 +15,9 @@ jobs:
           python -m pip install --upgrade pip
           # pip install requests openai beautifulsoup4 lxml
           pip install requests groq beautifulsoup4 lxml python-dotenv
-          import os, json, requests
+          import os
+          import json
+          import requests
           from datetime import datetime
           from groq import Groq
 
