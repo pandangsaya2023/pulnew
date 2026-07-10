@@ -14,6 +14,7 @@ def baca_posts_lama():
                 data = json.load(f)
                 return {b['slug']: b for b in data.get("posts", [])}
         except:
+            print("posts.json rusak, bikin baru")
             return {}
     return {}
 
@@ -23,7 +24,7 @@ def simpan_posts(daftar_berita_dict):
         if isinstance(b['date'], datetime):
             b['date'] = b['date'].isoformat()
     daftar_berita.sort(key=lambda x: x['date'], reverse=True)
-    daftar_berita = daftar_berita[:200]
+    daftar_berita = daftar_berita[:200] # ambil 200 terbaru
     data = {"posts": daftar_berita}
     with open(FILE_JSON, 'w', encoding='utf-8') as f:
         json.dump(data, f, indent=2, ensure_ascii=False)
@@ -55,7 +56,7 @@ for filepath in glob.glob(f"{FOLDER_SVELTIA}/*.md"):
             "date": date_val
         }
 
-        posts_dict = berita # <--- INI KUNCINYA
+        posts_dict = berita # <--- INI YG BENAR. TADI KELEWAT []
         jumlah_update += 1
         print(f" -> Update/Tambah: {berita['title'][:40]}...")
 
