@@ -52,7 +52,7 @@ def rewrite_with_ai(title, link):
     except: return konten_asli[:500] + "...", soup
 
 def bikin_html_statis(slug, title, img_url):
-    folder_output = 'public/berita'
+    folder_output = '/public/berita'
     os.makedirs(folder_output, exist_ok=True)
     link_statis = f"{BASE_URL}/berita/{slug}.html"
     link_wa = f"https://wa.me/?text=Baca%20berita%20ini:%20{link_statis}"
