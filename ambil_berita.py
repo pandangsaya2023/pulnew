@@ -8,7 +8,8 @@ from openai import OpenAI
 from bs4 import BeautifulSoup
 
 # --- KONFIGURASI ---
-FILE_JSON = "posts.json" # 1 FILE UNTUK SEMUA BERITA
+FILE_JSON = "posts.json" # BUAT WEBSITE
+FOLDER_SVELTIA = "content/berita" # BUAT SVELTIA CMS
 BASE_URL = "https://pulnew.pages.dev"
 sumber_rss = [
     {"media": "Antara", "url": "https://www.antaranews.com/rss/nasional"},
@@ -36,6 +37,26 @@ def simpan_posts(daftar_berita):
     with open(FILE_JSON, 'w', encoding='utf-8') as f:
         json.dump(data, f, indent=2, ensure_ascii=False)
 
+def bikin_file_sveltia(berita):
+    """INI FUNGSI BARU BUAT SVELTIA"""
+    os.makedirs(FOLDER_SVELTIA, exist_ok=True)
+    file_path = f"{FOLDER_SVELTIA}/{berita['slug']}.md"
+
+    frontmatter = f"""---
+title: "{berita['title']}"
+date: {berita['date']}
+image: "{berita['image']}"
+kategori: {berita['kategori']}
+slug: {berita['slug']}
+draft: false
+---
+
+{berita['body']}
+"""
+    with open(file_path, 'w', encoding='utf-8') as f:
+        f.write(frontmatter)
+    print(f" -> File Sveltia dibuat: {file_path}")
+
 def ambil_konten_berita(url):
     try:
         headers = {'User-Agent': 'Mozilla/5.0'}
@@ -46,12 +67,11 @@ def ambil_konten_berita(url):
                 s.decompose()
             target = soup.find('article') or soup.find('div', class_=re.compile('content|body'))
             text = target.get_text(separator=' ', strip=True) if target else soup.get_text(separator=' ', strip=True)
-            return text[:5000], soup # dikecilin biar gak boros token
+            return text[:5000], soup
         return "", None
     except: return "", None
 
 def ambil_gambar_asli():
-    # Pake gambar default biar gak ribet copyright
     return f"{BASE_URL}/media/og-default.png"
 
 def rewrite_with_ai(title, link):
@@ -92,11 +112,11 @@ daftar_baru = []
 jumlah_baru = 0
 
 for sumber in sumber_rss:
-    print(f"Mengakses {sumber['media']}...")
+    print(f"\nMengakses {sumber['media']}...")
     try:
         response = requests.get(sumber['url'], headers={'User-Agent': 'Mozilla/5.0'}, timeout=15)
         soup = BeautifulSoup(response.content, 'xml')
-        for item in soup.find_all('item')[:3]: # ambil 3 berita per media
+        for item in soup.find_all('item')[:3]:
             title = item.find('title').get_text(strip=True)
             link = item.find('link').get_text(strip=True)
             slug = re.sub(r'[^a-z0-9]+', '-', title.lower()).strip('-')[:60]
@@ -119,19 +139,20 @@ for sumber in sumber_rss:
                 }
 
                 daftar_baru.append(berita)
+                bikin_file_sveltia(berita) # <-- INI KUNCINYA: BIKIN FILE BUAT SVELTIA
                 slug_tercatat.add(slug)
                 jumlah_baru += 1
-                time.sleep(8) # jeda 8 detik biar gak kena limit groq
+                time.sleep(8)
 
-            if jumlah_baru >= 5: break # maksimal 5 berita baru per jalan
+            if jumlah_baru >= 5: break
     except Exception as e:
         print(f"Error di {sumber['media']}: {e}")
 
-# GABUNGKAN BARU + LAMA, TERUS URUTIN
 semua_berita = daftar_baru + daftar_lama
 semua_berita.sort(key=lambda x: x['date'], reverse=True)
-semua_berita = semua_berita[:100] # simpan maksimal 100 berita biar file gak kegedean
+semua_berita = semua_berita[:100]
 
 simpan_posts(semua_berita)
-print(f"\nSelesai! Nambah {jumlah_baru} berita baru. Total berita: {len(semua_berita)}")
-print(f"Data disimpan ke {FILE_JSON}")
+print(f"\nSELESAI! Nambah {jumlah_baru} berita baru.")
+print(f"1. Data Website: {FILE_JSON}")
+print(f"2. Data Sveltia: {FOLDER_SVELTIA}/")
