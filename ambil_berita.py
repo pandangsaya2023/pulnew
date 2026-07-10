@@ -14,7 +14,6 @@ client = Groq(api_key=GROQ_API_KEY)
 
 sumber_rss = [
     {"media": "Kompas", "url": "https://indeks.kompas.com/nasional"},
-    {"media": "Detik", "url": "https://rss.detik.com/index.php/detikinet"},
     {"media": "Antara", "url": "https://www.antaranews.com/rss/tekno"},
     {"media": "CNBC", "url": "https://www.cnbcindonesia.com/techno/rss"},
     {"media": "Republika", "url": "https://www.republika.co.id/rss"},
