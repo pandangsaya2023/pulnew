@@ -8,6 +8,7 @@ from openai import OpenAI
 from bs4 import BeautifulSoup
 
 # --- KONFIGURASI ---
+FILE_JSON = "posts.json" # 1 FILE UNTUK SEMUA BERITA
 BASE_URL = "https://pulnew.pages.dev"
 sumber_rss = [
     {"media": "Antara", "url": "https://www.antaranews.com/rss/nasional"},
@@ -20,6 +21,21 @@ sumber_rss = [
 ]
 
 # --- FUNGSI ---
+def baca_posts_lama():
+    if os.path.exists(FILE_JSON):
+        try:
+            with open(FILE_JSON, 'r', encoding='utf-8') as f:
+                data = json.load(f)
+                return data.get("posts", [])
+        except:
+            return []
+    return []
+
+def simpan_posts(daftar_berita):
+    data = {"posts": daftar_berita}
+    with open(FILE_JSON, 'w', encoding='utf-8') as f:
+        json.dump(data, f, indent=2, ensure_ascii=False)
+
 def ambil_konten_berita(url):
     try:
         headers = {'User-Agent': 'Mozilla/5.0'}
@@ -30,57 +46,49 @@ def ambil_konten_berita(url):
                 s.decompose()
             target = soup.find('article') or soup.find('div', class_=re.compile('content|body'))
             text = target.get_text(separator=' ', strip=True) if target else soup.get_text(separator=' ', strip=True)
-            return text[:8000], soup
+            return text[:5000], soup # dikecilin biar gak boros token
         return "", None
     except: return "", None
 
-def ambil_gambar_asli(soup, url):
-    # Selalu menggunakan gambar default Anda sendiri
-    return f"{BASE_URL}/images/og-default.jpg"
+def ambil_gambar_asli():
+    # Pake gambar default biar gak ribet copyright
+    return f"{BASE_URL}/media/og-default.png"
 
 def rewrite_with_ai(title, link):
     api_key = os.getenv("GROQ_API_KEY")
     konten_asli, soup = ambil_konten_berita(link)
-    if not api_key or not konten_asli or len(konten_asli) < 100:
-        return f"Berita selengkapnya bisa dibaca di {link}", soup
+
+    if not api_key or not konten_asli or len(konten_asli) < 150:
+        return f"Baca selengkapnya di sumber asli: {link}"
+
     try:
         client = OpenAI(api_key=api_key.strip(), base_url="https://api.groq.com/openai/v1")
-        prompt = f"Tulis ulang berita ini jadi 5 paragraf profesional. gaya payaphrase 100%. jangan copy paste. JUDUL: {title}. KONTEN: {konten_asli}. Akhiri dengan: 'Berita selengkapnya bisa dibaca di {link}'"
+        prompt = f"Paraphrase berita ini jadi 3 paragraf profesional bahasa Indonesia. Gaya jurnalistik. Jangan copy paste. Akhiri dengan 'Sumber: {link}'. JUDUL: {title}. ISI: {konten_asli[:3000]}"
 
-        completion = client.chat.completions.create(model="llama-3.1-8b-instant", messages=[{"role": "user", "content": prompt}], temperature=0.7, max_tokens=1200)
-        return completion.choices[0].message.content, soup
-    except: return konten_asli[:500] + "...", soup
+        completion = client.chat.completions.create(
+            model="llama-3.1-8b-instant",
+            messages=[{"role": "user", "content": prompt}],
+            temperature=0.7,
+            max_tokens=800
+        )
+        return completion.choices[0].message.content
+    except Exception as e:
+        print(f"Gagal AI: {e}. Pake isi asli.")
+        return konten_asli[:500] + f"... \n\nSumber: {link}"
 
-def bikin_html_statis(slug, title, img_url):
-    folder_output = 'public/berita'
-    os.makedirs(folder_output, exist_ok=True)
-    link_statis = f"{BASE_URL}/berita/{slug}.html"
-    link_wa = f"https://wa.me/?text=Baca%20berita%20ini:%20{link_statis}"
-    
-    html = f"""<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta property="og:title" content="{title}">
-    <meta property="og:image" content="{img_url}">
-    <meta property="og:url" content="{link_statis}">
-    <meta property="og:type" content="article">
-    <title>{title}</title>
-</head>
-<body style="font-family:sans-serif; text-align:center; padding:50px; background:#f4f4f4;">
-    <div style="background:white; padding:30px; border-radius:15px; max-width:500px; margin:auto; box-shadow:0 4px 10px rgba(0,0,0,0.1);">
-        <h3 style="color:#333;">{title}</h3>
-        <a href="{BASE_URL}/berita.html?slug={slug}" style="display:block; margin:20px 0; padding:15px; background:#007bff; color:white; text-decoration:none; border-radius:10px; font-weight:bold;">Baca Berita Lengkap</a>
-        <a href="{link_wa}" style="display:block; margin:20px 0; padding:15px; background:#25D366; color:white; text-decoration:none; border-radius:10px; font-weight:bold;">📲 Share ke WhatsApp</a>
-    </div>
-</body>
-</html>"""
-    with open(f"{folder_output}/{slug}.html", "w", encoding="utf-8") as f:
-        f.write(html)
+def tentukan_kategori(title):
+    title = title.lower()
+    if any(x in title for x in ['politik', 'dpr', 'presiden', 'menteri']): return "POLITIK"
+    if any(x in title for x in ['ekonomi', 'saham', 'rupiah', 'bisnis']): return "EKONOMI"
+    if any(x in title for x in ['teknologi', 'ai', 'gadget', 'internet']): return "TEKNOLOGI"
+    if any(x in title for x in ['bola', 'sepak', 'olahraga', 'piala']): return "OLAHRAGA"
+    return "NASIONAL"
 
-# --- EKSEKUSI ---
-os.makedirs('public/posts', exist_ok=True)
-slug_tercatat = {f.replace('.json', '') for f in os.listdir('public/posts') if f.endswith('.json')}
+# --- EKSEKUSI UTAMA ---
+print("Mulai ambil berita...")
+daftar_lama = baca_posts_lama()
+slug_tercatat = {b['slug'] for b in daftar_lama}
+daftar_baru = []
 jumlah_baru = 0
 
 for sumber in sumber_rss:
@@ -88,24 +96,42 @@ for sumber in sumber_rss:
     try:
         response = requests.get(sumber['url'], headers={'User-Agent': 'Mozilla/5.0'}, timeout=15)
         soup = BeautifulSoup(response.content, 'xml')
-        for item in soup.find_all('item')[:3]:
+        for item in soup.find_all('item')[:3]: # ambil 3 berita per media
             title = item.find('title').get_text(strip=True)
             link = item.find('link').get_text(strip=True)
-            slug = re.sub(r'[^a-z0-9]+', '-', title.lower()).strip('-')[:50]
-            if not slug: slug = f"berita-{int(time.time() * 1000)}"
+            slug = re.sub(r'[^a-z0-9]+', '-', title.lower()).strip('-')[:60]
+            if not slug: slug = f"berita-{int(time.time())}"
+
             if slug not in slug_tercatat:
-                body, soup_artikel = rewrite_with_ai(title, link)
-                img_url = ambil_gambar_asli(soup_artikel, link)
-                berita = {"slug": slug, "title": title, "content": body[:200] + "...", "body": body, "image": img_url, "kategori": "BERITA", "date": datetime.now().isoformat()}
-                
-                with open(f'public/posts/{slug}.json', 'w', encoding='utf-8') as f:
-                    json.dump(berita, f, indent=2, ensure_ascii=False)
-                
-                bikin_html_statis(slug, title, img_url)
+                print(f" -> Nemu baru: {title[:50]}...")
+
+                body = rewrite_with_ai(title, link)
+                img_url = ambil_gambar_asli()
+                kategori = tentukan_kategori(title)
+
+                berita = {
+                    "slug": slug,
+                    "title": title,
+                    "body": body,
+                    "image": img_url,
+                    "kategori": kategori,
+                    "date": datetime.now().isoformat()
+                }
+
+                daftar_baru.append(berita)
                 slug_tercatat.add(slug)
                 jumlah_baru += 1
-                time.sleep(10)
-            if jumlah_baru >= 5: break
-    except Exception as e: print(f"Error: {e}")
-print(f"Selesai! Nambah {jumlah_baru} berita baru")
+                time.sleep(8) # jeda 8 detik biar gak kena limit groq
 
+            if jumlah_baru >= 5: break # maksimal 5 berita baru per jalan
+    except Exception as e:
+        print(f"Error di {sumber['media']}: {e}")
+
+# GABUNGKAN BARU + LAMA, TERUS URUTIN
+semua_berita = daftar_baru + daftar_lama
+semua_berita.sort(key=lambda x: x['date'], reverse=True)
+semua_berita = semua_berita[:100] # simpan maksimal 100 berita biar file gak kegedean
+
+simpan_posts(semua_berita)
+print(f"\nSelesai! Nambah {jumlah_baru} berita baru. Total berita: {len(semua_berita)}")
+print(f"Data disimpan ke {FILE_JSON}")
