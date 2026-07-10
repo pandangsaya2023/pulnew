@@ -9,7 +9,7 @@ public_folder: "/media"
 collections:
   - name: "posts"
     label: "Berita"
-    folder: "public/data"
+    folder: "public/posts"
     create: true
     slug: "{{slug}}"
     extension: "json"
