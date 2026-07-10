@@ -30,7 +30,7 @@ jobs:
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
           
           # Cuma add 1 file saja
-          git add posts.json
+          git add posts.json content/berita
     
           # Commit hanya jika ada perubahan
           git diff --staged --quiet || git commit -m "Update berita otomatis: $(date +'%Y-%M-%D %H:%M')"
