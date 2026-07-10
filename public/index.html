@@ -420,8 +420,8 @@
     async function ambilDataBerita() {
         const container = document.getElementById('news-container');
         try {
-            const res = await fetch('/data/posts.json?t=' + Date.now(), { cache: 'no-store' });
-            if (!res.ok) throw new Error('File data/posts.json tidak ditemukan');
+            const res = await fetch('/posts.json?t=' + Date.now(), { cache: 'no-store' });
+            if (!res.ok) throw new Error('File /posts.json tidak ditemukan');
 
             const data = await res.json();
             const posts = data.posts || []; // ambil array posts
