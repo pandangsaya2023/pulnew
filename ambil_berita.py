@@ -90,6 +90,7 @@ def bikin_html_statis(slug, title, img_url, deskripsi):
     folder_output = 'public/berita'
     os.makedirs(folder_output, exist_ok=True)
     link_statis = f"{BASE_URL}/berita/{slug}.html"
+    img_url = img_url if img_url else f"{BASE_URL}/images/og-default.jpg"
     link_wa = f"https://wa.me/?text=Baca%20berita%20ini:%20{link_statis}"
 
     html = f"""<!DOCTYPE html>
@@ -137,6 +138,7 @@ for sumber in sumber_rss:
             if slug not in slug_tercatat:
                 print(f" -> Memproses: {title}")
                 body, soup_artikel = rewrite_with_groq(title, link, sumber['media'])
+                # img_url = img_url if img_url else f"{BASE_URL}/images/og-default.jpg"
                 img_url = ambil_gambar_asli(soup_artikel, link)
                 deskripsi = BeautifulSoup(body, 'html.parser').get_text()[:160] + "..."
 
