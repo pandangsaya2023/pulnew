@@ -4,7 +4,7 @@ import re
 import time
 import requests
 from datetime import datetime
-from groq import Groq # Ganti dari OpenAI ke Groq
+from groq import Groq
 from bs4 import BeautifulSoup
 
 # --- KONFIGURASI ---
@@ -13,8 +13,8 @@ GROQ_API_KEY = os.getenv("GROQ_API_KEY")
 client = Groq(api_key=GROQ_API_KEY)
 
 sumber_rss = [
-    {"media": "KompasTekno", "url": "https://indeks.kompas.com/teknologi"},
-    {"media": "DetikInet", "url": "https://rss.detik.com/index.php/detikinet"},
+    {"media": "Kompas", "url": "https://indeks.kompas.com/teknologi"},
+    {"media": "Detik", "url": "https://rss.detik.com/index.php/detikinet"},
     {"media": "Antara", "url": "https://www.antaranews.com/rss/tekno"},
     {"media": "CNBC", "url": "https://www.cnbcindonesia.com/techno/rss"},
     {"media": "Pikiran Rakyat", "url": "https://www.pikiran-rakyat.com/rss/teknologi"},
@@ -22,17 +22,16 @@ sumber_rss = [
     {"media": "Okezone", "url": "https://techno.okezone.com/rss"}
 ]
 
-# --- PROMPT KHUSUS GAYA PULNEW ---
+# --- PROMPT GAYA PULNEW ---
 def prompt_rewrite_umum(title, konten_asli, link, media):
     return f"""
-    
     Kamu adalah Editor Senior PULNEW.com. Kamu profesional, analitis, dan punya wawasan luas di semua bidang.
     Tugasmu: Tulis ulang berita ini jadi artikel 500 kata dengan standar media nasional.
 
     ATURAN PENULISAN:
     1. Bahasa: Indonesia formal tapi mengalir. Tajam, padat, kredibel. Tanpa bahasa lebay.
     2. Panjang: 450-500 kata. Gunakan tag <p> untuk paragraf dan <h2> untuk 3 subjudul.
-    3. Struktur: 
+    3. Struktur:
        - Paragraf 1: Lead kuat, langsung ke inti berita + kenapa ini penting
        - Isi: Bedah fakta + data + konteks
        - Analisis: Berikan sudut pandang "Apa dampaknya bagi masyarakat/Indonesia"
@@ -59,15 +58,14 @@ def ambil_konten_berita(url):
             text = target.get_text(separator=' ', strip=True) if target else soup.get_text(separator=' ', strip=True)
             return text[:8000], soup
         return "", None
-    except: return "", None
+    except:
+        return "", None
 
 def ambil_gambar_asli(soup, url):
-    # Coba ambil gambar dari meta og:image dulu
     if soup:
         og_image = soup.find('meta', property='og:image')
         if og_image and og_image.get('content'):
             return og_image['content']
-    # Kalau gagal pakai default
     return f"{BASE_URL}/images/og-default.jpg"
 
 def rewrite_with_groq(title, link, media):
@@ -78,7 +76,7 @@ def rewrite_with_groq(title, link, media):
     try:
         prompt = prompt_rewrite_umum(title, konten_asli, link, media)
         completion = client.chat.completions.create(
-            model="llama-3.3-70b-versatile", # Pakai yg 70b biar bagus nulisnya
+            model="llama-3.3-70b-versatile",
             messages=[{"role": "user", "content": prompt}],
             temperature=0.7,
             max_tokens=1500
@@ -128,16 +126,13 @@ for sumber in sumber_rss:
     try:
         response = requests.get(sumber['url'], headers={'User-Agent': 'Mozilla/5.0'}, timeout=15)
         soup = BeautifulSoup(response.content, 'xml')
-        for item in soup.find_all('item')[:5]: # Ambil 5 per media
+        for item in soup.find_all('item')[:5]:
             title = item.find('title').get_text(strip=True)
             link = item.find('link').get_text(strip=True)
 
-            # FILTER KHUS TEKNOLOGI
-            # if not any(k in title.lower() for k in ['ai', 'gadget', 'hp', 'smartphone', 'internet', 'teknologi', 'startup', 'aplikasi', 'data']):
-            #   continue
-
             slug = re.sub(r'[^a-z0-9]+', '-', title.lower()).strip('-')[:50]
-            if not slug: slug = f"teknologi-{int(time.time() * 1000)}"
+            if not slug:
+                slug = f"berita-{int(time.time() * 1000)}"
 
             if slug not in slug_tercatat:
                 print(f" -> Memproses: {title}")
@@ -163,9 +158,12 @@ for sumber in sumber_rss:
                 bikin_html_statis(slug, title, img_url, deskripsi)
                 slug_tercatat.add(slug)
                 jumlah_baru += 1
-                time.sleep(15) # Jeda 15 detik biar gak keban
-            if jumlah_baru >= 10: break # Max 10 berita per jalan
-    except Exception as e: print(f"Error: {e}")
-    if jumlah_baru >= 10: break
+                time.sleep(15)
+            if jumlah_baru >= 10:
+                break
+    except Exception as e:
+        print(f"Error: {e}")
+    if jumlah_baru >= 10:
+        break
 
 print(f"Selesai! Nambah {jumlah_baru} Berita Baru")
