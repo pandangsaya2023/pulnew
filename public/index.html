@@ -123,8 +123,19 @@
     <div class="container"><div id="news-container"><div style="text-align: center; padding: 40px; color: #666;">Menyelaraskan informasi...</div></div></div>
     <button id="refresh-btn" onclick="location.reload(true)">REFRESH</button>
 
-    <footer><div class="footer-content"><div class="footer-logo">PUL<span>NEW</span>.COM</div><p>Menyajikan informasi langsung ke perangkat anda</p><a href="/about.html" class="footer-link">Tentang</a> | <a href="/privacy.html" class="footer-link">Privacy</a><div class="footer-bottom">&copy; 2026 PULNEW.COM. All Rights Reserved.</div></div></footer>
-
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">PUL<span>NEW</span>.COM</div>
+            <p>Menyajikan informasi langsung ke perangkat anda</p>
+            <a href="/about.html" class="footer-link">Tentang</a> |
+            <a href="/privacy.html" class="footer-link">Privacy</a> |
+            <a href="/pedoman-media-siber.html" class="footer-link">Pedoman Media Siber</a> |
+            <a href="/disclaimer.html" class="footer-link">Disclaimer</a> |
+            <a href="/contact.html" class="footer-link">Kontak</a>
+            <div class="footer-bottom">&copy; 2026 PULNEW.COM. All Rights Reserved.</div>
+        </div>
+    </footer>
+    
     <script>
     document.getElementById('live-date').textContent = new Date().toLocaleDateString('id-ID', { weekday: 'long', day: 'numeric', month: 'short', year: 'numeric' });
     let allPosts = [];
