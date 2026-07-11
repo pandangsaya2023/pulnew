@@ -25,22 +25,23 @@
        .logo-img-wrapper img { display: block; max-height: 45px; width: auto; }
        .logo-text { font-size: 24px; font-weight: 800; color: var(--warna-biru); }
        .logo-new { color: var(--warna-merah); }
-       .btn-beranda { background: #2e7d32; color: white; padding: 4px 12px; border-radius: 6px; text-decoration: none; font-weight: 600; font-size: 12px; }
-       .content-wrapper { flex: 1; overflow-y: auto; padding: 15px; padding-bottom: 60px; }
-       .article-box { max-width: 600px; margin: 0 auto; }
-       .article-title { font-size: 22px; font-weight: 800; margin-bottom: 15px; line-height: 1.3; }
-       .main-image { width: 100%; border-radius: 6px; margin-bottom: 15px; }
-       .article-body { font-size: 16px; line-height: 1.7; color: #333; text-align: left; word-break: break-word; }
-       .article-body p { margin-top: 5px; margin-bottom: 15px; }
+       .btn-beranda { background: #2e7d32; color: white; padding: 6px 14px; border-radius: 6px; text-decoration: none; font-weight: 600; font-size: 12px; }
+       .content-wrapper { padding: 15px; padding-bottom: 60px; }
+       .article-box { max-width: 700px; margin: 0 auto; background: white; padding: 20px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+       .article-title { font-size: 24px; font-weight: 800; margin-bottom: 15px; line-height: 1.3; }
+       .article-meta { font-size: 12px; color: #666; margin-bottom: 15px; }
+       .main-image { width: 100%; border-radius: 8px; margin-bottom: 20px; }
+       .article-body { font-size: 16px; line-height: 1.8; color: #333; text-align: justify; }
+       .article-body p { margin-bottom: 18px; }
        .related-section { margin-top: 30px; padding-top: 20px; border-top: 2px solid #eee; }
        .section-title { font-size: 18px; font-weight: 800; color: var(--warna-biru); margin: 5px 0 12px 0; padding-left: 3px; border-left: 4px solid var(--warna-merah); }
        .related-item { display: flex; gap: 12px; padding: 10px 0; border-bottom: 1px solid #f0f0f0; text-decoration: none; color: inherit; }
-       .related-item img { width: 80px; height: 60px; object-fit: cover; border-radius: 6px; }
+       .related-item img { width: 90px; height: 65px; object-fit: cover; border-radius: 6px; flex-shrink: 0; }
        .related-item h4 { font-size: 14px; font-weight: 700; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; margin: 0; }
        .footer-ticker { background: #d32f2f; color: white; padding: 8px 0; font-size: 13px; overflow: hidden; width: 100%; position: fixed; bottom: 0; left: 0; z-index: 999; }
        .ticker-content { display: inline-block; white-space: nowrap; padding-left: 100%; animation: ticker 40s linear infinite; }
         @keyframes ticker { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(-100%, 0, 0); } }
-       .ad-slot { margin: 15px auto; text-align: center; }
+       .ad-slot { margin: 20px auto; text-align: center; }
        .ad-slot img { width: 100%; height: auto; display: block; border-radius: 8px; }
        .loading,.error { text-align:center; padding:60px 20px; }
        .error { color: var(--warna-merah); }
@@ -61,7 +62,6 @@
     <div class="footer-ticker"><div class="ticker-content" id="running-text">MEMUAT INFORMASI TERKINI...</div></div>
 
 <script>
-// === SISTEM CACHE DIMATIKAN BIAR REALTIME ===
 let allPosts = [];
 
 function updateMetaTags(post) {
@@ -72,22 +72,42 @@ function updateMetaTags(post) {
         meta.setAttribute('content', content);
     };
     setMeta('property', 'og:title', post.title);
-    setMeta('property', 'og:description', (post.body || '').substring(0, 160) + '...');
+    setMeta('property', 'og:description', (post.body || post.content || '').substring(0, 160).replace(/<[^>]*>/g, '') + '...');
     setMeta('property', 'og:image', post.image);
     setMeta('property', 'og:url', window.location.href);
     setMeta('name', 'twitter:title', post.title);
+    setMeta('name', 'twitter:description', (post.body || post.content || '').substring(0, 160).replace(/<[^>]*>/g, '') + '...');
     setMeta('name', 'twitter:image', post.image);
 }
 
 async function fetchPosts() {
-    const res = await fetch('/api/posts?t=' + Date.now() + '&r=' + Math.random(), { cache: 'no-store' });
+    const res = await fetch('/api/posts?t=' + Date.now() + '&r=' + Math.random(), { cache: 'no-store', headers: { 'Cache-Control': 'no-cache' } });
+    if(!res.ok) throw new Error("Gagal fetch /api/posts");
     const data = await res.json();
     return Array.isArray(data)? data : data.urls || [];
 }
 
+// KUNCI: FUNGSI INI UDAH BISA PERBAIKI BERITA LAMA
 async function fetchPostDetail(url) {
-    const res = await fetch(url + '?t=' + Date.now() + '&r=' + Math.random(), { cache: 'no-store' });
-    return await res.json();
+    try {
+        const res = await fetch(url + '?t=' + Date.now() + '&r=' + Math.random(), { cache: 'no-store' });
+        const data = await res.json();
+        
+        // === PERBAIKI SLUG KOSONG BUAT BERITA LAMA ===
+        if (!data.slug || data.slug.trim() === "") {
+            data.slug = data.title
+                .toLowerCase()
+                .replace(/[^\w\s-]/g, '') // buang simbol
+                .replace(/\s+/g, '-')     // spasi jadi -
+                .substring(0, 100);       // max 100 huruf
+            console.log("Slug diperbaiki:", data.slug);
+        }
+        // ============================================
+
+        return data;
+    } catch {
+        return null;
+    }
 }
 
 async function muatHalamanBerita() {
@@ -95,37 +115,39 @@ async function muatHalamanBerita() {
     const contentArea = document.getElementById('content-area');
 
     if (!slugTujuan) {
-        contentArea.innerHTML = `<div class="error">Slug tidak ditemukan.<br><a href="/">Kembali ke Beranda</a></div>`;
+        contentArea.innerHTML = `<div class="error">404 - Link Tidak Valid<br><a href="/">Kembali ke Beranda</a></div>`;
         return;
     }
 
     try {
         const urls = await fetchPosts();
-        if (!urls || urls.length === 0) throw new Error("Gagal ambil list");
-
-        // 1. AMBIL SEMUA DETAIL DULU
-        const posts = await Promise.all(urls.slice(0, 30).map(url => fetchPostDetail(url))).then(results => results.filter(Boolean));
+        const posts = await Promise.all(urls.slice(0, 40).map(url => fetchPostDetail(url))).then(results => results.filter(Boolean));
         allPosts = posts;
         posts.sort((a, b) => new Date(b.date || b.created_at) - new Date(a.date || a.created_at));
 
-        // 2. KUNCI: CARI BERITA BERDASARKAN FIELD SLUG DI DALAM JSON, BUKAN DARI NAMA FILE
+        // CARI BERITA BERDASARKAN FIELD SLUG
         const post = posts.find(p => p.slug && p.slug.toLowerCase() === slugTujuan.toLowerCase());
 
         if (!post) {
-            contentArea.innerHTML = `<div class="error">404 - Berita Tidak Ditemukan<br><small>Mungkin slug sudah diganti. Cek di Sveltia, field "slug" jangan diedit setelah publish.</small><br><br><a href="/">← Kembali ke Beranda</a></div>`;
+            contentArea.innerHTML = `<div class="error">404 - Berita Tidak Ditemukan<br><small>Mungkin sudah dihapus</small><br><br><a href="/">← Kembali ke Beranda</a></div>`;
             document.getElementById('running-text').textContent = "INFO NEWS: Berita tidak ditemukan";
             return;
         }
 
-        // 3. UPDATE META + TAMPILKAN
         updateMetaTags(post);
+        
+        const tanggal = new Date(post.date || post.created_at).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' });
         const isiBerita = (post.body || post.content || '').split('\n').map(p => p.trim()? `<p>${p}</p>` : '').join('');
 
         let html = `
             <h1 class="article-title">${post.title}</h1>
+            <div class="article-meta">${tanggal} | ${(post.kategori || post.category || 'BERITA')}</div>
+            
             <div class="ad-slot"><a href="https://link-iklan-anda.com" target="_blank"><img src="/media/iklan_berita_atas1.png" alt="Iklan"></a></div>
+
             <img src="${post.image}" class="main-image" alt="${post.title}" loading="lazy">
             <div class="article-body">${isiBerita}</div>
+
             <div class="ad-slot"><a href="https://link-iklan-anda.com" target="_blank"><img src="/media/iklan_berita_tengah1.png" alt="Iklan"></a></div>
         `;
 
