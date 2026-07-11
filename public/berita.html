@@ -26,23 +26,54 @@
        .logo-text { font-size: 24px; font-weight: 800; color: var(--warna-biru); }
        .logo-new { color: var(--warna-merah); }
        .btn-beranda { background: #2e7d32; color: white; padding: 6px 14px; border-radius: 6px; text-decoration: none; font-weight: 600; font-size: 12px; }
-       .content-wrapper { padding: 15px; padding-bottom: 60px; }
-       .article-box { max-width: 100px; margin: 0 auto; background: white; padding: 15px; border-radius: 0px; box-shadow: none; }
-       .article-title { font-size: 24px; font-weight: 800; margin-bottom: 15px; line-height: 1.3; text-align: left;}
-       .article-meta { font-size: 12px; color: #666; margin-bottom: 15px; text-align: left; }
+
+        /* === FIX: FULL LAYAR + RATA KIRI === */
+       .content-wrapper { padding: 0; }
+       .article-box { 
+            max-width: 100%; /* FULL LAYAR */
+            margin: 0; 
+            background: white; 
+            padding: 16px; 
+            border-radius: 0; /* BIAR NGEPAS */
+            box-shadow: none; 
+        }
+       .article-title { 
+            font-size: 24px; 
+            font-weight: 800; 
+            margin-bottom: 10px; 
+            line-height: 1.3; 
+            text-align: left; /* RATA KIRI */
+        }
+       .article-meta { 
+            font-size: 12px; 
+            color: #666; 
+            margin-bottom: 15px; 
+            text-align: left; /* RATA KIRI */
+        }
        .main-image { width: 100%; border-radius: 8px; margin-bottom: 20px; }
-       .article-body { font-size: 16px; line-height: 1.8; color: #333; text-align: left; }
-       .article-body p { margin-bottom: 18px; text-align: left; }
+       .article-body { 
+            font-size: 16px; 
+            line-height: 1.8; 
+            color: #333; 
+            text-align: left; /* RATA KIRI */
+            text-align-last: left;
+        }
+       .article-body p { margin-bottom: 18px; }
+        /* ==================================== */
+
        .related-section { margin-top: 30px; padding-top: 20px; border-top: 2px solid #eee; }
-       .section-title { font-size: 18px; font-weight: 800; color: var(--warna-biru); margin: 5px 0 12px 0; padding-left: 3px; border-left: 4px solid var(--warna-merah); }
+       .section-title { font-size: 18px; font-weight: 800; color: var(--warna-biru); margin: 5px 0 12px 0; padding-left: 3px; border-left: 4px solid var(--warna-merah); text-align: left; }
        .related-item { display: flex; gap: 12px; padding: 10px 0; border-bottom: 1px solid #f0f0f0; text-decoration: none; color: inherit; }
        .related-item img { width: 90px; height: 65px; object-fit: cover; border-radius: 6px; flex-shrink: 0; }
-       .related-item h4 { font-size: 14px; font-weight: 700; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; margin: 0; }
+       .related-item h4 { font-size: 14px; font-weight: 700; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; margin: 0; text-align: left; }
+       
        .footer-ticker { background: #d32f2f; color: white; padding: 8px 0; font-size: 13px; overflow: hidden; width: 100%; position: fixed; bottom: 0; left: 0; z-index: 999; }
        .ticker-content { display: inline-block; white-space: nowrap; padding-left: 100%; animation: ticker 40s linear infinite; }
         @keyframes ticker { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(-100%, 0, 0); } }
-       .ad-slot { margin: 20px auto; text-align: center; }
-       .ad-slot img { width: 100%; height: auto; display: block; border-radius: 8px; }
+       
+       .ad-slot { margin: 20px -16px; text-align: center; } /* -16px biar mentok kiri kanan */
+       .ad-slot img { width: 100%; height: auto; display: block; }
+       
        .loading,.error { text-align:center; padding:60px 20px; }
        .error { color: var(--warna-merah); }
     </style>
@@ -71,12 +102,13 @@ function updateMetaTags(post) {
         if (!meta) { meta = document.createElement('meta'); meta.setAttribute(attr, val); document.head.appendChild(meta); }
         meta.setAttribute('content', content);
     };
+    const desc = (post.body || post.content || '').substring(0, 160).replace(/<[^>]*>/g, '') + '...';
     setMeta('property', 'og:title', post.title);
-    setMeta('property', 'og:description', (post.body || post.content || '').substring(0, 160).replace(/<[^>]*>/g, '') + '...');
+    setMeta('property', 'og:description', desc);
     setMeta('property', 'og:image', post.image);
     setMeta('property', 'og:url', window.location.href);
     setMeta('name', 'twitter:title', post.title);
-    setMeta('name', 'twitter:description', (post.body || post.content || '').substring(0, 160).replace(/<[^>]*>/g, '') + '...');
+    setMeta('name', 'twitter:description', desc);
     setMeta('name', 'twitter:image', post.image);
 }
 
@@ -87,13 +119,13 @@ async function fetchPosts() {
     return Array.isArray(data)? data : data.urls || [];
 }
 
-// KUNCI: FUNGSI INI UDAH BISA PERBAIKI BERITA LAMA
+// KUNCI: FUNGSI INI UDAH BISA PERBAIKI BERITA LAMA YG SLUG KOSONG
 async function fetchPostDetail(url) {
     try {
         const res = await fetch(url + '?t=' + Date.now() + '&r=' + Math.random(), { cache: 'no-store' });
         const data = await res.json();
         
-        // === PERBAIKI SLUG KOSONG BUAT BERITA LAMA ===
+        // === PERBAIKI SLUG KOSONG BUAT BERITA LAMA DARI ROBOT ===
         if (!data.slug || data.slug.trim() === "") {
             data.slug = data.title
                 .toLowerCase()
@@ -102,7 +134,7 @@ async function fetchPostDetail(url) {
                 .substring(0, 100);       // max 100 huruf
             console.log("Slug diperbaiki:", data.slug);
         }
-        // ============================================
+        // ==========================================================
 
         return data;
     } catch {
@@ -136,12 +168,12 @@ async function muatHalamanBerita() {
 
         updateMetaTags(post);
         
-        const tanggal = new Date(post.date || post.created_at).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' });
+        const tanggal = new Date(post.date || post.created_at).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit' });
         const isiBerita = (post.body || post.content || '').split('\n').map(p => p.trim()? `<p>${p}</p>` : '').join('');
 
         let html = `
             <h1 class="article-title">${post.title}</h1>
-            <div class="article-meta">${tanggal} | ${(post.kategori || post.category || 'BERITA')}</div>
+            <div class="article-meta">${tanggal} WIB | ${(post.kategori || post.category || 'BERITA').toUpperCase()}</div>
             
             <div class="ad-slot"><a href="https://link-iklan-anda.com" target="_blank"><img src="/media/iklan_berita_atas1.png" alt="Iklan"></a></div>
 
