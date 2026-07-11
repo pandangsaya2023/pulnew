@@ -1,23 +1,21 @@
-export async function onRequest() {
+export async function onRequest(context) {
   const baseUrl = 'https://pulnew.pages.dev';
+  const { env } = context;
 
-  // 1. Ambil data dari API posts.js yg udah kamu buat
-  const res = await fetch(baseUrl + '/api/posts');
-  const data = await res.json(); // isinya array download_url
+  // Ambil list file dari folder /public/posts/
+  const postsDir = await env.ASSETS.fetch(new Request(baseUrl + '/posts/'));
+  const files = await postsDir.text();
 
-  // 2. Ubah download_url jadi slug + date
-  const posts = data.map(url => {
-    const slug = url.split('/').pop().replace('.json', '');
-    return { slug: slug, date: new Date().toISOString().split('T')[0] };
-  });
+  // Ambil semua nama file.json dari hasil HTML folder
+  const slugs = [...files.matchAll(/href="(.+?)\.json"/g)].map(m => m[1]);
 
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>${baseUrl}/</loc><priority>1.0</priority></url>
-  ${posts.map(p => `
+  ${slugs.map(slug => `
   <url>
-    <loc>${baseUrl}/berita/${p.slug}</loc>
-    <lastmod>${p.date}</lastmod>
+    <loc>${baseUrl}/berita/${slug}</loc>
+    <lastmod>${new Date().toISOString().split('T')[0]}</lastmod>
     <priority>0.8</priority>
   </url>`).join('')}
 </urlset>`;
