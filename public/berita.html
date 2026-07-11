@@ -19,14 +19,76 @@
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif; }
         html, body { background: var(--warna-bg); color: #333; min-height: 100vh; padding-bottom: 10px; overflow-x: hidden; }
         h1, h2, h3, h4,.logo-text { font-family: 'Poppins', sans-serif; }
-       .header-container { background: #ffffff; position: sticky; top: 0; z-index: 999; border-bottom: 3px solid var(--warna-merah);
-        justify-content: space-between; align-items: justify; padding: 10px 15px; } /* box-shadow: 0 2px 4px rgba(0,0,0,0.06); } */
-       .logo-bar { max-width: 1100px; margin: 0 auto; padding: 7px 20px; display: flex; justify-content: space-between; align-items: justify; }
-       .logo-bar > a { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; }
-       .logo-img-wrapper img { display: block; max-height: 45px; width: auto; }
-       .logo-text { font-size: 24px; font-weight: 800; color: var(--warna-biru); }
-       .logo-new { color: var(--warna-merah); }
-       .btn-beranda { background: #2e7d32; color: white; padding: 6px 14px; border-radius: 6px; text-decoration: none; font-weight: 600; font-size: 12px; }
+    
+.header-container {
+    background: #ffffff; position: sticky; top: 0; z-index: 200;
+    border-bottom: 2px solid var(--warna-merah); box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+ }
+
+.logo-bar {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 7px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Link logo - kunci total */
+.logo-bar > a {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+    outline: none;
+}
+
+/* Matikan semua efek pas active */
+.logo-bar > a:active,
+.logo-bar > a:focus {
+    transform: none!important;
+    opacity: 1!important;
+}
+
+/* Wrapper logo - jangan dikasih height fixed kalau logo nya emang gede */
+.logo-img-wrapper {
+    line-height: 0;
+}
+
+.logo-img-wrapper img {
+    display: block;
+    max-height: 45px;
+    width: auto;
+    vertical-align: middle;
+}
+
+.logo-text {
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--warna-biru);
+    line-height: 1;
+}
+
+.logo-new {
+    color: var(--warna-merah);
+}
+
+.btn-beranda {
+    background: #2e7d32;
+    color: white;
+    padding: 4px 12px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 12px;
+    transition: 0.2s;
+}
+
+.btn-beranda:hover {
+    background: #256d27;
+}
 
         /* === FIX: FULL LAYAR + RATA KIRI === */
        .content-wrapper { padding: 0; }
