@@ -17,9 +17,9 @@
     <style>
         :root { --jarak-utama: 8px; --warna-merah: #d32f2f; --warna-biru: #1a237e; --warna-bg: #f4f6f9; }
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif; }
-        html, body { background: var(--warna-bg); color: #333; min-height: 100vh; }
+        html, body { background: var(--warna-bg); color: #333; min-height: 100vh; padding-bottom: 45px; }
         h1, h2, h3, h4,.logo-text { font-family: 'Poppins', sans-serif; }
-       .header-container { background: #ffffff; position: sticky; top: 0; z-index: 200; border-bottom: 2px solid var(--warna-merah); box-shadow: 0 2px 4px rgba(0,0,0,0.06); }
+       .header-container { background: #ffffff; position: sticky; top: 0; z-index: 200; border-bottĥom: 2px solid var(--warna-merah); box-shadow: 0 2px 4px rgba(0,0,0,0.06); }
        .logo-bar { max-width: 1100px; margin: 0 auto; padding: 7px 20px; display: flex; justify-content: space-between; align-items: center; }
        .logo-bar > a { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; }
        .logo-img-wrapper img { display: block; max-height: 45px; width: auto; }
@@ -67,7 +67,11 @@
        .related-item img { width: 90px; height: 60px; object-fit: cover; border-radius: 6px; flex-shrink: 0; }
        .related-item h4 { font-size: 14px; font-weight: 700; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; margin: 0; text-align: left; }
        
-       .footer-ticker { background: #d32f2f; color: white; padding: 8px 0; font-size: 13px; overflow: hidden; width: 100%; position: fixed; bottom: 0; left: 0; z-index: 999; }
+       .footer-ticker { 
+           background: #d32f2f; color: white; padding: 8px 0; font-size: 13px;
+           overflow: hidden; width: 100%; position: fixed; bottom: 0; left: 0; z-index: 999;
+           height: 35px; display: flex; align-items: center; }
+
        .ticker-content { display: inline-block; white-space: nowrap; padding-left: 100%; animation: ticker 40s linear infinite; }
         @keyframes ticker { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(-100%, 0, 0); } }
        
