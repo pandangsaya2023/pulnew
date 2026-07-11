@@ -28,16 +28,29 @@
       .logo-bar > a { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; }
       .logo-img-wrapper img { display: block; max-height: 45px; width: auto; }
       .logo-text { font-size: 24px; font-weight: 800; color: var(--warna-biru); }
-      .logo-new { color: var(--warna-merah); }
-
-       /* === FIX 1: TICKER DIBALIKIN === */
-      .top-header { background: var(--warna-biru); color: white; padding: 6px 12px; display: flex; align-items: center; gap: 10px; font-size: 11px; position: sticky; top: 60px; z-index: 199; }
-      .breaking-badge { background: var(--warna-merah); color: white; padding: 0 8px; border-radius: 8px; font-weight: 700; font-size: 10px; }
+      .logo-new { color: var(--warna-merah); }      
+      .top-header {
+            background: var(--warna-biru); color: white; padding: 6px 12px;
+            display: flex; align-items: center; gap: 10px; font-size: 11px;
+            position: sticky; top: 60px; z-index: 199;
+        }
+      .breaking-badge {
+            background: var(--warna-biru); color: white; padding: 0 8px;
+            border-radius: 8px; font-weight: 700; font-size: 10px; flex-shrink: 0;
+        }
       .ticker-wrapper { overflow: hidden; width: 100%; }
-      .ticker-content { display: inline-block; white-space: nowrap; padding-left: 100%; animation: ticker 60s linear infinite; }
-      .ticker-item { display: inline-block; padding-right: 40px; font-weight: 500; color: white; text-decoration: none; }
-        @keyframes ticker { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(-100%, 0, 0); } }
-       /* ================================= */
+      .ticker-content {
+            display: inline-block; white-space: nowrap; padding-left: 100%;
+            animation: ticker 120s linear infinite;
+        }
+      .ticker-item {
+            display: inline-block; padding-right: 40px; font-weight: 500;
+            color: white; text-decoration: none;
+        }
+        @keyframes ticker {
+            0% { transform: translate3d(0, 0, 0); }
+            100% { transform: translate3d(-100%, 0, 0); }
+        }
 
       .container { max-width: 1100px; width: 100%; margin: 0 auto; padding: var(--jarak-utama) 10px; }
       .news-hero { position: relative; border-radius: 12px; overflow: hidden; margin-bottom: var(--jarak-utama); box-shadow: 0 4px 12px rgba(0,0,0,0.1); text-decoration: none; display: block; }
