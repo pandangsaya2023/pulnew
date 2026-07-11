@@ -2,7 +2,7 @@ export async function onRequest(context) {
   const baseUrl = 'https://pulnew.pages.dev';
 
   // LANGSUNG PANGGIL GITHUB API DI SINI. GAK PAKE FETCH /api/posts LAGI
-  const githubApiUrl = 'https://api.github.com/repos/NAMA_USER/NAMA_REPO/contents/public/posts';
+  const githubApiUrl = 'https://github.com/pandangsaya2023/pulnew/blob/main/functions/api/posts.js';
 
   try {
     const res = await fetch(githubApiUrl, {
