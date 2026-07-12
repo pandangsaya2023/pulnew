@@ -139,8 +139,11 @@
        .ticker-content { display: inline-block; white-space: nowrap; padding-left: 100%; animation: ticker 40s linear infinite; line-height: 35px; }
         @keyframes ticker { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(-100%, 0, 0); } }
        
-       .ad-slot { margin: 15px -16px; text-align: center; } /* -16px biar mentok kiri kanan */
-       .ad-slot img { width: 100%; height: auto; display: flex; }
+       /*.ad-slot { margin: 15px -16px; text-align: center; } /* -16px biar mentok kiri kanan */
+       /*.ad-slot img { width: 100%; height: auto; display: flex; }*/
+
+      .ad-slot { margin: 10px auto; padding: 0; text-align: center; }
+      .ad-slot img { width: 100%; height: auto; display: block; border-radius: 8px; }
 
         .ad-slot.ad-banner-bottom {
             margin: 5px auto 0px auto!important;
@@ -275,13 +278,24 @@ async function muatHalamanBerita() {
             <h1 class="article-title">${post.title}</h1>
             <div class="article-meta">${tanggal} WIB | ${(post.kategori || post.category || 'BERITA').toUpperCase()}</div>
             
-            <div class="ad-slot"><a href="https://link-iklan-anda.com" target="_blank"><img src="/media/iklan_berita_atas1.png" alt="Iklan"></a></div>
+            <div class="ad-slot">
+                <a href="https://link-iklan-anda.com" target="_blank">
+                    <img src="/media/iklan_berita_atas1.png" alt="Iklan">
+                </a>
+            </div>
 
             <img src="${post.image}" class="main-image" alt="${post.title}" loading="lazy">
             <div class="article-body">${isiBerita}</div>
 
-            <div class="ad-slot"><a href="https://link-iklan-anda.com" target="_blank"><img src="/media/iklan_berita_tengah1.png" alt="Iklan"></a></div>
+            <div class="ad-slot ad-inarticle">
+                <a href="https://link-iklan-anda.com" target="_blank" rel="nofollow">
+                    <img src="/media/iklan_berita_tengah1.png" alt="Iklan">
+                </a>
+            </div>
         `;
+
+           /* <div class="ad-slot"><a href="https://link-iklan-anda.com" target="_blank"><img src="/media/iklan_berita_tengah1.png" alt="Iklan"></a></div>
+        `;*/
 
         const related = posts.filter(p => p.slug !== post.slug).slice(0, 5);
         if (related.length > 0) {
