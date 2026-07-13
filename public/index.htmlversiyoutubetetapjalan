@@ -17,7 +17,8 @@
     <style>
         :root { --jarak-utama: 12px; --warna-merah: #d32f2f; --warna-biru: #1a237e; --warna-bg: #f4f6f9; }
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif; }
-        html, body { background: var(--warna-bg); color: #333; min-height: 100vh; padding-bottom: 180px; }
+        html, body { background: var(--warna-bg); color: #333; min-height: 100vh; padding-bottom: 10px; }
+/* html, body { background: var(--warna-bg); color: #333; min-height: 100vh; padding-bottom: 180px; } */
         h1, h2, h3, h4,.logo-text { font-family: 'Poppins', sans-serif; }
      .header-container { background: #ffffff; position: sticky; top: 0; z-index: 200; border-bottom: 2px solid var(--warna-merah); box-shadow: 0 2px 4px rgba(0,0,0,0.06); }
      .category-nav { display: flex; gap: 8px; overflow-x: auto; padding: 5px 10px; background: var(--warna-biru); border-bottom: 1px solid #eee; position: sticky; top: 55px; z-index: 100; scrollbar-width: none; }
@@ -74,7 +75,9 @@
         @media (max-width: 768px) {.ad-banner-top,.ad-banner-bottom { max-width: 100%; } }
 
       /* === PLAYER YOUTUBE GLOBAL === */
-      #yt-player-wrap { position: fixed; bottom: 0; left: 0; right: 0; background: #000; z-index: 9999; box-shadow: 0 -2px 15px rgba(0,0,0,0.4); border-top: 2px solid var(--warna-merah); }
+
+      #yt-player-wrap { position: static; width:100%; background: #000; box-shadow: none; border-top: 2px solid var(--warna-merah); margin-top: 0; }
+      /* #yt-player-wrap { position: fixed; bottom: 0; left: 0; right: 0; background: #000; z-index: 9999; box-shadow: 0 -2px 15px rgba(0,0,0,0.4); border-top: 2px solid var(--warna-merah); } */
       #yt-player { width: 100%; height: 170px; display: block; }
       #yt-close { position: absolute; top: 5px; right: 10px; background: rgba(0,0,0,0.6); color: #fff; border: none; border-radius: 50%; width: 28px; height: 28px; font-size: 16px; cursor: pointer; z-index: 10000; }
 
@@ -133,6 +136,25 @@
     </footer>
 
     <!-- === PLAYER YOUTUBE GLOBAL NEMPEL BAWAH === -->
+    <!-- <div id="yt-player-wrap">
+      <button id="yt-close">×</button>
+      <iframe id="yt-player"
+        src="https://www.youtube.com/embed/bKVkOR0Kur8?autoplay=1&mute=0&controls=1&enablejsapi=1&playsinline=1"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen>
+      </iframe>
+    </div> -->
+
+    <!-- === POPUP UNTUK ISI BERITA === -->
+    <div id="article-modal">
+      <div class="modal-header">
+        <button class="modal-close" onclick="tutupArtikel()">← Kembali</button>
+      </div>
+      <div class="modal-content" id="modal-body"></div>
+    </div>
+
+    <!-- === PLAYER YOUTUBE GLOBAL NEMPEL BAWAH === -->
     <div id="yt-player-wrap">
       <button id="yt-close">×</button>
       <iframe id="yt-player"
@@ -141,14 +163,6 @@
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         allowfullscreen>
       </iframe>
-    </div>
-
-    <!-- === POPUP UNTUK ISI BERITA === -->
-    <div id="article-modal">
-      <div class="modal-header">
-        <button class="modal-close" onclick="tutupArtikel()">← Kembali</button>
-      </div>
-      <div class="modal-content" id="modal-body"></div>
     </div>
 
     <script>
