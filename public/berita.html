@@ -276,7 +276,7 @@ async function muatHalamanBerita() {
 
         let html = `
             <h1 class="article-title">${post.title}</h1>
-            <div class="article-meta">${tanggal} WIB | ${(post.kategori || post.category || 'BERITA').toUpperCase()}</div>
+            <div class="article-meta">${tanggal} WIB | ${(post.kategori || post.Kategori || post.category || 'BERITA').toUpperCase()}</div>
             
             <div class="ad-slot">
                 <a href="https://link-iklan-anda.com" target="_blank">
@@ -284,7 +284,8 @@ async function muatHalamanBerita() {
                 </a>
             </div>
 
-            <img src="${post.image}" class="main-image" alt="${post.title}" loading="lazy">
+            // <img src="${post.image}" class="main-image" alt="${post.title}" loading="lazy">
+            <img src="${post.image || post.thumbnail || '/media/og-default.jpg'}" class="main-image" alt="${post.title}" loading="lazy">
             <div class="article-body">${isiBerita}</div>
 
             <div class="ad-slot ad-inarticle">
