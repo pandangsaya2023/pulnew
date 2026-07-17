@@ -1,6 +1,6 @@
 export async function onRequest() {
   try {
-    const timestamp = Date.now(); // anti cache
+    const timestamp = Date.now();
     const githubRes = await fetch(
       `https://api.github.com/repos/pandangsaya2023/pulnew/contents/public/posts?ref=main&ts=${timestamp}`,
       {
@@ -18,8 +18,8 @@ export async function onRequest() {
     const urls = Array.isArray(files)
       ? files.filter(f => f.name.endsWith('.json'))
              .map(f => `/posts/${f.name}`)
-             .slice(0, 50)
-      : [];
+             .sort().reverse() // urutin dari terbaru
+      : []; // INI UDAH GAK PAKE .slice(0, 50) LAGI
 
     return new Response(JSON.stringify({urls}), {
       status: 200,
