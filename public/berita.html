@@ -19,7 +19,7 @@
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif; }
         html, body { background: var(--warna-bg); color: #333; min-height: 100vh; padding-bottom: 10px; }
         h1, h2, h3, h4,.logo-text { font-family: 'Poppins', sans-serif; }
-    
+
 .header-container {
     background: #ffffff; position: sticky; top: 0; z-index: 999;
     border-bottom: 2px solid var(--warna-merah); box-shadow: 0 2px 4px rgba(0,0,0,0.06); width: 100%;
@@ -34,7 +34,6 @@
     align-items: center;
 }
 
-/* Link logo - kunci total */
 .logo-bar > a {
     display: inline-flex;
     align-items: center;
@@ -45,14 +44,12 @@
     outline: none;
 }
 
-/* Matikan semua efek pas active */
 .logo-bar > a:active,
 .logo-bar > a:focus {
     transform: none!important;
     opacity: 1!important;
 }
 
-/* Wrapper logo - jangan dikasih height fixed kalau logo nya emang gede */
 .logo-img-wrapper {
     line-height: 0;
 }
@@ -90,68 +87,60 @@
     background: #256d27;
 }
 
-        /* === FIX: FULL LAYAR + RATA KIRI === */
-       .content-wrapper { padding: 0; }
-       .article-box { 
-            max-width: 100%; /* FULL LAYAR */
-            margin: 0; 
-            background: white; 
-            padding: 16px; 
-            border-radius: 0; /* BIAR NGEPAS */
-            box-shadow: none; 
+      .content-wrapper { padding: 0; }
+      .article-box {
+            max-width: 100%;
+            margin: 0;
+            background: white;
+            padding: 16px;
+            border-radius: 0;
+            box-shadow: none;
         }
-       .article-title { 
-            font-size: 24px; 
-            font-weight: 800; 
-            margin-bottom: 10px; 
-            line-height: 1.3; 
-            text-align: left; /* RATA KIRI */
+      .article-title {
+            font-size: 24px;
+            font-weight: 800;
+            margin-bottom: 10px;
+            line-height: 1.3;
+            text-align: left;
         }
-       .article-meta { 
-            font-size: 12px; 
-            color: #666; 
-            margin-bottom: 15px; 
-            text-align: left; /* RATA KIRI */
+      .article-meta {
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 15px;
+            text-align: left;
         }
-       .main-image { width: 100%; border-radius: 8px; margin-bottom: 20px; }
-       .article-body { 
-            font-size: 16px; 
-            line-height: 1.8; 
-            color: #333; 
-            text-align: left; /* RATA KIRI */
-            /* text-align-last: left; */
-            /* word-wrap: break-word; /* kunci 2 patahkan kata panjang */ */
-            /* overflow-wrap: break-word; /* kunci 2 */ */
+      .main-image { width: 100%; border-radius: 8px; margin-bottom: 20px; }
+      .article-body {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #333;
+            text-align: left;
         }
-       .article-body p { margin-bottom: 18px; } /* word-break: break-all; } */
-        /* ==================================== */
+      .article-body p { margin-bottom: 18px; }
 
-       .related-section { margin-top: 30px; padding-top: 20px; border-top: 2px solid #eee; }
-       .section-title { font-size: 18px; font-weight: 800; color: var(--warna-biru); margin: 5px 0 12px 0; padding-left: 3px; border-left: 4px solid var(--warna-merah); text-align: left; }
-       .related-item { display: flex; gap: 12px; padding: 10px 0; border-bottom: 1px solid #f0f0f0; text-decoration: none; color: inherit; }
-       .related-item img { width: 90px; height: 60px; object-fit: cover; border-radius: 6px; flex-shrink: 0; }
-       .related-item h4 { font-size: 14px; font-weight: 700; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; margin: 0; text-align: left; }
-       
-       .footer-ticker { 
+      .related-section { margin-top: 30px; padding-top: 20px; border-top: 2px solid #eee; }
+      .section-title { font-size: 18px; font-weight: 800; color: var(--warna-biru); margin: 5px 0 12px 0; padding-left: 3px; border-left: 4px solid var(--warna-merah); text-align: left; }
+      .related-item { display: flex; gap: 12px; padding: 10px 0; border-bottom: 1px solid #f0f0f0; text-decoration: none; color: inherit; }
+      .related-item img { width: 90px; height: 60px; object-fit: cover; border-radius: 6px; flex-shrink: 0; }
+      .related-item h4 { font-size: 14px; font-weight: 700; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; margin: 0; text-align: left; }
+
+      .footer-ticker {
            background: #d32f2f; color: white; padding: 8px 0; font-size: 13px;
            overflow: hidden; width: 100%; position: fixed; bottom: 0; left: 0; z-index: 999;
            height: 35px; display: flex; align-items: center; }
-       .ticker-content { display: inline-block; white-space: nowrap; padding-left: 100%; animation: ticker 40s linear infinite; line-height: 35px; }
+      .ticker-content { display: inline-block; white-space: nowrap; padding-left: 100%; animation: ticker 40s linear infinite; line-height: 35px; }
         @keyframes ticker { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(-100%, 0, 0); } }
-       
-       /*.ad-slot { margin: 15px -16px; text-align: center; } /* -16px biar mentok kiri kanan */
-       /*.ad-slot img { width: 100%; height: auto; display: flex; }*/
 
-      .ad-slot { margin: 10px auto; padding: 0; text-align: center; }
-      .ad-slot img { width: 100%; height: auto; display: block; border-radius: 8px; }
+     .ad-slot { margin: 10px auto; padding: 0; text-align: center; }
+     .ad-slot img { width: 100%; height: auto; display: block; border-radius: 8px; }
 
-        .ad-slot.ad-banner-bottom {
+       .ad-slot.ad-banner-bottom {
             margin: 5px auto 0px auto!important;
             padding: 0px!important;
             max-width: 768px;
         }
 
-       .ad-slot.ad-banner-bottom img {
+      .ad-slot.ad-banner-bottom img {
             width: 100%;
             height: auto;
             aspect-ratio: 768 / 180;
@@ -161,7 +150,7 @@
             background: #f0f0f0;
         }
 
-       .ad-slot.ad-banner-bottom:has(img[src=""], img:not([src])) {
+      .ad-slot.ad-banner-bottom:has(img[src=""], img:not([src])) {
             display: none!important;
             margin: 0px!important;
         }
@@ -170,15 +159,16 @@
             margin-top: 5px!important;
         }
 
-       .ad-inarticle {
+      .ad-inarticle {
             max-width: 600px;
         }
         @media (max-width: 768px) {
-           .ad-banner-top,.ad-banner-bottom {
+          .ad-banner-top,.ad-banner-bottom {
                 max-width: 100%;
            }
-       .loading,.error { text-align:center; padding:60px 20px; }
-       .error { color: var(--warna-merah); }
+        }
+      .loading,.error { text-align:center; padding:60px 20px; }
+      .error { color: var(--warna-merah); }
     </style>
 </head>
 <body>
@@ -208,11 +198,11 @@ function updateMetaTags(post) {
     const desc = (post.body || post.content || '').substring(0, 160).replace(/<[^>]*>/g, '') + '...';
     setMeta('property', 'og:title', post.title);
     setMeta('property', 'og:description', desc);
-    setMeta('property', 'og:image', post.image);
+    setMeta('property', 'og:image', post.image || post.thumbnail || '/media/og-default.jpg');
     setMeta('property', 'og:url', window.location.href);
     setMeta('name', 'twitter:title', post.title);
     setMeta('name', 'twitter:description', desc);
-    setMeta('name', 'twitter:image', post.image);
+    setMeta('name', 'twitter:image', post.image || post.thumbnail || '/media/og-default.jpg');
 }
 
 async function fetchPosts() {
@@ -222,23 +212,18 @@ async function fetchPosts() {
     return Array.isArray(data)? data : data.urls || [];
 }
 
-// KUNCI: FUNGSI INI UDAH BISA PERBAIKI BERITA LAMA YG SLUG KOSONG
 async function fetchPostDetail(url) {
     try {
         const res = await fetch(url + '?t=' + Date.now() + '&r=' + Math.random(), { cache: 'no-store' });
         const data = await res.json();
-        
-        // === PERBAIKI SLUG KOSONG BUAT BERITA LAMA DARI ROBOT ===
+
         if (!data.slug || data.slug.trim() === "") {
             data.slug = data.title
-                .toLowerCase()
-                .replace(/[^\w\s-]/g, '') // buang simbol
-                .replace(/\s+/g, '-')     // spasi jadi -
-                .substring(0, 100);       // max 100 huruf
-            console.log("Slug diperbaiki:", data.slug);
+               .toLowerCase()
+               .replace(/[^\w\s-]/g, '')
+               .replace(/\s+/g, '-')
+               .substring(0, 100);
         }
-        // ==========================================================
-
         return data;
     } catch {
         return null;
@@ -260,7 +245,7 @@ async function muatHalamanBerita() {
         allPosts = posts;
         posts.sort((a, b) => new Date(b.date || b.created_at) - new Date(a.date || a.created_at));
 
-        // CARI BERITA BERDASARKAN FIELD SLUG
+        // FIX: CARI BERITA BERDASARKAN SLUG YG SUDAH DIBUAT
         const post = posts.find(p => p.slug && p.slug.toLowerCase() === slugTujuan.toLowerCase());
 
         if (!post) {
@@ -270,21 +255,23 @@ async function muatHalamanBerita() {
         }
 
         updateMetaTags(post);
-        
+
         const tanggal = new Date(post.date || post.created_at).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit' });
-        const isiBerita = (post.body || post.content || '').split('\n').map(p => p.trim()? `<p>${p}</p>` : '').join('');
+        // FIX: LANGSUNG AMBIL ISI TANPA SPLIT
+        const isiBerita = post.body || post.content || '';
 
         let html = `
             <h1 class="article-title">${post.title}</h1>
-            <div class="article-meta">${tanggal} WIB | ${(post.kategori || post.category || 'BERITA').toUpperCase()}</div>
-            
+            <div class="article-meta">${tanggal} WIB | ${(post.kategori || post.Kategori || post.category || 'BERITA').toUpperCase()}</div>
+
+            <img src="${post.image || post.thumbnail || '/media/og-default.jpg'}" class="main-image" alt="${post.title}" loading="lazy">
+
             <div class="ad-slot">
                 <a href="https://link-iklan-anda.com" target="_blank">
                     <img src="/media/iklan_berita_atas1.png" alt="Iklan">
                 </a>
             </div>
 
-            <img src="${post.image}" class="main-image" alt="${post.title}" loading="lazy">
             <div class="article-body">${isiBerita}</div>
 
             <div class="ad-slot ad-inarticle">
@@ -294,14 +281,11 @@ async function muatHalamanBerita() {
             </div>
         `;
 
-           /* <div class="ad-slot"><a href="https://link-iklan-anda.com" target="_blank"><img src="/media/iklan_berita_tengah1.png" alt="Iklan"></a></div>
-        `;*/
-
-        const related = posts.filter(p => p.slug !== post.slug).slice(0, 5);
+        const related = posts.filter(p => p.slug!== post.slug).slice(0, 5);
         if (related.length > 0) {
             html += `<div class="related-section"><div class="section-title">Berita Lainnya</div>`;
             related.forEach(r => {
-                html += `<a href="/berita.html?slug=${r.slug}" class="related-item"><img src="${r.image}" alt="${r.title}"><h4>${r.title}</h4></a>`;
+                html += `<a href="/berita.html?slug=${r.slug}" class="related-item"><img src="${r.image || r.thumbnail || '/media/og-default.jpg'}" alt="${r.title}"><h4>${r.title}</h4></a>`;
             });
             html += `</div>`;
         }
