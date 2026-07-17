@@ -128,7 +128,7 @@ def main():
                     berita_baru = {
                         "title": title,
                         "slug": slug,
-                        "kategori": "Nasional", # HURUF BESAR K SESUAI config.yml baris 20
+                        "kategori": "Berita", # HURUF BESAR K SESUAI config.yml baris 20
                         "date": datetime.now().strftime("%Y-%m-%dT%H:%M:%S+07:00"), # ISO format
                         "image": img_url,
                         "body": body
