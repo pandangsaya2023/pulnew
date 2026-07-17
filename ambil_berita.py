@@ -116,7 +116,11 @@ def main():
                 title = item.find('title').get_text(strip=True)
                 link = item.find('link').get_text(strip=True)
 
-                slug = re.sub(r'[^a-z0-9]+', '-', title.lower()).strip('-')[:60]
+                slug = re.sub(r'[^\w\s-]', '', title.lower()).strip()
+                slug = re.sub(r'\s+', '-', slug)
+                slug = slug.strip('-')
+
+                # slug = re.sub(r'[^a-z0-9]+', '-', title.lower()).strip('-')[:60]# 
                 if not slug: slug = f"berita-{int(time.time())}"
 
                 if slug not in slug_tercatat:
