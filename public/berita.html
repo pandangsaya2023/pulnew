@@ -272,18 +272,18 @@ async function muatHalamanBerita() {
         updateMetaTags(post);
         
         const tanggal = new Date(post.date || post.created_at).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit' });
-        // const isiBerita = (post.body || post.content || '').split('\n').map(p => p.trim()? `<p>${p}</p>` : '').join('');
+        /* const isiBerita = (post.body || post.content || '').split('\n').map(p => p.trim()? `<p>${p}</p>` : '').join(''); */
         const isiBerita = post.body || post.content || '';
 
         let html = `
             <h1 class="article-title">${post.title}</h1>
             <div class="article-meta">${tanggal} WIB | ${(post.kategori || post.Kategori || post.category || 'BERITA').toUpperCase()}</div>
             
-            <div class="ad-slot">
+            /* <div class="ad-slot">
                 <a href="https://link-iklan-anda.com" target="_blank">
                     <img src="/media/iklan_berita_atas1.png" alt="Iklan">
                 </a>
-            </div>
+            </div> */
 
             
             <img src="${post.image || post.thumbnail || '/media/og-default.jpg'}" class="main-image" alt="${post.title}" loading="lazy">
