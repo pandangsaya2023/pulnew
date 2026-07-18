@@ -184,18 +184,32 @@ def main():
     jumlah_baru = 0
     jumlah_update = 0
     total_proses = 0
+    
+    BATAS_BERITA_BARU = 5 # <--- INI KUNCINYA. MAKS 5 BERITA BARU PER HARI
+
+    print(f"Target: Maks {BATAS_BERITA_BARU} berita baru per run")
 
     for sumber in sumber_rss:
         if total_proses >= MAX_BERITA_PER_RUN: break
         print(f"Mengakses {sumber['media']}...")
         try:
-            response = requests.get(sumber['url'], headers={'User-Agent': 'Mozilla/5.0'}, timeout=15)
+            response = requests.get(sumber['url'], headers={'User-Agent': 'Mozilla/5.0'})
             soup = BeautifulSoup(response.content, 'xml')
-            for item in soup.find_all('item')[:3]: # 6. DIKURANGIN PER MEDIA
+
+            for item in soup.find_all('item')[:3]: # 6. DIKURANGI PER MEDIA JADI 3 BIAR AMAN
                 if total_proses >= MAX_BERITA_PER_RUN: break
+                
                 title = item.find('title').get_text(strip=True)
                 link = item.find('link').get_text(strip=True)
                 slug = buat_slug(title)
+
+                # CEK DULU: INI BERITA BARU APA LAMA
+                is_baru = slug not in semua_post
+
+                # KALAU BERITA BARU DAN UDAH 5, LANGSUNG SKIP
+                if is_baru and jumlah_baru >= BATAS_BERITA_BARU:
+                    print(f" -> Skip: Batas 5 berita baru tercapai. {title}")
+                    continue
 
                 body, soup_artikel = rewrite_with_groq(title, link, sumber['media'])
                 img_url = ambil_gambar_asli(soup_artikel)
@@ -204,7 +218,7 @@ def main():
                     "title": title,
                     "slug": slug,
                     "kategori": "Berita",
-                    "date": datetime.now().strftime("%Y-%m-%dT%H:%M:%S+07:00") if slug not in semua_post else semua_post[slug]['date'], # 7. TANGGAL LAMA JANGAN DIUPDATE
+                    "date": datetime.now().strftime("%Y-%m-%dT%H:%M:%S+07:00"),
                     "image": img_url,
                     "body": body
                 }
@@ -214,17 +228,18 @@ def main():
                     print(f" -> Update: {title}")
                 else:
                     jumlah_baru += 1
-                    print(f" -> Baru: {title}")
+                    print(f" -> Baru: {title} [{jumlah_baru}/{BATAS_BERITA_BARU}]")
 
                 semua_post[slug] = berita_data
                 save_berita(berita_data)
                 total_proses += 1
                 time.sleep(10) # jeda groq biar aman
+
         except Exception as e:
             print(f"Error di {sumber['media']}: {e}")
 
     update_posts_js(semua_post)
-    print(f"Selesai! Baru: {jumlah_baru}, Update: {jumlah_update}, Total: {len(semua_post)}")
+    print(f"Selesai! Baru: {jumlah_baru}, Update: {jumlah_update}, Total diproses: {total_proses}")
 
 def repair_all_old_posts():
     """Paksa benerin semua file json lama TAPI SLUG TETAP"""
@@ -254,5 +269,5 @@ def repair_all_old_posts():
     print(f"=== SELESAI REPAIR: {count} file dibenerin ===")
 
 if __name__ == "__main__":
-    repair_all_old_posts()
+    # repair_all_old_posts()
     main()
