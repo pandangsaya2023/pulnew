@@ -40,5 +40,5 @@ jobs:
         with:
             token: ${{ github.token }}
             repository: ${{ github.repository }}
-            retain_days: 3 # simpan 3 hari terakhir aja
+            retain_days: 7 # simpan 7 hari terakhir aja
             keep_minimum_runs: 5 # minimal simpan 5 run terakhir
