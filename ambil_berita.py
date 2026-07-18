@@ -253,5 +253,5 @@ def repair_all_old_posts():
                     print(f"Gagal repair {filename}: {e}")
     print(f"=== SELESAI REPAIR: {count} file dibenerin ===")
 
- if __name__ == "__main__":
+if __name__ == "__main__":
     main()
