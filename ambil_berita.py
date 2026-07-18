@@ -269,5 +269,5 @@ def repair_all_old_posts():
     print(f"=== SELESAI REPAIR: {count} file dibenerin ===")
 
 if __name__ == "__main__":
-    repair_all_old_posts()
+    # repair_all_old_posts()
     main()
