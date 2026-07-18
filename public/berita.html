@@ -110,13 +110,44 @@
             text-align: left;
         }
       .main-image { width: 100%; border-radius: 8px; margin-bottom: 20px; }
-      .article-body {
+      /*.article-body {
             font-size: 16px;
             line-height: 1.8;
             color: #333;
-            text-align: left;
+            text-align: left;*/
         }
-      .article-body p { margin-bottom: 18px; }
+      /* .article-body p { margin-bottom: 18px; } */
+            /* FIX ISI BERITA DARI ROBOT */
+      .article-body {
+        font-size: 16px;
+        line-height: 1.8;
+        color: #333;
+        text-align: left;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        max-width: 100%;
+      }
+      .article-body p { 
+        margin-bottom: 1em; /* jarak antar paragraf */
+      }
+      .article-body h2 { 
+        font-size: 20px;
+        font-weight: 700;
+        margin: 20px 0 10px 0;
+        color: var(--warna-biru);
+      }
+      .article-body img { 
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+        margin: 15px 0;
+      }
+      .article-body a {
+        color: var(--warna-merah);
+        text-decoration: underline;
+      }
+
+        
 
       .related-section { margin-top: 30px; padding-top: 20px; border-top: 2px solid #eee; }
       .section-title { font-size: 18px; font-weight: 800; color: var(--warna-biru); margin: 5px 0 12px 0; padding-left: 3px; border-left: 4px solid var(--warna-merah); text-align: left; }
