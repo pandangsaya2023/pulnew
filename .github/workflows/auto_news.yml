@@ -5,10 +5,6 @@ on:
   schedule:
     - cron: '0 */23 * * *'
 
-# permissions:
-    # contents: write
-    # actions: write # biar bisa hapus run lama
-
 jobs:
   scrape:
     runs-on: ubuntu-latest
@@ -34,11 +30,3 @@ jobs:
             git diff-index --quiet HEAD || git commit -m "Update berita otomatis"
             git pull --rebase origin main || true
             git push
-
-      - name: Hapus Workflow Runs Lama # TAMBAH INI DI AKHIR
-        uses: Mattraks/delete-workflow-runs@v2
-        with:
-            token: ${{ github.token }}
-            repository: ${{ github.repository }}
-            retain_days: 7 # simpan 7 hari terakhir aja
-            keep_minimum_runs: 5 # minimal simpan 5 run terakhir
