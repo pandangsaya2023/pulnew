@@ -32,6 +32,12 @@ jobs:
           print('Dibersihkan:', len(urls)-len(valid), 'link mati')
           "
 
+          - name: HAPUS SEMUA FILE BERTANGGAL
+            run: |
+            cd public/posts
+            rm -f 20*-*.json # hapus semua file yg depannya 2025- 2026- dll
+            echo "File lama dihapus"
+
           - name: Menyimpan Perubahan Kembali ke GitHub
             run: |
             git config --global user.name "github-actions[bot]"
