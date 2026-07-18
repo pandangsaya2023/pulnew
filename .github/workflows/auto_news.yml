@@ -22,11 +22,21 @@ jobs:
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
         run: python ambil_berita.py
 
-      - name: Menyimpan Perubahan Kembali ke GitHub
+      - name: Bersihkan posts.js dari file yg hilang
         run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add public/posts/
-          git diff-index --quiet HEAD || git commit -m "Update berita otomatis"
-          git pull --rebase origin main || true
-          git push
+          python -c "
+          import json, os
+          with open('public/posts.js') as f: urls = json.load(f)
+          valid = [u for u in urls if os.path.exists('public' + u)]
+          with open('public/posts.js','w') as f: json.dump(valid, f)
+          print('Dibersihkan:', len(urls)-len(valid), 'link mati')
+          "
+
+          - name: Menyimpan Perubahan Kembali ke GitHub
+            run: |
+            git config --global user.name "github-actions[bot]"
+            git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add public/posts/ public/posts.js
+            git diff-index --quiet HEAD || git commit -m "Update berita otomatis"
+            git pull --rebase origin main || true
+            git push
