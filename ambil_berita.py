@@ -226,32 +226,5 @@ def main():
     update_posts_js(semua_post)
     print(f"Selesai! Baru: {jumlah_baru}, Update: {jumlah_update}, Total: {len(semua_post)}")
 
-def repair_all_old_posts():
-    """Paksa benerin semua file json lama"""
-    print("=== MULAI REPAIR SEMUA BERITA LAMA ===")
-    count = 0
-    if os.path.exists(OUTPUT_FOLDER):
-        for filename in os.listdir(OUTPUT_FOLDER):
-            if filename.endswith(".json"):
-                path = os.path.join(OUTPUT_FOLDER, filename)
-                try:
-                    with open(path, 'r', encoding='utf-8') as f:
-                        data = json.load(f)
-                    
-                    # Kalau belum ada <p> berarti masih rusak
-                    if '<p>' not in data.get('body',''):
-                        print(f" -> Repair: {data['title']}")
-                        data['body'] = format_ke_html(data['body'])
-                        with open(path, 'w', encoding='utf-8') as f:
-                            json.dump(data, f, ensure_ascii=False, indent=2)
-                        count += 1
-                except Exception as e:
-                    print(f"Gagal repair {filename}: {e}")
-    print(f"=== SELESAI REPAIR: {count} file dibenerin ===")
-
-if __name__ == "__main__":
-    repair_all_old_posts() # <--- TAMBAH INI DI ATAS
+ if __name__ == "__main__":
     main()
-
-# if __name__ == "__main__":
-    # main()
