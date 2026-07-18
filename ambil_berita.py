@@ -27,14 +27,52 @@ sumber_rss = [
 
 # --- FUNGSI BARU: BIKIN ALINEA OTOMATIS ---
 def format_ke_html(teks):
-    teks = teks.strip()
-    # Pecah berdasarkan 2x enter
+    """Fungsi buat benerin berita lama jadi ada <p>"""
+    teks = str(teks).strip()
+    # Kalau udah ada <p> berarti aman, skip
+    if '<p>' in teks: 
+        return teks
+    # Pecah berdasarkan enter 2x atau titik
     paragraf = [p.strip() for p in re.split(r'\n\n+', teks) if p.strip()]
-    # Kalau gak ada enter, pecah per 3-4 kalimat
-    if len(paragraf) <= 1:
+    if len(paragraf) <= 1: # kalau gak ada enter, pecah per 3 kalimat
         kalimat = [k.strip() for k in re.split(r'(?<=[.!?])\s+', teks) if k.strip()]
-        paragraf = [' '.join(kalimat[i:i+4]) for i in range(0, len(kalimat), 4)]
+        paragraf = [' '.join(kalimat[i:i+3]) for i in range(0, len(kalimat), 3)]
     return ''.join([f"<p>{p}</p>" for p in paragraf])
+
+def get_existing_posts():
+    """Baca semua file json yg ada + AUTO BENERIN"""
+    posts = {}
+    if os.path.exists(OUTPUT_FOLDER):
+        for filename in os.listdir(OUTPUT_FOLDER):
+            if filename.endswith(".json"):
+                try:
+                    path = os.path.join(OUTPUT_FOLDER, filename)
+                    with open(path, 'r', encoding='utf-8') as f:
+                        data = json.load(f)
+                    
+                    # INI KUNCINYA: KALAU BERITA LAMA GAK ADA <p> LANGSUNG BENERIN & TIMPA
+                    if '<p>' not in data.get('body',''):
+                        print(f" -> Repair: {data['title']}")
+                        data['body'] = format_ke_html(data['body'])
+                        # langsung simpan yg udah dibenerin
+                        with open(path, 'w', encoding='utf-8') as f:
+                            json.dump(data, f, ensure_ascii=False, indent=2)
+                    
+                    posts[data['slug']] = data
+                except: pass
+    return posts
+
+# ===
+# def format_ke_html(teks):
+   # teks = teks.strip()
+    # Pecah berdasarkan 2x enter
+  #  paragraf = [p.strip() for p in re.split(r'\n\n+', teks) if p.strip()]
+    # Kalau gak ada enter, pecah per 3-4 kalimat
+  #  if len(paragraf) <= 1:
+      #  kalimat = [k.strip() for k in re.split(r'(?<=[.!?])\s+', teks) if k.strip()]
+      #  paragraf = [' '.join(kalimat[i:i+4]) for i in range(0, len(kalimat), 4)]
+   # return ''.join([f"<p>{p}</p>" for p in paragraf])
+# ===
 
 # --- PROMPT GAYA PULNEW ---
 def prompt_rewrite_umum(title, konten_asli, link, media):
