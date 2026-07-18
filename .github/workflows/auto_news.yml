@@ -11,12 +11,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: HAPUS SEMUA FILE BERTANGGAL
-        run: |
-            cd public/posts
-            rm -f 20*-*.json # hapus semua file yg depannya 2025- 2026- dll
-            echo "File lama dihapus"
-
       - name: Menyiapkan Python & Dependencies
         run: |
           python -m pip install --upgrade pip
