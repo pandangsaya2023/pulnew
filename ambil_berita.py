@@ -124,10 +124,21 @@ def rewrite_with_groq(title, link, media):
             max_tokens=900 # 4. DITURUNIN BIAR GAK KEPOTONG
         )
         hasil = completion.choices[0].message.content
-        return format_ke_html(hasil), soup # 5. LANGSUNG BUNGKUS <p>
+
+        # INI KUNCINYA: BUNGKUS OTOMATIS JADI <p>
+        paragraf = [p.strip() for p in hasil.split('\n\n') if p.strip()]
+        hasil_html = ''.join([f"<p>{p}</p>" for p in paragraf])
+
+        return hasil_html, soup
     except Exception as e:
         print(f"Error Groq: {e}")
-        return format_ke_html(konten_asli[:800]), soup
+        return f"<p>{konten_asli[:500]}...</p>", soup
+
+        
+        return format_ke_html(hasil), soup # 5. LANGSUNG BUNGKUS <p>
+   # except Exception as e:
+       # print(f"Error Groq: {e}")
+        # return format_ke_html(konten_asli[:800]), soup
 
 # --- EKSEKUSI UTAMA ---
 def main():
