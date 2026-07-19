@@ -217,58 +217,58 @@ def main():
     update_posts_js(semua_post)
     print(f"Selesai! Baru: {jumlah_baru}, Update: {jumlah_update}, Total diproses: {total_proses}")
 
-def repair_all_old_posts():
-    """Paksa benerin semua file json lama TAPI SLUG TETAP"""
-    print("=== MULAI REPAIR SEMUA BERITA LAMA ===")
-    count = 0
-    if os.path.exists(OUTPUT_FOLDER):
-        for filename in os.listdir(OUTPUT_FOLDER):
-            if filename.endswith(".json"):
-                path = os.path.join(OUTPUT_FOLDER, filename)
-                try:
-                    with open(path, 'r', encoding='utf-8') as f:
-                        data = json.load(f)
+#def repair_all_old_posts():
+    #"""Paksa benerin semua file json lama TAPI SLUG TETAP"""
+    #print("=== MULAI REPAIR SEMUA BERITA LAMA ===")
+    #count = 0
+    #if os.path.exists(OUTPUT_FOLDER):
+        #for filename in os.listdir(OUTPUT_FOLDER):
+            #if filename.endswith(".json"):
+                #path = os.path.join(OUTPUT_FOLDER, filename)
+                #try:
+                    #with open(path, 'r', encoding='utf-8') as f:
+                        #data = json.load(f)
                     
-                    slug_lama = data.get('slug') # SIMPAN SLUG LAMA
+                    #slug_lama = data.get('slug') # SIMPAN SLUG LAMA
 
                     # Kalau belum ada <p> berarti masih rusak
-                    if '<p>' not in data.get('body',''):
-                        print(f" -> Repair: {data['title']}")
-                        data['body'] = format_ke_html(data['body'])
-                        data['slug'] = slug_lama # PAKSA BALIKIN SLUG LAMA
+                    #if '<p>' not in data.get('body',''):
+                        #print(f" -> Repair: {data['title']}")
+                        #data['body'] = format_ke_html(data['body'])
+                        #data['slug'] = slug_lama # PAKSA BALIKIN SLUG LAMA
                         
-                        with open(path, 'w', encoding='utf-8') as f:
-                            json.dump(data, f, ensure_ascii=False, indent=2)
-                        count += 1
-                except Exception as e:
-                    print(f"Gagal repair {filename}: {e}")
-    print(f"=== SELESAI REPAIR: {count} file dibenerin ===")
+                        #with open(path, 'w', encoding='utf-8') as f:
+                            #json.dump(data, f, ensure_ascii=False, indent=2)
+                        $count += 1
+                #except Exception as e:
+                    #print(f"Gagal repair {filename}: {e}")
+    #print(f"=== SELESAI REPAIR: {count} file dibenerin ===")
 
-def hapus_berita_lama():
-    """Hapus semua file json yg tanggalnya < 2026-07-17"""
-    print("=== MULAI HAPUS BERITA LAMA < 2026-07-17 ===")
-    batas_tanggal = datetime(2026, 7, 17) # <--- TANGGAL PATOKAN
-    count_hapus = 0
+#def hapus_berita_lama():
+    #"""Hapus semua file json yg tanggalnya < 2026-07-17"""
+    #print("=== MULAI HAPUS BERITA LAMA < 2026-07-17 ===")
+    #batas_tanggal = datetime(2026, 7, 17) # <--- TANGGAL PATOKAN
+    #count_hapus = 0
 
-    if os.path.exists(OUTPUT_FOLDER):
-        for filename in os.listdir(OUTPUT_FOLDER):
-            if filename.endswith(".json"):
-                path = os.path.join(OUTPUT_FOLDER, filename)
-                try:
-                    with open(path, 'r', encoding='utf-8') as f:
-                        data = json.load(f)
+    #if os.path.exists(OUTPUT_FOLDER):
+        #for filename in os.listdir(OUTPUT_FOLDER):
+            #if filename.endswith(".json"):
+                #path = os.path.join(OUTPUT_FOLDER, filename)
+                #try:
+                    #with open(path, 'r', encoding='utf-8') as f:
+                        #data = json.load(f)
                     
-                    tgl_berita = datetime.strptime(data['date'][:10], "%Y-%m-%d")
+                    #tgl_berita = datetime.strptime(data['date'][:10], "%Y-%m-%d")
                     
-                    if tgl_berita < batas_tanggal:
-                        os.remove(path) # HAPUS FILE
-                        print(f" -> Dihapus: {data['title']} | {data['date'][:10]}")
-                        count_hapus += 1
+                    #if tgl_berita < batas_tanggal:
+                        #os.remove(path) # HAPUS FILE
+                        #print(f" -> Dihapus: {data['title']} | {data['date'][:10]}")
+                        #count_hapus += 1
 
-                except Exception as e:
-                    print(f"Gagal hapus {filename}: {e}")
+                #except Exception as e:
+                    #print(f"Gagal hapus {filename}: {e}")
     
-    print(f"=== SELESAI HAPUS: {count_hapus} file dihapus ===")
+    #print(f"=== SELESAI HAPUS: {count_hapus} file dihapus ===")
 
 if __name__ == "__main__":
     # hapus_berita_lama()
