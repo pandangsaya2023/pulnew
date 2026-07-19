@@ -295,6 +295,6 @@ def hapus_berita_lama():
     print(f"=== SELESAI HAPUS: {count_hapus} file dihapus ===")
 
 if __name__ == "__main__":
-    hapus_berita_lama() # <--- JALANIN INI DULU 1X
+    # hapus_berita_lama() # <--- JALANIN INI DULU 1X
     # repair_all_old_posts() 
-    # main()
+    main()
