@@ -145,6 +145,7 @@ def rewrite_with_groq(title, link, media):
         blok = [b.strip() for b in hasil.split('\n\n') if b.strip()]
         hasil_html = ''
         for b in blok:
+            b = b.replace('<p></p>', '')
             if b.startswith('<h2>'): # kalau udah h2 jangan dibungkus p lagi
                 hasil_html += b
             else:
