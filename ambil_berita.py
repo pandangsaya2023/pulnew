@@ -239,7 +239,7 @@ def main():
                         
                         #with open(path, 'w', encoding='utf-8') as f:
                             #json.dump(data, f, ensure_ascii=False, indent=2)
-                        $count += 1
+                        #$count += 1
                 #except Exception as e:
                     #print(f"Gagal repair {filename}: {e}")
     #print(f"=== SELESAI REPAIR: {count} file dibenerin ===")
