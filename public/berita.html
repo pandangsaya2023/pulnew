@@ -121,14 +121,15 @@
         white-space: pre-line;
       }
      .article-body p {
-        margin-bottom: 1em;
+        margin-bottom: 0.8em; /* jarak biar enak dibaca */
       }
-     .article-body h2 {
+     .article-body h2 { 
         font-size: 20px;
         font-weight: 700;
-        margin: 20px 0 10px 0;
+        margin: 18px 0 8px 0; /* <--- ATAS 18px BAWAH 8px. DIKECILIN */
         color: var(--warna-biru);
-      }
+        line-height: 1.4;
+     }
      .article-body img {
         max-width: 100%;
         height: auto;
@@ -142,9 +143,9 @@
 
       /* BOX SUMBER BARU */
      .source-box {
-        margin-top: 25px;
-        padding-top: 15px;
-        border-top: 1px solid #e0e0e0;
+        margin: 15px 0 20px 0; /* atas 15 bawah 20 */
+        padding: 0;
+        border-top: none; /*1px solid #e0e0e0;*/
         font-size: 14px;
         color: #555;
         font-style: italic;
@@ -317,6 +318,7 @@ async function muatHalamanBerita() {
             </div>
 
             <div class="article-body">${isiBerita}</div>
+            
             ${sourceBox} <!-- INI BOX SUMBERNYA -->
 
             <div class="ad-slot ad-inarticle">
