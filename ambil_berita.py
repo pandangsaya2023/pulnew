@@ -19,10 +19,7 @@ MAX_BERITA_PER_RUN = 15
 sumber_rss = [
     {"media": "Kompas", "url": "https://indeks.kompas.com/nasional"},
     {"media": "Antara", "url": "https://www.antaranews.com/rss/tekno"},
-    {"media": "CNBC", "url": "https://www.cnbcindonesia.com/techno/rss"},
     {"media": "Republika", "url": "https://www.republika.co.id/rss"},
-    {"media": "Pikiran Rakyat", "url": "https://www.pikiran-rakyat.com/feed"},
-    {"media": "Tribunnews", "url": "https://www.tribunnews.com/rss"},
     {"media": "Okezone", "url": "https://sindonews.com/rss"}
 ]
 
@@ -31,12 +28,9 @@ def get_nama_media(url):
     try:
         domain = urlparse(url).netloc.replace('www.', '')
         nama = domain.split('.')[0].capitalize()
-        if 'republika' in domain: return 'Republika'
         if 'kompas' in domain: return 'Kompas'
         if 'antara' in domain: return 'Antara'
-        if 'cnbcindonesia' in domain: return 'CNBC Indonesia'
-        if 'pikiran-rakyat' in domain: return 'Pikiran Rakyat'
-        if 'tribunnews' in domain: return 'Tribunnews'
+        if 'republika' in domain: return 'Republika'  
         if 'sindonews' in domain: return 'Sindonews'
         return nama
     except:
