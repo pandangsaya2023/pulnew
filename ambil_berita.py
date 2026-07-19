@@ -269,5 +269,5 @@ def hapus_berita_lama():
 
 if __name__ == "__main__":
     # hapus_berita_lama()
-    repair_all_old_posts()
-    # main()
+    # repair_all_old_posts()
+    main()
