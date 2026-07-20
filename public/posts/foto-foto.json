@@ -4,5 +4,5 @@
   "kategori": "HIBURAN",
   "date": "2026-07-20T19:37:00+07:00",
   "image": "/media/106930.webp",
-  "body": "Ini kumpulan foto foto\n\n![](/media/111050.png)\n\n![](/media/111051.png)\n\n![](/media/111068.jpg)\n\n![](/media/111075.jpg)"
+  "body": "![](/media/111050.png \"Foto 1\")\n\n![](/media/111051.png \"Foto 2\")\n\n![](/media/111068.jpg \"Foto 3\")\n\n![](/media/111075.jpg \"Foto 4\")"
 }
