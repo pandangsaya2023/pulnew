@@ -145,12 +145,21 @@
         color: var(--warna-merah);
         text-decoration: underline;
       }
+/*.article-body p {
+  margin: 0 0 10px 0; /* rapetin jarak antar baris */
+}*/
 
+      /* KOLASE OTOMATIS */
       .article-body p:has(img) {
          display: grid;
          grid-template-columns: 1fr 1fr; /* 2 kolom */
          gap: 8px;
-      }
+       }
+
+      /* Kalau gambarnya cuma 1, full lebar */
+      .article-body p:has(img:only-child) {
+         grid-template-columns: 1fr;
+       }
 
       /* BOX SUMBER BARU */
      .source-box {
