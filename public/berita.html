@@ -393,6 +393,12 @@ async function muatHalamanBerita() {
         if(body){
         // 1. Render markdown dulu
             body.innerHTML = marked.parse(body.innerHTML);
+
+        // Rapetin jarak sebelum galeri
+            const lastP = body.querySelector('p:last-of-type');
+            if(lastP && body.querySelector('.galeri-kolase')){
+               lastP.style.marginBottom = '5px';
+             }
   
         // 2. Cari semua gambar terus bungkus jadi kolase
             const images = body.querySelectorAll('img');
