@@ -123,6 +123,10 @@
      .article-body p {
         margin-bottom: 0.6em; /* jarak biar enak dibaca */
       }
+
+      .article-body p:last-of-type:has(+ .galeri-kolase) {
+         margin-bottom: 5px; /* KECILIN JARAK SEBELUM GALERI */
+          
      .article-body h2 { 
         font-size: 20px;
         font-weight: 700;
@@ -164,8 +168,8 @@
       .galeri-kolase {
          display: grid;
          grid-template-columns: repeat(2, 1fr); /* 2 kolom */
-         gap: 8px;
-         margin: 15px 0;
+         gap: 6px;
+         margin-top: 5px 0;
        }
 
        .galeri-kolase p {
