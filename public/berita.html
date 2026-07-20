@@ -139,7 +139,7 @@
         max-width: 100%;
         height: auto;
         border-radius: 8px;
-        margin: 15px 0;
+        margin: 0; /* 15px 0;*/
       }
      .article-body a {
         color: var(--warna-merah);
@@ -360,14 +360,15 @@ async function muatHalamanBerita() {
 }
 document.addEventListener('DOMContentLoaded', muatHalamanBerita);
 </script>
+
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 <script>
-  // Ambil isi artikel
+document.addEventListener('DOMContentLoaded', function() {
   const body = document.querySelector('.article-body');
   if(body){
-    // Ubah Markdown jadi HTML
     body.innerHTML = marked.parse(body.innerHTML);
   }
+});
 </script>
     
 </body>
