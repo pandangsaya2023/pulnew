@@ -217,6 +217,9 @@
      .error { color: var(--warna-merah); }
     </style>
 </head>
+
+
+
 <body>
     <div class="header-container">
         <div class="logo-bar">
@@ -351,5 +354,15 @@ async function muatHalamanBerita() {
 }
 document.addEventListener('DOMContentLoaded', muatHalamanBerita);
 </script>
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script>
+  // Ambil isi artikel
+  const body = document.querySelector('.article-body');
+  if(body){
+    // Ubah Markdown jadi HTML
+    body.innerHTML = marked.parse(body.innerHTML);
+  }
+</script>
+    
 </body>
 </html>
