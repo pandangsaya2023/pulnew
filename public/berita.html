@@ -351,6 +351,14 @@ async function muatHalamanBerita() {
             html += `</div>`;
         }
         contentArea.innerHTML = html;
+
+        // TAMBAHIN INI DI BAWAHNYA LANGSUNG
+        const body = document.querySelector('.article-body');
+            if(body){
+            body.innerHTML = marked.parse(body.innerHTML);
+        }
+
+        // document.getElementById('running-text').textContent = `INFO NEWS: ${post.title}`;
         document.getElementById('running-text').textContent = `INFO NEWS: ${post.title} | PULNEW.com`;
 
     } catch (e) {
@@ -360,16 +368,8 @@ async function muatHalamanBerita() {
 }
 document.addEventListener('DOMContentLoaded', muatHalamanBerita);
 </script>
-
+    
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  const body = document.querySelector('.article-body');
-  if(body){
-    body.innerHTML = marked.parse(body.innerHTML);
-  }
-});
-</script>
     
 </body>
 </html>
