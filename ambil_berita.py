@@ -140,19 +140,19 @@ def rewrite_with_groq(title, link, media):
             temperature=0.7,
             max_tokens=900
         )
-        hasil = completion.choices[0].message.content, soup
+        hasil = completion.choices[0].message.content
 
         # INI KUNCINYA: PISAHIN H2 DAN P BIAR GAK KEBUNGKUS
-        #blok = [b.strip() for b in hasil.split('\n\n') if b.strip()]
-        #hasil_html = ''
-        #for b in blok:
-            #b = b.replace('<p></p>', '')
-            #if b.startswith('<h2>'): # kalau udah h2 jangan dibungkus p lagi
-                #hasil_html += b
-            #else:
-                #hasil_html += f"<p>{b}</p>"
+        blok = [b.strip() for b in hasil.split('\n\n') if b.strip()]
+        hasil_html = ''
+        for b in blok:
+            b = b.replace('<p></p>', '')
+            if b.startswith('<h2>'): # kalau udah h2 jangan dibungkus p lagi
+                hasil_html += b
+            else:
+                hasil_html += f"<p>{b}</p>"
 
-        #return hasil_html, soup
+        return hasil_html, soup
     except Exception as e:
         print(f"Error Groq: {e}")
         return f"<p>{konten_asli[:500]}...</p>", soup
@@ -218,32 +218,32 @@ def main():
     update_posts_js(semua_post)
     print(f"Selesai! Baru: {jumlah_baru}, Update: {jumlah_update}, Total diproses: {total_proses}")
 
-#def repair_all_old_posts():
-    #"""Paksa benerin semua file json lama TAPI SLUG TETAP"""
-    #print("=== MULAI REPAIR SEMUA BERITA LAMA ===")
-    #count = 0
-    #if os.path.exists(OUTPUT_FOLDER):
-        #for filename in os.listdir(OUTPUT_FOLDER):
-            #if filename.endswith(".json"):
-                #path = os.path.join(OUTPUT_FOLDER, filename)
-                #try:
-                    #with open(path, 'r', encoding='utf-8') as f:
-                        #data = json.load(f)
+def repair_all_old_posts():
+    """Paksa benerin semua file json lama TAPI SLUG TETAP"""
+    print("=== MULAI REPAIR SEMUA BERITA LAMA ===")
+    count = 0
+    if os.path.exists(OUTPUT_FOLDER):
+        for filename in os.listdir(OUTPUT_FOLDER):
+            if filename.endswith(".json"):
+                path = os.path.join(OUTPUT_FOLDER, filename)
+                try:
+                    with open(path, 'r', encoding='utf-8') as f:
+                        data = json.load(f)
                     
-                    #slug_lama = data.get('slug') # SIMPAN SLUG LAMA
+                    slug_lama = data.get('slug') # SIMPAN SLUG LAMA
 
                     # Kalau belum ada <p> berarti masih rusak
-                    #if '<p>' not in data.get('body',''):
-                        #print(f" -> Repair: {data['title']}")
-                        #data['body'] = format_ke_html(data['body'])
-                        #data['slug'] = slug_lama # PAKSA BALIKIN SLUG LAMA
+                    if '<p>' not in data.get('body',''):
+                        print(f" -> Repair: {data['title']}")
+                        data['body'] = format_ke_html(data['body'])
+                        data['slug'] = slug_lama # PAKSA BALIKIN SLUG LAMA
                         
-                        #with open(path, 'w', encoding='utf-8') as f:
-                            #json.dump(data, f, ensure_ascii=False, indent=2)
-                        #$count += 1
-                #except Exception as e:
-                    #print(f"Gagal repair {filename}: {e}")
-    #print(f"=== SELESAI REPAIR: {count} file dibenerin ===")
+                        with open(path, 'w', encoding='utf-8') as f:
+                            json.dump(data, f, ensure_ascii=False, indent=2)
+                        $count += 1
+                except Exception as e:
+                    print(f"Gagal repair {filename}: {e}")
+    print(f"=== SELESAI REPAIR: {count} file dibenerin ===")
 
 #def hapus_berita_lama():
     #"""Hapus semua file json yg tanggalnya < 2026-07-17"""
@@ -273,5 +273,5 @@ def main():
 
 if __name__ == "__main__":
     # hapus_berita_lama()
-    # repair_all_old_posts()
-    main()
+    repair_all_old_posts()
+    # main()
