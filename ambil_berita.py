@@ -74,7 +74,7 @@ def prompt_rewrite_umum(title, konten_asli, link):
     Kamu adalah Editor Senior PULNEW.com. Tugasmu: Tulis ulang berita ini jadi artikel 350-400 kata.
     ATURAN:
     1. Bahasa Indonesia formal, padat, kredibel.
-    2. Buat 3 paragraf , gunakan tag <p> untuk paragrap dan <h2> untuk 2 subjudul.
+    2. Buat 3 paragraf, gunakan tag <p> untuk paragrap dan <h2> untuk 2 subjudul.
     3. Parafrase 100%. Jangan copy paste.
     4. JANGAN TULIS SUMBER ATAU LINK DI AKHIR.
     JUDUL ASLI: {title}
