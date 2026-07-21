@@ -143,16 +143,16 @@ def rewrite_with_groq(title, link, media):
         hasil = completion.choices[0].message.content
 
         # INI KUNCINYA: PISAHIN H2 DAN P BIAR GAK KEBUNGKUS
-        blok = [b.strip() for b in hasil.split('\n\n') if b.strip()]
-        hasil_html = ''
-        for b in blok:
-            b = b.replace('<p></p>', '')
-            if b.startswith('<h2>'): # kalau udah h2 jangan dibungkus p lagi
-                hasil_html += b
-            else:
-                hasil_html += f"<p>{b}</p>"
+        #blok = [b.strip() for b in hasil.split('\n\n') if b.strip()]
+        #hasil_html = ''
+        #for b in blok:
+            #b = b.replace('<p></p>', '')
+            #if b.startswith('<h2>'): # kalau udah h2 jangan dibungkus p lagi
+                #hasil_html += b
+            #else:
+                #hasil_html += f"<p>{b}</p>"
 
-        return hasil_html, soup
+        #return hasil_html, soup
     except Exception as e:
         print(f"Error Groq: {e}")
         return f"<p>{konten_asli[:500]}...</p>", soup
