@@ -140,7 +140,7 @@ def rewrite_with_groq(title, link, media):
             temperature=0.7,
             max_tokens=900
         )
-        hasil = completion.choices[0].message.content
+        hasil = completion.choices[0].message.content, soup
 
         # INI KUNCINYA: PISAHIN H2 DAN P BIAR GAK KEBUNGKUS
         #blok = [b.strip() for b in hasil.split('\n\n') if b.strip()]
