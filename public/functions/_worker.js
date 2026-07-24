@@ -22,24 +22,16 @@ export default {
         let html = await htmlRes.text();
 
         const title = post.title || 'PULNEW';
-        // PENTING: PASTIIN GAMBAR HTTPS DAN LENGKAP
-        //const image = post.image || post.thumbnail || 'https://pulnew.pages.dev/media/og-default.jpg';
-        // 1. Ambil dari post.image dulu. Kalau kosong, bikin dari nama file
-        let image = post.image || post.thumbnail;
-
-        // 2. Kalau image masih kosong, kita bikin manual dari slug
-        if(!image){
-            image = `https://raw.githubusercontent.com/pandangysaya2023/pulnew/main/public/media/${slug}.jpg`;
-         }
-
-        // 3. Kalau masih gak ada, baru fallback default
-        if(!image){
-            image = 'https://pulnew.pages.dev/media/og-default.jpg';
-         }
-        const desc = (post.body || post.content || post.excerpt || '').substring(0, 160).replace(/<[^>]*>/g, '') + '...';
+        
+        // INI KUNCINYA: JADIKAN URL LENGKAP
+        let image = post.image || post.thumbnail || '/media/og-default.jpg';
+        if(image.startsWith('/')){
+          image = 'https://pulnew.pages.dev' + image; // <-- TAMBAHIN DOMAIN
+        }
+        
+        const desc = (post.body || post.content || '').substring(0, 160).replace(/<[^>]*>/g, '') + '...';
         const fullUrl = request.url;
 
-        // HAPUS SEMUA META LAMA
         html = html.replace(/<meta property="og:.*?" content=".*?">/gs, '');
         html = html.replace(/<meta name="twitter:.*?" content=".*?">/gs, '');
         html = html.replace(/<title>.*?<\/title>/s, '');
