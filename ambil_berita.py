@@ -76,8 +76,7 @@ def prompt_rewrite_umum(title, konten_asli, link):
     1. Bahasa Indonesia formal, padat, kredibel.
     2. Buat 3 paragraf, gunakan tag <p> untuk paragrap dan <h2> untuk 2 subjudul.
     3. Parafrase 100%. Jangan copy paste.
-    4. Buat judul baru yang berbeda dari judul asli.
-    5. JANGAN TULIS SUMBER ATAU LINK DI AKHIR.
+    4. JANGAN TULIS SUMBER ATAU LINK DI AKHIR.
     JUDUL ASLI: {title}
     KONTEN ASLI: {konten_asli[:3000]}
     """
