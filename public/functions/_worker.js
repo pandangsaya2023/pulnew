@@ -26,8 +26,12 @@ export default {
         // INI KUNCINYA: JADIKAN URL LENGKAP
         let image = post.image || post.thumbnail || '/media/og-default.jpg';
         if(image.startsWith('/')){
-          image = 'https://pulnew.pages.dev' + image; // <-- TAMBAHIN DOMAIN
+          image = 'https://pulnew.pages.dev' + image + '?v=1'; // <-- TAMBAH ?v=1
         }
+        //let image = post.image || post.thumbnail || '/media/og-default.jpg';
+        //if(image.startsWith('/')){
+          //image = 'https://pulnew.pages.dev' + image; // <-- TAMBAHIN DOMAIN
+        //}
         
         const desc = (post.body || post.content || '').substring(0, 160).replace(/<[^>]*>/g, '') + '...';
         const fullUrl = request.url;
