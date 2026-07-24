@@ -250,31 +250,8 @@
 let allPosts = [];
 const baseURL = 'https://pulnew.pages.dev'; // PENTING UNTUK SHARE
 
-//function updateMetaTags(post) {
-    document.title = post.title + " - PULNEW.com";
-    const setMeta = (attr, val, content) => {
-        let meta = document.querySelector(`meta[${attr}="${val}"]`);
-        if (!meta) { meta = document.createElement('meta'); meta.setAttribute(attr, val); document.head.appendChild(meta); }
-        meta.setAttribute('content', content);
-    };
-    const desc = (post.body || post.content || '').substring(0, 160).replace(/<[^>]*>/g, '') + '...';
-    
-    // TAMBAHAN: KASIH TIMESTAMP BIAR WA ANGGAP GAMBAR BARU
-    //const imageUrl = (post.image || post.thumbnail || '/media/og-default.jpg') + '?v=' + new Date(post.date || post.created_at).getTime();
-    
-    //setMeta('property', 'og:title', post.title);
-    //setMeta('property', 'og:description', desc);
-    //setMeta('property', 'og:image', imageUrl); // Pake yg ada ?v=timestamp
-    //setMeta('property', 'og:image:width', '1200'); // TAMBAHAN BIAR CEPAT
-    //setMeta('property', 'og:image:height', '630');
-    //setMeta('property', 'og:url', window.location.href);
-    //setMeta('name', 'twitter:title', post.title);
-    //setMeta('name', 'twitter:description', desc);
-    //setMeta('name', 'twitter:image', imageUrl);
-//}
-
 function updateMetaTags(post) {
-   document.title = post.title + " - PULNEW.com";
+    document.title = post.title + " - PULNEW.com";
     const setMeta = (attr, val, content) => {
         let meta = document.querySelector(`meta[${attr}="${val}"]`);
         if (!meta) { meta = document.createElement('meta'); meta.setAttribute(attr, val); document.head.appendChild(meta); }
