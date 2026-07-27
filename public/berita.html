@@ -243,18 +243,14 @@
               <div class="logo-img-wrapper"><img src="https://pulnew.pages.dev/logopulnew.png" alt="Logo"></div>
               <div class="logo-text">PUL<span class="logo-new">NEW</span>.COM</div>
             </a>
-            <a href="https://pulnew.pages.dev/" class="btn-beranda">← Beranda</a>
-            <!-- remix dj dangdut -->
-            
+            <a href="https://pulnew.pages.dev/" class="btn-beranda">← Beranda</a>     
         </div>
     </div>
-    <div class="video-container"><iframe src="https://youtube.com/embed//YLxO9527zYA?si=H6_I2dKSmI55gpSS" allowfullscreen></iframe></div>
+    
     <div class="content-wrapper"><div class="article-box" id="content-area"><div class="loading">Memuat berita...</div></div></div>
-    <div class="video-container"><iframe src="https://youtube.com/embed//YLxO9527zYA?si=H6_I2dKSmI55gpSS" allowfullscreen></iframe></div>
+    
     <div class="footer-ticker"><div class="ticker-content" id="running-text">MEMUAT INFORMASI TERKINI...</div></div>
   
-    
-
 <script>
 let allPosts = [];
 const baseURL = 'https://pulnew.pages.dev'; // PENTING UNTUK SHARE
@@ -362,7 +358,11 @@ async function muatHalamanBerita() {
                 </a>
             </div>
 
-            <div class="article-body">${isiBerita}</div>
+            <div class="article-body">
+                ${isiBerita}
+                <!-- remix dj dangdut -->
+                <div class="video-container"><iframe src="https://youtube.com/embed//YLxO9527zYA?si=H6_I2dKSmI55gpSS" allowfullscreen></iframe></div>
+            </div>
 
             ${sourceBox}
 
