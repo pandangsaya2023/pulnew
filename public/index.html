@@ -161,7 +161,7 @@
     .sticky-video-wrapper.minimized #close-video { display: block; }
 
      /* === FIX BARU: JARAK BIAR GAK KETUTUP === */
-     body { padding-bottom: 0!important; } /* default gak ada jarak *
+     body { padding-bottom: 0!important; } /* default gak ada jarak */
     
      @media (min-width: 768px) {
         .sticky-video-wrapper.minimized {
@@ -413,13 +413,11 @@
     }
     window.addEventListener('scroll', () => {
       const wrapper = document.querySelector('.sticky-video-wrapper');
-      if(window.scrollY > 400){
-        wrapper.classList.add('minimized');
-        document.body.classList.add('has-sticky-video'); // TAMBAH INI
-      } else {
-        wrapper.classList.remove('minimized');
-        document.body.classList.remove('has-sticky-video'); // TAMBAH INI
-      }
+        if(window.scrollY > 400){
+            wrapper.classList.add('minimized');
+        } else {
+            wrapper.classList.remove('minimized');
+        }
     });
 
     document.getElementById('close-video').addEventListener('click', () => {
