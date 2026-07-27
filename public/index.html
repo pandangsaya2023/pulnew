@@ -389,9 +389,40 @@
 
     ambilDataBerita();
 
-    // === YOUTUBE API ===
+        <script src="https://www.youtube.com/iframe_api"></script>
+<script>
+    document.getElementById('live-date').textContent = new Date().toLocaleDateString('id-ID', { weekday: 'long', day: 'numeric', month: 'short', year: 'numeric' });
+    let allPosts = [];
+    let filteredPosts = [];
+    let currentPage = 1;
+    const postsPerPage = 20;
+    const kategoriWarna = { 'NASIONAL': '#1a237e', 'POLITIK': '#1a237e', 'EKONOMI': '#f57c00', 'TEKNOLOGI': '#0288d1', 'PENDIDIKAN': '#2e7d32', 'HUKUM': '#6a1b9a', 'HIBURAN': '#d32f2f', 'OLAHRAGA': '#d32f2f', 'KESEHATAN': '#009688', 'BERITA': '#d32f2f' };
+
+    //... semua fungsi kamu yang lain tetap...
+
+    ambilDataBerita();
+
+    // === YOUTUBE API DENGAN LINK ===
     let player;
-    let currentVideoId = 'YLxO9527zYA'; // GANTI ID VIDEO KAMU DISINI
+
+    // TINGGAL PASTE LINK YOUTUBE DISINI
+    let youtubeLink = 'https://www.youtube.com/watch?v=YLxO9527zYA';
+
+    // Fungsi buat ambil ID dari berbagai format link
+    function getYouTubeID(url) {
+        let video_id = url.split('v=')[1];
+        if (!video_id) video_id = url.split('youtu.be/')[1];
+        if (!video_id) video_id = url.split('embed/')[1];
+        if (video_id) {
+            const ampersandPosition = video_id.indexOf('&');
+            if(ampersandPosition!== -1) {
+                video_id = video_id.substring(0, ampersandPosition);
+            }
+        }
+        return video_id;
+    }
+
+    let currentVideoId = getYouTubeID(youtubeLink); // otomatis jadi ID
 
     function onYouTubeIframeAPIReady() {
       player = new YT.Player('youtube-player', {
@@ -426,12 +457,14 @@
       document.querySelector('.sticky-video-wrapper').style.display = 'none';
     });
 
-    function gantiVideo(videoId) {
-      if(player && videoId!== currentVideoId){
-        currentVideoId = videoId;
-        player.loadVideoById(videoId);
+    function gantiVideo(link) {
+      const newId = getYouTubeID(link);
+      if(player && newId && newId!== currentVideoId){
+        currentVideoId = newId;
+        player.loadVideoById(newId);
       }
     }
+
 </script>
 </body>
 </html>
