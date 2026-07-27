@@ -19,7 +19,7 @@
     <style>
         :root { --jarak-utama: 8px; --warna-merah: #d32f2f; --warna-biru: #1a237e; --warna-bg: #f4f6f9; }
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif; }
-        html, body { background: var(--warna-bg); color: #333; min-height: 100vh; padding-bottom: 10px; }
+        html, body { background: var(--warna-bg); color: #333; min-height: 100vh; padding-bottom: 45px; } /* padding-bottom biar gak ketutup ticker */
         h1, h2, h3, h4,.logo-text { font-family: 'Poppins', sans-serif; }
 
 .header-container {
@@ -89,8 +89,8 @@
     background: #256d27;
 }
 
-    .content-wrapper { padding: 0; }
-    .article-box {
+   .content-wrapper { padding: 0; }
+   .article-box {
             max-width: 100%;
             margin: 0;
             background: white;
@@ -98,35 +98,35 @@
             border-radius: 0;
             box-shadow: none;
         }
-    .article-title {
+   .article-title {
             font-size: 24px;
             font-weight: 800;
             margin-bottom: 10px;
             line-height: 1.3;
             text-align: left;
         }
-    .article-meta {
+   .article-meta {
             font-size: 12px;
             color: #666;
             margin-bottom: 15px;
             text-align: left;
         }
-    .main-image { width: 100%; border-radius: 8px; margin-bottom: 10px; }
+   .main-image { width: 100%; border-radius: 8px; margin-bottom: 10px; }
 
       /* === TAMBAHAN BARU: TOMBOL SHARE === */
-     .share-article { display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; }
-     .share-article a,.share-article button {
+    .share-article { display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; }
+    .share-article a,.share-article button {
         font-size: 10px; padding: 8px 12px; border-radius: 8px; color: white;
         text-decoration: none; display: flex; align-items: center; gap: 6px;
         border: none; cursor: pointer; font-weight: 600; transition: 0.2s;
       }
-     .share-article a:hover,.share-article button:hover { opacity: 0.9; transform: translateY(-1px); }
-     .share-wa { background: #25D366; }
-     .share-fb { background: #1877F2; }
-     .share-x { background: #000; }
-     .share-copy { background: #1a237e; }
+    .share-article a:hover,.share-article button:hover { opacity: 0.9; transform: translateY(-1px); }
+    .share-wa { background: #25D366; }
+    .share-fb { background: #1877F2; }
+    .share-x { background: #000; }
+    .share-copy { background: #1a237e; }
 
-    .article-body {
+   .article-body {
         font-size: 16px;
         line-height: 1.3;
         color: #333;
@@ -136,10 +136,10 @@
         max-width: 100%;
         white-space: pre-line;
       }
-    .article-body p {
+   .article-body p {
         margin-bottom: 0.3em;
       }
-    .article-body h2 {
+   .article-body h2 {
         font-size: 20px;
         font-weight: 700;
         line-height: 1.3!important;
@@ -147,22 +147,22 @@
         margin-top: 15px!important;
         display: block!important;
      }
-    .article-body + h2 {
+   .article-body + h2 {
         margin-top: 15px!important;
      }
-    .article-body img {
+   .article-body img {
         max-width: 100%;
         height: auto;
         border-radius: 8px;
         margin: 15px 0;
       }
-    .article-body a {
+   .article-body a {
         color: var(--warna-merah);
         text-decoration: underline;
       }
 
       /* BOX SUMBER BARU */
-    .source-box {
+   .source-box {
         margin: 15px 0 20px 0;
         padding: 0;
         border-top: none;
@@ -170,38 +170,38 @@
         color: #555;
         font-style: italic;
       }
-    .source-box a {
+   .source-box a {
         color: var(--warna-biru);
         text-decoration: none;
         font-weight: 600;
       }
-    .source-box a:hover {
+   .source-box a:hover {
         text-decoration: underline;
       }
 
-    .related-section { margin-top: 30px; padding-top: 20px; border-top: 2px solid #eee; }
-    .section-title { font-size: 18px; font-weight: 800; color: var(--warna-biru); margin: 5px 0 12px 0; padding-left: 3px; border-left: 4px solid var(--warna-merah); text-align: left; }
-    .related-item { display: flex; gap: 12px; padding: 10px 0; border-bottom: 1px solid #f0f0f0; text-decoration: none; color: inherit; }
-    .related-item img { width: 90px; height: 60px; object-fit: cover; border-radius: 6px; flex-shrink: 0; }
-    .related-item h4 { font-size: 14px; font-weight: 700; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; margin: 0; text-align: left; }
+   .related-section { margin-top: 30px; padding-top: 20px; border-top: 2px solid #eee; }
+   .section-title { font-size: 18px; font-weight: 800; color: var(--warna-biru); margin: 5px 0 12px 0; padding-left: 3px; border-left: 4px solid var(--warna-merah); text-align: left; }
+   .related-item { display: flex; gap: 12px; padding: 10px 0; border-bottom: 1px solid #f0f0f0; text-decoration: none; color: inherit; }
+   .related-item img { width: 90px; height: 60px; object-fit: cover; border-radius: 6px; flex-shrink: 0; }
+   .related-item h4 { font-size: 14px; font-weight: 700; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; margin: 0; text-align: left; }
 
-    .footer-ticker {
+   .footer-ticker {
            background: #d32f2f; color: white; padding: 8px 0; font-size: 13px;
            overflow: hidden; width: 100%; position: fixed; bottom: 0; left: 0; z-index: 999;
            height: 35px; display: flex; align-items: center; }
-    .ticker-content { display: inline-block; white-space: nowrap; padding-left: 100%; animation: ticker 40s linear infinite; line-height: 35px; }
+   .ticker-content { display: inline-block; white-space: nowrap; padding-left: 100%; animation: ticker 40s linear infinite; line-height: 35px; }
         @keyframes ticker { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(-100%, 0, 0); } }
 
-   .ad-slot { margin: 10px auto; padding: 0; text-align: center; }
-   .ad-slot img { width: 100%; height: auto; display: block; border-radius: 8px; }
+  .ad-slot { margin: 10px auto; padding: 0; text-align: center; }
+  .ad-slot img { width: 100%; height: auto; display: block; border-radius: 8px; }
 
-     .ad-slot.ad-banner-bottom {
+    .ad-slot.ad-banner-bottom {
             margin: 5px auto 0px auto!important;
             padding: 0px!important;
             max-width: 768px;
         }
 
-    .ad-slot.ad-banner-bottom img {
+   .ad-slot.ad-banner-bottom img {
             width: 100%;
             height: auto;
             aspect-ratio: 768 / 180;
@@ -211,7 +211,7 @@
             background: #f0f0f0;
         }
 
-    .ad-slot.ad-banner-bottom:has(img[src=""], img:not([src])) {
+   .ad-slot.ad-banner-bottom:has(img[src=""], img:not([src])) {
             display: none!important;
             margin: 0px!important;
         }
@@ -220,16 +220,55 @@
             margin-top: 5px!important;
         }
 
-    .ad-inarticle {
+   .ad-inarticle {
             max-width: 600px;
         }
         @media (max-width: 768px) {
-        .ad-banner-top,.ad-banner-bottom {
+       .ad-banner-top,.ad-banner-bottom {
                 max-width: 100%;
            }
         }
-    .loading,.error { text-align:center; padding:60px 20px; }
-    .error { color: var(--warna-merah); }
+   .loading,.error { text-align:center; padding:60px 20px; }
+   .error { color: var(--warna-merah); }
+
+    /* === CSS STICKY VIDEO BARU === */
+   .video-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; }
+   .video-container iframe,.video-container #youtube-player { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+   .sticky-video-wrapper {
+        position: sticky;
+        top: 55px; /* nempel di bawah header */
+        z-index: 900;
+        background: #000;
+        transition: 0.3s;
+        margin-bottom: 10px;
+      }
+    .sticky-video-wrapper.minimized {
+        max-width: 320px;
+        position: fixed;
+        bottom: 45px; /* di atas footer ticker */
+        right: 15px;
+        top: auto;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+        z-index: 1000;
+      }
+      #close-video {
+        position: absolute;
+        top: 5px;
+        right: 8px;
+        background: rgba(0,0,0,0.6);
+        color: white;
+        border: none;
+        border-radius: 50%;
+        width: 24px;
+        height: 24px;
+        cursor: pointer;
+        z-index: 10;
+        display: none;
+      }
+    .sticky-video-wrapper.minimized #close-video { display: block; }
+
     </style>
 </head>
 <body>
@@ -239,14 +278,22 @@
               <div class="logo-img-wrapper"><img src="https://pulnew.pages.dev/logopulnew.png" alt="Logo"></div>
               <div class="logo-text">PUL<span class="logo-new">NEW</span>.COM</div>
             </a>
-            <a href="https://pulnew.pages.dev/" class="btn-beranda">← Beranda</a>     
+            <a href="https://pulnew.pages.dev/" class="btn-beranda">← Beranda</a>
         </div>
     </div>
-    
+
+    <!-- STICKY YOUTUBE PLAYER BARU -->
+    <div class="sticky-video-wrapper">
+        <div class="video-container">
+           <div id="youtube-player"></div>
+        <button id="close-video">✕</button>
+        </div>
+    </div>
+
     <div class="content-wrapper"><div class="article-box" id="content-area"><div class="loading">Memuat berita...</div></div></div>
-    
+
     <div class="footer-ticker"><div class="ticker-content" id="running-text">MEMUAT INFORMASI TERKINI...</div></div>
-  
+
 <script>
 let allPosts = [];
 const baseURL = 'https://pulnew.pages.dev'; // PENTING UNTUK SHARE
@@ -286,10 +333,10 @@ async function fetchPostDetail(url) {
         const data = await res.json();
         if (!data.slug || data.slug.trim() === "") {
             data.slug = data.title
-             .toLowerCase()
-             .replace(/[^\w\s-]/g, '')
-             .replace(/\s+/g, '-')
-             .substring(0, 100);
+            .toLowerCase()
+            .replace(/[^\w\s-]/g, '')
+            .replace(/\s+/g, '-')
+            .substring(0, 100);
         }
         return data;
     } catch {
@@ -327,7 +374,6 @@ async function muatHalamanBerita() {
         const linkBerita = window.location.href;
         const textShare = encodeURIComponent(post.title + ' - ' + linkBerita);
 
-        // BOX SUMBER BARU
         const sourceBox = post.source_name? `
             <div class="source-box">
                 Sumber: <a href="${post.source_url}" target="_blank" rel="noopener noreferrer">${post.source_name}</a>
@@ -340,7 +386,6 @@ async function muatHalamanBerita() {
 
             <img src="${post.image || post.thumbnail || '/media/og-default.jpg'}" class="main-image" alt="${post.title}" loading="lazy">
 
-            <!-- TAMBAHAN: TOMBOL SHARE DI BAWAH GAMBAR -->
             <div class="share-article">
                 <a href="https://wa.me/?text=${textShare}" target="_blank" class="share-wa"><i class="fab fa-whatsapp"></i> WhatsApp</a>
                 <a href="https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(linkBerita)}" target="_blank" class="share-fb"><i class="fab fa-facebook"></i> Facebook</a>
@@ -383,6 +428,37 @@ async function muatHalamanBerita() {
 }
 document.addEventListener('DOMContentLoaded', muatHalamanBerita);
 </script>
+
+<!-- SCRIPT YOUTUBE STICKY BARU -->
+<script src="https://www.youtube.com/iframe_api"></script>
+<script>
+    let player;
+    // TINGGAL PASTE LINK YOUTUBE DISINI
+    let youtubeLink = 'https://www.youtube.com/watch?v=YLxO9527zYA';
+
+    function getYouTubeID(url) {
+        const regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/;
+        const match = url.match(regExp);
+        return (match && match[7].length === 11)? match[7] : false;
+    }
+    let currentVideoId = getYouTubeID(youtubeLink);
+
+    function onYouTubeIframeAPIReady() {
+      player = new YT.Player('youtube-player', {
+         videoId: currentVideoId,
+         playerVars: { 'playsinline': 1, 'controls': 1, 'rel': 0, 'mute': 1 }, // mute biar autoplay jalan
+         events: { 'onReady': e => { e.target.playVideo(); setTimeout(() => e.target.unMute(), 2000); } }
+      });
+    }
+    window.addEventListener('scroll', () => {
+      const wrapper = document.querySelector('.sticky-video-wrapper');
+      if(window.scrollY > 200){ wrapper.classList.add('minimized'); }
+      else { wrapper.classList.remove('minimized'); }
+    });
+    document.getElementById('close-video').addEventListener('click', () => {
+      if(player) player.pauseVideo();
+      document.querySelector('.sticky-video-wrapper').style.display = 'none';
+    });
+</script>
 </body>
 </html>
-
