@@ -161,20 +161,21 @@
     .sticky-video-wrapper.minimized #close-video { display: block; }
 
      /* === FIX BARU: JARAK BIAR GAK KETUTUP === */
-    @media (min-width: 768px) {
-        body { padding-bottom: 400px!important; } /* kasih ruang buat footer di desktop */
+     body { padding-bottom: 0!important; } /* default gak ada jarak */
+     @media (min-width: 768px) {
+       body.has-sticky-video { padding-bottom: 120px!important; } /* cuma 120px cukup buat footer */
        .sticky-video-wrapper.minimized {
-            max-width: 380px;
-            bottom: 30px;
-            right: 30px;
+          max-width: 380px;
+          bottom: 30px;
+          right: 30px;
         }
-    }
-    @media (max-width: 767px) {
-        body { padding-bottom: 80px!important; } /* ruang buat footer ticker + video */
+     }
+     @media (max-width: 767px) {
+       body.has-sticky-video { padding-bottom: 80px!important; } /* ruang buat footer ticker + video */
        .sticky-video-wrapper.minimized {
-            bottom: 50px; /* naik di atas footer ticker */
+           bottom: 50px; /* naik di atas footer ticker */
         }
-    }
+     }
 
     </style>
 </head>
@@ -412,12 +413,15 @@
     }
     window.addEventListener('scroll', () => {
       const wrapper = document.querySelector('.sticky-video-wrapper');
-        if(window.scrollY > 400){
-          wrapper.classList.add('minimized');
-        } else {
-            wrapper.classList.remove('minimized');
-        }
+      if(window.scrollY > 400){
+        wrapper.classList.add('minimized');
+        document.body.classList.add('has-sticky-video'); // TAMBAH INI
+      } else {
+        wrapper.classList.remove('minimized');
+        document.body.classList.remove('has-sticky-video'); // TAMBAH INI
+      }
     });
+
     document.getElementById('close-video').addEventListener('click', () => {
       if(player) player.pauseVideo();
       document.querySelector('.sticky-video-wrapper').style.display = 'none';
