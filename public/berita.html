@@ -228,6 +228,10 @@
                 max-width: 100%;
            }
         }
+        
+    .video-container { position: sticky; /relative;/ padding-bottom: 56.25%; height: 0; /overflow: hidden;/ max-width: 100%; }
+    .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+
     .loading,.error { text-align:center; padding:60px 20px; }
     .error { color: var(--warna-merah); }
     </style>
@@ -245,6 +249,9 @@
 
     <div class="content-wrapper"><div class="article-box" id="content-area"><div class="loading">Memuat berita...</div></div></div>
     <div class="footer-ticker"><div class="ticker-content" id="running-text">MEMUAT INFORMASI TERKINI...</div></div>
+  
+    <!-- remix dj dangdut -->
+    <<div class="video-container"><iframe src="https://youtube.com/embed//YLxO9527zYA?si=H6_I2dKSmI55gpSS" allowfullscreen></iframe></div>
 
 <script>
 let allPosts = [];
