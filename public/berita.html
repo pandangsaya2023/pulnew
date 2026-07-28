@@ -230,6 +230,76 @@
         }
     .loading,.error { text-align:center; padding:60px 20px; }
     .error { color: var(--warna-merah); }
+
+    /* === WRAPPER VIDEO STICKY === */
+    .sticky-video-wrapper {
+        position: sticky; /* pas di atas nempel */
+        top: 105px; /* di bawah header + kategori + ticker */
+        z-index: 50;
+        background: #000;
+        transition: 0.3s;
+        width: 100%;
+     }
+
+   /* PAS DI MINIMIZE JADI KECIL DI KANAN BAWAH */
+   .sticky-video-wrapper.minimized {
+        max-width: 320px;
+        position: fixed; /* lepas dari alur halaman */
+        bottom: 45px; /* 35px tinggi ticker + 10px jarak */
+        right: 15px;
+        top: auto;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+        z-index: 99;
+    }
+
+   /* RASIO 16:9 BUAT YOUTUBE */
+   .video-container { 
+        position: relative; 
+        padding-bottom: 56.25%; /* 16:9 */
+        height: 0; 
+        overflow: hidden; 
+        max-width: 100%; 
+   }
+   .video-container iframe,
+   .video-container #youtube-player { 
+        position: absolute; 
+        top: 0; 
+        left: 0; 
+        width: 100%; 
+        height: 100%; 
+        border: none; 
+   }
+
+   /* TOMBOL CLOSE */
+   #close-video {
+        position: absolute;
+        top: 5px;
+        right: 8px;
+        background: rgba(0,0,0,0.6);
+        color: white;
+        border: none;
+        border-radius: 50%;
+        width: 24px;
+        height: 24px;
+        cursor: pointer;
+        z-index: 10;
+        display: none;
+   }
+   .sticky-video-wrapper.minimized #close-video { display: block; }
+
+   /* VERSI HP */
+   @media (max-width: 767px) {
+   .sticky-video-wrapper.minimized {
+        max-width: 280px;
+        bottom: 45px;
+        right: 10px;
+    }
+   }
+
+
+        
     </style>
 </head>
 <body>
@@ -383,6 +453,71 @@ async function muatHalamanBerita() {
 }
 document.addEventListener('DOMContentLoaded', muatHalamanBerita);
 </script>
+   
+    <div class="sticky-video-wrapper">
+        <div class="video-container">
+           <div id="youtube-player"></div>
+           <button id="close-video">✕</button>
+        </div>
+    </div>
+
+    <script src="https://www.youtube.com/iframe_api"></script>
+    <script>
+    let player;
+    let youtubeLink = 'https://youtube.com/watch?v=YLxO9527zYA'; // GANTI LINK KAMU
+    let currentVideoId = youtubeLink.split('v=')[1];
+
+    function onYouTubeIframeAPIReady() {
+        const savedTime = localStorage.getItem('yt_currentTime') || 0;
+        const savedVideo = localStorage.getItem('yt_videoId');
+
+        player = new YT.Player('youtube-player', {
+           videoId: savedVideo || currentVideoId,
+           playerVars: {
+              'playsinline': 1,
+              'controls': 1,
+              'rel': 0,
+              'mute': 1,
+              'start': parseInt(savedTime) // LANJUT DARI DETIK TERAKHIR
+           },
+           events: {
+              'onReady': e => {
+                 e.target.playVideo();
+                 setTimeout(() => e.target.unMute(), 1000);
+               },
+              'onStateChange': saveTime // SIMPAN WAKTU TERUS
+           }
+         });
+    }
+
+    // SIMPAN WAKTU SETIAP 1 DETIK
+    function saveTime() {
+        if(player && player.getCurrentTime){
+            setInterval(() => {
+                localStorage.setItem('yt_currentTime', player.getCurrentTime());
+                localStorage.setItem('yt_videoId', player.getVideoData().video_id);
+            }, 1000);
+        }
+    }
+
+    // STICKY SCROLL
+    window.addEventListener('scroll', () => {
+      const wrapper = document.querySelector('.sticky-video-wrapper');
+      if(window.scrollY > 400){
+        wrapper.classList.add('minimized');
+      } else {
+        wrapper.classList.remove('minimized');
+      }
+    });
+
+    document.getElementById('close-video').addEventListener('click', () => {
+      if(player) player.pauseVideo();
+      localStorage.removeItem('yt_currentTime'); // reset kalau di close
+      document.querySelector('.sticky-video-wrapper').style.display = 'none';
+    });
+    </script>
+
+    
 </body>
 </html>
 
