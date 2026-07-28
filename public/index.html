@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8902628805606588" crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PULNEW - Portal Info Terkini</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="/pavicon.png">
+    <meta property="og:title" content="PULNEW.com - Update Informasi Terkini">
+    <meta property="og:description" content="Menyajikan Informasi Langsung Ke Perangkat Anda">
+    <meta property="og:image" content="https://pulnew.pages.dev/media/og-image.png">
+    <meta property="og:url" content="https://pulnew.pages.dev">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <style>
+        :root { --jarak-utama: 12px; --warna-merah: #d32f2f; --warna-biru: #1a237e; --warna-bg: #f4f6f9; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif; }
+        html, body { background: var(--warna-bg); color: #333; min-height: 100vh; }
+        h1, h2, h3, h4,.logo-text { font-family: 'Poppins', sans-serif; }
+     .header-container { background: #ffffff; position: sticky; top: 0; z-index: 200; border-bottom: 2px solid var(--warna-merah); box-shadow: 0 2px 4px rgba(0,0,0,0.06); }
+     .category-nav { display: flex; gap: 8px; overflow-x: auto; padding: 5px 10px; background: var(--warna-biru); border-bottom: 1px solid #eee; position: sticky; top: 55px; z-index: 100; scrollbar-width: none; }
+     .category-nav::-webkit-scrollbar { display: none; }
+     .category-nav a { padding: 4.5px 9px; background: #1a237e; border-radius: 10px; font-size: 10px; font-weight: 600; color: white; text-decoration: none; white-space: nowrap; transition: 0.2s; }
+     .category-nav a:hover,.category-nav a.active { background: #d32f2f; color: white; }
+     .logo-bar { max-width: 1100px; margin: 0 auto; padding: 7px 20px; display: flex; justify-content: space-between; align-items: center; }
+     .logo-bar > a { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; }
+     .logo-img-wrapper img { display: block; max-height: 45px; width: auto; }
+     .logo-text { font-size: 24px; font-weight: 800; color: var(--warna-biru); }
+     .logo-new { color: var(--warna-merah); }
+     .top-header {
+            background: var(--warna-biru); color: white; padding: 6px 12px;
+            display: flex; align-items: center; gap: 10px; font-size: 11px;
+            position: sticky; top: 60px; z-index: 199;
+        }
+     .breaking-badge {
+            background: var(--warna-biru); color: white; padding: 0 8px;
+            border-radius: 8px; font-weight: 700; font-size: 10px; flex-shrink: 0;
+        }
+     .ticker-wrapper { overflow: hidden; width: 100%; }
+     .ticker-content {
+            display: inline-block; white-space: nowrap; padding-left: 100%;
+            animation: ticker 120s linear infinite;
+        }
+     .ticker-item {
+            display: inline-block; padding-right: 40px; font-weight: 500;
+            color: white; text-decoration: none;
+        }
+        @keyframes ticker {
+            0% { transform: translate3d(0, 0, 0); }
+            100% { transform: translate3d(-100%, 0, 0); }
+        }
+
+     .container { max-width: 1100px; width: 100%; margin: 0 auto; padding: var(--jarak-utama) 10px; }
+
+      /* === TAMBAHAN BARU: SEARCH BOX === */
+     .search-box { margin: 10px 0 10px 0; }
+     .search-box input { width:100%; padding:12px 16px; border:2px solid #ddd; border-radius:12px; font-size:14px; outline:none; transition:0.2s; }
+     .search-box input:focus { border-color: var(--warna-biru); box-shadow: 0 0 0 3px rgba(26,35,126,0.1); }
+
+      /* === TAMBAHAN BARU: PAGINASI === */
+     .pagination { display:flex; justify-content:center; gap:8px; margin:25px 0; flex-wrap:wrap; }
+     .pagination button { padding:8px 14px; border:1px solid #ddd; background:white; border-radius:8px; cursor:pointer; font-weight:600; font-size:13px; transition:0.2s; }
+     .pagination button:hover { background:var(--warna-biru); color:white; border-color:var(--warna-biru); }
+     .pagination button.active { background:var(--warna-merah); color:white; border-color:var(--warna-merah); }
+     .pagination button:disabled { opacity:0.5; cursor:not-allowed; }
+
+     .news-hero { position: relative; border-radius: 12px; overflow: hidden; margin-bottom: var(--jarak-utama); box-shadow: 0 4px 12px rgba(0,0,0,0.1); text-decoration: none; display: block; }
+     .news-hero img { width: 100%; height: 240px; object-fit: cover; display: block; }
+     .hero-content { position: absolute; bottom: 0; left: 0; right: 0; padding: 20px 16px; background: linear-gradient(transparent, rgba(0,0,0,0.85)); color: white; }
+     .news-hero h2 { font-size: 15px; font-weight: 700; line-height: 1.3; color: white; padding: 4px 0 8px 0; }
+     .badge { display: inline-block; padding: 3px 8px; border-radius: 6px; font-size: 11px; font-weight: 700; margin-bottom: 10px; background: var(--warna-merah); color: white; }
+     .news-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--jarak-utama); margin-bottom: var(--jarak-utama); }
+     .news-card { background: white; display: flex; flex-direction: column; text-decoration: none; color: inherit; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.08); transition: transform 0.2s; }
+     .news-card:hover { transform: translateY(-3px); }
+     .news-card img { width: 100%; height: 180px; object-fit: cover; }
+     .card-content { padding: 12px 14px 16px 14px; }
+     .news-card h3 { font-size: 15px; font-weight: 700; line-height: 1.4; color: #111; padding: 2px 0 8px 0; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+     .section-title { font-size: 18px; font-weight: 800; color: var(--warna-biru); margin: 22px 0 15px 0; padding-left: 3px; border-left: 4px solid var(--warna-merah); }
+
+      .latest-carousel { position: relative; margin: 1px 0px 1px 0px; overflow: hidden; }
+     .carousel-scroll { display: flex; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; padding-bottom: 8px; scrollbar-width: none; }
+     .carousel-scroll::-webkit-scrollbar { display: none; }
+     .carousel-item { flex: 0 0 80%; max-width: 500px; scroll-snap-align: start; background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.08); text-decoration: none; color: inherit; display: flex; flex-direction: row; gap: 12px; padding: 10px; }
+     .carousel-item img { width: 40%; height: 120px; object-fit: cover; flex-shrink: 0; border-radius: 8px; }
+     .carousel-item.card-content { padding: 0px; display: flex; flex-direction: column; justify-content: center; flex: 1; gap: 6px; }
+     .carousel-item h4 { font-size: 15px; font-weight: 700; line-height: 1.4; color: #111; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+       @media (min-width: 768px) {.news-hero img { height: 320px; }.news-hero h2 { font-size: 26px; }.carousel-item { flex: 0 0 60%; } }
+        @media (max-width: 600px) {.news-grid { grid-template-columns: 1fr; } }
+        footer { background: #101726; color: #b0b8c4; padding: 12px 20px 20px 20px; font-size: 13px; border-top: 4px solid var(--warna-biru); margin-top: 5px; }
+     .footer-content { max-width: 1100px; margin: 0 auto; text-align: center; }
+     .footer-logo { font-size: 20px; font-weight: 800; color: white; margin-bottom: 4px; }
+     .footer-logo span { color: var(--warna-merah); }
+     .footer-bottom { border-top: 1px solid #1e293b; padding-top: 8px; margin-top: 10px; font-size: 11px; color: #64748b; }
+     .footer-link { color: #64748b; font-size: 10.5px; text-decoration: none; margin: 0 4px; }
+     .ad-slot { margin: 10px auto; padding: 0; text-align: center; }
+     .ad-slot img { width: 100%; height: auto; display: block; border-radius: 8px; }
+     .ad-slot.ad-banner-bottom { margin: 5px auto 0px auto!important; padding: 0px!important; max-width: 768px; }
+     .ad-slot.ad-banner-bottom img { width: 100%; height: auto; aspect-ratio: 768 / 180; object-fit: contain; display: block; border-radius: 12px; background: #f0f0f0; }
+     .ad-slot.ad-banner-bottom:has(img[src=""], img:not([src])) { display: none!important; margin: 0px!important; }
+      footer { margin-top: 5px!important; }
+     .ad-inarticle { max-width: 600px; }
+        @media (max-width: 768px) {.ad-banner-top,.ad-banner-bottom { max-width: 100%; } }
+     .video-container { position: sticky; /*relative;*/ padding-bottom: 56.25%; height: 0; /*overflow: hidden;*/ max-width: 100%; }
+     .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+        /* === FIX ISI BERITA === */
+    .berita-body, .isi-berita, .content, .prose {
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        max-width: 100%;
+        line-height: 1.8;
+        font-size: 16px;
+     }
+     .berita-body p, .isi-berita p, .content p, .prose p {
+        margin-bottom: 1em;
+     }
+     .berita-body img, .isi-berita img, .content img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+        margin: 10px 0;
+     }
+    .berita-body h2, .isi-berita h2 {
+        font-size: 20px;
+        margin: 20px 0 10px 0;
+        color: var(--warna-biru);
+     }
+    </style>
+</head>
+<body>
+    <div class="header-container">
+        <div class="logo-bar">
+            <a href="https://pulnew.pages.dev/"><div class="logo-img-wrapper"><img src="https://pulnew.pages.dev/logopulnew.png" alt="Logo"></div><div class="logo-text">PUL<span class="logo-new">NEW</span>.COM</div></a>
+            <div style="font-size: 12px; color: #555; font-weight: 700;" id="live-date"></div>
+        </div>
+    </div>
+
+    <div class="category-nav">
+        <a href="#" class="active" data-kategori="SEMUA">Beranda</a>
+        <a href="#" data-kategori="NASIONAL">Nasional</a>
+        <a href="#" data-kategori="POLITIK">Politik</a>
+        <a href="#" data-kategori="EKONOMI">Ekonomi</a>
+        <a href="#" data-kategori="TEKNOLOGI">Teknologi</a>
+        <a href="#" data-kategori="KESEHATAN">Kesehatan</a>
+        <a href="#" data-kategori="PENDIDIKAN">Pendidikan</a>
+        <a href="#" data-kategori="HUKUM">Hukum</a>
+        <a href="#" data-kategori="OLAHRAGA">Olahraga</a>
+        <a href="#" data-kategori="HIBURAN">Hiburan</a>
+    </div>
+
+    <div class="top-header">
+        <div class="breaking-badge">INFO NEW ➡️</div>
+        <div class="ticker-wrapper"><div class="ticker-content" id="running-text-container"><span class="ticker-item">Memuat berita terbaru...</span></div></div>
+    </div>
+
+    <div class="ad-slot"><a href="https://link-iklan-anda.com" target="_blank"><img src="/media/iklan_atas1.png" alt="Iklan"></a></div>
+    
+    <!-- Video Yotube -->
+
+    <!-- rok pop dll  -->
+    <!-- <div class="video-container"><iframe src="https://youtube.com" allowfullscreen></iframe></div> -->
+    
+    <!-- remix dj dangdut -->
+    <div class="video-container">
+        <iframe src="https://youtube.com/embed//YLxO9527zYA?si=H6_I2dKSmI55gpSS"
+            autoplay=1&mute=0&controls=1&enablejsapi=1&playsinline=1"
+            frameborder="0" allow="accelerometer; autoplay; clipboard-write; 
+            encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+        </iframe>
+    </div>
+
+    <div class="container">
+        <!-- TAMBAHAN BARU: KOTAK SEARCH -->
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="🔍 Cari judul berita lama... contoh: pilpres, gempa">
+        </div>
+
+        <div id="news-container"><div style="text-align: center; padding: 40px; color: #666;">Menyelaraskan informasi...</div></div>
+
+        <!-- TAMBAHAN BARU: TOMBOL PAGINASI -->
+        <div id="pagination-container" class="pagination"></div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">PUL<span>NEW</span>.COM</div>
+            <p>Menyajikan informasi langsung ke perangkat anda</p>
+            <a href="/about.html" class="footer-link">Tentang</a> |
+            <a href="/privacy.html" class="footer-link">Privacy</a> |
+            <a href="/pedoman-media-siber.html" class="footer-link">Pedoman Media Siber</a> |
+            <a href="/disclaimer.html" class="footer-link">Disclaimer</a> |
+            <a href="/contact.html" class="footer-link">Kontak</a>
+            <div class="footer-bottom">&copy; 2026 PULNEW.COM. All Rights Reserved.</div>
+        </div>
+    </footer>
+
+    <script>
+    document.getElementById('live-date').textContent = new Date().toLocaleDateString('id-ID', { weekday: 'long', day: 'numeric', month: 'short', year: 'numeric' });
+    let allPosts = [];
+    let filteredPosts = []; // buat simpan hasil filter
+    let currentPage = 1;
+    const postsPerPage = 20; // 20 berita per halaman
+    const kategoriWarna = { 'NASIONAL': '#1a237e', 'POLITIK': '#1a237e', 'EKONOMI': '#f57c00', 'TEKNOLOGI': '#0288d1', 'PENDIDIKAN': '#2e7d32', 'HUKUM': '#6a1b9a', 'HIBURAN': '#d32f2f', 'OLAHRAGA': '#d32f2f', 'KESEHATAN': '#009688', 'BERITA': '#d32f2f' };
+
+    async function fetchPosts() {
+        const res = await fetch('/api/posts?t=' + Date.now() + '&r=' + Math.random(), { cache: 'no-store' });
+        const data = await res.json();
+        return Array.isArray(data)? data : data.urls;
+    }
+        
+    async function fetchPostDetail(url) {
+        const res = await fetch(url + '?t=' + Date.now() + '&r=' + Math.random(), { cache: 'no-store' });
+        return await res.json();
+    }
+        
+    async function ambilDataBerita() {
+        const container = document.getElementById('news-container');
+        const urls = await fetchPosts();
+        if (urls.length === 0) {
+            container.innerHTML = '<div style="text-align:center; padding:40px; color:#666;">Belum ada berita saat ini</div>';
+            document.getElementById('running-text-container').innerHTML = '<span class="ticker-item">Belum ada update berita</span>';
+        return;
+        }
+    
+        // YANG BARU: Filter yg error 404
+        const postPromises = urls.map(url => 
+        fetchPostDetail(url).catch(err => null) // kalo error balikin null
+        );
+        const posts = (await Promise.all(postPromises)).filter(Boolean); // buang yg null
+    
+        posts.sort((a, b) => new Date(b.date || b.created_at) - new Date(a.date || a.created_at));
+        allPosts = posts;
+        filteredPosts = posts;
+        tampilkanHalaman(1);
+        updateRunningText(posts);
+        setupKategori();
+        setupSearch();
+        autoScrollCarousel();
+        }
+         
+    function tampilkanBerita(posts) {
+        const container = document.getElementById('news-container');
+        if (posts.length === 0) { container.innerHTML = '<div style="text-align:center; padding:40px; color:#666;">Berita tidak ditemukan</div>'; return; }
+        let html = '';
+        const hero = posts[0];
+        const kategoriHero = hero.kategori || hero.category || 'BERITA';
+        const warnaHero = kategoriWarna[kategoriHero.toUpperCase()] || '#d32f2f';
+        html += `<a href="/berita.html?slug=${hero.slug}" class="news-hero"><img src="${hero.image}" alt="${hero.title}" loading="lazy"><div class="hero-content"><span class="badge" style="background: ${warnaHero}">${kategoriHero}</span><h2>${hero.title}</h2></div></a>`;
+        if (posts.length > 1) {
+            html += '<div class="news-grid">';
+            posts.slice(1, 5).forEach(post => {
+                const kategori = post.kategori || post.category || 'BERITA';
+                const warna = kategoriWarna[kategori.toUpperCase()] || '#d32f2f';
+                html += `<a href="/berita.html?slug=${post.slug}" class="news-card"><img src="${post.image}" alt="${post.title}" loading="lazy"><div class="card-content"><span class="badge" style="background: ${warna}">${kategori}</span><h3>${post.title}</h3></div></a>`;
+            });
+            html += '</div>';
+        }
+        if (posts.length > 5) {
+            html += '<h3 class="section-title">🔥 Trending Hari Ini</h3><div class="trending-list">';
+            posts.slice(5, 10).forEach((post, index) => {
+                const kategori = post.kategori || post.category || 'BERITA';
+                const warna = kategoriWarna[kategori.toUpperCase()] || '#d32f2f';
+                html += `<a href="/berita.html?slug=${post.slug}" class="trending-item" style="display:flex;gap:12px;padding:12px 8px;border-bottom:1px solid #eee;text-decoration:none;color:inherit;"><div style="font-size:28px;font-weight:800;color:var(--warna-merah);min-width:32px;">${index + 1}</div><div><span class="badge" style="background: ${warna}">${kategori}</span><h4 style="font-size:15px;font-weight:700;">${post.title}</h4></div></a>`;
+            });
+            html += '</div>';
+        }
+        if (posts.length > 10) {
+            html += '<h3 class="section-title">Berita Lain</h3><div class="latest-carousel"><div class="carousel-scroll" id="main-carousel">';
+            posts.slice(10).forEach(post => {
+                const kategori = post.kategori || post.category || 'BERITA';
+                const warna = kategoriWarna[kategori.toUpperCase()] || '#d32f2f';
+                html += `<a href="/berita.html?slug=${post.slug}" class="carousel-item"><img src="${post.image}" alt="${post.title}" loading="lazy"><div class="card-content"><span class="badge" style="background: ${warna}">${kategori}</span><h4>${post.title}</h4></div></a>`;
+            });
+            html += '</div></div>';
+        }
+        html += `<div class="ad-slot ad-banner-bottom"><a href="https://link-iklan-anda.com" target="_blank" rel="nofollow"><img src="/media/iklan_bawah1.png" alt="Iklan"></a></div>`;
+        container.innerHTML = html;
+    }
+
+    // === FUNGSI BARU: PAGINASI ===
+    function tampilkanHalaman(page) {
+        currentPage = page;
+        const start = (page - 1) * postsPerPage;
+        const end = start + postsPerPage;
+        const postsToShow = filteredPosts.slice(start, end);
+        tampilkanBerita(postsToShow);
+        renderPagination();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function renderPagination() {
+        const totalPages = Math.ceil(filteredPosts.length / postsPerPage);
+        const container = document.getElementById('pagination-container');
+        if(totalPages <= 1) { container.innerHTML = ''; return; }
+
+        let html = '';
+        html += `<button onclick="tampilkanHalaman(${currentPage-1})" ${currentPage==1?'disabled':''}>« Prev</button>`;
+    
+        for(let i=1; i<=totalPages; i++){ // TAMPILIN SEMUA ANGKA
+        html += `<button class="${i==currentPage?'active':''}" onclick="tampilkanHalaman(${i})">${i}</button>`;
+        }
+    
+        html += `<button onclick="tampilkanHalaman(${currentPage+1})" ${currentPage==totalPages?'disabled':''}>Next »</button>`;
+        container.innerHTML = html;
+    }
+
+    // === FUNGSI BARU: SEARCH ===
+    function setupSearch(){
+        document.getElementById('searchInput').addEventListener('input', (e) => {
+            const keyword = e.target.value.toLowerCase();
+            if(keyword === ''){
+                filteredPosts = allPosts;
+            } else {
+                filteredPosts = allPosts.filter(post =>
+                    post.title.toLowerCase().includes(keyword) ||
+                    (post.kategori||'').toLowerCase().includes(keyword)
+                );
+            }
+            tampilkanHalaman(1); // balik ke halaman 1
+        });
+    }
+
+    function setupKategori(){
+        document.querySelectorAll('.category-nav a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                filterBerita(link.dataset.kategori);
+            });
+        });
+    }
+
+    function filterBerita(kategori) {
+        document.querySelectorAll('.category-nav a').forEach(a => a.classList.remove('active'));
+        const activeLink = document.querySelector(`[data-kategori="${kategori}"]`);
+        if (activeLink) activeLink.classList.add('active');
+        filteredPosts = kategori === 'SEMUA'? allPosts : allPosts.filter(post => (post.kategori || post.category || '').toUpperCase() === kategori);
+        document.getElementById('searchInput').value = ''; // reset search
+        tampilkanHalaman(1);
+    }
+
+    function updateRunningText(posts) {
+        const containerTop = document.getElementById('running-text-container');
+        if (!posts || posts.length === 0) return;
+        let htmlContent = '';
+        posts.slice(0, 10).forEach(post => { htmlContent += `<a href="/berita.html?slug=${post.slug}" class="ticker-item">🔥 ${post.title} &nbsp;&nbsp;&nbsp;&nbsp;</a>`; });
+        containerTop.innerHTML = htmlContent;
+    }
+
+    function autoScrollCarousel() {
+        const carousel = document.getElementById('main-carousel');
+        if(!carousel) return;
+        let scrollAmount = 0;
+        setInterval(() => {
+            if (carousel.scrollWidth - carousel.scrollLeft <= carousel.clientWidth) {
+                scrollAmount = 0;
+            } else {
+                scrollAmount += 300;
+            }
+            carousel.scrollTo({ left: scrollAmount, behavior: 'smooth' });
+        }, 4000);
+    }
+
+    ambilDataBerita();
+    </script>
+</body>
+</html>
+
