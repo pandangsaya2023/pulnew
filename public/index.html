@@ -127,21 +127,20 @@
         color: var(--warna-biru);
      }
 
-    /* === WRAPPER VIDEO STICKY === */
+    /* DESKTOP: TETAP STICKY KANAN ATAS */
     .sticky-video-wrapper {
-        position: sticky; /* pas di atas nempel */
-        top: 105px; /* di bawah header + kategori + ticker */
+        position: sticky;
+        top: 105px;
         z-index: 50;
         background: #000;
         transition: 0.3s;
         width: 100%;
-     }
-
-   /* PAS DI MINIMIZE JADI KECIL DI KANAN BAWAH */
-   .sticky-video-wrapper.minimized {
+        margin: 20px 0; /* kasih jarak atas bawah */
+    }
+    .sticky-video-wrapper.minimized {
         max-width: 320px;
-        position: fixed; /* lepas dari alur halaman */
-        bottom: 45px; /* 35px tinggi ticker + 10px jarak */
+        position: fixed;
+        bottom: 45px;
         right: 15px;
         top: auto;
         border-radius: 12px;
@@ -150,26 +149,50 @@
         z-index: 99;
     }
 
-   /* RASIO 16:9 BUAT YOUTUBE */
-   .video-container { 
+    /* RASIO 16:9 */
+    .video-container { 
         position: relative; 
-        padding-bottom: 56.25%; /* 16:9 */
+        padding-bottom: 56.25%;
         height: 0; 
         overflow: hidden; 
         max-width: 100%; 
-   }
-   .video-container iframe,
-   .video-container #youtube-player { 
+        margin: 0 auto; /* biar di tengah */
+    }
+    .video-container iframe, .video-container #youtube-player { 
         position: absolute; 
         top: 0; 
         left: 0; 
         width: 100%; 
         height: 100%; 
         border: none; 
+    }
+    #close-video { display: none; } /* sembunyiin tombol X di desktop */
+
+
+    /* ===== KHUSUS HP ===== */
+    @media (max-width: 767px) {
+   /* MATIIN MODE MINIMIZED DI HP */
+   .sticky-video-wrapper.minimized {
+        position: relative !important; /* jangan fixed lagi */
+        bottom: auto !important;
+        right: auto !important;
+        max-width: 100% !important;
+        margin: 30px auto !important; /* kasih jarak */
+        border-radius: 0 !important;
+        box-shadow: none !important;
+   }
+   
+   /* POSISI PLAYER: TENGAH BAWAH SEBELUM FOOTER */
+   .sticky-video-wrapper {
+        width: 95%; /* jangan full biar ada margin */
+        margin: 30px auto; /* auto = di tengah */
+        position: relative !important;
+        top: auto !important;
    }
 
-   /* TOMBOL CLOSE */
-   #close-video {
+   /* TAMPILIN TOMBOL CLOSE DI HP */
+   #close-video { 
+        display: block;
         position: absolute;
         top: 5px;
         right: 8px;
@@ -177,21 +200,11 @@
         color: white;
         border: none;
         border-radius: 50%;
-        width: 24px;
-        height: 24px;
+        width: 28px;
+        height: 28px;
         cursor: pointer;
         z-index: 10;
-        display: none;
    }
-   .sticky-video-wrapper.minimized #close-video { display: block; }
-
-   /* VERSI HP */
-   @media (max-width: 767px) {
-   .sticky-video-wrapper.minimized {
-        max-width: 280px;
-        bottom: 45px;
-        right: 10px;
-    }
    }
         
     </style>
@@ -481,10 +494,13 @@
     // STICKY SCROLL
     window.addEventListener('scroll', () => {
       const wrapper = document.querySelector('.sticky-video-wrapper');
-      if(window.scrollY > 400){
-        wrapper.classList.add('minimized');
-      } else {
-        wrapper.classList.remove('minimized');
+      // JALANIN MINIMIZED CUMA DI DESKTOP
+      if(window.innerWidth > 767){
+          if(window.scrollY > 400){
+            wrapper.classList.add('minimized');
+          } else {
+            wrapper.classList.remove('minimized');
+          }
       }
     });
 
