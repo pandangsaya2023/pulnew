@@ -138,18 +138,23 @@
         margin: 20px 0; /* kasih jarak atas bawah */
     }
     .sticky-video-wrapper.minimized {
-        max-width: 320px;
         position: fixed !important;
         bottom: 20px !important;
         right: 20px !important;
         top: auto !important;
-        width: 320px;
-        height: 180px,
-            
+        max-width: 320px !important;
+        width: 320px !important;
+        height: 180px !important;
         border-radius: 12px;
         overflow: hidden;
         box-shadow: 0 8px 20px rgba(0,0,0,0.4);
-        z-index: 9999;
+        z-index: 9999 !important;
+        transition: all 0.3s ease;
+    }
+    /* ANTI BUG: KALAU ADA SCRIPT NAMBAH CLASS LAIN */
+    .sticky-video-wrapper.minimized iframe {
+        width: 100% !important;
+        height: 100% !important;
     }
 
     /* RASIO 16:9 */
@@ -179,10 +184,12 @@
         position: relative !important; /* jangan fixed lagi */
         bottom: auto !important;
         right: auto !important;
+        width: 100% !important;
         max-width: 100% !important;
+        aspect-ratio: 16/9;
         margin: 30px auto !important; /* kasih jarak */
-        border-radius: 0 !important;
-        box-shadow: none !important;
+        border-radius: 0;
+        box-shadow: none;
    }
    
    /* POSISI PLAYER: TENGAH BAWAH SEBELUM FOOTER */
