@@ -451,21 +451,21 @@ async function muatHalamanBerita() {
                 <button onclick="copyLink()" class="share-copy"><i class="fas fa-link"></i> Salin Link</button>
             </div>
 
-            <div class="ad-slot">
+            <!-- <div class="ad-slot">
                 <a href="https://link-iklan-anda.com" target="_blank">
                     <img src="/media/iklan_berita_atas1.png" alt="Iklan">
                 </a>
-            </div>
+            </div> -->
 
             <div class="article-body">${isiBerita}</div>
 
             ${sourceBox}
 
-            <div class="ad-slot ad-inarticle">
+            <!-- <div class="ad-slot ad-inarticle">
                 <a href="https://link-iklan-anda.com" target="_blank" rel="nofollow">
                     <img src="/media/iklan_berita_tengah1.png" alt="Iklan">
                 </a>
-            </div>
+            </div> -->
         `;
 
         const related = posts.filter(p => p.slug!== post.slug).slice(0, 5);
