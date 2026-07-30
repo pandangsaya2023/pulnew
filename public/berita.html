@@ -250,7 +250,8 @@
         border-radius: 12px;
         overflow: hidden;
         box-shadow: 0 4px 20px rgba(0,0,0,0.4);
-        z-index: 99;
+        z-index: 9999 !important;
+        transition: all 0.3s ease;
     }
 
     /* RASIO 16:9 */
@@ -545,6 +546,25 @@ document.addEventListener('DOMContentLoaded', muatHalamanBerita);
           }
       }
     });
+
+    // TAMBAHIN INI DI BAWAHNYA
+    // KUNCI ANTI MELEBAR PAS SCROLL CEPAT
+    function lockStickyPlayer() {
+        const wrapper = document.querySelector('.sticky-video-wrapper');
+        if (wrapper && window.innerWidth > 767) { // cuma desktop
+            if(wrapper.classList.contains('minimized')){
+                wrapper.style.position = 'fixed';
+                wrapper.style.width = '320px';
+                wrapper.style.maxWidth = '320px';
+                wrapper.style.right = '20px';
+                wrapper.style.bottom = '20px';
+                wrapper.style.top = 'auto';
+                wrapper.style.left = 'auto';
+            }
+        }
+    }
+    window.addEventListener('scroll', lockStickyPlayer);
+    window.addEventListener('resize', lockStickyPlayer); // jaga2 pas resize
 
     document.getElementById('close-video').addEventListener('click', () => {
       if(player) player.pauseVideo();
