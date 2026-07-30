@@ -231,8 +231,26 @@
     .loading,.error { text-align:center; padding:60px 20px; }
     .error { color: var(--warna-merah); }
 
-    /* DESKTOP: TETAP STICKY KANAN ATAS */
+    /* DESKTOP: LANGSUNG KECIL KAN BAWAH */
     .sticky-video-wrapper {
+        position: fixed !important; /* GANTI STICKY JADI FIXED */
+        bottom: 20px !important;    /* TAMBAHIN INI */
+        right: 20px !important;     /* TAMBAHIN INI */
+        top: auto !important;       /* BATALIN TOP */
+        left: auto !important;      /* BATALIN LEFT */
+        z-index: 9999 !important;
+        background: #000;
+        width: 320px !important;    /* KUNCI WIDTH */
+        height: 180px !important;   /* KUNCI HEIGHT */
+        margin: 0 !important;       /* HAPUS MARGIN BIAR GAK ADA RUANG KOSONG */
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+        transition: all 0.3s ease;
+    }
+        
+    /* DESKTOP: TETAP STICKY KANAN ATAS */
+    /*.sticky-video-wrapper {
         position: sticky;
         top: 105px;
         z-index: 50;
@@ -240,7 +258,8 @@
         transition: 0.3s;
         width: 100%;
         margin: 20px 0; /* kasih jarak atas bawah */
-    }
+    }*/
+        
     .sticky-video-wrapper.minimized {
         max-width: 320px;
         position: fixed;
@@ -251,7 +270,6 @@
         overflow: hidden;
         box-shadow: 0 4px 20px rgba(0,0,0,0.4);
         z-index: 9999 !important;
-        transition: all 0.3s ease;
     }
 
     /* RASIO 16:9 */
