@@ -60,7 +60,7 @@
      .search-box input:focus { border-color: var(--warna-biru); box-shadow: 0 0 0 3px rgba(26,35,126,0.1); }
 
       /* === TAMBAHAN BARU: PAGINASI === */
-     .pagination { display:flex; justify-content:center; gap:8px; margin:25px 0; flex-wrap:wrap; }
+     .pagination { display:flex; justify-content:center; gap:8px; margin-bottom: 10px !important; margin-top: 20px; flex-wrap:wrap; }
      .pagination button { padding:8px 14px; border:1px solid #ddd; background:white; border-radius:8px; cursor:pointer; font-weight:600; font-size:13px; transition:0.2s; }
      .pagination button:hover { background:var(--warna-biru); color:white; border-color:var(--warna-biru); }
      .pagination button.active { background:var(--warna-merah); color:white; border-color:var(--warna-merah); }
@@ -169,7 +169,7 @@
     .video-container iframe, .video-container #youtube-player { 
         position: absolute; 
         top: 0; 
-        left: 0; 
+        left: 0;
         width: 100%; 
         height: 100%; 
         border: none; 
@@ -195,7 +195,9 @@
    /* POSISI PLAYER: TENGAH BAWAH SEBELUM FOOTER */
    .sticky-video-wrapper {
         width: 95%; /* jangan full biar ada margin */
-        margin: 30px auto; /* auto = di tengah */
+        /*margin: 30px auto; /* auto = di tengah */
+        margin-top: 10px !important;
+        margin-bottom: 30px !important;
         position: relative !important;
         top: auto !important;
    }
