@@ -215,6 +215,51 @@
         z-index: 10;
       }
      }
+
+    /* IKLAN BERANDA */
+    .iklan-beranda {
+        max-width: 1200px;
+        margin: 25px auto; /* Tengah + ada jarak atas bawah */
+        padding: 0 15px;
+        text-align: center;
+    }
+
+    .iklan-beranda .iklan-label {
+        font-size: 11px;
+        color: #777;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 8px;
+    }
+
+    .iklan-beranda img {
+        width: 100%;
+        max-width: 900px; /* Pas di desktop */
+        height: auto;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15); /* Biar nimbul dikit */
+        transition: transform 0.3s ease;
+    }
+
+    .iklan-beranda img:hover {
+        transform: scale(1.02); /* Efek pas dihover */
+    }
+
+/* VERSI HP */
+@media (max-width: 767px) {
+    .iklan-beranda {
+        margin: 20px 0;
+        padding: 0 10px;
+    }
+    .iklan-beranda img {
+        max-width: 100%;
+        border-radius: 0; /* Full di HP */
+    }
+}
+
+
+
+
         
     </style>
 </head>
@@ -270,6 +315,14 @@
 
         <!-- TAMBAHAN BARU: TOMBOL PAGINASI -->
         <div id="pagination-container" class="pagination"></div>
+    </div>
+
+    <!-- IKLAN ORGANISASI FABEM SUMUT -->
+    <div class="iklan-beranda">
+        <p class="iklan-label">IKLAN</p>
+        <a href="https://link-fabem-kamu.com" target="_blank">
+            <img src="media/fabem-sumut-banner.jpg" alt="DPW FABEM SUMUT">
+        </a>
     </div>
 
     <div class="sticky-video-wrapper">
