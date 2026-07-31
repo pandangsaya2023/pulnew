@@ -308,7 +308,7 @@
 
     /* ANTI KETUTUP PLAYER DI DESKTOP */
     .article-box {
-        padding-bottom: 16px !important; /* 180px tinggi player + 100px + 40px spare */
+        padding-bottom: 5px !important; /* 180px tinggi player + 100px + 40px spare */
      }
 
     /* DI HP BALIK NORMAL BIAR GAK KELEBARAN */
@@ -439,7 +439,7 @@ async function muatHalamanBerita() {
             ${sourceBox}
         `;
 
-        const related = posts.filter(p => p.slug!== post.slug).slice(0, 8);
+        const related = posts.filter(p => p.slug!== post.slug).slice(0, 5);
         if (related.length > 0) {
             html += `<div class="related-section"><div class="section-title">Berita Lainnya</div>`;
             related.forEach(r => {
