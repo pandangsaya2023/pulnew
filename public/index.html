@@ -127,7 +127,6 @@
         color: var(--warna-biru);
      }
 
-    /* DESKTOP: TETAP STICKY KANAN ATAS */
     .sticky-video-wrapper {
         position: sticky;
         top: 105px;
@@ -191,6 +190,11 @@
         border-radius: 0;
         box-shadow: none;
    }
+        
+        body.beranda .sticky-video-wrapper {
+            right: auto !important;
+            left: 20px !important;
+        }
    
    /* POSISI PLAYER: TENGAH BAWAH SEBELUM FOOTER */
    .sticky-video-wrapper {
