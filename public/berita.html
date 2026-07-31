@@ -439,7 +439,7 @@ async function muatHalamanBerita() {
             ${sourceBox}
         `;
 
-        const related = posts.filter(p => p.slug!== post.slug).slice(0, 5);
+        const related = posts.filter(p => p.slug!== post.slug).slice(0, 8);
         if (related.length > 0) {
             html += `<div class="related-section"><div class="section-title">Berita Lainnya</div>`;
             related.forEach(r => {
