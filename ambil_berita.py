@@ -71,7 +71,9 @@ def get_existing_posts():
 def prompt_rewrite_umum(title, konten_asli, link):
     # HAPUS {media} dan {link} dari prompt biar AI gak nulis sumber
     return f"""
-    Kamu adalah Editor Senior PULNEW.com. Tugasmu: Tulis ulang berita ini jadi artikel 350-400 kata.
+    Kamu adalah Editor Senior PULNEW.com. Tugasmu: Tulis ulang berita ini jadi artikel 350-400 kata
+    dengan mengganti judul asli dari berita tersebut dengan judul beritabyang mengandung kalimat 
+    inti dari berita tersebut.
     ATURAN:
     1. Bahasa Indonesia formal, padat, kredibel.
     2. Buat 3 paragraf, gunakan tag <p> untuk paragrap dan <h2> untuk 2 subjudul.
