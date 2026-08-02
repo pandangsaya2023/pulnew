@@ -71,11 +71,11 @@ def get_existing_posts():
 def prompt_rewrite_umum(title, konten_asli, link):
     # HAPUS {media} dan {link} dari prompt biar AI gak nulis sumber
     return f"""
-    Kamu adalah Editor Senior PULNEW.com. Tugasmu: Tulis ulang berita ini jadi artikel 350-400 kata.
+    Kamu adalah Editor Senior PULNEW.com. Tugasmu: Tulis ulang berita ini jadi artikel 500-600 kata.
     ATURAN:
     1. Bahasa Indonesia formal, padat, kredibel.
     2. Buat 3 paragraf, gunakan tag <p> untuk paragrap dan <h2> untuk 2 subjudul.
-    3. Parafrase 100%. Jangan copy paste.
+    3. Parafrase 100%. Jangan copy 1 kalimat pun. Gunakan sinonim dan ubah struktur
     4. JANGAN TULIS SUMBER ATAU LINK DI AKHIR.
     JUDUL ASLI: {title}
     KONTEN ASLI: {konten_asli[:3000]}
@@ -115,7 +115,7 @@ def ambil_konten_berita(url):
                 s.decompose()
             target = soup.find('article') or soup.find('div', class_=re.compile('content|body|detail'))
             text = target.get_text(separator='\n\n', strip=True) if target else soup.get_text(separator='\n\n', strip=True)
-            return text[:6000], soup
+            return text[:7000], soup
         return "", None
     except:
         return "", None
@@ -137,8 +137,8 @@ def rewrite_with_groq(title, link, media):
         completion = client.chat.completions.create(
             model="llama-3.3-70b-versatile",
             messages=[{"role": "user", "content": prompt}],
-            temperature=0.7,
-            max_tokens=900
+            temperature=0.8,
+            max_tokens=1200
         )
         hasil = completion.choices[0].message.content
 
