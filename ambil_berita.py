@@ -4,7 +4,7 @@ import re
 import time
 import requests
 from datetime import datetime
-from urllib.parse import urlparse # <--- TAMBAH INI
+from urllib.parse import urlparse
 from groq import Groq
 from bs4 import BeautifulSoup
 
@@ -18,21 +18,17 @@ MAX_BERITA_PER_RUN = 15
 
 sumber_rss = [
     {"media": "Kompas", "url": "https://indeks.kompas.com/nasional"},
-    # {"media": "Antara", "url": "https://www.antaranews.com/rss/tekno"},
     {"media": "Republika", "url": "https://www.republika.co.id/rss"},
-    {"media": "Okezone", "url": "https://sindonews.com/rss"}
 ]
 
-# --- FUNGSI BARU: AMBIL NAMA MEDIA DARI URL ---
+# --- FUNGSI: AMBIL NAMA MEDIA DARI URL ---
 def get_nama_media(url):
     try:
         domain = urlparse(url).netloc.replace('www.', '')
-        nama = domain.split('.')[0].capitalize()
         if 'kompas' in domain: return 'Kompas'
-        # if 'antara' in domain: return 'Antara'
-        if 'republika' in domain: return 'Republika'  
+        if 'republika' in domain: return 'Republika'
         if 'sindonews' in domain: return 'Sindonews'
-        return nama
+        return domain.split('.')[0].capitalize()
     except:
         return "Media"
 
@@ -56,26 +52,23 @@ def get_existing_posts():
                     path = os.path.join(OUTPUT_FOLDER, filename)
                     with open(path, 'r', encoding='utf-8') as f:
                         data = json.load(f)
-
                     if '<p>' not in data.get('body',''):
                         print(f" -> Repair: {data['title']}")
                         data['body'] = format_ke_html(data['body'])
                         with open(path, 'w', encoding='utf-8') as f:
                             json.dump(data, f, ensure_ascii=False, indent=2)
-
                     posts[data['slug']] = data
                 except: pass
     return posts
 
 # --- PROMPT GAYA PULNEW ---
 def prompt_rewrite_umum(title, konten_asli, link):
-    # HAPUS {media} dan {link} dari prompt biar AI gak nulis sumber
     return f"""
-    Kamu adalah Editor Senior PULNEW.com. Tugasmu: Tulis ulang berita ini jadi artikel 350-400 kata.
+    Kamu adalah Editor Senior PULNEW.com. Tugasmu: Tulis ulang berita ini jadi artikel 500-600 kata.
     ATURAN:
     1. Bahasa Indonesia formal, padat, kredibel.
     2. Buat 3 paragraf, gunakan tag <p> untuk paragrap dan <h2> untuk 2 subjudul.
-    3. Parafrase 100%. Jangan copy paste.
+    3. Parafrase 100%. Jangan copy 1 kalimat pun. Gunakan sinonim dan ubah struktur
     4. JANGAN TULIS SUMBER ATAU LINK DI AKHIR.
     JUDUL ASLI: {title}
     KONTEN ASLI: {konten_asli[:3000]}
@@ -97,13 +90,40 @@ def save_berita(data):
         json.dump(data, f, ensure_ascii=False, indent=2)
     print(f"✅ Disimpan/Ditimpa: {nama_file}")
 
-# --- FUNGSI: UPDATE posts.js ---
+# --- FUNGSI: UPDATE posts.js VERSI NGGAK MENGHAPUS BERITA LAMA ---
 def update_posts_js(all_posts):
-    urls = [f"/posts/{slug}.json" for slug in all_posts.keys()]
-    urls.sort(key=lambda x: all_posts[x.split('/')[-1].replace('.json','')].get('date',''), reverse=True)
-    with open(POSTS_JS_PATH, 'w', encoding='utf-8') as f:
-        json.dump(urls, f)
-    print(f"✅ posts.js diupdate. Total {len(urls)} berita")
+    file_path = POSTS_JS_PATH
+
+    # 1. Baca data lama dulu dari posts.js kalau ada
+    urls_lama = []
+    if os.path.exists(file_path):
+        try:
+            with open(file_path, 'r', encoding='utf-8') as f:
+                urls_lama = json.load(f)
+        except:
+            urls_lama = []
+
+    # 2. Buat list URL baru dari semua_post yang ada sekarang
+    urls_baru = [f"/posts/{slug}.json" for slug in all_posts.keys()]
+
+    # 3. Gabungkan: Berita baru di depan, lalu tambahkan yg lama kalau belum ada
+    semua_urls = urls_baru + [u for u in urls_lama if u not in urls_baru]
+
+    # 4. Sorting berdasarkan tanggal di dalam file JSON biar paling baru di atas
+    def get_date_from_url(url):
+        slug = url.split('/')[-1].replace('.json','')
+        return all_posts.get(slug, {}).get('date', '2000-01-01')
+
+    semua_urls.sort(key=get_date_from_url, reverse=True)
+
+    # 5. Batasi maksimal 300 berita biar posts.js gak kegedean
+    semua_urls = semua_urls[:300]
+
+    # 6. Simpan
+    with open(file_path, 'w', encoding='utf-8') as f:
+        json.dump(semua_urls, f, ensure_ascii=False, indent=2)
+
+    print(f"✅ posts.js diupdate. Total {len(semua_urls)} berita")
 
 def ambil_konten_berita(url):
     try:
@@ -115,7 +135,7 @@ def ambil_konten_berita(url):
                 s.decompose()
             target = soup.find('article') or soup.find('div', class_=re.compile('content|body|detail'))
             text = target.get_text(separator='\n\n', strip=True) if target else soup.get_text(separator='\n\n', strip=True)
-            return text[:6000], soup
+            return text[:7000], soup
         return "", None
     except:
         return "", None
@@ -137,21 +157,18 @@ def rewrite_with_groq(title, link, media):
         completion = client.chat.completions.create(
             model="llama-3.3-70b-versatile",
             messages=[{"role": "user", "content": prompt}],
-            temperature=0.7,
-            max_tokens=900
+            temperature=0.8,
+            max_tokens=1200
         )
         hasil = completion.choices[0].message.content
-
-        # INI KUNCINYA: PISAHIN H2 DAN P BIAR GAK KEBUNGKUS
         blok = [b.strip() for b in hasil.split('\n\n') if b.strip()]
         hasil_html = ''
         for b in blok:
             b = b.replace('<p></p>', '')
-            if b.startswith('<h2>'): # kalau udah h2 jangan dibungkus p lagi
+            if b.startswith('<h2>'):
                 hasil_html += b
             else:
                 hasil_html += f"<p>{b}</p>"
-
         return hasil_html, soup
     except Exception as e:
         print(f"Error Groq: {e}")
@@ -196,8 +213,8 @@ def main():
                     "date": datetime.now().strftime("%Y-%m-%dT%H:%M:%S+07:00"),
                     "image": img_url,
                     "body": body,
-                    "source_name": get_nama_media(link), # <--- TAMBAH
-                    "source_url": link # <--- TAMBAH
+                    "source_name": get_nama_media(link),
+                    "source_url": link
                 }
 
                 if slug in semua_post:
@@ -215,63 +232,8 @@ def main():
         except Exception as e:
             print(f"Error di {sumber['media']}: {e}")
 
-    update_posts_js(semua_post)
+    update_posts_js(semua_post) # <-- INI UDAH VERSI NGGAK NIMPA
     print(f"Selesai! Baru: {jumlah_baru}, Update: {jumlah_update}, Total diproses: {total_proses}")
 
-#def repair_all_old_posts():
-    #"""Paksa benerin semua file json lama TAPI SLUG TETAP"""
-    #print("=== MULAI REPAIR SEMUA BERITA LAMA ===")
-    #count = 0
-    #if os.path.exists(OUTPUT_FOLDER):
-        #for filename in os.listdir(OUTPUT_FOLDER):
-            #if filename.endswith(".json"):
-                #path = os.path.join(OUTPUT_FOLDER, filename)
-                #try:
-                    #with open(path, 'r', encoding='utf-8') as f:
-                        #data = json.load(f)
-                    
-                    #slug_lama = data.get('slug') # SIMPAN SLUG LAMA
-
-                    # Kalau belum ada <p> berarti masih rusak
-                    #if '<p>' not in data.get('body',''):
-                        #print(f" -> Repair: {data['title']}")
-                        #data['body'] = format_ke_html(data['body'])
-                        #data['slug'] = slug_lama # PAKSA BALIKIN SLUG LAMA
-                        
-                        #with open(path, 'w', encoding='utf-8') as f:
-                            #json.dump(data, f, ensure_ascii=False, indent=2)
-                        #count += 1
-                #except Exception as e:
-                    #print(f"Gagal repair {filename}: {e}")
-    #print(f"=== SELESAI REPAIR: {count} file dibenerin ===")
-
-#def hapus_berita_lama():
-    #"""Hapus semua file json yg tanggalnya < 2026-07-17"""
-    #print("=== MULAI HAPUS BERITA LAMA < 2026-07-17 ===")
-    #batas_tanggal = datetime(2026, 7, 17) # <--- TANGGAL PATOKAN
-    #count_hapus = 0
-
-    #if os.path.exists(OUTPUT_FOLDER):
-        #for filename in os.listdir(OUTPUT_FOLDER):
-            #if filename.endswith(".json"):
-                #path = os.path.join(OUTPUT_FOLDER, filename)
-                #try:
-                    #with open(path, 'r', encoding='utf-8') as f:
-                        #data = json.load(f)
-                    
-                    #tgl_berita = datetime.strptime(data['date'][:10], "%Y-%m-%d")
-                    
-                    #if tgl_berita < batas_tanggal:
-                        #os.remove(path) # HAPUS FILE
-                        #print(f" -> Dihapus: {data['title']} | {data['date'][:10]}")
-                        #count_hapus += 1
-
-                #except Exception as e:
-                    #print(f"Gagal hapus {filename}: {e}")
-    
-    #print(f"=== SELESAI HAPUS: {count_hapus} file dihapus ===")
-
 if __name__ == "__main__":
-    #hapus_berita_lama()
-    #repair_all_old_posts()
     main()
