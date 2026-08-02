@@ -20,7 +20,7 @@ sumber_rss = [
     {"media": "Kompas", "url": "https://indeks.kompas.com/nasional"},
     # {"media": "Antara", "url": "https://www.antaranews.com/rss/tekno"},
     {"media": "Republika", "url": "https://www.republika.co.id/rss"},
-    {"media": "Okezone", "url": "https://sindonews.com/rss"}
+    # {"media": "Okezone", "url": "https://sindonews.com/rss"}
 ]
 
 # --- FUNGSI BARU: AMBIL NAMA MEDIA DARI URL ---
