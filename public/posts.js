@@ -1,9 +1,5 @@
 [
   "/posts/buronan-bank-sumut-diciduk-di-jakarta.json",
-  "/posts/malaysia-kembangkan-kawasan-pantai-timur-jadi-destinasi-wisata-medis-warga-ri.json",
-  "/posts/bahagia-sesederhana-makin-banyak-yang-peduli-halal.json",
-  "/posts/melihat-keseruan-ajang-karapan-sapi-di-bangkalan.json",
-  "/posts/pagar-tinggi-di-mal-kota-kasablanka-tak-lagi-terpasang.json",
   "/posts/strategi-finansial-mahasiswa-pekerja.json",
   "/posts/warisan-ilmu-yang-mengubah-peradaban-dunia.json",
   "/posts/status-uda-di-situs-resmi-banpt-dan-pddikti-kemendiktisaintek.json",
@@ -44,8 +40,4 @@
   "/posts/pertamina-dan-itdc-dukung-peɓalap-tanah-air.json",
   "/posts/skema-jual-putus-dominasi-transaksi-barang-mewah.json",
   "/posts/forkom-sp-dan-sekar-bumn-gelar-rapat.json",
-  "/posts/konoha-dan-martabat-kita.json",
-  "/posts/mineral-baru-yang-lebih-berharga-dari-emas-ditemukan-di-rusia.json",
-  "/posts/5-ancaman-membiarkan-shaf-terdepan-sholat-kosong-padahal-sering-diabaikan.json",
-  "/posts/jatah-setahun-sumber-daya-alam-bumi-habis.json"
 ]
