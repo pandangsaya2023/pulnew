@@ -97,13 +97,50 @@ def save_berita(data):
         json.dump(data, f, ensure_ascii=False, indent=2)
     print(f"✅ Disimpan/Ditimpa: {nama_file}")
 
-# --- FUNGSI: UPDATE posts.js ---
+# --- FUNGSI: UPDATE posts.js VERSI TIDAK MENGHAPUS BERITA LAMA ---
 def update_posts_js(all_posts):
-    urls = [f"/posts/{slug}.json" for slug in all_posts.keys()]
-    urls.sort(key=lambda x: all_posts[x.split('/')[-1].replace('.json','')].get('date',''), reverse=True)
-    with open(POSTS_JS_PATH, 'w', encoding='utf-8') as f:
-        json.dump(urls, f)
-    print(f"✅ posts.js diupdate. Total {len(urls)} berita")
+    file_path = POSTS_JS_PATH
+    
+    # 1. Baca data lama dulu dari posts.js kalau ada
+    urls_lama = []
+    if os.path.exists(file_path):
+        try:
+            with open(file_path, 'r', encoding='utf-8') as f:
+                urls_lama = json.load(f)
+        except:
+            urls_lama = []
+    
+    # 2. Buat list URL baru dari semua_post yang ada sekarang
+    urls_baru = [f"/posts/{slug}.json" for slug in all_posts.keys()]
+    
+    # 3. Gabungkan: Berita baru di depan, lalu tambahkan yg lama kalau belum ada
+    semua_urls = urls_baru + [u for u in urls_lama if u not in urls_baru]
+    
+    # 4. Sorting berdasarkan tanggal di dalam file JSON biar paling baru di atas
+    def get_date_from_url(url):
+        slug = url.split('/')[-1].replace('.json','')
+        return all_posts.get(slug, {}).get('date', '2000-01-01')
+    
+    semua_urls.sort(key=get_date_from_url, reverse=True)
+    
+    # 5. Batasi maksimal 300 berita biar posts.js gak kegedean
+    semua_urls = semua_urls[:300]
+
+    # 6. Simpan
+    with open(file_path, 'w', encoding='utf-8') as f:
+        json.dump(semua_urls, f, ensure_ascii=False, indent=2)
+        
+    print(f"✅ posts.js diupdate. Total {len(semua_urls)} berita. Ditambah {len(semua_urls) - len(urls_lama)} berita baru")
+
+
+
+# --- FUNGSI: UPDATE posts.js ---
+#def update_posts_js(all_posts):
+    #urls = [f"/posts/{slug}.json" for slug in all_posts.keys()]
+    #urls.sort(key=lambda x: all_posts[x.split('/')[-1].replace('.json','')].get('date',''), reverse=True)
+    #with open(POSTS_JS_PATH, 'w', encoding='utf-8') as f:
+        #json.dump(urls, f)
+    #print(f"✅ posts.js diupdate. Total {len(urls)} berita")
 
 def ambil_konten_berita(url):
     try:
