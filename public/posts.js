@@ -1,5 +1,8 @@
 [
   "/posts/buronan-bank-sumut-diciduk-di-jakarta.json",
+  "/posts/masa-reses-legislator-himpun-masukan-warga-terkait-infrastruktur-dan-ketahanan-p.json",
+  "/posts/suzuki-target-pertahankan-pangsa-pasar-suzuki-fronx-di-tengah-gempuran-merek-bar.json",
+  "/posts/kmp-mutiara-sentosa-2-terbakar-di-perairan-sumenep-tim-gabungan-lakukan-evakuasi.json",
   "/posts/strategi-finansial-mahasiswa-pekerja.json",
   "/posts/warisan-ilmu-yang-mengubah-peradaban-dunia.json",
   "/posts/status-uda-di-situs-resmi-banpt-dan-pddikti-kemendiktisaintek.json",
@@ -39,5 +42,5 @@
   "/posts/pertamina-patra-niaga-perkuat-edukasi-lingkungan.json",
   "/posts/pertamina-dan-itdc-dukung-peɓalap-tanah-air.json",
   "/posts/skema-jual-putus-dominasi-transaksi-barang-mewah.json",
-  "/posts/forkom-sp-dan-sekar-bumn-gelar-rapat.json",
+  "/posts/forkom-sp-dan-sekar-bumn-gelar-rapat.json"
 ]
