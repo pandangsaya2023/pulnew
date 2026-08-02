@@ -21,7 +21,7 @@ collections:
             - {label: "Judul", name: "title", widget: "string", required: true}
             - {label: "Slug", name: "slug", widget: "string", required: true, hint: "huruf-kecil-tanpa-spasi"}
             - {label: "Kategori", name: "kategori", widget: "select", options: ["NASIONAL", "POLITIK", "TEKNOLOGI", "OLAHRAGA", "HUKUM", "EKONOMI"], required: true}
-            - {label: "Tanggal", name: "date", widget: "datetime", format: "YYYY-MM-DDTHH:mm:ssZ", required: true} # FIX: ZZ dihapus
+            - {label: "Tanggal", name: "date", widget: "datetime", required: true}
             - {label: "Gambar Utama", name: "image", widget: "image", required: false}
             - {label: "Sumber Media", name: "source_name", widget: "string", required: false, hint: "Contoh: Kompas, Detik"}
             - {label: "Link Sumber", name: "source_url", widget: "string", required: false}
