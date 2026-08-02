@@ -7,22 +7,29 @@ media_folder: "public/media"
 public_folder: "/media"
 
 collections:
-  - name: "posts"
+    - name: "posts"
     label: "Berita"
     folder: "public/posts"
     create: true
     slug: "{{slug}}"
     extension: "json"
     format: "json"
+    editor:
+      preview: false
+    
     fields:
-      - {label: "Judul", name: "title", widget: "string", required: true}
-      - {label: "Slug", name: "slug", widget: "string", required: true}
-      - {label: "Kategori", name: "kategori", widget: "select", options: ["NASIONAL", "POLITIK", "TEKNOLOGI", "EKONOMI", "OLAHRAGA", "HIBURAN", "PENDIDIKAN", "HUKUM", "KESEHATAN"]}
-      - {label: "Tanggal", name: "date", widget: "datetime", format: "YYYY-MM-DDTHH:mm:ssZ"}
-      - {label: "Gambar Utama", name: "image", widget: "image", required: false}
-      - {label: "Isi Berita", name: "body", widget: "markdown", required: true}
+            - {label: "Judul", name: "title", widget: "string", required: true}
+            - {label: "Slug", name: "slug", widget: "string", required: true, hint: "huruf-kecil-tanpa-spasi"}
+            - {label: "Kategori", name: "kategori", widget: "select", options: ["NASIONAL", "POLITIK", "TEKNOLOGI", "OLAHRAGA", "HUKUM", "EKONOMI"], required: true}
+            - {label: "Tanggal", name: "date", widget: "datetime", format: "YYYY-MM-DDTHH:mm:ssZ", required: true} # FIX: ZZ dihapus
+            - {label: "Gambar Utama", name: "image", widget: "image", required: false}
+            - {label: "Sumber Media", name: "source_name", widget: "string", required: false, hint: "Contoh: Kompas, Detik"}
+            - {label: "Link Sumber", name: "source_url", widget: "string", required: false}
+            - {label: "Isi Berita", name: "body", widget: "markdown", required: true} # MARKDOWN = auto <p>
+
     view_filters:
-      - label: "Terbaru"
-        field: "date"
-        sort: "date"
-        sort_direction: "descending"
+            - {label: "Terbaru", field: "date", pattern: ""}
+    view_groups:
+            - {label: "Per Kategori", field: "kategori"}
+    sort: "date"
+    sort_direction: "descending"
