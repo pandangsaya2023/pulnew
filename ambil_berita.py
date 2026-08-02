@@ -31,7 +31,7 @@ def get_nama_media(url):
         if 'kompas' in domain: return 'Kompas'
         # if 'antara' in domain: return 'Antara'
         if 'republika' in domain: return 'Republika'  
-        if 'sindonews' in domain: return 'Sindonews'
+        #if 'sindonews' in domain: return 'Sindonews'
         return nama
     except:
         return "Media"
