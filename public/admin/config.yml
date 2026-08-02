@@ -19,17 +19,13 @@ collections:
     
     fields:
             - {label: "Judul", name: "title", widget: "string", required: true}
-            - {label: "Slug", name: "slug", widget: "string", required: true, hint: "huruf-kecil-tanpa-spasi"}
+            - {label: "Slug", name: "slug", widget: "string", required: true}
             - {label: "Kategori", name: "kategori", widget: "select", options: ["NASIONAL", "POLITIK", "TEKNOLOGI", "OLAHRAGA", "HUKUM", "EKONOMI"], required: true}
-            - {label: "Tanggal", name: "date", widget: "datetime", required: true}
+            - {label: "Tanggal", name: "date", widget: "datetime", required: true} # <--- INI DIHAPUS FORMAT NYA DULU
             - {label: "Gambar Utama", name: "image", widget: "image", required: false}
-            - {label: "Sumber Media", name: "source_name", widget: "string", required: false, hint: "Contoh: Kompas, Detik"}
+            - {label: "Sumber Media", name: "source_name", widget: "string", required: false}
             - {label: "Link Sumber", name: "source_url", widget: "string", required: false}
-            - {label: "Isi Berita", name: "body", widget: "markdown", required: true} # MARKDOWN = auto <p>
+            - {label: "Isi Berita", name: "body", widget: "markdown", required: true}
 
-    view_filters:
-            - {label: "Terbaru", field: "date", pattern: ""}
-    view_groups:
-            - {label: "Per Kategori", field: "kategori"}
     sort: "date"
     sort_direction: "descending"
