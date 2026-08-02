@@ -1,8 +1,11 @@
 [
   "/posts/buronan-bank-sumut-diciduk-di-jakarta.json",
-  "/posts/masa-reses-legislator-himpun-masukan-warga-terkait-infrastruktur-dan-ketahanan-p.json",
-  "/posts/suzuki-target-pertahankan-pangsa-pasar-suzuki-fronx-di-tengah-gempuran-merek-bar.json",
+  "/posts/mazda-perbarui-suv-andalan-cx-5-hadir-dengan-kabin-lapang-dan-fitur-lebih-modern.json",
+  "/posts/ikn-jadi-percontohan-rehabilitasi-mangrove-program-m4cr.json",
+  "/posts/menu-nasi-tahu-telur-kecap-mbg-bikin-690-siswa-smkn-6-semarang-keracunan.json",
   "/posts/kmp-mutiara-sentosa-2-terbakar-di-perairan-sumenep-tim-gabungan-lakukan-evakuasi.json",
+  "/posts/suzuki-target-pertahankan-pangsa-pasar-suzuki-fronx-di-tengah-gempuran-merek-bar.json",
+  "/posts/masa-reses-legislator-himpun-masukan-warga-terkait-infrastruktur-dan-ketahanan-p.json",
   "/posts/strategi-finansial-mahasiswa-pekerja.json",
   "/posts/warisan-ilmu-yang-mengubah-peradaban-dunia.json",
   "/posts/status-uda-di-situs-resmi-banpt-dan-pddikti-kemendiktisaintek.json",
