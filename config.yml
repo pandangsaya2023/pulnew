@@ -1,0 +1,14 @@
+rss_feeds:
+    - name: "Antara"
+    url: "https://www.antaranews.com/rss/terkini.xml"
+    - name: "Detik" 
+    url: "https://rss.detik.com/index.php/detikterkini"
+    - name: "Kompas"
+    url: "https://rss.kompas.com/index.xml"
+
+keywords:
+    - "politik"
+    - "ekonomi" 
+    - "daerah"
+    - "pendidikan"
+    - "kesehatan"
