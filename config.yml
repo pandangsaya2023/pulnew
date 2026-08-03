@@ -1,6 +1,6 @@
 rss_feeds:
-    - name: "Antara"
-    url: "https://www.antaranews.com/rss/terkini.xml"
+    - name: "Republika"
+    url: "https://www.republika.co.id/rss"
     - name: "Detik" 
     url: "https://rss.detik.com/index.php/detikterkini"
     - name: "Kompas"
@@ -12,3 +12,6 @@ keywords:
     - "daerah"
     - "pendidikan"
     - "kesehatan"
+    - "olahraga"
+    - "hiburan"
+    - "nasional"
