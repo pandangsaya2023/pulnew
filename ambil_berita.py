@@ -3,8 +3,7 @@ import json
 import re
 import time
 import requests
-import markdown # <--- TAMBAH INI
-import yaml # <--- TAMBAH INI buat baca config.yml
+import markdown # <--- buat convert body
 from datetime import datetime
 from urllib.parse import urlparse
 from groq import Groq
@@ -23,36 +22,16 @@ sumber_rss = [
     {"media": "Republika", "url": "https://www.republika.co.id/rss"},
 ]
 
-# --- FUNGSI BARU: GENERATE HALAMAN HTML ---
-def generate_article_page(article):
-    os.makedirs("public/berita", exist_ok=True)
-
-    # INI KUNCINYA: convert markdown body jadi HTML
-    body_html = markdown.markdown(article.get('body', ''), extensions=['extra'])
-
-    html_content = f"""<!DOCTYPE html>
-<html lang="id">
-<head>
-<meta charset="UTF-8">
-<title>{article['title']} - PULNEW</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="/style.css">
-</head>
-<body>
-<div class="container">
-<h1>{article['title']}</h1>
-<p class="meta">{article['date']} | {article['kategori']}</p>
-<img src="{article.get('image','')}" alt="{article['title']}" class="featured-img">
-<div class="article-content">
-{body_html}
-</div>
-<p class="source">Sumber: <a href="{article.get('source_url','#')}">{article.get('source_name','')}</a></p>
-</div>
-</body>
-</html>"""
-    with open(f"public/berita/{article['slug']}.html", 'w', encoding='utf-8') as f:
-        f.write(html_content)
-    print(f" -> Generate HTML: {article['slug']}.html")
+# --- FUNGSI: BIKIN NAMA MEDIA DARI URL ---
+def get_nama_media(url):
+    try:
+        domain = urlparse(url).netloc.replace('www.', '')
+        nama = domain.split('.')[0].capitalize()
+        if 'kompas' in domain: return 'Kompas'
+        if 'republika' in domain: return 'Republika' 
+        return nama
+    except:
+        return "Media"
 
 # --- FUNGSI: BIKIN ALINEA OTOMATIS ---
 def format_ke_html(teks):
@@ -74,19 +53,10 @@ def get_existing_posts():
                     path = os.path.join(OUTPUT_FOLDER, filename)
                     with open(path, 'r', encoding='utf-8') as f:
                         data = json.load(f)
-
-                    if '<p>' not in data.get('body',''):
-                        print(f" -> Repair: {data['title']}")
-                        data['body'] = format_ke_html(data['body'])
-                        with open(path, 'w', encoding='utf-8') as f:
-                            json.dump(data, f, ensure_ascii=False, indent=2)
-
                     posts[data['slug']] = data
                 except: pass
     return posts
 
-#... SISA FUNGSI KAMU TETAP SAMA...
-# prompt_rewrite_umum, buat_slug, save_berita, update_posts_js, dll
 # --- FUNGSI: BIKIN SLUG BERSIH ---
 def buat_slug(judul):
     slug = re.sub(r'[^\w\s-]', '', judul.lower()).strip()
@@ -94,16 +64,64 @@ def buat_slug(judul):
     slug = slug.strip('-')[:80]
     return slug if slug else f"berita-{int(time.time())}"
 
+# --- FUNGSI: SIMPAN JSON ---
+def save_berita(data):
+    os.makedirs(OUTPUT_FOLDER, exist_ok=True)
+    nama_file = f"{data['slug']}.json"
+    path_file = os.path.join(OUTPUT_FOLDER, nama_file)
+    with open(path_file, 'w', encoding='utf-8') as f:
+        json.dump(data, f, ensure_ascii=False, indent=2)
+    print(f"✅ Disimpan/Ditimpa: {nama_file}")
+
 # --- FUNGSI: UPDATE posts.js ---
 def update_posts_js(all_posts):
     urls = [f"/posts/{slug}.json" for slug in all_posts.keys()]
-    # sort berdasarkan tanggal paling baru
     urls.sort(key=lambda x: all_posts[x.split('/')[-1].replace('.json','')].get('date',''), reverse=True)
     with open(POSTS_JS_PATH, 'w', encoding='utf-8') as f:
         json.dump(urls, f, ensure_ascii=False, indent=2)
     print(f"✅ posts.js diupdate. Total {len(urls)} berita")
 
-# --- FUNGSI BARU: GENERATE HALAMAN HTML ---
+# --- FUNGSI: AMBIL KONTEN + GAMBAR ---
+def ambil_konten_berita(url):
+    try:
+        headers = {'User-Agent': 'Mozilla/5.0'}
+        response = requests.get(url, headers=headers, timeout=15)
+        if response.status_code == 200:
+            soup = BeautifulSoup(response.content, 'html.parser')
+            target = soup.find('article') or soup.find('div', class_=re.compile('content|body|detail'))
+            text = target.get_text(separator='\n\n', strip=True) if target else soup.get_text(separator='\n\n', strip=True)
+            return text[:7000], soup
+        return "", None
+    except:
+        return "", None
+
+def ambil_gambar_asli(soup):
+    if soup:
+        og_image = soup.find('meta', property='og:image')
+        if og_image and og_image.get('content'):
+            return og_image['content']
+    return f"{BASE_URL}/media/og-default.jpg"
+
+# --- FUNGSI: REWRITE PAKE GROQ ---
+def rewrite_with_groq(title, link, media):
+    konten_asli, soup = ambil_konten_berita(link)
+    if not GROQ_API_KEY or not konten_asli or len(konten_asli) < 150:
+        return format_ke_html(f"Baca selengkapnya di {media}"), soup
+    try:
+        prompt = f"Kamu adalah Editor Senior PULNEW.com. Tulis ulang berita ini jadi 3 paragraf 500-600 kata. Gunakan tag <p> dan <h2>. JANGAN TULIS SUMBER. JUDUL: {title} KONTEN: {konten_asli[:3000]}"
+        completion = client.chat.completions.create(
+            model="llama-3.3-70b-versatile",
+            messages=[{"role": "user", "content": prompt}],
+            temperature=0.8,
+            max_tokens=1200
+        )
+        hasil = completion.choices[0].message.content
+        return hasil, soup
+    except Exception as e:
+        print(f"Error Groq: {e}")
+        return f"<p>{konten_asli[:500]}...</p>", soup
+
+# --- FUNGSI: GENERATE HALAMAN HTML DARI JSON ---
 def generate_article_page(article):
     os.makedirs("public/berita", exist_ok=True)
     body_html = markdown.markdown(article.get('body', ''), extensions=['extra'])
@@ -130,15 +148,12 @@ def generate_article_page(article):
     with open(f"public/berita/{article['slug']}.html", 'w', encoding='utf-8') as f:
         f.write(html_content)
 
-
 def main():
     semua_post = get_existing_posts()
     jumlah_baru = 0
     jumlah_update = 0
     total_proses = 0
     BATAS_BERITA_BARU = 5
-
-    print(f"Target: Maks {BATAS_BERITA_BARU} berita baru per run")
 
     for sumber in sumber_rss:
         if total_proses >= MAX_BERITA_PER_RUN: break
@@ -149,55 +164,37 @@ def main():
 
             for item in soup.find_all('item')[:3]:
                 if total_proses >= MAX_BERITA_PER_RUN: break
-
                 title = item.find('title').get_text(strip=True)
                 link = item.find('link').get_text(strip=True)
                 slug = buat_slug(title)
-                is_baru = slug not in semua_post
-
-                if is_baru and jumlah_baru >= BATAS_BERITA_BARU:
-                    print(f" -> Skip: Batas 5 berita baru tercapai. {title}")
-                    continue
 
                 body, soup_artikel = rewrite_with_groq(title, link, sumber['media'])
                 img_url = ambil_gambar_asli(soup_artikel)
 
                 berita_data = {
-                    "title": title,
-                    "slug": slug,
-                    "kategori": "Berita",
+                    "title": title, "slug": slug, "kategori": "Berita",
                     "date": datetime.now().strftime("%Y-%m-%dT%H:%M:%S+07:00"),
-                    "image": img_url,
-                    "body": body,
-                    "source_name": get_nama_media(link),
-                    "source_url": link
+                    "image": img_url, "body": body,
+                    "source_name": get_nama_media(link), "source_url": link
                 }
 
-                if slug in semua_post:
-                    jumlah_update += 1
-                    print(f" -> Update: {title}")
-                else:
-                    jumlah_baru += 1
-                    print(f" -> Baru: {title} [{jumlah_baru}/{BATAS_BERITA_BARU}]")
+                if slug in semua_post: jumlah_update += 1
+                else: jumlah_baru += 1
 
                 semua_post[slug] = berita_data
                 save_berita(berita_data)
                 total_proses += 1
                 time.sleep(10)
-
         except Exception as e:
             print(f"Error di {sumber['media']}: {e}")
 
     update_posts_js(semua_post)
 
-    # --- TAMBAHKAN INI DI AKHIR ---
-    # GENERATE ULANG SEMUA HALAMAN BERITA DARI JSON
     print("=== GENERATE SEMUA HALAMAN HTML ===")
     for slug, article in semua_post.items():
         generate_article_page(article)
-    # --- SELESAI ---
 
-    print(f"Selesai! Baru: {jumlah_baru}, Update: {jumlah_update}, Total diproses: {total_proses}")
+    print(f"Selesai! Baru: {jumlah_baru}, Update: {jumlah_update}")
 
 if __name__ == "__main__":
     main()
