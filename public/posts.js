@@ -1,10 +1,8 @@
 [
-  "/berita/as-batal-serang-iran-kekurangan-rudal-atau-bersiap-mundur-israel-ketar-ketir-sen.html",
-  "/berita/diversifikasi-jadi-strategi-pelaku-industri-kuliner-perluas-pasar.html",
-  "/berita/banyak-sd-negeri-di-yogya-kekurangan-murid-wamendikdasmen-ungkap-penyebabnya.html",
-  "/berita/indonesia-tertinggal-0-2-pada-babak-pertama-garuda-kesulitan-tembus-pertahanan-r.html",
+  "/berita/john-herdman-akui-kerapatan-formasi-timnas-indonesia-harus-diperbaiki-usai-dikal.html",
+  "/berita/tim-peneliti-uai-sosialisasi-program-bestari-saintek-2026-ke-pesantren.html",
+  "/berita/prabowo-sambut-rute-baru-penerbangan-langsung-indonesia-thailand.html",
   "/berita/tempat-hiburan-malam-di-cirebon-dirazia-pengunjung-dan-lc-dites-urine-petugas-te.html",
-  "/berita/peluncuran-buku-jurnalisme-filantropi-di-milad-lazismu-perkuat-peran-media-untuk.html",
   "/berita/timnas-indonesia-hadapi-Vietnam-malam-ini.html",
   "/berita/tim-basket-3x3-putra-targetkan-empat-besar-di-asian-games-2026.html",
   "/berita/rupiah-berpotensi-menguat-hari-ini.html",
