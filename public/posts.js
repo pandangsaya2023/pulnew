@@ -1,5 +1,4 @@
 [
-  "/berita/geger-keracunan-mbg-bgn-pecat-137-kepala-dapur.html",
   "/berita/as-batal-serang-iran-kekurangan-rudal-atau-bersiap-mundur-israel-ketar-ketir-sen.html",
   "/berita/diversifikasi-jadi-strategi-pelaku-industri-kuliner-perluas-pasar.html",
   "/berita/banyak-sd-negeri-di-yogya-kekurangan-murid-wamendikdasmen-ungkap-penyebabnya.html",
