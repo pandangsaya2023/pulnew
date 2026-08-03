@@ -74,12 +74,12 @@ def save_berita(data):
     print(f"✅ Disimpan/Ditimpa: {nama_file}")
 
 # --- FUNGSI: UPDATE posts.js ---
+
 def update_posts_js(all_posts):
-    urls = [f"/posts/{slug}.json" for slug in all_posts.keys()]
-    urls.sort(key=lambda x: all_posts[x.split('/')[-1].replace('.json','')].get('date',''), reverse=True)
+    urls = [f"/berita/{slug}.html" for slug in all_posts.keys()] # <--- UBAH INI
+    urls.sort(key=lambda x: all_posts[x.split('/')[-1].replace('.html','')].get('date',''), reverse=True)
     with open(POSTS_JS_PATH, 'w', encoding='utf-8') as f:
         json.dump(urls, f, ensure_ascii=False, indent=2)
-    print(f"✅ posts.js diupdate. Total {len(urls)} berita")
 
 # --- FUNGSI: AMBIL KONTEN + GAMBAR ---
 def ambil_konten_berita(url):
