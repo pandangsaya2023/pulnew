@@ -1,5 +1,8 @@
 [
   "/berita/geger-keracunan-mbg-bgn-pecat-137-kepala-dapur.html",
+  "/berita/as-batal-serang-iran-kekurangan-rudal-atau-bersiap-mundur-israel-ketar-ketir-sen.html",
+  "/berita/diversifikasi-jadi-strategi-pelaku-industri-kuliner-perluas-pasar.html",
+  "/berita/banyak-sd-negeri-di-yogya-kekurangan-murid-wamendikdasmen-ungkap-penyebabnya.html",
   "/berita/indonesia-tertinggal-0-2-pada-babak-pertama-garuda-kesulitan-tembus-pertahanan-r.html",
   "/berita/tempat-hiburan-malam-di-cirebon-dirazia-pengunjung-dan-lc-dites-urine-petugas-te.html",
   "/berita/peluncuran-buku-jurnalisme-filantropi-di-milad-lazismu-perkuat-peran-media-untuk.html",
