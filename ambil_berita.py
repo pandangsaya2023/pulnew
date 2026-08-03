@@ -87,6 +87,49 @@ def get_existing_posts():
 
 #... SISA FUNGSI KAMU TETAP SAMA...
 # prompt_rewrite_umum, buat_slug, save_berita, update_posts_js, dll
+# --- FUNGSI: BIKIN SLUG BERSIH ---
+def buat_slug(judul):
+    slug = re.sub(r'[^\w\s-]', '', judul.lower()).strip()
+    slug = re.sub(r'\s+', '-', slug)
+    slug = slug.strip('-')[:80]
+    return slug if slug else f"berita-{int(time.time())}"
+
+# --- FUNGSI: UPDATE posts.js ---
+def update_posts_js(all_posts):
+    urls = [f"/posts/{slug}.json" for slug in all_posts.keys()]
+    # sort berdasarkan tanggal paling baru
+    urls.sort(key=lambda x: all_posts[x.split('/')[-1].replace('.json','')].get('date',''), reverse=True)
+    with open(POSTS_JS_PATH, 'w', encoding='utf-8') as f:
+        json.dump(urls, f, ensure_ascii=False, indent=2)
+    print(f"✅ posts.js diupdate. Total {len(urls)} berita")
+
+# --- FUNGSI BARU: GENERATE HALAMAN HTML ---
+def generate_article_page(article):
+    os.makedirs("public/berita", exist_ok=True)
+    body_html = markdown.markdown(article.get('body', ''), extensions=['extra'])
+    html_content = f"""<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>{article['title']} - PULNEW</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<div class="container">
+<h1>{article['title']}</h1>
+<p class="meta">{article['date']} | {article['kategori']}</p>
+<img src="{article.get('image','')}" alt="{article['title']}" class="featured-img">
+<div class="article-content">
+{body_html}
+</div>
+<p class="source">Sumber: <a href="{article.get('source_url','#')}">{article.get('source_name','')}</a></p>
+</div>
+</body>
+</html>"""
+    with open(f"public/berita/{article['slug']}.html", 'w', encoding='utf-8') as f:
+        f.write(html_content)
+
 
 def main():
     semua_post = get_existing_posts()
