@@ -1,8 +1,5 @@
 [
   "/posts/geger-keracunan-mbg-bgn-pecat-137-kepala-dapur.json",
-  "/posts/pemerintah-bangun-pelindungan-total-bagi-pekerja-migran-bpjs-kesehatan-jadi-gard.json",
-  "/posts/republika-academy-sukses-menggelar-pelatihan-kehumasan-di-kemen-ham.json",
-  "/posts/spg-giias-korban-konten-kreator-didorong-lapor-polisi.json",
   "/posts/timnas-indonesia-hadapi-Vietnam-malam-ini.json",
   "/posts/tim-basket-3x3-putra-targetkan-empat-besar-di-asian-games-2026.json",
   "/posts/rupiah-berpotensi-menguat-hari-ini.json",
