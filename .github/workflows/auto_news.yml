@@ -16,7 +16,7 @@ jobs:
       - name: Menyiapkan Python & Dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install feedparser request pyyaml beautifulsoup4 markdown
+          pip install feedparser requests pyyaml beautifulsoup4 markdown
           pip install requests beautifulsoup4 groq
           pip install requests openai beautifulsoup4 lxml
 
