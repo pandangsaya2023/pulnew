@@ -8,7 +8,7 @@
   "/posts/warisan-ilmu-yang-mengubah-peradaban-dunia.json",
   "/posts/status-uda-di-situs-resmi-banpt-dan-pddikti-kemendiktisaintek.json",
   "/posts/persiapkan-karir-sebelum-pendidikan-selesai.json",
-  "/posts/pemerintah-siapkan-investasi-untuk-pulihkan-kapasitas-pltp-sar.json",
+  "/posts/produksi-pltp-sarulla-akan-dipulihkan.json",
   "/posts/solusi-cantik-tanpa-bedah-plastik.json",
   "/posts/seleksi-oscar-indonesia-2026-resmi-dibuka.json",
   "/posts/tukin-di-lingkungan-tni-dan-kemenhan.json",
