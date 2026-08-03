@@ -1,11 +1,9 @@
 [
+  "/posts/bangun-kemerdekaan-energi-dari-atap-masjid-green-waqf-berpeluang-dorong-100-gw-i.json",
+  "/posts/trump-batal-serang-iran-rupiah-berpotensi-menguat-hari-ini.json",
+  "/posts/ketika-yang-hijau-akhirnya-menjadi-jerami.json",
   "/posts/buronan-bank-sumut-diciduk-di-jakarta.json",
-  "/posts/mazda-perbarui-suv-andalan-cx-5-hadir-dengan-kabin-lapang-dan-fitur-lebih-modern.json",
-  "/posts/ikn-jadi-percontohan-rehabilitasi-mangrove-program-m4cr.json",
-  "/posts/menu-nasi-tahu-telur-kecap-mbg-bikin-690-siswa-smkn-6-semarang-keracunan.json",
-  "/posts/kapal-motor-penumpang-mutiara-sentosa-2-terbakar-di-perairan-sumenep.json",
-  "/posts/suzuki-target-pertahankan-pangsa-pasar-suzuki-fronx-di-tengah-gempuran-merek-bar.json",
-  "/posts/masa-reses-legislator-himpun-masukan-warga-terkait-infrastruktur-dan-ketahanan-p.json",
+  "/posts/suzuki-target-pertahankan-pangsa-pasar-suzuki-fronx.json",
   "/posts/strategi-finansial-mahasiswa-pekerja.json",
   "/posts/warisan-ilmu-yang-mengubah-peradaban-dunia.json",
   "/posts/status-uda-di-situs-resmi-banpt-dan-pddikti-kemendiktisaintek.json",
@@ -45,5 +43,11 @@
   "/posts/pertamina-patra-niaga-perkuat-edukasi-lingkungan.json",
   "/posts/pertamina-dan-itdc-dukung-peɓalap-tanah-air.json",
   "/posts/skema-jual-putus-dominasi-transaksi-barang-mewah.json",
-  "/posts/forkom-sp-dan-sekar-bumn-gelar-rapat.json"
+  "/posts/forkom-sp-dan-sekar-bumn-gelar-rapat.json",
+  "/posts/mazda-perbarui-suv-andalan-cx-5-hadir-dengan-kabin-lapang-dan-fitur-lebih-modern.json",
+  "/posts/ikn-jadi-percontohan-rehabilitasi-mangrove-program-m4cr.json",
+  "/posts/menu-nasi-tahu-telur-kecap-mbg-bikin-690-siswa-smkn-6-semarang-keracunan.json",
+  "/posts/kapal-motor-penumpang-mutiara-sentosa-2-terbakar-di-perairan-sumenep.json",
+  "/posts/suzuki-target-pertahankan-pangsa-pasar-suzuki-fronx-di-tengah-gempuran-merek-bar.json",
+  "/posts/masa-reses-legislator-himpun-masukan-warga-terkait-infrastruktur-dan-ketahanan-p.json"
 ]
