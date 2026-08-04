@@ -432,6 +432,15 @@ async function muatHalamanBerita() {
             ${sourceBox}
         `;
 
+        const related = posts.filter(p => p.slug!== post.slug).slice(0, 5);
+        if (related.length > 0) {
+            html += `<div class="related-section"><div class="section-title">Berita Lainnya</div>`;
+            related.forEach(r => {
+                html += `<a href="/berita.html?slug=${r.slug}" class="related-item"><img src="${r.image || r.thumbnail || '/media/og-default.jpg'}" alt="${r.title}"><h4>${r.title}</h4></a>`;
+            });
+            html += `</div>`;
+        }
+
         contentArea.innerHTML = html;
         document.getElementById('running-text').textContent = `INFO NEWS: ${post.title} | PULNEW.com`;
 
