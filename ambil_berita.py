@@ -106,41 +106,44 @@ def ambil_gambar_asli(soup):
 def rewrite_with_groq(title, link, media):
     konten_asli, soup = ambil_konten_berita(link)
     if not GROQ_API_KEY or not konten_asli or len(konten_asli) < 150:
-        return format_ke_html(f"Baca selengkapnya di {media}"), soup
+        return format_ke_html(f"Baca selengkapnya di {media}"), soup, title # return 3
+
     try:
-        prompt = f"""
-        Kamu adalah editor berita online profesional di Indonesia.
+        prompt = f"""Kamu adalah Editor Senior PULNEW.com.
 
-        TUGAS: Tulis ulang berita di bawah ini dengan gaya penulisan wartawan media online Indonesia.
-        Harus netral, faktual, dan runtut seperti di kompas/detik/tribun.
+TUGAS: Tulis ulang berita di bawah ini dengan gaya wartawan media online Indonesia. Netral, faktual.
 
-        ATURAN WAJIB:
-        1. STRUKTUR: Judul > Lead/teras > Isi berita piramida terbalik
-        2. PARAFRASE TOTAL: Ubah semua kalimat. Jangan ada 1 kalimat pun yang sama persis. Acak urutan paragraf.
-        3. FAKTA WAJIB SAMA: Nama orang, tempat, angka, tanggal, waktu, data, kutipan TIDAK BOLEH diubah.
-        4. DIKSI: Gunakan sinonim. Ganti "mengatakan" jadi "ungkap".
-        5. GAYA: Bahasa Indonesia baku, to the point.
-        6. PANJANG: Sama atau sedikit lebih pendek.
-        7. OUTPUT: Kembalikan dalam format JSON: {{"judul": "...", "isi": "...", "lead": "..."}}
-        JANGAN tambah pembuka.
+ATURAN WAJIB:
+1. STRUKTUR: Judul > Lead/teras > Isi piramida terbalik
+2. PARAFRASE TOTAL: Ubah semua kalimat. Jangan ada 1 kalimat pun sama persis. Acak urutan.
+3. FAKTA WAJIB SAMA: Nama, tempat, angka, tanggal, waktu, data, kutipan TIDAK BOLEH diubah.
+4. DIKSI: Gunakan sinonim. "mengatakan" -> "ungkap"
+5. OUTPUT: Kembalikan HANYA JSON valid: {{"judul": "...", "isi": "...", "lead": "..."}}
 
-        BERITA SUMBER:
-        Judul: {judul_asli}
-        Isi: {isi_asli}
-        Sumber: {link_sumber}
-        
+BERITA SUMBER:
+Judul: {title}
+Isi: {konten_asli}
+Sumber: {link}
+""" # <--- ini yg ketinggalan
+
         completion = client.chat.completions.create(
             model="llama-3.3-70b-versatile",
             messages=[{"role": "user", "content": prompt}],
-            temperature=0.8,
-            max_tokens=1200
+            temperature=0.7,
+            response_format={"type": "json_object"} # paksa JSON
         )
-        hasil = completion.choices[0].message.content
-        return hasil, soup
+
+        hasil_json = json.loads(completion.choices[0].message.content)
+
+        judul_baru = hasil_json.get('judul', title)
+        isi_baru = format_ke_html(hasil_json.get('isi', konten_asli))
+
+        return isi_baru, soup, judul_baru # return 3 biar judul juga keupdate
+
     except Exception as e:
         print(f"Error Groq: {e}")
-        return f"<p>{konten_asli[:500]}...</p>", soup
-
+        return format_ke_html(konten_asli[:500] + "..."), soup, title
+        
 # --- FUNGSI: GENERATE HALAMAN HTML DARI JSON ---
 def generate_article_page(article):
     os.makedirs("public/berita", exist_ok=True)
@@ -188,11 +191,12 @@ def main():
                 link = item.find('link').get_text(strip=True)
                 slug = buat_slug(title)
 
-                body, soup_artikel = rewrite_with_groq(title, link, sumber['media'])
+                body, soup_artikel, judul_baru = rewrite_with_groq(title, link, sumber['media'])
+                slug= buat_slug(judul_baru)
                 img_url = ambil_gambar_asli(soup_artikel)
 
                 berita_data = {
-                    "title": title, "slug": slug, "kategori": "Berita",
+                    "title": judul_baru, "slug": slug, "kategori": "Berita",
                     "date": datetime.now().strftime("%Y-%m-%dT%H:%M:%S+07:00"),
                     "image": img_url, "body": body,
                     "source_name": get_nama_media(link), "source_url": link
