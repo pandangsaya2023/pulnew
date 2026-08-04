@@ -1,4 +1,7 @@
 [
+  "/berita/mata-tak-berkedip-di-pintu-negeri.html",
+  "/berita/generasi-z-sulit-punya-rumah-ini-solusi-yang-ditawarkan-danantara.html",
+  "/berita/penataan-sungai-code-bergerak-ke-selatan-sorosutan-jadi-sasaran-berikutnya.html",
   "/berita/petugas-dan-warga-bahu-membahu-padamkan-karhutla-di-ogan-ilir.html",
   "/berita/bea-cukai-jambi-amankan-ribuan-bungkus-rokok-ilegal-pelaku-bayar-denda-rp-250-ju.html",
   "/berita/tak-banyak-yang-tahu-surga-bahari-indonesia-ini-punya-tornado-barakuda-yang-lang.html",
