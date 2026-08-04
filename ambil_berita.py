@@ -106,43 +106,45 @@ def ambil_gambar_asli(soup):
 def rewrite_with_groq(title, link, media):
     konten_asli, soup = ambil_konten_berita(link)
     if not GROQ_API_KEY or not konten_asli or len(konten_asli) < 150:
-        return format_ke_html(f"Baca selengkapnya di {media}"), soup, title # return 3
+        return format_ke_html(f"Baca selengkapnya di {media}"), soup, title
 
     try:
-        prompt = f"""Kamu adalah Editor Senior PULNEW.com.
+        prompt = f"""Kamu adalah Editor Senior PULNEW.com. Tugasmu PARAFRASE TOTAL berita.
 
-TUGAS: Tulis ulang berita di bawah ini dengan gaya wartawan media online Indonesia. Netral, faktual.
+PERATURAN SANGAT KETAT - WAJIB DITAATI:
+1. DILARANG KERAS: Menyalin 1 kalimat pun dari teks sumber. Semua kalimat WAJIB ditulis ulang 100% dengan kata-kata berbeda.
+2. ACAK STRUKTUR: Ubah urutan informasi. Paragraf ke-3 di sumber boleh jadi paragraf ke-1 di hasil.
+3. GANTI DIKSI: "mengatakan" -> "ungkap", "beber", "tegas". "kemudian" -> "setelah itu". Jangan pake kata yg sama.
+4. FAKTA WAJIB PERTAHANKAN: Nama orang, nama tempat, angka, tanggal, jam, data statistik TIDAK BOLEH BERUBAH 1 ANGKA PUN.
+5. GAYA: Tulis seperti wartawan Detik/Kompas. Netral, to the point, piramida terbalik.
+6. OUTPUT: Kembalikan HANYA JSON valid tanpa teks lain: {{"judul": "judul baru 100% beda", "isi": "isi sudah diparafrase total", "lead": "ringkasan 2 kalimat"}}
 
-ATURAN WAJIB:
-1. STRUKTUR: Judul > Lead/teras > Isi piramida terbalik
-2. PARAFRASE TOTAL: Ubah semua kalimat. Jangan ada 1 kalimat pun sama persis. Acak urutan.
-3. FAKTA WAJIB SAMA: Nama, tempat, angka, tanggal, waktu, data, kutipan TIDAK BOLEH diubah.
-4. DIKSI: Gunakan sinonim. "mengatakan" -> "ungkap"
-5. OUTPUT: Kembalikan HANYA JSON valid: {{"judul": "...", "isi": "...", "lead": "..."}}
-
-BERITA SUMBER:
-Judul: {title}
-Isi: {konten_asli}
+TEKS SUMBER UNTUK DIPARAFRASE:
+Judul Asli: {title}
+Isi Asli: {konten_asli[:5000]}
 Sumber: {link}
-""" # <--- ini yg ketinggalan
+"""
 
         completion = client.chat.completions.create(
             model="llama-3.3-70b-versatile",
             messages=[{"role": "user", "content": prompt}],
-            temperature=0.7,
-            response_format={"type": "json_object"} # paksa JSON
+            temperature=0.9, # <--- NAIKIN INI BIAR LEBIH KREATIF. Dulu 0.7
+            max_tokens=1500,
+            response_format={"type": "json_object"}
         )
 
         hasil_json = json.loads(completion.choices[0].message.content)
 
-        judul_baru = hasil_json.get('judul', title)
+        judul_baru = hasil_json.get('judul', title + " - Update")
         isi_baru = format_ke_html(hasil_json.get('isi', konten_asli))
+        lead_baru = hasil_json.get('lead', '')
 
-        return isi_baru, soup, judul_baru # return 3 biar judul juga keupdate
+        print(f"Berhasil Rewrite: {title[:30]}... -> {judul_baru[:30]}...") # buat debug
+        return isi_baru, soup, judul_baru, lead_baru
 
     except Exception as e:
         print(f"Error Groq: {e}")
-        return format_ke_html(konten_asli[:500] + "..."), soup, title
+        return format_ke_html(konten_asli[:500] + "..."), soup, title, ""
         
 # --- FUNGSI: GENERATE HALAMAN HTML DARI JSON ---
 def generate_article_page(article):
