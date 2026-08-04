@@ -193,12 +193,12 @@ def main():
                 link = item.find('link').get_text(strip=True)
                 slug = buat_slug(title)
 
-                body, soup_artikel, judul_baru = rewrite_with_groq(title, link, sumber['media'])
+                body, soup_artikel, judul_baru, lead_baru = rewrite_with_groq(title, link, sumber['media'])
                 slug= buat_slug(judul_baru)
                 img_url = ambil_gambar_asli(soup_artikel)
 
                 berita_data = {
-                    "title": judul_baru, "slug": slug, "kategori": "Berita",
+                    "title": judul_baru, "slug": slug, "lead": lead_baru, "kategori": "Berita",
                     "date": datetime.now().strftime("%Y-%m-%dT%H:%M:%S+07:00"),
                     "image": img_url, "body": body,
                     "source_name": get_nama_media(link), "source_url": link
