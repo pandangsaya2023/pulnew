@@ -1,7 +1,9 @@
 [
-  "/berita/ajax-resmi-pinjam-marc-andre-ter-stegen-dari-barcelona.html",
-  "/berita/ojk-cirebon-bantu-petambak-garam-akses-pembiayaan-sesuai-musim-panen.html",
-  "/berita/ojk-terima-343-konsultasi-calon-peserta-regulatory-sandbox-hingga-juli-2026.html",
+  "/berita/waspada-penipuan-orderkuota-tegaskan-kontak-whatsapp-cs-di-google-itu-palsu.html",
+  "/berita/dukung-pendidikan-berkualitas-gagas-program-inventarisasi-sekolah-3t.html",
+  "/berita/kai-pastikan-data-digital-pelanggan-aman-dengan-standar-iso-27001.html",
+  "/berita/ojk-cirebon-bantu-petambak-garam-akses-pembiayaan.html",
+  "/berita/marc-andre-ter-stegen-resmi-dipinjam-ajax.html",
   "/berita/taspen-serahkan-manfaat-tht-dan-jkk-petugas-damkar-yang-gugur.html",
   "/berita/alwi-farhan-bertekad-habis-habisan-di-kejuaraan-dunia-bwf-2026.html",
   "/berita/kpk-geledah-kantor-imigrasi-jakarta-selatan.html",
