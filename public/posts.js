@@ -1,4 +1,7 @@
 [
+  "/berita/pemkab-aceh-barat-ajukan-tiga-lokasi-pembangunan-kampung-nelayan-merah-putih.html",
+  "/berita/timnas-u18-putri-siap-tampil-di-srikandi-merdeka-cup-2026.html",
+  "/berita/kaltara-dorong-investasi-di-apindo-expo-2026-fokus-pada-hilirisasi-dan-energi-hi.html",
   "/berita/waspada-penipuan-orderkuota-tegaskan-kontak-whatsapp-cs-di-google-itu-palsu.html",
   "/berita/dukung-pendidikan-berkualitas-gagas-program-inventarisasi-sekolah-3t.html",
   "/berita/kai-pastikan-data-digital-pelanggan-aman-dengan-standar-iso-27001.html",
