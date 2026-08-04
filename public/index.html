@@ -342,9 +342,19 @@
     const kategoriWarna = { 'NASIONAL': '#1a237e', 'POLITIK': '#1a237e', 'EKONOMI': '#f57c00', 'TEKNOLOGI': '#0288d1', 'PENDIDIKAN': '#2e7d32', 'HUKUM': '#6a1b9a', 'HIBURAN': '#d32f2f', 'OLAHRAGA': '#d32f2f', 'KESEHATAN': '#009688', 'BERITA': '#d32f2f' };
 
     async function fetchPosts() {
-        const res = await fetch('/api/posts?t=' + Date.now() + '&r=' + Math.random(), { cache: 'no-store' });
-        const data = await res.json();
-        return Array.isArray(data)? data : data.urls;
+    // 1. Ambil daftar file dari index.json dulu
+    const resIndex = await fetch(`/posts/index.json?t=` + Date.now(), { cache: 'no-store' });
+    if (!resIndex.ok) return []; // kalau index.json belum ada
+    
+    const fileList = await resIndex.json(); // ["nama1.json", "nama2.json"]
+    
+    // 2. Ambil isi tiap file .json nya
+    const promises = fileList.map(file => 
+        fetch(`/posts/${file}?t=` + Date.now()).then(r => r.json()).catch(() => null)
+    );
+    
+    const posts = await Promise.all(promises);
+    return posts.filter(Boolean); // buang yg null/error
     }
         
     async function fetchPostDetail(url) {
