@@ -108,7 +108,27 @@ def rewrite_with_groq(title, link, media):
     if not GROQ_API_KEY or not konten_asli or len(konten_asli) < 150:
         return format_ke_html(f"Baca selengkapnya di {media}"), soup
     try:
-        prompt = f"Kamu adalah Editor Senior PULNEW.com. Tulis ulang berita ini jadi 3 paragraf 500-600 kata. Gunakan tag <p> dan <h2>. JANGAN TULIS SUMBER. JUDUL: {title} KONTEN: {konten_asli[:3000]}"
+        prompt = f"""
+        Kamu adalah editor berita online profesional di Indonesia.
+
+        TUGAS: Tulis ulang berita di bawah ini dengan gaya penulisan wartawan media online Indonesia.
+        Harus netral, faktual, dan runtut seperti di kompas/detik/tribun.
+
+        ATURAN WAJIB:
+        1. STRUKTUR: Judul > Lead/teras > Isi berita piramida terbalik
+        2. PARAFRASE TOTAL: Ubah semua kalimat. Jangan ada 1 kalimat pun yang sama persis. Acak urutan paragraf.
+        3. FAKTA WAJIB SAMA: Nama orang, tempat, angka, tanggal, waktu, data, kutipan TIDAK BOLEH diubah.
+        4. DIKSI: Gunakan sinonim. Ganti "mengatakan" jadi "ungkap".
+        5. GAYA: Bahasa Indonesia baku, to the point.
+        6. PANJANG: Sama atau sedikit lebih pendek.
+        7. OUTPUT: Kembalikan dalam format JSON: {{"judul": "...", "isi": "...", "lead": "..."}}
+        JANGAN tambah pembuka.
+
+        BERITA SUMBER:
+        Judul: {judul_asli}
+        Isi: {isi_asli}
+        Sumber: {link_sumber}
+        
         completion = client.chat.completions.create(
             model="llama-3.3-70b-versatile",
             messages=[{"role": "user", "content": prompt}],
