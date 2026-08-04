@@ -1,4 +1,8 @@
 [
+  "/berita/phk-di-jateng-tembus-6604-orang-hingga-juli-2026-industri-garmen-dan-tekstil-pal.html",
+  "/berita/putri-kw-fokus-benahi-mental-demi-raih-prestasi-di-kejuaraan-dunia-2026-di-india.html",
+  "/berita/pmi-manufaktur-kembali-ke-zona-ekspansi-kadin-pemulihan-belum-solid.html",
+  "/berita/manual-tes-tulis-html-9438.html",
   "/berita/feb-umj-jadi-pusat-pertemuan-akademisi-ekonomi-melalui-kongres-afeb-ptma-2026.html",
   "/berita/kortastipidkor-polri-siap-hadapi-gugatan-praperadilan-eks-jampidsus.html",
   "/berita/menko-ahy-kawasan-transmigrasi-harus-punya-daya-tarik-investasi-dan-ekonomi-berk.html",
