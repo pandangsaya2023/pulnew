@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Pulnew v4.0 - Ada Jadwal</title>
+<style>
+  :root{--primary:#0d6efd;--bg:#f8f9fa;--card:#fff;--border:#dee2e6}
+  body{font-family:system-ui,-apple-system,sans-serif;background:var(--bg);margin:0;padding:20px}
+ .container{max-width:900px;margin:auto}
+ .card{background:var(--card);padding:25px;border-radius:10px;box-shadow:0 2px 10px rgba(0,0,0,0.05);margin-bottom:20px}
+  h2{margin-top:0;color:var(--primary)}
+  input,textarea,select{width:100%;padding:10px;margin:8px 0 15px;border:1px solid var(--border);border-radius:5px;box-sizing:border-box;font-size:15px}
+  textarea{min-height:250px;font-family:monospace}
+  button{background:var(--primary);color:white;border:none;padding:12px 20px;border-radius:5px;cursor:pointer;font-weight:bold;font-size:15px}
+  button:hover{opacity:0.9}
+ .info{background:#e7f1ff;border-left:4px solid var(--primary);padding:15px;border-radius:5px;margin-bottom:20px}
+  #previewImg{max-width:100%;max-height:200px;margin-top:10px;border-radius:5px;display:none}
+ .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:15px}
+  code{background:#eee;padding:2px 6px;border-radius:3px}
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="card">
+    <h2>📝 Admin Pulnew - Tulis Berita + Jadwal Tayang</h2>
+    <div class="info">
+      <b>Tips:</b> Kosongkan "Jadwal Tayang" kalau mau langsung publish. Isi kalau mau dijadwalin.
+    </div>
+
+    <form id="formBerita">
+      <label>Judul Berita</label>
+      <input type="text" id="title" required>
+
+      <div class="grid-2">
+        <div>
+          <label>Kategori</label>
+          <select id="kategori">
+            <option>NASIONAL</option><option>DAERAH</option><option>EKONOMI</option><option>OLAHRAGA</option><option>TEKNOLOGI</option><option>INTERNASIONAL</option>
+          </select>
+        </div>
+        <div>
+          <label>Jadwal Tayang. Kosongkan = Langsung</label>
+          <input type="datetime-local" id="publish_date">
+        </div>
+      </div>
+
+      <label>Upload Gambar Thumbnail</label>
+      <input type="file" id="imageUpload" accept="image/*" required>
+      <img id="previewImg">
+
+      <label>Isi Berita</label>
+      <textarea id="body" placeholder="<p>Paragraf 1</p>" required></textarea>
+
+      <label>Nama Sumber</label>
+      <input type="text" id="source_name" value="Tim Redaksi Pulnew">
+
+      <button type="submit">Generate 2 File: JSON + Gambar</button>
+    </form>
+  </div>
+
+  <div class="card">
+    <h2>⚙️ Langkah 2: Update posts.js Otomatis</h2>
+    <textarea id="outputJs" readonly rows="5"></textarea>
+    <button onclick="copyJs()">Copy Kode</button>
+  </div>
+
+</div>
+
+<script>
+let manualPosts = [];
+let imageFile = null;
+let imageName = '';
+
+document.getElementById('imageUpload').addEventListener('change', function(e){
+    imageFile = e.target.files[0];
+    if(imageFile){
+        const reader = new FileReader();
+        reader.onload = function(event){
+            document.getElementById('previewImg').src = event.target.result;
+            document.getElementById('previewImg').style.display = 'block';
+        }
+        reader.readAsDataURL(imageFile);
+    }
+});
+
+// Set default waktu ke waktu sekarang +07:00
+document.getElementById('publish_date').value = new Date().toISOString().slice(0,16);
+
+document.getElementById('formBerita').addEventListener('submit', async function(e){
+  e.preventDefault();
+  if(!imageFile){ alert('Upload gambar dulu bro!'); return; }
+
+  const title = document.getElementById('title').value;
+  const slugBase = title.toLowerCase().replace(/[^a-z0-9 ]/g,'').replace(/ /g,'-');
+  const slug = 'manual-' + slugBase + '-' + Date.now().toString().slice(-4);
+
+  imageName = slug + '.' + imageFile.name.split('.').pop();
+
+  // Ambil waktu dari input. Kalau kosong pakai waktu sekarang
+  let publishDate = document.getElementById('publish_date').value;
+  if(!publishDate){
+    publishDate = new Date().toISOString();
+  } else {
+    // Convert dari "2026-08-04T19:00" jadi ISO "2026-08-04T12:00:00.000Z"
+    publishDate = new Date(publishDate).toISOString();
+  }
+
+  const data = {
+    title: title,
+    slug: slug,
+    kategori: document.getElementById('kategori').value,
+    date: publishDate, // <-- INI WAKTUNYA UDAH BISA MANUAL
+    image: "/media/" + imageName,
+    body: document.getElementById('body').value,
+    source_name: document.getElementById('source_name').value,
+    source_url: "",
+    type: "manual"
+  };
+
+  // 1. Download JSON
+  downloadFile(new Blob([JSON.stringify(data, null, 2)]), slug + '.json');
+  // 2. Download Gambar
+  downloadFile(imageFile, imageName);
+
+  // 3. Update posts.js
+  manualPosts.unshift(`/berita/${slug}.html`);
+  let existingPosts = [];
+  try{
+    const res = await fetch('/posts.js?t='+Date.now());
+    const text = await res.text();
+    existingPosts = JSON.parse(text.replace('const postsData = ', '').replace(';',''));
+  }catch(e){}
+  const allPosts = [...new Set([...manualPosts,...existingPosts])];
+  document.getElementById('outputJs').value = `const postsData = ${JSON.stringify(allPosts, null, 2)};`;
+
+  alert('SUKSES! \n1. Download 2 file\n2. Copy kode posts.js\n3. Upload ke /posts dan /media lalu Run Workflow');
+});
+
+function downloadFile(blob, name){
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = name;
+    a.click();
+}
+function copyJs(){
+  document.getElementById('outputJs').select();
+  document.execCommand('copy');
+  alert('Kode sudah di copy!');
+}
+</script>
+</body>
+</html>
