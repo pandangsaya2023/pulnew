@@ -31,3 +31,20 @@ collections:
       - {label: "Per Kategori", field: "kategori"}
     sort: "date"
     sort_direction: "descending"
+
+  - name: "index" # INI BUAT NGATUR INDEX.JSON
+    label: "Daftar Berita"
+    description: "Atur urutan berita di beranda & berita lainnya"
+    files:
+      - label: "Index Berita"
+        name: "index"
+        file: "public/posts/index.json"  # sesuaikan sama folder posts kamu
+        fields:
+            - label: "Daftar File Berita"
+              name: "files"
+              widget: "list"
+              field: 
+                  label: Nama File JSON
+                  name: file
+                  widget: "string"
+                  hint: "Contoh: judul-berita-05-08-2026.json"
