@@ -1,4 +1,7 @@
 [
+  "/berita/kaltara-dorong-investasi-pada-ajang-apindo-expo-2026.html",
+  "/berita/hilirisasi-sawit-jadi-kunci-meningkatkan-ekspor-indonesia.html",
+  "/berita/ojk-klariifikasi-laporan-keuangan-2025-bukan-defisit-anggaran.html",
   "/berita/ojk-cirebon-bantu-petambak-garam-akses-pembiayaan.html",
   "/berita/marc-andre-ter-stegen-resmi-dipinjam-ajax.html",
   "/berita/taspen-serahkan-manfaat-tht-dan-jkk-petugas-damkar-yang-gugur.html",
