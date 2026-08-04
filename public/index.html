@@ -392,22 +392,26 @@
         }
          
     function tampilkanBerita(posts) {
-        const container = document.getElementById('news-container');
-        if (posts.length === 0) { container.innerHTML = '<div style="text-align:center; padding:40px; color:#666;">Berita tidak ditemukan</div>'; return; }
-        let html = '';
-        const hero = posts[0];
-        const kategoriHero = hero.kategori || hero.category || 'BERITA';
-        const warnaHero = kategoriWarna[kategoriHero.toUpperCase()] || '#d32f2f';
-        html += `<a href="/berita.html?slug=${hero.slug}" class="news-hero"><img src="${hero.image}" alt="${hero.title}" loading="lazy"><div class="hero-content"><span class="badge" style="background: ${warnaHero}">${kategoriHero}</span><h2>${hero.title}</h2></div></a>`;
-        if (posts.length > 1) {
-            html += '<div class="news-grid">';
-            posts.slice(1, 5).forEach(post => {
-                const kategori = post.kategori || post.category || 'BERITA';
-                const warna = kategoriWarna[kategori.toUpperCase()] || '#d32f2f';
-                html += `<a href="/berita.html?slug=${post.slug}" class="news-card"><img src="${post.image}" alt="${post.title}" loading="lazy"><div class="card-content"><span class="badge" style="background: ${warna}">${kategori}</span><h3>${post.title}</h3></div></a>`;
-            });
-            html += '</div>';
-        }
+    const container = document.getElementById('berita-container');
+    if (!posts || posts.length === 0) {
+        container.innerHTML = '<div style="text-align:center; padding:40px;">Belum ada berita saat ini</div>';
+        return;
+    }
+
+    container.innerHTML = posts.map(p => `
+        <div class="card">
+            <a href="/berita.html?file=${p.slug}.json">
+                <img src="${p.image}" alt="${p.title}" loading="lazy">
+            </a>
+            <div class="card-body">
+                <span class="kategori">${p.kategori}</span>
+                <h3><a href="/berita.html?file=${p.slug}.json">${p.title}</a></h3>
+                <p>${p.body.substring(0,120)}...</p>
+                <small>${new Date(p.date).toLocaleDateString('id-ID')}</small>
+            </div>
+        </div>
+    `).join('');
+    }
         if (posts.length > 5) {
             html += '<h3 class="section-title">🔥 Trending Hari Ini</h3><div class="trending-list">';
             posts.slice(5, 10).forEach((post, index) => {
