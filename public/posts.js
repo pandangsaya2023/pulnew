@@ -1,10 +1,8 @@
-const postsData = [
-  "/berita/manual-tes-tulis-html-2669.html",
-  "/berita/mata-tak-berkedip-di-pintu-negeri.html",
-  "/berita/generasi-z-sulit-punya-rumah-ini-solusi-yang-ditawarkan-danantara.html",
-  "/berita/penataan-sungai-code-bergerak-ke-selatan-sorosutan-jadi-sasaran-berikutnya.html",
-  "/berita/petugas-dan-warga-bahu-membahu-padamkan-karhutla-di-ogan-ilir.html",
-  "/berita/bea-cukai-jambi-amankan-ribuan-bungkus-rokok-ilegal-pelaku-bayar-denda-rp-250-ju.html",
+[
+  "/berita/feb-umj-jadi-pusat-pertemuan-akademisi-ekonomi-melalui-kongres-afeb-ptma-2026.html",
+  "/berita/kortastipidkor-polri-siap-hadapi-gugatan-praperadilan-eks-jampidsus.html",
+  "/berita/menko-ahy-kawasan-transmigrasi-harus-punya-daya-tarik-investasi-dan-ekonomi-berk.html",
+  "/berita/geger-keracunan-mbg-bgn-pecat-137-kepala-dapur.html",
   "/berita/tak-banyak-yang-tahu-surga-bahari-indonesia-ini-punya-tornado-barakuda-yang-lang.html",
   "/berita/john-herdman-akui-kerapatan-formasi-timnas-indonesia-harus-diperbaiki.html",
   "/berita/prabowo-sambut-rute-baru-penerbangan-langsung-indonesia-thailand.html",
@@ -54,4 +52,4 @@ const postsData = [
   "/berita/pertamina-dan-itdc-dukung-peɓalap-tanah-air.html",
   "/berita/skema-jual-putus-dominasi-transaksi-barang-mewah.html",
   "/berita/forkom-sp-dan-sekar-bumn-gelar-rapat.html"
-];
+]
