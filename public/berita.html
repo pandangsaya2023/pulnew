@@ -401,6 +401,20 @@ async function muatHalamanBerita() {
         if(!res.ok) throw new Error("File JSON tidak ditemukan");
         const post = await res.json();
 
+
+        // 1. AMBIL BERITA UTAMA
+        const res = await fetch(`/posts/${slugTujuan}.json?t=` + Date.now(), { cache: 'no-store' });
+        if(!res.ok) throw new Error("File JSON tidak ditemukan");
+        const post = await res.json();
+
+        // 2. AMBIL SEMUA BERITA BUAT "BERITA LAINNYA" - TAMBAHAN INI
+        const resList = await fetch(`/posts/index.json?t=` + Date.now(), { cache: 'no-store' });
+        const fileList = await resList.json(); // isinya ["a.json", "b.json"]
+
+        const promises = fileList.map(f => fetch(`/posts/${f}`).then(r => r.json()));
+        const posts = await Promise.all(promises);
+        posts.sort((a, b) => new Date(b.date) - new Date(a.date));
+
         updateMetaTags(post);
 
         const tanggal = new Date(post.date || post.created_at).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit' });
@@ -432,14 +446,15 @@ async function muatHalamanBerita() {
             ${sourceBox}
         `;
 
-        //const related = posts.filter(p => p.slug!== post.slug).slice(0, 5);
-        //if (related.length > 0) {
-            //html += `<div class="related-section"><div class="section-title">Berita Lainnya</div>`;
-            //related.forEach(r => {
-                //html += `<a href="/berita.html?slug=${r.slug}" class="related-item"><img src="${r.image || r.thumbnail || '/media/og-default.jpg'}" alt="${r.title}"><h4>${r.title}</h4></a>`;
-            //});
-            //html += `</div>`;
-        //}
+        // 3. SISIPKAN BERITA LAINNYA DI SINI
+        const related = posts.filter(p => p.slug !== post.slug).slice(0, 5);
+        if (related.length > 0) {
+            html += `<div class="related-section"><div class="section-title">Berita Lainnya</div>`;
+            related.forEach(r => {
+                html += `<a href="/berita.html?slug=${r.slug}" class="related-item"><img src="${r.image || r.thumbnail || '/media/og-default.jpg'}" alt="${r.title}"><h4>${r.title}</h4></a>`;
+            });
+            html += `</div>`;
+        }
 
         contentArea.innerHTML = html;
         document.getElementById('running-text').textContent = `INFO NEWS: ${post.title} | PULNEW.com`;
