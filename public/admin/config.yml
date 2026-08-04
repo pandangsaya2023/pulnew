@@ -38,13 +38,13 @@ collections:
     files:
       - label: "Index Berita"
         name: "index"
-        file: "public/posts/index.json"  # sesuaikan sama folder posts kamu
+        file: "public/posts/index.json"
         fields:
-            - label: "Daftar File Berita"
-              name: "files"
-              widget: "list"
-              field: 
-                  label: Nama File JSON
-                  name: file
-                  widget: "string"
-                  hint: "Contoh: judul-berita-05-08-2026.json"
+          - label: "Daftar File Berita"
+            name: "files"
+            widget: "list"
+            field:
+              label: "Nama File JSON"
+              name: "file"
+              widget: "string"
+              hint: "Contoh: judul-berita-05-08-2026.json"
