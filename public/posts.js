@@ -1,6 +1,9 @@
 [
-  "/berita/inflasi-terkendali-dan-kredibilitas-kebijakan-moneter-refleksi-atas-keberhasilan.html",
+  "/berita/universitas-terbuka-kukuhkan-enam-profesor-baru-perkuat-langkah-menuju-world-cla.html",
+  "/berita/pemkot-ambon-berikan-pendidikan-finansial-dan-kesehatan-untuk-umkm.html",
+  "/berita/museum-musik-indonesia-di-bandung-upaya-pelestarian-warisan-musik-nusantara.html",
   "/berita/mewujudkan-dunia-kerja-yang-adil-aman-dan-produktif-melalui-pekerjaan-layak-di-i.html",
+  "/berita/inflasi-terkendali-dan-kredibilitas-kebijakan-moneter-refleksi-atas-keberhasilan.html",
   "/berita/aksi-damai-peternak-ayam-di-solo-protes-harga-pakan-yang-melambung.html",
   "/berita/pemerasan-thr-oleh-bupati-cilacap-sempat-ditentang-anak-buah.html",
   "/berita/mahasiswa-ubsi-siap-mengabdi-dan-menginspirasi-masyarakat-dalam-bsi-explore-2026.html",
