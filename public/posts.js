@@ -1,7 +1,10 @@
 [
+  "/berita/jakarta-jaga-akar-budaya-betawi-di-tengah-laju-menuju-kota-global.html",
+  "/berita/kritik-pedas-anggota-dewan-terkait-penebangan-pohon-di-bandung.html",
+  "/berita/industri-kripto-siap-menghadapi-tantangan-era-komputer-kuantum.html",
   "/berita/kaltara-dorong-investasi-pada-ajang-apindo-expo-2026.html",
-  "/berita/hilirisasi-sawit-jadi-kunci-meningkatkan-ekspor-indonesia.html",
   "/berita/ojk-klariifikasi-laporan-keuangan-2025-bukan-defisit-anggaran.html",
+  "/berita/hilirisasi-sawit-jadi-kunci-meningkatkan-ekspor-indonesia.html",
   "/berita/ojk-cirebon-bantu-petambak-garam-akses-pembiayaan.html",
   "/berita/marc-andre-ter-stegen-resmi-dipinjam-ajax.html",
   "/berita/taspen-serahkan-manfaat-tht-dan-jkk-petugas-damkar-yang-gugur.html",
