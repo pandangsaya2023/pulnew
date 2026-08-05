@@ -19,7 +19,10 @@ MAX_BERITA_PER_RUN = 15
 
 sumber_rss = [
     {"media": "Kompas", "url": "https://indeks.kompas.com/nasional"},
-    {"media": "Republika", "url": "https://www.republika.co.id/rss"},
+    {"media": "Antara", "url": "https://www.antaranews.com/rss/tekno"},
+    {"media": "Antara"", "url": "https://www.antaranews.com/nasional"},
+    {"media": "Okezone", "url": "https://sindonews.com/rss"},
+    {"media": "Republika", "url": "https://www.republika.co.id/rss"}
 ]
 
 # --- FUNGSI: BIKIN NAMA MEDIA DARI URL ---
