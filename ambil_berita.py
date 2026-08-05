@@ -37,15 +37,27 @@ def get_nama_media(url):
         return "Media"
 
 # --- FUNGSI: BIKIN ALINEA OTOMATIS ---
-def format_ke_html(teks):
-    teks = str(teks).strip()
-    if '<p>' in teks:
-        return teks
-    paragraf = [p.strip() for p in re.split(r'\n\n+', teks) if p.strip()]
-    if len(paragraf) <= 1:
-        kalimat = [k.strip() for k in re.split(r'(?<=[.!?])\s+', teks) if k.strip()]
-        paragraf = [' '.join(kalimat[i:i+3]) for i in range(0, len(kalimat), 3)]
-    return ''.join([f"<p>{p}</p>" for p in paragraf])
+def format_ke_html(text):
+    # JANGAN di wrap semua. Biarkan H2 yg dari AI tetap ada
+    paragraphs = text.split('\n\n')
+    html_parts = []
+    for p in paragraphs:
+        p = p.strip()
+        if p.startswith('<h2'): # kalau udah H2 biarkan
+            html_parts.append(p)
+        elif p: # kalau paragraf biasa
+            html_parts.append(f'<p>{p}</p>')
+    return '\n'.join(html_parts)
+    
+#def format_ke_html(teks):
+    #teks = str(teks).strip()
+    #if '<p>' in teks:
+        #return teks
+    #paragraf = [p.strip() for p in re.split(r'\n\n+', teks) if p.strip()]
+    #if len(paragraf) <= 1:
+        #kalimat = [k.strip() for k in re.split(r'(?<=[.!?])\s+', teks) if k.strip()]
+        #paragraf = [' '.join(kalimat[i:i+3]) for i in range(0, len(kalimat), 3)]
+    #return ''.join([f"<p>{p}</p>" for p in paragraf])
 
 def get_existing_posts():
     posts = {}
@@ -113,20 +125,21 @@ def rewrite_with_groq(title, link, media):
 
     try:
         prompt = f"""Kamu adalah Editor Senior PULNEW.com. Tugasmu PARAFRASE TOTAL berita agar lolos plagiarisme.
+        PERATURAN SANGAT KETAT:
+        1. PANJANG WAJIB SAMA: Hasil rewrite harus sepanjang atau LEBIH PANJANG dari teks sumber. JANGAN DIRINGKAS. Tulis semua detail, data, kutipan.
+        2. STRUKTUR: WAJIB ada 2 SUB JUDUL pakai tag <h2>. Taruh di 1/3 dan 2/3 artikel.
+        3. WARNA: Setiap <h2> WAJIB dikasih style: <h2 style="color:#0056b3; margin-top:24px; margin-bottom:12px; font-size:22px;">Judul</h2>
+        4. DILARANG KERAS COPAS: Semua kalimat WAJIB ditulis ulang 100% dengan struktur dan diksi berbeda.
+        5. ACAK URUTAN: Pindahkan paragraf. Gabung dan pecah kalimat.
+        6. FAKTA WAJIB SAMA: Nama, angka, tanggal, tempat, kutipan langsung TIDAK BOLEH BERUBAH.
+        7. GAYA: Seperti Detik/Kompas. Piramida terbalik. Bahasa baku.
+        8. OUTPUT: Kembalikan HANYA JSON valid: {{"judul": "...", "isi": "...", "lead": "..."}}
 
-PERATURAN SANGAT KETAT:
-1. PANJANG WAJIB SAMA: Hasil rewrite harus sepanjang atau LEBIH PANJANG dari teks sumber. JANGAN DIRINGKAS. Tulis semua detail, data, kutipan.
-2. DILARANG KERAS COPAS: Semua kalimat WAJIB ditulis ulang 100% dengan struktur dan diksi berbeda.
-3. ACAK URUTAN: Pindahkan paragraf. Gabung dan pecah kalimat.
-4. FAKTA WAJIB SAMA: Nama, angka, tanggal, tempat, kutipan langsung TIDAK BOLEH BERUBAH.
-5. GAYA: Seperti Detik/Kompas. Piramida terbalik. Bahasa baku.
-6. OUTPUT: Kembalikan HANYA JSON valid: {{"judul": "...", "isi": "...", "lead": "..."}}
-
-TEKS SUMBER:
-Judul: {title}
-Isi: {konten_asli[:8000]}
-Sumber: {link}
-"""
+        TEKS SUMBER:
+        Judul: {title}
+        Isi: {konten_asli[:8000]}
+        Sumber: {link}
+        """
 
         completion = client.chat.completions.create(
             model="llama-3.3-70b-versatile",
