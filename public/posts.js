@@ -1,4 +1,7 @@
 [
+  "/berita/ratusan-pelajar-berpartisipasi-dalam-ayimun-depok-untuk-mendiskusikan-isu-global.html",
+  "/berita/dorongan-ekonomi-sirkular-ubsi-latih-bank-sampah-vida-bekasi-go-digital.html",
+  "/berita/rupiah-mengalami-penguatan-signifikan-terhadap-dolar-as.html",
   "/berita/universitas-terbuka-kukuhkan-enam-profesor-baru-perkuat-langkah-menuju-world-cla.html",
   "/berita/pemkot-ambon-berikan-pendidikan-finansial-dan-kesehatan-untuk-umkm.html",
   "/berita/museum-musik-indonesia-di-bandung-upaya-pelestarian-warisan-musik-nusantara.html",
