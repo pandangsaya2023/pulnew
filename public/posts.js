@@ -1,6 +1,7 @@
 [
-  "/berita/pertemuan-strategis-antara-gubernur-dki-dan-duta-besar-palestina-untuk-memperkua.html",
-  "/berita/ungu-siap-merayakan-tiga-dekade-berkarya-dengan-konser-dan-video-musik-baru.html",
+  "/berita/pramono-anung-wibowo-desak-penindakan-terhadap-tenaga-kesehatan-yang-mencibir-pa.html",
+  "/berita/meneropong-abad-kegelapan-di-kalimantan-selatan-antara-kepasrahan-dan-rasionalit.html",
+  "/berita/sinergi-jalin-bacenter-untuk-mendorong-digitalisasi-pembayaran-nasional.html",
   "/berita/kemensos-tangguhkan-14-juta-penerima-bansos-diduga-lakukan-transaksi-judi-online.html",
   "/berita/ratusan-pelajar-berpartisipasi-dalam-ayimun-depok-untuk-mendiskusikan-isu-global.html",
   "/berita/dorongan-ekonomi-sirkular-ubsi-latih-bank-sampah-vida-bekasi-go-digital.html",
