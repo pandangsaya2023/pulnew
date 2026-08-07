@@ -49,16 +49,6 @@ def format_ke_html(text):
             html_parts.append(f'<p>{p}</p>')
     return '\n'.join(html_parts)
     
-#def format_ke_html(teks):
-    #teks = str(teks).strip()
-    #if '<p>' in teks:
-        #return teks
-    #paragraf = [p.strip() for p in re.split(r'\n\n+', teks) if p.strip()]
-    #if len(paragraf) <= 1:
-        #kalimat = [k.strip() for k in re.split(r'(?<=[.!?])\s+', teks) if k.strip()]
-        #paragraf = [' '.join(kalimat[i:i+3]) for i in range(0, len(kalimat), 3)]
-    #return ''.join([f"<p>{p}</p>" for p in paragraf])
-
 def get_existing_posts():
     posts = {}
     if os.path.exists(OUTPUT_FOLDER):
