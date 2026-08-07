@@ -1,7 +1,7 @@
 [
-  "/berita/menghadapi-perlambatan-ekonomi-di-indonesia.html",
-  "/berita/bea-cukai-ngurah-rai-gagalkan-penyelundupan-10-kilogram-ganja-dari-thailand.html",
-  "/berita/respons-meninggalnya-pasien-bpjs-kesehatan-yurizal-prof-dasaad-berduka.html",
+  "/berita/menteri-menteri-israel-desak-lanjutan-serangan-ke-gaza-tolak-rencana-perdamaian-.html",
+  "/berita/manajemen-risiko-strategi-utama-untuk-menghadapi-ketidakpastian-dalam-bisnis.html",
+  "/berita/pbnu-abad-kedua-butuh-ketua-umum-dengan-kemampuan-manajerial-kuat.html",
   "/berita/geely-auto-indonesia-luncurkan-program-the-true-blue-journey-dalam-rangka-tur-pr.html",
   "/berita/pertarungan-hidup-mati-di-stadion-nasional-singapura-timnas-indonesia-siap-mengh.html",
   "/berita/pramono-anung-wibowo-desak-penindakan-terhadap-tenaga-kesehatan-yang-mencibir-pa.html",
