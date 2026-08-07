@@ -1,6 +1,7 @@
 [
-  "/berita/menteri-menteri-israel-desak-lanjutan-serangan-ke-gaza-tolak-rencana-perdamaian-.html",
-  "/berita/manajemen-risiko-strategi-utama-untuk-menghadapi-ketidakpastian-dalam-bisnis.html",
+  "/berita/alphi-aturan-label-non-halal-perlu-diperjelas-agar-tak-timbulkan-multi-tafsir.html",
+  "/berita/membangun-kemandirian-energi-desa-melalui-penguatan-kapasitas-local-hero.html",
+  "/berita/viral-pegawai-p3k-bandung-barat-live-tiktok-di-kantor-dinas.html",
   "/berita/pbnu-abad-kedua-butuh-ketua-umum-dengan-kemampuan-manajerial-kuat.html",
   "/berita/geely-auto-indonesia-luncurkan-program-the-true-blue-journey-dalam-rangka-tur-pr.html",
   "/berita/pertarungan-hidup-mati-di-stadion-nasional-singapura-timnas-indonesia-siap-mengh.html",
