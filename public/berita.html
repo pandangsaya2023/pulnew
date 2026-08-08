@@ -476,6 +476,22 @@ async function muatHalamanBerita() {
 
             <div class="article-body">${isiBerita}</div>
 
+
+
+            ${sourceBox}
+        `;
+
+        contentArea.innerHTML = html;
+        document.getElementById('running-text').textContent = `INFO NEWS: ${post.title} | PULNEW.com`;
+
+    } catch (e) {
+        console.error(e);
+        contentArea.innerHTML = `<div class="error">Gagal memuat berita: ${e.message}<br><small>Cek file /posts/${slugTujuan}.json ada gak</small><br><br><a href="/">← Kembali ke Beranda</a></div>`;
+    }
+}
+document.addEventListener('DOMContentLoaded', muatHalamanBerita);
+</script>
+
 <script>
 <div class="populer-wrap">
     <h3>🔥 Populer Minggu Ini</h3>
@@ -526,23 +542,6 @@ function tampilkanPopuler() {
 
 tampilkanPopuler()
 </script>
-
-            ${sourceBox}
-        `;
-
-        contentArea.innerHTML = html;
-        document.getElementById('running-text').textContent = `INFO NEWS: ${post.title} | PULNEW.com`;
-
-    } catch (e) {
-        console.error(e);
-        contentArea.innerHTML = `<div class="error">Gagal memuat berita: ${e.message}<br><small>Cek file /posts/${slugTujuan}.json ada gak</small><br><br><a href="/">← Kembali ke Beranda</a></div>`;
-    }
-}
-document.addEventListener('DOMContentLoaded', muatHalamanBerita);
-</script>
-
-    
-
     
     <!-- Video Youtune -->
 
@@ -554,6 +553,7 @@ document.addEventListener('DOMContentLoaded', muatHalamanBerita);
     </div> -->
 
     <!-- <script src="https://www.youtube.com/iframe_api"></script> -->
+    
     <script>
     //let player;
     //let youtubeLink = 'https://youtube.com/watch?v=YLxO9527zYA'; // GANTI LINK KAMU
