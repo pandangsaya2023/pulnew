@@ -358,6 +358,71 @@ async function tampilkanBeritaTerkait(kategoriSaatIni, slugSaatIni) {
             </a>
             `
         }).join('');
+<script>
+let allPosts = [];
+let currentSlug = ''; // buat nyimpen slug terakhir
+const baseURL = 'https://pulnew.pages.dev';
+
+function updateMetaTags(post) { ...fungsi kamu yg lama biarkan... }
+function copyLink() { ...fungsi kamu yg lama biarkan... }
+async function fetchPosts() { ...fungsi kamu yg lama biarkan... }
+async function fetchPostDetail(url) { ...fungsi kamu yg lama biarkan... }
+
+// FUNGSI BACA JUGA FINAL
+async function tampilkanBeritaTerkait(kategoriSaatIni, slugSaatIni) {
+    const relatedWrap = document.getElementById('related-list');
+    const sectionTitle = document.querySelector('.section-title');
+    if(!relatedWrap) return;
+
+    relatedWrap.innerHTML = `<div class="loading" style="padding:20px 0">Memuat...</div>`;
+
+    try {
+        allPosts = []; // reset cache
+        allPosts = await fetchPosts(); 
+        
+        // Ambil 6 berita terbaru dulu buat cadangan
+        let candidates = allPosts.filter(url => {
+            const slugP = url.split('/').pop().replace('.json','');
+            return slugP !== slugSaatIni;
+        }).slice(0, 6);
+
+        let related = [];
+        for(let url of candidates) {
+            if(related.length >= 3) break;
+            const post = await fetchPostDetail(url);
+            if(post) related.push(post);
+        }
+
+        // Cek: ada gak yg 1 kategori
+        let relatedSamaKategori = related.filter(p => {
+            const kat = (p.kategori || p.Kategori || p.category || '').toLowerCase();
+            return kat === kategoriSaatIni.toLowerCase();
+        });
+
+        if(relatedSamaKategori.length > 0) {
+            sectionTitle.textContent = "BACA JUGA: TOPIK TERKAIT";
+            related = relatedSamaKategori.slice(0,3);
+        } else {
+            sectionTitle.textContent = "BACA JUGA: BERITA TERBARU";
+            related = related.slice(0,3);
+        }
+
+        if(related.length === 0) {
+            relatedWrap.innerHTML = `<p style="font-size:13px;color:#777">Belum ada berita lain.</p>`;
+            return;
+        }
+
+        relatedWrap.innerHTML = related.map(p => {
+            const judul = p.title || p.judul || 'Tanpa Judul';
+            const gambar = p.image || p.thumbnail || '/media/og-default.jpg';
+            const slug = p.slug || p.title.toLowerCase().replace(/\s+/g, '-');
+            return `
+            <a href="/berita.html?slug=${slug}" class="related-item">
+                <img src="${gambar}" alt="${judul}" loading="lazy" onerror="this.src='/media/og-default.jpg'">
+                <h4>${judul}</h4>
+            </a>
+            `
+        }).join('');
 
     } catch(e) {
         console.error("Gagal load berita terkait", e);
@@ -367,8 +432,12 @@ async function tampilkanBeritaTerkait(kategoriSaatIni, slugSaatIni) {
 
 async function muatHalamanBerita() {
     const slugTujuan = new URLSearchParams(window.location.search).get('slug');
-    const contentArea = document.getElementById('content-area');
+    
+    // CEK: KALAU SLUG NYA SAMA KAYAK SEBELUMNYA, JANGAN LOAD LAGI
+    if(slugTujuan === currentSlug) return; 
+    currentSlug = slugTujuan;
 
+    const contentArea = document.getElementById('content-area');
     if (!slugTujuan) {
         contentArea.innerHTML = `<div class="error">404 - Link Tidak Valid<br><a href="/">Kembali ke Beranda</a></div>`;
         return;
@@ -380,54 +449,44 @@ async function muatHalamanBerita() {
         const post = await res.json();
 
         updateMetaTags(post);
-
         const tanggal = new Date(post.date || post.created_at).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit' });
         const isiBerita = post.content || post.body || '';
         const linkBerita = window.location.href;
         const textShare = encodeURIComponent(post.title + ' - ' + linkBerita);
         const kategori = (post.kategori || post.Kategori || post.category || 'BERITA');
 
-        const sourceBox = post.source_name? `
-            <div class="source-box">
-                Sumber: <a href="${post.source_url}" target="_blank" rel="noopener noreferrer">${post.source_name}</a>
-            </div>
-        ` : '';
+        const sourceBox = post.source_name? `<div class="source-box">Sumber: <a href="${post.source_url}" target="_blank">${post.source_name}</a></div>` : '';
 
-        let html = `
+        contentArea.innerHTML = `
             <h1 class="article-title">${post.title}</h1>
             <div class="article-meta">${tanggal} WIB | ${kategori.toUpperCase()}</div>
-
-            <img src="${post.image || post.thumbnail || '/media/og-default.jpg'}" class="main-image" alt="${post.title}" loading="lazy">
-
+            <img src="${post.image || post.thumbnail}" class="main-image" alt="${post.title}">
             <div class="share-article">
                 <a href="https://wa.me/?text=${textShare}" target="_blank" class="share-wa"><i class="fab fa-whatsapp"></i> WhatsApp</a>
                 <a href="https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(linkBerita)}" target="_blank" class="share-fb"><i class="fab fa-facebook"></i> Facebook</a>
                 <a href="https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=${encodeURIComponent(linkBerita)}" target="_blank" class="share-x"><i class="fab fa-x-twitter"></i> X</a>
                 <button onclick="copyLink()" class="share-copy"><i class="fas fa-link"></i> Salin Link</button>
             </div>
-
             <div class="article-body">${isiBerita}</div>
-
             ${sourceBox}
-
-            <!-- BOX BACA JUGA -->
             <div class="related-section">
                 <h3 class="section-title">BACA JUGA: TOPIK TERKAIT</h3>
                 <div id="related-list"><div class="loading" style="padding:20px 0">Memuat...</div></div>
             </div>
         `;
 
-        contentArea.innerHTML = html;
         document.getElementById('running-text').textContent = `INFO NEWS: ${post.title} | PULNEW.com`;
+        tampilkanBeritaTerkait(kategori, slugTujuan); // PANGGIL LAGI
 
-        // PANGGIL FUNGSI SETELAH HTML MUNCUL
-        tampilkanBeritaTerkait(kategori, slugTujuan);
+        window.scrollTo(0,0); // auto scroll ke atas
 
     } catch (e) {
-        console.error(e);
-        contentArea.innerHTML = `<div class="error">Gagal memuat berita: ${e.message}<br><small>Cek file /posts/${slugTujuan}.json ada gak</small><br><br><a href="/">← Kembali ke Beranda</a></div>`;
+        contentArea.innerHTML = `<div class="error">Gagal memuat berita: ${e.message}<br><a href="/">← Kembali</a></div>`;
     }
 }
+
+// PENTING: DETEKSI PERUBAHAN URL TANPA RELOAD
+window.addEventListener('popstate', muatHalamanBerita);
 document.addEventListener('DOMContentLoaded', muatHalamanBerita);
 
 </script>
