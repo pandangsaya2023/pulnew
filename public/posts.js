@@ -1,4 +1,7 @@
 [
+  "/berita/amy-melakukan-kunjungan-strategis-ke-sumatra-selatan-dalam-rangka-safari-politik.html",
+  "/berita/mentan-amran-turun-langsung-ke-alor-setelah-mendengar-aspirasi-mahasiswa-undip.html",
+  "/berita/aset-keuangan-syariah-mencapai-rp-10662-triliun-namun-pangsa-pasar-menyusut.html",
   "/berita/pt-multi-harapan-utama-mhu-mengintegrasikan-reputasi-perusahaan-dengan-praktik-p.html",
   "/berita/leapmotor-memulai-perakitan-lokal-kendaraan-listrik-di-indonesia.html",
   "/berita/tindakan-tegas-polda-jambi-atas-kematian-brigadir-ews-lima-personel-dipecat.html",
