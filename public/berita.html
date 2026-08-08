@@ -86,7 +86,9 @@
     <div class="footer-ticker"><div class="ticker-content" id="running-text">MEMUAT INFORMASI TERKINI...</div></div>
 
 <script>
+let allPosts = [];
 let currentSlug = "";
+const baseURL = 'https://pulnew.pages.dev';
 
 function updateMetaTags(post) {
     document.title = post.title + " - PULNEW.com";
