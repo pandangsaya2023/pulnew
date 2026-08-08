@@ -1,10 +1,10 @@
 [
-  "/berita/penggalangan-peran-muslimah-dalam-membentuk-keluarga-tangguh-di-makassar.html",
+  "/berita/pt-multi-harapan-utama-mhu-mengintegrasikan-reputasi-perusahaan-dengan-praktik-p.html",
+  "/berita/leapmotor-memulai-perakitan-lokal-kendaraan-listrik-di-indonesia.html",
+  "/berita/tindakan-tegas-polda-jambi-atas-kematian-brigadir-ews-lima-personel-dipecat.html",
   "/berita/kegagalan-indonesia-di-piala-aff-2026-imbang-1-1-melawan-singapura.html",
   "/berita/kebakaran-gedung-bapenda-dki-jakarta-api-melanda-lantai-11-hingga-atap.html",
   "/berita/alphi-aturan-label-non-halal-perlu-diperjelas-agar-tak-timbulkan-multi-tafsir.html",
-  "/berita/membangun-kemandirian-energi-desa-melalui-penguatan-kapasitas-local-hero.html",
-  "/berita/viral-pegawai-p3k-bandung-barat-live-tiktok-di-kantor-dinas.html",
   "/berita/pbnu-abad-kedua-butuh-ketua-umum-dengan-kemampuan-manajerial-kuat.html",
   "/berita/geely-auto-indonesia-luncurkan-program-the-true-blue-journey-dalam-rangka-tur-pr.html",
   "/berita/pertarungan-hidup-mati-di-stadion-nasional-singapura-timnas-indonesia-siap-mengh.html",
