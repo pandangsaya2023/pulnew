@@ -1,7 +1,8 @@
 [
-  "/berita/menteri-sosial-saifullah-yusuf-dan-sekretaris-kabinet-teddy-indra-wijaya-tinjau-.html",
+  "/berita/kemkomdigi-optimis-reaktivasi-igrs-selesai-tahun-2026.html",
+  "/berita/pentingnya-keselamatan-wisatawan-dispar-kepri-imbau-travel-agent-untuk-lebih-dis.html",
+  "/berita/pemkab-sukabumi-luncurkan-program-parkir-someah-di-kawasan-wisata-pantai-selatan.html",
   "/berita/korea-selatan-dilanda-gelombang-panas-suhu-mencapai-37-derajat-celsius.html",
-  "/berita/formas-perluas-jaringan-hashim-ingatkan-peran-masyarakat-sipil-dalam-mewujudkan-.html",
   "/berita/dokter-jelaskan-hubungan-obesitas-dengan-risiko-diabetes-tipe-2.html",
   "/berita/menteri-sosial-dan-sekretaris-kabinet-tinjau-sekolah-rakyat-rintisan.html",
   "/berita/amy-melakukan-kunjungan-strategis-ke-sumatra-selatan-dalam-rangka-safari-politik.html",
