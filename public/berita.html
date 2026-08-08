@@ -479,13 +479,6 @@ async function muatHalamanBerita() {
             ${sourceBox}
         `;
 
-        <div class="populer-wrap">
-    <h3>🔥 Populer Minggu Ini</h3>
-    <div id="populer-list"></div>
-</div>
-
-
-
         contentArea.innerHTML = html;
         document.getElementById('running-text').textContent = `INFO NEWS: ${post.title} | PULNEW.com`;
 
@@ -495,9 +488,11 @@ async function muatHalamanBerita() {
     }
 }
 document.addEventListener('DOMContentLoaded', muatHalamanBerita);
+<div class="populer-wrap">
+    <h3>🔥 Populer Minggu Ini</h3>
+    <div id="populer-list"></div>
+</div>
 
-
-    <script>
 function tampilkanPopuler() {
     const populerList = document.getElementById('populer-list');
     
