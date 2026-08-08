@@ -319,15 +319,14 @@ async function tampilkanBeritaTerkait(kategoriSaatIni, slugSaatIni) {
     if(!relatedWrap) return;
 
     try {
-        allPosts = await fetchPosts(); // ini isinya array url
+        allPosts = []; // <-- TAMBAH INI. RESET DULU
+        allPosts = await fetchPosts(); // baru fetch ulang
         
-        // 1. Coba filter dulu dari url yg ada
         let candidates = allPosts.filter(url => {
             const slugP = url.split('/').pop().replace('.json','');
-            return slugP !== slugSaatIni;
-        }).slice(0, 6); // ambil 6 cadangan
+            return slugP!== slugSaatIni;
+        }).slice(0, 6);
 
-        // 2. Fetch detail 3 berita pertama biar datanya lengkap
         let related = [];
         for(let url of candidates) {
             if(related.length >= 3) break;
@@ -335,9 +334,11 @@ async function tampilkanBeritaTerkait(kategoriSaatIni, slugSaatIni) {
             if(post) related.push(post);
         }
 
-        // 3. KALAU MASIH KOSONG, FALLBACK
-        if(related.length === 0) {
+        if(related.length > 0 && (related[0].kategori || related[0].Kategori || related[0].category || '').toLowerCase() === kategoriSaatIni.toLowerCase()) {
+            sectionTitle.textContent = "BACA JUGA: TOPIK TERKAIT";
+        } else {
             sectionTitle.textContent = "BACA JUGA: BERITA TERBARU";
+            related = related.sort((a,b) => new Date(b.date || b.created_at) - new Date(a.date || a.created_at)).slice(0,3);
         }
 
         if(related.length === 0) {
@@ -360,7 +361,6 @@ async function tampilkanBeritaTerkait(kategoriSaatIni, slugSaatIni) {
 
     } catch(e) {
         console.error("Gagal load berita terkait", e);
-        relatedWrap.innerHTML = `<p style="font-size:13px;color:#777">Gagal memuat berita.</p>`;
     }
 }
 
