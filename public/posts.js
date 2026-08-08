@@ -1,10 +1,9 @@
 [
+  "/berita/dokter-jelaskan-hubungan-obesitas-dengan-risiko-diabetes-tipe-2.html",
+  "/berita/universitas-esa-unggul-dan-ui-sinergi-perkuat-pendidikan-kedokteran-melalui-prog.html",
+  "/berita/menteri-sosial-dan-sekretaris-kabinet-tinjau-sekolah-rakyat-rintisan.html",
   "/berita/amy-melakukan-kunjungan-strategis-ke-sumatra-selatan-dalam-rangka-safari-politik.html",
-  "/berita/mentan-amran-turun-langsung-ke-alor-setelah-mendengar-aspirasi-mahasiswa-undip.html",
-  "/berita/aset-keuangan-syariah-mencapai-rp-10662-triliun-namun-pangsa-pasar-menyusut.html",
-  "/berita/pt-multi-harapan-utama-mhu-mengintegrasikan-reputasi-perusahaan-dengan-praktik-p.html",
   "/berita/leapmotor-memulai-perakitan-lokal-kendaraan-listrik-di-indonesia.html",
-  "/berita/tindakan-tegas-polda-jambi-atas-kematian-brigadir-ews-lima-personel-dipecat.html",
   "/berita/kegagalan-indonesia-di-piala-aff-2026-imbang-1-1-melawan-singapura.html",
   "/berita/kebakaran-gedung-bapenda-dki-jakarta-api-melanda-lantai-11-hingga-atap.html",
   "/berita/alphi-aturan-label-non-halal-perlu-diperjelas-agar-tak-timbulkan-multi-tafsir.html",
