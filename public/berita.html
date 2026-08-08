@@ -488,60 +488,63 @@ async function muatHalamanBerita() {
         console.error(e);
         contentArea.innerHTML = `<div class="error">Gagal memuat berita: ${e.message}<br><small>Cek file /posts/${slugTujuan}.json ada gak</small><br><br><a href="/">← Kembali ke Beranda</a></div>`;
     }
+
+    <script>
+    <div class="populer-wrap">
+       <h3>🔥 Populer Minggu Ini</h3>
+       <div id="populer-list"></div>
+   </div>
+
+   function tampilkanPopuler() {
+       const populerList = document.getElementById('populer-list');
+    
+       // TINGGAL EDIT 3 INI AJA TIAP MINGGU
+       const populer = [
+           {
+               slug: "indonesia-punya-tornado-barakuda-yang-langka-di-dunia",
+               title: "Indonesia Punya Tornado Barakuda yang Langka di Dunia",
+               image: "/media/pengibaran-bendera-merah-putih-di-bawah-laut-salah-satu_220818061213-167.jpg"
+               date: "2026-08-04T03:16:00+07:00"
+           },
+           {
+               slug: "mengganti-password-wifi-dengan-mudah-lewat-perangkat-hp-dan-laptop",
+               title: "Mengganti Password WiFi dengan Mudah lewat Perangkat HP dan Laptop",
+               image: "/media/157792.jpg",
+               date: "2026-08-05T09:54:00+07:00"
+           },
+           {  
+               slug: "ios-27-tanggal-rilis-dan-daftar-iphone-yang-kompatibel",
+               title: "iOS 27: Tanggal Rilis dan Daftar iPhone yang Kompatibel"",
+               image: "/media/157793.jpg",
+               date: "2026-08-05T09:54:00+07:00"
+           },
+           {
+               slug: "warisan-ilmu-yang-mengubah-peradaban-dunia", 
+               title: "Warisan Ilmu yang Mengubah Peradaban Dunia",
+               image: "/media/154890.jpg"",
+               date: "2026-08-02T03:43:00+07:00"
+           }
+       ];
+
+       populerList.innerHTML = populer.map(p => `
+           <a href="/berita.html?file=${p.slug}.json" class="populer-card">
+               <img src="${p.image}" alt="${p.title}">
+               <div class="info">
+                   <div class="judul">${p.title}</div>
+                   <div class="tgl">${p.date}</div>
+               </div>
+           </a>
+       `).join('');
+   }
+
+tampilkanPopuler()
+</script>
+    
 }
 document.addEventListener('DOMContentLoaded', muatHalamanBerita);
 </script>
 
-<script>
-<div class="populer-wrap">
-    <h3>🔥 Populer Minggu Ini</h3>
-    <div id="populer-list"></div>
-</div>
 
-function tampilkanPopuler() {
-    const populerList = document.getElementById('populer-list');
-    
-    // TINGGAL EDIT 3 INI AJA TIAP MINGGU
-    const populer = [
-        {
-            slug: "indonesia-punya-tornado-barakuda-yang-langka-di-dunia",
-            title: "Indonesia Punya Tornado Barakuda yang Langka di Dunia",
-            image: "/media/pengibaran-bendera-merah-putih-di-bawah-laut-salah-satu_220818061213-167.jpg"
-            date: "2026-08-04T03:16:00+07:00"
-        },
-        {
-            slug: "mengganti-password-wifi-dengan-mudah-lewat-perangkat-hp-dan-laptop",
-            title: "Mengganti Password WiFi dengan Mudah lewat Perangkat HP dan Laptop",
-            image: "/media/157792.jpg",
-            date: "2026-08-05T09:54:00+07:00"
-        },
-        {  
-            slug: "ios-27-tanggal-rilis-dan-daftar-iphone-yang-kompatibel",
-            title: "iOS 27: Tanggal Rilis dan Daftar iPhone yang Kompatibel"",
-            image: "/media/157793.jpg",
-            date: "2026-08-05T09:54:00+07:00"
-        },
-        {
-            slug: "warisan-ilmu-yang-mengubah-peradaban-dunia", 
-            title: "Warisan Ilmu yang Mengubah Peradaban Dunia",
-            image: "/media/154890.jpg"",
-            date: "2026-08-02T03:43:00+07:00"
-        }
-    ];
-
-    populerList.innerHTML = populer.map(p => `
-        <a href="/berita.html?file=${p.slug}.json" class="populer-card">
-            <img src="${p.image}" alt="${p.title}">
-            <div class="info">
-                <div class="judul">${p.title}</div>
-                <div class="tgl">${p.date}</div>
-            </div>
-        </a>
-    `).join('');
-}
-
-tampilkanPopuler()
-</script>
     
     <!-- Video Youtune -->
 
