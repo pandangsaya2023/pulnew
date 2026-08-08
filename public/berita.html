@@ -45,16 +45,6 @@
     outline: none;
 }
 
-.logo-bar > a:active,
-.logo-bar > a:focus {
-    transform: none!important;
-    opacity: 1!important;
-}
-
-.logo-img-wrapper {
-    line-height: 0;
-}
-
 .logo-img-wrapper img {
     display: block;
     max-height: 45px;
@@ -145,9 +135,6 @@
         margin-top: 15px!important;
         display: block!important;
      }
-  .article-body + h2 {
-        margin-top: 15px!important;
-     }
   .article-body img {
         max-width: 100%;
         height: auto;
@@ -188,44 +175,8 @@
            overflow: hidden; width: 100%; position: fixed; bottom: 0; left: 0; z-index: 999;
            height: 35px; display: flex; align-items: center; }
   .ticker-content { display: inline-block; white-space: nowrap; padding-left: 100%; animation: ticker 40s linear infinite; line-height: 35px; }
-        @keyframes ticker { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(-100%, 0, 0); } }
+        @keyframes ticker { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(-100%, 0, 0); }
 
- .ad-slot { margin: 10px auto; padding: 0; text-align: center; }
- .ad-slot img { width: 100%; height: auto; display: block; border-radius: 8px; }
-
-   .ad-slot.ad-banner-bottom {
-            margin: 5px auto 0px auto!important;
-            padding: 0px!important;
-            max-width: 768px;
-        }
-
-  .ad-slot.ad-banner-bottom img {
-            width: 100%;
-            height: auto;
-            aspect-ratio: 768 / 180;
-            object-fit: contain;
-            display: block;
-            border-radius: 12px;
-            background: #f0f0f0;
-        }
-
-  .ad-slot.ad-banner-bottom:has(img[src=""], img:not([src])) {
-            display: none!important;
-            margin: 0px!important;
-        }
-
-        footer {
-            margin-top: 5px!important;
-        }
-
-  .ad-inarticle {
-            max-width: 600px;
-        }
-        @media (max-width: 768px) {
-      .ad-banner-top,.ad-banner-bottom {
-                max-width: 100%;
-           }
-        }
   .loading,.error { text-align:center; padding:60px 20px; }
   .error { color: var(--warna-merah); }
 
@@ -234,8 +185,6 @@
         position: fixed!important;
         bottom: 100px!important;
         right: 20px!important;
-        left: auto!important;
-        top: auto!important;
         width: 320px!important;
         height: 180px!important;
         z-index: 998!important;
@@ -243,21 +192,7 @@
         border-radius: 12px;
         overflow: hidden;
         box-shadow: 0 8px 25px rgba(0,0,0,0.4);
-        margin: 0!important;
-        transition: none!important;
     }
-
-  .sticky-video-wrapper.minimized {
-        all: unset!important;
-        position: fixed!important;
-        bottom: 100px!important;
-        right: 20px!important;
-        width: 320px!important;
-        height: 180px!important;
-        z-index: 998!important;
-    }
-
-    /* RASIO 16:9 */
   .video-container {
         position: relative;
         padding-bottom: 56.25%;
@@ -276,7 +211,6 @@
     }
     #close-video { display: none; }
 
-    /* ===== KHUS HP ===== */
     @media (max-width: 767px) {
  .sticky-video-wrapper {
         position: relative!important;
@@ -285,12 +219,6 @@
         margin: 25px auto!important;
         bottom: auto!important;
         right: auto!important;
-        border-radius: 0!important;
-        box-shadow: none!important;
-   }
- .sticky-video-wrapper.minimized {
-        position: relative!important;
-        width: 95%!important;
    }
    #close-video {
         display: block;
@@ -308,12 +236,9 @@
       }
     }
 
-    /* ANTI KETUTUP PLAYER DI DESKTOP */
-   .article-box {
+    .article-box {
         padding-bottom: 50px!important;
      }
-
-    /* DI HP BALIK NORMAL BIAR GAK KELEBARAN */
     @media (max-width: 767px) {
        .article-box {
             padding-bottom: 16px!important;
@@ -387,24 +312,34 @@ async function fetchPostDetail(url) {
     }
 }
 
-// FUNGSI BARU: UNTUK AMBIL BERITA TERKAIT
+// FUNGSI BARU: AMBIL BERITA TERKAIT + FALLBACK 3 TERBARU
 async function tampilkanBeritaTerkait(kategoriSaatIni, slugSaatIni) {
     const relatedWrap = document.getElementById('related-list');
+    const sectionTitle = document.querySelector('.section-title');
     if(!relatedWrap) return;
 
     try {
         allPosts = await fetchPosts();
-        // 1. Filter berdasarkan kategori yg sama
-        // 2. Buang berita yg lagi dibuka
-        const related = allPosts
-           .filter(p => {
-                const kat = (p.kategori || p.Kategori || p.category || '').toLowerCase();
-                return kat === kategoriSaatIni.toLowerCase() && p.slug!== slugSaatIni;
-            })
-           .slice(0, 3); // ambil 3 aja
+        
+        // 1. Coba cari yg kategori sama dulu
+        let related = allPosts.filter(p => {
+            const kat = (p.kategori || p.Kategori || p.category || '').toLowerCase();
+            return kat === kategoriSaatIni.toLowerCase() && p.slug !== slugSaatIni;
+        });
+
+        // 2. KALAU KOSONG, FALLBACK KE 3 BERITA TERBARU
+        if(related.length === 0) {
+            sectionTitle.textContent = "BACA JUGA: BERITA TERBARU"; // ganti judulnya
+            related = allPosts
+                .filter(p => p.slug !== slugSaatIni) // buang berita yg lagi dibuka
+                .sort((a,b) => new Date(b.date || b.created_at) - new Date(a.date || a.created_at)) // urut terbaru
+                .slice(0, 3);
+        } else {
+            related = related.slice(0, 3); // kalau ada, ambil 3 aja
+        }
 
         if(related.length === 0) {
-            relatedWrap.innerHTML = `<p style="font-size:13px;color:#777">Belum ada berita terkait lainnya.</p>`;
+            relatedWrap.innerHTML = `<p style="font-size:13px;color:#777">Belum ada berita lain.</p>`;
             return;
         }
 
@@ -417,8 +352,10 @@ async function tampilkanBeritaTerkait(kategoriSaatIni, slugSaatIni) {
 
     } catch(e) {
         console.error("Gagal load berita terkait", e);
+        relatedWrap.innerHTML = `<p style="font-size:13px;color:#777">Gagal memuat berita.</p>`;
     }
 }
+
 
 async function muatHalamanBerita() {
     const slugTujuan = new URLSearchParams(window.location.search).get('slug');
@@ -465,7 +402,7 @@ async function muatHalamanBerita() {
 
             ${sourceBox}
 
-            <!-- BOX BACA JUGA TERKAIT -->
+            <!-- BOX BACA JUGA -->
             <div class="related-section">
                 <h3 class="section-title">BACA JUGA: TOPIK TERKAIT</h3>
                 <div id="related-list"><div class="loading" style="padding:20px 0">Memuat...</div></div>
@@ -487,25 +424,10 @@ document.addEventListener('DOMContentLoaded', muatHalamanBerita);
 
 </script>
 
-    <!-- Video Youtune -->
-
-    <!-- <div class="sticky-video-wrapper">
-        <div class="video-container">
-           <div id="youtube-player"></div>
-           <button id="close-video">✕</button>
-        </div>
-    </div> -->
-
-    <!-- <script src="https://www.youtube.com/iframe_api"></script> -->
     <script>
-    //let player;
-    //let youtubeLink = 'https://youtube.com/watch?v=YLxO9527zYA'; // GANTI LINK KAMU
-    //let currentVideoId = youtubeLink.split('v=')[1];
-
     function onYouTubeIframeAPIReady() {
         const savedTime = localStorage.getItem('yt_currentTime') || 0;
         const savedVideo = localStorage.getItem('yt_videoId');
-
         player = new YT.Player('youtube-player', {
            videoId: savedVideo || currentVideoId,
            playerVars: {
@@ -524,7 +446,6 @@ document.addEventListener('DOMContentLoaded', muatHalamanBerita);
            }
          });
     }
-
     function saveTime() {
         if(player && player.getCurrentTime){
             setInterval(() => {
@@ -533,7 +454,6 @@ document.addEventListener('DOMContentLoaded', muatHalamanBerita);
             }, 1000);
         }
     }
-
     document.getElementById('close-video')?.addEventListener('click', () => {
       if(player) player.pauseVideo();
       localStorage.removeItem('yt_currentTime');
