@@ -264,6 +264,7 @@
 
 <script>
 let allPosts = [];
+let currentSlug = "";
 const baseURL = 'https://pulnew.pages.dev';
 
 function updateMetaTags(post) {
@@ -312,90 +313,6 @@ async function fetchPostDetail(url) {
     }
 }
 
-// FUNGSI BARU: AMBIL BERITA TERKAIT + FALLBACK 3 TERBARU
-async function tampilkanBeritaTerkait(kategoriSaatIni, slugSaatIni) {
-    const relatedWrap = document.getElementById('related-list');
-    const sectionTitle = document.querySelector('.section-title');
-    if(!relatedWrap) return;
-
-    try {
-        allPosts = []; // <-- TAMBAH INI. RESET DULU
-        allPosts = await fetchPosts(); // baru fetch ulang
-        
-        let candidates = allPosts.filter(url => {
-            const slugP = url.split('/').pop().replace('.json','');
-            return slugP!== slugSaatIni;
-        }).slice(0, 6);
-
-        let related = [];
-        for(let url of candidates) {
-            if(related.length >= 3) break;
-            const post = await fetchPostDetail(url);
-            if(post) related.push(post);
-        }
-
-        if(related.length > 0 && (related[0].kategori || related[0].Kategori || related[0].category || '').toLowerCase() === kategoriSaatIni.toLowerCase()) {
-            sectionTitle.textContent = "BACA JUGA: TOPIK TERKAIT";
-        } else {
-            sectionTitle.textContent = "BACA JUGA: BERITA TERBARU";
-            related = related.sort((a,b) => new Date(b.date || b.created_at) - new Date(a.date || a.created_at)).slice(0,3);
-        }
-
-        if(related.length === 0) {
-            relatedWrap.innerHTML = `<p style="font-size:13px;color:#777">Belum ada berita lain.</p>`;
-            return;
-        }
-
-        relatedWrap.innerHTML = related.map(p => {
-            const judul = p.title || p.judul || 'Tanpa Judul';
-            const gambar = p.image || p.thumbnail || '/media/og-default.jpg';
-            const slug = p.slug || p.title.toLowerCase().replace(/\s+/g, '-');
-            
-            return `
-            <a href="/berita.html?slug=${slug}" class="related-item">
-                <img src="${gambar}" alt="${judul}" loading="lazy" onerror="this.src='/media/og-default.jpg'">
-                <h4>${judul}</h4>
-            </a>
-            `
-        }).join('');
-
-    } catch(e) {
-        console.error("Gagal load berita terkait", e);
-    }
-}
-
-
-async function muatHalamanBerita() {
-    const slugTujuan = new URLSearchParams(window.location.search).get('slug');
-    const contentArea = document.getElementById('content-area');
-
-    if (!slugTujuan) {
-        contentArea.innerHTML = `<div class="error">404 - Link Tidak Valid<br><a href="/">Kembali ke Beranda</a></div>`;
-        return;
-    }
-
-    try {
-        const res = await fetch(`/posts/${slugTujuan}.json?t=` + Date.now(), { cache: 'no-store' });
-        if(!res.ok) throw new Error("File JSON tidak ditemukan");
-        const post = await res.json();
-
-        updateMetaTags(post);
-
-        const tanggal = new Date(post.date || post.created_at).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit' });
-        const isiBerita = post.content || post.body || '';
-        const linkBerita = window.location.href;
-        const textShare = encodeURIComponent(post.title + ' - ' + linkBerita);
-        const kategori = (post.kategori || post.Kategori || post.category || 'BERITA');
-
-        const sourceBox = post.source_name? `
-            <div class="source-box">
-                Sumber: <a href="${post.source_url}" target="_blank" rel="noopener noreferrer">${post.source_name}</a>
-            </div>
-        ` : '';
-
-        let html = `
-            <h1 class="article-title">${post.title}</h1>
-            
 // FUNGSI BACA JUGA FINAL
 
 async function tampilkanBeritaTerkait(kategoriSaatIni, slugSaatIni) {
@@ -457,7 +374,6 @@ async function tampilkanBeritaTerkait(kategoriSaatIni, slugSaatIni) {
         console.error("Gagal load berita terkait", e);
     }
 }
-
 
 async function muatHalamanBerita() {
     const slugTujuan = new URLSearchParams(window.location.search).get('slug');
