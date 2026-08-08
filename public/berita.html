@@ -319,27 +319,25 @@ async function tampilkanBeritaTerkait(kategoriSaatIni, slugSaatIni) {
     if(!relatedWrap) return;
 
     try {
-        allPosts = await fetchPosts();
+        allPosts = await fetchPosts(); // ini isinya array url
         
-        // 1. Coba cari yg kategori sama dulu
-        let related = allPosts.filter(p => {
-            const kat = (p.kategori || p.Kategori || p.category || p.tags || '').toLowerCase();
-            const slugP = p.slug || p.link || p.url || '';
-            return kat === kategoriSaatIni.toLowerCase() && slugP !== slugSaatIni;
-        });
+        // 1. Coba filter dulu dari url yg ada
+        let candidates = allPosts.filter(url => {
+            const slugP = url.split('/').pop().replace('.json','');
+            return slugP !== slugSaatIni;
+        }).slice(0, 6); // ambil 6 cadangan
 
-        // 2. KALAU KOSONG, FALLBACK KE 3 BERITA TERBARU
+        // 2. Fetch detail 3 berita pertama biar datanya lengkap
+        let related = [];
+        for(let url of candidates) {
+            if(related.length >= 3) break;
+            const post = await fetchPostDetail(url);
+            if(post) related.push(post);
+        }
+
+        // 3. KALAU MASIH KOSONG, FALLBACK
         if(related.length === 0) {
             sectionTitle.textContent = "BACA JUGA: BERITA TERBARU";
-            related = allPosts
-                .filter(p => {
-                    const slugP = p.slug || p.link || p.url || '';
-                    return slugP !== slugSaatIni
-                })
-                .sort((a,b) => new Date(b.date || b.created_at || b.tanggal) - new Date(a.date || a.created_at || a.tanggal))
-                .slice(0, 3);
-        } else {
-            related = related.slice(0, 3);
         }
 
         if(related.length === 0) {
@@ -348,10 +346,9 @@ async function tampilkanBeritaTerkait(kategoriSaatIni, slugSaatIni) {
         }
 
         relatedWrap.innerHTML = related.map(p => {
-            // AMBIL DATA DENGAN BANYAK OPSI NAMA FIELD
-            const judul = p.title || p.judul || p.Judul || 'Tanpa Judul';
-            const gambar = p.image || p.thumbnail || p.gambar || '/media/og-default.jpg';
-            const slug = p.slug || p.link || p.url || '#';
+            const judul = p.title || p.judul || 'Tanpa Judul';
+            const gambar = p.image || p.thumbnail || '/media/og-default.jpg';
+            const slug = p.slug || p.title.toLowerCase().replace(/\s+/g, '-');
             
             return `
             <a href="/berita.html?slug=${slug}" class="related-item">
