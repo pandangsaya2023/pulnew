@@ -1,12 +1,6 @@
 [
   "/berita/fenomena-gerhana-matahari-total-12-agustus-2026-mengapa-tidak-terlihat-dari-semu.html",
   "/berita/rekomendasi-game-anak-edukatif-untuk-semua-usia.html",
-  "/berita/bsn-lilawangsa-run-2026-menggabungkan-olahraga-dan-kepedulian-sosial.html",
-  "/berita/kebakaran-dahsyat-di-kawasan-taman-nasional-bromo-tengger-semeru.html",
-  "/berita/persija-jakarta-siap-berlaga-di-musim-kompetisi-mendatang-dengan-target-juara-li.html",
-  "/berita/mengungkap-alur-cerita-gta-6-sebuah-kisah-lucia-jason-dan-dunia-baru-di-leonida.html",
-  "/berita/laptop-premium-huawei-matebook-pro-s-resmi-dirilis-dengan-bobot-yang-ringan.html",
-  "/berita/rekomendasi-game-anak-edukatif-yang-cocok-untuk-semua-usia.html",
   "/berita/huawei-matebook-pro-s-hadir-resmi-laptop-premium-dengan-desain-ringan-dan-canggi.html",
   "/berita/perumnas-resmi-mulai-pembangunan-hunian-vertikal-subsidi-samesta-alonia-jakarta.html",
   "/berita/pertanian-di-alor-dapat-mengurangi-kemiskinan.html",
