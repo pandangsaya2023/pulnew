@@ -1,5 +1,10 @@
 [
   "/berita/fenomena-gerhana-matahari-total-12-agustus-2026-mengapa-tidak-terlihat-dari-semu.html",
+  "/berita/relawan-gds-ajak-anak-panti-asuhan-aceh-semarakkan-hut-ri-lewat-permainan-tradis.html",
+  "/berita/pemkab-hsu-mengajak-paskibraka-untuk-jadi-duta-anti-narkoba-di-seluruh-kecamatan.html",
+  "/berita/menteri-koordinator-bidang-pangan-minta-dukungan-masyarakat-demi-keberhasilan-pr.html",
+  "/berita/alur-cerita-gta-6-kisah-lucia-jason-dan-dunia-baru-leonida.html",
+  "/berita/huawei-matebook-pro-s-resmi-diluncurkan-laptop-premium-dengan-bobot-yang-ringan.html",
   "/berita/rekomendasi-game-anak-edukatif-untuk-semua-usia.html",
   "/berita/huawei-matebook-pro-s-hadir-resmi-laptop-premium-dengan-desain-ringan-dan-canggi.html",
   "/berita/perumnas-resmi-mulai-pembangunan-hunian-vertikal-subsidi-samesta-alonia-jakarta.html",
