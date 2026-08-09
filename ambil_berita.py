@@ -31,7 +31,8 @@ def get_nama_media(url):
         domain = urlparse(url).netloc.replace('www.', '')
         nama = domain.split('.')[0].capitalize()
         if 'kompas' in domain: return 'Kompas'
-        if 'republika' in domain: return 'Republika' 
+        if 'republika' in domain: return 'Republika'
+        if 'antaranews' in domain: return 'Antaranews'
         return nama
     except:
         return "Media"
