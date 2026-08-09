@@ -22,7 +22,7 @@ sumber_rss = [
     #{"media": "Antara", "url": "https://www.antaranews.com/rss/tekno"},
     # {"media": "Antara", "url": "https://www.antaranews.com/nasional"},
     # {"media": "Okezone", "url": "https://sindonews.com/rss"},
-    {"media": "Viva", "url": "https://www.viva.co.id/medan"},
+    {"media": "Viva", "url": "https://www.medan.viva.co.id"},
     #{"media": "Republika", "url": "https://www.republika.co.id/rss"}
 ]
 
