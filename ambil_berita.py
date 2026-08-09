@@ -18,11 +18,12 @@ client = Groq(api_key=GROQ_API_KEY)
 MAX_BERITA_PER_RUN = 15
 
 sumber_rss = [
-    {"media": "Kompas", "url": "https://indeks.kompas.com/nasional"},
-    {"media": "Antara", "url": "https://www.antaranews.com/rss/tekno"},
+    #{"media": "Kompas", "url": "https://indeks.kompas.com/nasional"},
+    #{"media": "Antara", "url": "https://www.antaranews.com/rss/tekno"},
     # {"media": "Antara", "url": "https://www.antaranews.com/nasional"},
     # {"media": "Okezone", "url": "https://sindonews.com/rss"},
-    {"media": "Republika", "url": "https://www.republika.co.id/rss"}
+    {"media": "Viva", "url": "https://viva.co.id/medan"},
+    #{"media": "Republika", "url": "https://www.republika.co.id/rss"}
 ]
 
 # --- FUNGSI: BIKIN NAMA MEDIA DARI URL ---
@@ -33,6 +34,7 @@ def get_nama_media(url):
         if 'kompas' in domain: return 'Kompas'
         if 'republika' in domain: return 'Republika'
         if 'antaranews' in domain: return 'Antaranews'
+        if 'viva' in domain: 'Viva'
         return nama
     except:
         return "Media"
