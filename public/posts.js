@@ -1,4 +1,7 @@
 [
+  "/berita/iran-menaikkan-tekanan-terhadap-as-dengan-menutup-selat-hormuz.html",
+  "/berita/pertanian-di-alor-dapat-mengurangi-kemiskinan.html",
+  "/berita/pembongkaran-jpo-love-hate-relationship-di-kawasan-jalan-hr-rasuna-said-alasan-d.html",
   "/berita/kemkomdigi-optimis-reaktivasi-igrs-selesai-tahun-2026.html",
   "/berita/pentingnya-keselamatan-wisatawan-dispar-kepri-imbau-travel-agent-untuk-lebih-dis.html",
   "/berita/pemkab-sukabumi-luncurkan-program-parkir-someah-di-kawasan-wisata-pantai-selatan.html",
