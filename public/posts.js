@@ -1,4 +1,10 @@
 [
+  "/berita/kemarau-melanda-warga-gurabunga-tidore-kini-bergantung-pada-mata-air-ake-goa.html",
+  "/berita/bebaskan-aktivitas-fotografi-di-malioboro-pemerintah-siapkan-4-spot-foto-gratis.html",
+  "/berita/16-atlet-meraih-super-tiket-audisi-umum-pb-djarum-2026-di-makassar.html",
+  "/berita/gta-6-mengungkap-alur-cerita-dan-latar-belakang-dunia-baru.html",
+  "/berita/huawei-matebook-pro-s-resmi-diluncurkan-laptop-premium-dengan-berat-hanya-798-gr.html",
+  "/berita/rekomendasi-game-anak-edukatif-terbaik-untuk-semua-usia.html",
   "/berita/fenomena-gerhana-matahari-total-12-agustus-2026-mengapa-tidak-terlihat-dari-semu.html",
   "/berita/relawan-gds-ajak-anak-panti-asuhan-aceh-semarakkan-hut-ri-lewat-permainan-tradis.html",
   "/berita/pemkab-hsu-mengajak-paskibraka-untuk-jadi-duta-anti-narkoba-di-seluruh-kecamatan.html",
