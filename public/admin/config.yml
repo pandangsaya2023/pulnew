@@ -22,8 +22,8 @@ collections:
       - {label: "Kategori", name: "kategori", widget: "select", options: ["NASIONAL", "POLITIK", "EKONOMI", "PENDIDIKAN", "HUKUM", "TEKNOLOGI", "OLAHRAGA", "KESEHATAN"], required: true}
       - {label: "Tanggal", name: "date", widget: "datetime", format: "YYYY-MM-DDTHH:mm:ssZ", required: true}
       - {label: "Gambar Utama", name: "image", widget: "image", required: false}
-      - {label: "Sumber Media", name: "source_name", widget: "string", required: false, hint: "Contoh: Kompas, Detik"}
-      - {label: "Link Sumber", name: "source_url", widget: "string", required: false}
+      #- {label: "Sumber Media", name: "source_name", widget: "string", required: false, hint: "Contoh: Kompas, Detik"}
+      #- {label: "Link Sumber", name: "source_url", widget: "string", required: false}
       - {label: "Isi Berita", name: "body", widget: "markdown", required: true}
     view_filters:
       - {label: "Terbaru", field: "date", pattern: ""}
