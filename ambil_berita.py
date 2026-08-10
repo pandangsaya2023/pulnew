@@ -119,7 +119,7 @@ def rewrite_with_groq(title, link, media):
         PERATURAN SANGAT KETAT:
         1. PANJANG WAJIB SAMA: Hasil rewrite harus sepanjang atau LEBIH PANJANG dari teks sumber. JANGAN DIRINGKAS. Tulis semua detail, data, kutipan.
         2. STRUKTUR: WAJIB ada 2 SUB JUDUL pakai tag <h2>. Taruh di 1/3 dan 2/3 artikel.
-        3. WARNA: Setiap <h2> WAJIB dikasih style: <h2 style="color:#0056b3; margin-top:24px; margin-bottom:12px; font-size:22px;">Judul</h2>
+        3. WARNA: Setiap <h2> WAJIB dikasih style: <h2 style="color:#0056b3; margin-top:16px; margin-bottom:12px; font-size:22px;">Judul</h2>
         4. DILARANG KERAS COPAS: Semua kalimat WAJIB ditulis ulang 100% dengan struktur dan diksi berbeda.
         5. ACAK URUTAN: Pindahkan paragraf. Gabung dan pecah kalimat.
         6. FAKTA WAJIB SAMA: Nama, angka, tanggal, tempat, kutipan langsung TIDAK BOLEH BERUBAH.
