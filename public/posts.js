@@ -1,4 +1,10 @@
 [
+  "/berita/mikrobiota-usus-dan-dampaknya-pada-kesehatan-mental-anak.html",
+  "/berita/tekanan-amerika-serikat-kepada-israel-untuk-mengurangi-eskalasi-konflik-di-kawas.html",
+  "/berita/danantara-housing-expo-2026-kolaborasi-himbara-untuk-pembiayaan-perumahan.html",
+  "/berita/alur-cerita-gta-6-kisah-lucia-jason-dan-dunia-baru-leonida.html",
+  "/berita/huawei-meluncurkan-laptop-premium-terbaru-matebook-pro-s-dengan-desain-ringan.html",
+  "/berita/rekomendasi-game-anak-edukatif-yang-cocok-untuk-semua-usia.html",
   "/berita/kemarau-melanda-warga-gurabunga-tidore-kini-bergantung-pada-mata-air-ake-goa.html",
   "/berita/bebaskan-aktivitas-fotografi-di-malioboro-pemerintah-siapkan-4-spot-foto-gratis.html",
   "/berita/16-atlet-meraih-super-tiket-audisi-umum-pb-djarum-2026-di-makassar.html",
@@ -9,7 +15,6 @@
   "/berita/relawan-gds-ajak-anak-panti-asuhan-aceh-semarakkan-hut-ri-lewat-permainan-tradis.html",
   "/berita/pemkab-hsu-mengajak-paskibraka-untuk-jadi-duta-anti-narkoba-di-seluruh-kecamatan.html",
   "/berita/menteri-koordinator-bidang-pangan-minta-dukungan-masyarakat-demi-keberhasilan-pr.html",
-  "/berita/alur-cerita-gta-6-kisah-lucia-jason-dan-dunia-baru-leonida.html",
   "/berita/huawei-matebook-pro-s-resmi-diluncurkan-laptop-premium-dengan-bobot-yang-ringan.html",
   "/berita/rekomendasi-game-anak-edukatif-untuk-semua-usia.html",
   "/berita/huawei-matebook-pro-s-hadir-resmi-laptop-premium-dengan-desain-ringan-dan-canggi.html",
