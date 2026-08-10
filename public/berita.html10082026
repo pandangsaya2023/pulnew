@@ -200,7 +200,7 @@ async function muatHalamanBerita() {
         const linkBerita = window.location.href;
         const textShare = encodeURIComponent(post.title + ' - ' + linkBerita);
         const kategori = (post.kategori || post.Kategori || post.category || 'BERITA');
-        const sourceBox = post.source_name?; //`<div class="source-box">Sumber: <a href="${post.source_url}" target="_blank">${post.source_name}</a></div>` : '';
+        const sourceBox = post.source_name? `<div class="source-box">Sumber: <a href="${post.source_url}" target="_blank">${post.source_name}</a></div>` : '';
 
         contentArea.innerHTML = `
             <h1 class="article-title">${post.title}</h1>
