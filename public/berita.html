@@ -45,6 +45,9 @@
   .article-body h2 { font-size: 20px; font-weight: 700; line-height: 1.3!important; color: var(--warna-biru); margin-top: 15px!important; display: block!important; }
   .article-body img { max-width: 100%; height: auto; border-radius: 8px; margin: 15px 0; }
   .article-body a { color: var(--warna-merah); text-decoration: underline; }
+  .source-box { margin: 15px 0 20px 0; padding: 0; border-top: none; font-size: 14px; color: #555; font-style: italic; }
+  .source-box a { color: var(--warna-biru); text-decoration: none; font-weight: 600; }
+  .source-box a:hover { text-decoration: underline; }
   .related-section { margin-top: 30px; padding-top: 20px; border-top: 2px solid #eee; }
   .section-title { font-size: 18px; font-weight: 800; color: var(--warna-biru); margin: 5px 0 12px 0; padding-left: 3px; border-left: 4px solid var(--warna-merah); text-align: left; }
   .related-item { display: flex; gap: 12px; padding: 10px 0; border-bottom: 1px solid #f0f0f0; text-decoration: none; color: inherit; transition: 0.2s; }
@@ -53,19 +56,21 @@
   .related-item h4 { font-size: 14px; font-weight: 700; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; margin: 0; text-align: left; }
   .footer-ticker { background: #d32f2f; color: white; padding: 8px 0; font-size: 13px; overflow: hidden; width: 100%; position: fixed; bottom: 0; left: 0; z-index: 999; height: 35px; display: flex; align-items: center; }
   .ticker-content { display: inline-block; white-space: nowrap; padding-left: 100%; animation: ticker 40s linear infinite; line-height: 35px; }
-  @keyframes ticker { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(-100%, 0, 0); } }
+        @keyframes ticker { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(-100%, 0, 0); }
   .loading,.error { text-align:center; padding:60px 20px; }
   .error { color: var(--warna-merah); }
-  .article-box { padding-bottom: 50px!important; }
-  @media (max-width: 767px) { .article-box { padding-bottom: 16px!important; } }
+    .sticky-video-wrapper { position: fixed!important; bottom: 100px!important; right: 20px!important; width: 320px!important; height: 180px!important; z-index: 998!important; background: #000; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 25px rgba(0,0,0,0.4); }
+  .video-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; margin: 0 auto; }
+  .video-container iframe,.video-container #youtube-player { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+    #close-video { display: none; }
+    @media (max-width: 767px) {
+ .sticky-video-wrapper { position: relative!important; width: 95%!important; height: auto!important; margin: 25px auto!important; bottom: auto!important; right: auto!important; }
+   #close-video { display: block; position: absolute; top: 5px; right: 8px; background: rgba(0,0,0,0.6); color: white; border: none; border-radius: 50%; width: 28px; height: 28px; cursor: pointer; z-index: 10; }
+    }
+    .article-box { padding-bottom: 50px!important; }
+    @media (max-width: 767px) { .article-box { padding-bottom: 16px!important; } }
     </style>
 
-
-
-
-
-
-    
 </head>
 <body>
     <div class="header-container">
