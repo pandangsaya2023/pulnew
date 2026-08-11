@@ -134,6 +134,7 @@ def rewrite_with_groq(title, link, media):
         5. ACAK URUTAN: Pindahkan paragraf. Gabung dan pecah kalimat.
         6. FAKTA WAJIB SAMA: Nama, angka, tanggal, tempat, kutipan langsung TIDAK BOLEH BERUBAH.
         7. GAYA: Seperti Detik/Kompas. Piramida terbalik. Bahasa baku.
+        8. OUTPUT: Kembalikan HANYA JSON valid: {{"judul": "...", "isi": "...", "lead": "..."}}
         
         TEKS SUMBER:
         Judul: {title}
