@@ -50,7 +50,7 @@ def get_existing_posts():
     posts = {}
     if os.path.exists(OUTPUT_FOLDER):
         for filename in os.listdir(OUTPUT_FOLDER):
-            if filename.endswith(".json"):
+            if filename.endswith(".json") and filename != 'index.json':
                 try:
                     path = os.path.join(OUTPUT_FOLDER, filename)
                     with open(path, 'r', encoding='utf-8') as f:
@@ -209,10 +209,11 @@ def main():
                 img_url = ambil_gambar_asli(soup_artikel)
 
                 berita_data = {
-                    "title": judul_baru, "slug": slug, "lead": lead_baru, "kategori": "Berita",
+                    "title": judul_baru, "slug": slug, "lead": lead_baru, 
+                    "kategori": semua_post.get(slug, {}).get('kategori', 'Berita'), # <-- AMBIL DARI DATA LAMA KALAU ADA
                     "date": datetime.now().strftime("%Y-%m-%dT%H:%M:%S+07:00"),
                     "image": img_url, "body": body,
-                    "source_name": get_nama_media(link), "source_url": link # tetap disimpan di json buat arsip
+                    "source_name": get_nama_media(link), "source_url": link
                 }
 
                 if slug in semua_post: jumlah_update += 1
