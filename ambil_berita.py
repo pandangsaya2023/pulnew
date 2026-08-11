@@ -56,7 +56,8 @@ def get_existing_posts():
                     with open(path, 'r', encoding='utf-8') as f:
                         data = json.load(f)
                     posts[data['slug']] = data
-                except: pass
+                except Exception as e: 
+                    print(f"Gagal baca {filename}: {e}")
     return posts
 
 def buat_slug(judul):
@@ -75,8 +76,8 @@ def save_berita(data):
 
 # --- BARU: BIKIN INDEX.JSON ---
 def update_index_json(all_posts):
-    # Ambil 50 berita terbaru aja buat index
-    sorted_posts = sorted(all_posts.values(), key=lambda x: x.get('date',''), reverse=True)[:50]
+    # HAPUS [:50] BIAR SEMUA MASUK
+    sorted_posts = sorted(all_posts.values(), key=lambda x: x.get('date',''), reverse=True)
 
     index_data = []
     for p in sorted_posts:
@@ -91,7 +92,7 @@ def update_index_json(all_posts):
 
     with open(INDEX_JSON_PATH, 'w', encoding='utf-8') as f:
         json.dump(index_data, f, ensure_ascii=False, indent=2)
-    print(f"✅ index.json diupdate: {len(index_data)} berita")
+    print(f"✅ index.json diupdate: {len(index_data)} berita") # sekarang harusnya 96
 
 def update_posts_js(all_posts):
     urls = [f"/berita/{slug}.html" for slug in all_posts.keys()]
