@@ -333,129 +333,173 @@
         </div>
     </footer>
 
-    <script>
-    document.getElementById('live-date').textContent = new Date().toLocaleDateString('id-ID', { weekday: 'long', day: 'numeric', month: 'short', year: 'numeric' });
-    let allPosts = [];
-    let filteredPosts = []; // buat simpan hasil filter
-    let currentPage = 1;
-    const postsPerPage = 20; // 20 berita per halaman
-    const kategoriWarna = { 'NASIONAL': '#1a237e', 'POLITIK': '#1a237e', 'EKONOMI': '#f57c00', 'TEKNOLOGI': '#0288d1', 'PENDIDIKAN': '#2e7d32', 'HUKUM': '#6a1b9a', 'HIBURAN': '#d32f2f', 'OLAHRAGA': '#d32f2f', 'KESEHATAN': '#009688', 'BERITA': '#d32f2f' };
+<script>
+document.getElementById('live-date').textContent = new Date().toLocaleDateString('id-ID', { weekday: 'long', day: 'numeric', month: 'short', year: 'numeric' });
 
-    async function fetchPosts() {
-        const res = await fetch('/api/posts?t=' + Date.now() + '&r=' + Math.random(), { cache: 'no-store' });
-        const data = await res.json();
-        return Array.isArray(data)? data : data.urls;
-    }
-        
-    async function fetchPostDetail(url) {
-        const res = await fetch(url + '?t=' + Date.now() + '&r=' + Math.random(), { cache: 'no-store' });
-        return await res.json();
-    }
-        
-    async function ambilDataBerita() {
-        const container = document.getElementById('news-container');
-        const urls = await fetchPosts();
-        if (urls.length === 0) {
-            container.innerHTML = '<div style="text-align:center; padding:40px; color:#666;">Belum ada berita saat ini</div>';
-            document.getElementById('running-text-container').innerHTML = '<span class="ticker-item">Belum ada update berita</span>';
+let allPosts = [];
+let filteredPosts = [];
+let currentPage = 1;
+const postsPerPage = 20;
+const kategoriWarna = { 'NASIONAL': '#1a237e', 'POLITIK': '#1a237e', 'EKONOMI': '#f57c00', 'TEKNOLOGI': '#0288d1', 'PENDIDIKAN': '#2e7d32', 'HUKUM': '#6a1b9a', 'HIBURAN': '#d32f2f', 'OLAHRAGA': '#d32f2f', 'KESEHATAN': '#009688', 'BERITA': '#d32f2f' };
+
+// JURUS 1: CUKUP AMBIL index.json SAJA. JANGAN FETCH 96 FILE 1-1
+async function fetchPosts() {
+    // ganti dari /api/posts jadi /posts/index.json
+    const res = await fetch('/posts/index.json?t=' + Date.now(), { cache: 'no-store' });
+    const data = await res.json();
+    return data; // index.json udah isinya array object lengkap
+}
+
+async function ambilDataBerita() {
+    const container = document.getElementById('news-container');
+    const posts = await fetchPosts(); // Cuma 1x fetch, 50kb doang
+
+    if (posts.length === 0) {
+        container.innerHTML = '<div style="text-align:center; padding:40px; color:#666;">Belum ada berita saat ini</div>';
+        document.getElementById('running-text-container').innerHTML = '<span class="ticker-item">Belum ada update berita</span>';
         return;
-        }
-    
-        // YANG BARU: Filter yg error 404
-        const postPromises = urls.map(url => 
-        fetchPostDetail(url).catch(err => null) // kalo error balikin null
-        );
-        const posts = (await Promise.all(postPromises)).filter(Boolean); // buang yg null
-    
-        posts.sort((a, b) => new Date(b.date || b.created_at) - new Date(a.date || a.created_at));
-        allPosts = posts;
-        filteredPosts = posts;
-        tampilkanHalaman(1);
-        updateRunningText(posts);
-        setupKategori();
-        setupSearch();
-        autoScrollCarousel();
-        }
-         
-    function tampilkanBerita(posts) {
-        const container = document.getElementById('news-container');
-        if (posts.length === 0) { container.innerHTML = '<div style="text-align:center; padding:40px; color:#666;">Berita tidak ditemukan</div>'; return; }
-        let html = '';
-        const hero = posts[0];
-        const kategoriHero = hero.kategori || hero.category || 'BERITA';
-        const warnaHero = kategoriWarna[kategoriHero.toUpperCase()] || '#d32f2f';
-        html += `<a href="/berita.html?slug=${hero.slug}" class="news-hero"><img src="${hero.image}" alt="${hero.title}" loading="lazy"><div class="hero-content"><span class="badge" style="background: ${warnaHero}">${kategoriHero}</span><h2>${hero.title}</h2></div></a>`;
-        if (posts.length > 1) {
-            html += '<div class="news-grid">';
-            posts.slice(1, 5).forEach(post => {
-                const kategori = post.kategori || post.category || 'BERITA';
-                const warna = kategoriWarna[kategori.toUpperCase()] || '#d32f2f';
-                html += `<a href="/berita.html?slug=${post.slug}" class="news-card"><img src="${post.image}" alt="${post.title}" loading="lazy"><div class="card-content"><span class="badge" style="background: ${warna}">${kategori}</span><h3>${post.title}</h3></div></a>`;
-            });
-            html += '</div>';
-        }
-        if (posts.length > 5) {
-            html += '<h3 class="section-title">🔥 Trending Hari Ini</h3><div class="trending-list">';
-            posts.slice(5, 10).forEach((post, index) => {
-                const kategori = post.kategori || post.category || 'BERITA';
-                const warna = kategoriWarna[kategori.toUpperCase()] || '#d32f2f';
-                html += `<a href="/berita.html?slug=${post.slug}" class="trending-item" style="display:flex;gap:12px;padding:12px 8px;border-bottom:1px solid #eee;text-decoration:none;color:inherit;"><div style="font-size:28px;font-weight:800;color:var(--warna-merah);min-width:32px;">${index + 1}</div><div><span class="badge" style="background: ${warna}">${kategori}</span><h4 style="font-size:15px;font-weight:700;">${post.title}</h4></div></a>`;
-            });
-            html += '</div>';
-        }
-        if (posts.length > 10) {
-            html += '<h3 class="section-title">Berita Lain</h3><div class="latest-carousel"><div class="carousel-scroll" id="main-carousel">';
-            posts.slice(10).forEach(post => {
-                const kategori = post.kategori || post.category || 'BERITA';
-                const warna = kategoriWarna[kategori.toUpperCase()] || '#d32f2f';
-                html += `<a href="/berita.html?slug=${post.slug}" class="carousel-item"><img src="${post.image}" alt="${post.title}" loading="lazy"><div class="card-content"><span class="badge" style="background: ${warna}">${kategori}</span><h4>${post.title}</h4></div></a>`;
-            });
-            html += '</div></div>';
-        }
-        // html += `<div class="ad-slot ad-banner-bottom"><a href="https://link-iklan-anda.com" target="_blank" rel="nofollow"><img src="/media/iklan_bawah1.png" alt="Iklan"></a></div>`;
-        container.innerHTML = html;
     }
 
-    // === FUNGSI BARU: PAGINASI ===
-    function tampilkanHalaman(page) {
-        currentPage = page;
-        const start = (page - 1) * postsPerPage;
-        const end = start + postsPerPage;
-        const postsToShow = filteredPosts.slice(start, end);
-        tampilkanBerita(postsToShow);
-        renderPagination();
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+    posts.sort((a, b) => new Date(b.date) - new Date(a.date));
+    allPosts = posts;
+    filteredPosts = posts;
+    tampilkanHalaman(1);
+    updateRunningText(posts);
+    setupKategori();
+    setupSearch();
+    autoScrollCarousel();
+}
+
+function tampilkanBerita(posts) {
+    const container = document.getElementById('news-container');
+    if (posts.length === 0) { container.innerHTML = '<div style="text-align:center; padding:40px; color:#666;">Berita tidak ditemukan</div>'; return; }
+    let html = '';
+    const hero = posts[0];
+    const kategoriHero = hero.kategori || 'BERITA';
+    const warnaHero = kategoriWarna[kategoriHero.toUpperCase()] || '#d32f2f';
+    // JURUS 2: TAMBAHIN loading="lazy" + decoding="async"
+    html += `<a href="/berita.html?slug=${hero.slug}" class="news-hero"><img src="${hero.image}" alt="${hero.title}" loading="lazy" decoding="async"><div class="hero-content"><span class="badge" style="background: ${warnaHero}">${kategoriHero}</span><h2>${hero.title}</h2></div></a>`;
+    if (posts.length > 1) {
+        html += '<div class="news-grid">';
+        posts.slice(1, 5).forEach(post => {
+            const kategori = post.kategori || 'BERITA';
+            const warna = kategoriWarna[kategori.toUpperCase()] || '#d32f2f';
+            html += `<a href="/berita.html?slug=${post.slug}" class="news-card"><img src="${post.image}" alt="${post.title}" loading="lazy" decoding="async"><div class="card-content"><span class="badge" style="background: ${warna}">${kategori}</span><h3>${post.title}</h3></div></a>`;
+        });
+        html += '</div>';
     }
+    if (posts.length > 5) {
+        html += '<h3 class="section-title">🔥 Trending Hari Ini</h3><div class="trending-list">';
+        posts.slice(5, 10).forEach((post, index) => {
+            const kategori = post.kategori || 'BERITA';
+            const warna = kategoriWarna[kategori.toUpperCase()] || '#d32f2f';
+            html += `<a href="/berita.html?slug=${post.slug}" class="trending-item" style="display:flex;gap:12px;padding:12px 8px;border-bottom:1px solid #eee;text-decoration:none;color:inherit;"><div style="font-size:28px;font-weight:800;color:var(--warna-merah);min-width:32px;">${index + 1}</div><div><span class="badge" style="background: ${warna}">${kategori}</span><h4 style="font-size:15px;font-weight:700;">${post.title}</h4></div></a>`;
+        });
+        html += '</div>';
+    }
+    if (posts.length > 10) {
+        html += '<h3 class="section-title">Berita Lain</h3><div class="latest-carousel"><div class="carousel-scroll" id="main-carousel">';
+        posts.slice(10).forEach(post => {
+            const kategori = post.kategori || 'BERITA';
+            const warna = kategoriWarna[kategori.toUpperCase()] || '#d32f2f';
+            html += `<a href="/berita.html?slug=${post.slug}" class="carousel-item"><img src="${post.image}" alt="${post.title}" loading="lazy" decoding="async"><div class="card-content"><span class="badge" style="background: ${warna}">${kategori}</span><h4>${post.title}</h4></div></a>`;
+        });
+        html += '</div></div>';
+    }
+    container.innerHTML = html;
+}
 
-    function renderPagination() {
-        const totalPages = Math.ceil(filteredPosts.length / postsPerPage);
-        const container = document.getElementById('pagination-container');
-        if(totalPages <= 1) { container.innerHTML = ''; return; }
+function tampilkanHalaman(page) {
+    currentPage = page;
+    const start = (page - 1) * postsPerPage;
+    const end = start + postsPerPage;
+    const postsToShow = filteredPosts.slice(start, end);
+    tampilkanBerita(postsToShow);
+    renderPagination();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
 
-        let html = '';
-        html += `<button onclick="tampilkanHalaman(${currentPage-1})" ${currentPage==1?'disabled':''}>« Prev</button>`;
-    
-        for(let i=1; i<=totalPages; i++){ // TAMPILIN SEMUA ANGKA
+function renderPagination() {
+    const totalPages = Math.ceil(filteredPosts.length / postsPerPage);
+    const container = document.getElementById('pagination-container');
+    if(totalPages <= 1) { container.innerHTML = ''; return; }
+
+    let html = '';
+    html += `<button onclick="tampilkanHalaman(${currentPage-1})" ${currentPage==1?'disabled':''}>« Prev</button>`;
+
+    // JURUS 3: JANGAN TAMPILIN 96 TOMBOL. CUKUP 5 SAJA
+    let startPage = Math.max(1, currentPage - 2);
+    let endPage = Math.min(totalPages, currentPage + 2);
+    for(let i=startPage; i<=endPage; i++){
         html += `<button class="${i==currentPage?'active':''}" onclick="tampilkanHalaman(${i})">${i}</button>`;
-        }
-    
-        html += `<button onclick="tampilkanHalaman(${currentPage+1})" ${currentPage==totalPages?'disabled':''}>Next »</button>`;
-        container.innerHTML = html;
     }
 
-    // === FUNGSI BARU: SEARCH ===
-    function setupSearch(){
-        document.getElementById('searchInput').addEventListener('input', (e) => {
-            const keyword = e.target.value.toLowerCase();
-            if(keyword === ''){
-                filteredPosts = allPosts;
-            } else {
-                filteredPosts = allPosts.filter(post =>
-                    post.title.toLowerCase().includes(keyword) ||
+    html += `<button onclick="tampilkanHalaman(${currentPage+1})" ${currentPage==totalPages?'disabled':''}>Next »</button>`;
+    container.innerHTML = html;
+}
 
+function setupSearch(){
+    document.getElementById('searchInput').addEventListener('input', (e) => {
+        const keyword = e.target.value.toLowerCase();
+        if(keyword === ''){
+            filteredPosts = allPosts;
+        } else {
+            filteredPosts = allPosts.filter(post =>
+                post.title.toLowerCase().includes(keyword) ||
+                (post.kategori||'').toLowerCase().includes(keyword)
+            );
+        }
+        tampilkanHalaman(1);
+    });
+}
 
-    <!-- <script src="https://www.youtube.com/iframe_api"></script> -->
-    <script>
+function setupKategori(){
+    document.querySelectorAll('.category-nav a').forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            filterBerita(link.dataset.kategori);
+        });
+    });
+}
+
+function filterBerita(kategori) {
+    document.querySelectorAll('.category-nav a').forEach(a => a.classList.remove('active'));
+    const activeLink = document.querySelector(`[data-kategori="${kategori}"]`);
+    if (activeLink) activeLink.classList.add('active');
+    filteredPosts = kategori === 'SEMUA'? allPosts : allPosts.filter(post => (post.kategori || '').toUpperCase() === kategori);
+    document.getElementById('searchInput').value = '';
+    tampilkanHalaman(1);
+}
+
+function updateRunningText(posts) {
+    const containerTop = document.getElementById('running-text-container');
+    if (!posts || posts.length === 0) return;
+    let htmlContent = '';
+    posts.slice(0, 10).forEach(post => { htmlContent += `<a href="/berita.html?slug=${post.slug}" class="ticker-item">🔥 ${post.title} &nbsp;&nbsp;&nbsp;&nbsp;</a>`; });
+    containerTop.innerHTML = htmlContent;
+}
+
+function autoScrollCarousel() {
+    const carousel = document.getElementById('main-carousel');
+    if(!carousel) return;
+    let scrollAmount = 0;
+    setInterval(() => {
+        if (carousel.scrollWidth - carousel.scrollLeft <= carousel.clientWidth) {
+            scrollAmount = 0;
+        } else {
+            scrollAmount += 300;
+        }
+        carousel.scrollTo({ left: scrollAmount, behavior: 'smooth' });
+    }, 4000);
+}
+
+ambilDataBerita();
+    
+    
+         
+    
+<!-- <script src="https://www.youtube.com/iframe_api"></script> -->
+<script>
     //let player;
     //let youtubeLink = 'https://youtube.com/watch?v=YLxO9527zYA'; // GANTI LINK KAMU
     //let currentVideoId = youtubeLink.split('v=')[1];
