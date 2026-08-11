@@ -1,7 +1,7 @@
 [
-  "/berita/harga-pakan-melambung-peternak-unggas-mengeluhkan-kerugian.html",
-  "/berita/dukung-kebijakan-pemerintah-mui-jakarta-mendorong-pemahaman-fikih-lingkungan-di-.html",
-  "/berita/tampil-di-tiga-ajang-balap-toyota-gazoo-kunci-gelar-rally-2026.html",
+  "/berita/pertumbuhan-laba-bumn-semester-i-2026-capaian-yang-signifikan.html",
+  "/berita/lomba-unik-tangkap-itik-meriahkan-hut-kemerdekaan-ri-ke-81-di-kendari.html",
+  "/berita/serangan-di-bab-al-mandeb-satu-awak-kapal-wni-tewas-dalam-penyerangan-kelompok-h.html",
   "/berita/peningkatan-kualitas-sumber-daya-manusia-di-banten-melalui-kerjasama-strategis.html",
   "/berita/krisis-air-bersih-di-kota-cirebon-meningkat-1004-kk-terdampak.html",
   "/berita/kecelakaan-laut-di-pangandaran-perahu-bercadik-terbalik-satu-anak-buah-kapal-hil.html",
