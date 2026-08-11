@@ -208,12 +208,19 @@ def main():
                 slug= buat_slug(judul_baru)
                 img_url = ambil_gambar_asli(soup_artikel)
 
+                # Ambil data lama dulu kalau ada
+                data_lama = semua_post.get(slug, {})
+
                 berita_data = {
-                    "title": judul_baru, "slug": slug, "lead": lead_baru, 
-                    "kategori": semua_post.get(slug, {}).get('kategori', 'Berita'), # <-- AMBIL DARI DATA LAMA KALAU ADA
+                    "title": judul_baru, 
+                    "slug": slug, 
+                    "lead": lead_baru, 
+                    "kategori": data_lama.get('kategori', 'Berita'), # <-- PENTING: ambil dari data lama
                     "date": datetime.now().strftime("%Y-%m-%dT%H:%M:%S+07:00"),
-                    "image": img_url, "body": body,
-                    "source_name": get_nama_media(link), "source_url": link
+                    "image": img_url, 
+                    "body": body,
+                    "source_name": get_nama_media(link), 
+                    "source_url": link
                 }
 
                 if slug in semua_post: jumlah_update += 1
