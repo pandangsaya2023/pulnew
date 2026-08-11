@@ -1,6 +1,8 @@
 [
+  "/berita/harga-pakan-melambung-peternak-unggas-mengeluhkan-kerugian.html",
+  "/berita/dukung-kebijakan-pemerintah-mui-jakarta-mendorong-pemahaman-fikih-lingkungan-di-.html",
+  "/berita/tampil-di-tiga-ajang-balap-toyota-gazoo-kunci-gelar-rally-2026.html",
   "/berita/peningkatan-kualitas-sumber-daya-manusia-di-banten-melalui-kerjasama-strategis.html",
-  "/berita/mengenal-empat-kriterianya-menurut-fikih-untuk-menentukan-lomba-17-agustus-bisa-.html",
   "/berita/krisis-air-bersih-di-kota-cirebon-meningkat-1004-kk-terdampak.html",
   "/berita/kecelakaan-laut-di-pangandaran-perahu-bercadik-terbalik-satu-anak-buah-kapal-hil.html",
   "/berita/shopeepay-merchant-solusi-pembayaran-digital-untuk-umkm.html",
