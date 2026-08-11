@@ -1,4 +1,7 @@
 [
+  "/berita/shopeepay-merchant-solusi-pembayaran-digital-untuk-umkm.html",
+  "/berita/komitmennya-jaya-raya-melahirkan-atlet-hebat-di-usia-emas.html",
+  "/berita/mengenal-mata-juling-pada-dewasa-penyebab-dan-pentingnya-pemeriksaan.html",
   "/berita/wali-kota-medan-berhentikan-sementara-camat-medan-timur.html",
   "/berita/atrbpn-dan-kemendagri-sepakat-integrasikan-nib-dan-nop-pbb-untuk-meningkatkan-tr.html",
   "/berita/36-gtk-srma-1-aceh-besar-dampingi-operasional-sekolah-rakyat-di-nagan-raya.html",
