@@ -256,4 +256,5 @@ def main():
     #print(f"=== SELESAI HAPUS: {count_hapus} file dihapus ===")
 
 if __name__ == "__main__":
+    #hapus_berita_lama()
     main()
