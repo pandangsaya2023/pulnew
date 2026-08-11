@@ -205,23 +205,24 @@ def main():
                 link = item.find('link').get_text(strip=True)
 
                 body, soup_artikel, judul_baru, lead_baru = rewrite_with_groq(title, link, sumber['media'])
-                slug= buat_slug(judul_baru)
+                slug = buat_slug(judul_baru)
                 img_url = ambil_gambar_asli(soup_artikel)
 
-                # Ambil data lama dulu kalau ada
-                data_lama = semua_post.get(slug, {})
-
+                # --- INI KUNCINYA ---
+                kategori_lama = semua_post.get(slug, {}).get('kategori', 'Berita')
+                
                 berita_data = {
                     "title": judul_baru, 
                     "slug": slug, 
                     "lead": lead_baru, 
-                    "kategori": data_lama.get('kategori', 'Berita'), # <-- PENTING: ambil dari data lama
+                    "kategori": kategori_lama, # <-- JANGAN DITIMPA LAGI
                     "date": datetime.now().strftime("%Y-%m-%dT%H:%M:%S+07:00"),
                     "image": img_url, 
                     "body": body,
                     "source_name": get_nama_media(link), 
                     "source_url": link
                 }
+                # --- SELESAI ---
 
                 if slug in semua_post: jumlah_update += 1
                 else: jumlah_baru += 1
@@ -234,11 +235,7 @@ def main():
             print(f"Error di {sumber['media']}: {e}")
 
     update_posts_js(semua_post)
-    update_index_json(semua_post) # <--- JALANIN INI
-
-    print("=== GENERATE SEMUA HALAMAN HTML ===")
-    for slug, article in semua_post.items():
-        generate_article_page(article)
+    update_index_json(semua_post)
 
     print(f"Selesai! Baru: {jumlah_baru}, Update: {jumlah_update}")
 
