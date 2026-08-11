@@ -202,6 +202,61 @@ window.addEventListener('popstate', muatHalamanBerita);
 document.addEventListener('DOMContentLoaded', muatHalamanBerita);
 
 </script>
-<script src="/berita.js"></script>
+
+    <!-- Video Youtune -->
+
+    <!-- <div class="sticky-video-wrapper">
+        <div class="video-container">
+           <div id="youtube-player"></div>
+           <button id="close-video">✕</button>
+        </div>
+    </div> -->
+
+    <!-- <script src="https://www.youtube.com/iframe_api"></script> -->
+    <script>
+    //let player;
+    //let youtubeLink = 'https://youtube.com/watch?v=YLxO9527zYA'; // GANTI LINK KAMU
+    //let currentVideoId = youtubeLink.split('v=')[1];
+
+    function onYouTubeIframeAPIReady() {
+        const savedTime = localStorage.getItem('yt_currentTime') || 0;
+        const savedVideo = localStorage.getItem('yt_videoId');
+
+        player = new YT.Player('youtube-player', {
+           videoId: savedVideo || currentVideoId,
+           playerVars: {
+              'playsinline': 1,
+              'controls': 1,
+              'rel': 0,
+              'mute': 1,
+              'start': parseInt(savedTime)
+           },
+           events: {
+              'onReady': e => {
+                 e.target.playVideo();
+                 setTimeout(() => e.target.unMute(), 1000);
+               },
+              'onStateChange': saveTime
+           }
+         });
+    }
+
+    function saveTime() {
+        if(player && player.getCurrentTime){
+            setInterval(() => {
+                localStorage.setItem('yt_currentTime', player.getCurrentTime());
+                localStorage.setItem('yt_videoId', player.getVideoData().video_id);
+            }, 1000);
+        }
+    }
+
+    // HAPUS SEMUA KODE SCROLL. BIAR STABIL AJA
+    document.getElementById('close-video').addEventListener('click', () => {
+      if(player) player.pauseVideo();
+      localStorage.removeItem('yt_currentTime');
+      document.querySelector('.sticky-video-wrapper').style.display = 'none';
+    });
+    </script>
+    <script src="/berita.js"></script>
 </body>
 </html>
