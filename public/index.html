@@ -344,21 +344,14 @@ const kategoriWarna = { 'NASIONAL': '#1a237e', 'POLITIK': '#1a237e', 'EKONOMI': 
 
 // JURUS 1: CUKUP AMBIL index.json SAJA. JANGAN FETCH 96 FILE 1-1
 async function fetchPosts() {
-    try {
-        const res = await fetch('/posts/index.json?t=' + Date.now(), { cache: 'no-store' });
-        if (!res.ok) throw new Error('Gagal load index.json: ' + res.status);
-        const data = await res.json();
-        console.log("Berhasil load:", data.length, "berita");
-        return data;
-    } catch (err) {
-        console.error(err);
-        document.getElementById('news-container').innerHTML = '<div style="text-align:center; padding:40px; color:red;">Gagal memuat data. Coba refresh</div>';
-        return [];
-    }
+    const res = await fetch('/posts/index.json?t=' + Date.now(), { cache: 'no-store' });
+    const data = await res.json();
+    return data; // Langsung return array, gak usah .urls lagi
 }
+    
 async function ambilDataBerita() {
     const container = document.getElementById('news-container');
-    const posts = await fetchPosts(); // Cuma 1x fetch, 50kb doang
+    const posts = await fetchPosts(); // Langsung dapet array lengkap
 
     if (posts.length === 0) {
         container.innerHTML = '<div style="text-align:center; padding:40px; color:#666;">Belum ada berita saat ini</div>';
