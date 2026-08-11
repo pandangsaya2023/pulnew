@@ -333,7 +333,7 @@
         </div>
     </footer>
 
-<script>
+    <script>
 document.getElementById('live-date').textContent = new Date().toLocaleDateString('id-ID', { weekday: 'long', day: 'numeric', month: 'short', year: 'numeric' });
 
 let allPosts = [];
@@ -342,16 +342,21 @@ let currentPage = 1;
 const postsPerPage = 20;
 const kategoriWarna = { 'NASIONAL': '#1a237e', 'POLITIK': '#1a237e', 'EKONOMI': '#f57c00', 'TEKNOLOGI': '#0288d1', 'PENDIDIKAN': '#2e7d32', 'HUKUM': '#6a1b9a', 'HIBURAN': '#d32f2f', 'OLAHRAGA': '#d32f2f', 'KESEHATAN': '#009688', 'BERITA': '#d32f2f' };
 
-// JURUS 1: CUKUP AMBIL index.json SAJA. JANGAN FETCH 96 FILE 1-1
 async function fetchPosts() {
-    const res = await fetch('/posts/index.json?t=' + Date.now(), { cache: 'no-store' });
-    const data = await res.json();
-    return data; // Langsung return array, gak usah .urls lagi
+    try {
+        const res = await fetch('/posts/index.json?t=' + Date.now(), { cache: 'no-store' });
+        if (!res.ok) throw new Error('Gagal load');
+        const data = await res.json();
+        return data;
+    } catch(err) {
+        document.getElementById('news-container').innerHTML = '<div style="text-align:center; padding:40px; color:red;">Gagal memuat data: '+err.message+'</div>';
+        return [];
+    }
 }
     
 async function ambilDataBerita() {
     const container = document.getElementById('news-container');
-    const posts = await fetchPosts(); // Langsung dapet array lengkap
+    const posts = await fetchPosts();
 
     if (posts.length === 0) {
         container.innerHTML = '<div style="text-align:center; padding:40px; color:#666;">Belum ada berita saat ini</div>';
@@ -376,7 +381,6 @@ function tampilkanBerita(posts) {
     const hero = posts[0];
     const kategoriHero = hero.kategori || 'BERITA';
     const warnaHero = kategoriWarna[kategoriHero.toUpperCase()] || '#d32f2f';
-    // JURUS 2: TAMBAHIN loading="lazy" + decoding="async"
     html += `<a href="/berita.html?slug=${hero.slug}" class="news-hero"><img src="${hero.image}" alt="${hero.title}" loading="lazy" decoding="async"><div class="hero-content"><span class="badge" style="background: ${warnaHero}">${kategoriHero}</span><h2>${hero.title}</h2></div></a>`;
     if (posts.length > 1) {
         html += '<div class="news-grid">';
@@ -422,17 +426,13 @@ function renderPagination() {
     const totalPages = Math.ceil(filteredPosts.length / postsPerPage);
     const container = document.getElementById('pagination-container');
     if(totalPages <= 1) { container.innerHTML = ''; return; }
-
     let html = '';
     html += `<button onclick="tampilkanHalaman(${currentPage-1})" ${currentPage==1?'disabled':''}>« Prev</button>`;
-
-    // JURUS 3: JANGAN TAMPILIN 96 TOMBOL. CUKUP 5 SAJA
     let startPage = Math.max(1, currentPage - 2);
     let endPage = Math.min(totalPages, currentPage + 2);
     for(let i=startPage; i<=endPage; i++){
         html += `<button class="${i==currentPage?'active':''}" onclick="tampilkanHalaman(${i})">${i}</button>`;
     }
-
     html += `<button onclick="tampilkanHalaman(${currentPage+1})" ${currentPage==totalPages?'disabled':''}>Next »</button>`;
     container.innerHTML = html;
 }
@@ -440,14 +440,10 @@ function renderPagination() {
 function setupSearch(){
     document.getElementById('searchInput').addEventListener('input', (e) => {
         const keyword = e.target.value.toLowerCase();
-        if(keyword === ''){
-            filteredPosts = allPosts;
-        } else {
-            filteredPosts = allPosts.filter(post =>
-                post.title.toLowerCase().includes(keyword) ||
-                (post.kategori||'').toLowerCase().includes(keyword)
-            );
-        }
+        filteredPosts = keyword === ''? allPosts : allPosts.filter(post =>
+            post.title.toLowerCase().includes(keyword) ||
+            (post.kategori||'').toLowerCase().includes(keyword)
+        );
         tampilkanHalaman(1);
     });
 }
@@ -493,12 +489,10 @@ function autoScrollCarousel() {
 }
 
 ambilDataBerita();
-    
-    
-         
-    
-<!-- <script src="https://www.youtube.com/iframe_api"></script> -->
+</script>
+
 <script>
+
     //let player;
     //let youtubeLink = 'https://youtube.com/watch?v=YLxO9527zYA'; // GANTI LINK KAMU
     //let currentVideoId = youtubeLink.split('v=')[1];
