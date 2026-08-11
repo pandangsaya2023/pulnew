@@ -229,5 +229,31 @@ def main():
 
     print(f"Selesai! Baru: {jumlah_baru}, Update: {jumlah_update}")
 
+#def hapus_berita_lama():
+    #"""Hapus semua file json yg tanggalnya < 2026-07-17"""
+    #print("=== MULAI HAPUS BERITA LAMA < 2026-07-17 ===")
+    #batas_tanggal = datetime(2026, 7, 17) # <--- TANGGAL PATOKAN
+    #count_hapus = 0
+
+    #if os.path.exists(OUTPUT_FOLDER):
+        #for filename in os.listdir(OUTPUT_FOLDER):
+            #if filename.endswith(".json"):
+                #path = os.path.join(OUTPUT_FOLDER, filename)
+                #try:
+                    #with open(path, 'r', encoding='utf-8') as f:
+                        #data = json.load(f)
+                    
+                    #tgl_berita = datetime.strptime(data['date'][:10], "%Y-%m-%d")
+                    
+                    #if tgl_berita < batas_tanggal:
+                        #os.remove(path) # HAPUS FILE
+                        #print(f" -> Dihapus: {data['title']} | {data['date'][:10]}")
+                        #count_hapus += 1
+
+                #except Exception as e:
+                    #print(f"Gagal hapus {filename}: {e}")
+    
+    #print(f"=== SELESAI HAPUS: {count_hapus} file dihapus ===")
+
 if __name__ == "__main__":
     main()
