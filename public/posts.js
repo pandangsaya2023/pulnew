@@ -1,7 +1,8 @@
 [
+  "/berita/peningkatan-kualitas-sumber-daya-manusia-di-banten-melalui-kerjasama-strategis.html",
+  "/berita/mengenal-empat-kriterianya-menurut-fikih-untuk-menentukan-lomba-17-agustus-bisa-.html",
+  "/berita/krisis-air-bersih-di-kota-cirebon-meningkat-1004-kk-terdampak.html",
   "/berita/kecelakaan-laut-di-pangandaran-perahu-bercadik-terbalik-satu-anak-buah-kapal-hil.html",
-  "/berita/membaca-masa-depan-ekonomi-syariah-jawa-timur.html",
-  "/berita/sholawat-iringi-sidang-korupsi-eks-menag-yaqut-cholil.html",
   "/berita/shopeepay-merchant-solusi-pembayaran-digital-untuk-umkm.html",
   "/berita/wali-kota-medan-berhentikan-sementara-camat-medan-timur.html",
   "/berita/atrbpn-dan-kemendagri-sepakat-integrasikan-nib-dan-nop-pbb-untuk-meningkatkan-tr.html",
