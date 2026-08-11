@@ -1,0 +1,62 @@
+name: Sync Hapus JSON
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'content/berita/**'
+      - 'public/posts/**'
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Sync JSON dengan Content
+        run: |
+          python3 << 'EOF'
+          import os, json, glob
+
+          # 1. Ambil semua slug yg masih ada di content/berita
+          content_slugs = set()
+          if os.path.exists('content/berita'):
+              for f in os.listdir('content/berita'):
+                  if f.endswith('.md'):
+                      content_slugs.add(f.replace('.md',''))
+
+          # 2. Hapus json yg slug nya sudah tidak ada di content
+          for f in glob.glob('public/posts/*.json'):
+              slug = os.path.basename(f).replace('.json','')
+              if slug not in content_slugs:
+                  os.remove(f)
+                  print(f"🗑️ Dihapus: {slug}.json")
+
+          # 3. Regenerate index.json
+          posts = []
+          for f in glob.glob('public/posts/*.json'):
+              with open(f, 'r', encoding='utf-8') as file:
+                  posts.append(json.load(file))
+
+          posts.sort(key=lambda x: x.get('date',''), reverse=True)
+          index_data = [{"slug":p['slug'],"title":p['title'],"lead":p.get('lead',''),"image":p.get('image',''),"date":p['date'],"kategori":p.get('kategori','Berita')} for p in posts[:50]]
+
+          os.makedirs('public/posts', exist_ok=True)
+          with open('public/posts/index.json', 'w', encoding='utf-8') as f:
+              json.dump(index_data, f, ensure_ascii=False, indent=2)
+          print(f"✅ index.json diupdate: {len(index_data)} berita")
+          EOF
+
+      - name: Commit & Push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add public/posts/
+          git diff --staged --quiet || git commit -m "Auto sync: hapus json + update index.json"
+          git push
