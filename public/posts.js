@@ -1,7 +1,7 @@
 [
-  "/berita/ykmi-desak-kemendag-cabut-izin-edar-miras-newport-polisi-dalami-video-viral.html",
-  "/berita/diisukan-mundur-pratikno-membantah.html",
   "/berita/indonesia-dan-australia-tingkatkan-kerja-sama-pembinaan-atlet-muda-melalui-kemen.html",
+  "/berita/survei-ipo-kinerja-bahlil-dapat-kepercayaan-publik.html",
+  "/berita/kekeringan-melanda-tasikmalaya-warga-kampung-benteng-berjuang-demi-air-bersih.html",
   "/berita/pertumbuhan-laba-bumn-semester-i-2026-capaian-yang-signifikan.html",
   "/berita/serangan-di-bab-al-mandeb-satu-awak-kapal-wni-tewas-dalam-penyerangan-kelompok-h.html",
   "/berita/peningkatan-kualitas-sumber-daya-manusia-di-banten-melalui-kerjasama-strategis.html",
