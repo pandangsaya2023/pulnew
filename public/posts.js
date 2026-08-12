@@ -1,4 +1,7 @@
 [
+  "/berita/pemeriksaan-manajemen-sound-project-terkait-tantangan-baca-ad-dhuha-berhadiah-mi.html",
+  "/berita/penguatan-tata-kelola-emas-untuk-meningkatkan-kedaulatan-mineral-nasional.html",
+  "/berita/rumah-mc-challenge-alquran-berhadiah-miras-digeruduk-massa.html",
   "/berita/peran-penting-ulama-dalam-perlawanan-rakyat-aceh-terhadap-agresi-belanda-pada-18.html",
   "/berita/pemerintah-tetapkan-syarat-perdagangan-karbon-untuk-mendukung-kelestarian-hutan.html",
   "/berita/teknologi-terbaru-dalam-rekonstruksi-cedera-acl-artificial-ligament.html",
