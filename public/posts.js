@@ -1,7 +1,6 @@
 [
-  "/berita/peran-penting-ulama-dalam-perlawanan-rakyat-aceh-terhadap-agresi-belanda-pada-18.html",
   "/berita/pemerintah-tetapkan-syarat-perdagangan-karbon-untuk-mendukung-kelestarian-hutan.html",
-  "/berita/muktamar-nu-pwnu-sumbar-sebut-prof-mohammad-nuh-sebagai-calon-ketua-umum-yang-ku.html",
+  "/berita/peran-penting-ulama-dalam-perlawanan-rakyat-aceh-terhadap-agresi-belanda-pada-18.html",
   "/berita/teknologi-terbaru-dalam-rekonstruksi-cedera-acl-artificial-ligament.html",
   "/berita/hut-ke-81-ri-pelindo-berikan-layanan-kesehatan-gratis-untuk-masyarakat-rentan-di.html",
   "/berita/kemensetneg-siapkan-perayaan-hut-ke-81-ri-dengan-berbagai-kegiatan-menarik.html",
