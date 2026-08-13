@@ -1,8 +1,7 @@
 [
   "/berita/forkom-sp-sekar-bumn-ajukan-13-rekomendasi-strategis-ruu-ketenagakerjaan-ke-dpr.html",
-  "/berita/kpk-kembali-menggelar-penggeledahan-di-kota-bengkulu-sasaran-terbaru-rumah-anggo.html",
-  "/berita/kebakaran-gudang-di-kebun-jeruk-jakarta-barat-diselesaikan-tanpa-korban-jiwa.html",
   "/berita/pelayanan-kesehatan-gratis-di-gunungsitoli-diharapkan-terus-diperkuat.html",
+  "/berita/kpk-kembali-menggelar-penggeledahan-di-kota-bengkulu-sasaran-terbaru-rumah-anggo.html",
   "/berita/mendorong-ekonomi-akar-rumput-pnm-mekaar-tawarkan-bunga-8-persen.html",
   "/berita/studi-ungkap-rutin-minum-kopi-hitam-menurunkan-risiko-penyakit-hati.html",
   "/berita/ceo-ufc-dana-white-antusias-sambut-petarung-indonesia-bilal-hasan-berlaga-di-okt.html",
