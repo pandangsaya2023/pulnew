@@ -1,6 +1,5 @@
 [
   "/berita/bug-bounty-peluang-karir-hacker-etis-yang-menjanjikan-di-era-digital.html",
-  "/berita/iatl-itb-ruu-air-minum-dan-sanitasi-jawab-ancaman-krisis-iklim.html",
   "/berita/mendorong-ekonomi-akar-rumput-pnm-mekaar-tawarkan-bunga-8-persen.html",
   "/berita/studi-ungkap-rutin-minum-kopi-hitam-menurunkan-risiko-penyakit-hati.html",
   "/berita/ceo-ufc-dana-white-antusias-sambut-petarung-indonesia-bilal-hasan-berlaga-di-okt.html",
