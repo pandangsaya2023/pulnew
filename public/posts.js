@@ -1,6 +1,5 @@
 [
   "/berita/forkom-sppln-sekar-bumn-sampaikan-rekomendasi-resmi-terhadap-ruu-ketenagakerjaan-ke-dpr.html",
-  "/berita/forkom-sp-bumn-ajukan-13-rekomendasi-ruu-ketenagakerjaan-ke-dpr.html",
   "/berita/mendorong-ekonomi-akar-rumput-pnm-mekaar-tawarkan-bunga-8-persen.html",
   "/berita/studi-ungkap-rutin-minum-kopi-hitam-menurunkan-risiko-penyakit-hati.html",
   "/berita/ceo-ufc-dana-white-antusias-sambut-petarung-indonesia-bilal-hasan-berlaga-di-okt.html",
