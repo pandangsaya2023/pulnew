@@ -1,8 +1,5 @@
 [
   "/berita/forkom-sp-bumn-ajukan-13-rekomendasi-ruu-ketenagakerjaan-ke-dpr.html",
-  "/berita/aphi-dan-gapki-minta-penguatan-pencegahan-karhutla-di-musim-kemarau.html",
-  "/berita/jetour-menerima-tiga-penghargaan-di-giias-2026-dua-model-baru-menjadi-sorotan.html",
-  "/berita/masa-depan-bruno-fernandes-di-manchester-united-belum-jelas-meskipun-dicintai-fa.html",
   "/berita/mendorong-ekonomi-akar-rumput-pnm-mekaar-tawarkan-bunga-8-persen.html",
   "/berita/studi-ungkap-rutin-minum-kopi-hitam-menurunkan-risiko-penyakit-hati.html",
   "/berita/ceo-ufc-dana-white-antusias-sambut-petarung-indonesia-bilal-hasan-berlaga-di-okt.html",
