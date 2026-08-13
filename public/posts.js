@@ -1,9 +1,7 @@
 [
   "/berita/tes-web5.html",
   "/berita/forkom-sp-bumn-ajukan-13-rekomendasi-ruu-ketenagakerjaan-ke-dpr.html",
-  "/berita/gitar-handmade-jadi-jalan-rini-bangkit-dan-perkuat-ekonomi-keluarga.html",
-  "/berita/proyek-pelabuhan-raksasa-di-maluku-diharapkan-mampu-menyerap-ribuan-pekerja-baru.html",
-  "/berita/lembang-street-carnival-2026-wadah-ekspresi-dan-kreasi-warga.html",
+  "/berita/forkom-sppln-sekar-bumn-sampaikan-rekomendasi-resmi-terhadap-ruu-ketenagakerjaan-ke-dpr.html",
   "/berita/mendorong-ekonomi-akar-rumput-pnm-mekaar-tawarkan-bunga-8-persen.html",
   "/berita/ceo-ufc-dana-white-antusias-sambut-petarung-indonesia-bilal-hasan-berlaga-di-okt.html",
   "/berita/studi-ungkap-rutin-minum-kopi-hitam-menurunkan-risiko-penyakit-hati.html",
