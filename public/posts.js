@@ -1,5 +1,4 @@
 [
-  "/berita/tes-web5.html",
   "/berita/forkom-sp-bumn-ajukan-13-rekomendasi-ruu-ketenagakerjaan-ke-dpr.html",
   "/berita/forkom-sppln-sekar-bumn-sampaikan-rekomendasi-resmi-terhadap-ruu-ketenagakerjaan-ke-dpr.html",
   "/berita/mendorong-ekonomi-akar-rumput-pnm-mekaar-tawarkan-bunga-8-persen.html",
