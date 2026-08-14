@@ -1,7 +1,5 @@
 [
-  "/berita/arteta-takjub-dengan-nilai-transfer-pemain-yang-melonjak-drastis.html",
   "/berita/kemandirian-energi-indonesia-bisa-dimulai-dari-atap-rumah.html",
-  "/berita/aksi-damai-di-balai-kota-bogor-masyarakat-desak-pemerintah-tangani-isu-lgbt.html",
   "/berita/forkom-sp-sekar-bumn-ajukan-13-rekomendasi-strategis-ruu-ketenagakerjaan-ke-dpr.html",
   "/berita/kpk-kembali-menggelar-penggeledahan-di-kota-bengkulu-sasaran-terbaru-rumah-anggo.html",
   "/berita/mendorong-ekonomi-akar-rumput-pnm-mekaar-tawarkan-bunga-8-persen.html",
