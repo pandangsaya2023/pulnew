@@ -1,4 +1,7 @@
 [
+  "/berita/sd-tarakanita-bumijo-menggelar-karnaval-kemerdekaan-di-tugu-jogja-untuk-menyambu.html",
+  "/berita/mengapa-dana-haji-tidak-boleh-diperlakukan-seperti-sovereign-wealth-fund.html",
+  "/berita/pln-berhasil-pulihkan-sistem-kelistrikan-di-ntt-pasca-gempa.html",
   "/berita/bmkg-nyatakan-potensi-tsunami-akibat-gempa-77-m-di-ntt-berakhir-masyarakat-dimin.html",
   "/berita/kemitraan-strategis-persib-bandung-dan-bank-bjb-untuk-kompetisi-20262027.html",
   "/berita/kemandirian-energi-indonesia-bisa-dimulai-dari-atap-rumah.html",
