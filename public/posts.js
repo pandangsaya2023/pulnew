@@ -1,7 +1,4 @@
 [
-  "/berita/klasemen-srikandi-merdeka-cup-2026-putri-nusantara-juru-kunci-grup-b.html",
-  "/berita/kematian-tukang-bangunan-di-bantul-akibat-tersengat-listrik.html",
-  "/berita/prakiraan-cuaca-jakarta-minggu-bmkg-prediksi-berawan-sepanjang-hari.html",
   "/berita/ricuh-di-aceh-tokoh-sebut-bendera-gam-harus-dihormati-sebagai-sejarah.html",
   "/berita/pln-berhasil-pulihkan-sistem-kelistrikan-di-ntt-pasca-gempa.html",
   "/berita/bmkg-nyatakan-potensi-tsunami-akibat-gempa-77-m-di-ntt-berakhir-masyarakat-dimin.html",
