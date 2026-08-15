@@ -1,6 +1,4 @@
 [
-  "/berita/planet-surf-indonesia-gelar-pengundian-grand-prize-fashion-fest-big-sale-sebagai.html",
-  "/berita/badan-geologi-kemen-esdm-temukan-indikasi-likuifaksi-kategori-rendah-pasca-gempa.html",
   "/berita/ricuh-di-aceh-tokoh-sebut-bendera-gam-harus-dihormati-sebagai-sejarah.html",
   "/berita/pln-berhasil-pulihkan-sistem-kelistrikan-di-ntt-pasca-gempa.html",
   "/berita/bmkg-nyatakan-potensi-tsunami-akibat-gempa-77-m-di-ntt-berakhir-masyarakat-dimin.html",
