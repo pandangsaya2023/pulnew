@@ -1,7 +1,6 @@
 [
   "/berita/bmkg-nyatakan-potensi-tsunami-akibat-gempa-77-m-di-ntt-berakhir-masyarakat-dimin.html",
   "/berita/kecelakaan-bus-rombongan-umrah-di-nagreg-korban-meninggal-dan-luka-luka.html",
-  "/berita/gempa-m77-nagekeo-korban-meninggal-dan-luka-luka-di-maumere.html",
   "/berita/eskalasi-militer-as-iran-dan-pengaruhnya-terhadap-keketuan-ri-di-d-8.html",
   "/berita/kemitraan-strategis-persib-bandung-dan-bank-bjb-untuk-kompetisi-20262027.html",
   "/berita/kemandirian-energi-indonesia-bisa-dimulai-dari-atap-rumah.html",
