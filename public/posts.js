@@ -1,4 +1,7 @@
 [
+  "/berita/pemerintah-tetapkan-defisit-apbn-2027-di-angka-24-persen-purbaya-kita-akan-jaga-.html",
+  "/berita/pengembangan-wakaf-saham-istiqlal-global-fund-masih-dalam-tahap-perbaikan.html",
+  "/berita/kemenangan-chelsea-atas-real-sociedad-dihadiri-dengan-cemoohan-terhadap-enzo-fer.html",
   "/berita/ricuh-di-aceh-tokoh-sebut-bendera-gam-harus-dihormati-sebagai-sejarah.html",
   "/berita/pln-berhasil-pulihkan-sistem-kelistrikan-di-ntt-pasca-gempa.html",
   "/berita/bmkg-nyatakan-potensi-tsunami-akibat-gempa-77-m-di-ntt-berakhir-masyarakat-dimin.html",
