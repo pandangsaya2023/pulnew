@@ -1,4 +1,7 @@
 [
+  "/berita/the-odyssey-saat-christopher-nolan-menyempurnakan-obsesinya-terhadap-waktu-manus.html",
+  "/berita/tidak-suka-bersosialisasi-memahami-perbedaan-antara-introvert-capek-sosial-dan-k.html",
+  "/berita/pemerintah-tanggap-cepat-atas-bencana-gempa-di-ntt.html",
   "/berita/pemerintah-tetapkan-defisit-apbn-2027-di-angka-24-persen-purbaya-kita-akan-jaga-.html",
   "/berita/pengembangan-wakaf-saham-istiqlal-global-fund-masih-dalam-tahap-perbaikan.html",
   "/berita/kemenangan-chelsea-atas-real-sociedad-dihadiri-dengan-cemoohan-terhadap-enzo-fer.html",
