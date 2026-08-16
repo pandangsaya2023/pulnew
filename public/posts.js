@@ -1,6 +1,4 @@
 [
-  "/berita/peningkatan-arus-lalu-lintas-tol-jakarta-cikampek-pada-libur-hari-kemerdekaan.html",
-  "/berita/pertamina-patra-niaga-percepat-penanganan-dampak-gempa-dan-pemulihan-energi-di-f.html",
   "/berita/bni-berkomitmen-menyalurkan-bantuan-kemanusiaan-bagi-masyarakat-terdampak-gempa-.html",
   "/berita/kemenangan-chelsea-atas-real-sociedad-dihadiri-dengan-cemoohan-terhadap-enzo-fer.html",
   "/berita/ricuh-di-aceh-tokoh-sebut-bendera-gam-harus-dihormati-sebagai-sejarah.html",
