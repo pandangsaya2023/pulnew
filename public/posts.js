@@ -1,4 +1,7 @@
 [
+  "/berita/gempa-bumi-dengan-kekuatan-magnitudo-50-mengguncang-ruteng-manggarai-di-nusa-ten.html",
+  "/berita/pemerintah-terus-salurkan-bantuan-untuk-korban-gempa-ntt.html",
+  "/berita/trauma-gempa-2021-50-kk-di-selayar-masih-bertahan-di-pengungsian-perbukitan.html",
   "/berita/bni-berkomitmen-menyalurkan-bantuan-kemanusiaan-bagi-masyarakat-terdampak-gempa-.html",
   "/berita/kemenangan-chelsea-atas-real-sociedad-dihadiri-dengan-cemoohan-terhadap-enzo-fer.html",
   "/berita/ricuh-di-aceh-tokoh-sebut-bendera-gam-harus-dihormati-sebagai-sejarah.html",
