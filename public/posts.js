@@ -1,4 +1,7 @@
 [
+  "/berita/75-anggota-paskibraka-situbondo-diganjar-sim-c-gratis-dari-pemkab-dan-polres.html",
+  "/berita/419-narapidana-lapas-lamongan-terima-remisi-hut-ke-81-ri-8-langsung-bebas.html",
+  "/berita/518-warga-binaan-lapas-kediri-terima-remisi-hut-ke-81-ri-12-langsung-bebas.html",
   "/berita/ucapan-hut-ri-dari-gaza-untuk-indonesia.html",
   "/berita/direktur-utama-pertamina-pimpin-langsung-aksi-kemanusiaan-gempa-ntt-di-hut-ke-81.html",
   "/berita/pnm-peduli-ulurkan-tangan-untuk-korban-gempa-di-ntt.html",
