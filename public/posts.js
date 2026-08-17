@@ -1,5 +1,5 @@
 [
-  "/berita/pemerintah-terus-salurkan-bantuan-korban-gempa-ntt.html",
+  "/berita/pemerintah-terus-salurkan-bantuan-untuk-korban-gempa-ntt-logistik-tiba-bertahap.html",
   "/berita/pemerintah-terus-salurkan-bantuan-untuk-korban-gempa-ntt.html",
   "/berita/bni-berkomitmen-menyalurkan-bantuan-kemanusiaan-bagi-masyarakat-terdampak-gempa-.html",
   "/berita/kemenangan-chelsea-atas-real-sociedad-dihadiri-dengan-cemoohan-terhadap-enzo-fer.html",
