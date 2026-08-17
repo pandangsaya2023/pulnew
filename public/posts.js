@@ -1,6 +1,6 @@
 [
-  "/berita/pemerintah-terus-salurkan-bantuan-untuk-korban-gempa-ntt.html",
   "/berita/dubes-jepang-pakistan-mesir-dan-belanda-mengucapkan-selamat-atas-hut-ke-81-ri.html",
+  "/berita/pemerintah-terus-salurkan-bantuan-untuk-korban-gempa-ntt.html",
   "/berita/bni-berkomitmen-menyalurkan-bantuan-kemanusiaan-bagi-masyarakat-terdampak-gempa-.html",
   "/berita/kemenangan-chelsea-atas-real-sociedad-dihadiri-dengan-cemoohan-terhadap-enzo-fer.html",
   "/berita/ricuh-di-aceh-tokoh-sebut-bendera-gam-harus-dihormati-sebagai-sejarah.html",
