@@ -1,7 +1,5 @@
 [
   "/berita/masyarakat-berbondong-bondong-mengunjungi-monas-untuk-sambut-kirab-hut-ke-81-ri.html",
-  "/berita/doa-untuk-negeri.html",
-  "/berita/kampung-rancabali-disulap-jadi-lorong-mural-kemerdekaan.html",
   "/berita/pemerintah-terus-salurkan-bantuan-untuk-korban-gempa-ntt.html",
   "/berita/bni-berkomitmen-menyalurkan-bantuan-kemanusiaan-bagi-masyarakat-terdampak-gempa-.html",
   "/berita/kemenangan-chelsea-atas-real-sociedad-dihadiri-dengan-cemoohan-terhadap-enzo-fer.html",
