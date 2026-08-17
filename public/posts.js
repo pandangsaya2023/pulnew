@@ -1,4 +1,7 @@
 [
+  "/berita/ucapan-hut-ri-dari-gaza-untuk-indonesia.html",
+  "/berita/direktur-utama-pertamina-pimpin-langsung-aksi-kemanusiaan-gempa-ntt-di-hut-ke-81.html",
+  "/berita/pnm-peduli-ulurkan-tangan-untuk-korban-gempa-di-ntt.html",
   "/berita/dubes-jepang-pakistan-mesir-dan-belanda-mengucapkan-selamat-atas-hut-ke-81-ri.html",
   "/berita/pemerintah-terus-salurkan-bantuan-untuk-korban-gempa-ntt.html",
   "/berita/bni-berkomitmen-menyalurkan-bantuan-kemanusiaan-bagi-masyarakat-terdampak-gempa-.html",
