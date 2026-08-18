@@ -6,7 +6,7 @@ import requests
 import markdown # <--- buat convert body
 from datetime import datetime
 from urllib.parse import urlparse
-from groq import Groq
+#from groq import Groq
 from bs4 import BeautifulSoup
 
 # --- KONFIGURASI ---
@@ -15,7 +15,7 @@ OUTPUT_FOLDER = "public/posts"
 INDEX_JSON_PATH = "public/posts/index.json" # <--- BARU
 POSTS_JS_PATH = "public/posts.js"
 GROQ_API_KEY = os.getenv("GROQ_API_KEY")
-client = Groq(api_key=GROQ_API_KEY)
+#client = Groq(api_key=GROQ_API_KEY)
 MAX_BERITA_PER_RUN = 50
 
 sumber_rss = [
