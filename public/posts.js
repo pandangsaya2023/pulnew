@@ -1,7 +1,7 @@
 [
   "/berita/kecanduan-judi-online-karyawan-warung-di-majalengka-karang-skenario-perampokan-s.html",
-  "/berita/gandeng-pekerja-jalanan-dan-dhuafa-aksi-sosial-di-semarang-bagikan-130-porsi-san.html",
   "/berita/refleksi-peringatan-hari-konstitusi-menjaga-keberagaman-serta-memperkokoh-hukum-.html",
+  "/berita/gandeng-pekerja-jalanan-dan-dhuafa-aksi-sosial-di-semarang-bagikan-130-porsi-san.html",
   "/berita/kisah-pemuda-ahli-sihir-dan-rahib-meneladani-keteguhan-iman-dan-perjalanan-kehid.html",
   "/berita/peringati-hut-ke-81-ri-lewat-tasyakuran-wali-kota-benyamin-davnie-imbau-warga-ta.html",
   "/berita/dubes-jepang-pakistan-mesir-dan-belanda-mengucapkan-selamat-atas-hut-ke-81-ri.html",
