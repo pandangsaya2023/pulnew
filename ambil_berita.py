@@ -145,7 +145,7 @@ Isi: {konten_asli[:8000]}
 Sumber: {link}
 """
         completion = client.chat.completions.create(
-            model="llama-3.3-70b-versatile",
+            model="llama-3.1-70b-versatile",
             messages=[{"role": "user", "content": prompt}],
             temperature=0.85,
             max_tokens=4000, # <--- NAIKIN JADI 4000 BIAR MUAT 800 KATA
