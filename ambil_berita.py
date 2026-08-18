@@ -17,7 +17,7 @@ POSTS_JS_PATH = "public/posts.js"
 
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 client = genai.Client(api_key=GEMINI_API_KEY) # <--- CLIENT BARU
-MODEL = "gemini-2.0-flash" # <--- MODEL BARU YG AMAN
+MODEL = "gemini-2.5-flash" # <--- MODEL BARU YG AMAN
 
 MAX_BERITA_PER_RUN = 15
 
