@@ -144,7 +144,7 @@ def rewrite_with_groq(title, link, media):
         Sumber: {link}
         """
         completion = client.chat.completions.create(
-            model="llama-3.1-70b-versatile",
+            model="llama-3.3-70b-instant",
             messages=[{"role": "user", "content": prompt}],
             temperature=0.85,
             max_tokens=3000,
