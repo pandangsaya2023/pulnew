@@ -241,6 +241,59 @@ def main():
 
     print(f"Selesai! Baru: {jumlah_baru}, Update: {jumlah_update}")
 
-if __name__ == "__main__":
-    main()
+def main_update_lama():
+    print("MODE: UPDATE SEMUA BERITA LAMA KE 600 KATA")
+    semua_post = get_existing_posts()
+    
+    if not semua_post:
+        print("❌ Gak ada berita lama di folder public/posts/")
+        return
 
+    jumlah_update = 0
+    gagal = 0
+
+    for slug, data_lama in semua_post.items():
+        link_sumber = data_lama.get('source_url', '')
+        judul_lama = data_lama.get('title', '')
+        
+        if not link_sumber:
+            print(f"⚠️ Lewat {slug}: gak ada source_url")
+            gagal += 1
+            continue
+            
+        print(f"🔄 Update: {judul_lama[:50]}...")
+        
+        # Ambil ulang dari sumber + rewrite pakai prompt baru
+        body, soup_artikel, judul_baru, lead_baru = rewrite_with_groq(judul_lama, link_sumber, data_lama.get('source_name','Media'))
+        img_url = ambil_gambar_asli(soup_artikel)
+
+        # Data baru tapi slug + kategori tetap sama biar gak rusak URL
+        berita_data_baru = {
+            "title": judul_baru, 
+            "slug": slug, # <--- PENTING: JANGAN GANTI SLUG
+            "lead": lead_baru, 
+            "kategori": data_lama.get('kategori','Berita'),
+            "date": data_lama.get('date'), # <--- TANGGAL TETAP SAMA BIAR GAK ANEH DI INDEX
+            "image": img_url if img_url != f"{BASE_URL}/media/og-default.jpg" else data_lama.get('image',''), 
+            "body": body,
+            "source_name": data_lama.get('source_name',''),
+            "source_url": link_sumber
+        }
+
+        save_berita(berita_data_baru)
+        generate_article_page(berita_data_baru) # <--- LANGSUNG GENERATE HTML BARU JUGA
+        jumlah_update += 1
+        time.sleep(8) # jeda biar gak kena limit Groq
+
+    # Update index + js setelah semua selesai
+    update_posts_js(semua_post)
+    update_index_json(semua_post)
+    
+    print(f"====================================")
+    print(f"✅ SELESAI! Total diupdate: {jumlah_update}")
+    print(f"❌ Gagal: {gagal}")
+    print(f"====================================")
+
+if __name__ == "__main__":
+    main_update_lama() # <--- GANTI JADI INI DULU
+    # main() # <--- Komen yg lama
