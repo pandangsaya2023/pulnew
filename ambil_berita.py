@@ -20,7 +20,7 @@ GAMBAR_DEFAULT = f"{BASE_URL}/media/og-default.jpg"
 
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 client = genai.Client(api_key=GEMINI_API_KEY)
-MODEL = "gemini-2.5-flash"
+MODEL = "gemini-3.6-flash"
 
 MAX_BERITA_BARU = 5
 MAX_BERITA_LAMA = 10 # 10x per run. 125 / 10 = 13x run kelar
