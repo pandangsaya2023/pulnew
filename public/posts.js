@@ -1,4 +1,7 @@
 [
+  "/berita/kanwil-ditjenpas-ajukan-amnesti-untuk-1454-narapidana-di-jabar.html",
+  "/berita/apa-itu-kartu-kredit-indonesia-ini-fungsi-dan-cara-menggunakannya.html",
+  "/berita/jejak-abbasiyah-di-tapanuli-temuan-koin-dirham-dan-korespondensi-sriwijaya-denga.html",
   "/berita/75-anggota-paskibraka-situbondo-diganjar-sim-c-gratis-dari-pemkab-dan-polres.html",
   "/berita/419-narapidana-lapas-lamongan-terima-remisi-hut-ke-81-ri-8-langsung-bebas.html",
   "/berita/518-warga-binaan-lapas-kediri-terima-remisi-hut-ke-81-ri-12-langsung-bebas.html",
