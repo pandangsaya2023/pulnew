@@ -20,8 +20,9 @@ POSTS_JS_PATH = "public/posts.js"
 
 # GANTI JADI GEMINI
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY") # <--- BARU
-genai.configure(api_key=GEMINI_API_KEY) # <--- BARU
-model = genai.GenerativeModel('gemini-1.5-flash') # <--- BARU
+from google import genai
+client = genai.Client(api_key=GEMINI_API_KEY)
+model_name = 'gemini-1.5-flash-latest'
 
 MAX_BERITA_PER_RUN = 15
 
@@ -145,7 +146,15 @@ def rewrite_with_gemini(title, link, media): # <--- GANTI NAMA FUNGSI
         Isi: {konten_asli[:8000]}
         Sumber: {link}
         """
-        response = model.generate_content(prompt) # <--- GANTI CARA PANGGIL
+
+        response = client.models.generate_content(
+           model=model_name,
+           contents=prompt
+        )
+        #text = response.text
+
+        
+        #response = model.generate_content(prompt) # <--- GANTI CARA PANGGIL
         text = response.text.strip().replace("```json", "").replace("```", "") # <--- BERSIHIN JSON
         hasil_json = json.loads(text) # <--- PARSE JSON
 
