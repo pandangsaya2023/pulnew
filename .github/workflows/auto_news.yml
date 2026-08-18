@@ -32,4 +32,4 @@ jobs:
             git add public/posts/ public/posts.js
             git diff-index --quiet HEAD || git commit -m "Update berita otomatis"
             git pull --rebase origin main || true
-            git push --force
+            git push
