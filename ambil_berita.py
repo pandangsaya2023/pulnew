@@ -20,7 +20,7 @@ GAMBAR_DEFAULT = f"{BASE_URL}/media/og-default.jpg"
 
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 client = genai.Client(api_key=GEMINI_API_KEY)
-MODEL = "gemini-2.5-flash"
+MODEL = "gemini-3.6-flash"
 
 MAX_BERITA_BARU = 3 # Biar web aktif tiap hari
 MAX_BERITA_LAMA = 5 # Biar arsip cepet beres
