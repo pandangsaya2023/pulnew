@@ -145,7 +145,7 @@ Isi: {konten_asli[:8000]}
 Sumber: {link}
 """
         completion = client.chat.completions.create(
-            model = "meta-llama/llama-4-scout-17b-16e-instruct"
+            model = "meta-llama/llama-4-scout-17b-16e-instruct",
             #model="llama-3.1-70b-versatile",
             messages=[{"role": "user", "content": prompt}],
             temperature=0.85,
