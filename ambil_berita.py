@@ -19,10 +19,11 @@ POSTS_JS_PATH = "public/posts.js"
 # client = Groq(api_key=GROQ_API_KEY) # <--- HAPUS
 
 # GANTI JADI GEMINI
-GEMINI_API_KEY = os.getenv("GEMINI_API_KEY") # <--- BARU
+
 from google import genai
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 client = genai.Client(api_key=GEMINI_API_KEY)
-model_name = 'gemini-1.5-flash-latest'
+MODEL = "gemini-2.0-flash" # <--- INI KUNCINYA
 
 MAX_BERITA_PER_RUN = 15
 
