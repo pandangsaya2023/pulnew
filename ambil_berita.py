@@ -267,7 +267,11 @@ def main_update_lama():
         print(f"🔄 Update {i+1}/40: {judul_lama[:50]}...") # aku tambahin nomor biar ketahuan
         
         # Ambil ulang dari sumber + rewrite pakai prompt baru
-        body, soup_artikel, judul_baru, lead_baru = rewrite_with_groq(judul_lama, link_sumber, data_lama.get('source_name','Media'))
+        #body, soup_artikel, judul_baru, lead_baru = rewrite_with_groq(judul_lama, link_sumber, data_lama.get('source_name','Media'))
+        body, kata = rewrite_artikel(judul_lama, data_lama.get('body',''), data_lama.get('source_name','Media'), link_sumber)
+        judul_baru = judul_lama
+        lead_baru = data_lama.get('lead','')
+        soup_artikel = None
         img_url = ambil_gambar_asli(soup_artikel)
 
         # Data baru tapi slug + kategori tetap sama biar gak rusak URL
