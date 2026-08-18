@@ -252,7 +252,9 @@ def main_update_lama():
     jumlah_update = 0
     gagal = 0
 
-    for slug, data_lama in semua_post.items():
+    for i, (slug, data_lama) in enumerate(semua_post.items()):
+        if i >= 40: break # <--- BERHENTI DI ARTIKEL KE 40
+
         link_sumber = data_lama.get('source_url', '')
         judul_lama = data_lama.get('title', '')
         
@@ -261,7 +263,7 @@ def main_update_lama():
             gagal += 1
             continue
             
-        print(f"🔄 Update: {judul_lama[:50]}...")
+        print(f"🔄 Update {i+1}/40: {judul_lama[:50]}...") # aku tambahin nomor biar ketahuan
         
         # Ambil ulang dari sumber + rewrite pakai prompt baru
         body, soup_artikel, judul_baru, lead_baru = rewrite_with_groq(judul_lama, link_sumber, data_lama.get('source_name','Media'))
