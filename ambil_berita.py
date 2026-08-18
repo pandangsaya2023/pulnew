@@ -146,7 +146,7 @@ Sumber: {link}
 """
         completion = client.chat.completions.create(
             model = "meta-llama/llama-4-scout-17b-16e-instruct",
-            #model="llama-3.1-70b-versatile",
+            #model="llama-3.1-8b-instant",
             messages=[{"role": "user", "content": prompt}],
             temperature=0.85,
             max_tokens=4000, # <--- NAIKIN JADI 4000 BIAR MUAT 800 KATA
