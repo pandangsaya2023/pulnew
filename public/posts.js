@@ -1,11 +1,4 @@
 [
-  "/berita/momen-fatimah-azzahra-ajari-polisi-fungsi-mobil-komando.html",
-  "/berita/situs-bongal-bikin-rontok-teori-orientalis-belanda-islam-masuk-nusantara-dari-ar.html",
-  "/berita/membumikan-dalailul-khairat-turats-wa-tajdid-ala-kh-imam-jazuli.html",
-  "/berita/huawei-matebook-pro-s-resmi-laptop-premium-bobot-cuma-798-gram.html",
-  "/berita/rekomendasi-12-game-anak-yang-edukatif-dan-cocok-untuk-semua-usia.html",
-  "/berita/10-contoh-prompt-ai-untuk-buat-poster-bertema-hut-ke-81-ri.html",
-  "/berita/mahasiswa-gelar-aksi-di-kawasan-sudirman-soroti-harga-pangan-hingga-bencana.html",
   "/berita/rossa-hingga-marion-jola-ajak-penggemar-bantu-korban-gempa-ntt.html",
   "/berita/gunung-anak-krakatau-20-kali-erupsi-abu-vulkanik-ganggu-pernapasan-warga.html",
   "/berita/indosolar-2026-dorong-penguatan-ekosistem-energi-surya-nasional.html",
