@@ -7,7 +7,7 @@ import markdown # <--- buat convert body
 from datetime import datetime
 from urllib.parse import urlparse
 # from groq import Groq # <--- HAPUS INI
-import google.generativeai as genai # <--- GANTI INI
+import google.genai as genai # <--- GANTI INI
 from bs4 import BeautifulSoup
 
 # --- KONFIGURASI ---
