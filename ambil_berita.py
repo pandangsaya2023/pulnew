@@ -22,9 +22,9 @@ GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 client = genai.Client(api_key=GEMINI_API_KEY)
 MODEL = "gemini-3.6-flash"
 
-MAX_BERITA_BARU = 3 # Biar web aktif tiap hari
-MAX_BERITA_LAMA = 5 # Biar arsip cepet beres
-TOTAL_HARIAN = MAX_BERITA_BARU + MAX_BERITA_LAMA # 8. Sisa 2 buat jaga2 error
+MAX_BERITA_BARU = 3
+MAX_BERITA_LAMA = 5
+TOTAL_HARIAN = MAX_BERITA_BARU + MAX_BERITA_LAMA
 
 sumber_rss = [
     {"media": "Kompas", "url": "https://indeks.kompas.com/nasional"},
@@ -52,6 +52,14 @@ def format_ke_html(text):
         elif p:
             html_parts.append(f'<p>{p}</p>')
     return '\n'.join(html_parts)
+
+def tambah_dateline(isi_html):
+    """Tambahkan PULNEW.COM - di awal paragraf pertama"""
+    if not isi_html.startswith('<p>'):
+        return isi_html
+    dateline = '<p><strong>PULNEW.COM</strong> - '
+    isi_html = isi_html.replace('<p>', dateline, 1)
+    return isi_html
 
 def get_existing_posts():
     posts = {}
@@ -201,7 +209,6 @@ def main():
     jumlah_baru = 0
     jumlah_update = 0
 
-    # ========== 1. LAPORAN PROGRES ==========
     semua_file_lama = glob.glob(f"{BERITA_HTML_FOLDER}/*.html")
     total_lama_awal = 0
     for file_lama in semua_file_lama:
@@ -216,16 +223,15 @@ def main():
     print(f"Sudah di Rewrite: {sudah_selesai}")
     print(f"Sisa Belum di Rewrite: {total_lama_awal}")
     print(f"Rencana Hari Ini: Lama {MAX_BERITA_LAMA} | Baru {MAX_BERITA_BARU} | Total {TOTAL_HARIAN}")
-    print(f"Sisa Kuota: {20 - TOTAL_HARIAN} buat jaga2 error")
     print(f"=====================================\n")
 
-    # ========== 2. KERJAIN BERITA LAMA DULU 5 BIJI ==========
+
+    # MODE LAMA
     total_proses_lama = 0
     if total_lama_awal > 0:
         print(f"MODE LAMA: Proses {MAX_BERITA_LAMA} berita")
         for file_lama in semua_file_lama:
             if total_proses_lama >= MAX_BERITA_LAMA: break
-
             slug = os.path.basename(file_lama).replace('.html', '')
             data_lama = semua_post.get(slug)
             if not data_lama: continue
@@ -237,9 +243,9 @@ def main():
 
             body_baru, _, judul_baru, lead_baru = rewrite_with_gemini(judul_lama, link_lama, "Arsip")
             if body_baru:
-                # GAMBAR LAMA TETAP
+                body_dengan_dateline = tambah_dateline(body_baru) # <-- TAMBAH INI
                 data_lama.update({
-                    "title": judul_baru, "lead": lead_baru, "body": body_baru,
+                    "title": judul_baru, "lead": lead_baru, "body": body_dengan_dateline,
                     "date": datetime.now().strftime("%Y-%m-%dT%H:%M:%S+07:00"),
                     "source_name": "AI Rewrite"
                 })
@@ -250,10 +256,10 @@ def main():
                 total_proses_lama += 1
                 print(f"🔄 Update: {judul_baru[:60]}")
                 time.sleep(10)
-
         print(f"✅ Selesai: {jumlah_update} berita lama di-update")
 
-    # ========== 3. KERJAIN BERITA BARU 3 BIJI ==========
+
+    # MODE BARU
     print(f"\nMODE BARU: Proses {MAX_BERITA_BARU} berita")
     total_proses_baru = 0
     for sumber in sumber_rss:
@@ -262,7 +268,6 @@ def main():
         try:
             response = requests.get(sumber['url'], headers={'User-Agent': 'Mozilla/5.0'})
             soup = BeautifulSoup(response.content, 'xml')
-
             for item in soup.find_all('item')[:10]:
                 if total_proses_baru >= MAX_BERITA_BARU: break
                 title = item.find('title').get_text(strip=True)
@@ -276,12 +281,13 @@ def main():
                     continue
 
                 slug = buat_slug(judul_baru)
-                img_url = GAMBAR_DEFAULT # Berita baru pakai default
+                img_url = GAMBAR_DEFAULT
+                body_dengan_dateline = tambah_dateline(body) # <-- TAMBAH INI
 
                 berita_data = {
                     "title": judul_baru, "slug": slug, "lead": lead_baru, "kategori": 'Berita',
                     "date": datetime.now().strftime("%Y-%m-%dT%H:%M:%S+07:00"),
-                    "image": img_url, "body": body,
+                    "image": img_url, "body": body_dengan_dateline,
                     "source_name": get_nama_media(link), "source_url": link
                 }
 
