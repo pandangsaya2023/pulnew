@@ -1,4 +1,10 @@
 [
+  "/berita/konsorsium-14-lembaga-kemanusiaan-kirim-5760-paket-sembako-untuk-palestina.html",
+  "/berita/celios-tantangan-kki-bukan-hanya-biaya-tapi-akses.html",
+  "/berita/korban-gempa-m-77-di-manggarai-timur-dievakuasi-dengan-helikopter-ke-labuan-bajo.html",
+  "/berita/huawei-matebook-pro-s-resmi-laptop-premium-bobot-cuma-798-gram.html",
+  "/berita/rekomendasi-12-game-anak-yang-edukatif-dan-cocok-untuk-semua-usia.html",
+  "/berita/10-contoh-prompt-ai-untuk-buat-poster-bertema-hut-ke-81-ri.html",
   "/berita/dubes-jepang-pakistan-mesir-dan-belanda-mengucapkan-selamat-atas-hut-ke-81-ri.html",
   "/berita/pemerintah-terus-salurkan-bantuan-untuk-korban-gempa-ntt.html",
   "/berita/bni-berkomitmen-menyalurkan-bantuan-kemanusiaan-bagi-masyarakat-terdampak-gempa-.html",
