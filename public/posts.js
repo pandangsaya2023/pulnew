@@ -10,7 +10,6 @@
   "/berita/mengembalikan-kejayaan-ekonomi-rakyat-kdkmp-sebagai-wujud-nyata-kehadiran-negara.html",
   "/berita/guncangan-gempa-rusak-7480-pemukiman-dan-lebih-dari-40-tempat-ibadah-di-manggara.html",
   "/berita/redam-dampak-kemarau-dan-potensi-gagal-panen-penyaluran-bantuan-beras-di-indrama.html",
-  "/berita/refleksi-peringatan-hari-konstitusi-menjaga-keberagaman-serta-memperkokoh-hukum-.html",
   "/berita/peringati-hut-ke-81-ri-lewat-tasyakuran-wali-kota-benyamin-davnie-imbau-warga-ta.html",
   "/berita/dubes-jepang-pakistan-mesir-dan-belanda-mengucapkan-selamat-atas-hut-ke-81-ri.html",
   "/berita/bni-berkomitmen-menyalurkan-bantuan-kemanusiaan-bagi-masyarakat-terdampak-gempa-.html",
