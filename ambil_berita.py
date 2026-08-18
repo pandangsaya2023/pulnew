@@ -272,7 +272,7 @@ def main():
             if body_baru:
                 data_lama.update({
                     "title": judul_baru, "lead": lead_baru, "body": body_baru,
-                    "image": GAMBAR_DEFAULT, # <--- PAKSA DEFAULT JUGA BUAT YG LAMA
+                    #"image": GAMBAR_DEFAULT, # <--- PAKSA DEFAULT JUGA BUAT YG LAMA
                     "date": datetime.now().strftime("%Y-%m-%dT%H:%M:%S+07:00"),
                     "source_name": "AI Rewrite"
                 })
