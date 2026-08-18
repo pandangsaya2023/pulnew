@@ -259,7 +259,7 @@ CONTOH JUDUL: "Chelsea Resmi Rekrut Pemain Baru"
 CONTOH OUTPUT: <p>Dengan kedatangan pemain baru ini, diharapkan Chelsea dapat memperkuat lini serangnya dan meraih target juara musim ini. Para pendukung The Blues tentu menaruh harapan besar agar adaptasi berjalan cepat.</p><p>PULNEW.com akan terus memantau perkembangan skuad Chelsea dan memberikan update terbaru seputar bursa transfer dan hasil pertandingan.</p>
 """
         completion = client.chat.completions.create(
-            model="llama-3.1-8b-instant", # pake yg 8b biar cepat & murah
+            model="llama-3.3-70b-versatile",
             messages=[{"role": "user", "content": prompt}],
             temperature=0.7,
             max_tokens=300
