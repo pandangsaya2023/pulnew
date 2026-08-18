@@ -1,86 +1,244 @@
-import feedparser
-import requests
-from bs4 import BeautifulSoup
-import google.generativeai as genai
 import os
 import json
 import re
+import time
+import requests
+import markdown # <--- buat convert body
 from datetime import datetime
+from urllib.parse import urlparse
+# from groq import Groq # <--- HAPUS INI
+import google.generativeai as genai # <--- GANTI INI
+from bs4 import BeautifulSoup
 
-# 1. KONEK KE GEMINI
-GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
-if not GEMINI_API_KEY:
-    raise ValueError("GEMINI_API_KEY tidak ditemukan")
-    
-genai.configure(api_key=GEMINI_API_KEY)
-model = genai.GenerativeModel('gemini-1.5-flash')
+# --- KONFIGURASI ---
+BASE_URL = "https://pulnew.pages.dev"
+OUTPUT_FOLDER = "public/posts"
+INDEX_JSON_PATH = "public/posts/index.json"
+POSTS_JS_PATH = "public/posts.js"
+# GROQ_API_KEY = os.getenv("GROQ_API_KEY") # <--- HAPUS
+# client = Groq(api_key=GROQ_API_KEY) # <--- HAPUS
 
-# 2. SUMBER RSS
-RSS_URLS = [
-    "https://www.republika.co.id/rss",
-    "https://www.kompas.com/rss"
+# GANTI JADI GEMINI
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY") # <--- BARU
+genai.configure(api_key=GEMINI_API_KEY) # <--- BARU
+model = genai.GenerativeModel('gemini-1.5-flash') # <--- BARU
+
+MAX_BERITA_PER_RUN = 15
+
+sumber_rss = [
+    {"media": "Kompas", "url": "https://indeks.kompas.com/nasional"},
+    {"media": "Antara", "url": "https://www.antaranews.com/nasional"},
+    {"media": "Republika", "url": "https://www.republika.co.id/rss"}
 ]
 
-def ambil_konten(url):
+def get_nama_media(url):
+    try:
+        domain = urlparse(url).netloc.replace('www.', '')
+        nama = domain.split('.')[0].capitalize()
+        if 'kompas' in domain: return 'Kompas'
+        if 'republika' in domain: return 'Republika'
+        if 'antaranews' in domain: return 'Antara'
+        return nama
+    except:
+        return "Media"
+
+def format_ke_html(text):
+    paragraphs = text.split('\n\n')
+    html_parts = []
+    for p in paragraphs:
+        p = p.strip()
+        if p.startswith('<h2'):
+            html_parts.append(p)
+        elif p:
+            html_parts.append(f'<p>{p}</p>')
+    return '\n'.join(html_parts)
+
+def get_existing_posts():
+    posts = {}
+    if os.path.exists(OUTPUT_FOLDER):
+        for filename in os.listdir(OUTPUT_FOLDER):
+            if filename.endswith(".json") and filename!= 'index.json':
+                try:
+                    path = os.path.join(OUTPUT_FOLDER, filename)
+                    with open(path, 'r', encoding='utf-8') as f:
+                        data = json.load(f)
+                    posts[data['slug']] = data
+                except Exception as e: 
+                    print(f"Gagal baca {filename}: {e}")
+    return posts
+
+def buat_slug(judul):
+    slug = re.sub(r'[^\w\s-]', '', judul.lower()).strip()
+    slug = re.sub(r'\s+', '-', slug)
+    slug = slug.strip('-')[:80]
+    return slug if slug else f"berita-{int(time.time())}"
+
+def save_berita(data):
+    os.makedirs(OUTPUT_FOLDER, exist_ok=True)
+    nama_file = f"{data['slug']}.json"
+    path_file = os.path.join(OUTPUT_FOLDER, nama_file)
+    with open(path_file, 'w', encoding='utf-8') as f:
+        json.dump(data, f, ensure_ascii=False, indent=2)
+    print(f"✅ Disimpan/Ditimpa: {nama_file}")
+
+def update_index_json(all_posts):
+    sorted_posts = sorted(all_posts.values(), key=lambda x: x.get('date',''), reverse=True)
+    index_data = []
+    for p in sorted_posts:
+        index_data.append({
+            "slug": p['slug'],
+            "title": p['title'],
+            "lead": p.get('lead',''),
+            "image": p.get('image',''),
+            "date": p['date'],
+            "kategori": p.get('kategori','Berita')
+        })
+    with open(INDEX_JSON_PATH, 'w', encoding='utf-8') as f:
+        json.dump(index_data, f, ensure_ascii=False, indent=2)
+    print(f"✅ index.json diupdate: {len(index_data)} berita")
+
+def update_posts_js(all_posts):
+    urls = [f"/berita/{slug}.html" for slug in all_posts.keys()]
+    urls.sort(key=lambda x: all_posts[x.split('/')[-1].replace('.html','')].get('date',''), reverse=True)
+    with open(POSTS_JS_PATH, 'w', encoding='utf-8') as f:
+        json.dump(urls, f, ensure_ascii=False, indent=2)
+
+def ambil_konten_berita(url):
     try:
         headers = {'User-Agent': 'Mozilla/5.0'}
-        res = requests.get(url, timeout=15, headers=headers)
-        soup = BeautifulSoup(res.text, 'html.parser')
-        paragraf = [p.get_text(strip=True) for p in soup.find_all('p') if len(p.get_text(strip=True)) > 80]
-        return "\n".join(paragraf[:6])
-    except Exception as e:
-        print(f"Gagal ambil konten: {e}")
-        return ""
+        response = requests.get(url, headers=headers, timeout=15)
+        if response.status_code == 200:
+            soup = BeautifulSoup(response.content, 'html.parser')
+            target = soup.find('article') or soup.find('div', class_=re.compile('content|body|detail'))
+            text = target.get_text(separator='\n\n', strip=True) if target else soup.get_text(separator='\n\n', strip=True)
+            return text[:7000], soup
+        return "", None
+    except:
+        return "", None
 
-def rewrite_dengan_gemini(judul, konten):
-    prompt = f"""
-    Kamu adalah jurnalis dan SEO writer untuk pulnew.pages.dev
-    Tulis ulang berita di bawah ini 100% dengan kata2 baru. Jangan plagiat.
-    Buat judul baru yg clickbait tapi tetap fakta. Isi 300-400 kata.
-    Gunakan gaya bahasa santai, mudah dipahami. Akhiri dengan kesimpulan.
+def ambil_gambar_asli(soup):
+    if soup:
+        og_image = soup.find('meta', property='og:image')
+        if og_image and og_image.get('content'):
+            return og_image['content']
+    return f"{BASE_URL}/media/og-default.jpg"
 
-    JUDUL ASLI: {judul}
-    ISI ASLI: {konten}
+# --- INI YG KITA UBAH TOTAL ---
+def rewrite_with_gemini(title, link, media): # <--- GANTI NAMA FUNGSI
+    konten_asli, soup = ambil_konten_berita(link)
+    if not GEMINI_API_KEY or not konten_asli or len(konten_asli) < 150: # <--- GANTI GROQ -> GEMINI
+        print("Skip: Konten terlalu pendek")
+        return None, soup, title, "" # <--- PENTING: RETURN NONE KALAU GAGAL
 
-    Balas HANYA dalam format JSON valid:
-    {{"judul_baru": "...", "isi_baru": "..."}}
-    """
     try:
-        response = model.generate_content(prompt)
-        text = response.text.strip().replace("```json", "").replace("```", "")
-        data = json.loads(text)
-        return data
+        prompt = f"""Kamu adalah Editor Senior PULNEW.com. Tugasmu PARAFRASE TOTAL berita agar lolos plagiarisme.
+        PERATURAN SANGAT KETAT:
+        1. PANJANG WAJIB SAMA: Hasil rewrite harus sepanjang atau LEBIH PANJANG dari teks sumber. JANGAN DIRINGKAS.
+        2. STRUKTUR: WAJIB ada 2 SUB JUDUL pakai tag <h2 style="color:#0056b3; margin-top:16px; margin-bottom:12px; font-size:22px;">Judul</h2>
+        3. DILARANG KERAS COPAS: Semua kalimat WAJIB ditulis ulang 100%
+        4. FAKTA WAJIB SAMA: Nama, angka, tanggal, tempat, kutipan langsung TIDAK BOLEH BERUBAH.
+        5. GAYA: Seperti Detik/Kompas. Piramida terbalik. Bahasa baku.
+        6. OUTPUT: Kembalikan HANYA JSON valid: {{"judul": "...", "isi": "...", "lead": "..."}}
+        
+        TEKS SUMBER:
+        Judul: {title}
+        Isi: {konten_asli[:8000]}
+        Sumber: {link}
+        """
+        response = model.generate_content(prompt) # <--- GANTI CARA PANGGIL
+        text = response.text.strip().replace("```json", "").replace("```", "") # <--- BERSIHIN JSON
+        hasil_json = json.loads(text) # <--- PARSE JSON
+
+        judul_baru = hasil_json.get('judul', title)
+        isi_baru = format_ke_html(hasil_json.get('isi', konten_asli))
+        lead_baru = hasil_json.get('lead', '')
+        return isi_baru, soup, judul_baru, lead_baru
+
     except Exception as e:
         print(f"Error Gemini: {e}")
-        return None # INI PENTING: KALAU ERROR MAKA SKIP
+        return None, soup, title, "" # <--- PENTING: KALAU ERROR RETURN NONE
+
+def generate_article_page(article):
+    os.makedirs("public/berita", exist_ok=True)
+    body_html = markdown.markdown(article.get('body', ''), extensions=['extra'])
+    html_content = f"""<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>{article['title']} - PULNEW</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<div class="container">
+<h1>{article['title']}</h1>
+<p class="meta">{article['date']} | {article['kategori']}</p>
+<img src="{article.get('image','')}" alt="{article['title']}" class="featured-img">
+<div class="article-content">
+{body_html}
+</div>
+</div>
+<script src="/berita.js"></script>
+</body>
+</html>"""
+    with open(f"public/berita/{article['slug']}.html", 'w', encoding='utf-8') as f:
+        f.write(html_content)
 
 def main():
-    semua_berita = []
-    for rss in RSS_URLS:
-        feed = feedparser.parse(rss)
-        for entry in feed.entries[:8]: # Ambil 8 berita terbaru
-            print(f"Memproses: {entry.title}")
-            konten = ambil_konten(entry.link)
-            if len(konten) < 200: continue
-            
-            hasil_ai = rewrite_dengan_gemini(entry.title, konten)
-            
-            if hasil_ai: # HANYA SIMPAN KALAU AI SUKSES
-                semua_berita.append({
-                    "id": re.sub(r'\W+', '-', entry.title.lower())[:50],
-                    "judul": hasil_ai["judul_baru"],
-                    "isi": hasil_ai["isi_baru"],
-                    "sumber": entry.link,
-                    "tanggal": datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-                })
-            else:
-                print("Skip berita ini karena AI error")
-    
-    # 3. SIMPAN KE posts.js
-    output = "const posts = " + json.dumps(semua_berita, ensure_ascii=False, indent=2) + ";"
-    with open("public/posts.js", "w", encoding="utf-8") as f:
-        f.write(output)
-    print(f"Selesai! {len(semua_berita)} berita baru berhasil dibuat.")
+    semua_post = get_existing_posts()
+    jumlah_baru = 0
+    jumlah_update = 0
+    total_proses = 0
+
+    for sumber in sumber_rss:
+        if total_proses >= MAX_BERITA_PER_RUN: break
+        print(f"Mengakses {sumber['media']}...")
+        try:
+            response = requests.get(sumber['url'], headers={'User-Agent': 'Mozilla/5.0'})
+            soup = BeautifulSoup(response.content, 'xml')
+
+            for item in soup.find_all('item')[:3]:
+                if total_proses >= MAX_BERITA_PER_RUN: break
+                title = item.find('title').get_text(strip=True)
+                link = item.find('link').get_text(strip=True)
+
+                body, soup_artikel, judul_baru, lead_baru = rewrite_with_gemini(title, link, sumber['media']) # <--- GANTI NAMA FUNGSI
+
+                if body is None: # <--- PENTING: KALAU AI ERROR MAKA SKIP BERITA INI
+                    print(f"Skip berita: {title}")
+                    continue
+
+                slug = buat_slug(judul_baru)
+                img_url = ambil_gambar_asli(soup_artikel)
+
+                kategori_lama = semua_post.get(slug, {}).get('kategori', 'Berita')
+                
+                berita_data = {
+                    "title": judul_baru, 
+                    "slug": slug, 
+                    "lead": lead_baru, 
+                    "kategori": kategori_lama,
+                    "date": datetime.now().strftime("%Y-%m-%dT%H:%M:%S+07:00"),
+                    "image": img_url, 
+                    "body": body,
+                    "source_name": get_nama_media(link), 
+                    "source_url": link
+                }
+
+                if slug in semua_post: jumlah_update += 1
+                else: jumlah_baru += 1
+
+                semua_post[slug] = berita_data
+                save_berita(berita_data)
+                total_proses += 1
+                time.sleep(5) # <--- Turunin jadi 5 detik biar cepet
+        except Exception as e:
+            print(f"Error di {sumber['media']}: {e}")
+
+    update_posts_js(semua_post)
+    update_index_json(semua_post)
+
+    print(f"Selesai! Baru: {jumlah_baru}, Update: {jumlah_update}")
 
 if __name__ == "__main__":
     main()
