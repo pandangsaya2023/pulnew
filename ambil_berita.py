@@ -16,14 +16,14 @@ OUTPUT_FOLDER = "public/posts"
 INDEX_JSON_PATH = "public/posts/index.json"
 POSTS_JS_PATH = "public/posts.js"
 BERITA_HTML_FOLDER = "public/berita"
-GAMBAR_DEFAULT = f"{BASE_URL}/media/og-default.jpg" # <--- GAMBAR DEFAULT KAMU
+GAMBAR_DEFAULT = f"{BASE_URL}/media/og-default.jpg"
 
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 client = genai.Client(api_key=GEMINI_API_KEY)
-MODEL = "gemini-3.6-flash"
+MODEL = "gemini-2.5-flash"
 
 MAX_BERITA_BARU = 5
-MAX_BERITA_LAMA = 3
+MAX_BERITA_LAMA = 10 # 10x per run. 125 / 10 = 13x run kelar
 FORCE_REWRITE_LAMA = True
 
 sumber_rss = [
@@ -89,7 +89,7 @@ def update_index_json(all_posts):
             "slug": p['slug'],
             "title": p['title'],
             "lead": p.get('lead',''),
-            "image": p.get('image',''), # ini yg dipake di homepage
+            "image": p.get('image',''),
             "date": p['date'],
             "kategori": p.get('kategori','Berita')
         })
@@ -116,11 +116,6 @@ def ambil_konten_berita(url):
     except:
         return "", None
 
-# --- FUNGSI BARU: PAKSA GAMBAR DEFAULT ---
-def ambil_gambar_asli(soup, judul):
-    # UDAH GAK NGECEK OG:IMAGE LAGI. LANGSUNG DEFAULT SEMUA
-    return GAMBAR_DEFAULT
-
 def baca_html_lama(filepath):
     try:
         with open(filepath, 'r', encoding='utf-8') as f:
@@ -133,7 +128,6 @@ def baca_html_lama(filepath):
     except:
         return None, None, None
 
-# --- FUNGSI GEMINI + RETRY ---
 def rewrite_with_gemini(title, link, media):
     konten_asli, soup = ambil_konten_berita(link)
     if not GEMINI_API_KEY or not konten_asli or len(konten_asli) < 150:
@@ -173,7 +167,6 @@ def rewrite_with_gemini(title, link, media):
                 time.sleep(wait)
             else:
                 break
-
     return None, soup, title, ""
 
 def generate_article_page(article):
@@ -207,53 +200,27 @@ def main():
     semua_post = get_existing_posts()
     jumlah_baru = 0
     jumlah_update = 0
-    total_proses_baru = 0
 
-    # 1. PROSES BERITA BARU DARI RSS
-    print(f"Mengambil max {MAX_BERITA_BARU} berita baru dari RSS...")
-    for sumber in sumber_rss:
-        if total_proses_baru >= MAX_BERITA_BARU: break
-        print(f"Mengakses {sumber['media']}...")
-        try:
-            response = requests.get(sumber['url'], headers={'User-Agent': 'Mozilla/5.0'})
-            soup = BeautifulSoup(response.content, 'xml')
+    # ========== 1. LAPORAN PROGRES ==========
+    semua_file_lama = glob.glob(f"{BERITA_HTML_FOLDER}/*.html")
+    total_lama_awal = 0
+    for file_lama in semua_file_lama:
+        slug = os.path.basename(file_lama).replace('.html', '')
+        data_lama = semua_post.get(slug)
+        if data_lama and data_lama.get('source_name')!= 'AI Rewrite':
+            total_lama_awal += 1
 
-            for item in soup.find_all('item')[:5]:
-                if total_proses_baru >= MAX_BERITA_BARU: break
-                title = item.find('title').get_text(strip=True)
-                link = item.find('link').get_text(strip=True)
-                slug_cek = buat_slug(title)
-                if slug_cek in semua_post: continue
+    sudah_selesai = len(semua_file_lama) - total_lama_awal
 
-                body, soup_artikel, judul_baru, lead_baru = rewrite_with_gemini(title, link, sumber['media'])
-                if body is None:
-                    print(f"Skip berita: {title[:50]}...")
-                    continue
+    print(f"\n========== LAPORAN PROGRES ==========")
+    print(f"Total Arsip: {len(semua_file_lama)}")
+    print(f"Sudah di Rewrite: {sudah_selesai}")
+    print(f"Sisa Belum di Rewrite: {total_lama_awal}")
+    print(f"=====================================\n")
 
-                slug = buat_slug(judul_baru)
-                img_url = GAMBAR_DEFAULT # <--- PAKSA DEFAULT
-
-                berita_data = {
-                    "title": judul_baru, "slug": slug, "lead": lead_baru, "kategori": 'Berita',
-                    "date": datetime.now().strftime("%Y-%m-%dT%H:%M:%S+07:00"),
-                    "image": img_url, "body": body,
-                    "source_name": get_nama_media(link), "source_url": link
-                }
-
-                semua_post[slug] = berita_data
-                save_berita(berita_data)
-                generate_article_page(berita_data)
-                jumlah_baru += 1
-                total_proses_baru += 1
-                print(f"✅ Baru: {judul_baru[:60]}")
-                time.sleep(10)
-        except Exception as e:
-            print(f"Error di {sumber['media']}: {e}")
-
-    # 2. PROSES REWRITE BERITA LAMA
-    if FORCE_REWRITE_LAMA and MAX_BERITA_LAMA > 0:
-        print(f"\nRewrite max {MAX_BERITA_LAMA} berita lama...")
-        semua_file_lama = glob.glob(f"{BERITA_HTML_FOLDER}/*.html")
+    # ========== 2. MODE LAMA: FOKUS HABISIN DULU ==========
+    if total_lama_awal > 0:
+        print(f"MODE LAMA: Fokus habisin {total_lama_awal} berita sisa")
         total_proses_lama = 0
 
         for file_lama in semua_file_lama:
@@ -264,15 +231,15 @@ def main():
             if not data_lama: continue
             if data_lama.get('source_name') == 'AI Rewrite': continue
 
-            print(f"Membaca ulang: {slug}")
+            print(f"[{total_proses_lama+1}/{MAX_BERITA_LAMA}] Membaca ulang: {slug}")
             judul_lama, isi_lama, link_lama = baca_html_lama(file_lama)
             if not judul_lama: continue
 
             body_baru, _, judul_baru, lead_baru = rewrite_with_gemini(judul_lama, link_lama, "Arsip")
             if body_baru:
+                # PENTING: GAMBAR LAMA TETAP, TIDAK DIUBAH
                 data_lama.update({
                     "title": judul_baru, "lead": lead_baru, "body": body_baru,
-                    #"image": GAMBAR_DEFAULT, # <--- PAKSA DEFAULT JUGA BUAT YG LAMA
                     "date": datetime.now().strftime("%Y-%m-%dT%H:%M:%S+07:00"),
                     "source_name": "AI Rewrite"
                 })
@@ -284,9 +251,56 @@ def main():
                 print(f"🔄 Update: {judul_baru[:60]}")
                 time.sleep(10)
 
+        print(f"\n✅ Selesai batch ini: {jumlah_update} berita di-update")
+
+    # ========== 3. MODE BARU: KALAU LAMA UDAH HABIS ==========
+    else:
+        print("🎉 SELAMAT! SEMUA BERITA LAMA SUDAH SELESAI DI-REWRITE")
+        print("MODE BARU: Mulai ambil berita baru")
+        total_proses_baru = 0
+        for sumber in sumber_rss:
+            if total_proses_baru >= MAX_BERITA_BARU: break
+            print(f"Mengakses {sumber['media']}...")
+            try:
+                response = requests.get(sumber['url'], headers={'User-Agent': 'Mozilla/5.0'})
+                soup = BeautifulSoup(response.content, 'xml')
+
+                for item in soup.find_all('item')[:5]:
+                    if total_proses_baru >= MAX_BERITA_BARU: break
+                    title = item.find('title').get_text(strip=True)
+                    link = item.find('link').get_text(strip=True)
+                    slug_cek = buat_slug(title)
+                    if slug_cek in semua_post: continue
+
+                    body, soup_artikel, judul_baru, lead_baru = rewrite_with_gemini(title, link, sumber['media'])
+                    if body is None:
+                        print(f"Skip berita: {title[:50]}...")
+                        continue
+
+                    slug = buat_slug(judul_baru)
+                    img_url = GAMBAR_DEFAULT # Berita baru pakai default
+
+                    berita_data = {
+                        "title": judul_baru, "slug": slug, "lead": lead_baru, "kategori": 'Berita',
+                        "date": datetime.now().strftime("%Y-%m-%dT%H:%M:%S+07:00"),
+                        "image": img_url, "body": body,
+                        "source_name": get_nama_media(link), "source_url": link
+                    }
+
+                    semua_post[slug] = berita_data
+                    save_berita(berita_data)
+                    generate_article_page(berita_data)
+                    jumlah_baru += 1
+                    total_proses_baru += 1
+                    print(f"✅ Baru: {judul_baru[:60]}")
+                    time.sleep(10)
+            except Exception as e:
+                print(f"Error di {sumber['media']}: {e}")
+
     update_posts_js(semua_post)
     update_index_json(semua_post)
-    print(f"\nSelesai! Baru: {jumlah_baru}, Update Lama: {jumlah_update}")
+    print(f"\nRINGKASAN AKHIR: Baru: {jumlah_baru}, Update Lama: {jumlah_update}")
+    print(f"PROGRES TOTAL: {sudah_selesai + jumlah_update} / {len(semua_file_lama)} selesai")
 
 if __name__ == "__main__":
     main()
