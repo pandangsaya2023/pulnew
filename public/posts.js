@@ -1,4 +1,10 @@
 [
+  "/berita/indosolar-2026-dorong-penguatan-ekosistem-energi-surya-nasional.html",
+  "/berita/lima-pejabat-kemenhut-diperiksa-terkait-pengusutan-kasus-transfer-pricing.html",
+  "/berita/arancino-yang-mirip-gunung-etna-di-sisilia.html",
+  "/berita/huawei-matebook-pro-s-resmi-laptop-premium-bobot-cuma-798-gram.html",
+  "/berita/rekomendasi-12-game-anak-yang-edukatif-dan-cocok-untuk-semua-usia.html",
+  "/berita/10-contoh-prompt-ai-untuk-buat-poster-bertema-hut-ke-81-ri.html",
   "/berita/dubes-jepang-pakistan-mesir-dan-belanda-mengucapkan-selamat-atas-hut-ke-81-ri.html",
   "/berita/pemerintah-terus-salurkan-bantuan-untuk-korban-gempa-ntt.html",
   "/berita/bni-berkomitmen-menyalurkan-bantuan-kemanusiaan-bagi-masyarakat-terdampak-gempa-.html",
