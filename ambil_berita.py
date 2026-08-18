@@ -102,18 +102,27 @@ def ambil_gambar_asli(soup):
 
 
 def rewrite_artikel(judul, isi_lama, sumber, link_sumber):
-    """Rewrite tanpa AI pakai template biar tembus 600 kata"""
-    paragraf1 = isi_lama if isi_lama else f"Berikut informasi terbaru mengenai {judul}."
+    """Rewrite pakai template 100% tanpa copas isi lama"""
     
-    paragraf2 = f"<h2 style='color:#2563EB;'>Kronologi dan Fakta Terbaru</h2><p>Menurut pantauan PULNEW.com, peristiwa mengenai {judul.lower()} ini menjadi perhatian publik. Berbagai pihak kini mulai memberikan tanggapan dan analisis terkait dampak yang ditimbulkan. Hal ini menunjukkan betapa pentingnya isu tersebut dalam konteks nasional saat ini.</p>"
+    # Paragraf 1: Bikin lead baru dari judul
+    paragraf1 = f"Kementerian terkait kini menjadi sorotan publik setelah adanya kabar mengenai {judul.lower()}. Isu ini langsung menarik perhatian masyarakat dan media karena dinilai memiliki dampak yang cukup signifikan."
     
-    paragraf3 = f"<h2 style='color:#2563EB;'>Dampak dan Harapan ke Depan</h2><p>Diharapkan dengan adanya perkembangan {judul.lower()}, masyarakat dapat mengambil hikmah dan pelajaran. Pemerintah serta stakeholder terkait juga diharapkan dapat segera memberikan solusi konkret agar permasalahan serupa tidak terulang kembali di masa mendatang.</p>"
+    # Paragraf 2: H2 pertama
+    paragraf2 = f"<h2 style='color:#2563EB;'>Kronologi dan Fakta Terbaru</h2><p>Menurut pantauan PULNEW.com, perkembangan terkait {judul.lower()} saat ini terus dipantau oleh berbagai pihak. Beberapa narasumber menyebutkan bahwa langkah-langkah konkret perlu segera diambil agar tidak menimbulkan polemik lebih lanjut. Isu ini juga menjadi bahan perbincangan di berbagai platform media sosial."
     
-    paragraf4 = f"<p>Demikian informasi terkait {judul.lower()}. PULNEW.com akan terus memantau dan memberikan update terbaru kepada pembaca.</p>"
+    # Paragraf 3: Isi tengah biar panjang
+    paragraf3 = f"<p>Dalam beberapa hari terakhir, {judul.lower()} menjadi salah satu topik utama yang dibahas. Para ahli dan pengamat menilai bahwa peristiwa ini bisa menjadi momentum penting untuk melakukan evaluasi menyeluruh. Pemerintah diharapkan dapat memberikan klarifikasi resmi agar masyarakat tidak terlanjur berspekulasi."
     
-    paragraf5 = f"<p><strong>Sumber: <a href='{link_sumber}' target='_blank' rel='nofollow'>{sumber}</a></strong></p>"
+    # Paragraf 4: H2 kedua
+    paragraf4 = f"<h2 style='color:#2563EB;'>Dampak dan Harapan ke Depan</h2><p>Diharapkan dengan adanya perkembangan {judul.lower()}, semua pihak dapat mengambil hikmah dan pelajaran berharga. Pemerintah, swasta, maupun masyarakat diharapkan dapat bersinergi mencari solusi terbaik. Langkah cepat dan tepat sangat dibutuhkan agar permasalahan serupa tidak kembali terjadi di masa mendatang.</p>"
     
-    isi_baru = f"{paragraf1}\n\n{paragraf2}\n\n{paragraf3}\n\n{paragraf4}\n\n{paragraf5}"
+    # Paragraf 5: Penutup
+    paragraf5 = f"<p>Demikian informasi terkait {judul.lower()}. PULNEW.com akan terus memantau perkembangan terbaru dan menyajikannya kepada pembaca secara akurat dan berimbang.</p>"
+    
+    # Paragraf 6: Sumber
+    paragraf6 = f"<p><strong>Sumber: <a href='{link_sumber}' target='_blank' rel='nofollow'>{sumber}</a></strong></p>"
+    
+    isi_baru = f"{paragraf1}\n\n{paragraf2}\n\n{paragraf3}\n\n{paragraf4}\n\n{paragraf5}\n\n{paragraf6}"
     kata = len(isi_baru.split())
     return isi_baru, kata
 
