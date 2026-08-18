@@ -16,7 +16,7 @@ INDEX_JSON_PATH = "public/posts/index.json" # <--- BARU
 POSTS_JS_PATH = "public/posts.js"
 GROQ_API_KEY = os.getenv("GROQ_API_KEY")
 client = Groq(api_key=GROQ_API_KEY)
-MAX_BERITA_PER_RUN = 15
+MAX_BERITA_PER_RUN = 50
 
 sumber_rss = [
     {"media": "Kompas", "url": "https://indeks.kompas.com/nasional"},
