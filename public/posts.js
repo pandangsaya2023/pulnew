@@ -1,9 +1,4 @@
 [
-  "/berita/rossa-hingga-marion-jola-ajak-penggemar-bantu-korban-gempa-ntt.html",
-  "/berita/gunung-anak-krakatau-20-kali-erupsi-abu-vulkanik-ganggu-pernapasan-warga.html",
-  "/berita/indosolar-2026-dorong-penguatan-ekosistem-energi-surya-nasional.html",
-  "/berita/lima-pejabat-kemenhut-diperiksa-terkait-pengusutan-kasus-transfer-pricing.html",
-  "/berita/arancino-yang-mirip-gunung-etna-di-sisilia.html",
   "/berita/dubes-jepang-pakistan-mesir-dan-belanda-mengucapkan-selamat-atas-hut-ke-81-ri.html",
   "/berita/pemerintah-terus-salurkan-bantuan-untuk-korban-gempa-ntt.html",
   "/berita/bni-berkomitmen-menyalurkan-bantuan-kemanusiaan-bagi-masyarakat-terdampak-gempa-.html",
