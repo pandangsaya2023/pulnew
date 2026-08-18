@@ -16,13 +16,14 @@ OUTPUT_FOLDER = "public/posts"
 INDEX_JSON_PATH = "public/posts/index.json"
 POSTS_JS_PATH = "public/posts.js"
 BERITA_HTML_FOLDER = "public/berita"
+GAMBAR_DEFAULT = f"{BASE_URL}/media/og-default.jpg" # <--- GAMBAR DEFAULT KAMU
 
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 client = genai.Client(api_key=GEMINI_API_KEY)
 MODEL = "gemini-3.6-flash"
 
-MAX_BERITA_BARU = 5 # dari RSS
-MAX_BERITA_LAMA = 3 # <--- UDAH DITURUNIN JADI 3
+MAX_BERITA_BARU = 5
+MAX_BERITA_LAMA = 3
 FORCE_REWRITE_LAMA = True
 
 sumber_rss = [
@@ -62,7 +63,7 @@ def get_existing_posts():
                     with open(path, 'r', encoding='utf-8') as f:
                         data = json.load(f)
                     posts[data['slug']] = data
-                except Exception as e: 
+                except Exception as e:
                     print(f"Gagal baca {filename}: {e}")
     return posts
 
@@ -88,7 +89,7 @@ def update_index_json(all_posts):
             "slug": p['slug'],
             "title": p['title'],
             "lead": p.get('lead',''),
-            "image": p.get('image',''),
+            "image": p.get('image',''), # ini yg dipake di homepage
             "date": p['date'],
             "kategori": p.get('kategori','Berita')
         })
@@ -115,12 +116,10 @@ def ambil_konten_berita(url):
     except:
         return "", None
 
-def ambil_gambar_asli(soup):
-    if soup:
-        og_image = soup.find('meta', property='og:image')
-        if og_image and og_image.get('content'):
-            return og_image['content']
-    return f"{BASE_URL}/media/og-default.jpg"
+# --- FUNGSI BARU: PAKSA GAMBAR DEFAULT ---
+def ambil_gambar_asli(soup, judul):
+    # UDAH GAK NGECEK OG:IMAGE LAGI. LANGSUNG DEFAULT SEMUA
+    return GAMBAR_DEFAULT
 
 def baca_html_lama(filepath):
     try:
@@ -174,7 +173,7 @@ def rewrite_with_gemini(title, link, media):
                 time.sleep(wait)
             else:
                 break
-    
+
     return None, soup, title, ""
 
 def generate_article_page(article):
@@ -186,6 +185,7 @@ def generate_article_page(article):
 <meta charset="UTF-8">
 <title>{article['title']} - PULNEW</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:image" content="{article.get('image','')}" />
 <link rel="stylesheet" href="/style.css">
 </head>
 <body>
@@ -231,7 +231,7 @@ def main():
                     continue
 
                 slug = buat_slug(judul_baru)
-                img_url = ambil_gambar_asli(soup_artikel)
+                img_url = GAMBAR_DEFAULT # <--- PAKSA DEFAULT
 
                 berita_data = {
                     "title": judul_baru, "slug": slug, "lead": lead_baru, "kategori": 'Berita',
@@ -246,7 +246,7 @@ def main():
                 jumlah_baru += 1
                 total_proses_baru += 1
                 print(f"✅ Baru: {judul_baru[:60]}")
-                time.sleep(10) # <--- delay 10 detik biar aman
+                time.sleep(10)
         except Exception as e:
             print(f"Error di {sumber['media']}: {e}")
 
@@ -272,6 +272,7 @@ def main():
             if body_baru:
                 data_lama.update({
                     "title": judul_baru, "lead": lead_baru, "body": body_baru,
+                    "image": GAMBAR_DEFAULT, # <--- PAKSA DEFAULT JUGA BUAT YG LAMA
                     "date": datetime.now().strftime("%Y-%m-%dT%H:%M:%S+07:00"),
                     "source_name": "AI Rewrite"
                 })
@@ -281,7 +282,7 @@ def main():
                 jumlah_update += 1
                 total_proses_lama += 1
                 print(f"🔄 Update: {judul_baru[:60]}")
-                time.sleep(10) # <--- delay 10 detik
+                time.sleep(10)
 
     update_posts_js(semua_post)
     update_index_json(semua_post)
