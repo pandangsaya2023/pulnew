@@ -38,8 +38,8 @@ def format_ke_html(text):
 def tambah_dateline(isi_html):
     if not isi_html.startswith('<p>'):
         return isi_html
-    dateline = '<strong>PULNEW.COM</strong> - '
-    isi_html = isi_html.replace('',dateline, 1)
+    dateline = '<p><strong>PULNEW.COM</strong> - '
+    isi_html = isi_html.replace('</p>',dateline, 1)
     return isi_html
 
 def get_existing_posts():
