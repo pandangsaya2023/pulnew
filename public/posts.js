@@ -1,4 +1,10 @@
 [
+  "/berita/bahlil-analogikan-harga-minyak-dunia-mirip-pasien-malaria-pemerintah-genjot-tran.html",
+  "/berita/gagalkan-kerugian-negara-rp76-miliar-tni-al-sukses-ungkap-penyelundupan-757-ton-.html",
+  "/berita/menakar-arah-baru-nahdlatul-ulama-dalam-menghadapi-gelombang-urbanisasi-nasional.html",
+  "/berita/amy-melakukan-kunjungan-strategis-ke-sumatra-selatan-dalam-rangka-safari-politik.html",
+  "/berita/atlet-golf-jesslyn-dilaporkan-diculik.html",
+  "/berita/alphi-aturan-label-non-halal-perlu-diperjelas-agar-tak-timbulkan-multi-tafsir.html",
   "/berita/proyek-underpass-gatot-subroto-cimahi-resmi-dimulai-pengalihan-arus-lalu-lintas-.html",
   "/berita/dorong-swasembada-bawang-putih-kementan-kucurkan-bantuan-rp-5565-miliar-ke-lombo.html",
   "/berita/tradisi-merti-golong-gilig-di-yogyakarta-warga-dipowinatan-merayakan-kebersamaan.html",
@@ -6,8 +12,5 @@
   "/berita/36-gtk-srma-1-aceh-besar-dampingi-operasional-sekolah-rakyat-di-nagan-raya.html",
   "/berita/16-atlet-meraih-super-tiket-audisi-umum-pb-djarum-2026-di-makassar.html",
   "/berita/bebaskan-aktivitas-fotografi-di-malioboro-pemerintah-siapkan-4-spot-foto-gratis.html",
-  "/berita/amy-melakukan-kunjungan-strategis-ke-sumatra-selatan-dalam-rangka-safari-politik.html",
-  "/berita/alphi-aturan-label-non-halal-perlu-diperjelas-agar-tak-timbulkan-multi-tafsir.html",
-  "/berita/aksi-damai-peternak-ayam-di-solo-protes-harga-pakan-yang-melambung.html",
-  "/berita/atlet-golf-jesslyn-dilaporkan-diculik.html"
+  "/berita/aksi-damai-peternak-ayam-di-solo-protes-harga-pakan-yang-melambung.html"
 ]
