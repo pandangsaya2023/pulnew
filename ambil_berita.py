@@ -33,7 +33,7 @@ else:
 print(f"Menggunakan Key ke-{key_no}")
 
 client = genai.Client(api_key=GEMINI_API_KEY)
-MODEL = "gemini-3.6-flash" # FIX: 3.6 gak ada
+MODEL = "gemini-2.0-flash" # FIX: 3.6 gak ada
 
 #GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 #client = genai.Client(api_key=GEMINI_API_KEY)
