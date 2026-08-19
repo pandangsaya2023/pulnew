@@ -13,7 +13,6 @@
   "/berita/rekomendasi-iphone-masih-layak-dibeli-tahun-ini.html",
   "/berita/ikkb-adakan-raker.html",
   "/berita/tekanan-amerika-serikat-kepada-israel-untuk-mengurangi-eskalasi-konflik-di-kawas.html",
-  "/berita/laporan-knesset-ungkap-separuh-lebih-warga-israel-yang-eksodus-enggan-kembali-ne.html",
   "/berita/guncangan-gempa-rusak-7480-pemukiman-dan-lebih-dari-40-tempat-ibadah-di-manggara.html",
   "/berita/redam-dampak-kemarau-dan-potensi-gagal-panen-penyaluran-bantuan-beras-di-indrama.html",
   "/berita/peringati-hut-ke-81-ri-lewat-tasyakuran-wali-kota-benyamin-davnie-imbau-warga-ta.html",
