@@ -18,9 +18,26 @@ POSTS_JS_PATH = "public/posts.js"
 BERITA_HTML_FOLDER = "public/berita"
 GAMBAR_DEFAULT = f"{BASE_URL}/media/og-default.jpg"
 
-GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
+# --- AUTO PILIH KEY BERDASAR TANGGAL. Muter 3 hari ---
+hari_ini = datetime.now().day
+if hari_ini % 3 == 1:
+    GEMINI_API_KEY = os.getenv("GEMINI_API_KEY1") # Hari ini pake KEY1
+    key_no = 1
+elif hari_ini % 3 == 2:
+    GEMINI_API_KEY = os.getenv("GEMINI_API_KEY2") # Besok pake KEY2
+    key_no = 2
+else:
+    GEMINI_API_KEY = os.getenv("GEMINI_API_KEY") # Lusa pake KEY lama yg udah reset
+    key_no = 3
+
+print(f"Menggunakan Key ke-{key_no}")
+
 client = genai.Client(api_key=GEMINI_API_KEY)
-MODEL = "gemini-3.6-flash" # FIX: 3.6 belum ada
+MODEL = "gemini-3.6-flash" # FIX: 3.6 gak ada
+
+#GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
+#client = genai.Client(api_key=GEMINI_API_KEY)
+#MODEL = "gemini-3.6-flash" # FIX: 3.6 belum ada
 
 MAX_PROSES_PER_JALAN = 1 # KUNCINYA: CUMA 1 FILE PER ACTION BIAR AMAN QUOTA
 
