@@ -39,7 +39,7 @@ def tambah_dateline(isi_html):
     if not isi_html.startswith('<p>'):
         return isi_html
     dateline = '<strong>PULNEW.COM</strong> - '
-    isi_html = isi_html.replace(dateline, 1)
+    isi_html = isi_html.replace('',dateline, 1)
     return isi_html
 
 def get_existing_posts():
