@@ -22,7 +22,7 @@ GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 client = genai.Client(api_key=GEMINI_API_KEY)
 MODEL = "gemini-3.6-flash" # 3.6 belum ada, pake 2.0 flash paling cepat
 
-MAX_PROSES_PER_JALAN = 1 # INI KUNCINYA: CUMA 2 FILE PER ACTION
+MAX_PROSES_PER_JALAN = 1 # INI KUNCINYA: CUMA 1 FILE PER ACTION
 
 def format_ke_html(text):
     paragraphs = text.split('\n\n')
@@ -38,8 +38,8 @@ def format_ke_html(text):
 def tambah_dateline(isi_html):
     if not isi_html.startswith('<p>'):
         return isi_html
-    dateline = '<p><strong>PULNEW.COM</strong> - '
-    isi_html = isi_html.replace('<p>', dateline, 1)
+    dateline = '<strong>PULNEW.COM</strong> - '
+    isi_html = isi_html.replace(dateline, 1)
     return isi_html
 
 def get_existing_posts():
