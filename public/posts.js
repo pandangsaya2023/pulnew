@@ -1,7 +1,7 @@
 [
   "/berita/resmi-hijrah-ke-barcelona-rodri-sampaikan-pesan-haru-perpisahan-dengan-mancheste.html",
-  "/berita/pln-berhasil-pulihkan-sistem-kelistrikan-di-ntt-pasca-gempa.html",
   "/berita/mengembalikan-kejayaan-ekonomi-rakyat-kdkmp-sebagai-wujud-nyata-kehadiran-negara.html",
+  "/berita/pln-berhasil-pulihkan-sistem-kelistrikan-di-ntt-pasca-gempa.html",
   "/berita/poster-my-chef-in-crime-resmi-dirilis.html",
   "/berita/danantara-membuka-kembali-seleksi-mitra-untuk-proyek-pengolahan-sampah-menjadi-e.html",
   "/berita/perbedaan-ps4-hen-dan-original-dari-sony.html",
