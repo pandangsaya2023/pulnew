@@ -18,8 +18,8 @@ POSTS_JS_PATH = "public/posts.js"
 BERITA_HTML_FOLDER = "public/berita"
 GAMBAR_DEFAULT = f"{BASE_URL}/media/og-default.jpg"
 
-GEMINI_API_KEY = os.getenv("GEMINI_API_KEY1")
-client = genai.Client(api_key=GEMINI_API_KEY1)
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY2")
+client = genai.Client(api_key=GEMINI_API_KEY)
 MODEL = "gemini-2.0-flash" # FIX: 3.6 belum ada
 
 MAX_PROSES_PER_JALAN = 1 # KUNCINYA: CUMA 1 FILE PER ACTION BIAR AMAN QUOTA
