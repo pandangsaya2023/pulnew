@@ -24,14 +24,6 @@
     "kategori": "Berita"
   },
   {
-    "slug": "atlet-golf-jesslyn-dilaporkan-diculik",
-    "title": "Disergap Orang Tak Dikenal di Mangga Besar, Atlet Golf Jesslyn Wijaya Dilaporkan Diculik",
-    "lead": "Aparat Kepolisian Resor Metro Jakarta Pusat tengah menangani dugaan aksi penculikan yang menimpa seorang atlet golf wanita, Jesslyn Wijaya. Korban diduga diangkut secara paksa dari sebuah tempat makan di kawasan Mangga Besar, Jakarta Pusat, pada Senin (13/7/2026).",
-    "image": "https://static.republika.co.id/uploads/images/kanal_slide/orang-hilang-ilustrasi-_140922145041-819.jpg",
-    "date": "2026-08-19T07:47:07+07:00",
-    "kategori": "HUKUM"
-  },
-  {
     "slug": "alphi-aturan-label-non-halal-perlu-diperjelas-agar-tak-timbulkan-multi-tafsir",
     "title": "Aturan Pelabelan Non-Halal BPJPH Disambut ALPHI, Kejelasan Teknis Didesak Demi Hindari Multi-Tafsir",
     "lead": "Asosiasi Lembaga Pemeriksa Halal Indonesia (ALPHI) menyambut baik penerbitan Peraturan Badan Penyelenggara Jaminan Produk Halal (BPJPH) Nomor 3 Tahun 2026 terkait tata cara pencantuman keterangan tidak halal. Namun, penjelas teknis yang lebih komprehensif dinilai sangat mendesak demi menjamin kepastian hukum serta keadilan dalam penerapannya di industri.",
@@ -110,5 +102,13 @@
     "image": "/media/161448.jpg",
     "date": "2026-08-05T14:22:00+07:00",
     "kategori": "EKONOMI"
+  },
+  {
+    "slug": "atlet-golf-jesslyn-dilaporkan-diculik",
+    "title": "Disergap Orang Tak Dikenal di Mangga Besar, Atlet Golf Jesslyn Wijaya Dilaporkan Diculik",
+    "lead": "Aparat Kepolisian Resor Metro Jakarta Pusat tengah menangani dugaan aksi penculikan yang menimpa seorang atlet golf wanita, Jesslyn Wijaya. Korban diduga diangkut secara paksa dari sebuah tempat makan di kawasan Mangga Besar, Jakarta Pusat, pada Senin (13/7/2026).",
+    "image": "https://static.republika.co.id/uploads/images/kanal_slide/orang-hilang-ilustrasi-_140922145041-819.jpg",
+    "date": "2026-07-21T02:43:00+07:00",
+    "kategori": "HUKUM"
   }
 ]
