@@ -1,10 +1,11 @@
 [
+  "/berita/dua-mahasiswa-gizi-umj-unjuk-gigi-minuman-inovatif-mabento-splash-tembus-pesta-r.html",
   "/berita/ceo-ufc-dana-white-antusias-sambut-petarung-indonesia-bilal-hasan-berlaga-di-okt.html",
   "/berita/atrbpn-dan-kemendagri-sepakat-integrasikan-nib-dan-nop-pbb-untuk-meningkatkan-tr.html",
+  "/berita/bebaskan-aktivitas-fotografi-di-malioboro-pemerintah-siapkan-4-spot-foto-gratis.html",
   "/berita/danantara-housing-expo-2026-kolaborasi-himbara-untuk-pembiayaan-perumahan.html",
   "/berita/36-gtk-srma-1-aceh-besar-dampingi-operasional-sekolah-rakyat-di-nagan-raya.html",
   "/berita/16-atlet-meraih-super-tiket-audisi-umum-pb-djarum-2026-di-makassar.html",
-  "/berita/bebaskan-aktivitas-fotografi-di-malioboro-pemerintah-siapkan-4-spot-foto-gratis.html",
   "/berita/dokter-jelaskan-hubungan-obesitas-dengan-risiko-diabetes-tipe-2.html",
   "/berita/amy-melakukan-kunjungan-strategis-ke-sumatra-selatan-dalam-rangka-safari-politik.html",
   "/berita/alphi-aturan-label-non-halal-perlu-diperjelas-agar-tak-timbulkan-multi-tafsir.html",
