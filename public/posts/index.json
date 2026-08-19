@@ -24,14 +24,6 @@
     "kategori": "Berita"
   },
   {
-    "slug": "alphi-aturan-label-non-halal-perlu-diperjelas-agar-tak-timbulkan-multi-tafsir",
-    "title": "Aturan Pelabelan Non-Halal BPJPH Disambut ALPHI, Kejelasan Teknis Didesak Demi Hindari Multi-Tafsir",
-    "lead": "Asosiasi Lembaga Pemeriksa Halal Indonesia (ALPHI) menyambut baik penerbitan Peraturan Badan Penyelenggara Jaminan Produk Halal (BPJPH) Nomor 3 Tahun 2026 terkait tata cara pencantuman keterangan tidak halal. Namun, penjelas teknis yang lebih komprehensif dinilai sangat mendesak demi menjamin kepastian hukum serta keadilan dalam penerapannya di industri.",
-    "image": "/media/162615.jpg",
-    "date": "2026-08-19T07:46:20+07:00",
-    "kategori": "EKONOMI"
-  },
-  {
     "slug": "proyek-underpass-gatot-subroto-cimahi-resmi-dimulai-pengalihan-arus-lalu-lintas-",
     "title": "Pengerjaan Fisik Underpass Gatot Subroto Cimahi Bergulir, Rekayasa Lalu Lintas Siang Malam Mulai Diterapkan Total",
     "lead": "Proyek pembangunan infrastruktur Underpass Gatot Subroto di kawasan Kota Cimahi, Provinsi Jawa Barat (Jabar), kini resmi memasuki babak baru melalui pengerjaan fisik di lapangan. Demi mendukung kelancaran proyek yang sebelumnya dijanjikan oleh Gubernur Jabar Dedi Mulyadi tersebut, skema pengalihan arus lalu lintas secara masif mulai diberlakukan hingga berakibat pada penutupan total ruas Jalan Gatot Subroto.",
@@ -94,6 +86,14 @@
     "image": "/media/162877.webp",
     "date": "2026-08-08T07:51:00+07:00",
     "kategori": "POLITIK"
+  },
+  {
+    "slug": "alphi-aturan-label-non-halal-perlu-diperjelas-agar-tak-timbulkan-multi-tafsir",
+    "title": "Aturan Pelabelan Non-Halal BPJPH Disambut ALPHI, Kejelasan Teknis Didesak Demi Hindari Multi-Tafsir",
+    "lead": "Asosiasi Lembaga Pemeriksa Halal Indonesia (ALPHI) menyambut baik penerbitan Peraturan Badan Penyelenggara Jaminan Produk Halal (BPJPH) Nomor 3 Tahun 2026 terkait tata cara pencantuman keterangan tidak halal. Namun, penjelas teknis yang lebih komprehensif dinilai sangat mendesak demi menjamin kepastian hukum serta keadilan dalam penerapannya di industri.",
+    "image": "/media/162615.jpg",
+    "date": "2026-08-07T17:46:00+07:00",
+    "kategori": "EKONOMI"
   },
   {
     "slug": "aksi-damai-peternak-ayam-di-solo-protes-harga-pakan-yang-melambung",
