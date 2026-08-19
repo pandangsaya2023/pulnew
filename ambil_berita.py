@@ -22,22 +22,22 @@ GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 client = genai.Client(api_key=GEMINI_API_KEY)
 MODEL = "gemini-3.6-flash"
 
-MAX_BERITA_BARU = 3
+MAX_BERITA_BARU = 1
 MAX_BERITA_LAMA = 5
 TOTAL_HARIAN = MAX_BERITA_BARU + MAX_BERITA_LAMA
 
 sumber_rss = [
-    {"media": "Kompas", "url": "https://indeks.kompas.com/nasional"},
-    {"media": "Antara", "url": "https://www.antaranews.com/nasional"},
+    #{"media": "Kompas", "url": "https://indeks.kompas.com/nasional"},
+    #{"media": "Antara", "url": "https://www.antaranews.com/nasional"},
     {"media": "Republika", "url": "https://www.republika.co.id/rss"}
 ]
 
 def get_nama_media(url):
     try:
         domain = urlparse(url).netloc.replace('www.', '')
-        if 'kompas' in domain: return 'Kompas'
+        #if 'kompas' in domain: return 'Kompas'
         if 'republika' in domain: return 'Republika'
-        if 'antaranews' in domain: return 'Antara'
+        #if 'antaranews' in domain: return 'Antara'
         return domain.split('.')[0].capitalize()
     except:
         return "Media"
