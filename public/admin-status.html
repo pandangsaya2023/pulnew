@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Status Rewrite - PULNEW</title>
+<style>
+body { font-family: Arial, sans-serif; background: #f4f4f4; padding: 20px; }
+.container { max-width: 1200px; margin: auto; background: #fff; padding: 20px; border-radius: 8px; }
+h1 { color: #0056b3; text-align: center; }
+.stats { display: flex; gap: 15px; margin-bottom: 20px; flex-wrap: wrap; }
+.card { flex: 1; min-width: 180px; padding: 15px; border-radius: 8px; text-align: center; font-weight: bold; }
+.total { background: #cce5ff; color: #004085; }
+.gemini { background: #d4edda; color: #155724; }
+.groq { background: #fff3cd; color: #856404; }
+.belum { background: #f8d7da; color: #721c24; }
+table { width: 100%; border-collapse: collapse; font-size: 13px; }
+th, td { padding: 8px; border: 1px solid #ddd; text-align: left; vertical-align: top; }
+th { background: #0056b3; color: white; position: sticky; top: 0; }
+.badge-gemini { background: green; color: white; padding: 3px 8px; border-radius: 4px; font-size: 11px; }
+.badge-groq { background: orange; color: white; padding: 3px 8px; border-radius: 4px; font-size: 11px; }
+.badge-belum { background: red; color: white; padding: 3px 8px; border-radius: 4px; font-size: 11px; }
+.badge-ada { background: #28a745; color: white; padding: 3px 8px; border-radius: 4px; font-size: 11px; }
+.badge-tidak { background: #dc3545; color: white; padding: 3px 8px; border-radius: 4px; font-size: 11px; }
+a { color: #0056b3; text-decoration: none; }
+a:hover { text-decoration: underline; }
+.loading { text-align: center; padding: 20px; }
+.filter { margin-bottom: 15px; }
+.filter button { padding: 8px 12px; margin-right: 5px; border: none; border-radius: 4px; cursor: pointer; background: #eee; }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>📊 Dashboard Status Rewrite PULNEW</h1>
+
+  <div class="stats" id="stats">
+    <div class="card total">Total: 0</div>
+    <div class="card gemini">Gemini: 0</div>
+    <div class="card groq">Groq: 0</div>
+    <div class="card belum">Belum: 0</div>
+  </div>
+
+  <div class="filter">
+    <button onclick="filterTabel('semua')">Semua</button>
+    <button onclick="filterTabel('gemini')">Gemini</button>
+    <button onclick="filterTabel('groq')">Groq</button>
+    <button onclick="filterTabel('belum')">Belum</button>
+  </div>
+
+  <div class="loading" id="loading">Memuat data... Mohon tunggu</div>
+
+  <table id="tabel-berita" style="display:none;">
+    <thead>
+      <tr>
+        <th>No</th>
+        <th>Judul Berita</th>
+        <th>Status AI</th>
+        <th>Dateline</th>
+        <th>Sumber Asli</th>
+        <th>Tanggal Update</th>
+        <th>Aksi</th>
+      </tr>
+    </thead>
+    <tbody id="tbody-berita"></tbody>
+  </table>
+</div>
+
+<script>
+let semuaData = [];
+
+function filterTabel(tipe) {
+  const rows = document.querySelectorAll('#tbody-berita tr');
+  rows.forEach(row => {
+    row.style.display = (tipe === 'semua' || row.dataset.tipe === tipe)? '' : 'none';
+  });
+}
+
+async function loadStatus() {
+  const tbody = document.getElementById('tbody-berita');
+  const loading = document.getElementById('loading');
+  const tabel = document.getElementById('tabel-berita');
+
+  try {
+    const resIndex = await fetch('/posts/index.json');
+    const index = await resIndex.json();
+
+    let countGemini = 0;
+    let countGroq = 0;
+    let countBelum = 0;
+    let html = '';
+
+    for(let i = 0; i < index.length; i++) {
+      const item = index[i];
+      const resDetail = await fetch(`/posts/${item.slug}.json`);
+      const detail = await resDetail.json();
+
+      // 1. CEK STATUS AI
+      let statusBadge = '<span class="badge-belum">BELUM</span>';
+      let tipe = 'belum';
+      if(detail.source_name === 'AI Rewrite') {
+        statusBadge = '<span class="badge-gemini">GEMINI</span>';
+        tipe = 'gemini';
+        countGemini++;
+      } else if(detail.source_name === 'Groq Rewrite') {
+        statusBadge = '<span class="badge-groq">GROQ</span>';
+        tipe = 'groq';
+        countGroq++;
+      } else {
+        countBelum++;
+      }
+
+      // 2. CEK DATELINE PULNEW.COM
+      let datelineBadge = '<span class="badge-tidak">TIDAK</span>';
+      if(detail.body && detail.body.includes('<strong>PULNEW.COM</strong> -')) {
+        datelineBadge = '<span class="badge-ada">ADA</span>';
+      }
+
+      const tanggal = new Date(detail.date).toLocaleDateString('id-ID', {
+        day: '2-digit', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit'
+      });
+
+      html += `
+      <tr data-tipe="${tipe}">
+        <td>${i+1}</td>
+        <td><a href="/berita/${item.slug}.html" target="_blank">${detail.title}</a></td>
+        <td>${statusBadge}</td>
+        <td>${datelineBadge}</td>
+        <td>${detail.source_name || '-'}</td>
+        <td>${tanggal}</td>
+        <td><a href="/berita/${item.slug}.html" target="_blank">Lihat</a></td>
+      </tr>
+      `;
+    }
+
+    document.getElementById('stats').innerHTML = `
+      <div class="card total">Total: ${index.length}</div>
+      <div class="card gemini">Gemini: ${countGemini}</div>
+      <div class="card groq">Groq: ${countGroq}</div>
+      <div class="card belum">Belum: ${countBelum}</div>
+    `;
+
+    tbody.innerHTML = html;
+    loading.style.display = 'none';
+    tabel.style.display = 'table';
+
+  } catch(e) {
+    loading.innerHTML = 'Gagal memuat data: ' + e.message;
+  }
+}
+
+loadStatus();
+</script>
+</body>
+</html>
