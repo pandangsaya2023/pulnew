@@ -20,7 +20,7 @@ GAMBAR_DEFAULT = f"{BASE_URL}/media/og-default.jpg"
 
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 client = genai.Client(api_key=GEMINI_API_KEY)
-MODEL = "gemini-3.6-flash" # 3.6 belum ada, pake 2.0 flash paling cepat
+MODEL = "gemini-2.5-flash" # 3.6 belum ada, pake 2.0 flash paling cepat
 
 MAX_PROSES_PER_JALAN = 2 # INI KUNCINYA: CUMA 2 FILE PER ACTION
 
