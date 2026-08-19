@@ -1,6 +1,5 @@
 [
   "/berita/resmi-hijrah-ke-barcelona-rodri-sampaikan-pesan-haru-perpisahan-dengan-mancheste.html",
-  "/berita/hapus-kesan-negatif-kementerian-umkm-resmi-ubah-sebutan-pelaku-menjadi-pengusaha.html",
   "/berita/pln-berhasil-pulihkan-sistem-kelistrikan-di-ntt-pasca-gempa.html",
   "/berita/mengembalikan-kejayaan-ekonomi-rakyat-kdkmp-sebagai-wujud-nyata-kehadiran-negara.html",
   "/berita/poster-my-chef-in-crime-resmi-dirilis.html",
