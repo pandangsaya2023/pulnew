@@ -13,7 +13,6 @@
   "/berita/rekomendasi-iphone-masih-layak-dibeli-tahun-ini.html",
   "/berita/ikkb-adakan-raker.html",
   "/berita/tekanan-amerika-serikat-kepada-israel-untuk-mengurangi-eskalasi-konflik-di-kawas.html",
-  "/berita/redam-dampak-kemarau-dan-potensi-gagal-panen-penyaluran-bantuan-beras-di-indrama.html",
   "/berita/peringati-hut-ke-81-ri-lewat-tasyakuran-wali-kota-benyamin-davnie-imbau-warga-ta.html",
   "/berita/dubes-jepang-pakistan-mesir-dan-belanda-mengucapkan-selamat-atas-hut-ke-81-ri.html",
   "/berita/bni-berkomitmen-menyalurkan-bantuan-kemanusiaan-bagi-masyarakat-terdampak-gempa-.html",
