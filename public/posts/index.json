@@ -24,14 +24,6 @@
     "kategori": "Berita"
   },
   {
-    "slug": "amy-melakukan-kunjungan-strategis-ke-sumatra-selatan-dalam-rangka-safari-politik",
-    "title": "Perkuat Sinergi Kebangsaan, Presiden PKS Almuzzammil Yusuf Bakal Gelar Safari Politik di Sumatra Selatan",
-    "lead": "Presiden Partai Keadilan Sejahtera (PKS), Almuzzammil Yusuf, dijadwalkan bakal melangsungkan rangkaian perlawatan politik dan safari kebangsaan di Provinsi Sumatra Selatan pada 9 hingga 10 Agustus 2026.",
-    "image": "/media/162877.webp",
-    "date": "2026-08-19T07:47:57+07:00",
-    "kategori": "POLITIK"
-  },
-  {
     "slug": "atlet-golf-jesslyn-dilaporkan-diculik",
     "title": "Disergap Orang Tak Dikenal di Mangga Besar, Atlet Golf Jesslyn Wijaya Dilaporkan Diculik",
     "lead": "Aparat Kepolisian Resor Metro Jakarta Pusat tengah menangani dugaan aksi penculikan yang menimpa seorang atlet golf wanita, Jesslyn Wijaya. Korban diduga diangkut secara paksa dari sebuah tempat makan di kawasan Mangga Besar, Jakarta Pusat, pada Senin (13/7/2026).",
@@ -102,6 +94,14 @@
     "image": "/media/166969.jpg",
     "date": "2026-08-10T02:14:00+07:00",
     "kategori": "EKONOMI"
+  },
+  {
+    "slug": "amy-melakukan-kunjungan-strategis-ke-sumatra-selatan-dalam-rangka-safari-politik",
+    "title": "Perkuat Sinergi Kebangsaan, Presiden PKS Almuzzammil Yusuf Bakal Gelar Safari Politik di Sumatra Selatan",
+    "lead": "Presiden Partai Keadilan Sejahtera (PKS), Almuzzammil Yusuf, dijadwalkan bakal melangsungkan rangkaian perlawatan politik dan safari kebangsaan di Provinsi Sumatra Selatan pada 9 hingga 10 Agustus 2026.",
+    "image": "/media/162877.webp",
+    "date": "2026-08-08T07:51:00+07:00",
+    "kategori": "POLITIK"
   },
   {
     "slug": "aksi-damai-peternak-ayam-di-solo-protes-harga-pakan-yang-melambung",
