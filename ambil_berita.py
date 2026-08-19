@@ -19,28 +19,28 @@ BERITA_HTML_FOLDER = "public/berita"
 GAMBAR_DEFAULT = f"{BASE_URL}/media/og-default.jpg"
 
 # --- AUTO ROTATE 3 KEY ---
-hari_ini = datetime.now().day
-if hari_ini % 3 == 1:
-    GEMINI_API_KEY = os.getenv("GEMINI_API_KEY") 
-    key_no = 1
-elif hari_ini % 3 == 2:
-    GEMINI_API_KEY = os.getenv("GEMINI_API_KEY1")
-    key_no = 2
-else:
-    GEMINI_API_KEY = os.getenv("GEMINI_API_KEY2")
-    key_no = 3
+#hari_ini = datetime.now().day
+#if hari_ini % 3 == 1:
+    #GEMINI_API_KEY = os.getenv("GEMINI_API_KEY") 
+    #key_no = 1
+#elif hari_ini % 3 == 2:
+   # GEMINI_API_KEY = os.getenv("GEMINI_API_KEY1")
+   # key_no = 2
+#else:
+    #GEMINI_API_KEY = os.getenv("GEMINI_API_KEY2")
+    #key_no = 3
 
-print(f"Menggunakan Key ke-{key_no}")
+#print(f"Menggunakan Key ke-{key_no}")
 
-if not GEMINI_API_KEY:
-    print("❌ ERROR: API Key kosong! Cek di Github Secrets")
+#if not GEMINI_API_KEY:
+    #print("❌ ERROR: API Key kosong! Cek di Github Secrets")
 
-client = genai.Client(api_key=GEMINI_API_KEY)
-MODEL = "gemini-2.5-flash"
-
-#GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 #client = genai.Client(api_key=GEMINI_API_KEY)
-#MODEL = "gemini-2.0-flash" # FIX: 3.6 belum ada
+#MODEL = "gemini-3.6-flash"
+
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY2")
+client = genai.Client(api_key=GEMINI_API_KEY)
+MODEL = "gemini-3.6-flash" # FIX: 3.6 belum ada
 
 MAX_PROSES_PER_JALAN = 1 # KUNCINYA: CUMA 1 FILE PER ACTION BIAR AMAN QUOTA
 
