@@ -20,9 +20,9 @@ GAMBAR_DEFAULT = f"{BASE_URL}/media/og-default.jpg"
 
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 client = genai.Client(api_key=GEMINI_API_KEY)
-MODEL = "gemini-3.6-flash" # 3.6 belum ada, pake 2.0 flash paling cepat
+MODEL = "gemini-3.6-flash" # FIX: 3.6 belum ada
 
-MAX_PROSES_PER_JALAN = 1 # INI KUNCINYA: CUMA 1 FILE PER ACTION
+MAX_PROSES_PER_JALAN = 1 # KUNCINYA: CUMA 1 FILE PER ACTION BIAR AMAN QUOTA
 
 def format_ke_html(text):
     paragraphs = text.split('\n\n')
@@ -36,10 +36,9 @@ def format_ke_html(text):
     return '\n'.join(html_parts)
 
 def tambah_dateline(isi_html):
-    if not isi_html.startswith('<p>'):
-        return isi_html
-    dateline = '<p><strong>PULNEW.COM</strong> - '
-    isi_html = isi_html.replace('</p>',dateline, 1)
+    # FIX: Masukkan dateline di paragraf pertama
+    if isi_html.startswith('<p>'):
+        return isi_html.replace('<p>', '<p><strong>PULNEW.COM</strong> - ', 1)
     return isi_html
 
 def get_existing_posts():
@@ -96,12 +95,11 @@ def rewrite_with_gemini(data_lama):
     title = data_lama.get('title')
     body_lama = data_lama.get('body', '')
 
-    # Bersihkan html jadi text polos buat dikirim ke gemini
     soup = BeautifulSoup(body_lama, 'html.parser')
     konten_asli = soup.get_text(separator='\n\n', strip=True)
 
     if not GEMINI_API_KEY or not konten_asli or len(konten_asli) < 150:
-        print("Skip: Konten terlalu pendek")
+        print("Skip: Konten terlalu pendek atau API Key kosong")
         return None
 
     for attempt in range(3):
@@ -130,9 +128,13 @@ def rewrite_with_gemini(data_lama):
 
         except Exception as e:
             print(f"Error Gemini attempt {attempt+1}: {e}")
-            if "503" in str(e) or "429" in str(e) or "RESOURCE_EXHAUSTED" in str(e):
+            err_str = str(e)
+            if "429" in err_str or "RESOURCE_EXHAUSTED" in err_str:
+                print("❌ KENA LIMIT QUOTA HARIAN. STOP. LANJUT BESOK JAM 7 PAGI")
+                return "QUOTA_HABIS" # Tanda khusus buat stop main()
+            if "503" in err_str:
                 wait = 60 * (attempt + 1)
-                print(f"Tunggu {wait} detik karena rate limit...")
+                print(f"Tunggu {wait} detik karena server sibuk...")
                 time.sleep(wait)
             else:
                 break
@@ -169,12 +171,11 @@ def main():
     semua_post = get_existing_posts()
     jumlah_update = 0
 
-    # CARI FILE YG BELUM DI REWRITE
     daftar_proses = []
     for slug, data in semua_post.items():
         if data.get('source_name')!= 'AI Rewrite':
             daftar_proses.append(data)
-        if len(daftar_proses) >= MAX_PROSES_PER_JALAN: # STOP DI 2
+        if len(daftar_proses) >= MAX_PROSES_PER_JALAN: # FIX: STOP DI 1
             break
 
     print(f"\n========== MULAI ACTION ==========")
@@ -185,22 +186,24 @@ def main():
         slug = data_lama['slug']
         print(f"[{i+1}/{len(daftar_proses)}] Proses: {data_lama['title']}")
 
-        # SIMPAN TANGGAL DAN GAMBAR LAMA
         tanggal_lama = data_lama.get('date')
         gambar_lama = data_lama.get('image', GAMBAR_DEFAULT)
 
         hasil_rewrite = rewrite_with_gemini(data_lama)
+
+        if hasil_rewrite == "QUOTA_HABIS":
+            break # LANGSUNG BERHENTI KALAU QUOTA HABIS
+
         if hasil_rewrite:
             judul_baru, body_baru, lead_baru = hasil_rewrite
             body_dengan_dateline = tambah_dateline(body_baru)
 
-            # UPDATE DATA LAMA, TAPI TANGGAL & GAMBAR TETAP
             data_lama.update({
                 "title": judul_baru,
                 "lead": lead_baru,
                 "body": body_dengan_dateline,
-                "date": tanggal_lama, # <-- PENTING: TANGGAL TIDAK DIUBAH
-                "image": gambar_lama, # <-- PENTING: GAMBAR TIDAK DIUBAH
+                "date": tanggal_lama,
+                "image": gambar_lama,
                 "source_name": "AI Rewrite"
             })
 
@@ -212,7 +215,7 @@ def main():
 
             if i < len(daftar_proses) - 1:
                 print("⏳ Tidur 10 detik...")
-                time.sleep(10) # JEDA ANTI QUOTA
+                time.sleep(10)
 
     update_posts_js(semua_post)
     update_index_json(semua_post)
