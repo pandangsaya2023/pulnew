@@ -1,3 +1,3 @@
 [
-  "/berita/pembiayaan-bsi-tumbuh-146-persen.html"
+  "/berita/pemerintah-tetapkan-syarat-perdagangan-karbon-untuk-mendukung-kelestarian-hutan.html"
 ]
