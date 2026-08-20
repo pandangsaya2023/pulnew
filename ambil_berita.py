@@ -38,7 +38,7 @@ GAMBAR_DEFAULT = f"{BASE_URL}/media/og-default.jpg"
 #client = genai.Client(api_key=GEMINI_API_KEY)
 #MODEL = "gemini-3.6-flash"
 
-GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY1")
 client = genai.Client(api_key=GEMINI_API_KEY)
 MODEL = "gemini-3.6-flash" # FIX: 3.6 belum ada
 
