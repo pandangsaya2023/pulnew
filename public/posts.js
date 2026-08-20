@@ -1,3 +1,3 @@
 [
-  "/berita/survei-ipo-kinerja-bahlil-dapat-kepercayaan-publik.html"
+  "/berita/perbedaan-kol-dan-influencer.html"
 ]
