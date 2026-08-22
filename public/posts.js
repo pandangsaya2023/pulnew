@@ -1,7 +1,6 @@
 [
   "/berita/mengembalikan-kejayaan-ekonomi-rakyat-kdkmp-sebagai-wujud-nyata-kehadiran-negara.html",
   "/berita/pln-berhasil-pulihkan-sistem-kelistrikan-di-ntt-pasca-gempa.html",
-  "/berita/danantara-membuka-kembali-seleksi-mitra-untuk-proyek-pengolahan-sampah-menjadi-e.html",
   "/berita/perbedaan-ps4-hen-dan-original-dari-sony.html",
   "/berita/piala-aff-2026-kini-ada-di-tv-dan-youtube.html",
   "/berita/kemkomdigi-optimis-reaktivasi-igrs-selesai-tahun-2026.html",
@@ -54,6 +53,7 @@
   "/berita/kemensos-tangguhkan-14-juta-penerima-bansos-diduga-lakukan-transaksi-judi-online.html",
   "/berita/museum-musik-indonesia-di-bandung-upaya-pelestarian-warisan-musik-nusantara.html",
   "/berita/aksi-damai-peternak-ayam-di-solo-protes-harga-pakan-yang-melambung.html",
+  "/berita/danantara-membuka-kembali-seleksi-mitra-untuk-proyek-pengolahan-sampah-menjadi-e.html",
   "/berita/nadiem-anwar-makarim-yakin-bebas-dari-vonis-10-tahun-penjara-melalui-sidang-band.html",
   "/berita/ios-27-tanggal-rilis-dan-daftar-iphone-yang-kompatibel.html",
   "/berita/mengurangi-waktu-layar-untuk-kesehatan-mata-dan-tidur-yang-berkualitas.html",
