@@ -1,7 +1,6 @@
 [
   "/berita/mengembalikan-kejayaan-ekonomi-rakyat-kdkmp-sebagai-wujud-nyata-kehadiran-negara.html",
   "/berita/pln-berhasil-pulihkan-sistem-kelistrikan-di-ntt-pasca-gempa.html",
-  "/berita/perbedaan-ps4-hen-dan-original-dari-sony.html",
   "/berita/inflasi-terkendali-dan-kredibilitas-kebijakan-moneter-refleksi-atas-keberhasilan.html",
   "/berita/buronan-bank-sumut-diciduk-di-jakarta.html",
   "/berita/rekomendasi-iphone-masih-layak-dibeli-tahun-ini.html",
