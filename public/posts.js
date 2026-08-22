@@ -1,7 +1,5 @@
 [
-  "/berita/mengembalikan-kejayaan-ekonomi-rakyat-kdkmp-sebagai-wujud-nyata-kehadiran-negara.html",
   "/berita/pln-berhasil-pulihkan-sistem-kelistrikan-di-ntt-pasca-gempa.html",
-  "/berita/rekomendasi-iphone-masih-layak-dibeli-tahun-ini.html",
   "/berita/dubes-jepang-pakistan-mesir-dan-belanda-mengucapkan-selamat-atas-hut-ke-81-ri.html",
   "/berita/bni-berkomitmen-menyalurkan-bantuan-kemanusiaan-bagi-masyarakat-terdampak-gempa-.html",
   "/berita/kemenangan-chelsea-atas-real-sociedad-dihadiri-dengan-cemoohan-terhadap-enzo-fer.html",
@@ -63,6 +61,7 @@
   "/berita/solusi-cantik-tanpa-bedah-plastik.html",
   "/berita/seleksi-oscar-indonesia-2026-resmi-dibuka.html",
   "/berita/piala-aff-2026-kini-ada-di-tv-dan-youtube.html",
+  "/berita/rekomendasi-iphone-masih-layak-dibeli-tahun-ini.html",
   "/berita/perbedaan-kol-dan-influencer.html",
   "/berita/laptop-murah-untuk-pelajar-dan-mahasiswa.html",
   "/berita/menkes-gandeng-pbnu-untuk-ckg-dan-penuntasan-tbc.html",
