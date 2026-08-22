@@ -1,5 +1,4 @@
 [
-  "/berita/atrbpn-dan-kemendagri-sepakat-integrasikan-nib-dan-nop-pbb-untuk-meningkatkan-tr.html",
   "/berita/bebaskan-aktivitas-fotografi-di-malioboro-pemerintah-siapkan-4-spot-foto-gratis.html",
   "/berita/mengembalikan-kejayaan-ekonomi-rakyat-kdkmp-sebagai-wujud-nyata-kehadiran-negara.html",
   "/berita/pln-berhasil-pulihkan-sistem-kelistrikan-di-ntt-pasca-gempa.html",
@@ -33,6 +32,7 @@
   "/berita/pertumbuhan-laba-bumn-semester-i-2026-capaian-yang-signifikan.html",
   "/berita/krisis-air-bersih-di-kota-cirebon-meningkat-1004-kk-terdampak.html",
   "/berita/kecelakaan-laut-di-pangandaran-perahu-bercadik-terbalik-satu-anak-buah-kapal-hil.html",
+  "/berita/atrbpn-dan-kemendagri-sepakat-integrasikan-nib-dan-nop-pbb-untuk-meningkatkan-tr.html",
   "/berita/wali-kota-medan-berhentikan-sementara-camat-medan-timur.html",
   "/berita/mikrobiota-usus-dan-dampaknya-pada-kesehatan-mental-anak.html",
   "/berita/danantara-housing-expo-2026-kolaborasi-himbara-untuk-pembiayaan-perumahan.html",
