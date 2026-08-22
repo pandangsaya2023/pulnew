@@ -19,7 +19,7 @@ GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 client = genai.Client(api_key=GEMINI_API_KEY) # <--- CLIENT BARU
 MODEL = "gemini-3.6-flash" # <--- MODEL BARU YG AMAN
 
-MAX_BERITA_PER_RUN = 5
+MAX_BERITA_PER_RUN = 3
 
 sumber_rss = [
     {"media": "Kompas", "url": "https://indeks.kompas.com/nasional"},
