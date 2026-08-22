@@ -1,6 +1,5 @@
 [
   "/berita/pln-berhasil-pulihkan-sistem-kelistrikan-di-ntt-pasca-gempa.html",
-  "/berita/dubes-jepang-pakistan-mesir-dan-belanda-mengucapkan-selamat-atas-hut-ke-81-ri.html",
   "/berita/bni-berkomitmen-menyalurkan-bantuan-kemanusiaan-bagi-masyarakat-terdampak-gempa-.html",
   "/berita/kemenangan-chelsea-atas-real-sociedad-dihadiri-dengan-cemoohan-terhadap-enzo-fer.html",
   "/berita/bmkg-nyatakan-potensi-tsunami-akibat-gempa-77-m-di-ntt-berakhir-masyarakat-dimin.html",
