@@ -1,5 +1,4 @@
 [
-  "/berita/ceo-ufc-dana-white-antusias-sambut-petarung-indonesia-bilal-hasan-berlaga-di-okt.html",
   "/berita/atrbpn-dan-kemendagri-sepakat-integrasikan-nib-dan-nop-pbb-untuk-meningkatkan-tr.html",
   "/berita/bebaskan-aktivitas-fotografi-di-malioboro-pemerintah-siapkan-4-spot-foto-gratis.html",
   "/berita/mengembalikan-kejayaan-ekonomi-rakyat-kdkmp-sebagai-wujud-nyata-kehadiran-negara.html",
@@ -20,6 +19,7 @@
   "/berita/kemandirian-energi-indonesia-bisa-dimulai-dari-atap-rumah.html",
   "/berita/forkom-sp-sekar-bumn-ajukan-13-rekomendasi-strategis-ruu-ketenagakerjaan-ke-dpr.html",
   "/berita/kpk-kembali-menggelar-penggeledahan-di-kota-bengkulu-sasaran-terbaru-rumah-anggo.html",
+  "/berita/ceo-ufc-dana-white-antusias-sambut-petarung-indonesia-bilal-hasan-berlaga-di-okt.html",
   "/berita/mendorong-ekonomi-akar-rumput-pnm-mekaar-tawarkan-bunga-8-persen.html",
   "/berita/studi-ungkap-rutin-minum-kopi-hitam-menurunkan-risiko-penyakit-hati.html",
   "/berita/pemprov-sumut-dukung-penguatan-layanan-kesehatan-di-nias-barat-target-status-uta.html",

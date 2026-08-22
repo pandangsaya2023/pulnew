@@ -1,13 +1,5 @@
 [
   {
-    "slug": "ceo-ufc-dana-white-antusias-sambut-petarung-indonesia-bilal-hasan-berlaga-di-okt",
-    "title": "Bos Besar UFC Dana White Menyambut Antusias Kehadiran Petarung Berdarah Indonesia Bilal Hasan di Arena Oktagon",
-    "lead": "Chief Executive Officer (CEO) Ultimate Fighting Championship (UFC), Dana White, memberikan sambutan hangat dan penuh antusiasme atas bergabungnya Bilal Hasan ke panggung pertarungan bebas paling bergengsi di dunia. Petarung berkebangsaan Amerika Serikat yang memiliki garis keturunan Indonesia tersebut berhasil menembus jajaran petarung elit dunia usai tampil memukau dalam ajang Dana White's Contender Series (DWCS).",
-    "image": "/media/174006.jpg",
-    "date": "2026-08-19T08:25:46+07:00",
-    "kategori": "OLAHRAGA"
-  },
-  {
     "slug": "atrbpn-dan-kemendagri-sepakat-integrasikan-nib-dan-nop-pbb-untuk-meningkatkan-tr",
     "title": "Perkuat Akurasi Data Pertanahan dan Pajak, Kementerian ATR/BPN Bersama Kemendagri Resmi Integrasikan NIB dan NOP PBB",
     "lead": "Kementerian ATR/BPN dan Kemendagri resmi menyepakati pengintegrasian Nomor Induk Bidang (NIB) dengan Nomor Objek Pajak (NOP) PBB demi meningkatkan keterbukaan data pertanahan serta menggenjot penerimaan daerah.",
@@ -166,6 +158,14 @@
     "image": "/media/175725.jpg",
     "date": "2026-08-13T19:09:00+07:00",
     "kategori": "HUKUM"
+  },
+  {
+    "slug": "ceo-ufc-dana-white-antusias-sambut-petarung-indonesia-bilal-hasan-berlaga-di-okt",
+    "title": "Bos Besar UFC Dana White Menyambut Antusias Kehadiran Petarung Berdarah Indonesia Bilal Hasan di Arena Oktagon",
+    "lead": "Chief Executive Officer (CEO) Ultimate Fighting Championship (UFC), Dana White, memberikan sambutan hangat dan penuh antusiasme atas bergabungnya Bilal Hasan ke panggung pertarungan bebas paling bergengsi di dunia. Petarung berkebangsaan Amerika Serikat yang memiliki garis keturunan Indonesia tersebut berhasil menembus jajaran petarung elit dunia usai tampil memukau dalam ajang Dana White's Contender Series (DWCS).",
+    "image": "/media/174006.jpg",
+    "date": "2026-08-13T15:25:00+07:00",
+    "kategori": "OLAHRAGA"
   },
   {
     "slug": "mendorong-ekonomi-akar-rumput-pnm-mekaar-tawarkan-bunga-8-persen",
