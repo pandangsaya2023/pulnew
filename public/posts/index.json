@@ -24,14 +24,6 @@
     "kategori": "EKONOMI"
   },
   {
-    "slug": "buronan-bank-sumut-diciduk-di-jakarta",
-    "title": "Sempat Buron, Tersangka Kasus Korupsi Kredit Bank Sumut Akhirnya Diringkus di Jakarta Selatan",
-    "lead": "Pelarian seorang wanita berinisial FHH yang berstatus sebagai buronan perkara dugaan korupsi fasilitas kredit PT Bank Sumut resmi terhenti usai dibekuk tim kejaksaan di kawasan Jakarta Selatan pada Selasa sore.",
-    "image": "/media/155207.webp",
-    "date": "2026-08-18T16:59:00+07:00",
-    "kategori": "HUKUM"
-  },
-  {
     "slug": "rekomendasi-iphone-masih-layak-dibeli-tahun-ini",
     "title": "Daftar HP iPhone yang Masih Amat Layak Dibeli Sepanjang Tahun Ini",
     "lead": "Pasar ponsel pintar kelas atas hingga kini masih didominasi oleh deretan gawai buatan Apple yang tetap diminati berkat daya tahan serta dukungan pembaruan perangkat lunaknya. Memasuki tahun ini, konsumen tidak perlu selalu memaksakan diri membeli varian paling mutakhir demi merasakan pengalaman terbaik khas ekosistem iOS.",
@@ -470,6 +462,14 @@
     "image": "https://static.republika.co.id/uploads/images/kanal_slide/pengibaran-bendera-merah-putih-di-bawah-laut-salah-satu_220818061213-167.jpg",
     "date": "2026-08-04T03:16:00+07:00",
     "kategori": "NASIONAL"
+  },
+  {
+    "slug": "buronan-bank-sumut-diciduk-di-jakarta",
+    "title": "Sempat Buron, Tersangka Kasus Korupsi Kredit Bank Sumut Akhirnya Diringkus di Jakarta Selatan",
+    "lead": "Pelarian seorang wanita berinisial FHH yang berstatus sebagai buronan perkara dugaan korupsi fasilitas kredit PT Bank Sumut resmi terhenti usai dibekuk tim kejaksaan di kawasan Jakarta Selatan pada Selasa sore.",
+    "image": "/media/155207.webp",
+    "date": "2026-08-03T15:59:00+07:00",
+    "kategori": "HUKUM"
   },
   {
     "slug": "warisan-ilmu-yang-mengubah-peradaban-dunia",
