@@ -1,4 +1,9 @@
 [
+  "/berita/mengupas-alur-cerita-gta-6-dinamika-kriminal-lucia-jason-serta-pesona-dunia-baru.html",
+  "/berita/resmi-diluncurkan-huawei-matebook-pro-s-hadirkan-laptop-mewah-berbobot-ringan-79.html",
+  "/berita/deretan-12-permainan-edukasi-terbaik-untuk-anak-aman-dan-mendidik-segala-usia.html",
+  "/berita/kumpulan-10-contoh-prompt-ai-terbaik-untuk-merancang-poster-hut-ke-81-ri.html",
+  "/berita/penyebab-utama-laptop-mengalami-suhu-panas-berlebih-kendati-tidak-digunakan-berm.html",
   "/berita/pln-berhasil-pulihkan-sistem-kelistrikan-di-ntt-pasca-gempa.html",
   "/berita/bni-berkomitmen-menyalurkan-bantuan-kemanusiaan-bagi-masyarakat-terdampak-gempa-.html",
   "/berita/kemenangan-chelsea-atas-real-sociedad-dihadiri-dengan-cemoohan-terhadap-enzo-fer.html",
