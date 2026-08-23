@@ -1,7 +1,5 @@
 [
   "/berita/antisipasi-dampak-kabut-asap-karhutla-pemprov-kalsel-dan-gapki-distribusikan-20-.html",
-  "/berita/menyongsong-usia-5-abad-pemkot-banjarmasin-helat-festival-tari-daerah-demi-meraw.html",
-  "/berita/tembus-15-juta-pengguna-dan-merchant-adopsi-qris-di-sulawesi-selatan-kian-masif.html",
   "/berita/kumpulan-10-contoh-prompt-ai-terbaik-untuk-merancang-poster-hut-ke-81-ri.html",
   "/berita/pln-berhasil-pulihkan-sistem-kelistrikan-di-ntt-pasca-gempa.html",
   "/berita/bni-berkomitmen-menyalurkan-bantuan-kemanusiaan-bagi-masyarakat-terdampak-gempa-.html",
