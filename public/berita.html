@@ -147,14 +147,27 @@ async function tampilkanBeritaLainnya(slugSaatIni) {
 }
 
 async function muatHalamanBerita() {
-    const slugTujuan = new URLSearchParams(window.location.search).get('slug');
+    // FIX: BACA SLUG DARI ?slug= ATAU DARI /berita/xxx.html
+    let slugTujuan = new URLSearchParams(window.location.search).get('slug');
+    
+    // Kalau gak ada ?slug=, berarti kita buka dari /berita/xxx.html
+    if (!slugTujuan) {
+        const pathParts = window.location.pathname.split('/');
+        const lastPart = pathParts[pathParts.length - 1]; // ambil xxx.html
+        slugTujuan = lastPart.replace('.html', ''); // buang .html nya
+    }
+
     if(slugTujuan === currentSlug) return; 
     currentSlug = slugTujuan;
+
     const contentArea = document.getElementById('content-area');
-    if (!slugTujuan) {
+    if (!slugTujuan || slugTujuan === "") {
         contentArea.innerHTML = `<div class="error">404 - Link Tidak Valid<br><a href="/">Kembali ke Beranda</a></div>`;
         return;
     }
+        
+    // ... sisanya sama persis kayak kode yg aku kasih tadi
+    
     try {
         const post = await fetchPostDetail(slugTujuan);
         if(!post) throw new Error("Berita tidak ditemukan");
