@@ -1,1 +1,1 @@
-/berita/*  /berita.html?slug=:splat  200
+/berita/*.html  /berita.html  200
