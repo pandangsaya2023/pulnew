@@ -40,8 +40,8 @@
    .share-fb { background: #1877F2; }
    .share-x { background: #000; }
    .share-copy { background: #1a237e; }
-  .article-body { font-size: 16px; line-height: 1.3; color: #333; text-align: left; word-wrap: break-word; overflow-wrap: break-word; max-width: 100%; white-space: pre-line; }
-  .article-body p { margin-bottom: 0.3em; }
+  .article-body { font-size: 16px; line-height: 1.6; color: #333; text-align: left; word-wrap: break-word; overflow-wrap: break-word; max-width: 100%; }
+  .article-body p { margin-bottom: 1em; }
   .article-body h2 { font-size: 20px; font-weight: 700; line-height: 1.3!important; color: var(--warna-biru); margin-top: 15px!important; display: block!important; }
   .article-body img { max-width: 100%; height: auto; border-radius: 8px; margin: 15px 0; }
   .article-body a { color: var(--warna-merah); text-decoration: underline; }
@@ -56,17 +56,9 @@
   .related-item h4 { font-size: 14px; font-weight: 700; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; margin: 0; text-align: left; }
   .footer-ticker { background: #d32f2f; color: white; padding: 8px 0; font-size: 13px; overflow: hidden; width: 100%; position: fixed; bottom: 0; left: 0; z-index: 999; height: 35px; display: flex; align-items: center; }
   .ticker-content { display: inline-block; white-space: nowrap; padding-left: 100%; animation: ticker 40s linear infinite; line-height: 35px; }
-        @keyframes ticker { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(-100%, 0, 0); }
+  @keyframes ticker { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(-100%, 0, 0); } }
   .loading,.error { text-align:center; padding:60px 20px; }
   .error { color: var(--warna-merah); }
-    .sticky-video-wrapper { position: fixed!important; bottom: 100px!important; right: 20px!important; width: 320px!important; height: 180px!important; z-index: 998!important; background: #000; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 25px rgba(0,0,0,0.4); }
-  .video-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; margin: 0 auto; }
-  .video-container iframe,.video-container #youtube-player { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
-    #close-video { display: none; }
-    @media (max-width: 767px) {
- .sticky-video-wrapper { position: relative!important; width: 95%!important; height: auto!important; margin: 25px auto!important; bottom: auto!important; right: auto!important; }
-   #close-video { display: block; position: absolute; top: 5px; right: 8px; background: rgba(0,0,0,0.6); color: white; border: none; border-radius: 50%; width: 28px; height: 28px; cursor: pointer; z-index: 10; }
-    }
     .article-box { padding-bottom: 50px!important; }
     @media (max-width: 767px) { .article-box { padding-bottom: 16px!important; } }
     </style>
@@ -97,13 +89,20 @@ function updateMetaTags(post) {
         meta.setAttribute('content', content);
     };
     const desc = (post.body || post.content || '').substring(0, 160).replace(/<[^>]*>/g, '') + '...';
+    
+    // FIX 1: BIKIN URL GAMBAR FULL
+    const baseUrl = 'https://pulnew.pages.dev';
+    const fullImage = (post.image || post.thumbnail || '/media/og-default.jpg').startsWith('http') 
+        ? (post.image || post.thumbnail) 
+        : baseUrl + (post.image || post.thumbnail);
+
     setMeta('property', 'og:title', post.title);
     setMeta('property', 'og:description', desc);
-    setMeta('property', 'og:image', post.image || post.thumbnail || '/media/og-default.jpg');
+    setMeta('property', 'og:image', fullImage);
     setMeta('property', 'og:url', window.location.href);
     setMeta('name', 'twitter:title', post.title);
     setMeta('name', 'twitter:description', desc);
-    setMeta('name', 'twitter:image', post.image || post.thumbnail || '/media/og-default.jpg');
+    setMeta('name', 'twitter:image', fullImage);
 }
 
 function copyLink() {
@@ -113,35 +112,34 @@ function copyLink() {
 
 async function fetchPostDetail(slug) {
     try {
+        // FIX 2: PAKE / DI DEPAN BIAR GAK NYASAR KE /BERITA/
         const res = await fetch(`/posts/${slug}.json?t=` + Date.now(), { cache: 'no-store' });
         if(!res.ok) throw new Error("File JSON tidak ditemukan");
         return await res.json();
     } catch { return null; }
 }
 
-// === VERSI BARU: PAKE INDEX.JSON BIAR NGEBUT ===
 async function tampilkanBeritaLainnya(slugSaatIni) {
     const container = document.getElementById('berita-lainnya');
     if(!container) return;
-
     try {
         const res = await fetch('/posts/index.json?t=' + Date.now(), { cache: 'no-store' });
         const posts = await res.json();
-
         const lainnya = posts.filter(p => p.slug !== slugSaatIni).slice(0, 3);
-
         if(lainnya.length === 0) {
             container.innerHTML = `<p style="font-size:13px;color:#777">Belum ada berita lain.</p>`;
             return;
         }
-
-        container.innerHTML = lainnya.map(p => `
-          <a href="/berita.html?slug=${p.slug}" class="related-item">
-             <img src="${p.image}" alt="${p.title}" loading="lazy" onerror="this.src='/media/og-default.jpg'">
-             <h4>${p.title}</h4>
-           </a>
-        `).join('');
-
+        container.innerHTML = lainnya.map(p => {
+            // FIX 3: GAMBAR BERITA LAIN JUGA FULL URL
+            const imgSrc = p.image.startsWith('http') ? p.image : 'https://pulnew.pages.dev' + p.image;
+            return `
+              <a href="/berita/${p.slug}.html" class="related-item">
+                 <img src="${imgSrc}" alt="${p.title}" loading="lazy" onerror="this.src='/media/og-default.jpg'">
+                 <h4>${p.title}</h4>
+               </a>
+            `
+        }).join('');
     } catch(e) { 
         console.error("Gagal load berita lainnya", e);
         container.innerHTML = `<p style="font-size:13px;color:#777">Gagal memuat</p>`;
@@ -152,20 +150,22 @@ async function muatHalamanBerita() {
     const slugTujuan = new URLSearchParams(window.location.search).get('slug');
     if(slugTujuan === currentSlug) return; 
     currentSlug = slugTujuan;
-
     const contentArea = document.getElementById('content-area');
     if (!slugTujuan) {
         contentArea.innerHTML = `<div class="error">404 - Link Tidak Valid<br><a href="/">Kembali ke Beranda</a></div>`;
         return;
     }
-
     try {
         const post = await fetchPostDetail(slugTujuan);
         if(!post) throw new Error("Berita tidak ditemukan");
-
         updateMetaTags(post);
         const tanggal = new Date(post.date || post.created_at).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit' });
-        const isiBerita = post.content || post.body || '';
+        
+        // FIX 4: BIKIN ISI BERITA + GAMBAR JADI FULL URL
+        let isiBerita = post.content || post.body || '';
+        isiBerita = isiBerita.replace(/src="media\//g, 'src="https://pulnew.pages.dev/media/');
+        isiBerita = isiBerita.replace(/src='media\//g, "src='https://pulnew.pages.dev/media/");
+
         const linkBerita = window.location.origin + "/berita/" + slugTujuan + ".html";
         const textShare = encodeURIComponent(post.title + ' - ' + linkBerita);
         const kategori = (post.kategori || post.Kategori || post.category || 'BERITA');
@@ -173,7 +173,7 @@ async function muatHalamanBerita() {
         contentArea.innerHTML = `
             <h1 class="article-title">${post.title}</h1>
             <div class="article-meta">${tanggal} WIB | ${kategori.toUpperCase()}</div>
-            <img src="${post.image || post.thumbnail}" class="main-image" alt="${post.title}">
+            <img src="${post.image || post.thumbnail}" class="main-image" alt="${post.title}" onerror="this.src='https://pulnew.pages.dev/media/og-default.jpg'">
             <div class="share-article">
                 <a href="https://wa.me/?text=${textShare}" target="_blank" class="share-wa"><i class="fab fa-whatsapp"></i> WhatsApp</a>
                 <a href="https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(linkBerita)}" target="_blank" class="share-fb"><i class="fab fa-facebook"></i> Facebook</a>
@@ -186,11 +186,9 @@ async function muatHalamanBerita() {
                 <div id="berita-lainnya"><div class="loading" style="padding:20px 0">Memuat...</div></div>
             </div>
         `;
-
         document.getElementById('running-text').textContent = `INFO NEWS: ${post.title} | PULNEW.com`;
-        tampilkanBeritaLainnya(slugTujuan); // PANGGIL FUNGSI BARU
+        tampilkanBeritaLainnya(slugTujuan);
         window.scrollTo(0,0);
-
     } catch (e) {
         contentArea.innerHTML = `<div class="error">Gagal memuat berita: ${e.message}<br><a href="/">← Kembali</a></div>`;
     }
@@ -198,62 +196,6 @@ async function muatHalamanBerita() {
 
 window.addEventListener('popstate', muatHalamanBerita);
 document.addEventListener('DOMContentLoaded', muatHalamanBerita);
-
 </script>
-
-    <!-- Video Youtune -->
-
-    <!-- <div class="sticky-video-wrapper">
-        <div class="video-container">
-           <div id="youtube-player"></div>
-           <button id="close-video">✕</button>
-        </div>
-    </div> -->
-
-    <!-- <script src="https://www.youtube.com/iframe_api"></script> -->
-    <script>
-    //let player;
-    //let youtubeLink = 'https://youtube.com/watch?v=YLxO9527zYA'; // GANTI LINK KAMU
-    //let currentVideoId = youtubeLink.split('v=')[1];
-
-    function onYouTubeIframeAPIReady() {
-        const savedTime = localStorage.getItem('yt_currentTime') || 0;
-        const savedVideo = localStorage.getItem('yt_videoId');
-
-        player = new YT.Player('youtube-player', {
-           videoId: savedVideo || currentVideoId,
-           playerVars: {
-              'playsinline': 1,
-              'controls': 1,
-              'rel': 0,
-              'mute': 1,
-              'start': parseInt(savedTime)
-           },
-           events: {
-              'onReady': e => {
-                 e.target.playVideo();
-                 setTimeout(() => e.target.unMute(), 1000);
-               },
-              'onStateChange': saveTime
-           }
-         });
-    }
-
-    function saveTime() {
-        if(player && player.getCurrentTime){
-            setInterval(() => {
-                localStorage.setItem('yt_currentTime', player.getCurrentTime());
-                localStorage.setItem('yt_videoId', player.getVideoData().video_id);
-            }, 1000);
-        }
-    }
-
-    // HAPUS SEMUA KODE SCROLL. BIAR STABIL AJA
-    document.getElementById('close-video').addEventListener('click', () => {
-      if(player) player.pauseVideo();
-      localStorage.removeItem('yt_currentTime');
-      document.querySelector('.sticky-video-wrapper').style.display = 'none';
-    });
-    </script>
 </body>
 </html>
