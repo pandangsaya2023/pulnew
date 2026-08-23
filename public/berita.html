@@ -121,33 +121,34 @@ async function fetchPostDetail(slug) {
 
 // === VERSI BARU: PAKE INDEX.JSON BIAR NGEBUT ===
 async function tampilkanBeritaLainnya(slugSaatIni) {
-    const container = document.getElementById('berita-lainnya');
-    if(!container) return;
+  const container = document.getElementById('berita-lainnya');
+  if(!container) return;
 
-    try {
-        const res = await fetch('../posts/index.json?t=' + Date.now(), { cache: 'no-store' });
-        const posts = await res.json();
-
-        const lainnya = posts.filter(p => p.slug !== slugSaatIni).slice(0, 3);
-
-        if(lainnya.length === 0) {
-            container.innerHTML = `<p style="font-size:13px;color:#777">Belum ada berita lain.</p>`;
-            return;
-        }
-
-        container.innerHTML = lainnya.map(p => {
-            return `
-            <a href="berita/${ip.slug}.html" class="related-item">
-                <img src="${p.image}" alt="${p.title}" loading="lazy" onerror="this.src='/media/og-default.jpg'">
-                <h4>${p.title}</h4>
-            </a>
-            `
-        }).join('');
-
-    } catch(e) { 
-        console.error("Gagal load berita lainnya", e);
-        container.innerHTML = `<p style="font-size:13px;color:#777">Gagal memuat</p>`;
+  try {
+    // 1. Ambil data dari index.json
+    const res = await fetch(`../posts/index.json?t=${Date.now()}`, { cache: 'no-store' });
+    const posts = await res.json(); // <-- INI PENTING, di .json bukan eval
+    
+    // 2. Filter buang berita yg lagi dibuka, ambil 3 aja
+    const lainnya = posts.filter(p => p.slug !== slugSaatIni).slice(0, 3);
+    
+    if(lainnya.length === 0) {
+      container.innerHTML = "<p style='font-size:11px;color:#777'>Belum ada berita lain</p>";
+      return;
     }
+
+    // 3. Tampilkan
+    container.innerHTML = lainnya.map(p => `
+      <a href="/berita/${p.slug}.html" class="related-item">
+        <img src="${p.image}" alt="${p.title}" loading="lazy" onerror="this.src='/media/og-default.jpg'">
+        <h4>${p.title}</h4>
+      </a>
+    `).join('');
+
+  } catch(e) {
+    console.error("Gagal load berita lainnya", e);
+    container.innerHTML = "<p style='font-size:11px;color:#777'>Gagal memuat</p>";
+  }
 }
 
 async function muatHalamanBerita() {
