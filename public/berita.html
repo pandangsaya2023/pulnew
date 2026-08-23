@@ -137,7 +137,7 @@ async function tampilkanBeritaLainnya(slugSaatIni) {
 
         container.innerHTML = lainnya.map(p => {
             return `
-            <a href="/berita.html?slug=${p.slug}" class="related-item">
+            <a href="berita/${ip.slug}.html" class="related-item">
                 <img src="${p.image}" alt="${p.title}" loading="lazy" onerror="this.src='/media/og-default.jpg'">
                 <h4>${p.title}</h4>
             </a>
@@ -168,7 +168,7 @@ async function muatHalamanBerita() {
         updateMetaTags(post);
         const tanggal = new Date(post.date || post.created_at).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit' });
         const isiBerita = post.content || post.body || '';
-        const linkBerita = window.location.href;
+        const linkBerita = window.location.origin + "/berita/" + slugTujuan + ".html";
         const textShare = encodeURIComponent(post.title + ' - ' + linkBerita);
         const kategori = (post.kategori || post.Kategori || post.category || 'BERITA');
 
