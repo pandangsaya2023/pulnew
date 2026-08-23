@@ -1,167 +1,103 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <base href="https://pulnew.pages.dev/">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8902628805606588" crossorigin="anonymous"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PULNEW - Detail Berita</title>
+    <title>Memuat... - PULNEW</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
+    <!-- META BUAT WA -->
     <meta property="og:title" content="PULNEW.com">
     <meta property="og:description" content="Menyajikan Informasi Langsung Ke Perangkat Anda">
     <meta property="og:image" content="https://pulnew.pages.dev/media/og-default.jpg">
     <meta property="og:url" content="">
     <meta property="og:type" content="article">
-    <meta name="twitter:card" content="summary_large_image">
 
     <style>
-        :root { --warna-merah: #d32f2f; --warna-biru: #1a237e; --warna-bg: #f4f6f9; }
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif; }
-        html, body { background: var(--warna-bg); color: #333; min-height: 100vh; padding-bottom: 45px; }
-        h1, h2, h3, h4,.logo-text { font-family: 'Poppins', sans-serif; }
-        .header-container { background: #fff; position: sticky; top: 0; z-index: 999; border-bottom: 2px solid var(--warna-merah); box-shadow: 0 2px 4px rgba(0,0,0,0.06); }
-        .logo-bar { max-width: 1100px; margin: 0 auto; padding: 7px 20px; display: flex; justify-content: space-between; align-items: center; }
-        .logo-bar > a { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; }
-        .logo-img-wrapper img { display: block; max-height: 45px; width: auto; }
-        .logo-text { font-size: 24px; font-weight: 800; color: var(--warna-biru); }
-        .logo-new { color: var(--warna-merah); }
-        .btn-beranda { background: #2e7d32; color: white; padding: 4px 12px; border-radius: 6px; text-decoration: none; font-weight: 600; font-size: 12px; }
-        .article-box { max-width: 100%; margin: 0; background: white; padding: 16px; }
-        .article-title { font-size: 24px; font-weight: 800; margin-bottom: 10px; line-height: 1.3; }
-        .article-meta { font-size: 12px; color: #666; margin-bottom: 15px; }
-        .main-image { width: 100%; border-radius: 8px; margin-bottom: 10px; }
-        .share-article { display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; }
-        .share-article a,.share-article button { font-size: 10px; padding: 8px 12px; border-radius: 8px; color: white; text-decoration: none; display: flex; align-items: center; gap: 6px; border: none; cursor: pointer; font-weight: 600; }
-        .share-wa { background: #25D366; } .share-fb { background: #1877F2; } .share-x { background: #000; } .share-copy { background: #1a237e; }
-        .article-body { font-size: 16px; line-height: 1.7; color: #333; }
-        .article-body p { margin-bottom: 1em; }
-        .related-section { margin-top: 30px; padding-top: 20px; border-top: 2px solid #eee; }
-        .section-title { font-size: 18px; font-weight: 800; color: var(--warna-biru); margin: 5px 0 12px 0; padding-left: 3px; border-left: 4px solid var(--warna-merah); }
-        .related-item { display: flex; gap: 12px; padding: 10px 0; border-bottom: 1px solid #f0f0f0; text-decoration: none; color: inherit; }
-        .related-item img { width: 90px; height: 60px; object-fit: cover; border-radius: 6px; }
-        .related-item h4 { font-size: 14px; font-weight: 700; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; margin: 0; }
-        .footer-ticker { background: #d32f2f; color: white; padding: 8px 0; font-size: 13px; overflow: hidden; width: 100%; position: fixed; bottom: 0; left: 0; z-index: 999; height: 35px; display: flex; align-items: center; }
-        .ticker-content { display: inline-block; white-space: nowrap; padding-left: 100%; animation: ticker 40s linear infinite; line-height: 35px; }
-        @keyframes ticker { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(-100%, 0, 0); } }
-        .loading,.error { text-align:center; padding:60px 20px; } .error { color: var(--warna-merah); }
+        body { margin:0; background:#f4f6f9; font-family: Arial, sans-serif; padding-bottom: 45px;}
+        .header { background: #fff; padding: 10px 20px; border-bottom: 3px solid #d32f2f; display:flex; justify-content:space-between; align-items:center; position:sticky; top:0;}
+        .logo { font-family: 'Poppins'; font-size: 24px; font-weight: 800; color: #1a237e; text-decoration:none;}
+        .logo span { color: #d32f2f;}
+        .btn { background: #2e7d32; color: white; padding: 5px 12px; border-radius: 6px; text-decoration: none; font-size: 12px; font-weight:600;}
+        .container { max-width: 800px; margin: 20px auto; background: white; padding: 20px; border-radius: 8px;}
+        .title { font-family: 'Poppins'; font-size: 26px; font-weight: 800; line-height: 1.3; margin-bottom: 10px;}
+        .meta { font-size: 12px; color: #666; margin-bottom: 15px;}
+        .main-img { width: 100%; border-radius: 8px; margin-bottom: 15px;}
+        .body { font-size: 16px; line-height: 1.7;}
+        .body p { margin-bottom: 1em;}
+        .related { margin-top: 30px; border-top: 2px solid #eee; padding-top: 20px;}
+        .related h3 { font-family: 'Poppins'; border-left: 4px solid #d32f2f; padding-left: 10px; color: #1a237e;}
+        .related-item { display:flex; gap:10px; padding:10px 0; border-bottom:1px solid #f0f0f0; text-decoration:none; color:#333;}
+        .related-item img { width:90px; height:60px; object-fit:cover; border-radius:6px;}
+        .footer { background: #d32f2f; color: white; text-align: center; padding: 10px; position: fixed; bottom: 0; width: 100%;}
+        .loading { text-align:center; padding:50px;}
     </style>
 </head>
 <body>
-    <div class="header-container">
-        <div class="logo-bar">
-            <a href="/">
-              <div class="logo-img-wrapper"><img src="/logopulnew.png" alt="Logo"></div>
-              <div class="logo-text">PUL<span class="logo-new">NEW</span>.COM</div>
-            </a>
-            <a href="/" class="btn-beranda">← Beranda</a>
-        </div>
+    <div class="header">
+        <a href="/" class="logo">PUL<span>NEW</span>.COM</a>
+        <a href="/" class="btn">← Beranda</a>
     </div>
 
-    <div class="content-wrapper"><div class="article-box" id="content-area"><div class="loading">Memuat berita...</div></div></div>
-    <div class="footer-ticker"><div class="ticker-content" id="running-text">MEMUAT INFORMASI TERKINI...</div></div>
+    <div class="container" id="content-area">
+        <div class="loading">Memuat berita...</div>
+    </div>
+
+    <div class="footer" id="running-text">MEMUAT INFO TERKINI...</div>
 
 <script>
-const BASE_URL = 'https://pulnew.pages.dev';
-let currentSlug = "";
+const BASE = 'https://pulnew.pages.dev';
 
-function updateMetaTags(post) {
-    document.title = post.title + " - PULNEW.com";
-    const setMeta = (attr, val, content) => {
-        let meta = document.querySelector(`meta[${attr}="${val}"]`);
-        if (!meta) { meta = document.createElement('meta'); meta.setAttribute(attr, val); document.head.appendChild(meta); }
-        meta.setAttribute('content', content);
-    };
-    const desc = (post.lead || '').substring(0, 160) + '...';
-    const imgPath = post.image || '/media/og-default.jpg';
-    const fullImage = imgPath.startsWith('http') ? imgPath : BASE_URL + imgPath;
+// AMBIL SLUG DARI URL /berita/xxx.html
+const slug = window.location.pathname.split('/').pop().replace('.html','');
 
-    setMeta('property', 'og:title', post.title);
-    setMeta('property', 'og:description', desc);
-    setMeta('property', 'og:image', fullImage);
-    setMeta('property', 'og:url', window.location.href);
-    setMeta('name', 'twitter:image', fullImage);
-}
+async function load() {
+    const area = document.getElementById('content-area');
+    if(!slug) { area.innerHTML = '<h1>404</h1>'; return; }
 
-function copyLink() {
-    navigator.clipboard.writeText(window.location.href);
-    alert("✅ Link berita sudah disalin!");
-}
-
-async function fetchPostDetail(slug) {
-    const res = await fetch(`/posts/${slug}.json?t=` + Date.now());
-    if(!res.ok) throw new Error("File JSON tidak ditemukan: " + slug);
-    return await res.json();
-}
-
-async function tampilkanBeritaLainnya(slugSaatIni) {
-    const container = document.getElementById('berita-lainnya');
-    if(!container) return;
     try {
-        const res = await fetch('/posts/index.json?t=' + Date.now());
-        const posts = await res.json();
-        const lainnya = posts.filter(p => p.slug !== slugSaatIni).slice(0, 3);
-        container.innerHTML = lainnya.map(p => {
-            const imgSrc = (p.image || '/media/og-default.jpg').startsWith('http') ? p.image : BASE_URL + p.image;
-            return `<a href="/berita/${p.slug}.html" class="related-item"><img src="${imgSrc}" alt="${p.title}" loading="lazy" onerror="this.src='${BASE_URL}/media/og-default.jpg'"><h4>${p.title}</h4></a>`
-        }).join('');
-    } catch(e) { container.innerHTML = `<p style="font-size:13px;color:#777">Gagal memuat</p>`; }
-}
+        // 1. AMBIL DATA BERITA INI
+        const res = await fetch(`${BASE}/posts/${slug}.json?t=${Date.now()}`);
+        const post = await res.json();
 
-async function muatHalamanBerita() {
-    let slugTujuan = new URLSearchParams(window.location.search).get('slug');
-    if (!slugTujuan) {
-        const pathParts = window.location.pathname.split('/');
-        const lastPart = pathParts[pathParts.length - 1];
-        slugTujuan = lastPart.replace('.html', '');
-    }
-    if(slugTujuan === currentSlug) return; 
-    currentSlug = slugTujuan;
+        // 2. UPDATE META BUAT WA
+        document.title = post.title + ' - PULNEW';
+        document.querySelector('meta[property="og:title"]').content = post.title;
+        document.querySelector('meta[property="og:description"]').content = post.lead;
+        document.querySelector('meta[property="og:image"]').content = BASE + post.image;
+        document.querySelector('meta[property="og:url"]').content = window.location.href;
 
-    const contentArea = document.getElementById('content-area');
-    if (!slugTujuan) {
-        contentArea.innerHTML = `<div class="error">404 - Slug Kosong<br><a href="/">Kembali ke Beranda</a></div>`;
-        return;
-    }
-    try {
-        const post = await fetchPostDetail(slugTujuan);
-        updateMetaTags(post);
-        const tanggal = new Date(post.date).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit' });
-        
-        // FIX: JSON KAMU PAKE "lead" BUKAN "content"
-        let isiBerita = `<p>${post.lead}</p>`; 
-        
-        const imgMain = (post.image || '/media/og-default.jpg').startsWith('http') ? post.image : BASE_URL + post.image;
-        const linkBerita = BASE_URL + "/berita/" + slugTujuan + ".html";
-        const textShare = encodeURIComponent(post.title + ' - ' + linkBerita);
-        const kategori = (post.kategori || 'BERITA').toUpperCase();
-
-        contentArea.innerHTML = `
-            <h1 class="article-title">${post.title}</h1>
-            <div class="article-meta">${tanggal} WIB | ${kategori}</div>
-            <img src="${imgMain}" class="main-image" alt="${post.title}" onerror="this.src='${BASE_URL}/media/og-default.jpg'">
-            <div class="share-article">
-                <a href="https://wa.me/?text=${textShare}" target="_blank" class="share-wa"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-                <a href="https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(linkBerita)}" target="_blank" class="share-fb"><i class="fab fa-facebook"></i> Facebook</a>
-                <a href="https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=${encodeURIComponent(linkBerita)}" target="_blank" class="share-x"><i class="fab fa-x-twitter"></i> X</a>
-                <button onclick="copyLink()" class="share-copy"><i class="fas fa-link"></i> Salin Link</button>
-            </div>
-            <div class="article-body">${isiBerita}</div>
-            <div class="related-section">
-                <h3 class="section-title">BERITA LAINNYA</h3>
-                <div id="berita-lainnya"><div class="loading" style="padding:20px 0">Memuat...</div></div>
+        // 3. TAMPILKAN HTML NYA
+        const tgl = new Date(post.date).toLocaleDateString('id-ID', {day:'numeric', month:'long', year:'numeric'});
+        area.innerHTML = `
+            <h1 class="title">${post.title}</h1>
+            <div class="meta">${tgl} WIB | ${post.kategori.toUpperCase()}</div>
+            <img src="${BASE + post.image}" class="main-img">
+            <div class="body"><p>${post.lead}</p></div>
+            <div class="related">
+                <h3>BERITA LAINNYA</h3>
+                <div id="lainnya">Memuat...</div>
             </div>
         `;
-        document.getElementById('running-text').textContent = `INFO NEWS: ${post.title} | PULNEW.com`;
-        tampilkanBeritaLainnya(slugTujuan);
-        window.scrollTo(0,0);
-    } catch (e) {
-        contentArea.innerHTML = `<div class="error">Gagal memuat berita: ${e.message}<br><a href="/">← Kembali</a></div>`;
+        document.getElementById('running-text').innerText = 'INFO: ' + post.title;
+
+        // 4. AMBIL BERITA LAINNYA
+        const res2 = await fetch(`${BASE}/posts/index.json?t=${Date.now()}`);
+        const posts = await res2.json();
+        const lain = posts.filter(p => p.slug !== slug).slice(0,3);
+        document.getElementById('lainnya').innerHTML = lain.map(p => `
+            <a href="/berita/${p.slug}.html" class="related-item">
+                <img src="${BASE + p.image}">
+                <h4>${p.title}</h4>
+            </a>
+        `).join('');
+
+    } catch(e) {
+        area.innerHTML = `<h1>Gagal Muat</h1><p>${e.message}</p>`;
     }
 }
-window.addEventListener('popstate', muatHalamanBerita);
-document.addEventListener('DOMContentLoaded', muatHalamanBerita);
+load();
 </script>
 </body>
 </html>
