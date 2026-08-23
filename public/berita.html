@@ -125,26 +125,22 @@ async function tampilkanBeritaLainnya(slugSaatIni) {
   if(!container) return;
 
   try {
-    // 1. Ambil data dari index.json
-    const res = await fetch(`../posts/index.json?t=${Date.now()}`, { cache: 'no-store' });
-    const posts = await res.json(); // <-- INI PENTING, di .json bukan eval
+    const res = await fetch(`../posts.js?t=${Date.now()}`, { cache: 'no-store' });
+    const text = await res.text();
+    eval(text); // biar var posts kebaca
     
-    // 2. Filter buang berita yg lagi dibuka, ambil 3 aja
     const lainnya = posts.filter(p => p.slug !== slugSaatIni).slice(0, 3);
-    
     if(lainnya.length === 0) {
       container.innerHTML = "<p style='font-size:11px;color:#777'>Belum ada berita lain</p>";
       return;
     }
 
-    // 3. Tampilkan
     container.innerHTML = lainnya.map(p => `
       <a href="/berita/${p.slug}.html" class="related-item">
         <img src="${p.image}" alt="${p.title}" loading="lazy" onerror="this.src='/media/og-default.jpg'">
         <h4>${p.title}</h4>
       </a>
     `).join('');
-
   } catch(e) {
     console.error("Gagal load berita lainnya", e);
     container.innerHTML = "<p style='font-size:11px;color:#777'>Gagal memuat</p>";
