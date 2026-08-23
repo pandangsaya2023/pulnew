@@ -37,7 +37,6 @@
         .share-wa { background: #25D366; } .share-fb { background: #1877F2; } .share-x { background: #000; } .share-copy { background: #1a237e; }
         .article-body { font-size: 16px; line-height: 1.7; color: #333; }
         .article-body p { margin-bottom: 1em; }
-        .article-body img { max-width: 100%; height: auto; border-radius: 8px; margin: 15px 0; }
         .related-section { margin-top: 30px; padding-top: 20px; border-top: 2px solid #eee; }
         .section-title { font-size: 18px; font-weight: 800; color: var(--warna-biru); margin: 5px 0 12px 0; padding-left: 3px; border-left: 4px solid var(--warna-merah); }
         .related-item { display: flex; gap: 12px; padding: 10px 0; border-bottom: 1px solid #f0f0f0; text-decoration: none; color: inherit; }
@@ -68,23 +67,21 @@ const BASE_URL = 'https://pulnew.pages.dev';
 let currentSlug = "";
 
 function updateMetaTags(post) {
-    try {
-        document.title = post.title + " - PULNEW.com";
-        const setMeta = (attr, val, content) => {
-            let meta = document.querySelector(`meta[${attr}="${val}"]`);
-            if (!meta) { meta = document.createElement('meta'); meta.setAttribute(attr, val); document.head.appendChild(meta); }
-            meta.setAttribute('content', content);
-        };
-        const desc = (post.content || post.body || '').substring(0, 160).replace(/<[^>]*>/g, '') + '...';
-        const imgPath = post.image || post.thumbnail || '/media/og-default.jpg';
-        const fullImage = imgPath.startsWith('http') ? imgPath : BASE_URL + imgPath;
+    document.title = post.title + " - PULNEW.com";
+    const setMeta = (attr, val, content) => {
+        let meta = document.querySelector(`meta[${attr}="${val}"]`);
+        if (!meta) { meta = document.createElement('meta'); meta.setAttribute(attr, val); document.head.appendChild(meta); }
+        meta.setAttribute('content', content);
+    };
+    const desc = (post.lead || '').substring(0, 160) + '...';
+    const imgPath = post.image || '/media/og-default.jpg';
+    const fullImage = imgPath.startsWith('http') ? imgPath : BASE_URL + imgPath;
 
-        setMeta('property', 'og:title', post.title);
-        setMeta('property', 'og:description', desc);
-        setMeta('property', 'og:image', fullImage);
-        setMeta('property', 'og:url', window.location.href);
-        setMeta('name', 'twitter:image', fullImage);
-    } catch(e) { console.error("Gagal update meta", e) }
+    setMeta('property', 'og:title', post.title);
+    setMeta('property', 'og:description', desc);
+    setMeta('property', 'og:image', fullImage);
+    setMeta('property', 'og:url', window.location.href);
+    setMeta('name', 'twitter:image', fullImage);
 }
 
 function copyLink() {
@@ -130,13 +127,15 @@ async function muatHalamanBerita() {
     try {
         const post = await fetchPostDetail(slugTujuan);
         updateMetaTags(post);
-        const tanggal = new Date(post.date || post.created_at).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit' });
-        let isiBerita = post.content || post.body || '';
-        isiBerita = isiBerita.replace(/src="media\//g, `src="${BASE_URL}/media/`);
-        const imgMain = (post.image || post.thumbnail || '/media/og-default.jpg').startsWith('http') ? (post.image || post.thumbnail) : BASE_URL + (post.image || post.thumbnail);
+        const tanggal = new Date(post.date).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit' });
+        
+        // FIX: JSON KAMU PAKE "lead" BUKAN "content"
+        let isiBerita = `<p>${post.lead}</p>`; 
+        
+        const imgMain = (post.image || '/media/og-default.jpg').startsWith('http') ? post.image : BASE_URL + post.image;
         const linkBerita = BASE_URL + "/berita/" + slugTujuan + ".html";
         const textShare = encodeURIComponent(post.title + ' - ' + linkBerita);
-        const kategori = (post.kategori || post.Kategori || post.category || 'BERITA').toUpperCase();
+        const kategori = (post.kategori || 'BERITA').toUpperCase();
 
         contentArea.innerHTML = `
             <h1 class="article-title">${post.title}</h1>
@@ -159,7 +158,6 @@ async function muatHalamanBerita() {
         window.scrollTo(0,0);
     } catch (e) {
         contentArea.innerHTML = `<div class="error">Gagal memuat berita: ${e.message}<br><a href="/">← Kembali</a></div>`;
-        console.error(e);
     }
 }
 window.addEventListener('popstate', muatHalamanBerita);
