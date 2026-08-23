@@ -15,8 +15,8 @@ jobs:
           python-version: '3.10'
       - name: Install Markdown
         run: pip install markdown
-      - name: Run generate_index.py
-        run: python generate_index.py
+      - name: Run generate.py
+        run: python generate.py
       - name: Commit & Push
         run: |
           git config user.name "github-actions"
