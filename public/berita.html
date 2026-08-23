@@ -125,7 +125,7 @@ async function tampilkanBeritaLainnya(slugSaatIni) {
     if(!container) return;
 
     try {
-        const res = await fetch('../posts/index.json?t=' + Date.now(), { cache: 'no-store' });
+        const res = await fetch('/posts/index.json?t=' + Date.now(), { cache: 'no-store' });
         const posts = await res.json();
 
         const lainnya = posts.filter(p => p.slug !== slugSaatIni).slice(0, 3);
