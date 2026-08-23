@@ -1,5 +1,5 @@
 [
-  "/berita/lirik-lagu-my-love-oscar-harris.html",
+  "/berita/lirik-lagu-you-are-my-love-oscar-harris.html",
   "/berita/antisipasi-dampak-kabut-asap-karhutla-pemprov-kalsel-dan-gapki-distribusikan-20-.html",
   "/berita/kumpulan-10-contoh-prompt-ai-terbaik-untuk-merancang-poster-hut-ke-81-ri.html",
   "/berita/pln-berhasil-pulihkan-sistem-kelistrikan-di-ntt-pasca-gempa.html",
