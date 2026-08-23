@@ -50,8 +50,12 @@ def generate_article_page(article):
     
     # Bikin deskripsi 160 karakter buat WA
     desc = (article.get('body', '')).replace('\n',' ')[:160] + "..."
-    img_url = f"{BASE_URL}{article.get('image','')}" # PENTING: JADI URL FULL
-    page_url = f"{BASE_URL}/berita/{article['slug']}.html" # PENTING: URL FULL
+    
+    #img_url = f"{BASE_URL}{article.get('image','')}" # PENTING: JADI URL FULL
+    #page_url = f"{BASE_URL}/berita/{article['slug']}.html" # PENTING: URL FULL
+
+    image_path = article.get('image', '') or article.get('thumbnail', '') or '/media/og-default.jpg'
+    img_url = f"{BASE_URL}{image_path}" # PENTING: JADI URL FULL
 
     html_content = f"""<!DOCTYPE html>
 <html lang="id">
