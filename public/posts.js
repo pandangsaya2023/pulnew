@@ -1,4 +1,5 @@
 [
+  "/berita/pemeliharaan-web.html",
   "/berita/72-orang-ditetapkan-tersangka-kebakaran-hutan-dan-lahan-polri-kejar-pelaku-korporasi.html",
   "/berita/antisipasi-dampak-kabut-asap-karhutla-pemprov-kalsel-dan-gapki-distribusikan-20-.html",
   "/berita/kumpulan-10-contoh-prompt-ai-terbaik-untuk-merancang-poster-hut-ke-81-ri.html",
