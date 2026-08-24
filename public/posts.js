@@ -1,7 +1,4 @@
 [
-  "/berita/imbang-2-2-lawan-newcastle-liverpool-curi-satu-poin-dramatis-di-st-james-park.html",
-  "/berita/agresi-militer-israel-kembali-menelan-korban-jiwa-di-gaza-bocah-empat-tahun-turu.html",
-  "/berita/tandukan-tunggal-gleison-bremer-amankan-tiga-poin-perdana-juventus-di-markas-fro.html",
   "/berita/72-orang-ditetapkan-tersangka-kebakaran-hutan-dan-lahan-polri-kejar-pelaku-korporasi.html",
   "/berita/antisipasi-dampak-kabut-asap-karhutla-pemprov-kalsel-dan-gapki-distribusikan-20-.html",
   "/berita/kumpulan-10-contoh-prompt-ai-terbaik-untuk-merancang-poster-hut-ke-81-ri.html",
