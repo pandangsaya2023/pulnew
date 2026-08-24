@@ -168,7 +168,8 @@ async function muatHalamanBerita() {
         updateMetaTags(post);
         const tanggal = new Date(post.date || post.created_at).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit' });
         const isiBerita = post.content || post.body || '';
-        const linkBerita = window.location.origin + "/berita/" + slugTujuan + ".html";
+        const linkBerita = window.location.href + "/berita/" + slugTujuan + ".html";
+        //const linkBerita = window.location.origin + "/berita/" + slugTujuan + ".html";
         //const linkBerita = window.location.href;
         const textShare = encodeURIComponent(post.title + ' - ' + linkBerita);
         const kategori = (post.kategori || post.Kategori || post.category || 'BERITA');
