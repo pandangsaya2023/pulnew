@@ -1,7 +1,6 @@
 [
   "/berita/ylki-buka-suara-soal-pemblokiran-rekening-supriyono-oleh-bank-mandiri-dinilai-me.html",
   "/berita/sebelum-terjaring-ott-rektor-unsoed-akhmad-sodiq-ternyata-pernah-ikuti-sosialisa.html",
-  "/berita/tampil-dominan-sman-111-jakarta-sabet-gelar-juara-turnamen-futsal-kreasi-2026-un.html",
   "/berita/72-orang-ditetapkan-tersangka-kebakaran-hutan-dan-lahan-polri-kejar-pelaku-korporasi.html",
   "/berita/antisipasi-dampak-kabut-asap-karhutla-pemprov-kalsel-dan-gapki-distribusikan-20-.html",
   "/berita/kumpulan-10-contoh-prompt-ai-terbaik-untuk-merancang-poster-hut-ke-81-ri.html",
