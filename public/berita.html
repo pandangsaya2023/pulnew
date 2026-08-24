@@ -166,20 +166,15 @@ async function muatHalamanBerita() {
         if(!post) throw new Error("Berita tidak ditemukan");
 
         updateMetaTags(post);
+        
+        const linkBerita = window.location.href;
+        const imageUrl = (post.image && post.image.startsWith('http')) ? post.image : (window.location.origin + (post.image || post.thumbnail || '/media/og-default.jpg'));
         const tanggal = new Date(post.date || post.created_at).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit' });
+        
         const isiBerita = post.content || post.body || '';
         //const linkBerita = window.location.origin + "/berita/" + slugTujuan + ".html";
         //const linkBerita = window.location.origin + "/berita/" + slugTujuan + ".html";
         
-
-        //javascript
-        // ... dalam fungsi updateMetaTags
-        const imageUrl = (post.image && post.image.startsWith('http')) ? post.image : (window.location.origin + (post.image || post.thumbnail || '/media/og-default.jpg'));
-        //setMeta('property', 'og:image', imageUrl);
-        //setMeta('name', 'twitter:image', imageUrl); // Juga untuk Twitter
-        // ...
-
-        const linkBerita = window.location.href;
         const textShare = encodeURIComponent(post.title + ' - ' + linkBerita);
         const kategori = (post.kategori || post.Kategori || post.category || 'BERITA');
 
