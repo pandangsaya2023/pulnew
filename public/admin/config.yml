@@ -20,8 +20,7 @@ collections:
     fields:
       - {label: "Judul", name: "title", widget: "string", required: true}
       - {label: "Slug", name: "slug", widget: "string", required: true, hint: "huruf-kecil-tanpa-spasi"}
-      - {label: "Kategori", name: "kategori", widget: "select", options: ["NASIONAL", "POLITIK", "EKONOMI", "PENDIDIKAN", "HUKUM",
-                "TEKNOLOGI", "OLAHRAGA", "KESEHATAN", "HIBURAN"], required: true}
+      - {label: "Kategori", name: "kategori", widget: "select", options: ["NASIONAL", "POLITIK", "EKONOMI", "PENDIDIKAN", "HUKUM","TEKNOLOGI", "OLAHRAGA", "KESEHATAN", "HIBURAN"], required: true}
       - {label: "Tanggal", name: "date", widget: "datetime", format: "YYYY-MM-DDTHH:mm:ssZ", required: true}
       - {label: "Gambar Utama", name: "image", widget: "image", required: false}
       #- {label: "Sumber Media", name: "source_name", widget: "string", required: false, hint: "Contoh: Kompas, Detik"}
