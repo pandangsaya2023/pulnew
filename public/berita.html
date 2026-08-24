@@ -175,8 +175,8 @@ async function muatHalamanBerita() {
         //javascript
         // ... dalam fungsi updateMetaTags
         const imageUrl = (post.image && post.image.startsWith('http')) ? post.image : (window.location.origin + (post.image || post.thumbnail || '/media/og-default.jpg'));
-        setMeta('property', 'og:image', imageUrl);
-        setMeta('name', 'twitter:image', imageUrl); // Juga untuk Twitter
+        //setMeta('property', 'og:image', imageUrl);
+        //setMeta('name', 'twitter:image', imageUrl); // Juga untuk Twitter
         // ...
 
         const linkBerita = window.location.href;
