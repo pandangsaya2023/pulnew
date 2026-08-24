@@ -162,7 +162,7 @@ async function tampilkanBeritaLainnya(slugSaatIni) {
             const slug = p.slug;
             return `
             <a href="/berita.html?slug=${slug}" class="related-item" onclick="handleRelatedClick(event, '${slug}')">
-                <img src="${gambar}" alt="${judul}" loading="lazy" onerror="this.src='/media/og-default.jpg'">
+                <img src="${gambar}" alt="${judul}" loading="lazy" onerror="this.src='/media/og-default.png'">
                 <h4>${judul}</h4>
             </a>
             `
