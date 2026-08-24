@@ -1,4 +1,7 @@
 [
+  "/berita/buka-musda-xi-golkar-plt-bupati-bekasi-imbau-seluruh-kader-prioritaskan-kesejaht.html",
+  "/berita/isi-rumor-penggeledahan-rumah-pengusaha-batu-bara-jambi-ditepis-kejati-dipastika.html",
+  "/berita/dukung-kemandirian-pesantren-80-santri-al-irsyad-rembang-terima-beasiswa-dari-nu.html",
   "/berita/bgn-jelaskan-13-ribu-dapur-mbg-fokus-daerah-stunting-tinggi.html",
   "/berita/ylki-buka-suara-soal-pemblokiran-rekening-supriyono-oleh-bank-mandiri-dinilai-me.html",
   "/berita/sebelum-terjaring-ott-rektor-unsoed-akhmad-sodiq-ternyata-pernah-ikuti-sosialisa.html",
