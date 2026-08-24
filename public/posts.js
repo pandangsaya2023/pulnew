@@ -1,5 +1,4 @@
 [
-  "/berita/pemeliharaan-web.html",
   "/berita/ylki-buka-suara-soal-pemblokiran-rekening-supriyono-oleh-bank-mandiri-dinilai-me.html",
   "/berita/sebelum-terjaring-ott-rektor-unsoed-akhmad-sodiq-ternyata-pernah-ikuti-sosialisa.html",
   "/berita/tampil-dominan-sman-111-jakarta-sabet-gelar-juara-turnamen-futsal-kreasi-2026-un.html",
