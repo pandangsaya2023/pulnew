@@ -1,6 +1,6 @@
 [
-  "/berita/perkuat-daya-saing-industri-krakatau-steel-ajak-generasi-muda-pahami-sektor-logi.html",
   "/berita/menakar-efektivitas-embargo-ekonomi-as-terhadap-iran-strategi-isolasi-finansial-.html",
+  "/berita/perkuat-daya-saing-industri-krakatau-steel-ajak-generasi-muda-pahami-sektor-logi.html",
   "/berita/siap-sapa-penggemar-usai-23-tahun-paramount-garap-sekuel-how-to-lose-a-guy-in-10.html",
   "/berita/bgn-jelaskan-13-ribu-dapur-mbg-fokus-daerah-stunting-tinggi.html",
   "/berita/ylki-buka-suara-soal-pemblokiran-rekening-supriyono-oleh-bank-mandiri-dinilai-me.html",
