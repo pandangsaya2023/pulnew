@@ -1,5 +1,5 @@
 [
-  "/berita/gubsu-boby-nasution-soroti-5-jabatan-kosong-di-pemprov-sumut-sekda-masih diisi-pj.html",
+  "/berita/gubsu-boby-nasution-soroti-5-jabatan-kosong-di-pemprov-sumut-sekda-masih-diisi-pj.html",
   "/berita/menkeu-purbaya-gelontorkan-rp7-triliun-lebih-demi-benahi-data-dtsen-dan-sensus-e.html",
   "/berita/perkuat-daya-saing-industri-krakatau-steel-ajak-generasi-muda-pahami-sektor-logi.html",
   "/berita/bgn-jelaskan-13-ribu-dapur-mbg-fokus-daerah-stunting-tinggi.html",
