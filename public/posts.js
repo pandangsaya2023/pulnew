@@ -1,7 +1,6 @@
 [
   "/berita/dorong-transparansi-dan-mutu-program-lppm-universitas-muhammadiyah-jakarta-gelar.html",
   "/berita/menkeu-purbaya-gelontorkan-rp7-triliun-lebih-demi-benahi-data-dtsen-dan-sensus-e.html",
-  "/berita/komisi-iii-dpr-desak-rekening-pemimpin-ampb-supriyono-dipulihkan-hari-ini.html",
   "/berita/perkuat-daya-saing-industri-krakatau-steel-ajak-generasi-muda-pahami-sektor-logi.html",
   "/berita/bgn-jelaskan-13-ribu-dapur-mbg-fokus-daerah-stunting-tinggi.html",
   "/berita/ylki-buka-suara-soal-pemblokiran-rekening-supriyono-oleh-bank-mandiri-dinilai-me.html",
