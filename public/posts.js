@@ -1,6 +1,5 @@
 [
   "/berita/sebar-seruan-provokatif-kepung-dpr-di-media-sosial-pria-asal-kabupaten-bekasi-di.html",
-  "/berita/penemuan-oarfish-4-meter-di-pantai-pink-lombok-usai-gempa-ntt-dkp-beri-penjelasa.html",
   "/berita/antisipasi-ancaman-siber-dan-spionase-modern-kepala-bin-desak-penguatan-regulasi.html",
   "/berita/gubsu-boby-nasution-soroti-5-jabatan-kosong-di-pemprov-sumut-sekda-masih-diisi-pj.html",
   "/berita/menkeu-purbaya-gelontorkan-rp7-triliun-lebih-demi-benahi-data-dtsen-dan-sensus-e.html",
