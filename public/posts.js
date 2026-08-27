@@ -1,4 +1,5 @@
 [
+  "/berita/sp-pln-di-kemenko-polkam-lima-ancaman-sedang-menggerogoti-kedaulatan-energi-indonesia.html",
   "/berita/antisipasi-ancaman-siber-dan-spionase-modern-kepala-bin-desak-penguatan-regulasi.html",
   "/berita/sebar-seruan-provokatif-kepung-dpr-di-media-sosial-pria-asal-kabupaten-bekasi-di.html",
   "/berita/gubsu-boby-nasution-soroti-5-jabatan-kosong-di-pemprov-sumut-sekda-masih-diisi-pj.html",
