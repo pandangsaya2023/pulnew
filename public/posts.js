@@ -1,6 +1,6 @@
 [
-  "/berita/rusia-diduga-siapkan-pengujian-pertahanan-nato-intelijen-as-soroti-penipisan-sto.html",
   "/berita/oleng-hindari-angkot-truk-muat-10-ton-pakan-ayam-hantam-pembatas-jembatan-di-ban.html",
+  "/berita/rusia-diduga-siapkan-pengujian-pertahanan-nato-intelijen-as-soroti-penipisan-sto.html",
   "/berita/perkuat-layanan-kesehatan-usai-gempa-m-77-flores-emt-muhammadiyah-dirikan-rs-lap.html",
   "/berita/sp-pln-di-kemenko-polkam-lima-ancaman-sedang-menggerogoti-kedaulatan-energi-indonesia.html",
   "/berita/antisipasi-ancaman-siber-dan-spionase-modern-kepala-bin-desak-penguatan-regulasi.html",
