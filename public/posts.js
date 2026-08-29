@@ -1,4 +1,5 @@
 [
+  "/berita/pemko-medan-sabet-detiksumatera-awards-2026-berkat-inovasi-digitalisasi-pajak-qresto.html",
   "/berita/tak-masuk-target-penerima-badan-gizi-nasional-coret-80-sekolah-swasta-elite-dari.html",
   "/berita/jaringan-gusdurian-minta-muktamar-ke-35-nu-bebas-politik-uang-dan-intervensi-kek.html",
   "/berita/rusia-diduga-siapkan-pengujian-pertahanan-nato-intelijen-as-soroti-penipisan-sto.html",
