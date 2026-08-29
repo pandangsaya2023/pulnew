@@ -1,4 +1,7 @@
 [
+  "/berita/tak-masuk-target-penerima-badan-gizi-nasional-coret-80-sekolah-swasta-elite-dari.html",
+  "/berita/garudafood-lewat-mbr-bangun-pabrik-keju-60-ribu-ton-di-sumedang-beroperasi-full-.html",
+  "/berita/jaringan-gusdurian-minta-muktamar-ke-35-nu-bebas-politik-uang-dan-intervensi-kek.html",
   "/berita/rusia-diduga-siapkan-pengujian-pertahanan-nato-intelijen-as-soroti-penipisan-sto.html",
   "/berita/sp-pln-di-kemenko-polkam-lima-ancaman-sedang-menggerogoti-kedaulatan-energi-indonesia.html",
   "/berita/antisipasi-ancaman-siber-dan-spionase-modern-kepala-bin-desak-penguatan-regulasi.html",
