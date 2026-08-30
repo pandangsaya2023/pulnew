@@ -1,7 +1,5 @@
 [
-  "/berita/membedah-manhaj-tarjih-muhammadiyah-kerangka-metodologi-ijtihad-atau-pembaharuan.html",
   "/berita/momentum-maulid-nabi-yayasan-rombsis-indonesia-kucurkan-donasi-kemanusiaan-rp250.html",
-  "/berita/dorong-pemasaran-produk-lokal-pekan-halal-indonesia-2026-jadi-wadah-strategis-um.html",
   "/berita/pemerintah-kebut-aturan-turunan-putusan-mk-sisa-kuota-data-harus-jadi-hak-konsumen.html",
   "/berita/pemko-medan-sabet-detiksumatera-awards-2026-berkat-inovasi-digitalisasi-pajak-qresto.html",
   "/berita/tak-masuk-target-penerima-badan-gizi-nasional-coret-80-sekolah-swasta-elite-dari.html",
