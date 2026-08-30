@@ -1,4 +1,5 @@
 [
+  "/berita/kemlu-konfirmasi-45-wni-di-nepal-imbau-waspada-di-wilayah-perbatasan-usai-banjir-bandang.html",
   "/berita/respons-bnpb-usai-helikopter-water-bombing-diduga-ambil-air-kolam-warga-banjar-t.html",
   "/berita/bnpb-pacu-penanganan-karhutla-di-6-provinsi-jarak-pandang-kalimantan-terpangkas-.html",
   "/berita/tembok-pagar-gedung-historich-terpangkas-proyek-underpass-gatot-subroto-cimahi-p.html",
