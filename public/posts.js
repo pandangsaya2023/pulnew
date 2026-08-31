@@ -1,4 +1,5 @@
 [
+  "/berita/garuda-indonesia-ubah-aturan-bagasi-gratis-jadi-sistem-peace-concept-mulai-1-september-2026.html",
   "/berita/haedar-nashir-ucapkan-selamat-muhammadiyah-harap-pbnu-baru-perkuat-ukhuwah-bangsa.html",
   "/berita/gunung-sinabung-kembali-erupsi-semburkan-abu-vulkanik-35-km-kawasan-berastagi-me.html",
   "/berita/kemlu-konfirmasi-45-wni-di-nepal-imbau-waspada-di-wilayah-perbatasan-usai-banjir-bandang.html",
