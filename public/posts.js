@@ -1,6 +1,5 @@
 [
   "/berita/gunung-sinabung-kembali-erupsi-semburkan-abu-vulkanik-35-km-kawasan-berastagi-me.html",
-  "/berita/bencana-karhutla-kalimantan-meluas-rumah-oksigen-muhammadiyah-sudah-tangani-53-w.html",
   "/berita/kemlu-konfirmasi-45-wni-di-nepal-imbau-waspada-di-wilayah-perbatasan-usai-banjir-bandang.html",
   "/berita/bnpb-pacu-penanganan-karhutla-di-6-provinsi-jarak-pandang-kalimantan-terpangkas-.html",
   "/berita/pemerintah-kebut-aturan-turunan-putusan-mk-sisa-kuota-data-harus-jadi-hak-konsumen.html",
