@@ -1,4 +1,5 @@
 [
+  "/berita/erupsi-sinabung-lumpuhkan-sementara-bandara-kualanamu-puluhan-penerbangan-tertunda.html",
   "/berita/rico-waas-ingatkan-sinergi-kuat-usai-sri-rezeki-dilantik-jadi-pimpinan-dprd-medan.html",
   "/berita/waspada-cek-nik-anda-sekarang-jangan-sampai-dipakai-judi-online-tanpa-izin.html",
   "/berita/garuda-indonesia-ubah-aturan-bagasi-gratis-jadi-sistem-peace-concept-mulai-1-september-2026.html",
