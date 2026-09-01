@@ -1,5 +1,4 @@
 [
-  "/berita/tersangkut-kabel-internet-putus-di-jalan-kopo-bandung-pelajar-asal-kopo-elok-dil.html",
   "/berita/garuda-indonesia-ubah-aturan-bagasi-gratis-jadi-sistem-peace-concept-mulai-1-september-2026.html",
   "/berita/haedar-nashir-ucapkan-selamat-muhammadiyah-harap-pbnu-baru-perkuat-ukhuwah-bangsa.html",
   "/berita/gunung-sinabung-kembali-erupsi-semburkan-abu-vulkanik-35-km-kawasan-berastagi-me.html",
