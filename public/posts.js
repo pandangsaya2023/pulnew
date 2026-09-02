@@ -1,4 +1,5 @@
 [
+  "/berita/keracunan-massal-mbg-di-sidoarjo-tembus-566-korban-bgn-jatuhkan-sanksi-berat-ke-sppg.html",
   "/berita/harga-avtur-melonjak-65-persen-kemenhub-sesuaikan-besaran-fuel-surcharge-penerba.html",
   "/berita/erupsi-sinabung-lumpuhkan-sementara-bandara-kualanamu-puluhan-penerbangan-tertunda.html",
   "/berita/rico-waas-ingatkan-sinergi-kuat-usai-sri-rezeki-dilantik-jadi-pimpinan-dprd-medan.html",
