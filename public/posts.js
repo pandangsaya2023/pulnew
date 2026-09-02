@@ -1,6 +1,5 @@
 [
   "/berita/harga-avtur-melonjak-65-persen-kemenhub-sesuaikan-besaran-fuel-surcharge-penerba.html",
-  "/berita/pemerintah-dan-dpr-patok-target-pembukaan-lapangan-kerja-hingga-349-juta-di-rapb.html",
   "/berita/erupsi-sinabung-lumpuhkan-sementara-bandara-kualanamu-puluhan-penerbangan-tertunda.html",
   "/berita/rico-waas-ingatkan-sinergi-kuat-usai-sri-rezeki-dilantik-jadi-pimpinan-dprd-medan.html",
   "/berita/waspada-cek-nik-anda-sekarang-jangan-sampai-dipakai-judi-online-tanpa-izin.html",
