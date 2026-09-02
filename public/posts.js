@@ -1,4 +1,5 @@
 [
+  "/berita/kpk-akan-dalami-nama-nusron-wahid-dalam-sidang-korupsi-kuota-haji-rp-622-miliar.html",
   "/berita/keracunan-massal-mbg-di-sidoarjo-tembus-566-korban-bgn-jatuhkan-sanksi-berat-ke-sppg.html",
   "/berita/harga-avtur-melonjak-65-persen-kemenhub-sesuaikan-besaran-fuel-surcharge-penerba.html",
   "/berita/erupsi-sinabung-lumpuhkan-sementara-bandara-kualanamu-puluhan-penerbangan-tertunda.html",
