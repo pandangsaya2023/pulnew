@@ -1,5 +1,4 @@
 [
-  "/berita/kisah-hendra-setiawan-alumni-unm-sukses-jadi-it-manager-cfc-indonesia-hingga-buk.html",
   "/berita/harga-avtur-melonjak-65-persen-kemenhub-sesuaikan-besaran-fuel-surcharge-penerba.html",
   "/berita/pemerintah-dan-dpr-patok-target-pembukaan-lapangan-kerja-hingga-349-juta-di-rapb.html",
   "/berita/erupsi-sinabung-lumpuhkan-sementara-bandara-kualanamu-puluhan-penerbangan-tertunda.html",
