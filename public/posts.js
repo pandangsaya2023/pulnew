@@ -1,7 +1,6 @@
 [
   "/berita/buntut-keracunan-santri-di-sidoarjo-bgn-resmi-wajibkan-label-waktu-individual-pada-makanan-mbg.html",
   "/berita/ancaman-phk-100-ribu-pegawai-bpd-mengintai-buntut-kebijakan-pindah-payroll-asn-ke-bank-himbara.html",
-  "/berita/gedung-pasar-tradisional-di-nagan-raya-disulap-jadi-kelas-darurat-puluhan-pelaja.html",
   "/berita/lompat-31-peringkat-fifa-timnas-indonesia-bidik-100-besar-dunia-di-era-john-herdman.html",
   "/berita/kpk-akan-dalami-nama-nusron-wahid-dalam-sidang-korupsi-kuota-haji-rp-622-miliar.html",
   "/berita/keracunan-massal-mbg-di-sidoarjo-tembus-566-korban-bgn-jatuhkan-sanksi-berat-ke-sppg.html",
