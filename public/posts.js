@@ -1,5 +1,4 @@
 [
-  "/berita/mencari-porsi-ideal-peran-negara-dan-sektor-swasta-dalam-reformasi-tata-kelola-h.html",
   "/berita/usulan-anggaran-badan-komunikasi-pemerintah-rp-1,9-triliun-di-2027-disoroti-dpr.html",
   "/berita/buntut-keracunan-santri-di-sidoarjo-bgn-resmi-wajibkan-label-waktu-individual-pada-makanan-mbg.html",
   "/berita/ancaman-phk-100-ribu-pegawai-bpd-mengintai-buntut-kebijakan-pindah-payroll-asn-ke-bank-himbara.html",
