@@ -1,4 +1,5 @@
 [
+  "/berita/gunung-anak-krakatau-erupsi-menerus-sejak-jumat-malam-gubernur-banten-andra-soni-minta-warga-tetap-tenang.html",
   "/berita/dentuman-misterius-guncang-banten-hingga-jabar-pvmbg-dugai-erupsi-gunung-anak-krakatau-penyebabnya.html",
   "/berita/bgn-setop-operasional-sppg-agam-pasia-laweh-30-hari-buntut-344-orang-keracunan-mbg.html",
   "/berita/jamuan-kwetiau-hingga-bengawan-solo-xanana-gusmao-puji-visi-jokowi-saat-bangun-indonesia.html",
