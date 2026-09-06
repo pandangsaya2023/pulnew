@@ -1,6 +1,6 @@
 [
-  "/berita/panduan-lengkap-membuat-fitur-poket-rupiah-di-mybca-untuk-mengatur-keuangan-lebi.html",
   "/berita/hisense-resmi-luncurkan-seri-a10-pro-dan-ultra-cek-detail-spesifikasi-serta-band.html",
+  "/berita/panduan-lengkap-membuat-fitur-poket-rupiah-di-mybca-untuk-mengatur-keuangan-lebi.html",
   "/berita/mengupas-spesifikasi-keunggulan-fitur-dan-banderol-harga-huawei-matepad-air-di-p.html",
   "/berita/gunung-anak-krakatau-erupsi-menerus-sejak-jumat-malam-gubernur-banten-andra-soni-minta-warga-tetap-tenang.html",
   "/berita/tanggulangi-kebakaran-hutan-lintas-negara-indonesia-perkuat-koordinasi-bersama-a.html",
