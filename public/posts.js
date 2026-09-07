@@ -1,6 +1,7 @@
 [
   "/berita/prabowo-minta-nama-8-dan-18-korporasi-karhutla-ke-kapolri-izin-dan-hgu-akan-dicabut.html",
   "/berita/hisense-resmi-luncurkan-seri-a10-pro-dan-ultra-cek-detail-spesifikasi-serta-band.html",
+  "/berita/jet-tempur-F-4-phantom-yunani-jatuh-di-athens-flying-week-dua-pilot-tewas-di-depan-ribuan-penonton.html",
   "/berita/mengupas-spesifikasi-keunggulan-fitur-dan-banderol-harga-huawei-matepad-air-di-p.html",
   "/berita/gunung-anak-krakatau-erupsi-menerus-sejak-jumat-malam-gubernur-banten-andra-soni-minta-warga-tetap-tenang.html",
   "/berita/tanggulangi-kebakaran-hutan-lintas-negara-indonesia-perkuat-koordinasi-bersama-a.html",
