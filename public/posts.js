@@ -1,6 +1,7 @@
 [
   "/berita/bmkg-pastikan-tak-ada-anomali-muka-laut-akibat-erupsi-gak-20-tsunami-gauge-terus-dipantau.html",
   "/berita/prabowo-minta-nama-8-dan-18-korporasi-karhutla-ke-kapolri-izin-dan-hgu-akan-dicabut.html",
+  "/berita/hangabehi-resmi-jumeneng-jadi-raja-keraton-solo-pb-xiv-akhiri-dualisme-takhta-10-bulan.html",
   "/berita/hisense-resmi-luncurkan-seri-a10-pro-dan-ultra-cek-detail-spesifikasi-serta-band.html",
   "/berita/jet-tempur-f-4-phantom-yunani-jatuh-di-athens-flying-week-dua-pilot-tewas-di-depan-ribuan-penonton.html",
   "/berita/mengupas-spesifikasi-keunggulan-fitur-dan-banderol-harga-huawei-matepad-air-di-p.html",
