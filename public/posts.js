@@ -1,4 +1,5 @@
 [
+  "/berita/diteliti-oxford--tradisi-kirim-\"selamat-pagi\"-di-whatsapp-ternyata-soal-ketulusan-bukan-gambar.html",
   "/berita/bgn-tutup-1.999-dapur-sppg-mbg-yang-tak-punya-slhs-sudaryono-sudah-dikasih-waktu.html",
   "/berita/bmkg-pastikan-tak-ada-anomali-muka-laut-akibat-erupsi-gak-20-tsunami-gauge-terus-dipantau.html",
   "/berita/prabowo-minta-nama-8-dan-18-korporasi-karhutla-ke-kapolri-izin-dan-hgu-akan-dicabut.html",
