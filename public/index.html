@@ -343,6 +343,29 @@ let currentPage = 1;
 const postsPerPage = 20;
 const kategoriWarna = { 'NASIONAL': '#1a237e', 'POLITIK': '#1a237e', 'EKONOMI': '#f57c00', 'TEKNOLOGI': '#0288d1', 'PENDIDIKAN': '#2e7d32', 'HUKUM': '#6a1b9a', 'HIBURAN': '#d32f2f', 'OLAHRAGA': '#d32f2f', 'KESEHATAN': '#009688', 'BERITA': '#d32f2f' };
 
+// FUNGSI BARU: CEK APAKAH SUDAH WAKTUNYA TAYANG
+function bisaTayang(tanggalString) {
+    const sekarang = new Date();
+    const waktuTayang = new Date(tanggalString);
+    
+    // Convert ke WIB
+    const sekarangWIB = new Date(sekarang.toLocaleString("en-US", {timeZone: "Asia/Jakarta"}));
+    const tayangWIB = new Date(waktuTayang.toLocaleString("en-US", {timeZone: "Asia/Jakarta"}));
+    
+    return tayangWIB <= sekarangWIB; // true kalau jam tayang sudah lewat
+}
+
+function formatWIB(dateString) {
+    return new Date(dateString).toLocaleString("id-ID", {
+        timeZone: "Asia/Jakarta",
+        day: "2-digit",
+        month: "long", 
+        year: "numeric",
+        hour: "2-digit",
+        minute: "2-digit"
+    }) + " WIB";
+}
+        
 async function fetchPosts() {
     try {
         const res = await fetch('/posts/index.json?t=' + Date.now(), { cache: 'no-store' });
@@ -359,17 +382,20 @@ async function ambilDataBerita() {
     const container = document.getElementById('news-container');
     const posts = await fetchPosts();
 
-    if (posts.length === 0) {
+    // FILTER BARU: Cuma ambil berita yg jam nya sudah lewat
+    const postsTayang = posts.filter(post => bisaTayang(post.date));
+
+    if (postsTayang.length === 0) {
         container.innerHTML = '<div style="text-align:center; padding:40px; color:#666;">Belum ada berita saat ini</div>';
         document.getElementById('running-text-container').innerHTML = '<span class="ticker-item">Belum ada update berita</span>';
         return;
     }
 
-    posts.sort((a, b) => new Date(b.date) - new Date(a.date));
-    allPosts = posts;
-    filteredPosts = posts;
+    postsTayang.sort((a, b) => new Date(b.date) - new Date(a.date)); // urutkan yg sudah tayang
+    allPosts = postsTayang; // simpan yg sudah tayang aja
+    filteredPosts = postsTayang;
     tampilkanHalaman(1);
-    updateRunningText(posts);
+    updateRunningText(postsTayang); // running text juga yg sudah tayang
     setupKategori();
     setupSearch();
     autoScrollCarousel();
