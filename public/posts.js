@@ -1,6 +1,7 @@
 [
   "/berita/bobby-nasution-usulkan-4-skema-satukan-ekonomi-10-provinsi-di-sumatera.html",
   "/berita/hari-ke-3-pencarian-5-jurnalis-hilang-di-perairan-anak-krakatau-tni-al-turunkan-3-kapal-perang.html",
+  "/berita/usai-jumenengan--pb-xiv-hangabehi-turun-langsung-bagikan-1.300-nasi-kotak-ke-warga-terdampak-kebakaran-tpa-putri-cempo.html",
   "/berita/data-dimutakhirkan-nama-anggota-dpr-eva-rataba-naik-dari-desil-4-ke-desil-10.html",
   "/berita/masuk-desil-4-dtsen-anggota-dpr-eva-rataba-buka-suara-saya-sendiri-heran.html",
   "/berita/diteliti-oxford-tradisi-kirim-selamat-pagi-di-whatsapp-ternyata-soal-ketulusan-bukan-gambar.html",
