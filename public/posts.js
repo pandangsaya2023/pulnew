@@ -1,5 +1,5 @@
 [
-  "/berita/harike-3-pencarian-5-jurnalis-hilang-di-anak-krakatau-tni-al-turunkan-3-kapal-perang.html",
+  "/berita/hari-ke-3-pencarian-5-jurnalis-hilang-di-perairan-anak-krakatau-tni-al-turunkan-3-kapal-perang.html",
   "/berita/data-dimutakhirkan-nama-anggota-dpr-eva-rataba-naik-dari-desil-4-ke-desil-10.html",
   "/berita/masuk-desil-4-dtsen-anggota-dpr-eva-rataba-buka-suara-saya-sendiri-heran.html",
   "/berita/diteliti-oxford-tradisi-kirim-selamat-pagi-di-whatsapp-ternyata-soal-ketulusan-bukan-gambar.html",
