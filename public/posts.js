@@ -1,4 +1,5 @@
 [
+  "/berita/rico-waas-terima-piala-juara-umum-mtq-sumut-ke-40-16-qari-kota-medan-maju-ke-masional.html",
   "/berita/bobby-nasution-usulkan-4-skema-satukan-ekonomi-10-provinsi-di-sumatera.html",
   "/berita/hari-ke-3-pencarian-5-jurnalis-hilang-di-perairan-anak-krakatau-tni-al-turunkan-3-kapal-perang.html",
   "/berita/pb-xiv-hangabehi-turun-langsung-bagikan-1.300-nasi-kotak-ke-warga-terdampak-kebakaran-tpa-putri-cempo.html",
