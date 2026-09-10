@@ -1,4 +1,5 @@
 [
+  "/berita/pertamina-tunggu-restu-pemerintah-pembatasan-pertalite-untuk-desil-9-10-masih-dikaji.html",
   "/berita/pemerintah-hentikan-bansos-tunai-50-juta-penerima-wajib-punya-rekening-bri-dan-bsi.html",
   "/berita/gunung-anak-krakatau-erupsi-lagi-letusan-pagi-ini-tak-terlihat-karena-kabut-tebal.html",
   "/berita/rico-waas-terima-piala-juara-umum-mtq-sumut-ke-40-16-qari-kota-medan-maju-ke-nasional.html",
