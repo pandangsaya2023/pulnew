@@ -48,7 +48,6 @@
   "/berita/kumpulan-10-contoh-prompt-ai-terbaik-untuk-merancang-poster-hut-ke-81-ri.html",
   "/berita/antisipasi-dampak-kabut-asap-karhutla-pemprov-kalsel-dan-gapki-distribusikan-20-.html",
   "/berita/pln-berhasil-pulihkan-sistem-kelistrikan-di-ntt-pasca-gempa.html",
-  "/berita/bni-berkomitmen-menyalurkan-bantuan-kemanusiaan-bagi-masyarakat-terdampak-gempa-.html",
   "/berita/forkom-sp-sekar-bumn-ajukan-13-rekomendasi-strategis-ruu-ketenagakerjaan-ke-dpr.html",
   "/berita/forkom-sp-dan-sekar-bumn-gelar-rapat.html"
 ]
