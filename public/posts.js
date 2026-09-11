@@ -74,6 +74,5 @@
   "/berita/bebaskan-aktivitas-fotografi-di-malioboro-pemerintah-siapkan-4-spot-foto-gratis.html",
   "/berita/mikrobiota-usus-dan-dampaknya-pada-kesehatan-mental-anak.html",
   "/berita/danantara-housing-expo-2026-kolaborasi-himbara-untuk-pembiayaan-perumahan.html",
-  "/berita/36-gtk-srma-1-aceh-besar-dampingi-operasional-sekolah-rakyat-di-nagan-raya.html",
   "/berita/forkom-sp-dan-sekar-bumn-gelar-rapat.html"
 ]
