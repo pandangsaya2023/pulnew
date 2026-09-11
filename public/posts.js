@@ -46,7 +46,6 @@
   "/berita/sebelum-terjaring-ott-rektor-unsoed-akhmad-sodiq-ternyata-pernah-ikuti-sosialisa.html",
   "/berita/72-orang-ditetapkan-tersangka-kebakaran-hutan-dan-lahan-polri-kejar-pelaku-korporasi.html",
   "/berita/kumpulan-10-contoh-prompt-ai-terbaik-untuk-merancang-poster-hut-ke-81-ri.html",
-  "/berita/antisipasi-dampak-kabut-asap-karhutla-pemprov-kalsel-dan-gapki-distribusikan-20-.html",
   "/berita/forkom-sp-sekar-bumn-ajukan-13-rekomendasi-strategis-ruu-ketenagakerjaan-ke-dpr.html",
   "/berita/forkom-sp-dan-sekar-bumn-gelar-rapat.html"
 ]
