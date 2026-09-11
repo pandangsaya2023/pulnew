@@ -118,6 +118,5 @@
   "/berita/dua-wni-diduga-disekap-di-myanmar.html",
   "/berita/nilai-ekspor-album-k-pop-melonjak.html",
   "/berita/penguatan-kompetensi-psikolog-klinis.html",
-  "/berita/pembiayaan-bsi-tumbuh-146-persen.html",
   "/berita/forkom-sp-dan-sekar-bumn-gelar-rapat.html"
 ]
