@@ -97,8 +97,6 @@
   "/berita/danantara-membuka-kembali-seleksi-mitra-untuk-proyek-pengolahan-sampah-menjadi-e.html",
   "/berita/nadiem-anwar-makarim-yakin-bebas-dari-vonis-10-tahun-penjara-melalui-sidang-band.html",
   "/berita/mengurangi-waktu-layar-untuk-kesehatan-mata-dan-tidur-yang-berkualitas.html",
-  "/berita/ios-27-tanggal-rilis-dan-daftar-iphone-yang-kompatibel.html",
   "/berita/mengganti-password-wifi-dengan-mudah-lewat-perangkat-hp-dan-laptop.html",
-  "/berita/geger-keracunan-mbg-bgn-pecat-137-kepala-dapur.html",
   "/berita/forkom-sp-dan-sekar-bumn-gelar-rapat.html"
 ]
