@@ -108,6 +108,5 @@
   "/berita/solusi-cantik-tanpa-bedah-plastik.html",
   "/berita/seleksi-oscar-indonesia-2026-resmi-dibuka.html",
   "/berita/piala-aff-2026-kini-ada-di-tv-dan-youtube.html",
-  "/berita/rekomendasi-iphone-masih-layak-dibeli-tahun-ini.html",
   "/berita/forkom-sp-dan-sekar-bumn-gelar-rapat.html"
 ]
