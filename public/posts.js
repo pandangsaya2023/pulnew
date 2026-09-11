@@ -111,7 +111,5 @@
   "/berita/rekomendasi-iphone-masih-layak-dibeli-tahun-ini.html",
   "/berita/perbedaan-kol-dan-influencer.html",
   "/berita/laptop-murah-untuk-pelajar-dan-mahasiswa.html",
-  "/berita/menkes-gandeng-pbnu-untuk-ckg-dan-penuntasan-tbc.html",
-  "/berita/prabowo-lantik-1177-perwira-tni-polri.html",
   "/berita/forkom-sp-dan-sekar-bumn-gelar-rapat.html"
 ]
