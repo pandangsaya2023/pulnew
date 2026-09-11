@@ -15,7 +15,6 @@
   "/berita/prabowo-minta-nama-8-dan-18-korporasi-karhutla-ke-kapolri-izin-dan-hgu-akan-dicabut.html",
   "/berita/hangabehi-resmi-jumeneng-jadi-raja-keraton-solo-pb-xiv-akhiri-dualisme-takhta-10-bulan.html",
   "/berita/jet-tempur-f-4-phantom-yunani-jatuh-di-athens-flying-week-dua-pilot-tewas-di-depan-ribuan-penonton.html",
-  "/berita/mengupas-spesifikasi-keunggulan-fitur-dan-banderol-harga-huawei-matepad-air-di-p.html",
   "/berita/gunung-anak-krakatau-erupsi-menerus-sejak-jumat-malam-gubernur-banten-andra-soni-minta-warga-tetap-tenang.html",
   "/berita/tanggulangi-kebakaran-hutan-lintas-negara-indonesia-perkuat-koordinasi-bersama-a.html",
   "/berita/dentuman-misterius-guncang-banten-hingga-jabar-pvmbg-dugai-erupsi-gunung-anak-krakatau-penyebabnya.html",
