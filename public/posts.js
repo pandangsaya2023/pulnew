@@ -59,7 +59,6 @@
   "/berita/mendorong-ekonomi-akar-rumput-pnm-mekaar-tawarkan-bunga-8-persen.html",
   "/berita/studi-ungkap-rutin-minum-kopi-hitam-menurunkan-risiko-penyakit-hati.html",
   "/berita/pemprov-sumut-dukung-penguatan-layanan-kesehatan-di-nias-barat-target-status-uta.html",
-  "/berita/pemerintah-tetapkan-syarat-perdagangan-karbon-untuk-mendukung-kelestarian-hutan.html",
   "/berita/peran-penting-ulama-dalam-perlawanan-rakyat-aceh-terhadap-agresi-belanda-pada-18.html",
   "/berita/forkom-sp-dan-sekar-bumn-gelar-rapat.html"
 ]
