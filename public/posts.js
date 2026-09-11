@@ -43,7 +43,6 @@
   "/berita/perkuat-daya-saing-industri-krakatau-steel-ajak-generasi-muda-pahami-sektor-logi.html",
   "/berita/bgn-jelaskan-13-ribu-dapur-mbg-fokus-daerah-stunting-tinggi.html",
   "/berita/ylki-buka-suara-soal-pemblokiran-rekening-supriyono-oleh-bank-mandiri-dinilai-me.html",
-  "/berita/sebelum-terjaring-ott-rektor-unsoed-akhmad-sodiq-ternyata-pernah-ikuti-sosialisa.html",
   "/berita/kumpulan-10-contoh-prompt-ai-terbaik-untuk-merancang-poster-hut-ke-81-ri.html",
   "/berita/forkom-sp-sekar-bumn-ajukan-13-rekomendasi-strategis-ruu-ketenagakerjaan-ke-dpr.html",
   "/berita/forkom-sp-dan-sekar-bumn-gelar-rapat.html"
