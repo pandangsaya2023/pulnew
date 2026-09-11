@@ -27,7 +27,6 @@
   "/berita/keracunan-massal-mbg-di-sidoarjo-tembus-566-korban-bgn-jatuhkan-sanksi-berat-ke-sppg.html",
   "/berita/harga-avtur-melonjak-65-persen-kemenhub-sesuaikan-besaran-fuel-surcharge-penerba.html",
   "/berita/erupsi-sinabung-lumpuhkan-sementara-bandara-kualanamu-puluhan-penerbangan-tertunda.html",
-  "/berita/rico-waas-ingatkan-sinergi-kuat-usai-sri-rezeki-dilantik-jadi-pimpinan-dprd-medan.html",
   "/berita/waspada-cek-nik-anda-sekarang-jangan-sampai-dipakai-judi-online-tanpa-izin.html",
   "/berita/garuda-indonesia-ubah-aturan-bagasi-gratis-jadi-sistem-peace-concept-mulai-1-september-2026.html",
   "/berita/haedar-nashir-ucapkan-selamat-muhammadiyah-harap-pbnu-baru-perkuat-ukhuwah-bangsa.html",
