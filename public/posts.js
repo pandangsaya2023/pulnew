@@ -1,5 +1,4 @@
 [
-  "/berita/bahlil-harga-minyak-dunia-us$-108-per-barel-pemerintah-pilih-tahan-harga-bbm-subsidi.html",
   "/berita/tahan-harga-bbm-di-tengah-minyak-us$-108-per-barel-bahlil-demi-daya-beli-masyarakat.html",
   "/berita/pertamina-tunggu-lampu-hijau-pemerintah-wacana-batasi-pertalite-untuk-desil-9-10-masih-digodok.html",
   "/berita/pemerintah-hapus-bansos-tunai-mulai-2027-50-juta-kpm-wajib-punya-rekening-bri-dan-bsi.html",
