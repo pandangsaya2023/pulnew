@@ -51,7 +51,6 @@
   "/berita/bni-berkomitmen-menyalurkan-bantuan-kemanusiaan-bagi-masyarakat-terdampak-gempa-.html",
   "/berita/kemenangan-chelsea-atas-real-sociedad-dihadiri-dengan-cemoohan-terhadap-enzo-fer.html",
   "/berita/bmkg-nyatakan-potensi-tsunami-akibat-gempa-77-m-di-ntt-berakhir-masyarakat-dimin.html",
-  "/berita/kemitraan-strategis-persib-bandung-dan-bank-bjb-untuk-kompetisi-20262027.html",
   "/berita/forkom-sp-sekar-bumn-ajukan-13-rekomendasi-strategis-ruu-ketenagakerjaan-ke-dpr.html",
   "/berita/forkom-sp-dan-sekar-bumn-gelar-rapat.html"
 ]
