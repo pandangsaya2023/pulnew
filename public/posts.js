@@ -1,5 +1,4 @@
 [
-  "/berita/tahan-harga-bbm-di-tengah-minyak-us$-108-per-barel-bahlil-demi-daya-beli-masyarakat.html",
   "/berita/gunung-anak-krakatau-erupsi-lagi-letusan-pagi-ini-tak-terlihat-karena-kabut-tebal.html",
   "/berita/rico-waas-terima-piala-juara-umum-mtq-sumut-ke-40-16-qari-kota-medan-maju-ke-nasional.html",
   "/berita/bobby-nasution-usulkan-4-skema-satukan-ekonomi-10-provinsi-di-sumatera.html",
