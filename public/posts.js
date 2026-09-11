@@ -103,6 +103,5 @@
   "/berita/indonesia-punya-tornado-barakuda-yang-langka-di-dunia.html",
   "/berita/buronan-bank-sumut-diciduk-di-jakarta.html",
   "/berita/warisan-ilmu-yang-mengubah-peradaban-dunia.html",
-  "/berita/produksi-pltp-sarulla-akan-dipulihkan.html",
   "/berita/forkom-sp-dan-sekar-bumn-gelar-rapat.html"
 ]
