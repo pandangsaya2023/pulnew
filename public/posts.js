@@ -65,6 +65,5 @@
   "/berita/hut-ke-81-ri-pelindo-berikan-layanan-kesehatan-gratis-untuk-masyarakat-rentan-di.html",
   "/berita/kemensetneg-siapkan-perayaan-hut-ke-81-ri-dengan-berbagai-kegiatan-menarik.html",
   "/berita/kemenhubpastikan-seluruh-rekomendasi-bpk-ditindaklanjuti-untuk-perkuat-tata-kelo.html",
-  "/berita/survei-ipo-kinerja-bahlil-dapat-kepercayaan-publik.html",
   "/berita/forkom-sp-dan-sekar-bumn-gelar-rapat.html"
 ]
