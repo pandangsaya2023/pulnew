@@ -38,7 +38,6 @@
   "/berita/sp-pln-di-kemenko-polkam-lima-ancaman-sedang-menggerogoti-kedaulatan-energi-indonesia.html",
   "/berita/antisipasi-ancaman-siber-dan-spionase-modern-kepala-bin-desak-penguatan-regulasi.html",
   "/berita/sebar-seruan-provokatif-kepung-dpr-di-media-sosial-pria-asal-kabupaten-bekasi-di.html",
-  "/berita/gubsu-boby-nasution-soroti-5-jabatan-kosong-di-pemprov-sumut-sekda-masih-diisi-pj.html",
   "/berita/kumpulan-10-contoh-prompt-ai-terbaik-untuk-merancang-poster-hut-ke-81-ri.html",
   "/berita/forkom-sp-sekar-bumn-ajukan-13-rekomendasi-strategis-ruu-ketenagakerjaan-ke-dpr.html",
   "/berita/forkom-sp-dan-sekar-bumn-gelar-rapat.html"
