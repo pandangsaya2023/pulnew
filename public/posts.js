@@ -119,6 +119,5 @@
   "/berita/nilai-ekspor-album-k-pop-melonjak.html",
   "/berita/penguatan-kompetensi-psikolog-klinis.html",
   "/berita/pembiayaan-bsi-tumbuh-146-persen.html",
-  "/berita/skema-jual-putus-dominasi-transaksi-barang-mewah.html",
   "/berita/forkom-sp-dan-sekar-bumn-gelar-rapat.html"
 ]
