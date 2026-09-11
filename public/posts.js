@@ -114,6 +114,5 @@
   "/berita/menkes-gandeng-pbnu-untuk-ckg-dan-penuntasan-tbc.html",
   "/berita/prabowo-lantik-1177-perwira-tni-polri.html",
   "/berita/atlet-golf-jesslyn-dilaporkan-diculik.html",
-  "/berita/ikkb-adakan-raker.html",
   "/berita/forkom-sp-dan-sekar-bumn-gelar-rapat.html"
 ]
