@@ -35,7 +35,6 @@
   "/berita/kemlu-konfirmasi-45-wni-di-nepal-imbau-waspada-di-wilayah-perbatasan-usai-banjir-bandang.html",
   "/berita/pemerintah-kebut-aturan-turunan-putusan-mk-sisa-kuota-data-harus-jadi-hak-konsumen.html",
   "/berita/pemko-medan-sabet-detiksumatera-awards-2026-berkat-inovasi-digitalisasi-pajak-qresto.html",
-  "/berita/rusia-diduga-siapkan-pengujian-pertahanan-nato-intelijen-as-soroti-penipisan-sto.html",
   "/berita/sp-pln-di-kemenko-polkam-lima-ancaman-sedang-menggerogoti-kedaulatan-energi-indonesia.html",
   "/berita/antisipasi-ancaman-siber-dan-spionase-modern-kepala-bin-desak-penguatan-regulasi.html",
   "/berita/sebar-seruan-provokatif-kepung-dpr-di-media-sosial-pria-asal-kabupaten-bekasi-di.html",
