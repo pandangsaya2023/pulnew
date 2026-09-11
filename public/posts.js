@@ -104,6 +104,5 @@
   "/berita/buronan-bank-sumut-diciduk-di-jakarta.html",
   "/berita/warisan-ilmu-yang-mengubah-peradaban-dunia.html",
   "/berita/produksi-pltp-sarulla-akan-dipulihkan.html",
-  "/berita/persiapkan-karir-sebelum-pendidikan-selesai.html",
   "/berita/forkom-sp-dan-sekar-bumn-gelar-rapat.html"
 ]
