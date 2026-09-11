@@ -85,7 +85,5 @@
   "/berita/menteri-sosial-dan-sekretaris-kabinet-tinjau-sekolah-rakyat-rintisan.html",
   "/berita/amy-melakukan-kunjungan-strategis-ke-sumatra-selatan-dalam-rangka-safari-politik.html",
   "/berita/leapmotor-memulai-perakitan-lokal-kendaraan-listrik-di-indonesia.html",
-  "/berita/kebakaran-gedung-bapenda-dki-jakarta-api-melanda-lantai-11-hingga-atap.html",
-  "/berita/geely-auto-indonesia-luncurkan-program-the-true-blue-journey-dalam-rangka-tur-pr.html",
   "/berita/forkom-sp-dan-sekar-bumn-gelar-rapat.html"
 ]
