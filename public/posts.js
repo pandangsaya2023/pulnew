@@ -90,11 +90,5 @@
   "/berita/pbnu-abad-kedua-butuh-ketua-umum-dengan-kemampuan-manajerial-kuat.html",
   "/berita/geely-auto-indonesia-luncurkan-program-the-true-blue-journey-dalam-rangka-tur-pr.html",
   "/berita/dorongan-ekonomi-sirkular-ubsi-latih-bank-sampah-vida-bekasi-go-digital.html",
-  "/berita/kemensos-tangguhkan-14-juta-penerima-bansos-diduga-lakukan-transaksi-judi-online.html",
-  "/berita/museum-musik-indonesia-di-bandung-upaya-pelestarian-warisan-musik-nusantara.html",
-  "/berita/aksi-damai-peternak-ayam-di-solo-protes-harga-pakan-yang-melambung.html",
-  "/berita/inflasi-terkendali-dan-kredibilitas-kebijakan-moneter-refleksi-atas-keberhasilan.html",
-  "/berita/danantara-membuka-kembali-seleksi-mitra-untuk-proyek-pengolahan-sampah-menjadi-e.html",
-  "/berita/nadiem-anwar-makarim-yakin-bebas-dari-vonis-10-tahun-penjara-melalui-sidang-band.html",
   "/berita/forkom-sp-dan-sekar-bumn-gelar-rapat.html"
 ]
