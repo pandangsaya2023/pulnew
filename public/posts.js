@@ -33,7 +33,6 @@
   "/berita/garuda-indonesia-ubah-aturan-bagasi-gratis-jadi-sistem-peace-concept-mulai-1-september-2026.html",
   "/berita/haedar-nashir-ucapkan-selamat-muhammadiyah-harap-pbnu-baru-perkuat-ukhuwah-bangsa.html",
   "/berita/kemlu-konfirmasi-45-wni-di-nepal-imbau-waspada-di-wilayah-perbatasan-usai-banjir-bandang.html",
-  "/berita/bnpb-pacu-penanganan-karhutla-di-6-provinsi-jarak-pandang-kalimantan-terpangkas-.html",
   "/berita/pemerintah-kebut-aturan-turunan-putusan-mk-sisa-kuota-data-harus-jadi-hak-konsumen.html",
   "/berita/pemko-medan-sabet-detiksumatera-awards-2026-berkat-inovasi-digitalisasi-pajak-qresto.html",
   "/berita/tak-masuk-target-penerima-badan-gizi-nasional-coret-80-sekolah-swasta-elite-dari.html",
