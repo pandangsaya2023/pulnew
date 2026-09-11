@@ -1,4 +1,5 @@
 [
+  "/berita/pertamina-tunggu-lampu-hijau-pemerintah-wacana-batasi-pertalite-untuk-desil-9-10-masih-digodok.html",
   "/berita/pemerintah-hapus-bansos-tunai-mulai-2027-50-juta-kpm-wajib-punya-rekening-bri-dan-bsi.html",
   "/berita/gunung-anak-krakatau-erupsi-lagi-letusan-pagi-ini-tak-terlihat-karena-kabut-tebal.html",
   "/berita/rico-waas-terima-piala-juara-umum-mtq-sumut-ke-40-16-qari-kota-medan-maju-ke-nasional.html",
