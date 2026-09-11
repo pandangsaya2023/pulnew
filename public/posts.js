@@ -115,7 +115,5 @@
   "/berita/prabowo-lantik-1177-perwira-tni-polri.html",
   "/berita/atlet-golf-jesslyn-dilaporkan-diculik.html",
   "/berita/ikkb-adakan-raker.html",
-  "/berita/dua-wni-diduga-disekap-di-myanmar.html",
-  "/berita/nilai-ekspor-album-k-pop-melonjak.html",
   "/berita/forkom-sp-dan-sekar-bumn-gelar-rapat.html"
 ]
