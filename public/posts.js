@@ -42,7 +42,6 @@
   "/berita/menkeu-purbaya-gelontorkan-rp7-triliun-lebih-demi-benahi-data-dtsen-dan-sensus-e.html",
   "/berita/perkuat-daya-saing-industri-krakatau-steel-ajak-generasi-muda-pahami-sektor-logi.html",
   "/berita/bgn-jelaskan-13-ribu-dapur-mbg-fokus-daerah-stunting-tinggi.html",
-  "/berita/ylki-buka-suara-soal-pemblokiran-rekening-supriyono-oleh-bank-mandiri-dinilai-me.html",
   "/berita/kumpulan-10-contoh-prompt-ai-terbaik-untuk-merancang-poster-hut-ke-81-ri.html",
   "/berita/forkom-sp-sekar-bumn-ajukan-13-rekomendasi-strategis-ruu-ketenagakerjaan-ke-dpr.html",
   "/berita/forkom-sp-dan-sekar-bumn-gelar-rapat.html"
