@@ -54,7 +54,5 @@
   "/berita/kemitraan-strategis-persib-bandung-dan-bank-bjb-untuk-kompetisi-20262027.html",
   "/berita/kemandirian-energi-indonesia-bisa-dimulai-dari-atap-rumah.html",
   "/berita/forkom-sp-sekar-bumn-ajukan-13-rekomendasi-strategis-ruu-ketenagakerjaan-ke-dpr.html",
-  "/berita/kpk-kembali-menggelar-penggeledahan-di-kota-bengkulu-sasaran-terbaru-rumah-anggo.html",
-  "/berita/ceo-ufc-dana-white-antusias-sambut-petarung-indonesia-bilal-hasan-berlaga-di-okt.html",
   "/berita/forkom-sp-dan-sekar-bumn-gelar-rapat.html"
 ]
