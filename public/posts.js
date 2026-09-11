@@ -80,9 +80,5 @@
   "/berita/menteri-koordinator-bidang-pangan-minta-dukungan-masyarakat-demi-keberhasilan-pr.html",
   "/berita/huawei-matebook-pro-s-hadir-resmi-laptop-premium-dengan-desain-ringan-dan-canggi.html",
   "/berita/kemkomdigi-optimis-reaktivasi-igrs-selesai-tahun-2026.html",
-  "/berita/korea-selatan-dilanda-gelombang-panas-suhu-mencapai-37-derajat-celsius.html",
-  "/berita/dokter-jelaskan-hubungan-obesitas-dengan-risiko-diabetes-tipe-2.html",
-  "/berita/menteri-sosial-dan-sekretaris-kabinet-tinjau-sekolah-rakyat-rintisan.html",
-  "/berita/amy-melakukan-kunjungan-strategis-ke-sumatra-selatan-dalam-rangka-safari-politik.html",
   "/berita/forkom-sp-dan-sekar-bumn-gelar-rapat.html"
 ]
