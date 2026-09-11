@@ -56,6 +56,5 @@
   "/berita/forkom-sp-sekar-bumn-ajukan-13-rekomendasi-strategis-ruu-ketenagakerjaan-ke-dpr.html",
   "/berita/kpk-kembali-menggelar-penggeledahan-di-kota-bengkulu-sasaran-terbaru-rumah-anggo.html",
   "/berita/ceo-ufc-dana-white-antusias-sambut-petarung-indonesia-bilal-hasan-berlaga-di-okt.html",
-  "/berita/mendorong-ekonomi-akar-rumput-pnm-mekaar-tawarkan-bunga-8-persen.html",
   "/berita/forkom-sp-dan-sekar-bumn-gelar-rapat.html"
 ]
