@@ -77,6 +77,5 @@
   "/berita/36-gtk-srma-1-aceh-besar-dampingi-operasional-sekolah-rakyat-di-nagan-raya.html",
   "/berita/16-atlet-meraih-super-tiket-audisi-umum-pb-djarum-2026-di-makassar.html",
   "/berita/fenomena-gerhana-matahari-total-12-agustus-2026-mengapa-tidak-terlihat-dari-semu.html",
-  "/berita/menteri-koordinator-bidang-pangan-minta-dukungan-masyarakat-demi-keberhasilan-pr.html",
   "/berita/forkom-sp-dan-sekar-bumn-gelar-rapat.html"
 ]
