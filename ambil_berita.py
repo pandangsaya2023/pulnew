@@ -131,7 +131,7 @@ def rewrite_with_gemini(title, link, media):
         prompt = f"""Kamu adalah Editor Senior PULNEW.com. Tugasmu PARAFRASE TOTAL berita agar lolos plagiarisme.
         PERATURAN SANGAT KETAT:
         1. PANJANG WAJIB SAMA: Hasil rewrite harus sepanjang atau LEBIH PANJANG dari teks sumber. JANGAN DIRINGKAS.
-        2. STRUKTUR: WAJIB ada 2 SUB JUDUL pakai tag <h2 style="color:#333; margin-top:16px; margin-bottom:12px; font-weight:800; font-size:22px;">Judul</h2>
+        2. STRUKTUR: WAJIB ada 2 SUB JUDUL pakai tag <h2 style="color:#333; margin-top:16px; margin-bottom:12px; font-weight:800; font-size:16px;">Judul</h2>
         3. DILARANG KERAS COPAS: Semua kalimat WAJIB ditulis ulang 100%
         4. FAKTA WAJIB SAMA: Nama, angka, tanggal, tempat, kutipan langsung TIDAK BOLEH BERUBAH.
         5. GAYA: Seperti Detik/Kompas. Piramida terbalik. Bahasa baku.
