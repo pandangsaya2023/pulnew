@@ -89,6 +89,5 @@
   "/berita/alphi-aturan-label-non-halal-perlu-diperjelas-agar-tak-timbulkan-multi-tafsir.html",
   "/berita/pbnu-abad-kedua-butuh-ketua-umum-dengan-kemampuan-manajerial-kuat.html",
   "/berita/geely-auto-indonesia-luncurkan-program-the-true-blue-journey-dalam-rangka-tur-pr.html",
-  "/berita/dorongan-ekonomi-sirkular-ubsi-latih-bank-sampah-vida-bekasi-go-digital.html",
   "/berita/forkom-sp-dan-sekar-bumn-gelar-rapat.html"
 ]
