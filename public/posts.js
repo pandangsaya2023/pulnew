@@ -96,7 +96,5 @@
   "/berita/inflasi-terkendali-dan-kredibilitas-kebijakan-moneter-refleksi-atas-keberhasilan.html",
   "/berita/danantara-membuka-kembali-seleksi-mitra-untuk-proyek-pengolahan-sampah-menjadi-e.html",
   "/berita/nadiem-anwar-makarim-yakin-bebas-dari-vonis-10-tahun-penjara-melalui-sidang-band.html",
-  "/berita/mengurangi-waktu-layar-untuk-kesehatan-mata-dan-tidur-yang-berkualitas.html",
-  "/berita/mengganti-password-wifi-dengan-mudah-lewat-perangkat-hp-dan-laptop.html",
   "/berita/forkom-sp-dan-sekar-bumn-gelar-rapat.html"
 ]
