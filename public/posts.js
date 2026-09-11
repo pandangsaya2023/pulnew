@@ -1,5 +1,5 @@
 [
-  "/berita/bahlil-harga-minyak-dunia-us$108-per-barel-pemerintah-pilih-tahan-harga-bbm-subsidi.html",
+  "/berita/bahlil-harga-minyak-dunia-us$-108-per-barel-pemerintah-pilih-tahan-harga-bbm-subsidi.html",
   "/berita/operasi-pencarian-5-jurnalis-dan-3-awak-kapal-hilang-di-selat-sunda-diperluas-ke-darat.html",
   "/berita/pertamina-tunggu-restu-pemerintah-pembatasan-pertalite-untuk-desil-9-10-masih-dikaji.html",
   "/berita/pemerintah-hentikan-bansos-tunai-50-juta-penerima-wajib-punya-rekening-bri-dan-bsi.html",
