@@ -84,6 +84,5 @@
   "/berita/dokter-jelaskan-hubungan-obesitas-dengan-risiko-diabetes-tipe-2.html",
   "/berita/menteri-sosial-dan-sekretaris-kabinet-tinjau-sekolah-rakyat-rintisan.html",
   "/berita/amy-melakukan-kunjungan-strategis-ke-sumatra-selatan-dalam-rangka-safari-politik.html",
-  "/berita/leapmotor-memulai-perakitan-lokal-kendaraan-listrik-di-indonesia.html",
   "/berita/forkom-sp-dan-sekar-bumn-gelar-rapat.html"
 ]
