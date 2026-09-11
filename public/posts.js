@@ -75,6 +75,5 @@
   "/berita/mikrobiota-usus-dan-dampaknya-pada-kesehatan-mental-anak.html",
   "/berita/danantara-housing-expo-2026-kolaborasi-himbara-untuk-pembiayaan-perumahan.html",
   "/berita/36-gtk-srma-1-aceh-besar-dampingi-operasional-sekolah-rakyat-di-nagan-raya.html",
-  "/berita/16-atlet-meraih-super-tiket-audisi-umum-pb-djarum-2026-di-makassar.html",
   "/berita/forkom-sp-dan-sekar-bumn-gelar-rapat.html"
 ]
