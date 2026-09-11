@@ -9,7 +9,6 @@
   "/berita/pb-xiv-hangabehi-turun-langsung-bagikan-1.300-nasi-kotak-ke-warga-terdampak-kebakaran-tpa-putri-cempo.html",
   "/berita/data-dimutakhirkan-nama-anggota-dpr-eva-rataba-naik-dari-desil-4-ke-desil-10.html",
   "/berita/masuk-desil-4-dtsen-anggota-dpr-eva-rataba-buka-suara-saya-sendiri-heran.html",
-  "/berita/diteliti-oxford-tradisi-kirim-selamat-pagi-di-whatsapp-ternyata-soal-ketulusan-bukan-gambar.html",
   "/berita/presiden-prabowo-perintahkan-semua-warga-punya-rekening-bank-bri-dan-bsi.html",
   "/berita/bgn-tutup-1.999-dapur-sppg-mbg-yang-tak-punya-slhs-sudaryono-sudah-dikasih-waktu.html",
   "/berita/bmkg-pastikan-tak-ada-anomali-muka-laut-akibat-erupsi-gak-20-tsunami-gauge-terus-dipantau.html",
