@@ -408,13 +408,17 @@ function tampilkanBerita(posts) {
     const hero = posts[0];
     const kategoriHero = hero.kategori || 'BERITA';
     const warnaHero = kategoriWarna[kategoriHero.toUpperCase()] || '#d32f2f';
-    html += `<a href="/berita.html?slug=${hero.slug}" class="news-hero"><img src="${hero.image}" alt="${hero.title}" loading="lazy" decoding="async"><div class="hero-content"><span class="badge" style="background: ${warnaHero}">${kategoriHero}</span><h2>${hero.title}</h2></div></a>`;
+    //html += `<a href="/berita.html?slug=${hero.slug}" class="news-hero"><img src="${hero.image}" alt="${hero.title}" loading="lazy" decoding="async"><div class="hero-content"><span class="badge" style="background: ${warnaHero}">${kategoriHero}</span><h2>${hero.title}</h2></div></a>`;
+    html += `<a href="/berita/${hero.slug}.html" class="news-hero"><img src="${hero.image}" alt="${hero.title}" loading="lazy" decoding="async"><div class="hero-content"><span class="badge" style="background: ${warnaHero}">${kategoriHero}</span><h2>${hero.title}</h2></div></a>`;
     if (posts.length > 1) {
         html += '<div class="news-grid">';
         posts.slice(1, 5).forEach(post => {
             const kategori = post.kategori || 'BERITA';
             const warna = kategoriWarna[kategori.toUpperCase()] || '#d32f2f';
-            html += `<a href="/berita.html?slug=${post.slug}" class="news-card"><img src="${post.image}" alt="${post.title}" loading="lazy" decoding="async"><div class="card-content"><span class="badge" style="background: ${warna}">${kategori}</span><h3>${post.title}</h3></div></a>`;
+            
+            //html += `<a href="/berita.html?slug=${post.slug}" class="news-card"> <img src="${post.image}" alt="${post.title}" loading="lazy" decoding="async"><div class="card-content"><span class="badge" style="background: ${warna}">${kategori}</span><h3>${post.title}</h3></div></a>`;
+        });
+            html += `<a href="/berita/${hero.slug}.html" class="news-hero"> <img src="${post.image}" alt="${post.title}" loading="lazy" decoding="async"><div class="card-content"><span class="badge" style="background: ${warna}">${kategori}</span><h3>${post.title}</h3></div></a>`;
         });
         html += '</div>';
     }
@@ -423,7 +427,10 @@ function tampilkanBerita(posts) {
         posts.slice(5, 10).forEach((post, index) => {
             const kategori = post.kategori || 'BERITA';
             const warna = kategoriWarna[kategori.toUpperCase()] || '#d32f2f';
-            html += `<a href="/berita.html?slug=${post.slug}" class="trending-item" style="display:flex;gap:12px;padding:12px 8px;border-bottom:1px solid #eee;text-decoration:none;color:inherit;"><div style="font-size:28px;font-weight:800;color:var(--warna-merah);min-width:32px;">${index + 1}</div><div><span class="badge" style="background: ${warna}">${kategori}</span><h4 style="font-size:15px;font-weight:700;">${post.title}</h4></div></a>`;
+            
+            //html += `<a href="/berita.html?slug=${post.slug}" class="trending-item" style="display:flex;gap:12px;padding:12px 8px;border-bottom:1px solid #eee;text-decoration:none;color:inherit;"><div style="font-size:28px;font-weight:800;color:var(--warna-merah);min-width:32px;">${index + 1}</div><div><span class="badge" style="background: ${warna}">${kategori}</span><h4 style="font-size:15px;font-weight:700;">${post.title}</h4></div></a>`;
+        });
+            html += `<a href="/berita/${hero.slug}.html" class="trending-item" style="display:flex;gap:12px;padding:12px 8px;border-bottom:1px solid #eee;text-decoration:none;color:inherit;"><div style="font-size:28px;font-weight:800;color:var(--warna-merah);min-width:32px;">${index + 1}</div><div><span class="badge" style="background: ${warna}">${kategori}</span><h4 style="font-size:15px;font-weight:700;">${post.title}</h4></div></a>`;
         });
         html += '</div>';
     }
@@ -432,7 +439,9 @@ function tampilkanBerita(posts) {
         posts.slice(10).forEach(post => {
             const kategori = post.kategori || 'BERITA';
             const warna = kategoriWarna[kategori.toUpperCase()] || '#d32f2f';
-            html += `<a href="/berita.html?slug=${post.slug}" class="carousel-item"><img src="${post.image}" alt="${post.title}" loading="lazy" decoding="async"><div class="card-content"><span class="badge" style="background: ${warna}">${kategori}</span><h4>${post.title}</h4></div></a>`;
+            //html += `<a href="/berita.html?slug=${post.slug}" class="carousel-item"><img src="${post.image}" alt="${post.title}" loading="lazy" decoding="async"><div class="card-content"><span class="badge" style="background: ${warna}">${kategori}</span><h4>${post.title}</h4></div></a>`;
+        });
+            html += `<a href="/berita/${hero.slug}.html" class="carousel-item"><img src="${post.image}" alt="${post.title}" loading="lazy" decoding="async"><div class="card-content"><span class="badge" style="background: ${warna}">${kategori}</span><h4>${post.title}</h4></div></a>`;
         });
         html += '</div></div>';
     }
