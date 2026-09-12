@@ -1,4 +1,7 @@
 [
+  "/berita/bawa-baterai-raksasa-12000-mah-ini-bocoran-spesifikasi-unggulan-xiaomi-pad-9-pro.html",
+  "/berita/menelusuri-rekam-jejak-hari-radio-nasional-11-september-dan-lahirnya-radio-repub.html",
+  "/berita/mengenal-drone-thermal-teknologi-canggih-penembus-asap-untuk-deteksi-dini-karhut.html",
   "/berita/baru-23.741-rumah-dibedah-pemerintah-kejar-target-2-juta-unit-di-2027.html",
   "/berita/tahan-harga-bbm-di-tengah-minyak-us$-108-per-barel-bahlil-demi-daya-beli-masyarakat-subsidi.html",
   "/berita/pertamina-tunggu-lampu-hijau-pemerintah-wacana-batasi-pertalite-untuk-desil-9-10-masih-digodok.html",
