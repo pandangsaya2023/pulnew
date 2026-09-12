@@ -1,9 +1,9 @@
 [
   "/berita/2-siswa-keracunan-mbg-karo-dirujuk-ke-jakarta-gibran-pantau-langsung-pemulihannya.html",
   "/berita/hari-radio-nasional-11-september-sejarah-lahirnya-rri-dan-peran-pentingnya-di-masa-revolusi.html",
-  "/berita/kemenhaj-hapus-lunas-tanda-ganti-haji-khusus-tutup-celah-jual-beli-antrean.html",
   "/berita/baru-23.741-rumah-dibedah-pemerintah-kejar-target-2-juta-unit-di-2027.html",
   "/berita/tahan-harga-bbm-di-tengah-minyak-us$-108-per-barel-bahlil-demi-daya-beli-masyarakat-subsidi.html",
+  "/berita/kemenhaj-hapus-lunas-tanda-ganti-haji-khusus-tutup-celah-jual-beli-antrean.html",
   "/berita/pertamina-tunggu-lampu-hijau-pemerintah-wacana-batasi-pertalite-untuk-desil-9-10-masih-digodok.html",
   "/berita/pemerintah-hapus-bansos-tunai-mulai-2027-50-juta-kpm-wajib-punya-rekening-bri-dan-bsi.html",
   "/berita/gunung-anak-krakatau-erupsi-lagi-letusan-pagi-ini-tak-terlihat-karena-kabut-tebal.html",
