@@ -408,8 +408,8 @@ function tampilkanBerita(posts) {
     const hero = posts[0];
     const kategoriHero = hero.kategori || 'BERITA';
     const warnaHero = kategoriWarna[kategoriHero.toUpperCase()] || '#d32f2f';
-    //html += `<a href="/berita.html?slug=${hero.slug}" class="news-hero"><img src="${hero.image}" alt="${hero.title}" loading="lazy" decoding="async"><div class="hero-content"><span class="badge" style="background: ${warnaHero}">${kategoriHero}</span><h2>${hero.title}</h2></div></a>`;
-    html += `<a href="/berita/${hero.slug}.html" class="news-hero"><img src="${hero.image}" alt="${hero.title}" loading="lazy" decoding="async"><div class="hero-content"><span class="badge" style="background: ${warnaHero}">${kategoriHero}</span><h2>${hero.title}</h2></div></a>`;
+    html += `<a href="/berita.html?slug=${hero.slug}" class="news-hero"><img src="${hero.image}" alt="${hero.title}" loading="lazy" decoding="async"><div class="hero-content"><span class="badge" style="background: ${warnaHero}">${kategoriHero}</span><h2>${hero.title}</h2></div></a>`;
+    //html += `<a href="/berita/${hero.slug}.html" class="news-hero"><img src="${hero.image}" alt="${hero.title}" loading="lazy" decoding="async"><div class="hero-content"><span class="badge" style="background: ${warnaHero}">${kategoriHero}</span><h2>${hero.title}</h2></div></a>`;
     if (posts.length > 1) {
         html += '<div class="news-grid">';
         posts.slice(1, 5).forEach(post => {
