@@ -163,7 +163,7 @@ async function tampilkanBeritaLainnya(slugSaatIni) {
 
         container.innerHTML = lainnya.map(p => {
             return `
-            <a href="/berita.html?slug=${p.slug}" class="related-item">
+            <a href="/berita/${p.slug}.html" class="related-item">
                 <img src="${p.image}" alt="${p.title}" loading="lazy" onerror="this.src='/media/og-default.jpg'">
                 <h4>${p.title}</h4>
             </a>
