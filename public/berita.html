@@ -104,7 +104,7 @@ const image = post.image || 'https://pulnew.pages.dev/logopulnew.png';
 document.title = post.title + " - PULNEW.com";
 
 const setMeta = (property, content) => {
-let meta = document.querySelector(meta[property="${property}"]`);
+let meta = document.querySelector(`meta[property="${property}"]`);
 if (meta) meta.setAttribute('content', content);
 };
 setMeta('og:title', post.title);
@@ -137,7 +137,7 @@ function formatWIB(dateString) {
 
 async function fetchPostDetail(slug) {
 try {
-const res = await fetch(/posts/${slug}.json?t=` + Date.now());
+const res = await fetch(`/posts/${slug}.json?t=` + Date.now());
 if(!res.ok) throw new Error("File JSON tidak ditemukan");
 return await res.json();
 } catch { return null; }
@@ -182,13 +182,13 @@ const slugTujuan = getSlugFromURL(); // AMBIL DARI NAMA FILE
 const contentArea = document.getElementById('content-area');
 
 if (!slugTujuan) {
-contentArea.innerHTML = <div class="error"&gt;404 - Link Tidak Valid&lt;br&gt;&lt;a href="/"&gt;Kembali ke Beranda&lt;/a&gt;&lt;/div>;
+contentArea.innerHTML = `<div class="error"&gt;404 - Link Tidak Valid&lt;br&gt;&lt;a href="/"&gt;Kembali ke Beranda&lt;/a&gt;&lt;/div>`;
 return;
 }
 
 const post = await fetchPostDetail(slugTujuan);
 if(!post) {
-contentArea.innerHTML = <div class="error"&gt;Gagal memuat berita&lt;br&gt;&lt;a href="/"&gt;← Kembali&lt;/a&gt;&lt;/div>;
+contentArea.innerHTML = `<div class="error"&gt;Gagal memuat berita&lt;br&gt;&lt;a href="/"&gt;← Kembali&lt;/a&gt;&lt;/div>`;
 return;
 }
 
