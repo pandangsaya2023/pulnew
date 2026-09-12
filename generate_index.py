@@ -48,11 +48,16 @@ def generate_article_page(article):
     os.makedirs("public/berita", exist_ok=True)
     body_html = markdown.markdown(article.get('body', ''), extensions=['extra'])
     
-    desc = article.get('lead', '') or body_html[:160].replace('<','').replace('>','') + '...'
+    # 1. BIKIN URL GAMBAR FULL
+    image = article.get('image','')
+    if image.startswith('/'):
+        image = BASE_URL + image # -> https://pulnew.pages.dev/media/257943.jpg
+    
+    # 2. BIKIN DESKRIPSI DARI BODY
+    desc = body_html.replace('<strong>','').replace('</strong>','').replace('<p>','').replace('</p>','')[:160] + '...'
+    
+    # 3. URL BERITA FULL
     url_lengkap = f"{BASE_URL}/berita/{article['slug']}.html"
-    image_lengkap = article.get('image','') 
-    if image_lengkap.startswith('/'):
-        image_lengkap = BASE_URL + image_lengkap
 
     html_content = f"""<!DOCTYPE html>
 <html lang="id">
@@ -61,10 +66,10 @@ def generate_article_page(article):
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{article['title']} - PULNEW.com</title>
 
-<!-- INI YG BIKIN WA NONGOL -->
+<!-- INI YG DIBACA WA -->
 <meta property="og:title" content="{article['title']}">
 <meta property="og:description" content="{desc}">
-<meta property="og:image" content="{image_lengkap}">
+<meta property="og:image" content="{image}">
 <meta property="og:url" content="{url_lengkap}">
 <meta property="og:type" content="article">
 <meta name="twitter:card" content="summary_large_image">
@@ -75,7 +80,7 @@ def generate_article_page(article):
 <div class="container">
 <h1>{article['title']}</h1>
 <p class="meta">{article['date']} | {article['kategori']}</p>
-<img src="{article.get('image','')}" alt="{article['title']}" class="featured-img">
+<img src="{image}" alt="{article['title']}" class="featured-img">
 <div class="article-content">{body_html}</div>
 <a href="/">← Kembali ke Beranda</a>
 </div>
@@ -83,3 +88,4 @@ def generate_article_page(article):
 </html>"""
     with open(f"public/berita/{article['slug']}.html", 'w', encoding='utf-8') as f:
         f.write(html_content)
+    print(f"✅ Generated: {article['slug']}.html")
