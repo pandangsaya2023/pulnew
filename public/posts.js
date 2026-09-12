@@ -1,4 +1,5 @@
 [
+  "/berita/2-siswa-keracunan-mbg-karo-dirujuk-ke-jakarta-gibran-pantau-langsung-pemulihannya.html",
   "/berita/hari-radio-nasional-11-september-sejarah-lahirnya-rri-dan-peran-pentingnya-di-masa-revolusi.html",
   "/berita/baru-23.741-rumah-dibedah-pemerintah-kejar-target-2-juta-unit-di-2027.html",
   "/berita/tahan-harga-bbm-di-tengah-minyak-us$-108-per-barel-bahlil-demi-daya-beli-masyarakat-subsidi.html",
