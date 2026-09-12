@@ -95,7 +95,7 @@ async function muatHalamanBerita() {
     const slugTujuan = getSlugFromURL(); 
     const contentArea = document.getElementById('content-area');
     
-    if (!slugTujuan || slugTujuan === 'berita') {
+    if (!slugTujuan || slugTujuan === '/berita') {
         contentArea.innerHTML = `<div class="error">404 - Link Tidak Valid<br><a href="/">Kembali ke Beranda</a></div>`;
         return;
     }
