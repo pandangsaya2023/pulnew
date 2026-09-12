@@ -1,21 +1,22 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8902628805606588" crossorigin="anonymous"></script>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PULNEW - Detail Berita</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8902628805606588" crossorigin="anonymous"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Memuat... - PULNEW.com</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-    <meta property="og:title" content="PULNEW.COM">
-    <meta property="og:description" content="">
-    <!--<<meta property="og:description" content="Menyajikan Informasi Langsung Ke Perangkat Anda">-->
-    <meta property="og:image" content="https://pulnew.pages.dev/media/og-image.png">
-    <meta property="og:url" content="">
-    <meta property="og:type" content="article">
-    <meta name="twitter:card" content="summary_large_image">
-
+<!-- META DEFAULT - NANTI DIGANTI OTOMATIS SAMA JS -->
+<meta property="og:site_name" content="PULNEW.COM">
+<meta property="og:title" content="PULNEW.COM">
+<meta property="og:description" content="Menyajikan Informasi Langsung Ke Perangkat Anda">
+<meta property="og:image" content="https://pulnew.pages.dev/logopulnew.png">
+<meta property="og:url" content="https://pulnew.pages.dev">
+<meta property="og:type" content="article">
+<meta name="twitter:card" content="summary_large_image">
+   
     <style>
         :root { --jarak-utama: 8px; --warna-merah: #d32f2f; --warna-biru: #1a237e; --warna-bg: #f4f6f9; }
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif; }
@@ -73,43 +74,43 @@
     </style>
 
 </head>
-<body>
-    <div class="header-container">
-        <div class="logo-bar">
-            <a href="https://pulnew.pages.dev/">
-              <div class="logo-img-wrapper"><img src="https://pulnew.pages.dev/logopulnew.png" alt="Logo"></div>
-              <div class="logo-text">PUL<span class="logo-new">NEW</span>.COM</div>
-            </a>
-            <a href="https://pulnew.pages.dev/" class="btn-beranda">← Beranda</a>
-        </div>
-    </div>
 
-    <div class="content-wrapper"><div class="article-box" id="content-area"><div class="loading">Memuat berita...</div></div></div>
-    <div class="footer-ticker"><div class="ticker-content" id="running-text">MEMUAT INFORMASI TERKINI...</div></div>
+<body>
+<div class="header-container">
+<div class="logo-bar">
+<a href="https://pulnew.pages.dev/">
+<div class="logo-img-wrapper"><img src="https://pulnew.pages.dev/logopulnew.png" alt="Logo"></div>
+<div class="logo-text">PUL<span class="logo-new">NEW</span>.COM</div>
+</a>
+<a href="https://pulnew.pages.dev/" class="btn-beranda">← Beranda</a>
+</div>
+</div>
+
+<div class="content-wrapper"><div class="article-box" id="content-area"><div class="loading">Memuat berita...</div></div></div>
 
 <script>
-let currentSlug = "";
-
-function updateMetaTags(post) {
-    document.title = post.title + " - PULNEW.com";
-    const setMeta = (attr, val, content) => {
-        let meta = document.querySelector(`meta[${attr}="${val}"]`);
-        if (!meta) { meta = document.createElement('meta'); meta.setAttribute(attr, val); document.head.appendChild(meta); }
-        meta.setAttribute('content', content);
-    };
-    const desc = (post.body || post.content || '').substring(0, 160).replace(/<[^>]*>/g, '') + '...';
-    setMeta('property', 'og:title', post.title);
-    setMeta('property', 'og:description', desc);
-    setMeta('property', 'og:image', post.image || post.thumbnail || '/media/og-default.jpg');
-    setMeta('property', 'og:url', window.location.href);
-    setMeta('name', 'twitter:title', post.title);
-    setMeta('name', 'twitter:description', desc);
-    setMeta('name', 'twitter:image', post.image || post.thumbnail || '/media/og-default.jpg');
+// AMBIL NAMA FILE DARI URL /berita/fileberita1.html
+function getSlugFromURL() {
+const path = window.location.pathname; // /berita/fileberita1.html
+const slug = path.split('/').pop().replace('.html', ''); // fileberita1
+return slug;
 }
 
-function copyLink() {
-    navigator.clipboard.writeText(window.location.href);
-    alert("✅ Link berita sudah disalin!");
+function updateMetaTags(post) {
+const linkBerita = window.location.href;
+const desc = (post.content || post.body || '').substring(0, 160).replace(/<[^>]*>/g, '').trim() + '...';
+const image = post.image || 'https://pulnew.pages.dev/logopulnew.png';
+
+document.title = post.title + " - PULNEW.com";
+
+const setMeta = (property, content) => {
+let meta = document.querySelector(meta[property="${property}"]`);
+if (meta) meta.setAttribute('content', content);
+};
+setMeta('og:title', post.title);
+setMeta('og:description', desc);
+setMeta('og:image', image);
+setMeta('og:url', linkBerita);
 }
 
 // CEK JAM TAYANG WIB
@@ -133,13 +134,13 @@ function formatWIB(dateString) {
         minute: "2-digit"
     }) + " WIB";
 }    
- 
+
 async function fetchPostDetail(slug) {
-    try {
-        const res = await fetch(`/posts/${slug}.json?t=` + Date.now(), { cache: 'no-store' });
-        if(!res.ok) throw new Error("File JSON tidak ditemukan");
-        return await res.json();
-    } catch { return null; }
+try {
+const res = await fetch(/posts/${slug}.json?t=` + Date.now());
+if(!res.ok) throw new Error("File JSON tidak ditemukan");
+return await res.json();
+} catch { return null; }
 }
 
 // === VERSI BARU: PAKE INDEX.JSON BIAR NGEBUT ===
@@ -177,59 +178,36 @@ async function tampilkanBeritaLainnya(slugSaatIni) {
 }
 
 async function muatHalamanBerita() {
-    const slugTujuan = new URLSearchParams(window.location.search).get('slug');
-    if(slugTujuan === currentSlug) return; 
-    currentSlug = slugTujuan;
+const slugTujuan = getSlugFromURL(); // AMBIL DARI NAMA FILE
+const contentArea = document.getElementById('content-area');
 
-    const contentArea = document.getElementById('content-area');
-    if (!slugTujuan) {
-        contentArea.innerHTML = `<div class="error">404 - Link Tidak Valid<br><a href="/">Kembali ke Beranda</a></div>`;
-        return;
-    }
-
-    try {
-        const post = await fetchPostDetail(slugTujuan);
-        if(!post) throw new Error("Berita tidak ditemukan");
-
-        updateMetaTags(post);
-        const tanggal = new Date(post.date || post.created_at).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit' });
-        const isiBerita = post.content || post.body || '';
-        
-        //const linkBerita = window.location.origin + "/berita/" + slugTujuan + ".html";
-        const linkBerita = window.location.href;
-        const textShare = encodeURIComponent(post.title + ' - ' + linkBerita);
-        const kategori = (post.kategori || post.Kategori || post.category || 'BERITA');
-
-        contentArea.innerHTML = `
-            <h1 class="article-title">${post.title}</h1>
-            <div class="article-meta">${tanggal} WIB | ${kategori.toUpperCase()}</div>
-            <img src="${post.image || post.thumbnail}" class="main-image" alt="${post.title}">
-            <div class="share-article">
-                <a href="https://wa.me/?text=${textShare}" target="_blank" class="share-wa"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-                <a href="https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(linkBerita)}" target="_blank" class="share-fb"><i class="fab fa-facebook"></i> Facebook</a>
-                <a href="https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=${encodeURIComponent(linkBerita)}" target="_blank" class="share-x"><i class="fab fa-x-twitter"></i> X</a>
-                <button onclick="copyLink()" class="share-copy"><i class="fas fa-link"></i> Salin Link</button>
-            </div>
-            <div class="article-body">${isiBerita}</div>
-            <div class="related-section">
-                <h3 class="section-title">BERITA LAINNYA</h3>
-                <div id="berita-lainnya"><div class="loading" style="padding:20px 0">Memuat...</div></div>
-            </div>
-        `;
-
-        document.getElementById('running-text').textContent = `INFO NEWS: ${post.title} | PULNEW.com`;
-        tampilkanBeritaLainnya(slugTujuan); // PANGGIL FUNGSI BARU
-        window.scrollTo(0,0);
-
-    } catch (e) {
-        contentArea.innerHTML = `<div class="error">Gagal memuat berita: ${e.message}<br><a href="/">← Kembali</a></div>`;
-    }
+if (!slugTujuan) {
+contentArea.innerHTML = <div class="error"&gt;404 - Link Tidak Valid&lt;br&gt;&lt;a href="/"&gt;Kembali ke Beranda&lt;/a&gt;&lt;/div>;
+return;
 }
 
-window.addEventListener('popstate', muatHalamanBerita);
-document.addEventListener('DOMContentLoaded', muatHalamanBerita);
+const post = await fetchPostDetail(slugTujuan);
+if(!post) {
+contentArea.innerHTML = <div class="error"&gt;Gagal memuat berita&lt;br&gt;&lt;a href="/"&gt;← Kembali&lt;/a&gt;&lt;/div>;
+return;
+}
 
-</script>
+updateMetaTags(post); // UPDATE META BUAT WA
+
+const tanggal = new Date(post.date).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit' }) + " WIB";
+const isiBerita = post.content || post.body || '';
+const linkBerita = window.location.href;
+const textShare = encodeURIComponent(post.title + ' - ' + linkBerita);
+
+contentArea.innerHTML = &lt;h1 class="article-title"&gt;${post.title}</h1>
+<div class="article-meta">${tanggal} | ${(post.kategori||'BERITA').toUpperCase()}</div>
+<img src="${post.image}" class="main-image" alt="${post.title}">
+<div class="share-article">
+<a href="https://wa.me/?text=${textShare}" target="_blank" class="share-wa"&gt;&lt;i class="fab fa-whatsapp"&gt;&lt;/i&gt; WhatsApp&lt;/a&gt; &lt;a href="https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(linkBerita)}" target="_blank" class="share-fb"><i class="fab fa-facebook"></i> Facebook</a>
+<button onclick="navigator.clipboard.writeText('${linkBerita}'); alert('Link disalin')" class="share-copy"&gt;&lt;i class="fas fa-link"&gt;&lt;/i&gt; Salin Link&lt;/button&gt; &lt;/div&gt; &lt;div class="article-body"&gt;${isiBerita}&lt;/div&gt;;
+}
+
+document.addEventListener('DOMContentLoaded', muatHalamanBerita);
 
     <!-- Video Youtune -->
 
@@ -285,5 +263,6 @@ document.addEventListener('DOMContentLoaded', muatHalamanBerita);
       document.querySelector('.sticky-video-wrapper').style.display = 'none';
     });
     </script>
+</script>
 </body>
 </html>
