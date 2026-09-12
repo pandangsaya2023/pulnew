@@ -47,12 +47,28 @@ def update_posts_js(all_posts):
 def generate_article_page(article):
     os.makedirs("public/berita", exist_ok=True)
     body_html = markdown.markdown(article.get('body', ''), extensions=['extra'])
+    
+    desc = article.get('lead', '') or body_html[:160].replace('<','').replace('>','') + '...'
+    url_lengkap = f"{BASE_URL}/berita/{article['slug']}.html"
+    image_lengkap = article.get('image','') 
+    if image_lengkap.startswith('/'):
+        image_lengkap = BASE_URL + image_lengkap
+
     html_content = f"""<!DOCTYPE html>
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<title>{article['title']} - PULNEW</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{article['title']} - PULNEW.com</title>
+
+<!-- INI YG BIKIN WA NONGOL -->
+<meta property="og:title" content="{article['title']}">
+<meta property="og:description" content="{desc}">
+<meta property="og:image" content="{image_lengkap}">
+<meta property="og:url" content="{url_lengkap}">
+<meta property="og:type" content="article">
+<meta name="twitter:card" content="summary_large_image">
+
 <link rel="stylesheet" href="/style.css">
 </head>
 <body>
@@ -60,22 +76,10 @@ def generate_article_page(article):
 <h1>{article['title']}</h1>
 <p class="meta">{article['date']} | {article['kategori']}</p>
 <img src="{article.get('image','')}" alt="{article['title']}" class="featured-img">
-<div class="article-content">
-{body_html}
+<div class="article-content">{body_html}</div>
+<a href="/">← Kembali ke Beranda</a>
 </div>
-</div>
-<script src="/berita.js"></script>
 </body>
 </html>"""
     with open(f"public/berita/{article['slug']}.html", 'w', encoding='utf-8') as f:
         f.write(html_content)
-
-if __name__ == "__main__":
-    print("=== GENERATE INDEX & HTML ===")
-    semua_post = get_existing_posts()
-    update_index_json(semua_post)
-    update_posts_js(semua_post)
-    for slug, article in semua_post.items():
-        generate_article_page(article)
-    print("Selesai!")
-
