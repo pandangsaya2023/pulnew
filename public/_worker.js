@@ -2,7 +2,7 @@ export default {
   async fetch(request, env) {
     const url = new URL(request.url);
     
-    // 1. Cek apakah yang dibuka adalah halaman berita dan memiliki parameter slug
+    // Cek jika halaman yang dibuka adalah berita.html dan memiliki parameter slug
     if (url.pathname === '/berita.html' && url.searchParams.has('slug')) {
       const slug = url.searchParams.get('slug');
       
@@ -11,46 +11,54 @@ export default {
       
       try {
         // Ambil data JSON berita terkait di latar belakang server
-        const jsonUrl = `${url.origin}/posts/${slug}.json`;
+        const jsonUrl = `${url.origin}/posts/${slug}.json?t=${Date.now()}`;
         const jsonRes = await fetch(jsonUrl);
         
         if (jsonRes.ok) {
           const post = await jsonRes.json();
           
-          // Siapkan data pengganti untuk Meta Tag WhatsApp
-          const title = post.title ? `${post.title} - PULNEW` : "PULNEW";
+          const title = post.title ? `${post.title} - PULNEW.com` : "PULNEW.COM";
           const rawBody = post.body || post.content || "";
-          const desc = rawBody.replace(/<[^>]*>/g, '').substring(0, 160) + "...";
+          const desc = rawBody.replace(/<[^>]*>/g, '').substring(0, 150) + "...";
           const image = post.image || post.thumbnail || `${url.origin}/media/og-default.jpg`;
           
-          // Jalankan fitur HTML Rewriter untuk menyuntikkan tag secara realtime
+          // Susun tag meta baru yang bersih dan dipaksa menggunakan tanda kutip penuh
+          const metaTagsInject = `
+            <title>${title}</title>
+            <meta property="og:title" content="${post.title || 'PULNEW.COM'}" />
+            <meta property="og:description" content="${desc}" />
+            <meta property="og:image" content="${image}" />
+            <meta property="og:url" content="${url.href}" />
+            <meta property="og:type" content="article" />
+            <meta name="twitter:card" content="summary_large_image" />
+          `;
+          
+          // LANGSUNG SUNTIKKAN TEPAT DI BAWAH <head> & HAPUS TAG LAMA AGAR TIDAK BENTROK
           return new HTMLRewriter()
+            .on('head', {
+              element(el) {
+                // Taruh tag meta baru paling atas di dalam HEAD
+                el.prepend(metaTagsInject, { html: true });
+              }
+            })
             .on('title', {
-              element(el) { el.setInnerContent(title); }
+              element(el) { el.remove(); } // Hapus title bawaan agar tidak ganda
             })
-            .on('meta[property="og:title"]', {
-              element(el) { el.setAttribute('content', post.title || ""); }
+            .on('meta[property^="og:"]', {
+              element(el) { el.remove(); } // Bersihkan semua meta og bawaan html
             })
-            .on('meta[property="og:description"]', {
-              element(el) { el.setAttribute('content', desc); }
-            })
-            .on('meta[property="og:image"]', {
-              element(el) { el.setAttribute('content', image); }
-            })
-            .on('meta[property="og:url"]', {
-              element(el) { el.setAttribute('content', url.href); }
+            .on('meta[name^="twitter:"]', {
+              element(el) { el.remove(); } // Bersihkan meta twitter bawaan html
             })
             .transform(response);
         }
       } catch (e) {
-        console.error("Gagal menyuntikkan Meta Tag:", e);
+        console.error("Gagal melakukan manipulasi tag:", e);
       }
       
       return response;
     }
     
-    // Jika bukan halaman berita, biarkan Cloudflare Pages memuat file seperti biasa
     return env.ASSETS.fetch(request);
   }
 };
-
