@@ -8,7 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-    <meta property="og:title" content="PULNEW.COM">
+    <meta property="og:title" content="PULNEW">
     <meta property="og:description" content="">
     <!--<<meta property="og:description" content="Menyajikan Informasi Langsung Ke Perangkat Anda">-->
     <meta property="og:image" content="https://pulnew.pages.dev/media/og-image.png">
@@ -91,7 +91,7 @@
 let currentSlug = "";
 
 function updateMetaTags(post) {
-    document.title = post.title + " - PULNEW.com";
+    document.title = post.title + " - PULNEW";
     const setMeta = (attr, val, content) => {
         let meta = document.querySelector(`meta[${attr}="${val}"]`);
         if (!meta) { meta = document.createElement('meta'); meta.setAttribute(attr, val); document.head.appendChild(meta); }
