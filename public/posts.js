@@ -1,4 +1,5 @@
 [
+  "/berita/pakar-ai-Ingatkan-risiko-kepunahan-manusia-perlombaan-teknologi-dinilai-bahayakan-dunia.html",
   "/berita/2-siswa-keracunan-mbg-karo-dirujuk-ke-jakarta-gibran-pantau-langsung-pemulihannya.html",
   "/berita/hari-radio-nasional-11-september-sejarah-lahirnya-rri-dan-peran-pentingnya-di-masa-revolusi.html",
   "/berita/baru-23.741-rumah-dibedah-pemerintah-kejar-target-2-juta-unit-di-2027.html",
