@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         document.getElementById('og-title').setAttribute("content", post.title);
         document.getElementById('og-description').setAttribute("content", post.description || "");
         document.getElementById('og-image').setAttribute("content", post.image);
+        document.getElementById('og-url').setAttribute("content", window.location.href); // tambahan
 
         // 3. ISI KONTEN BERITA
         document.getElementById('judul-berita').innerText = post.title;
@@ -23,19 +24,11 @@ document.addEventListener('DOMContentLoaded', async () => {
         document.getElementById('gambar-berita').alt = post.title;
         document.getElementById('isi-berita').innerHTML = post.body; // isi dari markdown
 
-        // 4. KODE "BERITA LAINNYA"  PUNYAMU
-
-        const container = document.getElementById('berita-lainnya'); // kasih id ini di div "BERITA LAINNYA"
-        if(!container) return;
-
-        const currentSlug = window.location.pathname.split('/').pop().replace('.html','');
-
-        
-            const res = await fetch('/posts/index.json'); // <--- Cuma fetch 1 file
-            const posts = await res.json();
-
+        // 4. KODE "BERITA LAINNYA"
+        const container = document.getElementById('berita-lainnya');
+        if(container){
             // Filter berita yg bukan yg sedang dibuka
-            const lainnya = posts.filter(p => p.slug!== currentSlug).slice(0, 3);
+            const lainnya = posts.filter(p => p.slug !== currentSlug).slice(0, 3);
 
             let html = '';
             lainnya.forEach(p => {
@@ -46,8 +39,9 @@ document.addEventListener('DOMContentLoaded', async () => {
                 </a>`;
             });
             container.innerHTML = html;
-
-        } catch(e) {
-            container.innerHTML = 'Gagal memuat';
         }
-    });
+
+    } catch(e) {
+        console.log('Gagal memuat', e);
+    }
+});
