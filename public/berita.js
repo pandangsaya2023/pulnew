@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         const currentSlug = window.location.pathname.split('/').pop().replace('.html','');
 
-        try {
+        
             const res = await fetch('/posts/index.json'); // <--- Cuma fetch 1 file
             const posts = await res.json();
 
