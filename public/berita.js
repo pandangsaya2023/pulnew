@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         document.getElementById('gambar-berita').alt = post.title;
         document.getElementById('isi-berita').innerHTML = post.body; // isi dari markdown
 
-        // 4. KODE "BERITA LAINNYA" PUNYAMU
+        // 4. KODE "BERITA LAINNYA"  PUNYAMU
 
         const container = document.getElementById('berita-lainnya'); // kasih id ini di div "BERITA LAINNYA"
         if(!container) return;
