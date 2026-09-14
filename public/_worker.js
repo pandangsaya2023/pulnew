@@ -13,7 +13,7 @@ export default {
         if (jsonRes.ok) {
           const post = await jsonRes.json();
           
-          const title = post.title ? `${post.title} - PULNEW.com` : "PULNEW.COM";
+          const title = post.title ? `${post.title} - PULNEW` : "PULNEW";
           const rawBody = post.body || post.content || "";
           const desc = rawBody.replace(/<[^>]*>/g, '').substring(0, 150) + "...";
           
@@ -34,7 +34,7 @@ export default {
           
           const metaTagsInject = `
             <title>${title}</title>
-            <meta property="og:title" content="${post.title || 'PULNEW.COM'}" />
+            <meta property="og:title" content="${post.title || 'PULNEW'}" />
             <meta property="og:description" content="${desc}" />
             <meta property="og:image" content="${image}" />
             <meta property="og:url" content="${url.href}" />
