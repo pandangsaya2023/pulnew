@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const container = document.getElementById('berita-lainnya'); // kasih id ini di div "BERITA LAINNYA"
         if(!container) return;
 
+    
         const currentSlug = window.location.pathname.split('/').pop().replace('.html','');
 
         try {
