@@ -111,13 +111,16 @@ let currentSlug = "";
 
 function updateMetaTags(post) {
     document.title = post.title + " - PULNEW";
+    // INI YG DIUBAH: PRIORITAS KE post.meta_description DULU
+    const desc = post.meta_description || (post.body || post.content || '').substring(0, 160).replace(/<[^>]*>/g, '') + '...';
+    const img = post.image || post.thumbnail || 'https://pulnew.pages.dev/media/og-default.jpg';
+    
     const setMeta = (attr, val, content) => {
         let meta = document.querySelector(`meta[${attr}="${val}"]`);
         if (!meta) { meta = document.createElement('meta'); meta.setAttribute(attr, val); document.head.appendChild(meta); }
         meta.setAttribute('content', content);
     };
-    // INI YG DIUBAH: PRIORITAS KE post.meta_description DULU
-    const desc = post.meta_description || (post.body || post.content || '').substring(0, 160).replace(/<[^>]*>/g, '') + '...';
+    
     //const desc = (post.body || post.content || '').substring(0, 160).replace(/<[^>]*>/g, '') + '...';
     setMeta('name', 'description', desc); // <-- INI TADI BELUM ADA
     setMeta('property', 'og:title', post.title);
