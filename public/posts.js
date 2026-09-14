@@ -1,4 +1,5 @@
 [
+  "/berita/golden-double-tim-panjat-tebing-indonesia-borong-2-emas-di-world-climbing-series-guiyang-2026.html",
   "/berita/suahasil-nazara-buka-suara-soal-pergantian-pejabat-kemenkeu-era-purbaya.html",
   "/berita/reshuffle-kabinet-merah-putih-prabowo-lantik-suahasil-nazara-gantikan-purbaya-jadi-menkeu.html",
   "/berita/bukan-tolak-ai-bos-bos-teknologi-dunia-minta-laju-pengembangan-diperlambat.html",
