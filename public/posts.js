@@ -1,4 +1,5 @@
 [
+  "/berita/reshuffle-kabinet-merah-putih-prabowo-lantik-suahasil-nazara-gantikan-purbaya-jadi-menkeu.html",
   "/berita/bukan-tolak-ai-bos-bos-teknologi-dunia-minta-laju-pengembangan-diperlambat.html",
   "/berita/menhub-dudy-km-virgo-transport-8-belum-tenggelam-ditemukan-terbalik-di-laut-jawa.html",
   "/berita/pakar-ai-ingatkan-risiko-kepunahan-manusia-perlombaan-teknologi-dinilai-bahayakan-dunia.html",
