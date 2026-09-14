@@ -15,7 +15,8 @@ export default {
           
           const title = post.title ? `${post.title} - PULNEW` : "PULNEW";
           const rawBody = post.body || post.content || "";
-          const desc = rawBody.replace(/<[^>]*>/g, '').substring(0, 150) + "...";
+          //const desc = rawBody.replace(/<[^>]*>/g, '').substring(0, 150) + "...";
+          const desc = post.meta_description || (post.body || post.content || '').substring(0, 160).replace(/<[^>]*>/g, '') + '...';
           
           // --- PERBAIKAN OTOMATIS URL GAMBAR ---
           let rawImage = post.image || post.thumbnail || "/media/og-default.jpg";
