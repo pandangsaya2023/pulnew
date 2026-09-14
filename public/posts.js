@@ -1,5 +1,5 @@
 [
-  "/berita/suahasil-nazara-buka-suarasoal-pergantian-pejabat-kemenkeu-era-purbaya.html",
+  "/berita/suahasil-nazara-buka-suara-soal-pergantian-pejabat-kemenkeu-era-purbaya.html",
   "/berita/reshuffle-kabinet-merah-putih-prabowo-lantik-suahasil-nazara-gantikan-purbaya-jadi-menkeu.html",
   "/berita/bukan-tolak-ai-bos-bos-teknologi-dunia-minta-laju-pengembangan-diperlambat.html",
   "/berita/menhub-dudy-km-virgo-transport-8-belum-tenggelam-ditemukan-terbalik-di-laut-jawa.html",
