@@ -13,8 +13,9 @@
     <meta property="og:description" id="og-description" content="">
     <meta property="og:image" id="og-image" content="https://pulnew.pages.dev/media/og-image.png"> <!-- KASIH ID -->
     <meta property="og:url" id="og-url" content=""> <!-- KASIH ID -->
-    <meta property="og:twitter:card" content="summary_large_image">
-
+    <!--<meta property="og:twitter:card" content="summary_large_image"> -->
+    <meta name="twitter:card" content="summary_large_image">
+    
     <!-- ==========
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8902628805606588" crossorigin="anonymous"></script>
     <meta charset="UTF-8">
@@ -112,7 +113,10 @@ function updateMetaTags(post) {
         if (!meta) { meta = document.createElement('meta'); meta.setAttribute(attr, val); document.head.appendChild(meta); }
         meta.setAttribute('content', content);
     };
-    const desc = (post.body || post.content || '').substring(0, 160).replace(/<[^>]*>/g, '') + '...';
+    // INI YG DIUBAH: PRIORITAS KE post.meta_description DULU
+    const desc = post.meta_description || (post.body || post.content || '').substring(0, 160).replace(/<[^>]*>/g, '') + '...';
+    //const desc = (post.body || post.content || '').substring(0, 160).replace(/<[^>]*>/g, '') + '...';
+    setMeta('name', 'description', desc); // <-- INI TADI BELUM ADA
     setMeta('property', 'og:title', post.title);
     setMeta('property', 'og:description', desc);
     setMeta('property', 'og:image', post.image || post.thumbnail || '/media/og-default.jpg');
