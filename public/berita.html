@@ -121,7 +121,7 @@ function updateMetaTags(post) {
     };
     
     //const desc = (post.body || post.content || '').substring(0, 160).replace(/<[^>]*>/g, '') + '...';
-    setMeta('name', 'description', desc); // <-- INI TADI BELUM ADA
+    //setMeta('name', 'description', desc); // <-- INI TADI BELUM ADA
     setMeta('property', 'og:title', post.title);
     setMeta('property', 'og:description', desc);
     setMeta('property', 'og:image', post.image || post.thumbnail || '/media/og-default.jpg');
