@@ -35,8 +35,8 @@ export default {
           const metaTagsInjct = `
             <title>${title}</title>
             <meta name="description" content="${desc}" />
-            <link rel="icon" type="image/x-icon" href="${url.origin}/favicon.ico" />
-            <link rel="apple-touch-icon" type="image/x-icon" href="${url.origin}/favicon.ico" />
+            <link rel="icon" type="image/png" href="${url.origin}/logopulnew7.png" />
+            <link rel="apple-touch-icon" type="image/png" href="${url.origin}/logopulnew.png" />
             <meta property="og:title" content="${post.title || 'PULNEW'}" />
             <meta property="og:description" content="${desc}" />
             <meta property="og:image" content="${image}" />
