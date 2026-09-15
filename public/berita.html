@@ -91,10 +91,12 @@ let currentSlug = "";
 
 function updateMetaTags(post) {
     document.title = post.title + " - PULNEW";
-    // INI YG DIUBAH: PRIORITAS KE post.meta_description DULU
-    const desc = post.meta_description || (post.body || post.content || '').substring(0, 160).replace(/<[^>]*>/g, '') + '...';
-    const img = post.image || post.thumbnail || 'https://pulnew.pages.dev/media/og-default.jpg';
     
+    // INI YG DIUBAH: PRIORITAS KE post.meta_description DULU
+    //const desc = post.meta_description || (post.body || post.content || '').substring(0, 160).replace(/<[^>]*>/g, '') + '...';
+    const img = post.image || post.thumbnail || 'https://pulnew.pages.dev/media/og-default.jpg';
+    const desc = post.description || post.excerpt || (post.body || post.content || '').substring(0, 160).replace(/<[^>]*>/g, '') + '...';
+
     const setMeta = (attr, val, content) => {
         let meta = document.querySelector(`meta[${attr}="${val}"]`);
         if (!meta) { meta = document.createElement('meta'); meta.setAttribute(attr, val); document.head.appendChild(meta); }
