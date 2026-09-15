@@ -96,8 +96,6 @@ let currentSlug = "";
 function updateMetaTags(post) {
     document.title = post.title + " - PULNEW";
     
-    // INI YG DIUBAH: PRIORITAS KE post.meta_description DULU
-    //const desc = post.meta_description || (post.body || post.content || '').substring(0, 160).replace(/<[^>]*>/g, '') + '...';
     const img = post.image || post.thumbnail || 'https://pulnew.pages.dev/media/og-default.jpg';
     const desc = post.description || post.excerpt || (post.body || post.content || '').substring(0, 160).replace(/<[^>]*>/g, '') + '...';
 
@@ -107,8 +105,7 @@ function updateMetaTags(post) {
         meta.setAttribute('content', content);
     };
     
-    //const desc = (post.body || post.content || '').substring(0, 160).replace(/<[^>]*>/g, '') + '...';
-    setMeta('name', 'description', desc); // <-- INI TADI BELUM ADA
+    setMeta('name', 'description', desc);
     setMeta('property', 'og:title', post.title);
     setMeta('property', 'og:description', desc);
     setMeta('property', 'og:image', post.image || post.thumbnail || '/media/og-default.jpg');
