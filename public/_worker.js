@@ -15,8 +15,6 @@ export default {
 
           const title = post.title ? `${post.title} - PULNEW` : 'PULNEW';
           
-          // Mengambil description dari Sveltia CMS (field 'description' atau 'excerpt'), 
-          // jika tidak ada baru memotong dari body/content
           const rawBody = post.body || post.content || "";
           const cleanBody = rawBody.replace(/(<([^>]+)>)/ig, "");
           const desc = post.description || post.excerpt || (cleanBody ? cleanBody.substring(0, 150) + "..." : "");
@@ -25,7 +23,6 @@ export default {
           let rawImage = post.image || post.thumbnail || "/media/og-default.jpg";
           let image = rawImage;
 
-          // Jika alamat gambar di JSON belum diawali http/https, otomatis tambahkan domain Anda
           if (!rawImage.startsWith('http://') && !rawImage.startsWith('https://')) {
             if (rawImage.startsWith('/')) {
               image = `${url.origin}${rawImage}`;
@@ -38,6 +35,8 @@ export default {
           const metaTagsInjct = `
             <title>${title}</title>
             <meta name="description" content="${desc}" />
+            <link rel="icon" type="image/png" href="${url.origin}/logopulnew7.png" />
+            <link rel="apple-touch-icon" href="${url.origin}/logopulnew7.png" />
             <meta property="og:title" content="${post.title || 'PULNEW'}" />
             <meta property="og:description" content="${desc}" />
             <meta property="og:image" content="${image}" />
@@ -51,6 +50,9 @@ export default {
               element(el) { el.prepend(metaTagsInjct, { html: true }); }
             })
             .on('title', {
+              element(el) { el.remove(); }
+            })
+            .on('link[rel*="icon"]', {
               element(el) { el.remove(); }
             })
             .on('meta[property^="og:"]', {
@@ -71,4 +73,3 @@ export default {
     return env.ASSETS.fetch(request);
   }
 };
-
