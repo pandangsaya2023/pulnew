@@ -1,5 +1,6 @@
 [
   "/berita/prabowo-perintahkan-investigasi-total-kecelakaan-km-virgo-transport-8.html",
+  "/berita/bobby-nasution-apresiasi-13-legenda-olahraga.html",
   "/berita/sensor-brin-tangkap-anomali-laut-di-sekitar-anak-krakatau-bukan-tsunami.html",
   "/berita/gunung-semeru-erupsi-4-kali-dini-hari-status-siaga-warga-lumajang-normal.html",
   "/berita/golden-double-tim-panjat-tebing-indonesia-borong-2-emas-di-world-climbing-series-guiyang-2026.html",
