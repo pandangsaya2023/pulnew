@@ -1,6 +1,6 @@
 [
   "/berita/prabowo-perintahkan-investigasi-total-kecelakaan-km-virgo-transport-8.html",
-  "/berita/danantara-bahas-setoran-rp-120-triliun-dengan-menkeu-suahasil.html",
+  "/berita/danantara-bahas-setoran-rp120-triliun-dengan-menkeu-suahasil.html",
   "/berita/bobby-nasution-apresiasi-13-legenda-olahraga.html",
   "/berita/sensor-brin-tangkap-anomali-laut-di-sekitar-anak-krakatau-bukan-tsunami.html",
   "/berita/gunung-semeru-erupsi-4-kali-dini-hari-status-siaga-warga-lumajang-normal.html",
