@@ -1,5 +1,5 @@
 [
-  "/berita/kpk-geledah-ruang-dirjen-pptr-lampri-kasus-suap-hgb-summarecon.html",
+  "/berita/kpk-geledah-ruang-dirjen-pptr-lampri-kasus-suap-hgb.html",
   "/berita/kpid-sumut-punya-7-komisioner-baru-tanpa-petahana-periode-2026-2029.html",
   "/berita/prabowo-perintahkan-investigasi-total-kecelakaan-km-virgo-transport-8.html",
   "/berita/danantara-bahas-setoran-rp120-triliun-dengan-menkeu-suahasil.html",
