@@ -204,11 +204,8 @@ async function muatHalamanBerita() {
         const isiBerita = post.content || post.body || '';
         
         const linkBerita = window.location.href;
-        //const textShare = encodeURIComponent(post.title + ' - ' + linkBerita);
         const kategori = (post.kategori || post.Kategori || post.category || 'BERITA');
-
-
-        //const linkBerita = window.location.origin + "/berita.html?slug=" + slugTujuan;
+        //const textShare = encodeURIComponent(post.title + ' - ' + linkBerita);
         const textShare = encodeURIComponent(post.title + "\n\n" + linkBerita);
         const waText = encodeURIComponent(linkBerita); // untuk WA biar jadi kartu cantik
 
@@ -217,8 +214,7 @@ async function muatHalamanBerita() {
             <div class="article-meta">${tanggal} WIB | ${kategori.toUpperCase()}</div>
             <img src="${post.image || post.thumbnail}" class="main-image" alt="${post.title}">
             <div class="share-article">
-                <a href="https://wa.me/?text=${waText}" target="_blank" class="share-wa"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-                
+                <a href="https://wa.me/?text=${waText}" target="_blank" class="share-wa"><i class="fab fa-whatsapp"></i> WhatsApp</a>      
                 <a href="https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(linkBerita)}" target="_blank" class="share-fb"><i class="fab fa-facebook"></i> Facebook</a>
                 <a href="https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=${encodeURIComponent(linkBerita)}" target="_blank" class="share-x"><i class="fab fa-x-twitter"></i> X</a>
                 <button onclick="copyLink()" class="share-copy"><i class="fas fa-link"></i> Salin Link</button>
