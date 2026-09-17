@@ -94,7 +94,7 @@
 let currentSlug = "";
 
 function updateMetaTags(post) {
-    document.title = post.title + " - PULNEW";
+    document.title = (post.seo_title) || post.title + " - PULNEW";
     
     const img = post.image || post.thumbnail || 'https://pulnew.pages.dev/media/og-default.jpg';
     const desc = post.description || post.excerpt || (post.body || post.content || '').substring(0, 160).replace(/<[^>]*>/g, '') + '...';
@@ -106,7 +106,7 @@ function updateMetaTags(post) {
     };
     
     setMeta('name', 'description', desc);
-    setMeta('property', 'og:title', post.title);
+    setMeta('property', 'og:title', post.seo_title || post.title);
     setMeta('property', 'og:description', desc);
     setMeta('property', 'og:image', post.image || post.thumbnail || '/media/og-default.jpg');
     setMeta('property', 'og:url', window.location.href);
