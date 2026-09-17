@@ -21,7 +21,7 @@ export default {
           // const title = judulSeo ? `${judulSeo} - PULNEW` : 'PULNEW';
 
           const judulTampil = post.seo_title || post.title;
-          const title = judulTampil ? ``${judulTampil} - PULNEW` : 'PULNEW';
+          const title = judulTampil ? `${judulTampil} - PULNEW` : 'PULNEW';
 
           
           const rawBody = post.body || post.content || "";
