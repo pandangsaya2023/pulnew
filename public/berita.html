@@ -203,17 +203,22 @@ async function muatHalamanBerita() {
         const tanggal = new Date(post.date || post.created_at).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit' });
         const isiBerita = post.content || post.body || '';
         
-        //const linkBerita = window.location.origin + "/berita/" + slugTujuan + ".html";
-        const linkBerita = window.location.href;
-        const textShare = encodeURIComponent(post.title + ' - ' + linkBerita);
-        const kategori = (post.kategori || post.Kategori || post.category || 'BERITA');
+        //const linkBerita = window.location.href;
+        //const textShare = encodeURIComponent(post.title + ' - ' + linkBerita);
+        //const kategori = (post.kategori || post.Kategori || post.category || 'BERITA');
+
+
+        const linkBerita = window.location.origin + "/berita.html?slug=" + slugTujuan;
+        const textShare = encodeURIComponent(post.title + "\n\n" + linkBerita);
+        const waText = encodeURIComponent(linkBerita); // untuk WA biar jadi kartu cantik
 
         contentArea.innerHTML = `
             <h1 class="article-title">${post.title}</h1>
             <div class="article-meta">${tanggal} WIB | ${kategori.toUpperCase()}</div>
             <img src="${post.image || post.thumbnail}" class="main-image" alt="${post.title}">
             <div class="share-article">
-                <a href="https://wa.me/?text=${textShare}" target="_blank" class="share-wa"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                // <a href="https://wa.me/?text=${textShare}" target="_blank" class="share-wa"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                <a href="https://wa.me/?text=${waText}" target="_blank" class="share-wa">
                 <a href="https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(linkBerita)}" target="_blank" class="share-fb"><i class="fab fa-facebook"></i> Facebook</a>
                 <a href="https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=${encodeURIComponent(linkBerita)}" target="_blank" class="share-x"><i class="fab fa-x-twitter"></i> X</a>
                 <button onclick="copyLink()" class="share-copy"><i class="fas fa-link"></i> Salin Link</button>
