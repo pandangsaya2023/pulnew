@@ -17,13 +17,9 @@ export default {
           // const title = post.title ? `${post.title} - PULNEW` : 'PULNEW';
 
           // SESUDAH (boleh beda):
-          // const judulSeo = post.seo_title || post.title;
-          // const title = judulSeo ? `${judulSeo} - PULNEW` : 'PULNEW';
-
-          const judulTampil = post.seo_title || post.title;
-          const title = judulTampil ? `${judulTampil} - PULNEW` : 'PULNEW';
-
-          
+          const judulSeo = post.seo_title || post.title;
+          const title = judulSeo ? `${judulSeo} - PULNEW` : 'PULNEW';
+  
           const rawBody = post.body || post.content || "";
           const cleanBody = rawBody.replace(/(<([^>]+)>)/ig, "");
           const desc = post.description || post.excerpt || (cleanBody ? cleanBody.substring(0, 150) + "..." : "");
