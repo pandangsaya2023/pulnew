@@ -40,8 +40,8 @@ export default {
           const metaTagsInjct = `
             <title>${title}</title>
             <meta name="description" content="${desc}" />
-            <link rel="icon" type="image/png" href="${url.origin}/logopulnew.png" />
-            <link rel="apple-touch-icon" href="${url.origin}/logopulnew.png" />
+            <link rel="icon" type="image/ico" href="${url.origin}/favicon.ico" />
+            <link rel="apple-touch-icon" href="${url.origin}/favicon.ico" />
             <meta property="og:title" content="${post.title || 'PULNEW'}" />
             <meta property="og:description" content="${desc}" />
             <meta property="og:image" content="${image}" />
