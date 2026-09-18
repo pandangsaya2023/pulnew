@@ -1,4 +1,5 @@
 [
+  "/berita/pemerintah-tarik-utang-rp-506-triliun-hingga-agustus-2026-capai-60-persen-target-apbn.html",
   "/berita/bps-resmi-luncurkan-kbji-2026-akui-content-creator-hingga-analis-karbon-jadi-profesi-baru.html",
   "/berita/kapal-induk-giuseppe-garibaldi-tiba-di-jakarta-jadi-kri-sriwijaya.html",
   "/berita/gubsu-bobby-nasution-targetkan-penanganan-banjir-letda-sujono-medan-mulai-2027.html",
