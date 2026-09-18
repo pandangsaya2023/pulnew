@@ -4,6 +4,7 @@
   "/berita/kapal-induk-giuseppe-garibaldi-tiba-di-jakarta-jadi-kri-sriwijaya.html",
   "/berita/gubsu-bobby-nasution-targetkan-penanganan-banjir-letda-sujono-medan-mulai-2027.html",
   "/berita/kpk-geledah-ruangan-dirjen-pptr-lampri-terkait-suap-hgb-summarecon-atr-bpn.html",
+  "/berita/sidak-di-medan-helvetia-wakil-wali-kota-medan-soroti-drainase-tersumbat-dan-tak-terhubung.html",
   "/berita/kpid-sumut-punya-7-komisioner-baru-tanpa-petahana-periode-2026-2029.html",
   "/berita/prabowo-perintahkan-investigasi-total-kecelakaan-km-virgo-transport-8.html",
   "/berita/danantara-bahas-setoran-rp120-triliun-dengan-menkeu-suahasil.html",
