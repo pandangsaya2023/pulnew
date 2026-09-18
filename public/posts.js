@@ -1,5 +1,6 @@
 [
   "/berita/bps-resmi-luncurkan-kbji-2026-akui-content-creator-hingga-analis-karbon-jadi-profesi-baru.html",
+  "/berita/kapal-induk-giuseppe-garibaldi-tiba-di-jakarta-jadi-kri-sriwijaya.html",
   "/berita/gubsu-bobby-nasution-targetkan-penanganan-banjir-letda-sujono-medan-mulai-2027.html",
   "/berita/kpk-geledah-ruangan-dirjen-pptr-lampri-terkait-suap-hgb-summarecon-atr-bpn.html",
   "/berita/kpid-sumut-punya-7-komisioner-baru-tanpa-petahana-periode-2026-2029.html",
