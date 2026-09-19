@@ -1,4 +1,5 @@
 [
+  "/berita/zhang-yiming-pendiri-tiktok-jadi-orang-terkaya-asia-salip-gautam-adani-dengan-harta-rp-1857-triliun.html",
   "/berita/trump-larang-cnn-politico-dan-ms-now-liput-gedung-putih-langgar-konstitusi.html",
   "/berita/pemerintah-tarik-utang-rp-506-triliun-hingga-agustus-2026-capai-60-persen-target-apbn.html",
   "/berita/bps-resmi-luncurkan-kbji-2026-akui-content-creator-hingga-analis-karbon-jadi-profesi-baru.html",
