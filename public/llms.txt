@@ -1,2 +1,5 @@
 # PULNEW
-> Portal info terkini
+> Menyajikan Informasi Langsung Ke Perangkat Anda
+
+## Tentang
+Portal informasi Indonesia terupdate.
