@@ -33,7 +33,7 @@ export default {
           const cleanBody = rawBody.replace(/(<([^>]+)>)/ig, "").replace(/"/g, '&quot;');
           const desc = (post.description || post.excerpt || (cleanBody ? cleanBody.substring(0, 150) + "..." : "")).replace(/"/g, '&quot;');
 
-          let rawImage = post.image || post.thumbnail || "/media/og-image.png";
+          let rawImage = post.image || post.thumbnail || "/media/og-image.webp";
           let image = rawImage;
           if (!rawImage.startsWith('http')) {
             image = rawImage.startsWith('/') ? `${url.origin}${rawImage}` : `${url.origin}/${rawImage}`;
