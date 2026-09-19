@@ -1,5 +1,20 @@
 # PULNEW
-> Menyajikan Informasi Langsung Ke Perangkat Anda
+
+> Menyajikan Informasi Langsung Ke Perangkat Anda - Portal informasi Indonesia terupdate
 
 ## Tentang
-Portal informasi Indonesia terupdate.
+PULNEW adalah portal inormasi Indonesia terupdate.
+
+## Konten
+- Nasional: /#nasional
+- Politik: /#politik
+- Teknologi: /#teknologi
+- Hukum: /#hukum
+- Ekonomi: /#ekonomi
+- Olahraga: /#olahraga
+
+## Kebijakan
+- Privacy: https://pulnew.pages.dev/privacy.html
+- Kontak: https://pulnew.pages.dev/contact.html
+- Tentang: https://pulnew.pages.dev/about.html
+- Disclaimer: https://pulnew.pages.dev/disclaimer.html
