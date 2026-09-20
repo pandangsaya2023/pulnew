@@ -127,7 +127,6 @@ function bisaTayang(tanggalString) {
     
     const sekarangWIB = new Date(sekarang.toLocaleString("en-US", {timeZone: "Asia/Jakarta"}));
     const tayangWIB = new Date(waktuTayang.toLocaleString("en-US", {timeZone: "Asia/Jakarta"}));
-    
     return tayangWIB <= sekarangWIB; // true kalau sudah waktunya
 }
 
