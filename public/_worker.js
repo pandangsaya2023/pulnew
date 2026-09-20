@@ -7,7 +7,7 @@ export default {
       url.pathname === '/robots.txt' ||
       url.pathname === '/sitemap.xml' ||
       url.pathname === '/llms.txt' ||
-      url.pathname === '/favicon.ico' ||
+      url.pathname === '/iconpulnew.jpg' ||
       url.pathname.startsWith('/posts/') ||
       url.pathname.startsWith('/media/') ||
       url.pathname.startsWith('/_headers')
