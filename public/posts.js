@@ -1,4 +1,5 @@
 [
+  "/berita/menkeu-suahasil-nazara-lantik-14-pejabat-kemenkeu-di-aula-juanda-ini-daftar-lengkap-dan-pesan-khususnya.html",
   "/berita/jawa-dan-sumatera-tembus-20-besar-wilayah-kuliner-terbaik-dunia-2026-versi-tasteatlas.html",
   "/berita/djp-tetapkan-pajak-marketplace-mulai-1-november-2026-dipungut-tokopedia-shopee-lazada-blibli.html",
   "/berita/aturan-baru-bgn-sekolah-negeri-boleh-tolak-mbg-asal-sepakat-seluruh-siswa-dan-wali-murid.html",
