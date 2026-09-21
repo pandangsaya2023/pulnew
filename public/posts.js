@@ -1,6 +1,7 @@
 [
   "/berita/pemko-medan-integrasikan-layanan-publik-berbasis-ai-warga-bisa-akses-dukcapil-dan-perizinan-lewat-whatsapp.html",
   "/berita/menkeu-suahasil-nazara-lantik-14-pejabat-kemenkeu-di-aula-juanda-ini-daftar-lengkap-dan-pesan-khususnya.html",
+  "/berita/pgr-1-medan-catat-gempa-di-humbahas-2-0-magnitudo-hari-ini-aceh-dan-nias-juga-diguncang.html",
   "/berita/jawa-dan-sumatera-tembus-20-besar-wilayah-kuliner-terbaik-dunia-2026-versi-tasteatlas.html",
   "/berita/djp-tetapkan-pajak-marketplace-mulai-1-november-2026-dipungut-tokopedia-shopee-lazada-blibli.html",
   "/berita/aturan-baru-bgn-sekolah-negeri-boleh-tolak-mbg-asal-sepakat-seluruh-siswa-dan-wali-murid.html",
