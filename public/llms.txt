@@ -2,7 +2,7 @@
 > Menyajikan Informasi Langsung Ke Perangkat Anda
 
 ## Tentang
-PULNEW adalah portalinformasi Indonesia terupdate yang menyajikan informasi nasional, politik, ekonomi, teknologi, kesehatan, dan lainnya.
+PULNEW adalah portal informasi Indonesia terupdate yang menyajikan informasi nasional, politik, ekonomi, teknologi, kesehatan, dan lainnya.
 
 ## Direktori
 - [Beranda](https://pulnew.pages.dev/)
