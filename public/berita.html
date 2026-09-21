@@ -120,7 +120,7 @@ async function muatHalamanBerita() {
         contentArea.innerHTML = `
             <h1 class="article-title">${post.title}</h1>
             <div class="article-meta">${tanggal} WIB | ${kategori.toUpperCase()}</div>
-            <img src="${post.image || post.thumbnail}" class="main-image" alt="${post.title}" width="800" height="450" fetchpriority="high" decoding="async">
+            <img src="${post.image || post.thumbnail}" class="main-image" alt="${post.title}" width="800" height="600" fetchpriority="high" decoding="async">
             <div class="share-article">
                 <a href="https://wa.me/?text=${waText}" target="_blank" class="share-wa"><i class="fab fa-whatsapp"></i> WhatsApp</a>      
                 <a href="https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(linkBerita)}" target="_blank" class="share-fb"><i class="fab fa-facebook"></i> Facebook</a>
