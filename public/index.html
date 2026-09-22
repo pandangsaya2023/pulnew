@@ -64,10 +64,37 @@
     .hero-content { position: absolute; bottom: 0; left: 0; right: 0; padding: 20px 16px; background: linear-gradient(transparent, rgba(0,0,0,0.85)); color: white; }
     .news-hero h2 { font-size: 15px; font-weight: 700; line-height: 1.3; color: white; padding: 4px 0 8px 0; }
     .badge { display: inline-block; padding: 3px 8px; border-radius: 6px; font-size: 11px; font-weight: 700; margin-bottom: 10px; background: var(--warna-merah); color: white; }
-    .news-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--jarak-utama); margin-bottom: var(--jarak-utama); }
-    .news-card { background: white; display: flex; flex-direction: column; text-decoration: none; color: inherit; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.08); transition: transform 0.2s; }
-    .news-card:hover { transform: translateY(-3px); }
-    .news-card img { width: 100%; height: 180px; object-fit: cover; }
+
+    /* Container grid berita di bawah hero */
+    .news-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); /* 2 kolom di desktop/tablet, sesuaikan jika ingin 3 */
+        gap: var(--jarak-utama, 16px);
+        margin-bottom: var(--jarak-utama, 16px);
+     }
+
+     /* Kotak card berita */
+     .news-card {
+        background: white;
+        display: flex;
+        flex-direction: column;
+        border-radius: 12px;
+        overflow: hidden;
+     }
+
+     /* Gambar di dalam card */
+     .news-card img {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 16 / 9; /* atau 4 / 3 agar sedikit lebih tinggi/lega */
+        object-fit: cover;
+        display: block;
+     }      
+        
+    .news-card:hover { transform: translateY(-3px); }    
+    /*.news-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--jarak-utama); margin-bottom: var(--jarak-utama); } */
+    /*.news-card { background: white; display: flex; flex-direction: column; text-decoration: none; color: inherit; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.08); transition: transform 0.2s; }*/
+    /*.news-card img { width: 100%; height: 180px; object-fit: cover; }*/
     .card-content { padding: 12px 14px 16px 14px; }
     .news-card h3 { font-size: 15px; font-weight: 700; line-height: 1.4; color: #111; padding: 2px 0 8px 0; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
     .section-title { font-size: 18px; font-weight: 800; color: var(--warna-biru); margin: 22px 0 15px 0; padding-left: 3px; border-left: 4px solid var(--warna-merah); }
