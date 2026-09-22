@@ -1,4 +1,5 @@
 [
+  "/berita/john-herdman-beberkan-rumus-juara-timnas-indonesia-di-fifa-asean-cup-2026.html",
   "/berita/brin-kembangkan-serat-daun-nanas-dan-limbah-sawit-jadi-kain-organik-dan-malam-batik-untuk-umkm.html",
   "/berita/diduga-mundur-30-siswa-sekolah-rakyat-terintegrasi-di-sergai-pulang-ksp-dudung-abdurachman-akan-bujuk-kembali.html",
   "/berita/pemko-medan-integrasikan-layanan-publik-berbasis-ai-warga-bisa-akses-dukcapil-dan-perizinan-lewat-whatsapp.html",
