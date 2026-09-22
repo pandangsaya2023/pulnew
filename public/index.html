@@ -80,6 +80,8 @@
         flex-direction: column;
         border-radius: 12px;
         overflow: hidden;
+        text-decoration: none;
+        color: inherit;
      }
 
      /* Gambar di dalam card */
@@ -93,22 +95,9 @@
         
     .news-card:hover { transform: translateY(-3px); }       
     .card-content { padding: 12px 14px 16px 14px; }
-    .news-card h3 { font-size: 15px; font-weight: 700; line-height: 1.4; color: #111; padding: 2px 0 8px 0; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+    .news-card h3 { font-size: 15px; text-decoration: none; color: inherit; font-weight: 700; line-height: 1.4; color: #111; padding: 2px 0 8px 0; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
 
-    /* Jika tag <a> membungkus card atau teks judul langsung */
-    .news-card a,
-    .news-item a {
-       text-decoration: none;
-       color: inherit; /* Supaya warna teks ikut warna normal, tidak jadi biru link */
-    }
-
-    /* Atau khusus pada h3 di dalam card/link */
-    .news-card a h3,
-    .news-card h3 a {
-       text-decoration: none;
-       color: inherit;
-    }
-        
+    
     .section-title { font-size: 18px; font-weight: 800; color: var(--warna-biru); margin: 22px 0 15px 0; padding-left: 3px; border-left: 4px solid var(--warna-merah); }
     .latest-carousel { position: relative; margin: 1px 0px 1px 0px; overflow: hidden; }
     .carousel-scroll { display: flex; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; padding-bottom: 8px; scrollbar-width: none; }
