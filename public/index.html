@@ -115,15 +115,26 @@
         aspect-ratio: 16 / 9; /* atau 4 / 3 agar sedikit lebih tinggi/lega */
         object-fit: cover;
         display: block;
-     }      
-    .news-card:hover { transform: translateY(-3px); }    
-
-    /*.news-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--jarak-utama); margin-bottom: var(--jarak-utama); } */
-    /*.news-card { background: white; display: flex; flex-direction: column; text-decoration: none; color: inherit; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.08); transition: transform 0.2s; }*/        
-    /*.news-card:hover { transform: translateY(-3px); } */   
-    /*.news-card img { width: 100%; height: 180px; object-fit: cover; }*/
+     }    
+        
+    .news-card:hover { transform: translateY(-3px); }       
     .card-content { padding: 12px 14px 16px 14px; }
     .news-card h3 { font-size: 15px; font-weight: 700; line-height: 1.4; color: #111; padding: 2px 0 8px 0; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+
+    /* Jika tag <a> membungkus card atau teks judul langsung */
+    .news-card a,
+    .news-item a {
+       text-decoration: none;
+       color: inherit; /* Supaya warna teks ikut warna normal, tidak jadi biru link */
+    }
+
+    /* Atau khusus pada h3 di dalam card/link */
+    .news-card a h3,
+    .news-card h3 a {
+       text-decoration: none;
+       color: inherit;
+    }
+        
     .section-title { font-size: 18px; font-weight: 800; color: var(--warna-biru); margin: 22px 0 15px 0; padding-left: 3px; border-left: 4px solid var(--warna-merah); }
     .latest-carousel { position: relative; margin: 1px 0px 1px 0px; overflow: hidden; }
     .carousel-scroll { display: flex; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; padding-bottom: 8px; scrollbar-width: none; }
@@ -132,13 +143,15 @@
     .carousel-item img { width: 40%; height: 120px; object-fit: cover; flex-shrink: 0; border-radius: 8px; }
     .carousel-item.card-content { padding: 0px; display: flex; flex-direction: column; justify-content: center; flex: 1; gap: 6px; }
     .carousel-item h4 { font-size: 15px; font-weight: 700; line-height: 1.4; color: #111; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
-    /* Hapus paksaan height di media query desktop (baris 71) */
+
+        /* Hapus paksaan height di media query desktop (baris 71) */
        @media (min-width: 768px) {
            /*.news-hero img { height: 320px; }.news-hero h2 { font-size: 26px; }.carousel-item { flex: 0 0 60%; } */
            .news-grid {grid-template-columns: 1fr 1fr;}
        }
         @media (max-width: 600px) {.news-grid { grid-template-columns: 1fr; } }
         footer { background: #101726; color: #b0b8c4; padding: 12px 20px 20px 20px; font-size: 13px; border-top: 4px solid var(--warna-biru); margin-top: 5px; }
+
     .footer-content { max-width: 1100px; margin: 0 auto; text-align: center; }
     .footer-logo { font-size: 20px; font-weight: 800; color: white; margin-bottom: 4px; }
     .footer-logo span { color: var(--warna-merah); }
