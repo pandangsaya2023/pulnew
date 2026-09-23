@@ -1,4 +1,5 @@
 [
+  "/berita/polemik-status-manajer-kopdes-merah-putih-memanas-agrinas-pastikan-tetap-pegawai-bumn.html",
   "/berita/john-herdman-beberkan-rumus-juara-timnas-indonesia-di-fifa-asean-cup-2026.html",
   "/berita/brin-kembangkan-serat-daun-nanas-dan-limbah-sawit-jadi-kain-organik-dan-malam-batik-untuk-umkm.html",
   "/berita/diduga-mundur-30-siswa-sekolah-rakyat-terintegrasi-di-sergai-pulang-ksp-dudung-abdurachman-akan-bujuk-kembali.html",
