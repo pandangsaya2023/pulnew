@@ -2,6 +2,7 @@
   "/berita/heboh-ekskul-korps-kadet-republik-indonesia-diluncurkan-kemendikdasmen-tegaskan-tidak-wajib-jadi-prajurit.html",
   "/berita/komisi-xiii-kecam-penghalangan-sidak-ombudsman-di-lapas-cibinong-sebut-kewenangan-dilindungi-uu.html",
   "/berita/kapolri-resmikan-4-layanan-digital-polantas-bayar-tilang-etle-stnk-elektronik-hingga-kios-sim-mandiri.html",
+  "/berita/dede-yusuf-geram-sidak-ombudsman-dihalangi-di-lapas-cibinong-minta-imipas-klarifikasi-dan-lapor-prabowo.html",
   "/berita/comeback-dramatis-ubed-segel-emas-pertama-indonesia-di-asian-games-2026-usai-bungkam-china-3-2.html",
   "/berita/skandal-sel-apartemen-di-lapas-cibinong-terbongkar-menko-yusril-ancam-pecat-petugas-nakal.html",
   "/berita/heboh-uang-rp-100-ribu-tanda-tangan-purbaya-diburu-kolektor-bi-pastikan-tetap-sah.html",
