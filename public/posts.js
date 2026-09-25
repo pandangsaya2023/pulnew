@@ -1,5 +1,6 @@
 [
   "/berita/comeback-dramatis-ubed-segel-emas-pertama-indonesia-di-asian-games-2026-usai-bungkam-china-3-2.html",
+  "/berita/skandal-sel-apartemen-di-lapas-cibinong-terbongkar-menko-yusril-ancam-pecat-petugas-nakal.html",
   "/berita/heboh-uang-rp-100-ribu-tanda-tangan-purbaya-diburu-kolektor-bi-pastikan-tetap-sah.html",
   "/berita/polemik-status-manajer-kopdes-merah-putih-memanas-agrinas-pastikan-tetap-pegawai-bumn.html",
   "/berita/dpr-resmi-ketok-palu-uu-reforma-agraria-koalisi-masyarakat-sipil-protes-pembahasan-kilat.html",
