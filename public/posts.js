@@ -1,4 +1,5 @@
 [
+  "/berita/skandal-klaster-mewah-lapas-cibinong-kalapas-wisnu-hani-putanto-dan-4-pejabat-dinonaktifkan.html",
   "/berita/jokowi-pamer-kartu-anggota-psi-klaim-resmi-bergabung-sejak-14-oktober-2025.html",
   "/berita/heboh-ekskul-korps-kadet-republik-indonesia-diluncurkan-kemendikdasmen-tegaskan-tidak-wajib-jadi-prajurit.html",
   "/berita/komisi-xiii-kecam-penghalangan-sidak-ombudsman-di-lapas-cibinong-sebut-kewenangan-dilindungi-uu.html",
