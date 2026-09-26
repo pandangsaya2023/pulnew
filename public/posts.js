@@ -1,4 +1,5 @@
 [
+  "/berita/jokowi-pamer-kartu-anggota-psi-klaim-resmi-bergabung-sejak-14-oktober-2025.html",
   "/berita/heboh-ekskul-korps-kadet-republik-indonesia-diluncurkan-kemendikdasmen-tegaskan-tidak-wajib-jadi-prajurit.html",
   "/berita/komisi-xiii-kecam-penghalangan-sidak-ombudsman-di-lapas-cibinong-sebut-kewenangan-dilindungi-uu.html",
   "/berita/kapolri-resmikan-4-layanan-digital-polantas-bayar-tilang-etle-stnk-elektronik-hingga-kios-sim-mandiri.html",
