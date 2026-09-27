@@ -11,8 +11,6 @@
   "/berita/sidak-di-medan-helvetia-wakil-wali-kota-medan-soroti-drainase-tersumbat-dan-tak-terhubung.html",
   "/berita/kpid-sumut-punya-7-komisioner-baru-tanpa-petahana-periode-2026-2029.html",
   "/berita/bobby-nasution-apresiasi-13-legenda-olahraga.html",
-  "/berita/suahasil-nazara-buka-suara-soal-pergantian-pejabat-kemenkeu-era-purbaya.html",
-  "/berita/reshuffle-kabinet-merah-putih-prabowo-lantik-suahasil-nazara-gantikan-purbaya-jadi-menkeu.html",
   "/berita/bukan-tolak-ai-bos-bos-teknologi-dunia-minta-laju-pengembangan-diperlambat.html",
   "/berita/menhub-dudy-km-virgo-transport-8-belum-tenggelam-ditemukan-terbalik-di-laut-jawa.html",
   "/berita/pakar-ai-ingatkan-risiko-kepunahan-manusia-perlombaan-teknologi-dinilai-bahayakan-dunia.html",
