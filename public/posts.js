@@ -15,6 +15,5 @@
   "/berita/erupsi-sinabung-lumpuhkan-sementara-bandara-kualanamu-puluhan-penerbangan-tertunda.html",
   "/berita/waspada-cek-nik-anda-sekarang-jangan-sampai-dipakai-judi-online-tanpa-izin.html",
   "/berita/pemko-medan-sabet-detiksumatera-awards-2026-berkat-inovasi-digitalisasi-pajak-qresto.html",
-  "/berita/sp-pln-di-kemenko-polkam-lima-ancaman-sedang-menggerogoti-kedaulatan-energi-indonesia.html",
-  "/berita/forkom-sp-dan-sekar-bumn-gelar-rapat.html"
+  "/berita/sp-pln-di-kemenko-polkam-lima-ancaman-sedang-menggerogoti-kedaulatan-energi-indonesia.html"
 ]
