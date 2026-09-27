@@ -5,7 +5,6 @@
   "/berita/diduga-mundur-30-siswa-sekolah-rakyat-terintegrasi-di-sergai-pulang-ksp-dudung-abdurachman-akan-bujuk-kembali.html",
   "/berita/pemko-medan-integrasikan-layanan-publik-berbasis-ai-warga-bisa-akses-dukcapil-dan-perizinan-lewat-whatsapp.html",
   "/berita/pgr-1-medan-catat-gempa-di-humbahas-2-0-magnitudo-hari-ini-aceh-dan-nias-juga-diguncang.html",
-  "/berita/gubsu-bobby-nasution-targetkan-penanganan-banjir-letda-sujono-medan-mulai-2027.html",
   "/berita/sidak-di-medan-helvetia-wakil-wali-kota-medan-soroti-drainase-tersumbat-dan-tak-terhubung.html",
   "/berita/kpid-sumut-punya-7-komisioner-baru-tanpa-petahana-periode-2026-2029.html",
   "/berita/bobby-nasution-apresiasi-13-legenda-olahraga.html",
