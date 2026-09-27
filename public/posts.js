@@ -29,7 +29,6 @@
   "/berita/perkuat-akses-kuliah-pemko-medan-gulirkan-beasiswa-100-mahasiswa-mulai-oktober-2026.html",
   "/berita/rico-waas-terima-piala-juara-umum-mtq-sumut-ke-40-16-qari-kota-medan-maju-ke-nasional.html",
   "/berita/bobby-nasution-usulkan-4-skema-satukan-ekonomi-10-provinsi-di-sumatera.html",
-  "/berita/jamuan-kwetiau-hingga-bengawan-solo-xanana-gusmao-puji-visi-jokowi-saat-bangun-indonesia.html",
   "/berita/usulan-anggaran-badan-komunikasi-pemerintah-rp-1,9-triliun-di-2027-disoroti-dpr.html",
   "/berita/buntut-keracunan-santri-di-sidoarjo-bgn-resmi-wajibkan-label-waktu-individual-pada-makanan-mbg.html",
   "/berita/ancaman-phk-100-ribu-pegawai-bpd-mengintai-buntut-kebijakan-pindah-payroll-asn-ke-bank-himbara.html",
