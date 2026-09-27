@@ -1,4 +1,5 @@
 [
+  "/berita/bi-kemenkeu-sepakati-lima-pilar-sinergi-gubernur-bi--tegaskan-tak-saling-intervensi.html",
   "/berita/skandal-klaster-mewah-lapas-cibinong-kalapas-wisnu-hani-putanto-dan-4-pejabat-dinonaktifkan.html",
   "/berita/jokowi-pamer-kartu-anggota-psi-klaim-resmi-bergabung-sejak-14-oktober-2025.html",
   "/berita/google-drive-penuh-padahal-jarang-upload-ini-cara-cepat-lacak-file-biang-keroknya.html",
