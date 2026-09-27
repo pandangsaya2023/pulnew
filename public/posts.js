@@ -19,7 +19,6 @@
   "/berita/bobby-nasution-usulkan-4-skema-satukan-ekonomi-10-provinsi-di-sumatera.html",
   "/berita/erupsi-sinabung-lumpuhkan-sementara-bandara-kualanamu-puluhan-penerbangan-tertunda.html",
   "/berita/waspada-cek-nik-anda-sekarang-jangan-sampai-dipakai-judi-online-tanpa-izin.html",
-  "/berita/garuda-indonesia-ubah-aturan-bagasi-gratis-jadi-sistem-peace-concept-mulai-1-september-2026.html",
   "/berita/haedar-nashir-ucapkan-selamat-muhammadiyah-harap-pbnu-baru-perkuat-ukhuwah-bangsa.html",
   "/berita/kemlu-konfirmasi-45-wni-di-nepal-imbau-waspada-di-wilayah-perbatasan-usai-banjir-bandang.html",
   "/berita/pemerintah-kebut-aturan-turunan-putusan-mk-sisa-kuota-data-harus-jadi-hak-konsumen.html",
