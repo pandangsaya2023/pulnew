@@ -11,7 +11,6 @@
   "/berita/sidak-di-medan-helvetia-wakil-wali-kota-medan-soroti-drainase-tersumbat-dan-tak-terhubung.html",
   "/berita/kpid-sumut-punya-7-komisioner-baru-tanpa-petahana-periode-2026-2029.html",
   "/berita/bobby-nasution-apresiasi-13-legenda-olahraga.html",
-  "/berita/pakar-ai-ingatkan-risiko-kepunahan-manusia-perlombaan-teknologi-dinilai-bahayakan-dunia.html",
   "/berita/2-siswa-keracunan-mbg-karo-dirujuk-ke-jakarta-gibran-pantau-langsung-pemulihannya.html",
   "/berita/perkuat-akses-kuliah-pemko-medan-gulirkan-beasiswa-100-mahasiswa-mulai-oktober-2026.html",
   "/berita/rico-waas-terima-piala-juara-umum-mtq-sumut-ke-40-16-qari-kota-medan-maju-ke-nasional.html",
