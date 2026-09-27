@@ -29,7 +29,6 @@
   "/berita/perkuat-akses-kuliah-pemko-medan-gulirkan-beasiswa-100-mahasiswa-mulai-oktober-2026.html",
   "/berita/rico-waas-terima-piala-juara-umum-mtq-sumut-ke-40-16-qari-kota-medan-maju-ke-nasional.html",
   "/berita/bobby-nasution-usulkan-4-skema-satukan-ekonomi-10-provinsi-di-sumatera.html",
-  "/berita/ancaman-phk-100-ribu-pegawai-bpd-mengintai-buntut-kebijakan-pindah-payroll-asn-ke-bank-himbara.html",
   "/berita/lompat-31-peringkat-fifa-timnas-indonesia-bidik-100-besar-dunia-di-era-john-herdman.html",
   "/berita/keracunan-massal-mbg-di-sidoarjo-tembus-566-korban-bgn-jatuhkan-sanksi-berat-ke-sppg.html",
   "/berita/harga-avtur-melonjak-65-persen-kemenhub-sesuaikan-besaran-fuel-surcharge-penerba.html",
