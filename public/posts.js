@@ -20,8 +20,6 @@
   "/berita/sidak-di-medan-helvetia-wakil-wali-kota-medan-soroti-drainase-tersumbat-dan-tak-terhubung.html",
   "/berita/kpid-sumut-punya-7-komisioner-baru-tanpa-petahana-periode-2026-2029.html",
   "/berita/bobby-nasution-apresiasi-13-legenda-olahraga.html",
-  "/berita/gunung-semeru-erupsi-4-kali-dini-hari-status-siaga-warga-lumajang-normal.html",
-  "/berita/golden-double-tim-panjat-tebing-indonesia-borong-2-emas-di-world-climbing-series-guiyang-2026.html",
   "/berita/suahasil-nazara-buka-suara-soal-pergantian-pejabat-kemenkeu-era-purbaya.html",
   "/berita/reshuffle-kabinet-merah-putih-prabowo-lantik-suahasil-nazara-gantikan-purbaya-jadi-menkeu.html",
   "/berita/bukan-tolak-ai-bos-bos-teknologi-dunia-minta-laju-pengembangan-diperlambat.html",
