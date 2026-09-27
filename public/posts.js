@@ -4,7 +4,6 @@
   "/berita/gubsu-bobby-keluhkan-harga-material-selangit-tawarkan-jurus-beli-massal-lewat-bumd-ke-dpr.html",
   "/berita/bi-dan-kemenkeu-sepakati-lima-pilar-sinergi-gubernur-bi-tegaskan-tak-saling-intervensi.html",
   "/berita/skandal-klaster-mewah-lapas-cibinong-kalapas-wisnu-hani-putanto-dan-4-pejabat-dinonaktifkan.html",
-  "/berita/skandal-sel-apartemen-di-lapas-cibinong-terbongkar-menko-yusril-ancam-pecat-petugas-nakal.html",
   "/berita/heboh-uang-rp-100-ribu-tanda-tangan-purbaya-diburu-kolektor-bi-pastikan-tetap-sah.html",
   "/berita/polemik-status-manajer-kopdes-merah-putih-memanas-agrinas-pastikan-tetap-pegawai-bumn.html",
   "/berita/dpr-resmi-ketok-palu-uu-reforma-agraria-koalisi-masyarakat-sipil-protes-pembahasan-kilat.html",
