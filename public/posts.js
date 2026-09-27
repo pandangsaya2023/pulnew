@@ -29,7 +29,6 @@
   "/berita/perkuat-akses-kuliah-pemko-medan-gulirkan-beasiswa-100-mahasiswa-mulai-oktober-2026.html",
   "/berita/rico-waas-terima-piala-juara-umum-mtq-sumut-ke-40-16-qari-kota-medan-maju-ke-nasional.html",
   "/berita/bobby-nasution-usulkan-4-skema-satukan-ekonomi-10-provinsi-di-sumatera.html",
-  "/berita/gunung-anak-krakatau-erupsi-menerus-sejak-jumat-malam-gubernur-banten-andra-soni-minta-warga-tetap-tenang.html",
   "/berita/tanggulangi-kebakaran-hutan-lintas-negara-indonesia-perkuat-koordinasi-bersama-a.html",
   "/berita/dentuman-misterius-guncang-banten-hingga-jabar-pvmbg-dugai-erupsi-gunung-anak-krakatau-penyebabnya.html",
   "/berita/bgn-setop-operasional-sppg-agam-pasia-laweh-30-hari-buntut-344-orang-keracunan-mbg.html",
