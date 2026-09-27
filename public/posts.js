@@ -1,4 +1,5 @@
 [
+  "/berita/bobby-di-medan-tantang-perantau-minang-putar-uang-syariah-target-5000-umkm-halal.html",
   "/berita/panglima-tni-benarkan-puncak-hut-ke-81-pindah-ke-cilangkap-pasukan-banyak-di-lokasi-bencana.html",
   "/berita/gubsu-bobby-keluhkan-harga-material-selangit-tawarkan-jurus-beli-massal-lewat-bumd-ke-dpr.html",
   "/berita/bi-dan-kemenkeu-sepakati-lima-pilar-sinergi-gubernur-bi-tegaskan-tak-saling-intervensi.html",
