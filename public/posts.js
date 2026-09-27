@@ -12,7 +12,6 @@
   "/berita/kpid-sumut-punya-7-komisioner-baru-tanpa-petahana-periode-2026-2029.html",
   "/berita/bobby-nasution-apresiasi-13-legenda-olahraga.html",
   "/berita/bukan-tolak-ai-bos-bos-teknologi-dunia-minta-laju-pengembangan-diperlambat.html",
-  "/berita/menhub-dudy-km-virgo-transport-8-belum-tenggelam-ditemukan-terbalik-di-laut-jawa.html",
   "/berita/pakar-ai-ingatkan-risiko-kepunahan-manusia-perlombaan-teknologi-dinilai-bahayakan-dunia.html",
   "/berita/2-siswa-keracunan-mbg-karo-dirujuk-ke-jakarta-gibran-pantau-langsung-pemulihannya.html",
   "/berita/perkuat-akses-kuliah-pemko-medan-gulirkan-beasiswa-100-mahasiswa-mulai-oktober-2026.html",
