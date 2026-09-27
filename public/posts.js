@@ -4,8 +4,6 @@
   "/berita/gubsu-bobby-keluhkan-harga-material-selangit-tawarkan-jurus-beli-massal-lewat-bumd-ke-dpr.html",
   "/berita/bi-dan-kemenkeu-sepakati-lima-pilar-sinergi-gubernur-bi-tegaskan-tak-saling-intervensi.html",
   "/berita/skandal-klaster-mewah-lapas-cibinong-kalapas-wisnu-hani-putanto-dan-4-pejabat-dinonaktifkan.html",
-  "/berita/jokowi-pamer-kartu-anggota-psi-klaim-resmi-bergabung-sejak-14-oktober-2025.html",
-  "/berita/google-drive-penuh-padahal-jarang-upload-ini-cara-cepat-lacak-file-biang-keroknya.html",
   "/berita/heboh-ekskul-korps-kadet-republik-indonesia-diluncurkan-kemendikdasmen-tegaskan-tidak-wajib-jadi-prajurit.html",
   "/berita/komisi-xiii-kecam-penghalangan-sidak-ombudsman-di-lapas-cibinong-sebut-kewenangan-dilindungi-uu.html",
   "/berita/kapolri-resmikan-4-layanan-digital-polantas-bayar-tilang-etle-stnk-elektronik-hingga-kios-sim-mandiri.html",
