@@ -14,5 +14,5 @@
   "/berita/bobby-nasution-usulkan-4-skema-satukan-ekonomi-10-provinsi-di-sumatera.html",
   "/berita/erupsi-sinabung-lumpuhkan-sementara-bandara-kualanamu-puluhan-penerbangan-tertunda.html",
   "/berita/pemko-medan-sabet-detiksumatera-awards-2026-berkat-inovasi-digitalisasi-pajak-qresto.html",
-  "/berita/sp-pln-di-kemenko-polkam-lima-ancaman-sedang-menggerogoti-kedaulatan-energi-indonesia.html"
+  "/berita/dampak-5-ancaman-listrik-nasional-ke-medan-sp-pln-warning-kedaulatan-energi-bisa-jebol.html"
 ]
