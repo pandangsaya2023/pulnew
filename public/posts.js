@@ -4,7 +4,6 @@
   "/berita/gubsu-bobby-keluhkan-harga-material-selangit-tawarkan-jurus-beli-massal-lewat-bumd-ke-dpr.html",
   "/berita/bi-dan-kemenkeu-sepakati-lima-pilar-sinergi-gubernur-bi-tegaskan-tak-saling-intervensi.html",
   "/berita/skandal-klaster-mewah-lapas-cibinong-kalapas-wisnu-hani-putanto-dan-4-pejabat-dinonaktifkan.html",
-  "/berita/heboh-ekskul-korps-kadet-republik-indonesia-diluncurkan-kemendikdasmen-tegaskan-tidak-wajib-jadi-prajurit.html",
   "/berita/komisi-xiii-kecam-penghalangan-sidak-ombudsman-di-lapas-cibinong-sebut-kewenangan-dilindungi-uu.html",
   "/berita/kapolri-resmikan-4-layanan-digital-polantas-bayar-tilang-etle-stnk-elektronik-hingga-kios-sim-mandiri.html",
   "/berita/dede-yusuf-geram-sidak-ombudsman-dihalangi-di-lapas-cibinong-minta-imipas-klarifikasi-dan-lapor-prabowo.html",
