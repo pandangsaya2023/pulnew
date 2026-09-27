@@ -4,7 +4,6 @@
   "/berita/gubsu-bobby-keluhkan-harga-material-selangit-tawarkan-jurus-beli-massal-lewat-bumd-ke-dpr.html",
   "/berita/bi-dan-kemenkeu-sepakati-lima-pilar-sinergi-gubernur-bi-tegaskan-tak-saling-intervensi.html",
   "/berita/skandal-klaster-mewah-lapas-cibinong-kalapas-wisnu-hani-putanto-dan-4-pejabat-dinonaktifkan.html",
-  "/berita/brin-kembangkan-serat-daun-nanas-dan-limbah-sawit-jadi-kain-organik-dan-malam-batik-untuk-umkm.html",
   "/berita/diduga-mundur-30-siswa-sekolah-rakyat-terintegrasi-di-sergai-pulang-ksp-dudung-abdurachman-akan-bujuk-kembali.html",
   "/berita/pemko-medan-integrasikan-layanan-publik-berbasis-ai-warga-bisa-akses-dukcapil-dan-perizinan-lewat-whatsapp.html",
   "/berita/pgr-1-medan-catat-gempa-di-humbahas-2-0-magnitudo-hari-ini-aceh-dan-nias-juga-diguncang.html",
