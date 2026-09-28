@@ -11,7 +11,7 @@
   "/berita/2-siswi-korban-mbg-karo-sempat-dirujuk-ke-rscm-gibran-turun-tangan-rscm-sebut-otak-febiona-aman-ginjal-agnesia-membaik.html",
   "/berita/jangan-sampai-putus-kuliah-di-tahun-kedua-pemko-medan-siapkan-beasiswa-untuk-100-mahasiswa-mulai-oktober.html",
   "/berita/9-tahun-juara-berturut-piala-mtq-sumut-kembali-ke-medan-rico-waas-langsung-bagi-bonus-ke-qari-qariah.html",
-  "/berita/bobby-nasution-usulkan-4-skema-satukan-ekonomi-10-provinsi-di-sumatera.html",
+  "/berita/jangan-jalan-sendiri-sendiri-bobby-usul-4-skema-satukan-ekonomi-10-provinsi-sumatera-di-forum-imt-gt.html",
   "/berita/erupsi-sinabung-lumpuhkan-sementara-bandara-kualanamu-puluhan-penerbangan-tertunda.html",
   "/berita/pemko-medan-sabet-detiksumatera-awards-2026-berkat-inovasi-digitalisasi-pajak-qresto.html",
   "/berita/dampak-5-ancaman-listrik-nasional-ke-medan-sp-pln-warning-kedaulatan-energi-bisa-jebol.html"
