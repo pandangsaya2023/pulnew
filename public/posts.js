@@ -5,7 +5,7 @@
   "/berita/30-siswa-sekolah-rakyat-sergai-pulang-ke-rumah-ksp-dudung-turun-tangan-bujuk-balik.html",
   "/berita/gak-perlu-antre-di-disdukcapil-warga-medan-kini-bisa-urus-kk-dan-izin-usaha-lewat-whatsapp.html",
   "/berita/gempa-2-0-magnitudo-goyang-humbahas-pgr-1-medan-catat-aceh-dan-nias-juga-getar-hari-ini.html",
-  "/berita/sidak-di-medan-helvetia-wakil-wali-kota-medan-soroti-drainase-tersumbat-dan-tak-terhubung.html",
+  "/berita/wawali-sidak-helvetia-bongkar-biang-banjir-parit-putus-nyambung-air-muter-di-tempat.html",
   "/berita/kpid-sumut-punya-7-komisioner-baru-tanpa-petahana-periode-2026-2029.html",
   "/berita/bobby-nasution-apresiasi-13-legenda-olahraga.html",
   "/berita/2-siswa-keracunan-mbg-karo-dirujuk-ke-jakarta-gibran-pantau-langsung-pemulihannya.html",
