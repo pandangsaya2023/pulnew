@@ -6,7 +6,7 @@
   "/berita/gak-perlu-antre-di-disdukcapil-warga-medan-kini-bisa-urus-kk-dan-izin-usaha-lewat-whatsapp.html",
   "/berita/gempa-2-0-magnitudo-goyang-humbahas-pgr-1-medan-catat-aceh-dan-nias-juga-getar-hari-ini.html",
   "/berita/wawali-sidak-helvetia-bongkar-biang-banjir-parit-putus-nyambung-air-muter-di-tempat.html",
-  "/berita/kpid-sumut-punya-7-komisioner-baru-tanpa-petahana-periode-2026-2029.html",
+  "/berita/tanpa-wajah-lama-7-komisioner-kpid-sumut-baru-terpilih-4-petahana-tumbang-di-dprd.html",
   "/berita/bobby-nasution-apresiasi-13-legenda-olahraga.html",
   "/berita/2-siswa-keracunan-mbg-karo-dirujuk-ke-jakarta-gibran-pantau-langsung-pemulihannya.html",
   "/berita/perkuat-akses-kuliah-pemko-medan-gulirkan-beasiswa-100-mahasiswa-mulai-oktober-2026.html",
