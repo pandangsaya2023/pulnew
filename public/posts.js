@@ -1,6 +1,6 @@
 [
   "/berita/banjir-tahunan-di-gerbang-tol-belmera-medan-bobby-janji-kolam-retensi-mulai-digarap-2027.html",
-  "/berita/bobby-di-medan-tantang-perantau-minang-putar-uang-syariah-target-5-000-umkm-halal.html",
+  "/berita/bobby-di-medan-titip-misi-ke-perantau-minang-putar-uang-di-sumut-kejar-5000-umkm-halal.html",
   "/berita/gubsu-bobby-keluhkan-harga-material-selangit-tawarkan-jurus-beli-massal-lewat-bumd-ke-dpr.html",
   "/berita/diduga-mundur-30-siswa-sekolah-rakyat-terintegrasi-di-sergai-pulang-ksp-dudung-abdurachman-akan-bujuk-kembali.html",
   "/berita/pemko-medan-integrasikan-layanan-publik-berbasis-ai-warga-bisa-akses-dukcapil-dan-perizinan-lewat-whatsapp.html",
