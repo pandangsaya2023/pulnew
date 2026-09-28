@@ -8,7 +8,7 @@
   "/berita/wawali-sidak-helvetia-bongkar-biang-banjir-parit-putus-nyambung-air-muter-di-tempat.html",
   "/berita/tanpa-wajah-lama-7-komisioner-kpid-sumut-baru-terpilih-4-petahana-tumbang-di-dprd.html",
   "/berita/dari-manusia-tercepat-asia-sampai-raja-catur-10-emas-bobby-beri-tali-asih-13-legenda-sumut-di-haornas.html",
-  "/berita/2-siswa-keracunan-mbg-karo-dirujuk-ke-jakarta-gibran-pantau-langsung-pemulihannya.html",
+  "/berita/2-siswi-korban-mbg-karo-sempat-dirujuk-ke-rscm-gibran-turun-tangan-rscm-sebut-otak-febiona-aman-ginjal-agnesia-membaik.html",
   "/berita/perkuat-akses-kuliah-pemko-medan-gulirkan-beasiswa-100-mahasiswa-mulai-oktober-2026.html",
   "/berita/rico-waas-terima-piala-juara-umum-mtq-sumut-ke-40-16-qari-kota-medan-maju-ke-nasional.html",
   "/berita/bobby-nasution-usulkan-4-skema-satukan-ekonomi-10-provinsi-di-sumatera.html",
