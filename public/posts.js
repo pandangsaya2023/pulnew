@@ -12,7 +12,7 @@
   "/berita/jangan-sampai-putus-kuliah-di-tahun-kedua-pemko-medan-siapkan-beasiswa-untuk-100-mahasiswa-mulai-oktober.html",
   "/berita/9-tahun-juara-berturut-piala-mtq-sumut-kembali-ke-medan-rico-waas-langsung-bagi-bonus-ke-qari-qariah.html",
   "/berita/jangan-jalan-sendiri-sendiri-bobby-usul-4-skema-satukan-ekonomi-10-provinsi-sumatera-di-forum-imt-gt.html",
-  "/berita/erupsi-sinabung-lumpuhkan-sementara-bandara-kualanamu-puluhan-penerbangan-tertunda.html",
+  "/berita/erupsi-sinabung-lumpuhkan-bandara-kualanamu-45-penerbangan-batal-notam-darurat-diterbitkan.html",
   "/berita/pemko-medan-sabet-detiksumatera-awards-2026-berkat-inovasi-digitalisasi-pajak-qresto.html",
   "/berita/dampak-5-ancaman-listrik-nasional-ke-medan-sp-pln-warning-kedaulatan-energi-bisa-jebol.html"
 ]
