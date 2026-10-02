@@ -1,5 +1,5 @@
 [
-  "/berita/waspada-jebakan-pinjol-ilegal-di-medan-dana-nyasar-rp15-juta-berujung-teror-tagihan.html",
+  "/berita/waspada-jebakan-pinjol-ilegal-di-medan-dana-nyasar-rp-15-juta-berujung-teror-tagihan.html",
   "/berita/cabai-rawit-tembus-rp-96-ribu-emak-emak-medan-ngeluh-harga-di-petisah-belum-turun.html",
   "/berita/banjir-tahunan-di-gerbang-tol-belmera-medan-bobby-janji-kolam-retensi-mulai-digarap-2027.html",
   "/berita/bobby-di-medan-titip-misi-ke-perantau-minang-putar-uang-di-sumut-kejar-5000-umkm-halal.html",
