@@ -1,5 +1,5 @@
 [
-  "/berita/cabai-rawit-tembus-rp96-ribu-emak-emak-medan-ngeluh-harga-di-petisah-belum-turun.html",
+  "/berita/cabai-rawit-tembus-rp-96-ribu-emak-emak-medan-ngeluh-harga-di-petisah-belum-turun.html",
   "/berita/banjir-tahunan-di-gerbang-tol-belmera-medan-bobby-janji-kolam-retensi-mulai-digarap-2027.html",
   "/berita/bobby-di-medan-titip-misi-ke-perantau-minang-putar-uang-di-sumut-kejar-5000-umkm-halal.html",
   "/berita/harga-semen-di-medan-tembus-langit-bobby-tawarkan-beli-massal-lewat-bumd-ke-dpr.html",
