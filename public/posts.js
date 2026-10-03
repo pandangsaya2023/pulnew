@@ -1,4 +1,5 @@
 [
+  "/berita/mutasi-panas-di-polda-sumut-brigjen-sonny-irawan-gantikan-irjen-whisnu-hermawan-jadi-kapolda.html",
   "/berita/waspada-jebakan-pinjol-ilegal-di-medan-dana-nyasar-rp-1,5-juta-berujung-teror-tagihan.html",
   "/berita/cabai-rawit-tembus-rp-96-ribu-emak-emak-medan-ngeluh-harga-di-petisah-belum-turun.html",
   "/berita/banjir-tahunan-di-gerbang-tol-belmera-medan-bobby-janji-kolam-retensi-mulai-digarap-2027.html",
