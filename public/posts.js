@@ -1,4 +1,5 @@
 [
+  "/berita/dari-batubara-ke-surabaya-bobby-nasution-lepas-keysa-dwi-tantri-harumkan-sumut-di-miss-youth-indonesia.html",
   "/berita/banjir-beringin-medan-selayang-tak-kunjung-usai-rico-waas-desak-tanggul-sungai-babura-dikaji.html",
   "/berita/mutasi-panas-di-polda-sumut-brigjen-sonny-irawan-gantikan-irjen-whisnu-hermawan-jadi-kapolda.html",
   "/berita/waspada-jebakan-pinjol-ilegal-di-medan-dana-nyasar-rp-1,5-juta-berujung-teror-tagihan.html",
