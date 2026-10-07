@@ -1,4 +1,5 @@
 [
+  "/berita/bobby-nasution-tegaskan-kolaborasi-jadi-penentu-sukses-food-estate-dan-kek-sei-mangkei-di-sumut.html",
   "/berita/rapbd-medan-2027-anjlok-jadi-rp-6,9-triliun-pks-bongkar-anggaran-pendidikan-dipangkas-dan-2575-drainase-rusak.html",
   "/berita/dari-batubara-ke-surabaya-bobby-nasution-lepas-keysa-dwi-tantri-harumkan-sumut-di-miss-youth-indonesia.html",
   "/berita/banjir-beringin-medan-selayang-tak-kunjung-usai-rico-waas-desak-tanggul-sungai-babura-dikaji.html",
