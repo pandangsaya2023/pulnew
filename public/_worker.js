@@ -1,23 +1,11 @@
 export default {
   async fetch(request, env) {
-    const url = new URL(request.url);
-
-    <?xml version="1.0" encoding="UTF-8"?>
-    <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-
-      <url>
-        <loc>https://pulnew.pages.dev</loc>
-        <lastmod>2026-10-08</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>1.0</priority>
-      </url>
-
-    </urlset>
+    const url = new URL(request.url);    
 
     // 1. JANGAN DI-INTERCEPT - biarin file statis lolos langsung (ini fix robots.txt 186 error)
     if (
       url.pathname === '/robots.txt' ||
-      //url.pathname === '/sitemap.xml' ||
+      url.pathname === '/sitemap.xml' ||
       url.pathname === '/llms.txt' ||
       url.pathname === '/favicon.ico' ||
       url.pathname.startsWith('/posts/') ||
