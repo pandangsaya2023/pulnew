@@ -1,4 +1,5 @@
 [
+  "/berita/rico-waas-semprot-bapenda-medan-soal-pad-rp-3,64-triliun-baru-64-persen.html",
   "/berita/listrik-belum-masuk-117-dusun-di-sumut-pemprov-dan-pln-kejar-target-100-persen-di-2027.html",
   "/berita/bobby-nasution-tegaskan-kolaborasi-jadi-penentu-sukses-food-estate-dan-kek-sei-mangkei-di-sumut.html",
   "/berita/rapbd-medan-2027-anjlok-jadi-rp-6,9-triliun-pks-bongkar-anggaran-pendidikan-dipangkas-dan-2575-drainase-rusak.html",
