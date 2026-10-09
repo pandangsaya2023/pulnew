@@ -1,4 +1,5 @@
 [
+  "/berita/rico-waas-tabuh-gendang-melayu-deli-di-lapangan-benteng-90-persen-warga-medan-belum-pernah-lihat-tari-dayang-nan-tujuh.html",
   "/berita/rico-waas-semprot-bapenda-medan-soal-pad-rp-3,64-triliun-baru-64-persen.html",
   "/berita/listrik-belum-masuk-117-dusun-di-sumut-pemprov-dan-pln-kejar-target-100-persen-di-2027.html",
   "/berita/bobby-nasution-tegaskan-kolaborasi-jadi-penentu-sukses-food-estate-dan-kek-sei-mangkei-di-sumut.html",
