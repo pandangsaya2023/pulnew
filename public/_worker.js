@@ -3,10 +3,12 @@ export default {
     const url = new URL(request.url);
     const userAgent = request.headers.get("user-agent") || "";
 
-    // 1. UTAMAKAN: Tangani sitemap.xml secara dinamis TERLEBIH DAHULU
+    // 1. Tangani sitemap.xml secara dinamis dan aman via env.ASSETS
     if (url.pathname === '/sitemap.xml') {
       try {
-        const indexRes = await fetch(`${url.origin}/posts/index.json`, { cf: { cacheTtl: 3600, cacheEverything: true } });
+        // Ambil file index.json langsung dari asset storage internal
+        const assetRequest = new Request(`${url.origin}/posts/index.json`, request);
+        const indexRes = await env.ASSETS.fetch(assetRequest);
         
         let urls = `
           <url>
@@ -57,7 +59,7 @@ ${urls}
       }
     }
 
-    // 1.1. Filter bot untuk hemat kuota worker (ditaruh setelah sitemap.xml)
+    // 2. Filter bot untuk hemat kuota worker
     const isSearchBot = /Googlebot|bingbot|Slurp|DuckDuckBot|Baiduspider|YandexBot|Sogou|Exabot|facebot/i.test(userAgent);
 
     if (
@@ -71,6 +73,9 @@ ${urls}
     ) {
       return env.ASSETS.fetch(request);
     }
+    
+    // ... (lanjutan kode berita & halaman utama)
+
 
     // 2. KHUSUS HALAMAN BERITA - inject SEO tapi pakai cache (hapus Date.now)
     if ((url.pathname === '/berita' || url.pathname === '/berita.html') && url.searchParams.has('slug')) {
