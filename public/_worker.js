@@ -1,6 +1,6 @@
 export default {
   async fetch(request, env) {
-    const url = new URL(request.url);    
+    const url = new URL(request.url);
 
     // 1. JANGAN DI-INTERCEPT - biarin file statis lolos langsung (ini fix robots.txt 186 error)
     if (
