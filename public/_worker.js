@@ -3,29 +3,60 @@ export default {
     const url = new URL(request.url);
     const userAgent = request.headers.get("user-agent") || "";
 
-    // 1. JANGAN DI-INTERCEPT - Tangani sitemap.xml secara langsung agar tidak lari ke beranda
+    // 1. JANGAN DI-INTERCEPT - Tangani sitemap.xml secara dinamis dari file indeks
     if (url.pathname === '/sitemap.xml') {
-      // Anda bisa menambahkan daftar URL berita atau halaman utama di sini
-      const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
+      try {
+        // Ambil file indeks daftar berita (sesuaikan path jika file indeks Anda bernama lain, misal /posts/index.json)
+        const indexRes = await fetch(`${url.origin}/posts.json`, { cf: { cacheTtl: 3600, cacheEverything: true } });
+        
+        let urls = `
+          <url>
+            <loc>${url.origin}/</loc>
+            <changefreq>daily</changefreq>
+            <priority>1.0</priority>
+          </url>
+          <url>
+            <loc>${url.origin}/berita</loc>
+            <changefreq>always</changefreq>
+            <priority>0.8</priority>
+          </url>
+        `;
+
+        if (indexRes.ok) {
+          const posts = await indexRes.json();
+          // Asumsi posts adalah array atau objek yang berisi daftar artikel dengan properti slug/date
+          if (Array.isArray(posts)) {
+            for (const post of posts) {
+              const slug = post.slug;
+              const lastmod = post.date ? new Date(post.date).toISOString() : new Date().toISOString();
+              if (slug) {
+                urls += `
+                  <url>
+                    <loc>${url.origin}/berita?slug=${slug}</loc>
+                    <lastmod>${lastmod}</lastmod>
+                    <changefreq>weekly</changefreq>
+                    <priority>0.7</priority>
+                  </url>
+                `;
+              }
+            }
+          }
+        }
+
+        const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>${url.origin}/</loc>
-    <changefreq>daily</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>${url.origin}/berita</loc>
-    <changefreq>always</changefreq>
-    <priority>0.8</priority>
-  </url>
+${urls}
 </urlset>`;
 
-      return new Response(sitemapXml, {
-        headers: {
-          'Content-Type': 'application/xml;charset=UTF-8',
-          'Cache-Control': 'public, max-age=3600'
-        }
-      });
+        return new Response(sitemapXml, {
+          headers: {
+            'Content-Type': 'application/xml;charset=UTF-8',
+            'Cache-Control': 'public, max-age=3600'
+          }
+        });
+      } catch (e) {
+        console.error("Gagal generate sitemap:", e);
+      }
     }
 
     // 1b. File statis lainnya biarkan lolos langsung (termasuk Googlebot/crawler umum untuk hemat kuota worker)
