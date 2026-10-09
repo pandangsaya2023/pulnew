@@ -1,6 +1,6 @@
 export async function onRequest(context) {
   const baseUrl = 'https://pulnew.pages.dev';
-  const githubApiUrl = 'https://api.github.com/repos/pandangsaya2023/pulnew/public/posts';
+  const githubApiUrl = 'https://api.github.com/repos/pandangsaya2023/pulnew/contents/public/posts';
 
   try {
     const res = await fetch(githubApiUrl, {
