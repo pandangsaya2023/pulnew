@@ -3,68 +3,7 @@ export default {
     const url = new URL(request.url);
     const userAgent = request.headers.get("user-agent") || "";
 
-    // 1. URUTAN PERTAMA: Tangani sitemap.xml secara khusus agar diakses bersih oleh Googlebot
-    if (url.pathname === '/sitemap.xml') {
-      try {
-        const jsonRes = await fetch(`${url.origin}/posts/index.json`);
-        let urls = `
-          <url>
-            <loc>${url.origin}/</loc>
-            <changefreq>daily</changefreq>
-            <priority>1.0</priority>
-          </url>
-          <url>
-            <loc>${url.origin}/berita</loc>
-            <changefreq>always</changefreq>
-            <priority>0.8</priority>
-          </url>
-        `;
-
-        if (jsonRes.ok) {
-          const posts = await jsonRes.json();
-          if (Array.isArray(posts)) {
-            for (const post of posts) {
-              const slug = post.slug;
-              const lastmod = post.date ? new Date(post.date).toISOString() : new Date().toISOString();
-              if (slug) {
-                urls += `
-                  <url>
-                    <loc>${url.origin}/berita?slug=${slug}</loc>
-                    <lastmod>${lastmod}</lastmod>
-                    <changefreq>weekly</changefreq>
-                    <priority>0.7</priority>
-                  </url>
-                `;
-              }
-            }
-          }
-        }
-
-        const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${urls}
-</urlset>`;
-
-        return new Response(sitemapXml, {
-          headers: {
-            'Content-Type': 'application/xml; charset=UTF-8',
-            'Cache-Control': 'public, max-age=3600'
-          }
-        });
-      } catch (e) {
-        // Fallback sitemap darurat jika gagal fetch index
-        const fallbackXml = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>${url.origin}/</loc></url>
-  <url><loc>${url.origin}/berita</loc></url>
-</urlset>`;
-        return new Response(fallbackXml, {
-          headers: { 'Content-Type': 'application/xml; charset=UTF-8' }
-        });
-      }
-    }
-
-    // 2. Filter bot umum (biar hemat kuota worker untuk halaman lain)
+    // 1. Filter bot umum (biar hemat kuota worker) - sitemap.xml sudah berupa file fisik jadi otomatis lolos ke ASSETS
     const isSearchBot = /Googlebot|bingbot|Slurp|DuckDuckBot|Baiduspider|YandexBot|Sogou|Exabot|facebot/i.test(userAgent);
 
     if (
@@ -72,6 +11,7 @@ ${urls}
       url.pathname === '/robots.txt' ||
       url.pathname === '/llms.txt' ||
       url.pathname === '/favicon.ico' ||
+      url.pathname === '/sitemap.xml' ||
       url.pathname.startsWith('/posts/') ||
       url.pathname.startsWith('/media/') ||
       url.pathname.startsWith('/_headers')
@@ -79,7 +19,7 @@ ${urls}
       return env.ASSETS.fetch(request);
     }
 
-    // 3. KHUSUS HALAMAN BERITA (WhatsApp Preview / Open Graph Inserter)
+    // 2. KHUSUS HALAMAN BERITA (WhatsApp Preview / Open Graph Inserter)
     if ((url.pathname === '/berita' || url.pathname === '/berita.html') && url.searchParams.has('slug')) {
       const slug = url.searchParams.get('slug');
       const response = await env.ASSETS.fetch(request);
@@ -129,7 +69,7 @@ ${urls}
       return response;
     }
 
-    // 4. HALAMAN LAINNYA
+    // 3. HALAMAN LAINNYA
     const res = await env.ASSETS.fetch(request);
     const newRes = new Response(res.body, res);
     if (url.pathname === '/' || url.pathname.endsWith('.html')) {
