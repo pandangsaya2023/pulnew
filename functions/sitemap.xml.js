@@ -1,11 +1,21 @@
 export async function onRequest(context) {
   const baseUrl = 'https://pulnew.pages.dev';
   const githubApiUrl = 'https://api.github.com/repos/pandangsaya2023/pulnew/contents/public/posts';
+  
+  // Mengambil token dari Environment Variables Cloudflare
+  const token = context.env.GITHUB_TOKEN;
 
   try {
-    const res = await fetch(githubApiUrl, {
-      headers: { 'User-Agent': 'Cloudflare-Pages' }
-    });
+    const headers = { 
+      'User-Agent': 'Cloudflare-Pages'
+    };
+
+    // Menyertakan token ke header jika tersedia
+    if (token) {
+      headers['Authorization'] = `Bearer ${token}`;
+    }
+
+    const res = await fetch(githubApiUrl, { headers });
 
     if (!res.ok) {
       throw new Error(`GitHub API error: ${res.status}`);
@@ -44,3 +54,4 @@ export async function onRequest(context) {
     return new Response(xml, { headers: { 'Content-Type': 'application/xml' } });
   }
 }
+
