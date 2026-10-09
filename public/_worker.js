@@ -3,7 +3,7 @@ export default {
     const url = new URL(request.url);
     const userAgent = request.headers.get("user-agent") || "";
 
-    // 1. JANGAN DI-INTERCEPT - Tangani sitemap.xml secara dinamis dari file indeks
+    // 1. UTAMAKAN: Tangani sitemap.xml secara dinamis TERLEBIH DAHULU
     if (url.pathname === '/sitemap.xml') {
       try {
         const indexRes = await fetch(`${url.origin}/posts/index.json`, { cf: { cacheTtl: 3600, cacheEverything: true } });
@@ -57,7 +57,7 @@ ${urls}
       }
     }
 
-    // 1b. File statis lainnya biarkan lolos langsung (termasuk Googlebot/crawler umum untuk hemat kuota worker)
+    // 1.1. Filter bot untuk hemat kuota worker (ditaruh setelah sitemap.xml)
     const isSearchBot = /Googlebot|bingbot|Slurp|DuckDuckBot|Baiduspider|YandexBot|Sogou|Exabot|facebot/i.test(userAgent);
 
     if (
