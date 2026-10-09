@@ -15,15 +15,20 @@ export default {
       return env.ASSETS.fetch(request);
     }
 
-    // 2. KHUSUS HALAMAN BERITA - inject SEO tapi pakai cache (hapus Date.now)
+    // 2. KHUSUS HALAMAN BERITA - inject SEO
     if ((url.pathname === '/berita' || url.pathname === '/berita.html') && url.searchParams.has('slug')) {
       const slug = url.searchParams.get('slug');
+      const userAgent = request.headers.get("user-agent") || "";
+      const isBot = /WhatsApp|Facebot|facebookexternalhit|Twitterbot|LinkedInBot|TelegramBot/i.test(userAgent);
+      
       const response = await env.ASSETS.fetch(request);
 
       try {
-        // FIX: HAPUS ?t=Date.now() biar ke-cache
+        // Jika bot yang akses, jangan pakai cache CDN agar langsung ambil file JSON terbaru
+        const fetchOptions = isBot ? { cf: { cacheTtl: 0, cacheEverything: false } } : { cf: { cacheTtl: 3600, cacheEverything: true } };
+        
         const jsonUrl = `${url.origin}/posts/${slug}.json`;
-        const jsonRes = await fetch(jsonUrl, { cf: { cacheTtl: 3600, cacheEverything: true } });
+        const jsonRes = await fetch(jsonUrl, fetchOptions);
 
         if (jsonRes.ok) {
           const post = await jsonRes.json();
@@ -51,7 +56,7 @@ export default {
             <meta name="twitter:card" content="summary_large_image" />
           `;
 
-          return new HTMLRewriter()
+          const transformedResponse = new HTMLRewriter()
             .on('head', { element(el) { el.prepend(metaTagsInjct, { html: true }); } })
             .on('title', { element(el) { el.remove(); } })
             .on('link[rel*="icon"]', { element(el) { el.remove(); } })
@@ -59,6 +64,19 @@ export default {
             .on('meta[name^="twitter:"]', { element(el) { el.remove(); } })
             .on('meta[name="description"]', { element(el) { el.remove(); } })
             .transform(response);
+
+          // Jika diakses bot, pastikan header responsnya tidak di-cache oleh Cloudflare/WhatsApp
+          if (isBot) {
+            const newHeaders = new Headers(transformedResponse.headers);
+            newHeaders.set('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate');
+            return new Response(transformedResponse.body, {
+              status: transformedResponse.status,
+              statusText: transformedResponse.statusText,
+              headers: newHeaders
+            });
+          }
+
+          return transformedResponse;
         }
       } catch (e) {
         console.error("Gagal manipulasi:", e);
