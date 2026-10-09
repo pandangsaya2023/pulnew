@@ -6,8 +6,7 @@ export default {
     // 1. JANGAN DI-INTERCEPT - Tangani sitemap.xml secara dinamis dari file indeks
     if (url.pathname === '/sitemap.xml') {
       try {
-        // Ambil file indeks daftar berita (sesuaikan path jika file indeks Anda bernama lain, misal /posts/index.json)
-        const indexRes = await fetch(`${url.origin}/posts.json`, { cf: { cacheTtl: 3600, cacheEverything: true } });
+        const indexRes = await fetch(`${url.origin}/posts/index.json`, { cf: { cacheTtl: 3600, cacheEverything: true } });
         
         let urls = `
           <url>
@@ -24,7 +23,6 @@ export default {
 
         if (indexRes.ok) {
           const posts = await indexRes.json();
-          // Asumsi posts adalah array atau objek yang berisi daftar artikel dengan properti slug/date
           if (Array.isArray(posts)) {
             for (const post of posts) {
               const slug = post.slug;
@@ -80,7 +78,6 @@ ${urls}
       const response = await env.ASSETS.fetch(request);
 
       try {
-        // FIX: HAPUS ?t=Date.now() biar ke-cache
         const jsonUrl = `${url.origin}/posts/${slug}.json`;
         const jsonRes = await fetch(jsonUrl, { cf: { cacheTtl: 3600, cacheEverything: true } });
 
