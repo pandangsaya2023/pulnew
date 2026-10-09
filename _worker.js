@@ -1,33 +1,35 @@
 export default {
-  async fetch(request, env) {
-    const url = new URL(request.url);    
+    async fetch(request, env) {
+      const url = new URL(request.url);    
+      const slug = url.searchParams.get('slug');
 
-    // 1. JANGAN DI-INTERCEPT - biarin file statis lolos langsung (ini fix robots.txt 186 error)
-    if (
+    // 1. JANGAN DI-INTERCEPT untuk file aset statis murni (kecuali request dari bot untuk halaman berita)
+    const userAgent = request.headers.get("user-agent") || "";
+    const isBot = /WhatsApp|Facebot|facebookexternalhit|Twitterbot|LinkedInBot|TelegramBot/i.test(userAgent);
+
+    if (!slug && (
       url.pathname === '/robots.txt' ||
       url.pathname === '/sitemap.xml' ||
       url.pathname === '/llms.txt' ||
       url.pathname === '/favicon.ico' ||
-      url.pathname.startsWith('/posts/') ||
       url.pathname.startsWith('/media/') ||
       url.pathname.startsWith('/_headers')
-    ) {
+    )) {
       return env.ASSETS.fetch(request);
     }
 
-    // 2. KHUSUS HALAMAN BERITA - inject SEO
-    if ((url.pathname === '/berita' || url.pathname === '/berita.html') && url.searchParams.has('slug')) {
-      const slug = url.searchParams.get('slug');
-      const userAgent = request.headers.get("user-agent") || "";
-      const isBot = /WhatsApp|Facebot|facebookexternalhit|Twitterbot|LinkedInBot|TelegramBot/i.test(userAgent);
-      
+    // 2. KHUSUS HALAMAN BERITA (baik ada parameter slug maupun path /berita/...)
+    let targetSlug = slug;
+    if (!targetSlug && url.pathname.startsWith('/berita/')) {
+      targetSlug = url.pathname.replace('/berita/', '').replace(/\/$/, '');
+    }
+
+    if (targetSlug) {
       const response = await env.ASSETS.fetch(request);
 
       try {
-        // Jika bot yang akses, jangan pakai cache CDN agar langsung ambil file JSON terbaru
         const fetchOptions = isBot ? { cf: { cacheTtl: 0, cacheEverything: false } } : { cf: { cacheTtl: 3600, cacheEverything: true } };
-        
-        const jsonUrl = `${url.origin}/posts/${slug}.json`;
+        const jsonUrl = `${url.origin}/posts/${targetSlug}.json`;
         const jsonRes = await fetch(jsonUrl, fetchOptions);
 
         if (jsonRes.ok) {
@@ -54,6 +56,9 @@ export default {
             <meta property="og:url" content="${url.href}" />
             <meta property="og:type" content="article" />
             <meta name="twitter:card" content="summary_large_image" />
+            <meta name="twitter:title" content="${(post.title || 'PULNEW').replace(/"/g, '&quot;')}" />
+            <meta name="twitter:description" content="${desc}" />
+            <meta name="twitter:image" content="${image}" />
           `;
 
           const transformedResponse = new HTMLRewriter()
@@ -65,10 +70,9 @@ export default {
             .on('meta[name="description"]', { element(el) { el.remove(); } })
             .transform(response);
 
-          // Jika diakses bot, pastikan header responsnya tidak di-cache oleh Cloudflare/WhatsApp
           if (isBot) {
             const newHeaders = new Headers(transformedResponse.headers);
-            newHeaders.set('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate');
+            newHeaders.set('Cache-Control', 'no-store, no-cache, must-revalidate');
             return new Response(transformedResponse.body, {
               status: transformedResponse.status,
               statusText: transformedResponse.statusText,
@@ -83,6 +87,7 @@ export default {
       }
       return response;
     }
+
 
     // 3. UNTUK YANG LAIN (index.html) - tambahin cache header biar PageSpeed ijo
     const res = await env.ASSETS.fetch(request);
