@@ -1,9 +1,13 @@
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
+    const userAgent = request.headers.get("user-agent") || "";
 
-    // 1. JANGAN DI-INTERCEPT - biarin file statis lolos langsung (ini fix robots.txt 186 error)
+    // 1. JANGAN DI-INTERCEPT - biarin file statis lolos langsung (termasuk Googlebot/crawler umum untuk hemat kuota worker)
+    const isSearchBot = /Googlebot|bingbot|Slurp|DuckDuckBot|Baiduspider|YandexBot|Sogou|Exabot|facebot/i.test(userAgent);
+
     if (
+      isSearchBot ||
       url.pathname === '/robots.txt' ||
       url.pathname === '/sitemap.xml' ||
       url.pathname === '/llms.txt' ||
@@ -78,3 +82,4 @@ export default {
     return newRes;
   }
 };
+
