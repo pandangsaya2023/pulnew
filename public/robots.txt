@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://pulnew.pages.dev/sitemap.xml
+Sitemap: https://pulnew.pages.dev/public/sitemap.xml
