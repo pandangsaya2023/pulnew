@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://pulnew.pages.dev/peta-situs.xml
+Sitemap: https://pulnew.pages.dev/sitemap.xml
