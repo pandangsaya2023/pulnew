@@ -1,32 +1,7 @@
 export default {
-    async fetch(request, env) {
-      const url = new URL(request.url);
-      const userAgent = request.headers.get("user-agent") || "";
-
-    // 1. PAKSA SITEMAP JADI XML - INI KUNCINYA
-    if (url.pathname === '/sitemap.xml') {
-      const asset = await env.ASSETS.fetch(request);
-    // Kalau asset 404, biarin 404, tapi kalau 200 paksa jadi xml
-    return new Response(asset.body, {
-      status: asset.status,
-        headers: {
-          "Content-Type": "application/xml; charset=utf-8",
-          "Cache-Control": "public, max-age=0, must-revalidate",
-          "Access-Control-Allow-Origin": "*"
-        }
-      });
-    }
-
-    if (
-      url.pathname === '/robots.txt' ||
-      url.pathname === '/llms.txt' ||
-      url.pathname === '/favicon.ico' ||
-      url.pathname.startsWith('/posts/') ||
-      url.pathname.startsWith('/media/')
-    ) {
-      return env.ASSETS.fetch(request);
-    }
-
+  async fetch(request, env) {
+    const url = new URL(request.url);
+    const userAgent = request.headers.get("user-agent") || "";
     const isSearchBot = /Googlebot|bingbot|Slurp|DuckDuckBot|Baiduspider|YandexBot|Sogou|Exabot|facebot/i.test(userAgent);
     if (isSearchBot) {
       return env.ASSETS.fetch(request);
