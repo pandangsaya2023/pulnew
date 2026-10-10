@@ -3,19 +3,21 @@ export default {
     const url = new URL(request.url);
     const userAgent = request.headers.get("user-agent") || "";
 
-    // 1. Filter bot umum (biar hemat kuota worker) - sitemap.xml sudah berupa file fisik jadi otomatis lolos ke ASSETS
-    const isSearchBot = /Googlebot|bingbot|Slurp|DuckDuckBot|Baiduspider|YandexBot|Sogou|Exabot|facebot/i.test(userAgent);
-
+    // 1. FIX GSC: Kasih lewat dulu semua file statis penting, tanpa cek bot
     if (
-      isSearchBot ||
+      url.pathname === '/sitemap.xml' ||
       url.pathname === '/robots.txt' ||
       url.pathname === '/llms.txt' ||
       url.pathname === '/favicon.ico' ||
-      url.pathname === '/sitemap.xml' ||
       url.pathname.startsWith('/posts/') ||
-      url.pathname.startsWith('/media/') ||
-      url.pathname.startsWith('/_headers')
+      url.pathname.startsWith('/media/')
     ) {
+      return env.ASSETS.fetch(request);
+    }
+
+    // Filter bot umum buat hemat kuota
+    const isSearchBot = /Googlebot|bingbot|Slurp|DuckDuckBot|Baiduspider|YandexBot|Sogou|Exabot|facebot/i.test(userAgent);
+    if (isSearchBot) {
       return env.ASSETS.fetch(request);
     }
 
