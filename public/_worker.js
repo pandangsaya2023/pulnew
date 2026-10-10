@@ -1,12 +1,19 @@
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
-    const userAgent = request.headers.get("user-agent") || "";
-    const isSearchBot = /Googlebot|bingbot|Slurp|DuckDuckBot|Baiduspider|YandexBot|Sogou|Exabot|facebot/i.test(userAgent);
-    if (isSearchBot) {
-      return env.ASSETS.fetch(request);
+    
+    // PAKSA SITEMAP JADI XML
+    if (url.pathname === '/sitemap.xml') {
+      const asset = await env.ASSETS.fetch(request);
+      return new Response(asset.body, {
+        status: asset.status,
+        headers: {
+          "Content-Type": "application/xml; charset=utf-8",
+          "Cache-Control": "public, max-age=0, must-revalidate"
+        }
+      });
     }
-
+    
     // 2. KHUSUS HALAMAN BERITA (WhatsApp Preview / Open Graph Inserter)
     if ((url.pathname === '/berita' || url.pathname === '/berita.html') && url.searchParams.has('slug')) {
       const slug = url.searchParams.get('slug');
