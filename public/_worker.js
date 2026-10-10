@@ -1,25 +1,27 @@
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
-    
-    // PAKSA SITEMAP JADI XML
-    if (url.pathname === '/sitemap.xml') {
-      const asset = await env.ASSETS.fetch(request);
-      return new Response(asset.body, {
-        status: asset.status,
-        headers: {
-          "Content-Type": "application/xml; charset=utf-8",
-          "Cache-Control": "public, max-age=0, must-revalidate"
-        }
-      });
+
+    // 1. JANGAN DI-INTERCEPT - biarin file statis lolos langsung (ini fix robots.txt 186 error)
+    if (
+      url.pathname === '/robots.txt' ||
+      url.pathname === '/sitemap.xml' ||
+      url.pathname === '/llms.txt' ||
+      url.pathname === '/favicon.ico' ||
+      url.pathname.startsWith('/posts/') ||
+      url.pathname.startsWith('/media/') ||
+      url.pathname.startsWith('/_headers')
+    ) {
+      return env.ASSETS.fetch(request);
     }
-    
-    // 2. KHUSUS HALAMAN BERITA (WhatsApp Preview / Open Graph Inserter)
+
+    // 2. KHUSUS HALAMAN BERITA - inject SEO tapi pakai cache (hapus Date.now)
     if ((url.pathname === '/berita' || url.pathname === '/berita.html') && url.searchParams.has('slug')) {
       const slug = url.searchParams.get('slug');
       const response = await env.ASSETS.fetch(request);
 
       try {
+        // FIX: HAPUS ?t=Date.now() biar ke-cache
         const jsonUrl = `${url.origin}/posts/${slug}.json`;
         const jsonRes = await fetch(jsonUrl, { cf: { cacheTtl: 3600, cacheEverything: true } });
 
@@ -59,12 +61,12 @@ export default {
             .transform(response);
         }
       } catch (e) {
-        console.error("Gagal manipulasi OG:", e);
+        console.error("Gagal manipulasi:", e);
       }
       return response;
     }
 
-    // 3. HALAMAN LAINNYA
+    // 3. UNTUK YANG LAIN (index.html) - tambahin cache header biar PageSpeed ijo
     const res = await env.ASSETS.fetch(request);
     const newRes = new Response(res.body, res);
     if (url.pathname === '/' || url.pathname.endsWith('.html')) {
