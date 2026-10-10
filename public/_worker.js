@@ -1,11 +1,23 @@
 export default {
-  async fetch(request, env) {
-    const url = new URL(request.url);
-    const userAgent = request.headers.get("user-agent") || "";
+    async fetch(request, env) {
+      const url = new URL(request.url);
+      const userAgent = request.headers.get("user-agent") || "";
 
-    // 1. FIX GSC: Kasih lewat dulu semua file statis penting, tanpa cek bot
+    // 1. PAKSA SITEMAP JADI XML - INI KUNCINYA
+    if (url.pathname === '/sitemap.xml') {
+      const asset = await env.ASSETS.fetch(request);
+    // Kalau asset 404, biarin 404, tapi kalau 200 paksa jadi xml
+    return new Response(asset.body, {
+      status: asset.status,
+        headers: {
+          "Content-Type": "application/xml; charset=utf-8",
+          "Cache-Control": "public, max-age=0, must-revalidate",
+          "Access-Control-Allow-Origin": "*"
+        }
+      });
+    }
+
     if (
-      url.pathname === '/sitemap.xml' ||
       url.pathname === '/robots.txt' ||
       url.pathname === '/llms.txt' ||
       url.pathname === '/favicon.ico' ||
@@ -15,10 +27,10 @@ export default {
       return env.ASSETS.fetch(request);
     }
 
-    // Filter bot umum buat hemat kuota
     const isSearchBot = /Googlebot|bingbot|Slurp|DuckDuckBot|Baiduspider|YandexBot|Sogou|Exabot|facebot/i.test(userAgent);
     if (isSearchBot) {
       return env.ASSETS.fetch(request);
+    }
     }
 
     // 2. KHUSUS HALAMAN BERITA (WhatsApp Preview / Open Graph Inserter)
