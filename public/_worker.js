@@ -31,7 +31,6 @@ export default {
     if (isSearchBot) {
       return env.ASSETS.fetch(request);
     }
-    }
 
     // 2. KHUSUS HALAMAN BERITA (WhatsApp Preview / Open Graph Inserter)
     if ((url.pathname === '/berita' || url.pathname === '/berita.html') && url.searchParams.has('slug')) {
