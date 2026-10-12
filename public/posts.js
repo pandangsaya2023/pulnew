@@ -14,7 +14,7 @@
   "/berita/bobby-di-medan-titip-misi-ke-perantau-minang-putar-uang-di-sumut-kejar-5000-umkm-halal.html",
   "/berita/harga-semen-di-medan-tembus-langit-bobby-tawarkan-beli-massal-lewat-bumd-ke-dpr.html",
   "/berita/30-siswa-sekolah-rakyat-sergai-pulang-ke-rumah-ksp-dudung-turun-tangan-bujuk-balik.html",
-  "/berita/gak-perlu-antre-di-disdukcapil-warga-medan-kini-bisa-urus-kk-dan-izin-usaha-lewat-whatsapp.html",
+  "/berita/cara-urus-ktp-dan-izin-usaha-medan-lewat-whatsapp-ai-tanpa-antre-di-disdukcapil.html",
   "/berita/gempa-2-0-magnitudo-goyang-humbahas-pgr-1-medan-catat-aceh-dan-nias-juga-getar-hari-ini.html",
   "/berita/wawali-sidak-helvetia-bongkar-biang-banjir-parit-putus-nyambung-air-muter-di-tempat.html",
   "/berita/tanpa-wajah-lama-7-komisioner-kpid-sumut-baru-terpilih-4-petahana-tumbang-di-dprd.html",
