@@ -250,7 +250,25 @@ function filterBerita(kategori) {
     tampilkanHalaman(1); 
 }
 
-function updateRunningText(posts) { const containerTop = document.getElementById('running-text-container'); if (!posts || posts.length === 0) return; let htmlContent = ''; posts.slice(0, 10).forEach(post => { htmlContent += `<a href="/berita.html?slug=${post.slug}" class="ticker-item">🔥 ${post.title} &nbsp;&nbsp;&nbsp;&nbsp;</a>`; }); containerTop.innerHTML = htmlContent; }
+function updateRunningText(posts) { 
+    const containerTop = document.getElementById('running-text-container'); 
+    if (!posts || posts.length === 0) return; 
+    
+    // Filter agar ticker HANYA mengambil artikel non-arsip (fokus teknologi/tutorial)
+    const postsNonArsip = posts.filter(post => (post.kategori || '').toUpperCase() !== 'ARSIP');
+    
+    if (postsNonArsip.length === 0) {
+        containerTop.innerHTML = '<span class="ticker-item">Selamat datang di PULNEW - Pusat Panduan Teknologi</span>';
+        return;
+    }
+
+    let htmlContent = ''; 
+    postsNonArsip.slice(0, 10).forEach(post => { 
+        htmlContent += `<a href="/berita.html?slug=${post.slug}" class="ticker-item">🔥 ${post.title} &nbsp;&nbsp;&nbsp;&nbsp;</a>`; 
+    }); 
+    containerTop.innerHTML = htmlContent; 
+}
+
 function autoScrollCarousel() { const carousel = document.getElementById('main-carousel'); if(!carousel) return; let scrollAmount = 0; setInterval(() => { if (carousel.scrollWidth - carousel.scrollLeft <= carousel.clientWidth) { scrollAmount = 0; } else { scrollAmount += 300; } carousel.scrollTo({ left: scrollAmount, behavior: 'smooth' }); }, 4000); }
 ambilDataBerita();
 </script>
