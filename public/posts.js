@@ -1,4 +1,5 @@
 [
+  "/berita/stadion-teladan-medan-dikebut-bobby-dan-rico-janji-rampung-november-2026.html",
   "/berita/dapur-mbg-di-medan-timur-disegel-bgn-sumut-setelah-17-murid-sdn-060870-krakatau-dilarikan-ke-rs-imelda.html",
   "/berita/rico-waas-tabuh-gendang-melayu-deli-di-lapangan-benteng-90-persen-warga-medan-belum-pernah-lihat-tari-dayang-nan-tujuh.html",
   "/berita/rico-waas-semprot-bapenda-medan-soal-pad-rp-3,64-triliun-baru-64-persen.html",
