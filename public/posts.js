@@ -9,7 +9,7 @@
   "/berita/banjir-beringin-medan-selayang-tak-kunjung-usai-rico-waas-desak-tanggul-sungai-babura-dikaji.html",
   "/berita/mutasi-panas-di-polda-sumut-brigjen-sonny-irawan-gantikan-irjen-whisnu-hermawan-jadi-kapolda.html",
   "/berita/waspada-jebakan-pinjol-ilegal-di-medan-dana-nyasar-rp-1,5-juta-berujung-teror-tagihan.html",
-  "/berita/cabai-rawit-rp96-ribu-bikin-pusing-emak-medan-pedagang-petisah-sebut-pasokan-berastagi-seret.html",
+  "/berita/cabai-rawit-rp-96-ribu-bikin-pusing-emak-medan-pedagang-petisah-sebut-pasokan-berastagi-seret.html",
   "/berita/banjir-tahunan-di-gerbang-tol-belmera-medan-bobby-janji-kolam-retensi-mulai-digarap-2027.html",
   "/berita/bobby-di-medan-titip-misi-ke-perantau-minang-putar-uang-di-sumut-kejar-5000-umkm-halal.html",
   "/berita/harga-semen-di-medan-tembus-langit-bobby-tawarkan-beli-massal-lewat-bumd-ke-dpr.html",
