@@ -116,7 +116,8 @@ async function tampilkanBeritaLainnya(slugSaatIni) {
         const res = await fetch('/posts/index.json', { cache: 'default' });
         const posts = await res.json();
         const postsTayang = posts.filter(p => bisaTayang(p.date));
-        const lainnya = postsTayang.filter(p => p.slug !== slugSaatIni).slice(0, 3);
+        const lainnya = postsTayang.filter(p => p.slug !== slugSaatIni && (p.kategori || '').toUpperCase() !== 'ARSIP').slice(0, 3);
+
         if(lainnya.length === 0) { container.innerHTML = `<p style="font-size:13px;color:#777">Belum ada berita lain.</p>`; return; }
         container.innerHTML = lainnya.map(p => {
             return `<a href="/berita.html?slug=${p.slug}" class="related-item"><img src="${p.image}" alt="${p.title}" width="90" height="60" loading="lazy" decoding="async" onerror="this.src='/media/og-default.jpg'"><h4>${p.title}</h4></a>`
