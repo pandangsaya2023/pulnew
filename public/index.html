@@ -263,7 +263,7 @@ function updateRunningText(posts) {
     }
 
     let htmlContent = ''; 
-    postsNonArsip.slice(0, 10).forEach(post => { 
+    postsNonArsip.slice(0, 90).forEach(post => { 
         htmlContent += `<a href="/berita.html?slug=${post.slug}" class="ticker-item">🔥 ${post.title} &nbsp;&nbsp;&nbsp;&nbsp;</a>`; 
     }); 
     containerTop.innerHTML = htmlContent; 
