@@ -156,7 +156,7 @@
             <a href="/about.html" class="footer-link">Tentang</a> |
             <a href="/privacy.html" class="footer-link">Privacy Policy</a> |
             <a href="/disclaimer.html" class="footer-link">Disclaimer</a> |
-            <a href="/disclaimer.html" class="footer-link">Terms</a> |
+            <a href="/terms.html" class="footer-link">Terms</a> |
             <a href="/contact.html" class="footer-link">Kontak</a>
             <div class="footer-bottom">&copy; 2026 PULNEW All Rights Reserved.</div>
         </div>
@@ -219,7 +219,23 @@ function tampilkanHalaman(page) { currentPage = page; const start = (page - 1) *
 function renderPagination() { const totalPages = Math.ceil(filteredPosts.length / postsPerPage); const container = document.getElementById('pagination-container'); if(totalPages <= 1) { container.innerHTML = ''; return; } let html = ''; html += `<button onclick="tampilkanHalaman(${currentPage-1})" ${currentPage==1?'disabled':''}>« Prev</button>`; let startPage = Math.max(1, currentPage - 2); let endPage = Math.min(totalPages, currentPage + 2); for(let i=startPage; i<=endPage; i++){ html += `<button class="${i==currentPage?'active':''}" onclick="tampilkanHalaman(${i})">${i}</button>`; } html += `<button onclick="tampilkanHalaman(${currentPage+1})" ${currentPage==totalPages?'disabled':''}>Next »</button>`; container.innerHTML = html; }
 function setupSearch(){ document.getElementById('searchInput').addEventListener('input', (e) => { const keyword = e.target.value.toLowerCase(); filteredPosts = keyword === ''? allPosts : allPosts.filter(post => post.title.toLowerCase().includes(keyword) || (post.kategori||'').toLowerCase().includes(keyword)); tampilkanHalaman(1); }); }
 function setupKategori(){ document.querySelectorAll('.category-nav a').forEach(link => { link.addEventListener('click', (e) => { e.preventDefault(); filterBerita(link.dataset.kategori); }); }); }
-function filterBerita(kategori) { document.querySelectorAll('.category-nav a').forEach(a => a.classList.remove('active')); const activeLink = document.querySelector(`[data-kategori="${kategori}"]`); if (activeLink) activeLink.classList.add('active'); filteredPosts = kategori === 'SEMUA'? allPosts : allPosts.filter(post => (post.kategori || '').toUpperCase() === kategori); document.getElementById('searchInput').value = ''; tampilkanHalaman(1); }
+function filterBerita(kategori) { 
+    document.querySelectorAll('.category-nav a').forEach(a => a.classList.remove('active')); 
+    const activeLink = document.querySelector(`[data-kategori="${kategori}"]`); 
+    if (activeLink) activeLink.classList.add('active'); 
+    
+    if (kategori === 'SEMUA') {
+        // Sembunyikan kategori ARSIP dari halaman Beranda utama
+        filteredPosts = allPosts.filter(post => (post.kategori || '').toUpperCase() !== 'ARSIP');
+    } else {
+        // Tampilkan sesuai kategori yang diklik (termasuk jika kategori ARSIP yang dipilih)
+        filteredPosts = allPosts.filter(post => (post.kategori || '').toUpperCase() === kategori);
+    }
+    
+    document.getElementById('searchInput').value = ''; 
+    tampilkanHalaman(1); 
+}
+
 function updateRunningText(posts) { const containerTop = document.getElementById('running-text-container'); if (!posts || posts.length === 0) return; let htmlContent = ''; posts.slice(0, 10).forEach(post => { htmlContent += `<a href="/berita.html?slug=${post.slug}" class="ticker-item">🔥 ${post.title} &nbsp;&nbsp;&nbsp;&nbsp;</a>`; }); containerTop.innerHTML = htmlContent; }
 function autoScrollCarousel() { const carousel = document.getElementById('main-carousel'); if(!carousel) return; let scrollAmount = 0; setInterval(() => { if (carousel.scrollWidth - carousel.scrollLeft <= carousel.clientWidth) { scrollAmount = 0; } else { scrollAmount += 300; } carousel.scrollTo({ left: scrollAmount, behavior: 'smooth' }); }, 4000); }
 ambilDataBerita();
