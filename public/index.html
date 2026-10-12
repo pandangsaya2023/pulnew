@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PULNEW - Portal Info Terkini</title>
-    <meta name="description" content="Menyajikan Informasi Langsung Ke Perangkat Anda - Portal informasi Indonesia terupdate">
+    <meta name="description" content="Pusat panduan teknologi, tutorial digital,  ulasan gadget dan sains populer">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
@@ -132,7 +132,6 @@
     </div>
     <div class="category-nav">
         <a href="#" class="active" data-kategori="SEMUA">Beranda</a>
-        <a href="#" data-kategori="BERANDA">Beranda</a>
         <a href="#" data-kategori="TUTORIAL">Tutorial</a>
         <a href="#" data-kategori="GADGET">Gadget</a>
         <a href="#" data-kategori="SAINS & EDUKASI">Sains & Edukasi</a>
@@ -153,7 +152,7 @@
     <footer>
         <div class="footer-content">
             <div class="footer-logo">PUL<span>NEW</span></div>
-            <p>Pusat panduan teknologi, tutorial digital,  ulasann gadget dan sains populer</p>
+            <p>Pusat panduan teknologi, tutorial digital,  ulasan gadget dan sains populer</p>
             <a href="/about.html" class="footer-link">Tentang</a> |
             <a href="/privacy.html" class="footer-link">Privacy Policy</a> |
             <a href="/disclaimer.html" class="footer-link">Disclaimer</a> |
@@ -166,7 +165,7 @@
     <script>
 document.getElementById('live-date').textContent = new Date().toLocaleDateString('id-ID', { weekday: 'long', day: 'numeric', month: 'short', year: 'numeric' });
 let allPosts = []; let filteredPosts = []; let currentPage = 1; const postsPerPage = 20;
-const kategoriWarna = { 'NASIONAL': '#1a237e', 'POLITIK': '#1a237e', 'EKONOMI': '#f57c00', 'TEKNOLOGI': '#0288d1', 'PENDIDIKAN': '#2e7d32', 'HUKUM': '#6a1b9a', 'HIBURAN': '#d32f2f', 'OLAHRAGA': '#d32f2f', 'KESEHATAN': '#009688', 'BERITA': '#d32f2f' };
+const kategoriWarna = { 'TUTORIAL': '#1a237e', 'GADGET': '#1a237e', 'SAINS & EDUKASI': '#f57c00', 'SOFTWARE': '#0288d1', 'ARSIP': '#2e7d32'};
 function bisaTayang(tanggalString) { const sekarang = new Date(); const waktuTayang = new Date(tanggalString); const sekarangWIB = new Date(sekarang.toLocaleString("en-US", {timeZone: "Asia/Jakarta"})); const tayangWIB = new Date(waktuTayang.toLocaleString("en-US", {timeZone: "Asia/Jakarta"})); return tayangWIB <= sekarangWIB; }
 async function fetchPosts() {
     try {
