@@ -178,11 +178,25 @@ async function ambilDataBerita() {
     const container = document.getElementById('news-container');
     const posts = await fetchPosts();
     const postsTayang = posts.filter(post => bisaTayang(post.date));
-    if (postsTayang.length === 0) { container.innerHTML = '<div style="text-align:center; padding:40px; color:#666;">Belum ada berita saat ini</div>'; document.getElementById('running-text-container').innerHTML = '<span class="ticker-item">Belum ada update berita</span>'; return; }
+    if (postsTayang.length === 0) { 
+        container.innerHTML = '<div style="text-align:center; padding:40px; color:#666;">Belum ada berita saat ini</div>'; 
+        document.getElementById('running-text-container').innerHTML = '<span class="ticker-item">Belum ada update berita</span>'; 
+        return; 
+    }
     postsTayang.sort((a, b) => new Date(b.date) - new Date(a.date));
-    allPosts = postsTayang; filteredPosts = postsTayang;
-    tampilkanHalaman(1); updateRunningText(postsTayang); setupKategori(); setupSearch(); autoScrollCarousel();
+    
+    allPosts = postsTayang; 
+    
+    // PERBAIKAN: Default saat pertama kali buka/refresh web (kategori SEMUA), sembunyikan ARSIP
+    filteredPosts = postsTayang.filter(post => (post.kategori || '').toUpperCase() !== 'ARSIP');
+    
+    tampilkanHalaman(1); 
+    updateRunningText(postsTayang); 
+    setupKategori(); 
+    setupSearch(); 
+    autoScrollCarousel();
 }
+
 function tampilkanBerita(posts) {
     const container = document.getElementById('news-container');
     if (posts.length === 0) { container.innerHTML = '<div style="text-align:center; padding:40px; color:#666;">Berita tidak ditemukan</div>'; return; }
