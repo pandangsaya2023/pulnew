@@ -1,4 +1,5 @@
 [
+  "/berita/cara-bayar-pbb-medan-2026-bebas-denda-via-eloket-pajak-panduan-lengkap-praktis.html",
   "/berita/stadion-teladan-medan-dikebut-bobby-dan-rico-janji-rampung-november-2026.html",
   "/berita/dapur-mbg-di-medan-timur-disegel-bgn-sumut-setelah-17-murid-sdn-060870-krakatau-dilarikan-ke-rs-imelda.html",
   "/berita/rico-waas-tabuh-gendang-melayu-deli-di-lapangan-benteng-90-persen-warga-medan-belum-pernah-lihat-tari-dayang-nan-tujuh.html",
