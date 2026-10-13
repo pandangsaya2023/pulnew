@@ -1,4 +1,5 @@
 [
+  "/berita/meta-rilis-muse-wonder-dan-wonder-full-senjata-baru-kejar-openai-dan-anthropic.html",
   "/berita/gerhana-matahari-total-terlama-2027-jadwal-lokasi-terbaik-dan-cara-nonton-aman-di-mekah-dan-mesir.html",
   "/berita/cara-bayar-pbb-medan-2026-bebas-denda-via-eloket-pajak-panduan-lengkap-praktis.html",
   "/berita/stadion-teladan-medan-dikebut-bobby-dan-rico-janji-rampung-november-2026.html",
