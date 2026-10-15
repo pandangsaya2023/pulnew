@@ -49,8 +49,7 @@
    .pagination button:hover { background:var(--warna-biru); color:white; border-color:var(--warna-biru); }
    .pagination button.active { background:var(--warna-merah); color:white; border-color:var(--warna-merah); }
    .pagination button:disabled { opacity:0.5; cursor:not-allowed; }
-
-    /* MODE HP - INI YANG LAMA, JANGAN DIUBAH */
+    /* MODE HP - DEFAULT LAMA */
    .news-hero { position: relative; border-radius: 12px; overflow: hidden; margin-bottom: var(--jarak-utama); box-shadow: 0 4px 12px rgba(0,0,0,0.1); text-decoration: none; display: block; }
    .news-hero img { width: 100%; height: auto; aspect-ratio: 16 / 10; object-fit: cover; display: block; }
    .hero-content { position: absolute; bottom: 0; left: 0; right: 0; padding: 20px 10px; background: linear-gradient(transparent, rgba(0,0,0,0.85)); color: white; }
@@ -70,55 +69,27 @@
    .carousel-item img { width: 40%; height: 120px; object-fit: cover; flex-shrink: 0; border-radius: 8px; }
    .carousel-item.card-content { padding: 0px; display: flex; flex-direction: column; justify-content: center; flex: 1; gap: 6px; }
    .carousel-item h4 { font-size: 15px; font-weight: 700; line-height: 1.4; color: #111; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
-
-    /* CUMA DESKTOP YANG DIUBAH JADI 1-2-2 + JUDUL FULL */
+    /* CUMA DESKTOP DIUBAH JADI 1-2-2 + JUDUL FULL + DESKRIPSI OTOMATIS */
     @media (min-width: 901px) {
        .news-hero {
             display: grid;
             grid-template-columns: 1.2fr 1fr;
-            align-items: start; /* biar gak ada kosong di tengah */
+            align-items: start;
             background: white;
             position: static;
             padding: 16px;
-            gap: 18px; /* tadinya 28px makanya kosong jauh */
+            gap: 18px;
             border-radius: 16px;
         }
-       .news-hero img { border-radius: 12px; aspect-ratio: 16/10; height: auto; }
-       .hero-content { position: static; background: none; padding: 0; color: #111; display: block; }
-       .hero-desc {
-        display: block!important;
-        -webkit-line-clamp: unset!important;
-        overflow: visible!important;
-       }
-       .hero-meta { margin-top: 6px; }
-       .news-hero h2 { 
-            color: #111; 
-            font-size: 21px; 
-            line-height: 1.3;
-            display: block !important; 
-            -webkit-line-clamp: unset !important; 
-            overflow: visible !important;
-        }
+       .news-hero img { border-radius: 12px; aspect-ratio: 16/10; }
+       .hero-content { position: static; background: none; padding: 0; color: #111; }
+       .news-hero h2 { color: #111; font-size: 22px; line-height: 1.25; display: block!important; -webkit-line-clamp: unset!important; overflow: visible!important; }
+       .hero-desc { display: block!important; font-size: 13.5px; line-height: 1.5; color: #555; margin: 10px 0 12px 0; }
        .news-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
-       .news-card { 
-            flex-direction: row; 
-            align-items: flex-start; 
-            padding: 12px; 
-            gap: 12px; 
-            border: 1px solid #eee; 
-            border-radius: 14px; 
-        }
-       .news-card img { width: 120px; height: 80px; flex-shrink: 0; border-radius: 8px; aspect-ratio: unset; object-fit: cover; }
-       .news-card .card-content { padding: 0; flex: 1; }
-       .news-card h3 { 
-            font-size: 13.5px; 
-            line-height: 1.35;
-            display: block !important; /* MATIKAN POTONGAN ... */
-            -webkit-line-clamp: unset !important; 
-            -webkit-box-orient: unset !important;
-            overflow: visible !important;
-            white-space: normal !important;
-        }
+       .news-card { flex-direction: row; align-items: flex-start; padding: 12px; gap: 12px; border: 1px solid #eee; border-radius: 14px; }
+       .news-card img { width: 120px; height: 80px; flex-shrink: 0; border-radius: 8px; aspect-ratio: unset; }
+       .card-content { padding: 0; flex: 1; }
+       .news-card h3 { font-size: 13.5px; line-height: 1.35; display: block!important; -webkit-line-clamp: unset!important; -webkit-box-orient: unset!important; overflow: visible!important; white-space: normal!important; }
     }
     @media (max-width: 900px) {.news-grid { grid-template-columns: 1fr; } }
     footer { background: #101726; color: #b0b8c4; padding: 12px 20px 20px 20px; font-size: 13px; border-top: 4px solid var(--warna-biru); margin-top: 5px; }
@@ -192,13 +163,13 @@ async function ambilDataBerita() {
     postsTayang.sort((a, b) => new Date(b.date) - new Date(a.date));
     allPosts = postsTayang;
     filteredPosts = postsTayang.filter(post => (post.kategori || '').toUpperCase()!== 'ARSIP');
-    tampilkanHalaman(1);
+    await tampilkanHalaman(1);
     updateRunningText(postsTayang);
     setupKategori();
     setupSearch();
     autoScrollCarousel();
 }
-function tampilkanBerita(posts) {
+async function tampilkanBerita(posts) {
     const container = document.getElementById('news-container');
     if (posts.length === 0) { container.innerHTML = '<div style="text-align:center; padding:40px; color:#666;">Berita tidak ditemukan</div>'; return; }
     let html = '';
@@ -206,24 +177,15 @@ function tampilkanBerita(posts) {
     const kategoriHero = hero.kategori || 'BERITA';
     const warnaHero = kategoriWarna[kategoriHero.toUpperCase()] || '#d32f2f';
     const tgl = new Date(hero.date).toLocaleDateString('id-ID',{day:'numeric', month:'short', year:'numeric'});
-
-    // AMBIL OTOMATIS - cek semua kemungkinan nama field
-    let rawDesc = hero.description || hero.desc || hero.excerpt || hero.summary || hero.content || '';
-    // bersihin tag HTML kalau ada, ambil 160 karakter pertama aja
-    rawDesc = rawDesc.replace(/<[^>]*>/g, '').substring(0, 160);
-
-    html += `<a href="/berita.html?slug=${hero.slug}" class="news-hero">
-      <img src="${hero.image}" alt="${hero.title}" width="640" height="360" fetchpriority="high" decoding="async">
-      <div class="hero-content">
-        <span class="badge" style="background: ${warnaHero}">${kategoriHero}</span>
-        <h2>${hero.title}</h2>
-        ${rawDesc? `<p class="hero-desc" style="font-size:13.5px; line-height:1.5; color:#555; margin:10px 0 12px 0;">${rawDesc}...</p>` : ''}
-        <div class="hero-meta" style="display:flex; gap:10px; align-items:center; font-size:11px; color:#888;">
-          <span>📅 ${tgl}</span>
-          <span>• ${hero.kategori}</span>
-        </div>
-      </div>
-    </a>`;
+    let heroDesc = '';
+    try {
+        const resDetail = await fetch(`/posts/${hero.slug}.json`, {cache: 'default'});
+        if(resDetail.ok){
+            const detail = await resDetail.json();
+            heroDesc = detail.description || detail.desc || detail.seo_title || '';
+        }
+    } catch(e){}
+    html += `<a href="/berita.html?slug=${hero.slug}" class="news-hero"><img src="${hero.image}" alt="${hero.title}" width="640" height="360" fetchpriority="high" decoding="async"><div class="hero-content"><span class="badge" style="background: ${warnaHero}">${kategoriHero}</span><h2>${hero.title}</h2>${heroDesc? `<p class="hero-desc">${heroDesc}</p>` : ''}<div style="display:flex; gap:10px; align-items:center; font-size:11px; color:#888;"><span>📅 ${tgl}</span><span>• ${kategoriHero}</span></div></div></a>`;
     if (posts.length > 1) {
         html += '<div class="news-grid">';
         posts.slice(1, 5).forEach(post => {
@@ -250,7 +212,7 @@ function tampilkanBerita(posts) {
     }
     container.innerHTML = html;
 }
-function tampilkanHalaman(page) { currentPage = page; const start = (page - 1) * postsPerPage; const end = start + postsPerPage; const postsToShow = filteredPosts.slice(start, end); tampilkanBerita(postsToShow); renderPagination(); window.scrollTo({ top: 0, behavior: 'smooth' }); }
+async function tampilkanHalaman(page) { currentPage = page; const start = (page - 1) * postsPerPage; const end = start + postsPerPage; const postsToShow = filteredPosts.slice(start, end); await tampilkanBerita(postsToShow); renderPagination(); window.scrollTo({ top: 0, behavior: 'smooth' }); }
 function renderPagination() { const totalPages = Math.ceil(filteredPosts.length / postsPerPage); const container = document.getElementById('pagination-container'); if(totalPages <= 1) { container.innerHTML = ''; return; } let html = ''; html += `<button onclick="tampilkanHalaman(${currentPage-1})" ${currentPage==1?'disabled':''}>« Prev</button>`; let startPage = Math.max(1, currentPage - 2); let endPage = Math.min(totalPages, currentPage + 2); for(let i=startPage; i<=endPage; i++){ html += `<button class="${i==currentPage?'active':''}" onclick="tampilkanHalaman(${i})">${i}</button>`; } html += `<button onclick="tampilkanHalaman(${currentPage+1})" ${currentPage==totalPages?'disabled':''}>Next »</button>`; container.innerHTML = html; }
 function setupSearch(){ document.getElementById('searchInput').addEventListener('input', (e) => { const keyword = e.target.value.toLowerCase(); filteredPosts = keyword === ''? allPosts : allPosts.filter(post => post.title.toLowerCase().includes(keyword) || (post.kategori||'').toLowerCase().includes(keyword)); tampilkanHalaman(1); }); }
 function setupKategori(){ document.querySelectorAll('.category-nav a').forEach(link => { link.addEventListener('click', (e) => { e.preventDefault(); filterBerita(link.dataset.kategori); }); }); }
