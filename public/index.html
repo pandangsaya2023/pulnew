@@ -85,6 +85,12 @@
         }
        .news-hero img { border-radius: 12px; aspect-ratio: 16/10; height: auto; }
        .hero-content { position: static; background: none; padding: 0; color: #111; display: block; }
+       .hero-desc {
+        display: block!important;
+        -webkit-line-clamp: unset!important;
+        overflow: visible!important;
+       }
+       .hero-meta { margin-top: 6px; }
        .news-hero h2 { 
             color: #111; 
             font-size: 21px; 
@@ -196,8 +202,25 @@ function tampilkanBerita(posts) {
     const container = document.getElementById('news-container');
     if (posts.length === 0) { container.innerHTML = '<div style="text-align:center; padding:40px; color:#666;">Berita tidak ditemukan</div>'; return; }
     let html = '';
-    const hero = posts[0]; const kategoriHero = hero.kategori || 'BERITA'; const warnaHero = kategoriWarna[kategoriHero.toUpperCase()] || '#d32f2f';
-    html += `<a href="/berita.html?slug=${hero.slug}" class="news-hero"><img src="${hero.image}" alt="${hero.title}" width="640" height="360" fetchpriority="high" decoding="async"><div class="hero-content"><span class="badge" style="background: ${warnaHero}">${kategoriHero}</span><h2>${hero.title}</h2></div></a>`;
+    const hero = posts[0];
+    const kategoriHero = hero.kategori || 'BERITA';
+    const warnaHero = kategoriWarna[kategoriHero.toUpperCase()] || '#d32f2f';
+    const tgl = new Date(hero.date).toLocaleDateString('id-ID',{day:'numeric', month:'short', year:'numeric'});
+    const deskripsi = hero.description || hero.excerpt || 'Baca selengkapnya untuk detail infografis dan dukungan Gubsu Bobby dan Walikota Rico Waas.';
+
+    html += `<a href="/berita.html?slug=${hero.slug}" class="news-hero">
+      <img src="${hero.image}" alt="${hero.title}" width="640" height="360" fetchpriority="high" decoding="async">
+      <div class="hero-content">
+        <span class="badge" style="background: ${warnaHero}">${kategoriHero}</span>
+        <h2>${hero.title}</h2>
+        <p class="hero-desc" style="font-size:13.5px; line-height:1.5; color:#555; margin:10px 0 12px 0; display:block;">${deskripsi}</p>
+        <div class="hero-meta" style="display:flex; gap:10px; align-items:center; font-size:11px; color:#888;">
+          <span>📅 ${tgl}</span>
+          <span>• 3 menit baca</span>
+          <span style="background:#f4f6f9; padding:4px 10px; border-radius:20px; color:var(--warna-biru); font-weight:700;">Baca →</span>
+        </div>
+      </div>
+    </a>`;    
     if (posts.length > 1) {
         html += '<div class="news-grid">';
         posts.slice(1, 5).forEach(post => {
