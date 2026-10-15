@@ -21,7 +21,7 @@
     <meta name="twitter:card" content="summary_large_image">
     <style>
         :root { --jarak-utama: 12px; --warna-merah: #d32f2f; --warna-biru: #1a237e; --warna-bg: #f4f6f9; }
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif; -webkit-text-size-adjust: 100%; -moz-text-size-adjust: 100%; text-size-adjust: 100%; }
         html, body { background: var(--warna-bg); color: #333; min-height: 100vh; }
         h1, h2, h3, h4,.logo-text { font-family: 'Poppins', sans-serif; }
   .header-container { background: #ffffff; position: sticky; top: 0; z-index: 200; border-bottom: 2px solid var(--warna-merah); box-shadow: 0 2px 4px rgba(0,0,0,0.06); }
@@ -82,14 +82,14 @@
             border-radius: 16px;
         }
       .news-hero img { border-radius: 12px; aspect-ratio: 16/10; }
-      .hero-content { position: static; background: none; padding: 0; color: #111; }
+      .hero-content { position: static; background: none; padding: 0; color: #111; min-width: 0; flex: 1; }
       .news-hero h2 { color: #111; font-size: 22px; line-height: 1.25; display: block!important; -webkit-line-clamp: unset!important; overflow: visible!important; }
       .hero-desc { display: block!important; font-size: 13.5px; line-height: 1.5; color: #555; margin: 10px 0 12px 0; }
       .hero-meta { display:flex!important; gap:10px; align-items:center; font-size:11px; color:#888; }
       .news-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
       .news-card { flex-direction: row; align-items: flex-start; padding: 12px; gap: 12px; border: 1px solid #eee; border-radius: 14px; }
       .news-card img { width: 120px; height: 80px; flex-shrink: 0; border-radius: 8px; aspect-ratio: unset; }
-      .card-content { padding: 0; flex: 1; }
+      .card-content { padding: 0; flex: 1; min-width: 0; }
       .news-card h3 { font-size: 13.5px; line-height: 1.35; display: block!important; -webkit-line-clamp: unset!important; -webkit-box-orient: unset!important; overflow: visible!important; white-space: normal!important; }
     }
     @media (max-width: 900px) {
@@ -189,7 +189,7 @@ async function tampilkanBerita(posts) {
             heroDesc = detail.description || detail.desc || detail.seo_title || '';
         }
     } catch(e){}
-    html += `<a href="/berita.html?slug=${hero.slug}" class="news-hero"><img src="${hero.image}" alt="${hero.title}" width="640" height="360" fetchpriority="high" decoding="async"><div class="hero-content"><span class="badge" style="background: ${warnaHero}">${kategoriHero}</span><h2>${hero.title}</h2>${heroDesc? `<p class="hero-desc">${heroDesc}</p><div class="hero-meta"><span>📅 ${tgl}</span><span>• ${kategoriHero}</span></div>` : ''}</div></a>`;
+    html += `<a href="/berita.html?slug=${hero.slug}" class="news-hero"><img src="${hero.image}" alt="${hero.title}" width="640" height="360" fetchpriority="high" decoding="async"><div class="hero-content"><span class="badge" style="background: ${warnaHero}">${kategoriHero}</span><h2>${hero.title}</h2>${heroDesc? `<p class="hero-desc">${heroDesc}</p><div class="hero-meta"><span>📅 ${tgl}</span><span>•${kategoriHero}</span></div>` : ''}</div></a>`;
     if (posts.length > 1) {
         html += '<div class="news-grid">';
         posts.slice(1, 5).forEach(post => {
