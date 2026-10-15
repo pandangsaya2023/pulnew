@@ -1,5 +1,5 @@
 [
-  "/berita/windows-gagal-booting-http-winload-efi-error-0xc0000225-ini-cara-perbaiki-tanpa-instal-ulang.html",
+  "/berita/windows-gagal-booting-winload-efi-error-0xc0000225-ini-cara-perbaiki-tanpa-instal-ulang.html",
   "/berita/bagaimana-hadits-bisa-utuh-200-tahun-tanpa-internet-rahasia-validasi-data-ala-imam-bukhari.html",
   "/berita/meta-rilis-muse-wonder-dan-wonder-full-senjata-baru-kejar-openai-dan-anthropic.html",
   "/berita/gerhana-matahari-total-terlama-2027-jadwal-lokasi-terbaik-dan-cara-nonton-aman-di-mekah-dan-mesir.html",
