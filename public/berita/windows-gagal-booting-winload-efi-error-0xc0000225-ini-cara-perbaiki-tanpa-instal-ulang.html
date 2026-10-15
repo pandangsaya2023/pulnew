@@ -14,29 +14,26 @@
 <div class="article-content">
 <p><strong>PULNEW</strong> - Layar hitam dengan logo Windows muter terus tulisannya "Getting ready" lalu tiba-tiba pindah ke "Diagnosing your PC" dan berakhir di layar biru Recovery dengan tulisan File: \windows\system32\winload.efi Error code: 0xc0000225. Panik? Wajar. Error ini bikin laptop Dell, ASUS, Lenovo kamu nggak bisa masuk Windows sama sekali, padahal data skripsi atau kerjaan ada di dalam.</p>
 <p>Jangan buru-buru instal ulang, http://winload.efi bukan berarti harddisk rusak, tapi bootloader Windows yang korup. Penyebab paling umum: mati listrik mendadak saat update Windows, kamu dual-boot Linux, clone SSD, atau partisi EFI nggak sengaja ke-format. Windows 10 dan 11 yang pakai UEFI memang sensitif di bagian ini. File http://winload.efi itu jembatan antara firmware UEFI dan sistem Windows. Kalau jembatannya hilang, Windows nggak tahu harus load dari mana.<h2 style="color:#333; margin-top:16px; margin-bottom:12px; font-weight:800; font-size:16px;">1. Masuk ke Windows Recovery Environment dan Buka Command Prompt</h2>Kamu nggak butuh flashdisk instalasi kalau Windows masih bisa memanggil Recovery otomatis. Caranya:</p>
-<ul><li>Paksa matikan laptop 3x berturut-turut. Nyalakan > saat logo Windows muncul tekan tahan tombol power sampai mati. Ulangi 3x, nanti otomatis masuk layar "Choose an option".</li>
-<li>Kalau punya flashdisk installer Windows, colok lalu boot dari flashdisk, pilih Repair your computer.</li>
-<li>Di layar biru pilih Troubleshoot > Advanced options > Command Prompt.</li>
-<li>Nanti akan terbuka CMD dengan path X:\windows\system32>. Pilih akun Administrator dan masukkan password kalau diminta.</li>
-</ul>
-<p>Catatan penting: pastikan kamu cabut semua harddisk eksternal dan USB lain biar CMD nggak salah deteksi drive Windows.
-<h2 style="color:#333; margin-top:16px; margin-bottom:12px; font-weight:800; font-size:16px;">2. Eksekusi Perintah Bootrec Untuk Perbaiki MBR dan Boot Record</h2></p>
-<p>Ini inti perbaikannya. Banyak tutorial cuma kasih satu perintah, padahal harus berurutan. Ketik satu per satu, tekan Enter tiap baris:</p>
-<p><strong>Langkah A - Perbaiki Master Boot Record:</strong><ul></p>
-<li><strong>bootrec /fixmbr</strong> - Perintah ini menulis ulang MBR yang kompatibel dengan Windows. Tunggu sampai muncul "The operation completed successfully".</li>
-<li><strong>bootrec /fixboot</strong> - Menulis ulang boot sector baru di partisi sistem. Di sistem UEFI modern sering muncul "Access is denied". Itu normal, jangan panik. Lanjut saja ke langkah berikutnya.</li>
-</ul>
-<p><strong>Langkah B - Scan dan Rebuild Data Boot:</strong><ul></p>
-<li><strong>bootrec /scanos</strong> - Perintah ini akan scan semua disk untuk mencari instalasi Windows. Prosesnya agak lama, biarkan sampai selesai. Kadang hasilnya "Total identified Windows installations: 0" di kasus tertentu, tetap lanjut.</li>
-<li><strong>bootrec /rebuildbcd</strong> - Ini yang paling krusial. Dia akan scan lagi dan kalau menemukan Windows kamu, akan muncul pertanyaan "Add installation to boot list?". Ketik <strong>Y</strong> lalu Enter.</li>
-</ul>
+<p>Paksa matikan laptop 3x berturut-turut. Nyalakan &gt; saat logo Windows muncul tekan tahan tombol power sampai mati. Ulangi 3x, nanti otomatis masuk layar "Choose an option".
+Kalau punya flashdisk installer Windows, colok lalu boot dari flashdisk, pilih Repair your computer.
+Di layar biru pilih Troubleshoot &gt; Advanced options &gt; Command Prompt.
+Nanti akan terbuka CMD dengan path X:\windows\system32&gt;. Pilih akun Administrator dan masukkan password kalau diminta.</p>
+<p>Catatan penting: pastikan kamu cabut semua harddisk eksternal dan USB lain biar CMD nggak salah deteksi drive Windows.<h2 style="color:#333; margin-top:16px; margin-bottom:12px; font-weight:800; font-size:16px;">2. Eksekusi Perintah Bootrec Untuk Perbaiki MBR dan Boot Record</h2>Ini inti perbaikannya. Banyak tutorial cuma kasih satu perintah, padahal harus berurutan. Ketik satu per satu, tekan Enter tiap baris:</p>
+<p><strong>Langkah A - Perbaiki Master Boot Record:</strong>
+<strong>bootrec /fixmbr</strong> - Perintah ini menulis ulang MBR yang kompatibel dengan Windows. Tunggu sampai muncul "The operation completed successfully".
+<strong>bootrec /fixboot</strong> - Menulis ulang boot sector baru di partisi sistem. Di sistem UEFI modern sering muncul "Access is denied". Itu normal, jangan panik. Lanjut saja ke langkah berikutnya</p>
+<p><strong>Langkah B - Scan dan Rebuild Data Boot:</strong>
+&lt;<strong>bootrec /scanos</strong> - Perintah ini akan scan semua disk untuk mencari instalasi Windows. Prosesnya agak lama, biarkan sampai selesai. Kadang hasilnya "Total identified Windows installations: 0" di kasus tertentu, tetap lanjut.
+<strong>bootrec /rebuildbcd</strong> - Ini yang paling krusial. Dia akan scan lagi dan kalau menemukan Windows kamu, akan muncul pertanyaan "Add installation to boot list?". Ketik <strong>Y</strong> lalu Enter.</p>
 <p>Kalau semua perintah sudah sukses, ketik <strong>exit</strong> lalu pilih Continue - Exit and continue to Windows 10. Biasanya laptop langsung booting normal.<h2 style="color:#333; margin-top:16px; margin-bottom:12px; font-weight:800; font-size:16px;">3. Kalau Masih Access is Denied, Pakai Jurus BCDBOOT Untuk UEFI</h2>Di laptop keluaran 2018 ke atas yang sudah pakai UEFI, bootrec /fixboot hampir pasti gagal. Solusi yang work adalah rebuild file EFI secara manual pakai bcdboot.</p>
 <p>Begini trik yang dipakai saat fixboot ditolak:</p>
-<ul><li>Masih di Command Prompt yang sama, cek dulu drive Windows kamu ada di huruf apa. Biasanya di Recovery, C: jadi D:. Ketik <strong>diskpart</strong> > <strong>list vol</strong>. Cari volume dengan label EFI atau FAT32 ukuran 100-300MB, dan volume Windows yang besar. Catat hurufnya, misal Windows di D: dan EFI di C:. Ketik <strong>exit</strong> untuk keluar dari diskpart.</li>
-<li>Jalankan perintah: <strong>bcdboot D:\Windows /s C: /f UEFI</strong> - Sesuaikan D: dengan drive Windows kamu, dan C: dengan partisi EFI. Perintah ini menyalin ulang semua file boot termasuk http://winload.efi yang hilang tadi.</li>
-<li>Kalau partisi EFI kamu belum punya huruf, beri huruf dulu lewat diskpart: <strong>select vol X</strong> (X adalah volume EFI) > <strong>assign letter=S:</strong> > <strong>exit</strong> > lalu jalankan <strong>bcdboot D:\Windows /s S: /f UEFI</strong></li>
-<li>Setelah sukses, ketik <strong>exit</strong> dan restart.</li></ul>
-
+<p>Masih di Command Prompt yang sama, cek dulu drive Windows kamu ada di huruf apa. Biasanya di Recovery, C: jadi D:. 
+Ketik <strong>diskpart</strong> &gt; <strong>list vol</strong>. Cari volume dengan label EFI atau FAT32 ukuran 100-300MB, dan volume Windows yang besar. Catat hurufnya, misal Windows di D: dan EFI di C:.
+Ketik <strong>exit</strong> untuk keluar dari diskpart.
+Jalankan perintah: <strong>bcdboot D:\Windows /s C: /f UEFI</strong> - Sesuaikan D: dengan drive Windows kamu, dan C: dengan partisi EFI.</p>
+<p>Perintah ini menyalin ulang semua file boot termasuk http://winload.efi yang hilang tadi.
+Kalau partisi EFI kamu belum punya huruf, beri huruf dulu lewat diskpart: <strong>select vol X</strong> (X adalah volume EFI) &gt; <strong>assign letter=S:</strong> &gt; <strong>exit</strong> &gt; lalu jalankan <strong>bcdboot D:\Windows /s S: /f UEFI</strong>
+Setelah sukses, ketik <strong>exit</strong> dan restart.</p>
 <p>Pencegahan biar nggak kejadian lagi: jangan matikan paksa laptop saat update Windows lagi berjalan, selalu eject dual-boot Linux dengan benar, dan aktifkan System Restore Point minimal seminggu sekali. Kalau kamu sering clone SSD, pastikan pakai software yang support UEFI clone seperti Macrium Reflect bukan clone mentah.</p>
 <p>Error http://winload.efi 0xc0000225 memang kelihatan serem karena layar biru Recovery, tapi bukan vonis harddisk mati. Dengan urutan bootrec yang benar plus bcdboot untuk UEFI, kamu bisa selamatkan Windows tanpa instal ulang dan data tetap aman. Saya sendiri sudah buktikan di beberapa unit Dell dan ASUS, hasilnya balik ke desktop normal dan bisa login lagi. Kalau sudah normal, langsung backup data penting ke Google Drive. PULNEW rekomendasikan cek kesehatan SSD pakai CrystalDiskInfo setelah kejadian ini untuk pastikan nggak ada bad sector yang memicu corrupt file boot.</p>
 </div>
