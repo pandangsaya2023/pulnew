@@ -72,15 +72,27 @@
   .carousel-item h4 { font-size: 15px; font-weight: 700; line-height: 1.4; color: #111; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
 
     @media (min-width: 901px) {
-      .news-hero { display: grid; grid-template-columns: 1.15fr 1fr; align-items: center; background: white; position: static; padding: 18px; gap: 28px; border-radius: 16px; }
-      .news-hero img { border-radius: 12px; aspect-ratio: 16/10; }
-      .hero-content { position: static; background: none; padding: 0; color: #111; }
-      .news-hero h2 { color: #111; font-size: 24px; line-height: 1.25; }
-      .news-grid { grid-template-columns: 1fr 1fr; gap: 20px; }
-      .news-card { flex-direction: row; align-items: flex-start; padding: 14px; gap: 14px; border: 1px solid #eee; border-radius: 14px; }
-      .news-card img { width: 140px; height: 96px; flex-shrink: 0; border-radius: 10px; aspect-ratio: unset; }
-      .news-card.card-content { padding: 0; }
-      .news-card h3 { font-size: 14.5px; -webkit-line-clamp: 2; }
+  .news-hero { ... }
+  .news-grid { grid-template-columns: 1fr 1fr; gap: 20px; }
+  .news-card { 
+    flex-direction: row; 
+    align-items: center; /* tadinya flex-start bikin kepotong */
+    padding: 14px; 
+    gap: 14px; 
+    border: 1px solid #eee; 
+    border-radius: 14px;
+    min-height: 120px; /* biar gak kepaksa 96px */
+  }
+  .news-card img { width: 140px; height: 96px; flex-shrink: 0; border-radius: 10px; aspect-ratio: unset; }
+  .news-card .card-content { padding: 0; flex: 1; min-width: 0; } /* penting biar teks bisa wrap */
+  .news-card h3 { 
+    font-size: 14.5px; 
+    display: block; /* hapus -webkit-box */
+    -webkit-line-clamp: unset; 
+    -webkit-box-orient: unset;
+    overflow: visible;
+    line-height: 1.4;
+  }
     }
     @media (max-width: 900px) {.news-grid { grid-template-columns: 1fr; } }
     footer { background: #101726; color: #b0b8c4; padding: 12px 20px 20px 20px; font-size: 13px; border-top: 4px solid var(--warna-biru); margin-top: 5px; }
