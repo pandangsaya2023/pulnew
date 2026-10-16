@@ -29,7 +29,8 @@ def update_index_json(all_posts):
         index_data.append({
             "slug": p['slug'],
             "title": p['title'],
-            "lead": p.get('lead',''),
+            "description": p.get('description','') or p.get('lead','') or p.get('excerpt',''),
+            "lead": p.get('description','') or p.get('lead','') or "",
             "image": p.get('image',''),
             "date": p['date'],
             "kategori": p.get('kategori','Berita') # <-- NGIKUT SVELTIA
