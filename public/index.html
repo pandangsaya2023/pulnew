@@ -50,51 +50,50 @@
   .pagination button.active { background:var(--warna-merah); color:white; border-color:var(--warna-merah); }
   .pagination button:disabled { opacity:0.5; cursor:not-allowed; }
 
-    /* MODE HP */
-  .news-hero { position: relative; border-radius: 12px; overflow: hidden; margin-bottom: var(--jarak-utama); box-shadow: 0 4px 12px rgba(0,0,0,0.1); text-decoration: none; display: block; }
+    /* MODE HP - DEFAULT */
+  .news-hero { position: relative; border-radius: 12px; overflow: hidden; margin-bottom: var(--jarak-utama); box-shadow: 0 4px 12px rgba(0,0,0,0.1); text-decoration: none; display: block; background: white; }
   .news-hero img { width: 100%; height: auto; aspect-ratio: 16 / 10; object-fit: cover; display: block; }
-  .hero-content { position: absolute; bottom: 0; left: 0; right: 0; padding: 20px 10px; background: linear-gradient(transparent, rgba(0,0,0,0.85)); color: white; }
-  .news-hero h2 { font-size:15px; font-weight: 700; line-height: 1.3; color: white; padding: 4px 0 8px 0; }
-  .badge { display: inline-block; padding: 3px 8px; border-radius: 6px; font-size: 11px; font-weight: 700; margin-bottom: 10px; background: var(--warna-merah); color: white; }
+  .hero-content { position: absolute; bottom: 0; left: 0; right: 0; padding: 20px 12px; background: linear-gradient(transparent, rgba(0,0,0,0.85)); color: white; }
+  .news-hero h2 { font-size:15px; font-weight: 700; line-height: 1.3; color: white; padding: 4px 0 4px 0; }
+  .badge { display: inline-block; padding: 3px 8px; border-radius: 6px; font-size: 11px; font-weight: 700; margin-bottom: 6px; background: var(--warna-merah); color: white; }
+  .hero-desc { display: none; }
+  .hero-meta { display: none; }
   .news-grid { display: grid; grid-template-columns: 1fr; gap: var(--jarak-utama, 16px); margin-bottom: var(--jarak-utama, 16px); }
-  .news-card { background: white; display: flex; flex-direction: column; border-radius: 12px; overflow: hidden; text-decoration: none; color: inherit; }
+  .news-card { background: white; display: flex; flex-direction: column; border-radius: 12px; overflow: hidden; text-decoration: none; color: inherit; border: 1px solid #eee; }
   .news-card img { width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; display: block; }
-  .news-card:hover { transform: translateY(-3px); }
+  .news-card:hover { transform: translateY(-2px); }
   .card-content { padding: 12px 14px 16px 14px; }
   .news-card h3 { font-size: 15px; font-weight: 700; line-height: 1.4; color: #111; padding: 2px 0 8px 0; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
-  .section-title { font-size: 18px; font-weight: 800; color: var(--warna-biru); margin: 22px 0 15px 0; padding-left: 3px; border-left: 4px solid var(--warna-merah); }
+  .section-title { font-size: 18px; font-weight: 800; color: var(--warna-biru); margin: 22px 0 15px 0; padding-left: 8px; border-left: 4px solid var(--warna-merah); }
   .latest-carousel { position: relative; margin: 1px 0px 1px 0px; overflow: hidden; }
   .carousel-scroll { display: flex; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; padding-bottom: 8px; scrollbar-width: none; }
   .carousel-scroll::-webkit-scrollbar { display: none; }
-  .carousel-item { flex: 0 0 80%; max-width: 500px; scroll-snap-align: start; background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.08); text-decoration: none; color: inherit; display: flex; flex-direction: row; gap: 12px; padding: 10px; }
+  .carousel-item { flex: 0 0 80%; max-width: 500px; scroll-snap-align: start; background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.08); text-decoration: none; color: inherit; display: flex; flex-direction: row; gap: 12px; padding: 10px; border: 1px solid #eee; }
   .carousel-item img { width: 40%; height: 120px; object-fit: cover; flex-shrink: 0; border-radius: 8px; }
-  .carousel-item.card-content { padding: 0px; display: flex; flex-direction: column; justify-content: center; flex: 1; gap: 6px; }
-  .carousel-item h4 { font-size: 15px; font-weight: 700; line-height: 1.4; color: #111; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+  .carousel-item h4 { font-size: 14px; font-weight: 700; line-height: 1.4; color: #111; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
 
+    /* DESKTOP FIX 1-2-2 */
     @media (min-width: 901px) {
-  .news-hero { ... }
-  .news-grid { grid-template-columns: 1fr 1fr; gap: 20px; }
-  .news-card { 
-    flex-direction: row; 
-    align-items: center; /* tadinya flex-start bikin kepotong */
-    padding: 14px; 
-    gap: 14px; 
-    border: 1px solid #eee; 
-    border-radius: 14px;
-    min-height: 120px; /* biar gak kepaksa 96px */
-  }
-  .news-card img { width: 140px; height: 96px; flex-shrink: 0; border-radius: 10px; aspect-ratio: unset; }
-  .news-card .card-content { padding: 0; flex: 1; min-width: 0; } /* penting biar teks bisa wrap */
-  .news-card h3 { 
-    font-size: 14.5px; 
-    display: block; /* hapus -webkit-box */
-    -webkit-line-clamp: unset; 
-    -webkit-box-orient: unset;
-    overflow: visible;
-    line-height: 1.4;
-  }
+      .news-hero {
+            display: grid;
+            grid-template-columns: 1.15fr 1fr;
+            align-items: center;
+            position: static;
+            padding: 18px;
+            gap: 28px;
+            border-radius: 16px;
+        }
+      .news-hero img { border-radius: 12px; aspect-ratio: 16/10; }
+      .hero-content { position: static; background: none; padding: 0; color: #111; display:flex; flex-direction:column; gap:10px; }
+      .news-hero h2 { color: #111; font-size: 26px; line-height: 1.25; }
+      .hero-desc { display: block; font-size: 14px; color: #555; line-height: 1.5; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+      .hero-meta { display: block; font-size: 11px; color: #888; font-weight: 600; }
+      .news-grid { grid-template-columns: 1fr 1fr; gap: 20px; }
+      .news-card { flex-direction: row; align-items: center; padding: 14px; gap: 14px; border-radius: 14px; min-height: 120px; }
+      .news-card img { width: 140px; height: 96px; flex-shrink: 0; border-radius: 10px; aspect-ratio: unset; }
+      .news-card.card-content { padding: 0; flex: 1; min-width: 0; }
+      .news-card h3 { font-size: 14.5px; display: block; -webkit-line-clamp: unset; overflow: visible; line-height: 1.4; }
     }
-    @media (max-width: 900px) {.news-grid { grid-template-columns: 1fr; } }
     footer { background: #101726; color: #b0b8c4; padding: 12px 20px 20px 20px; font-size: 13px; border-top: 4px solid var(--warna-biru); margin-top: 5px; }
   .footer-content { max-width: 1100px; margin: 0 auto; text-align: center; }
   .footer-logo { font-size: 20px; font-weight: 800; color: white; margin-bottom: 4px; }
@@ -174,10 +173,24 @@ async function ambilDataBerita() {
 }
 function tampilkanBerita(posts) {
     const container = document.getElementById('news-container');
-    if (posts.length === 0) { container.innerHTML = '<div style="text-align:center; padding:40px; color:#666;">Berita tidak ditemukan</div>'; return; }
+    if (posts.length === 0) { container.innerHTML = '<div style="text-align:center; padding:40px; color:#666;">Berita tidak ditemukan</div>'; if(carouselInterval) clearInterval(carouselInterval); return; }
     let html = '';
-    const hero = posts[0]; const kategoriHero = hero.kategori || 'BERITA'; const warnaHero = kategoriWarna[kategoriHero.toUpperCase()] || '#d32f2f';
-    html += `<a href="/berita.html?slug=${hero.slug}" class="news-hero"><img src="${hero.image}" alt="${hero.title}" width="640" height="360" fetchpriority="high" decoding="async"><div class="hero-content"><span class="badge" style="background: ${warnaHero}">${kategoriHero}</span><h2>${hero.title}</h2></div></a>`;
+    const hero = posts[0];
+    const kategoriHero = hero.kategori || 'BERITA';
+    const warnaHero = kategoriWarna[kategoriHero.toUpperCase()] || '#d32f2f';
+    const descHero = hero.description || hero.excerpt || hero.deskripsi || hero.summary || '';
+    const tglHero = hero.date? new Date(hero.date).toLocaleDateString('id-ID', {day:'numeric', month:'short', year:'numeric'}) : '';
+
+    html += `<a href="/berita.html?slug=${hero.slug}" class="news-hero">
+        <img src="${hero.image}" alt="${hero.title}" width="640" height="360" fetchpriority="high" decoding="async">
+        <div class="hero-content">
+            <div><span class="badge" style="background: ${warnaHero}">${kategoriHero}</span></div>
+            <h2>${hero.title}</h2>
+            ${descHero? `<p class="hero-desc">${descHero}</p>` : `<p class="hero-desc">Baca panduan lengkap seputar ${kategoriHero.toLowerCase()} terbaru hanya di PULNEW.</p>`}
+            <span class="hero-meta">📅 ${tglHero} • PULNEW</span>
+        </div>
+    </a>`;
+
     if (posts.length > 1) {
         html += '<div class="news-grid">';
         posts.slice(1, 5).forEach(post => {
@@ -203,18 +216,9 @@ function tampilkanBerita(posts) {
         html += '</div></div>';
     }
     container.innerHTML = html;
-    // Auto jalanin ulang carousel tiap render baru
-    setTimeout(() => autoScrollCarousel(), 55);
+    setTimeout(() => autoScrollCarousel(), 150);
 }
-function tampilkanHalaman(page) {
-    currentPage = page;
-    const start = (page - 1) * postsPerPage;
-    const end = start + postsPerPage;
-    const postsToShow = filteredPosts.slice(start, end);
-    tampilkanBerita(postsToShow);
-    renderPagination();
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-}
+function tampilkanHalaman(page) { currentPage = page; const start = (page - 1) * postsPerPage; const end = start + postsPerPage; const postsToShow = filteredPosts.slice(start, end); tampilkanBerita(postsToShow); renderPagination(); window.scrollTo({ top: 0, behavior: 'smooth' }); }
 function renderPagination() { const totalPages = Math.ceil(filteredPosts.length / postsPerPage); const container = document.getElementById('pagination-container'); if(totalPages <= 1) { container.innerHTML = ''; return; } let html = ''; html += `<button onclick="tampilkanHalaman(${currentPage-1})" ${currentPage==1?'disabled':''}>« Prev</button>`; let startPage = Math.max(1, currentPage - 2); let endPage = Math.min(totalPages, currentPage + 2); for(let i=startPage; i<=endPage; i++){ html += `<button class="${i==currentPage?'active':''}" onclick="tampilkanHalaman(${i})">${i}</button>`; } html += `<button onclick="tampilkanHalaman(${currentPage+1})" ${currentPage==totalPages?'disabled':''}>Next »</button>`; container.innerHTML = html; }
 function setupSearch(){ document.getElementById('searchInput').addEventListener('input', (e) => { const keyword = e.target.value.toLowerCase(); filteredPosts = keyword === ''? allPosts : allPosts.filter(post => post.title.toLowerCase().includes(keyword) || (post.kategori||'').toLowerCase().includes(keyword)); tampilkanHalaman(1); }); }
 function setupKategori(){ document.querySelectorAll('.category-nav a').forEach(link => { link.addEventListener('click', (e) => { e.preventDefault(); filterBerita(link.dataset.kategori); }); }); }
@@ -246,22 +250,13 @@ function updateRunningText(posts) {
 }
 function autoScrollCarousel() {
     const carousel = document.getElementById('main-carousel');
-    if(!carousel) {
-        if(carouselInterval) clearInterval(carouselInterval);
-        return;
-    }
+    if(!carousel) { if(carouselInterval) clearInterval(carouselInterval); return; }
     if(carouselInterval) clearInterval(carouselInterval);
     let scrollAmount = 0;
     carouselInterval = setInterval(() => {
-        if (!document.body.contains(carousel)) {
-            clearInterval(carouselInterval);
-            return;
-        }
-        if (carousel.scrollWidth - carousel.scrollLeft <= carousel.clientWidth + 10) {
-            scrollAmount = 0;
-        } else {
-            scrollAmount += 300;
-        }
+        if (!document.body.contains(carousel)) { clearInterval(carouselInterval); return; }
+        if (carousel.scrollWidth - carousel.scrollLeft <= carousel.clientWidth + 10) { scrollAmount = 0; }
+        else { scrollAmount += 300; }
         carousel.scrollTo({ left: scrollAmount, behavior: 'smooth' });
     }, 4000);
 }
