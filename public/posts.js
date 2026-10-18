@@ -1,5 +1,5 @@
 [
-  "/berita/cara-baca-data-hotspot-karhutla-di-noaa-weather-dan-sipongi-biar-gak-panik-liat-angka-ribuan.html",
+  "/berita/cara-membaca-data-hotspot-karhutla-di-clime-noaa-weather-agar-tidak-salah-tafsir-angka-510-titik.html",
   "/berita/windows-gagal-booting-winload-efi-error-0xc0000225-ini-cara-perbaiki-tanpa-instal-ulang.html",
   "/berita/bagaimana-hadits-bisa-utuh-200-tahun-tanpa-internet-rahasia-validasi-data-ala-imam-bukhari.html",
   "/berita/meta-rilis-muse-wonder-dan-wonder-full-senjata-baru-kejar-openai-dan-anthropic.html",
