@@ -1,8 +1,18 @@
 [
   {
+    "slug": "cara-baca-data-hotspot-karhutla-di-noaa-weather-dan-sipongi-biar-gak-panik-liat-angka-ribuan",
+    "title": "Cara Baca Data Hotspot Karhutla di NOAA Weather dan SIPONGI Biar Gak Panik Liat Angka Ribuan",
+    "description": "Lihat angka 192, 510, 2K di peta NOAA Weather bikin kaget? Ini cara baca data hotspot FIRMS dan SIPONGI KLHK yang benar biar tahu mana karhutla asli dan mana bakar ladang biasa.",
+    "lead": "Lihat angka 192, 510, 2K di peta NOAA Weather bikin kaget? Ini cara baca data hotspot FIRMS dan SIPONGI KLHK yang benar biar tahu mana karhutla asli dan mana bakar ladang biasa.",
+    "image": "",
+    "date": "2026-10-18T19:48:00+07:00",
+    "kategori": "TUTORIAL"
+  },
+  {
     "slug": "windows-gagal-booting-winload-efi-error-0xc0000225-ini-cara-perbaiki-tanpa-instal-ulang",
     "title": "Windows Gagal Booting winload.efi Error 0xc0000225? Ini Cara Perbaiki Tanpa Instal Ulang",
-    "lead": "",
+    "description": "Panik Windows stuck Diagnosing your PC & Recovery winload.efi Error 0xc0000225? Ini cara perbaiki bootrec & bcdboot tanpa instal ulang, data aman 100%.",
+    "lead": "Panik Windows stuck Diagnosing your PC & Recovery winload.efi Error 0xc0000225? Ini cara perbaiki bootrec & bcdboot tanpa instal ulang, data aman 100%.",
     "image": "/media/windows-gagal-booting-winload-efi-error-0xc0000225.webp",
     "date": "2026-10-15T20:45:00+07:00",
     "kategori": "TUTORIAL"
@@ -10,7 +20,8 @@
   {
     "slug": "bagaimana-hadits-bisa-utuh-200-tahun-tanpa-internet-rahasia-validasi-data-ala-imam-bukhari",
     "title": "Bagaimana Hadits Bisa Utuh 200 Tahun Tanpa Internet? Rahasia Validasi Data Ala Imam Bukhari",
-    "lead": "",
+    "description": "Ternyata Imam Bukhari punya sistem validasi data lebih ketat dari blockchain. Dari 600.000 hadits hanya 7.000 yang lolos. Ini pelajarannya.",
+    "lead": "Ternyata Imam Bukhari punya sistem validasi data lebih ketat dari blockchain. Dari 600.000 hadits hanya 7.000 yang lolos. Ini pelajarannya.",
     "image": "/media/rantai-sanad-hadits-sahabat-tabiin-tabiut-tabiin-bukhari-muslim.webp",
     "date": "2026-10-14T16:16:00+07:00",
     "kategori": "SAINS & EDUKASI"
@@ -18,7 +29,8 @@
   {
     "slug": "meta-rilis-muse-wonder-dan-wonder-full-senjata-baru-kejar-openai-dan-anthropic",
     "title": "Meta Rilis Muse Wonder dan Wonder Full, Senjata Baru Kejar OpenAI dan Anthropic",
-    "lead": "",
+    "description": "Meta Description:* Meta luncurkan Muse Wonder dan Wonder Full lewat Superintelligence Labs. Klaim saingi GPT-6 Astra & Claude Opus 5.5, jadi otak baru agen Muse.",
+    "lead": "Meta Description:* Meta luncurkan Muse Wonder dan Wonder Full lewat Superintelligence Labs. Klaim saingi GPT-6 Astra & Claude Opus 5.5, jadi otak baru agen Muse.",
     "image": "/media/meta-rilis-muse-wonder-dan-wonder-full-senjata-baru-kejar-openai-dan-anthropic.webp",
     "date": "2026-10-14T08:05:00+07:00",
     "kategori": "SOFTWARE"
@@ -26,7 +38,8 @@
   {
     "slug": "gerhana-matahari-total-terlama-2027-jadwal-lokasi-terbaik-dan-cara-nonton-aman-di-mekah-dan-mesir",
     "title": "Gerhana Matahari Total Terlama 2027: Jadwal, Lokasi Terbaik, dan Cara Nonton Aman di Mekah dan Mesir",
-    "lead": "",
+    "description": "Gerhana Matahari Total terlama abad 21 terjadi 2 Agustus 2027 selama 6 menit 23 detik. Simak jalur Mekah, Luxor, dan cara nonton aman pakai ISO.",
+    "lead": "Gerhana Matahari Total terlama abad 21 terjadi 2 Agustus 2027 selama 6 menit 23 detik. Simak jalur Mekah, Luxor, dan cara nonton aman pakai ISO.",
     "image": "/media/gerhana-matahari-total-2027-mekah.webp",
     "date": "2026-10-13T20:05:00+07:00",
     "kategori": "SAINS & EDUKASI"
@@ -34,7 +47,8 @@
   {
     "slug": "cara-bayar-pbb-medan-2026-bebas-denda-via-eloket-pajak-panduan-lengkap-praktis",
     "title": "Cara Bayar PBB Medan 2026 Bebas Denda via eLoket Pajak: Panduan Lengkap & Praktis",
-    "lead": "",
+    "description": "Bebas antre dan denda! Ikuti panduan praktis bayar PBB Medan 2026 via eLoket Pajak resmi, lengkap dengan fitur pembayaran massal & unduh STTS PDF.",
+    "lead": "Bebas antre dan denda! Ikuti panduan praktis bayar PBB Medan 2026 via eLoket Pajak resmi, lengkap dengan fitur pembayaran massal & unduh STTS PDF.",
     "image": "/media/cara-bayar-pbb-medan-2026-eloket-pajak-pulnew.webp",
     "date": "2026-10-13T11:24:00+07:00",
     "kategori": "TUTORIAL"
@@ -42,7 +56,8 @@
   {
     "slug": "stadion-teladan-medan-dikebut-bobby-dan-rico-janji-rampung-november-2026",
     "title": "Stadion Teladan Medan Dikebut Bobby dan Rico, Janji Rampung November 2026",
-    "lead": "",
+    "description": "Gubsu Bobby Nasution desak revitalisasi Stadion Teladan Medan rampung November 2026. Wali Kota Rico Waas temukan fasad dan tangga bermasalah.",
+    "lead": "Gubsu Bobby Nasution desak revitalisasi Stadion Teladan Medan rampung November 2026. Wali Kota Rico Waas temukan fasad dan tangga bermasalah.",
     "image": "/media/revitalisasi-stadion-teladan-target-12-november-2026.webp",
     "date": "2026-10-12T16:16:00+07:00",
     "kategori": "ARSIP"
@@ -50,7 +65,8 @@
   {
     "slug": "dapur-mbg-di-medan-timur-disegel-bgn-sumut-setelah-17-murid-sdn-060870-krakatau-dilarikan-ke-rs-imelda",
     "title": "Dapur MBG di Medan Timur Disegel BGN Sumut Setelah 17 Murid SDN 060870 Krakatau Dilarikan ke RS Imelda",
-    "lead": "",
+    "description": "BGN Sumut segel SPPG penyedia MBG di Medan Timur usai 17 murid SDN 060870 Center 1 Krakatau keracunan. Susu menggumpal jadi sorotan warga.",
+    "lead": "BGN Sumut segel SPPG penyedia MBG di Medan Timur usai 17 murid SDN 060870 Center 1 Krakatau keracunan. Susu menggumpal jadi sorotan warga.",
     "image": "/media/infografis-bgn-segel-dapur-mbg-v1-final-safe.webp",
     "date": "2026-10-10T18:57:00+07:00",
     "kategori": "ARSIP"
@@ -58,7 +74,8 @@
   {
     "slug": "rico-waas-tabuh-gendang-melayu-deli-di-lapangan-benteng-90-persen-warga-medan-belum-pernah-lihat-tari-dayang-nan-tujuh",
     "title": "Rico Waas Tabuh Gendang Melayu Deli di Lapangan Benteng, 90 Persen Warga Medan Belum Pernah Lihat Tari Dayang Nan Tujuh",
-    "lead": "",
+    "description": "Rico Waas ikut tabuh gendang Melayu Deli di pembukaan Pekan Budaya Daerah Kota Medan 2026 di Lapangan Benteng. Sebut tarian Dayang Nan Tujuh hampir punah.",
+    "lead": "Rico Waas ikut tabuh gendang Melayu Deli di pembukaan Pekan Budaya Daerah Kota Medan 2026 di Lapangan Benteng. Sebut tarian Dayang Nan Tujuh hampir punah.",
     "image": "/media/pekan-budaya-daerah-kota-medan-2026-lapangan-benteng-8-10-oktober-16x9.webp",
     "date": "2026-10-09T17:11:00+07:00",
     "kategori": "ARSIP"
@@ -66,7 +83,8 @@
   {
     "slug": "rico-waas-semprot-bapenda-medan-soal-pad-rp-3,64-triliun-baru-64-persen",
     "title": "Rico Waas Semprot Bapenda Medan Soal PAD Rp3,64 Triliun Baru 64 Persen",
-    "lead": "",
+    "description": "Wali Kota Medan Rico Waas evaluasi Bapenda. Realisasi pajak daerah 2026 baru 64,54% dari Rp3,64 T. Rico minta kerja agresif dan punya deadline.",
+    "lead": "Wali Kota Medan Rico Waas evaluasi Bapenda. Realisasi pajak daerah 2026 baru 64,54% dari Rp3,64 T. Rico minta kerja agresif dan punya deadline.",
     "image": "/media/rico-waas-semprot-bapenda-medan-soal-pad-rp364-triliun-baru-64-persen-16x9.webp",
     "date": "2026-10-08T14:55:00+07:00",
     "kategori": "ARSIP"
@@ -74,7 +92,8 @@
   {
     "slug": "listrik-belum-masuk-117-dusun-di-sumut-pemprov-dan-pln-kejar-target-100-persen-di-2027",
     "title": "Listrik Belum Masuk 117 Dusun di Sumut, Pemprov dan PLN Kejar Target 100 Persen di 2027",
-    "lead": "",
+    "description": "Pemprov Sumut, ESDM dan PLN UID Sumut sinkronkan 117 usulan listrik desa. 47 titik di Nias dan Madina jadi prioritas utama kejar rasio elektrifikasi 100% pada 2027.",
+    "lead": "Pemprov Sumut, ESDM dan PLN UID Sumut sinkronkan 117 usulan listrik desa. 47 titik di Nias dan Madina jadi prioritas utama kejar rasio elektrifikasi 100% pada 2027.",
     "image": "/media/117-dusun-sumut-masih-gelap-47-prioritas-nias-madina-target-2027-16x9.webp",
     "date": "2026-10-07T18:08:00+07:00",
     "kategori": "ARSIP"
@@ -82,7 +101,8 @@
   {
     "slug": "bobby-nasution-tegaskan-kolaborasi-jadi-penentu-sukses-food-estate-dan-kek-sei-mangkei-di-sumut",
     "title": "Bobby Nasution Tegaskan Kolaborasi Jadi Penentu Sukses Food Estate dan KEK Sei Mangkei di Sumut",
-    "lead": "",
+    "description": "Gubernur Sumut Bobby Nasution tegaskan kolaborasi kunci kelola program strategis. Dari penanganan banjir hingga investasi KEK Sei Mangkei dan Food Estate.",
+    "lead": "Gubernur Sumut Bobby Nasution tegaskan kolaborasi kunci kelola program strategis. Dari penanganan banjir hingga investasi KEK Sei Mangkei dan Food Estate.",
     "image": "/media/infografis-pulnew-kolaborasi-kunci-sukses-sumut-16x9.webp",
     "date": "2026-10-06T16:53:00+07:00",
     "kategori": "ARSIP"
@@ -90,7 +110,8 @@
   {
     "slug": "rapbd-medan-2027-anjlok-jadi-rp-6,9-triliun-pks-bongkar-anggaran-pendidikan-dipangkas-dan-2575-drainase-rusak",
     "title": "RAPBD Medan 2027 Anjlok Jadi Rp6,9 Triliun, PKS Bongkar Anggaran Pendidikan Dipangkas dan 2575 Drainase Rusak",
-    "lead": "",
+    "description": "Fraksi PKS DPRD Medan bongkar RAPBD 2027. Pendapatan anjlok Rp6,9 triliun, anggaran pendidikan dan kesehatan dipangkas, 2575 titik drainase rusak disorot.",
+    "lead": "Fraksi PKS DPRD Medan bongkar RAPBD 2027. Pendapatan anjlok Rp6,9 triliun, anggaran pendidikan dan kesehatan dipangkas, 2575 titik drainase rusak disorot.",
     "image": "/media/290677.webp",
     "date": "2026-10-05T19:03:00+07:00",
     "kategori": "ARSIP"
@@ -98,7 +119,8 @@
   {
     "slug": "banjir-beringin-medan-selayang-tak-kunjung-usai-rico-waas-desak-tanggul-sungai-babura-dikaji",
     "title": "Banjir Beringin Medan Selayang Tak Kunjung Usai, Rico Waas Desak Tanggul Sungai Babura Dikaji",
-    "lead": "",
+    "description": "Banjir di Beringin Medan Selayang makin parah, rumah hilang terbawa air. Wali Kota Rico Waas dorong kajian tanggul Sungai Babura sebagai solusi permanen.",
+    "lead": "Banjir di Beringin Medan Selayang makin parah, rumah hilang terbawa air. Wali Kota Rico Waas dorong kajian tanggul Sungai Babura sebagai solusi permanen.",
     "image": "/media/rencana-tanggul-sungai-babura-300-meter-beringin-medan-selayang-pulnew.webp",
     "date": "2026-10-04T19:35:00+07:00",
     "kategori": "ARSIP"
@@ -106,7 +128,8 @@
   {
     "slug": "mutasi-panas-di-polda-sumut-brigjen-sonny-irawan-gantikan-irjen-whisnu-hermawan-jadi-kapolda",
     "title": "Mutasi Panas di Polda Sumut, Brigjen Sonny Irawan Gantikan Irjen Whisnu Hermawan Jadi Kapolda",
-    "lead": "",
+    "description": "Kapolri Jenderal Suyudi Ario Seto mutasi Kapolda Sumut. Irjen Whisnu Hermawan promosi Wairwasum Polri, digantikan Brigjen Sonny Irawan.",
+    "lead": "Kapolri Jenderal Suyudi Ario Seto mutasi Kapolda Sumut. Irjen Whisnu Hermawan promosi Wairwasum Polri, digantikan Brigjen Sonny Irawan.",
     "image": "/media/infografis-mutasi-kapolda-sumut-whisnu-sonny-irawan-1.webp",
     "date": "2026-10-03T16:07:00+07:00",
     "kategori": "ARSIP"
@@ -114,7 +137,8 @@
   {
     "slug": "waspada-jebakan-pinjol-ilegal-di-medan-dana-nyasar-rp-1,5-juta-berujung-teror-tagihan",
     "title": "Waspada Jebakan Pinjol Ilegal di Medan Dana Nyasar Rp1,5 Juta Berujung Teror Tagihan",
-    "lead": "",
+    "description": "Modus baru pinjol ilegal mengincar warga Medan. Dana tiba-tiba masuk rekening Rp1,5 juta, dikembalikan malah jadi utang fiktif.",
+    "lead": "Modus baru pinjol ilegal mengincar warga Medan. Dana tiba-tiba masuk rekening Rp1,5 juta, dikembalikan malah jadi utang fiktif.",
     "image": "/media/288772.webp",
     "date": "2026-10-02T16:24:00+07:00",
     "kategori": "ARSIP"
@@ -122,7 +146,8 @@
   {
     "slug": "cabai-rawit-rp-96-ribu-bikin-pusing-emak-emak-medan-pedagang-petisah-sebut-pasokan-berastagi-seret",
     "title": "Cabai Rawit Rp96 Ribu Bikin Pusing Emak Emak Medan, Pedagang Petisah Sebut Pasokan Berastagi Seret",
-    "lead": "",
+    "description": "Harga cabai rawit merah nasional Rp96.300/kg. Di Pasar Petisah Medan tembus Rp100 ribu. Pedagang bilang pasokan Berastagi seret karena hujan.",
+    "lead": "Harga cabai rawit merah nasional Rp96.300/kg. Di Pasar Petisah Medan tembus Rp100 ribu. Pedagang bilang pasokan Berastagi seret karena hujan.",
     "image": "/media/harga-cabai-rawit-merah-96-ribu-pasar-petisah-medan.webp",
     "date": "2026-10-02T15:48:00+07:00",
     "kategori": "ARSIP"
@@ -130,7 +155,8 @@
   {
     "slug": "banjir-tahunan-di-gerbang-tol-belmera-medan-bobby-janji-kolam-retensi-mulai-digarap-2027",
     "title": "Banjir Tahunan di Gerbang Tol Belmera Medan, Bobby Janji Kolam Retensi Mulai Digarap 2027",
-    "lead": "",
+    "description": "Bobby Nasution tinjau banjir Letda Sujono Medan di bawah Tol Belmera. Kolam retensi 1,7 KM dan drainase baru mulai dikerjakan awal 2027.",
+    "lead": "Bobby Nasution tinjau banjir Letda Sujono Medan di bawah Tol Belmera. Kolam retensi 1,7 KM dan drainase baru mulai dikerjakan awal 2027.",
     "image": "/media/banjir-letda-sujono-1-7km-pulnew.webp",
     "date": "2026-09-28T07:01:00+07:00",
     "kategori": "ARSIP"
@@ -138,7 +164,8 @@
   {
     "slug": "bobby-di-medan-titip-misi-ke-perantau-minang-putar-uang-di-sumut-kejar-5000-umkm-halal",
     "title": "Bobby di Medan Titip Misi ke Perantau Minang: Putar Uang di Sumut, Kejar 5.000 UMKM Halal",
-    "lead": "",
+    "description": "Gubsu Bobby Nasution tantang perantau Minang di Medan untuk putar uang syariah. Target 5.000 UMKM halal gratis tahun depan, PR masih 1,3 juta.",
+    "lead": "Gubsu Bobby Nasution tantang perantau Minang di Medan untuk putar uang syariah. Target 5.000 UMKM halal gratis tahun depan, PR masih 1,3 juta.",
     "image": "/media/bobby-nasution-perantau-minang-uang-syariah-5000-umkm-halal-pulnew-1.webp",
     "date": "2026-09-28T01:41:00+07:00",
     "kategori": "ARSIP"
@@ -146,7 +173,8 @@
   {
     "slug": "harga-semen-di-medan-tembus-langit-bobby-tawarkan-beli-massal-lewat-bumd-ke-dpr",
     "title": "Harga Semen di Medan Tembus Langit, Bobby Tawarkan Beli Massal Lewat BUMD ke DPR",
-    "lead": "",
+    "description": "Harga material di Medan mahal, Gubsu Bobby Nasution usul beli massal semen lewat BUMD Sumut bersama DPR untuk tekan harga rumah subsidi MBR.",
+    "lead": "Harga material di Medan mahal, Gubsu Bobby Nasution usul beli massal semen lewat BUMD Sumut bersama DPR untuk tekan harga rumah subsidi MBR.",
     "image": "/media/gubsu-bobby-harga-material-selangit-beli-massal-bumd-dpr-pulnew.webp",
     "date": "2026-09-27T17:47:00+07:00",
     "kategori": "ARSIP"
@@ -154,7 +182,8 @@
   {
     "slug": "30-siswa-sekolah-rakyat-sergai-pulang-ke-rumah-ksp-dudung-turun-tangan-bujuk-balik",
     "title": "30 Siswa Sekolah Rakyat Sergai Pulang ke Rumah, KSP Dudung Turun Tangan Bujuk Balik",
-    "lead": "",
+    "description": "30 siswa Sekolah Rakyat Terintegrasi 1 Sergai pulang ke orang tua karena tak betah. KSP Dudung Abdurachman tinjau langsung dan janji bujuk kembali.",
+    "lead": "30 siswa Sekolah Rakyat Terintegrasi 1 Sergai pulang ke orang tua karena tak betah. KSP Dudung Abdurachman tinjau langsung dan janji bujuk kembali.",
     "image": "/media/30-siswa-sekolah-rakyat-sergai-mundur-ksp-dudung-bujuk-pulnew-1.webp",
     "date": "2026-09-22T07:27:00+07:00",
     "kategori": "ARSIP"
@@ -162,7 +191,8 @@
   {
     "slug": "cara-urus-ktp-dan-izin-usaha-medan-lewat-whatsapp-ai-tanpa-antre-di-disdukcapil",
     "title": "Cara Urus KTP dan Izin Usaha Medan Lewat WhatsApp AI: Tanpa Antre di Disdukcapil",
-    "lead": "",
+    "description": "Pemko Medan siapkan layanan KTP, KK, dan NIB via WhatsApp AI. Cukup chat \"Halo Medan\", berkas jadi PDF. Ini cara pakainya.",
+    "lead": "Pemko Medan siapkan layanan KTP, KK, dan NIB via WhatsApp AI. Cukup chat \"Halo Medan\", berkas jadi PDF. Ini cara pakainya.",
     "image": "/media/pemko-medan-layanan-publik-ai-whatsapp-dukcapil-pulnew.webp",
     "date": "2026-09-21T20:24:00+07:00",
     "kategori": "TUTORIAL"
@@ -170,7 +200,8 @@
   {
     "slug": "gempa-2-0-magnitudo-goyang-humbahas-pgr-1-medan-catat-aceh-dan-nias-juga-getar-hari-ini",
     "title": "Gempa 2.0 Magnitudo Goyang Humbahas, PGR 1 Medan Catat Aceh dan Nias Juga Getar Hari Ini",
-    "lead": "",
+    "description": "BMKG PGR 1 Medan catat gempa 2.0 magnitudo di Humbang Hasundutan hari ini, getaran juga terasa di Aceh Tengah, Bener Meriah, dan Nias.",
+    "lead": "BMKG PGR 1 Medan catat gempa 2.0 magnitudo di Humbang Hasundutan hari ini, getaran juga terasa di Aceh Tengah, Bener Meriah, dan Nias.",
     "image": "/media/pgr1-medan-gempa-humbahas-2-magnitudo-aceh-nias-pulnew.webp",
     "date": "2026-09-21T09:28:00+07:00",
     "kategori": "ARSIP"
@@ -178,7 +209,8 @@
   {
     "slug": "wawali-sidak-helvetia-bongkar-biang-banjir-parit-putus-nyambung-air-muter-di-tempat",
     "title": "Wawali Sidak Helvetia, Bongkar Biang Banjir: Parit Putus Nyambung, Air Muter di Tempat",
-    "lead": "",
+    "description": "Wakil Wali Kota Medan Zakiyuddin Harahap sidak drainase di Medan Helvetia, temukan parit tersumbat dan tak terhubung di Jalan Cempaka dan Kapten Muslim.",
+    "lead": "Wakil Wali Kota Medan Zakiyuddin Harahap sidak drainase di Medan Helvetia, temukan parit tersumbat dan tak terhubung di Jalan Cempaka dan Kapten Muslim.",
     "image": "/media/sidak-medan-helvetia-wakil-wali-kota-drainase-tersumbat-pulnew.webp",
     "date": "2026-09-17T07:52:00+07:00",
     "kategori": "ARSIP"
@@ -186,7 +218,8 @@
   {
     "slug": "tanpa-wajah-lama-7-komisioner-kpid-sumut-baru-terpilih-4-petahana-tumbang-di-dprd",
     "title": "Tanpa Wajah Lama, 7 Komisioner KPID Sumut Baru Terpilih, 4 Petahana Tumbang di DPRD",
-    "lead": "",
+    "description": "DPRD Sumut pilih 7 komisioner KPID Sumut periode 2026-2029 tanpa petahana, Ahmad Arfah raih suara terbanyak, 4 incumbent gugur.",
+    "lead": "DPRD Sumut pilih 7 komisioner KPID Sumut periode 2026-2029 tanpa petahana, Ahmad Arfah raih suara terbanyak, 4 incumbent gugur.",
     "image": "/media/kpid-sumut-7-komisioner-baru-tanpa-petahana-2026-2029-pulnew.webp",
     "date": "2026-09-16T20:28:00+07:00",
     "kategori": "ARSIP"
@@ -194,7 +227,8 @@
   {
     "slug": "dari-manusia-tercepat-asia-sampai-raja-catur-10-emas-bobby-beri-tali-asih-13-legenda-sumut-di-haornas",
     "title": "Dari Manusia Tercepat Asia Sampai Raja Catur 10 Emas, Bobby Beri Tali Asih 13 Legenda Sumut di Haornas",
-    "lead": "",
+    "description": "Gubernur Sumut Bobby Nasution beri tali asih 13 legenda olahraga Sumut di Haornas ke-43, dari Sutiyono 7 emas SEA Games hingga Nasip Simanja 10 emas Para Games.",
+    "lead": "Gubernur Sumut Bobby Nasution beri tali asih 13 legenda olahraga Sumut di Haornas ke-43, dari Sutiyono 7 emas SEA Games hingga Nasip Simanja 10 emas Para Games.",
     "image": "/media/bobby-nasution-apresiasi-13-legenda-olahraga-sumut-haornas-pulnew.webp",
     "date": "2026-09-15T21:45:00+07:00",
     "kategori": "ARSIP"
@@ -202,7 +236,8 @@
   {
     "slug": "2-siswi-korban-mbg-karo-sempat-dirujuk-ke-rscm-gibran-turun-tangan-rscm-sebut-otak-febiona-aman-ginjal-agnesia-membaik",
     "title": "2 Siswi Korban MBG Karo Sempat Dirujuk ke RSCM, Gibran Turun Tangan, RSCM Sebut Otak Febiona Aman, Ginjal Agnesia Membaik",
-    "lead": "",
+    "description": "Dua siswi korban MBG Karo Agnesia dan Febiona dirujuk ke RSCM Jakarta atas arahan Wapres Gibran, kini kondisi membaik, RSCM pastikan tidak ada gangguan otak.",
+    "lead": "Dua siswi korban MBG Karo Agnesia dan Febiona dirujuk ke RSCM Jakarta atas arahan Wapres Gibran, kini kondisi membaik, RSCM pastikan tidak ada gangguan otak.",
     "image": "/media/2-siswa-keracunan-mbg-karo-dirujuk-jakarta-gibran-pantau-pulnew.webp",
     "date": "2026-09-12T21:16:00+07:00",
     "kategori": "ARSIP"
@@ -210,7 +245,8 @@
   {
     "slug": "jangan-sampai-putus-kuliah-di-tahun-kedua-pemko-medan-siapkan-beasiswa-untuk-100-mahasiswa-mulai-oktober",
     "title": "Jangan Sampai Putus Kuliah di Tahun Kedua, Pemko Medan Siapkan Beasiswa untuk 100 Mahasiswa Mulai Oktober",
-    "lead": "",
+    "description": "Pemko Medan gulirkan beasiswa untuk 100 mahasiswa berprestasi dan kurang mampu mulai Oktober 2026, 70 persen untuk prestasi dan 30 persen kurang mampu.",
+    "lead": "Pemko Medan gulirkan beasiswa untuk 100 mahasiswa berprestasi dan kurang mampu mulai Oktober 2026, 70 persen untuk prestasi dan 30 persen kurang mampu.",
     "image": "/media/284974.webp",
     "date": "2026-09-12T13:50:00+07:00",
     "kategori": "ARSIP"
@@ -218,7 +254,8 @@
   {
     "slug": "9-tahun-juara-berturut-piala-mtq-sumut-kembali-ke-medan-rico-waas-langsung-bagi-bonus-ke-qari-qariah",
     "title": "9 Tahun Juara Berturut, Piala MTQ Sumut Kembali ke Medan, Rico Waas Langsung Bagi Bonus ke Qari Qariah",
-    "lead": "",
+    "description": "Wali Kota Medan Rico Waas terima piala juara umum MTQ ke-40 Sumut, beri bonus ke kafilah Medan, 16 qari qariah lolos ke nasional.",
+    "lead": "Wali Kota Medan Rico Waas terima piala juara umum MTQ ke-40 Sumut, beri bonus ke kafilah Medan, 16 qari qariah lolos ke nasional.",
     "image": "/media/rico-waas-juara-umum-mtq-sumut-40-16-qari-medan-pulnew.webp",
     "date": "2026-09-10T07:08:00+07:00",
     "kategori": "ARSIP"
@@ -226,7 +263,8 @@
   {
     "slug": "jangan-jalan-sendiri-sendiri-bobby-usul-4-skema-satukan-ekonomi-10-provinsi-sumatera-di-forum-imt-gt",
     "title": "Jangan Jalan Sendiri-sendiri, Bobby Usul 4 Skema Satukan Ekonomi 10 Provinsi Sumatera di Forum IMT-GT",
-    "lead": "",
+    "description": "Gubernur Sumut Bobby Nasution usulkan 4 skema satukan ekonomi 10 provinsi Sumatera di Rakor IMT-GT Medan, dari hilirisasi sawit sampai gudang pangan di Nias.",
+    "lead": "Gubernur Sumut Bobby Nasution usulkan 4 skema satukan ekonomi 10 provinsi Sumatera di Rakor IMT-GT Medan, dari hilirisasi sawit sampai gudang pangan di Nias.",
     "image": "/media/bobby-nasution-4-skema-ekonomi-10-provinsi-sumatera-pulnew.webp",
     "date": "2026-09-09T19:02:00+07:00",
     "kategori": "ARSIP"
@@ -234,7 +272,8 @@
   {
     "slug": "erupsi-sinabung-lumpuhkan-bandara-kualanamu-45-penerbangan-batal-notam-darurat-diterbitkan",
     "title": "Erupsi Sinabung Lumpuhkan Bandara Kualanamu, 45 Penerbangan Batal, NOTAM Darurat Diterbitkan",
-    "lead": "",
+    "description": "Erupsi Gunung Sinabung lumpuhkan Bandara Kualanamu, 45 penerbangan batal dan 6 reschedule, Lion Group terdampak, landasan ditutup via NOTAM.",
+    "lead": "Erupsi Gunung Sinabung lumpuhkan Bandara Kualanamu, 45 penerbangan batal dan 6 reschedule, Lion Group terdampak, landasan ditutup via NOTAM.",
     "image": "/media/erupsi-sinabung-lumpuhkan-bandara-kualanamu-penerbangan-tunda-pulnew.webp",
     "date": "2026-09-01T19:31:00+07:00",
     "kategori": "ARSIP"
@@ -242,7 +281,8 @@
   {
     "slug": "double-award-dalam-2-hari-pemko-medan-sabet-detiksumatera-awards-lewat-qresto-pajak-restoran-langsung-masuk-kas-daerah-real-time",
     "title": "Double Award dalam 2 Hari, Pemko Medan Sabet detikSumatera Awards Lewat QRESTO, Pajak Restoran Langsung Masuk Kas Daerah Real-Time",
-    "lead": "",
+    "description": "Pemko Medan sabet detikSumatera Awards 2026 sebagai pelopor digitalisasi pajak daerah lewat inovasi QRESTO yang bikin pajak restoran masuk kas real-time.",
+    "lead": "Pemko Medan sabet detikSumatera Awards 2026 sebagai pelopor digitalisasi pajak daerah lewat inovasi QRESTO yang bikin pajak restoran masuk kas real-time.",
     "image": "/media/pemko-medan-detiks-sumatera-awards-2026-qresto-digitalisasi-pajak-pulnew.webp",
     "date": "2026-08-29T18:28:00+07:00",
     "kategori": "ARSIP"
@@ -250,7 +290,8 @@
   {
     "slug": "dampak-5-ancaman-listrik-nasional-ke-medan-sp-pln-warning-kedaulatan-energi-bisa-jebol",
     "title": "Dampak 5 Ancaman Listrik Nasional ke Medan, SP PLN Warning Kedaulatan Energi Bisa Jebol",
-    "lead": "",
+    "description": "SP PLN di Kemenko Polkam ungkap 5 ancaman gerogoti PLN. Laba anjlok 59% jadi Rp7,26 T, oversupply 80 GW. Apa dampaknya ke Medan?",
+    "lead": "SP PLN di Kemenko Polkam ungkap 5 ancaman gerogoti PLN. Laba anjlok 59% jadi Rp7,26 T, oversupply 80 GW. Apa dampaknya ke Medan?",
     "image": "/media/SP PLN-5 ancaman listrik nasional.webp",
     "date": "2026-08-27T19:03:00+07:00",
     "kategori": "ARSIP"
