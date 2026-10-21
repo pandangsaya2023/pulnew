@@ -1,4 +1,5 @@
 [
+  "/berita/jangan-lakukan-3-trik-percepat-windows-ini-mitos-yang-bikin-pc-makin-lemot.html",
   "/berita/cara-membaca-data-hotspot-karhutla-di-clime-noaa-weather-agar-tidak-salah-tafsir-angka-510-titik.html",
   "/berita/review-gadget-magsafe-6-in-1-viral-grip-ring-light-selfie-stick-dan-tripod-dalam-satu-alat.html",
   "/berita/cara-melihat-password-wifi-yang-tersimpan-di-laptop-windows-11-tanpa-aplikasi-tambahan.html",
