@@ -14,37 +14,27 @@
 <div class="article-content">
 <p><i>Trik viral mengatur Number of Processors di msconfig System Configuration adalah mitos lama. Windows secara default sudah memakai semua core, mencentangnya justru bisa membatasi performa.</i></p>
 <p><strong>PULNEW</strong> - Lagi scroll TikTok atau Reels, kamu pasti pernah lihat video "3 Simple Speed Up PC Tips" dengan cara mengetik msconfig, aktifkan semua processor, lalu hapus file prefetch. Komentar isinya bilang work, padahal setelah dicoba PC malah tetap lemot atau bahkan booting jadi lebih lama. Video itu viral karena terlihat meyakinkan, tapi dua dari tiga triknya adalah mitos lama yang sudah dibantah Microsoft sejak era Windows 7.</p>
-<p>Kenapa trik menyesatkan seperti ini terus laku? Karena Windows yang mulai melambat memang bikin frustasi. File sampah menumpuk, startup penuh aplikasi tidak penting, dan sistem butuh waktu untuk memuat cache. Solusi instan seperti mencentang opsi di System Configuration terlihat seperti tombol turbo rahasia. PULNEW sudah menguji langsung ketiga langkah yang ada di video tersebut di laptop Windows 11, dan hasilnya tidak seperti yang dijanjikan.</p>
-<h2 style="color:#333; margin-top:16px; margin-bottom:12px; font-weight:800; font-size:16px;">1. Bongkar Mitos MSConfig Number of Processors dan Folder Prefetch</h2>
-
-<p>Ini bagian yang paling sering disalahpahami kreator.</p>
-<p><strong>Trik MSConfig -&gt; Number of Processors:</strong> Di video disuruh buka Run (Windows + R), ketik `msconfig`, masuk ke tab Boot &gt; Advanced options, lalu centang Number of processors dan pilih angka tertinggi. Logikanya biar semua core dipakai saat nyala.
+<p>Kenapa trik menyesatkan seperti ini terus laku? Karena Windows yang mulai melambat memang bikin frustasi. File sampah menumpuk, startup penuh aplikasi tidak penting, dan sistem butuh waktu untuk memuat cache. Solusi instan seperti mencentang opsi di System Configuration terlihat seperti tombol turbo rahasia. PULNEW sudah menguji langsung ketiga langkah yang ada di video tersebut di laptop Windows 11, dan hasilnya tidak seperti yang dijanjikan.<h2 style="color:#333; margin-top:16px; margin-bottom:12px; font-weight:800; font-size:16px;">1. Bongkar Mitos MSConfig Number of Processors dan Folder Prefetch</h2>Ini bagian yang paling sering disalahpahami kreator.</p>
+<p><strong>Trik MSConfig -&gt; Number of Processors:</strong> Di video disuruh buka Run (Windows + R), ketik <i>msconfig</i>, masuk ke tab Boot &gt; Advanced options, lalu centang Number of processors dan pilih angka tertinggi. Logikanya biar semua core dipakai saat nyala.
 Faktanya: Windows 11 secara default SUDAH memakai semua core yang tersedia untuk proses boot. Opsi ini sebenarnya adalah fitur debugging untuk developer yang ingin MEMBATASI core, misalnya untuk tes aplikasi di CPU dual-core. Kalau kamu centang manual, kamu justru berisiko salah setting. Contoh nyata, laptop kamu 8 core tapi kamu set 4 karena iseng, performa malah kepotong setengah. Solusi yang benar adalah biarkan opsi ini tidak tercentang (unchecked).</p>
-<p><strong>Trik Hapus Folder Prefetch:</strong> Langkah kedua yang disuruh adalah ketik `prefetch` di Run, lalu hapus semua file .pf di `C:\Windows\prefetch`.
+<p><strong>Trik Hapus Folder Prefetch:</strong> Langkah kedua yang disuruh adalah ketik <i>prefetch</i> di Run, lalu hapus semua file .pf di <i>C:\Windows\prefetch</i>.
 Faktanya: Folder Prefetch itu bukan sampah. Itu adalah catatan pintar Windows agar aplikasi favorit kamu seperti Chrome, Photoshop, atau game bisa dibuka lebih cepat. Windows menyimpan jejak loading agar next time buka jadi ngebut. Kalau kamu hapus total, efeknya justru sebaliknya, semua aplikasi akan loading ulang dari nol dan terasa lebih lemot selama 2-3 hari sampai cache terbentuk lagi. Windows juga akan membuat file itu lagi secara otomatis, jadi aksinya sia-sia.</p>
-<p>Lalu mana yang benar dari video itu? Hanya satu.</p>
-<h2 style="color:#333; margin-top:16px; margin-bottom:12px; font-weight:800; font-size:16px;">2. Satu-Satunya Trik yang Valid: Aktifkan Storage Sense dengan Setting yang Tepat</h2>
+<p>Lalu mana yang benar dari video itu? Hanya satu<h2 style="color:#333; margin-top:16px; margin-bottom:12px; font-weight:800; font-size:16px;">2. Satu-Satunya Trik yang Valid: Aktifkan Storage Sense dengan Setting yang Tepat</h2></p>
 <div style="text-align:center; margin:8px 0"><img src="/media/gbrtrikwin11.webp" alt=""style="width:100%; max-width:600px;border:1px solid #ddd; border-radius:8px;"></div>
 <p>Di Windows 11, fitur ini ada di Settings &gt; System &gt; Storage &gt; Storage Sense. Ini memang resmi dari Microsoft untuk bersih-bersih otomatis. Tapi jangan cuma di-On-kan saja, banyak orang lupa atur jadwalnya.</p>
 <p>Ini settingan rekomendasi PULNEW yang sudah kami pakai untuk laptop kerja sehari-hari:</p>
-<ul>
-<li>Buka Settings > System > Storage > Storage Sense > Aktifkan toggle ke On.</li>
-<li>Di bagian Configure cleanup schedules, atur Run Storage Sense: Every Week. Jangan During low disk space saja, karena kalau sudah low baru jalan itu sudah terlambat.</li>
-<li>Delete files in my recycle bin if they have been there for over: 14 days. Jangan set 1 hari, kadang kita masih butuh file yang tidak sengaja terhapus.</li>
-<li>Delete files in my Downloads folder if they haven't been opened for: 30 days. Ini kunci. Folder Downloads adalah sumber sampah terbesar.</li>
-<li>Klik Run Storage Sense now di bawah untuk eksekusi pertama.</li>
-</ul>
-
-<p>Dari pengujian, dengan setting ini laptop kami berhasil merebut kembali 2,29 GB ruang kosong tanpa perlu install aplikasi pembersih tambahan seperti CCleaner. Efek ke kecepatan terasa karena SSD punya ruang lega untuk caching.</p>
-<h2 style="color:#333; margin-top:16px; margin-bottom:12px; font-weight:800; font-size:16px;">3. Cara yang Benar-Benar Bikin Windows Ngebut (Yang Jarang Dibahas)</h2>
-
-<p>Kalau tujuan kamu adalah boot lebih cepat dan aplikasi tidak lemot, tinggalkan msconfig dan prefetch. Lakukan tiga hal ini:</p>
+<p>● Buka Settings &gt; System &gt; Storage &gt; Storage Sense &gt; Aktifkan toggle ke On.
+● Di bagian Configure cleanup schedules, atur Run Storage Sense: Every Week. Jangan During low disk space saja, karena kalau sudah low baru jalan itu sudah terlambat.
+● Delete files in my recycle bin if they have been there for over: 14 days. Jangan set 1 hari, kadang kita masih butuh file yang tidak sengaja terhapus.
+● Delete files in my Downloads folder if they haven't been opened for: 30 days. Ini kunci. Folder Downloads adalah sumber sampah terbesar.
+● Klik Run Storage Sense now di bawah untuk eksekusi pertama.</p>
+<p>Dari pengujian, dengan setting ini laptop kami berhasil merebut kembali 2,29 GB ruang kosong tanpa perlu install aplikasi pembersih tambahan seperti CCleaner. Efek ke kecepatan terasa karena SSD punya ruang lega untuk caching.<h2 style="color:#333; margin-top:16px; margin-bottom:12px; font-weight:800; font-size:16px;">3. Cara yang Benar-Benar Bikin Windows Ngebut (Yang Jarang Dibahas)</h2>Kalau tujuan kamu adalah boot lebih cepat dan aplikasi tidak lemot, tinggalkan msconfig dan prefetch. Lakukan tiga hal ini:</p>
 <p><strong>A. Matikan Startup yang Tidak Penting Lewat Task Manager, Bukan MSConfig:</strong>
 Tekan Ctrl + Shift + Esc &gt; buka tab Startup Apps. Disable semua yang Status-nya High Impact tapi tidak kamu pakai tiap hari, contoh: Spotify, Adobe Creative Cloud, OneDrive jika tidak dipakai. Ini memangkas waktu boot hingga 40% di laptop kami.</p>
 <p><strong>B. Ganti HDD ke SSD dan Cek Storage Health:</strong>
-Secepat apapun kamu utak-atik software, kalau masih pakai Hard Disk mekanik, Windows 11 akan tetap lemot. Investasi SSD SATA 512GB sekarang sudah di bawah 400 ribu. Setelah ganti, cek Health dengan buka Command Prompt dan ketik `wmic diskdrive get status`.</p>
+Secepat apapun kamu utak-atik software, kalau masih pakai Hard Disk mekanik, Windows 11 akan tetap lemot. Investasi SSD SATA 512GB sekarang sudah di bawah 400 ribu. Setelah ganti, cek Health dengan buka Command Prompt dan ketik <i>wmic diskdrive get status</i>.</p>
 <p><strong>C. Gunakan Disk Cleanup Versi Lama untuk File Sistem:</strong>
-Selain Storage Sense, ketik `cleanmgr` di Run, pilih Drive C:, lalu klik Clean up system files. Centang Windows Update Cleanup dan Previous Windows installations. Seringkali file ini memakan 10-20 GB setelah update besar dan tidak dibersihkan oleh Storage Sense.</p>
+Selain Storage Sense, ketik <i>cleanmgr</i> di Run, pilih Drive C:, lalu klik Clean up system files. Centang Windows Update Cleanup dan Previous Windows installations. Seringkali file ini memakan 10-20 GB setelah update besar dan tidak dibersihkan oleh Storage Sense.</p>
 <p>Jadi, jangan lagi percaya dengan trik centang semua processor atau hapus prefetch yang viral itu. Dua langkah tersebut tidak hanya tidak berguna, tapi berpotensi bikin sistem tidak stabil. Fokus saja pada manajemen startup dan kebersihan storage otomatis yang memang disediakan Microsoft.</p>
 <p>PULNEW selalu menyarankan untuk skeptis pada tips yang terlihat terlalu mudah. Kalau mau PC benar-benar kencang, kuncinya bukan di satu tombol rahasia, tapi di kebiasaan merawat sistem secara rutin.</p>
 </div>
