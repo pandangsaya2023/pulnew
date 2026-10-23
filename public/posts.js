@@ -1,4 +1,5 @@
 [
+  "/berita/cara-otomatis-warnai-sel-absen-di-excel-tanpa-ribet-kerjaan-1-jam-jadi-10-detik.html",
   "/berita/mengapa-mitokondria-hanya-diwariskan-dari-ibu-penjelasan-sains-lengkap.html",
   "/berita/jangan-lakukan-3-trik-percepat-windows-ini-mitos-yang-bikin-pc-makin-lemot.html",
   "/berita/cara-membaca-data-hotspot-karhutla-di-clime-noaa-weather-agar-tidak-salah-tafsir-angka-510-titik.html",
