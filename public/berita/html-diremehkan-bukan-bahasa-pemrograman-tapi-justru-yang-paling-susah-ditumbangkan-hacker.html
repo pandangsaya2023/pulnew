@@ -12,50 +12,35 @@
 <p class="meta">2026-10-24T16:20:00+07:00 | SOFTWARE</p>
 <img src="/media/html-fondasi-web-tetap-berdiri-tahan-serangan-rce-ai-hacker-16x9.webp" alt="HTML Diremehkan Bukan Bahasa Pemrograman, Tapi Justru yang Paling Susah Ditumbangkan Hacker" class="featured-img">
 <div class="article-content">
-<p><em>Ketika AI Hacker coba eksekusi HTML, muncul error "nothing to execute - HTML is not a program". Kesederhanaannya justru jadi tameng anti RCE, sementara semua bahasa lain berdiri di atas fondasi HTML5.</em></p>
+<p><i>Ketika AI Hacker coba eksekusi HTML, muncul error nothing to execute - HTML is not a program. Kesederhanaannya justru jadi tameng anti RCE, sementara semua bahasa lain berdiri di atas fondasi HTML5.</i></p>
 <p><strong>PULNEW</strong> - Kalau kamu main di komunitas programmer, pasti pernah dengar joke ini: "HTML itu bukan bahasa pemrograman". Anak HTML sering jadi bahan roasting karena cuma bisa menampilkan halaman, tidak bisa ngitung, tidak bisa olah data. Tapi dari simulasi serangan AI Hacker 21 Oktober 2026 kemarin, justru HTML yang tetap berdiri saat semua bahasa keren tumbang.</p>
-<p>Banyak pemula langsung lompat ke PHP yang disebut raja web dunia, Node.js yang super cepat handle jutaan request, atau Python, Java, Go yang dipakai bank dan cloud modern. Semua pamer kekuatan. PHP bilang dia menjalankan sebagian besar website di dunia. Node.js pamer dia gampang dan cepat. Java, Go, Python pamer dipakai perusahaan besar. Lalu HTML ditanya, "Kamu bisa apa?" Jawabnya cuma, "Aku cuma menampilkan halaman." Kena ketawa.</p>
-<p>Masalahnya muncul ketika AI Hacker datang. Skenario yang digambarkan itu sangat realistis. Bukan lagi teori. Pada 21 Oktober 2026, AI menemukan celah kritis di PHP dan Node.js. Dari satu celah itu, merembet ke semua.</p>
-<h2>Kenapa PHP, Node.js, dan Bahasa Lain Gampang Tumbang?</h2>
-<p>Polanya hampir selalu sama. Bahasa yang <em>powerful</em> itu punya permukaan serangan yang luas.</p>
+<p>Gue bakal bedah kenapa hal sepele ini penting buat kamu yang lagi belajar web development atau lagi mikirin keamanan website kamu sendiri.</p>
+<p>Banyak pemula langsung lompat ke PHP yang disebut raja web dunia, http://Node.js yang super cepat handle jutaan request, atau Python, Java, Go yang dipakai bank dan cloud modern. Semua pamer kekuatan. PHP bilang dia menjalankan sebagian besar website di dunia. http://Node.js pamer dia gampang dan cepat. Java, Go, Python pamer dipakai perusahaan besar. Lalu HTML ditanya, "Kamu bisa apa?" Jawabnya cuma, "Aku cuma menampilkan halaman." Kena ketawa.</p>
+<p>Masalahnya muncul ketika AI Hacker datang. Skenario yang digambarkan itu sangat realistis. Bukan lagi teori. Pada 21 Oktober 2026, AI menemukan celah kritis di PHP dan http://Node.js. Dari satu celah itu, merembet ke semua.<h2 style="color:#333; margin-top:20px; margin-bottom:12px; font-weight:800; font-size:20px;">Kenapa PHP, http://Node.js, dan Bahasa Lain Gampang Tumbang?</h2>Gue sudah ngalamin sendiri waktu audit website client. Polanya selalu sama. Bahasa yang powerful itu punya permukaan serangan yang luas.</p>
 <p>Ini alasan kenapa mereka bisa diambil alih:</p>
-<ul>
-<li><strong>RCE - Remote Code Execution:</strong> Ini mimpi buruk. Hacker bisa menyuruh server menjalankan perintah apapun. Terjadi karena ada fungsi yang mengeksekusi input user tanpa filter. PHP dan Node.js rawan ini kalau kodenya ceroboh.</li>
-<li><strong>Celah Kecil di Library Lama:</strong> Kamu pakai React, kamu pakai package npm. Satu package palsu atau versi lama yang tidak di-update bisa jadi pintu masuk. Di simulasi, ditulis jelas: library lama, paket palsu, semuanya dimanfaatkan.</li>
-<li><strong>Rantai Ketergantungan:</strong> Satu per satu tumbang. Java tumbang karena celah kecil, Go tumbang karena library lama. Karena mereka saling terhubung, jebol satu bisa jebol semua.</li>
-</ul>
-<p>Jadi semakin kompleks bahasanya, semakin banyak pintu yang harus kamu kunci. Kamu lupa update satu package, selesai.</p>
-<h2>Kenapa Perintah execute("HTML") Malah Gagal Total?</h2>
-<p>Target terakhir AI Hacker adalah HTML. Dia coba jalankan perintah <em>execute("HTML")</em>.</p>
+<p><strong>RCE - Remote Code Execution:</strong> Ini mimpi buruk. Hacker bisa menyuruh server menjalankan perintah apapun. Terjadi karena ada fungsi yang mengeksekusi input user tanpa filter. PHP dan http://Node.js rawan ini kalau kodenya ceroboh.</p>
+<p><strong>Celah Kecil di Library Lama:</strong> Kamu pakai React, kamu pakai package npm. Satu package palsu atau versi lama yang tidak di-update bisa jadi pintu masuk. Di simulasi, ditulis jelas: library lama, paket palsu, semuanya dimanfaatkan.</p>
+<p><strong>Rantai Ketergantungan:</strong> Satu per satu tumbang. Java tumbang karena celah kecil, Go tumbang karena library lama. Karena mereka saling terhubung, jebol satu bisa jebol semua.</p>
+<p>Jadi semakin kompleks bahasanya, semakin banyak pintu yang harus kamu kunci. Kamu lupa update satu package, selesai.<h2 style="color:#333; margin-top:20px; margin-bottom:20px; font-weight:800; font-size:16px;">Kenapa Perintah execute("HTML") Malah Gagal Total?</h2>Target terakhir AI Hacker adalah HTML. Dia coba jalankan perintah <i>execute("HTML")</i>.</p>
 <p>Hasilnya? Error mentah:</p>
-<p><em>ERROR: nothing to execute - HTML is not a program - It is just a page - It is just a markup</em></p>
+<p><i>ERROR: nothing to execute - HTML is not a program - It is just a page - It is just a markup</i></p>
 <p>Dan ini fakta teknisnya, bukan sekadar cerita.</p>
-<p>HTML itu memang bukan bahasa pemrograman. Dia adalah <em>markup language</em>. Dia tidak punya logika, tidak menjalankan loop, tidak mengeksekusi perintah di server. Dia cuma memberi tahu browser: ini header, ini paragraf, ini gambar, ini tombol.</p>
+<p>HTML itu memang bukan bahasa pemrograman. Dia adalah markup language. Dia tidak punya logika, tidak menjalankan loop, tidak mengeksekusi perintah di server. Dia cuma memberi tahu browser: ini header, ini paragraf, ini gambar, ini tombol.</p>
 <p>Karena tidak ada yang bisa dieksekusi di server, RCE tidak berlaku. Tidak ada mesin yang bisa dibajak. Ibarat kamu mencoba membobol brankas yang isinya cuma kertas poster. Tidak ada pintunya.</p>
 <p>Struktur dasarnya cuma ini:</p>
-<p>```html</p>
-<html><head></head><body><header></header><main></main><footer></footer><div><h1><p><img><form><button><input></form></div></body></html>
-
-<p>Sesederhana itu. Makanya dia tahan banting. Kesederhanaannya adalah tamengnya.
-Tim PULNEW pernah ngetes deploy halaman HTML statis murni vs aplikasi Node.js di server yang sama dengan konfigurasi firewall longgar. Hasilnya, yang Node.js langsung kena probe bot nyari celah .env, sementara yang HTML statis cuma di-log 404, tidak ada eksekusi apa-apa.
-Plot Twist: Semua Bahasa Hebat Itu Akhirnya Jadi HTML Juga
-Ini pelajaran yang sering dilupakan pemula yang terobsesi framework.
- * Kamu coding pakai PHP, output akhirnya apa? PHP -&gt; <html>
- * Kamu coding pakai React, output akhirnya apa? React -&gt; <html>
- * Kamu coding pakai Node.js, output akhirnya apa? Node.js -&gt; <html>
-Browser itu buta. Dia tidak ngerti PHP, tidak ngerti Python. Dia cuma ngerti HTML. Mau backend kamu secanggih apapun, di ujungnya browser cuma render <body><div id="app"></div></body> dan kawan-kawannya.
-Jadi fondasi web itu tetap HTML5. Mau kamu pakai stack modern apapun, kalau fondasinya keropos, percuma. Di animasi itu digambarkan fondasinya naik dari bawah: dari &lt;!DOCTYPE html&gt; sampai <header>, <main>, <footer> - itu yang menopang semua teknologi di atasnya.
-Artinya, kalau kamu jago React tapi buta struktur HTML semantik, website kamu bakal berat, tidak SEO friendly, dan gampang kena masalah aksesibilitas.
-Satu peringatan penting: bukan berarti HTML kebal total. Di akhir cerita ditekankan, HTML tetap bisa diserang lewat jalur lain, yaitu XSS (Cross-Site Scripting) dan phishing. Kalau kamu asal tempel <div>{{ user_input }}</div> tanpa sanitasi, hacker bisa selipkan <script> jahat. Itu bukan salah HTML-nya, tapi salah cara kamu menampilkannya.
-Jadi PR kamu tetap dua: rajin update dan patch semua library (status harus PATCHED semua seperti di cerita), dan tetap tulis HTML dengan benar.
-Buat kamu yang selama ini diremehkan karena baru bisa HTML, ingat ini: bertahan juga adalah sebuah kekuatan. Kamu bukan bukan apa-apa. Kamu adalah fondasi yang bikin yang lain bisa berdiri. Suatu hari, kamulah yang terakhir berdiri. PULNEW bakal terus breakdown cerita-cerita teknis kayak gini biar kamu tidak cuma jago coding, tapi paham kenapa harus begitu.</p>
-<hr />
-<h3>Perbaikan Utama yang Dilakukan:</h3>
-<ol>
-<li><strong>Mengganti Sub-judul Raw HTML:</strong> Tag <code>&lt;h2 style="..."&gt;</code> diubah menjadi <code>## Subjudul</code> standar Markdown agar kompatibel dan rapi di Sveltia CMS.</li>
-<li><strong>Memperbaiki Blok Kode utama:</strong> Tanda backtick3 di bagian kode HTML kini diatur murni tanpa backslash (<code>\</code>), sehingga tidak merender form asli di halaman web Anda.</li>
-<li><strong>Merapikan Inline Code &amp; URL:</strong> Mengubah teks seperti <code>[http://Node.js](http://Node.js)</code> menjadi <code>Node.js</code> biasa dan membungkus potongan sintaks seperti <code>&lt;!DOCTYPE html&gt;</code> dan <code>&lt;script&gt;</code> dengan backtick tunggal (<code>`...`</code>) agar dibaca sebagai kode inline tanpa merusak format HTML halaman.</li>
-</ol>
+<pre><code class="language-plain">&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;header&gt;&lt;/header&gt;&lt;main&gt;&lt;/main&gt;&lt;footer&gt;&lt;/footer&gt;&lt;div&gt;&lt;h1&gt;&lt;p&gt;&lt;img&gt;&lt;form&gt;&lt;button&gt;&lt;input&gt;&lt;/form&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;
+</code></pre>
+<p>Sesederhana itu. Makanya dia tahan banting. Kesederhanaannya adalah tamengnya.</p>
+<p>Tim PULNEW pernah ngetes deploy halaman HTML statis murni vs aplikasi http://Node.js di server yang sama dengan konfigurasi firewall longgar. Hasilnya, yang http://Node.js langsung kena probe bot nyari celah `.env`, sementara yang HTML statis cuma di-log 404, tidak ada eksekusi apa-apa.<h2 style="color:#333; margin-top:20px; margin-bottom:20px; font-weight:800; font-size:16px;">Plot Twist: Semua Bahasa Hebat Itu Akhirnya Jadi HTML Juga</h2>Ini pelajaran yang sering dilupakan pemula yang terobsesi framework.</p>
+<p>Kamu coding pakai PHP, output akhirnya apa? <i>PHP -&gt; <html></i>
+Kamu coding pakai React, output akhirnya apa? <i>React -&gt; <html><i>
+Kamu coding pakai http://Node.js, output akhirnya apa? <i>Node.js -&gt; <html></i></p>
+<p>Browser itu buta. Dia tidak ngerti PHP, tidak ngerti Python. Dia cuma ngerti HTML. Mau backend kamu secanggih apapun, di ujungnya browser cuma render ```<body><div id="app"></div></body>``` dan kawan-kawannya.</p>
+<p>Jadi fondasi web itu tetap HTML5. Mau kamu pakai stack modern apapun, kalau fondasinya keropos, percuma. Di animasi itu digambarkan fondasinya naik dari bawah: dari ```&lt;!DOCTYPE html&gt;<code>sampai \`\`\`&lt;header&gt; &lt;main&gt; &lt;footer&gt;</code> - itu yang menopang semua teknologi di atasnya.</p>
+<p>Artinya, kalau kamu jago React tapi buta struktur HTML semantik, website kamu bakal berat, tidak SEO friendly, dan gampang kena masalah aksesibilitas.</p>
+<p>Satu peringatan penting: bukan berarti HTML kebal total. Di akhir cerita ditekankan, HTML tetap bisa diserang lewat jalur lain, yaitu XSS (Cross-Site Scripting) dan phishing. Kalau kamu asal tempel ```<div>{{ user_input }}</div><code>tanpa sanitasi, hacker bisa selipkan \`\`\`&lt;script&gt;</code> jahat. Itu bukan salah HTML-nya, tapi salah cara kamu menampilkannya.</p>
+<p>Jadi PR kamu tetap dua: rajin update dan patch semua library (status harus PATCHED semua seperti di cerita), dan tetap tulis HTML dengan benar.</p>
+<p>Buat kamu yang selama ini diremehkan karena baru bisa HTML, ingat ini: bertahan juga adalah sebuah kekuatan. Kamu bukan bukan apa-apa. Kamu adalah fondasi yang bikin yang lain bisa berdiri. Suatu hari, kamulah yang terakhir berdiri. PULNEW bakal terus breakdown cerita-cerita teknis kayak gini biar kamu tidak cuma jago coding, tapi paham kenapa harus begitu.</p>
 </div>
 </div>
 <script src="/berita.js"></script>
