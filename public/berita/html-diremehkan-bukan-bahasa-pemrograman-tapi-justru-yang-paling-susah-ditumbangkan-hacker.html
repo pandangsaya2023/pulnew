@@ -27,19 +27,16 @@
 <p>Dan ini fakta teknisnya, bukan sekadar cerita.</p>
 <p>HTML itu memang bukan bahasa pemrograman. Dia adalah markup language. Dia tidak punya logika, tidak menjalankan loop, tidak mengeksekusi perintah di server. Dia cuma memberi tahu browser: ini header, ini paragraf, ini gambar, ini tombol.</p>
 <p>Karena tidak ada yang bisa dieksekusi di server, RCE tidak berlaku. Tidak ada mesin yang bisa dibajak. Ibarat kamu mencoba membobol brankas yang isinya cuma kertas poster. Tidak ada pintunya.</p>
-<p>Struktur dasarnya cuma ini:</p>
-<blockquote>
-<p><html><head></head><body><header></header><main></main><footer></footer><div><h1><p><img><form><button><input></form></div></body></html></p>
-</blockquote>
+<p>Struktur dasarnya cuma <i>html-&gt;head-&gt;header-&gt;main-&gt;img-&gt;form-&gt;button-&gt;footer</i></p>
 <p>Sesederhana itu. Makanya dia tahan banting. Kesederhanaannya adalah tamengnya.</p>
 <p>Tim PULNEW pernah ngetes deploy halaman HTML statis murni vs aplikasi http://Node.js di server yang sama dengan konfigurasi firewall longgar. Hasilnya, yang http://Node.js langsung kena probe bot nyari celah `.env`, sementara yang HTML statis cuma di-log 404, tidak ada eksekusi apa-apa.<h2 style="color:#333; margin-top:20px; margin-bottom:20px; font-weight:800; font-size:16px;">Plot Twist: Semua Bahasa Hebat Itu Akhirnya Jadi HTML Juga</h2>Ini pelajaran yang sering dilupakan pemula yang terobsesi framework.</p>
 <p>Kamu coding pakai PHP, output akhirnya apa? <i>PHP -&gt; <html></i>
 Kamu coding pakai React, output akhirnya apa? <i>React -&gt; <html><i>
 Kamu coding pakai http://Node.js, output akhirnya apa? <i>Node.js -&gt; <html></i></p>
-<p>Browser itu buta. Dia tidak ngerti PHP, tidak ngerti Python. Dia cuma ngerti HTML. Mau backend kamu secanggih apapun, di ujungnya browser cuma render ```<body><div id="app"></div></body>``` dan kawan-kawannya.</p>
-<p>Jadi fondasi web itu tetap HTML5. Mau kamu pakai stack modern apapun, kalau fondasinya keropos, percuma. Di animasi itu digambarkan fondasinya naik dari bawah: dari ```&lt;!DOCTYPE html&gt;<code>sampai \`\`\`&lt;header&gt; &lt;main&gt; &lt;footer&gt;</code> - itu yang menopang semua teknologi di atasnya.</p>
+<p>Browser itu buta. Dia tidak ngerti PHP, tidak ngerti Python. Dia cuma ngerti HTML. Mau backend kamu secanggih apapun, di ujungnya browser cuma render <i>body, div id="app"</i> dan kawan-kawannya.</p>
+<p>Jadi fondasi web itu tetap HTML5. Mau kamu pakai stack modern apapun, kalau fondasinya keropos, percuma. </p>
 <p>Artinya, kalau kamu jago React tapi buta struktur HTML semantik, website kamu bakal berat, tidak SEO friendly, dan gampang kena masalah aksesibilitas.</p>
-<p>Satu peringatan penting: bukan berarti HTML kebal total. Di akhir cerita ditekankan, HTML tetap bisa diserang lewat jalur lain, yaitu XSS (Cross-Site Scripting) dan phishing. Kalau kamu asal tempel ```<div>{{ user_input }}</div><code>tanpa sanitasi, hacker bisa selipkan \`\`\`&lt;script&gt;</code> jahat. Itu bukan salah HTML-nya, tapi salah cara kamu menampilkannya.</p>
+<p>Satu peringatan penting: bukan berarti HTML kebal total. Di akhir cerita ditekankan, HTML tetap bisa diserang lewat jalur lain, yaitu XSS (Cross-Site Scripting) dan phishing. Kalau kamu asal tempel <i>div {{ user_input }}</i> tanpa sanitasi, hacker bisa selipkan script jahat. Itu bukan salah HTML-nya, tapi salah cara kamu menampilkannya.</p>
 <p>Jadi PR kamu tetap dua: rajin update dan patch semua library (status harus PATCHED semua seperti di cerita), dan tetap tulis HTML dengan benar.</p>
 <p>Buat kamu yang selama ini diremehkan karena baru bisa HTML, ingat ini: bertahan juga adalah sebuah kekuatan. Kamu bukan bukan apa-apa. Kamu adalah fondasi yang bikin yang lain bisa berdiri. Suatu hari, kamulah yang terakhir berdiri. PULNEW bakal terus breakdown cerita-cerita teknis kayak gini biar kamu tidak cuma jago coding, tapi paham kenapa harus begitu.</p>
 </div>
