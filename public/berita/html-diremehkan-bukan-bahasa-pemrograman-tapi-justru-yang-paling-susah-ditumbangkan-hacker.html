@@ -26,9 +26,8 @@
 <p>Dan ini fakta teknisnya, bukan sekadar cerita.</p>
 <p>HTML itu memang bukan bahasa pemrograman. Dia adalah markup language. Dia tidak punya logika, tidak menjalankan loop, tidak mengeksekusi perintah di server. Dia cuma memberi tahu browser: ini header, ini paragraf, ini gambar, ini tombol.</p>
 <p>Karena tidak ada yang bisa dieksekusi di server, RCE tidak berlaku. Tidak ada mesin yang bisa dibajak. Ibarat kamu mencoba membobol brankas yang isinya cuma kertas poster. Tidak ada pintunya.</p>
-<p>Struktur dasarnya cuma ini:</p>
-<p><i><html></i><i><head></i><i></head></i><i><body></i><i><header></i><i></header></i><i><main></i><i></main></i><i><footer></i><i></footer></i><i><div></i><i><h1>/i&gt;<i><p></i><i><img></i><i><form></i><i><button></i><i><input></i><i></form></i><i></div></i><i></body></i><i></html></i></p>
-<p>Sesederhana itu. Makanya dia tahan banting. Kesederhanaannya adalah tamengnya.</p>
+<p><html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;header&gt;&lt;/header&gt;&lt;main&gt;&lt;/main&gt;&lt;footer&gt;&lt;/footer&gt;&lt;div&gt;&lt;h1&gt;&lt;p&gt;&lt;img&gt;&lt;form&gt;&lt;button&gt;&lt;input&gt;&lt;/form&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html></p>
+<p>Sesederhana itu. Struktur dasarnya cuma ini Makanya dia tahan banting. Kesederhanaannya adalah tamengnya.</p>
 <p>Tim PULNEW pernah ngetes deploy halaman HTML statis murni vs aplikasi http://Node.js di server yang sama dengan konfigurasi firewall longgar. Hasilnya, yang http://Node.js langsung kena probe bot nyari celah <i>.env</i>, sementara yang HTML statis cuma di-log 404, tidak ada eksekusi apa-apa.<h2 style="color:#333; margin-top:20px; margin-bottom:20px; font-weight:800; font-size:16px;">Plot Twist: Semua Bahasa Hebat Itu Akhirnya Jadi HTML Juga</h2>Ini pelajaran yang sering dilupakan pemula yang terobsesi framework.</p>
 <p>Kamu coding pakai PHP, output akhirnya apa? <i>PHP -&gt; <html></i>
 Kamu coding pakai React, output akhirnya apa? <i>React -&gt; <html></i>
