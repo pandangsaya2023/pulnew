@@ -30,6 +30,20 @@
 <p>HTML itu memang bukan bahasa pemrograman. Dia adalah markup language. Dia tidak punya logika, tidak menjalankan loop, tidak mengeksekusi perintah di server. Dia cuma memberi tahu browser: ini header, ini paragraf, ini gambar, ini tombol.</p>
 <p>Karena tidak ada yang bisa dieksekusi di server, RCE tidak berlaku. Tidak ada mesin yang bisa dibajak. Ibarat kamu mencoba membobol brankas yang isinya cuma kertas poster. Tidak ada pintunya.</p>
 <p>Struktur dasarnya cuma ini:</p>
+<p>Struktur dasarnya cuma ini:</p>
+<p>```html</p>
+<html>
+  <head></head>
+  <body>
+    <header></header>
+    <main></main>
+    <footer></footer>
+  </body>
+</html>
+<p>```</p>
+<p>Kamu coding pakai PHP output akhirnya apa? `PHP -&gt; <html>`
+Kamu coding pakai React output akhirnya apa? `React -&gt; <html>`
+Kamu coding pakai Node.js output akhirnya apa? <code>Node.js -&gt; &lt;html&gt;</code></p>
 <p><small style="font-size:11px;"><html><head></head><body><header></header><main></main><footer></footer><div><h1><p><img><form><button><input></form></div></body></html></small></p>
 <p>Sesederhana itu. Makanya dia tahan banting. Kesederhanaannya adalah tamengnya.</p>
 <p>Tim PULNEW pernah ngetes deploy halaman HTML statis murni vs aplikasi http://Node.js di server yang sama dengan konfigurasi firewall longgar. Hasilnya, yang http://Node.js langsung kena probe bot nyari celah `.env`, sementara yang HTML statis cuma di-log 404, tidak ada eksekusi apa-apa.</p>
