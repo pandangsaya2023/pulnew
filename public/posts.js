@@ -1,4 +1,5 @@
 [
+  "/berita/8-desain-navigasi-modern-yang-bikin-website-tidak-monoton-dan-lebih-fungsional.html",
   "/berita/100-perintah-video-google-flow-gemini-biar-hasilnya-sinematik-bukan-asal-jadi.html",
   "/berita/12-jenis-pola-deret-angka-tiu-cpns-wajib-kuasai-dijamin-cepat-ketemu-jawaban.html",
   "/berita/jangan-salah-beli-ini-beda-smart-tv-android-tv-dan-google-tv-yang-wajib-kamu-tahu.html",
