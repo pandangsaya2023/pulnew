@@ -1,4 +1,5 @@
 [
+  "/berita/100-perintah-video-google-flow-gemini-biar-hasilnya-sinematik-bukan-asal-jadi.html",
   "/berita/12-jenis-pola-deret-angka-tiu-cpns-wajib-kuasai-dijamin-cepat-ketemu-jawaban.html",
   "/berita/jangan-salah-beli-ini-beda-smart-tv-android-tv-dan-google-tv-yang-wajib-kamu-tahu.html",
   "/berita/viral-1-orang-pegang-10-hp-live-tiktok-sekaligus-ini-alat-dan-risiko-phone-farm.html",
