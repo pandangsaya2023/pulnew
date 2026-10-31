@@ -1,4 +1,5 @@
 [
+  "/berita/12-jenis-pola-deret-angka-tiu-cpns-wajib-kuasai-dijamin-cepat-ketemu-jawaban.html",
   "/berita/jangan-salah-beli-ini-beda-smart-tv-android-tv-dan-google-tv-yang-wajib-kamu-tahu.html",
   "/berita/viral-1-orang-pegang-10-hp-live-tiktok-sekaligus-ini-alat-dan-risiko-phone-farm.html",
   "/berita/terbongkar-studio-live-tiktok-tanpa-host-cara-kerja-6-monitor-fake-live-dan-risikonya.html",
