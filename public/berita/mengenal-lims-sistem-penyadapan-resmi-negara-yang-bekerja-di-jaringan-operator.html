@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Mengenal LIMS, Sistem Penyadapan Resmi Negara yang Bekerja di Jaringan Operator - PULNEW</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<div class="container">
+<h1>Mengenal LIMS, Sistem Penyadapan Resmi Negara yang Bekerja di Jaringan Operator</h1>
+<p class="meta">2026-11-03T22:34:00+07:00 | SAINS & EDUKASI</p>
+<img src="/media/mengenal-lims-sistem-penyadapan-resmi-negara.webp" alt="Mengenal LIMS, Sistem Penyadapan Resmi Negara yang Bekerja di Jaringan Operator" class="featured-img">
+<div class="article-content">
+<p><i>Dashboard LIMS jadi satu panel kontrol untuk memantau jaringan Mobile Core, 5G, IMS/VoIP, hingga ISP. Sumber: ic-services.io / PULNEW</i></p>
+<p><strong>PULNEW</strong> - Banyak yang mengira HP disadap itu tandanya baterai boros atau HP jadi panas. PULNEW tes langsung dari data teknis yang beredar, kenyataannya tidak seperti itu. Ada sistem bernama LIMS yang bekerja diam-diam di level jaringan, bukan di HP kamu. Di artikel ini kita bakal paham tuntas apa itu LIMS, bagaimana alurnya dari surat perintah sampai data mengalir ke pusat pemantauan, dan kenapa chat WhatsApp kamu tetap aman meski nomor kamu masuk daftar target.</p>
+<p>Banyak orang panik begitu mendengar kata penyadapan. Padahal sistem ini memang dibuat secara regulasi untuk kebutuhan penegakan hukum. Lawful = sah secara hukum. Tujuan resminya jelas, untuk melacak jaringan terorisme, kejahatan terorganisir, membongkar korupsi dan tindak pidana berat, sampai membantu pencarian korban penculikan atau bencana. Masalahnya muncul kalau pengawasan atas alat sekuat ini longgar. Tanpa audit yang ketat, komunikasi warga sipil biasa bisa ikut terpantau, dan data yang terkumpul rentan bocor kalau sistem keamanannya sendiri lemah.<h2 style="color:#333; margin-top:20px; margin-bottom:20px; font-weight:800; font-size:16px;">Bagaimana LIMS Bekerja di Jaringan Operator, Bukan di HP Kamu</h2>LIMS singkatan dari <strong>Lawful Interception Management System</strong>. Ini bukan aplikasi mata-mata yang diinstal di HP. Bentuknya adalah kombinasi perangkat lunak dan keras yang terhubung langsung ke operator seluler dan ISP.</p>
+<p>Dari dashboard teknis yang bersumber dari http://ic-services.io, sistem ini dirancang sebagai <strong>One control layer for all networks</strong>. Jadi satu panel untuk mengontrol semua jaringan.</p>
+<p>Struktur targetnya sangat spesifik:</p>
+<p>• <strong>MSISDN:</strong> Nomor HP kamu (contoh di dashboard LIID-0417 status active)
+• <strong>IMSI:</strong> Identitas unik kartu SIM (LIID-0418)
+• <strong>SIP URI:</strong> Untuk layanan VoIP / panggilan internet (LIID-0419 pending)
+• <strong>IMEI:</strong> Identitas fisik perangkat HP (LIID-0412 deactivated)
+• <strong>User Name:</strong> Target berbasis username</p>
+<p>Alur kerjanya terstandar internasional, bukan karangan. Menggunakan standar <strong>ETSI TS 103 221-1 (X1) dan ETSI TS 103 120 (HI1)</strong> plus national profiles. Interface X1 jadi jembatan yang menghubungkan ke Mobile Core / 5G, IMS / VoIP, dan BNG / ISP.</p>
+<p>Langkah operasionalnya begini:</p>
+<p>● <strong>1. Warrant Intake:</strong> Penegak hukum mengirim perintah pemantauan resmi atau surat tertulis (HI1 - written order) ke sistem LIMS. Di sistem yang benar, proses ini butuh Four-eyes approval, audit trail, dan RBAC agar tidak ada satu orang yang bisa main perintah sepihak.
+● <strong>2. Request ke Operator:</strong> LIMS meminta operator seluler membuka jalur komunikasi target. Operator wajib membuka jalur tersebut sesuai regulasi.
+● <strong>3. Mediation &amp; Forwarding:</strong> Data panggilan, SMS, sampai riwayat koneksi internet diteruskan lewat jalur Mediation ke pusat pemantauan secara real-time.</p>
+<p>Karena prosesnya ada di operator, kamu tidak akan merasakan HP lemot, baterai boros, atau aneh-aneh. Itu mitos lama.<h2 style="color:#333; margin-top:20px; margin-bottom:20px; font-weight:800; font-size:16px;">Batas LIMS: Kenapa WhatsApp dan Signal Tidak Bisa Dibaca Langsung</h2>Ini bagian yang paling sering salah paham. LIMS itu sangat ampuh untuk komunikasi seluler biasa (GSM) dan SMS. Panggilan biasa dan SMS memang bisa direkam utuh.</p>
+<p>Beda cerita kalau target pakai aplikasi dengan <strong>End-to-End Encryption (E2EE)</strong> seperti WhatsApp atau Signal.</p>
+<p>Yang bisa dilihat LIMS dari aplikasi E2EE:</p>
+<p>■ Metadata: Siapa menghubungi siapa, kapan jamnya, berapa lama durasi komunikasinya.
+■ IP connection log, kapan kamu online.</p>
+<p>Yang TIDAK bisa dilihat langsung di jalur jaringan:</p>
+<p>■ Isi pesan teks, foto, file yang terenkripsi.
+■ Isi suara panggilan WhatsApp Calling.</p>
+<p>Isi pesan baru bisa dibaca kalau ada langkah lanjutan yaitu <strong>device compromise</strong> atau perangkat fisik target berhasil diretas dan dipasang malware pengintai. Tanpa itu, enkripsi E2EE tetap memblokir pembacaan isi di tengah jalan. Makanya tim <strong>PULNEW</strong> selalu menyarankan E2EE sebagai pertahanan pertama, bukan sekadar gimmick.<h2 style="color:#333; margin-top:20px; margin-bottom:20px; font-weight:800; font-size:16px;">Checklist Praktis Amankan Komunikasi dari Penyadapan Jaringan</h2>Kamu tidak bisa mematikan LIMS karena itu ada di operator. Tapi kamu bisa bikin data kamu yang mereka dapat jadi tidak berguna. Ini checklist yang gue pakai sendiri dan work:</p>
+<p>● <strong>1. Prioritaskan E2EE untuk hal sensitif:</strong> Jangan diskusi rahasia, data keuangan, atau strategi penting lewat telepon GSM biasa atau SMS. Pindahkan ke WhatsApp, Signal, atau Session yang E2EE-nya aktif default. Pastikan ikon gembok verifikasi sudah centang.
+● <strong>2. Aktifkan 2FA yang benar:</strong> Bukan 2FA via SMS, karena SMS bisa di-intercept LIMS. Pakai authenticator app seperti Google Authenticator atau Authy untuk email, Instagram, dan mobile banking. Ini mencegah pembajakan akun meski nomor kamu sudah ditarget.
+● <strong>3. Stop kebiasaan klik link sembarangan:</strong> Jalur utama untuk device compromise adalah phishing dan malware. Modus file APK undangan nikah, paket kurir, atau PDF tagihan. Begitu malware masuk, E2EE jadi percuma karena dibaca langsung dari layar HP. Cek lagi domain link, jangan install APK di luar Play Store.
+● <strong>4. Pisahkan identitas:</strong> Untuk riset sensitif, gunakan nomor sekunder dan email sekunder. Jangan campur akun aktivisme atau jurnalisme dengan akun utama yang terikat NIK dan IMSI utama.
+● <strong>5. Pahami hak kamu:</strong> Di Indonesia ada UU PDP. Tanyakan dasar hukum kalau merasa ada permintaan data tidak wajar. Transparansi surat perintah pengadilan jadi kunci untuk mencegah penyalahgunaan.</p>
+<p>Intinya, LIMS itu alat penegak hukum yang legal dan terstruktur, bukan alat santet digital yang bisa bikin HP kamu meledak. Kekuatannya absolut di jalur GSM/SMS, tapi mentok di metadata kalau kamu disiplin pakai enkripsi. Ancaman nyata justru datang dari kelalaian kita sendiri seperti klik phishing yang berujung instalasi spyware.</p>
+<p>Jaga kebersihan digital mulai hari ini. Pakai E2EE, kunci akun dengan 2FA berbasis aplikasi, dan biasakan skeptis sama link aneh.</p>
+</div>
+</div>
+<script src="/berita.js"></script>
+</body>
+</html>
