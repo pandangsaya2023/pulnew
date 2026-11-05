@@ -1,4 +1,5 @@
 [
+  "/berita/tes.html",
   "/berita/kumpulan-tools-ai-produktivitas-terbaik-2026-biar-kerja-lebih-cepat-dan-gak-buang-duit.html",
   "/berita/mengenal-lims-sistem-penyadapan-resmi-negara-yang-bekerja-di-jaringan-operator.html",
   "/berita/rahasia-whatsapp-tidak-pernah-down-mengenal-erlang-bahasa-pemrograman-langka-di-balik-2-juta-koneksi.html",
