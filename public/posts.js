@@ -1,4 +1,5 @@
 [
+  "/berita/apa-yang-baru-di-one-ui-9-samsung-a07-4-fitur-wajib-coba-sekarang.html",
   "/berita/intel-core-i5-vs-intel-core-5-jangan-sampai-salah-pilih-laptop-gara-gara-nama-mirip.html",
   "/berita/15-platform-hosting-gratis-untuk-developer-deploy-project-pertama-tanpa-biaya.html",
   "/berita/kumpulan-tools-ai-produktivitas-terbaik-2026-biar-kerja-lebih-cepat-dan-gak-buang-duit.html",
