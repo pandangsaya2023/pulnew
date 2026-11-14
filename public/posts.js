@@ -1,4 +1,5 @@
 [
+  "/berita/cara-membuat-arsip-surat-masuk-dan-surat-keluar-di-excel-supaya-sekali-klik-langsung-terbuka.html",
   "/berita/cara-setting-soundcard-biar-suara-jernih-tidak-mendem-dan-siap-live-karaoke.html",
   "/berita/intel-vs-amd-mana-prosesor-terbaik-panduan-pilih-laptop-biar-tidak-salah-beli.html",
   "/berita/cara-buka-wifi-tersembunyi-samsung-cek-sinyal-lemah-di-rumah.html",
