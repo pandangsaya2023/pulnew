@@ -1,4 +1,5 @@
 [
+  "/berita/cara-setting-soundcard-biar-suara-jernih-tidak-mendem-dan-siap-live-karaoke.html",
   "/berita/intel-vs-amd-mana-prosesor-terbaik-panduan-pilih-laptop-biar-tidak-salah-beli.html",
   "/berita/cara-buka-wifi-tersembunyi-samsung-cek-sinyal-lemah-di-rumah.html",
   "/berita/apa-yang-baru-di-one-ui-9-samsung-a07-4-fitur-wajib-coba-sekarang.html",
