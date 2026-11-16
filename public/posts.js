@@ -1,4 +1,5 @@
 [
+  "/berita/cheatsheet-berpikir-kritis-5w1h-yang-bikin-kamu-tidak-gampang-ketipu-hoaks.html",
   "/berita/4-persamaan-paling-penting-di-fisika-dan-matematika-yang-diam-diam-mengatur-hidup-kamu.html",
   "/berita/cara-membuat-arsip-surat-masuk-dan-surat-keluar-di-excel-supaya-sekali-klik-langsung-terbuka.html",
   "/berita/cara-setting-soundcard-biar-suara-jernih-tidak-mendem-dan-siap-live-karaoke.html",
