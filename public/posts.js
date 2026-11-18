@@ -1,4 +1,5 @@
 [
+  "/berita/macbook-air-vs-pro-m5-beda-yang-jarang-dibahas-jangan-salah-pilih-buat-5-tahun.html",
   "/berita/cheatsheet-berpikir-kritis-5w1h-yang-bikin-kamu-tidak-gampang-ketipu-hoaks.html",
   "/berita/4-persamaan-paling-penting-di-fisika-dan-matematika-yang-diam-diam-mengatur-hidup-kamu.html",
   "/berita/cara-membuat-arsip-surat-masuk-dan-surat-keluar-di-excel-supaya-sekali-klik-langsung-terbuka.html",
