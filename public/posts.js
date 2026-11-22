@@ -1,4 +1,5 @@
 [
+  "/berita/cara-belajar-claude-dalam-1-jam-dari-nol-sampai-punya-karyawan-ai-untuk-bisnis-kamu.html",
   "/berita/mixer-soundcard-vs-audio-interface-untuk-live-tiktok-mana-yang-suaranya-paling-jernih-dan-enak-didengar.html",
   "/berita/foto-ktp-dan-slip-gaji-di-google-foto-ternyata-masih-tersimpan-ini-cara-menghapusnya-sampai-bersih.html",
   "/berita/macbook-air-vs-pro-m5-beda-yang-jarang-dibahas-jangan-salah-pilih-buat-5-tahun.html",
